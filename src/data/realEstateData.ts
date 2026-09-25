@@ -1,0 +1,629 @@
+export interface Property {
+  id: string;
+  title: string;
+  subdivision: string;
+  city: string;
+  price: number;
+  formattedPrice: string;
+  bedrooms: number;
+  bathrooms: number;
+  sqft: number;
+  status: 'Closed' | 'Under Contract' | 'Active';
+  badgeText: string;
+  daysOnMarket: number;
+  description: string;
+  features: string[];
+  exteriorImage: string;
+  interiorImages: string[];
+  matterportAvailable: boolean;
+}
+
+export interface Chapter {
+  id: string;
+  index: string;
+  tag: string;
+  title: string;
+  summary: string;
+  bulletPoints: string[];
+  metrics: { label: string; value: string };
+  ctaText: string;
+  bgGradient: string;
+}
+
+export interface PhaseDeliverable {
+  id: string;
+  number: string;
+  title: string;
+  summary: string;
+  keyDeliverables: string[];
+  tacticalImpact: string;
+}
+
+export interface Testimonial {
+  id: string;
+  stars: number;
+  quote: string;
+  author: string;
+  location: string;
+  detail: string;
+}
+
+export interface MicroMarket {
+  id: string;
+  name: string;
+  category: 'luxury' | 'north' | 'west-south';
+  medianPrice: string;
+  avgDom: string;
+  schoolRating: string;
+  lifestyle: string;
+  keySubdivisions: string[];
+  overview: string;
+}
+
+export const BRIAN_HEADSHOT_IMG = "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlcPhzgBsJAUqNniVDY3J_2aBktpM3n1qCn01xoXaqdAtfSXekbaT3K4-Ppg_hImsbuLLP3hgN0pDKze8jksH4z0qd_Mix4edrzihEGAwQqgChB2q2Iic9S3gm28B1zeP8D85ZPBBFD8E6o=s1360-w1360-h1020-rw";
+
+export const BROKER_INFO = {
+  name: "Brian Jamison",
+  title: "Top 2% Real Estate Producer",
+  license: "License #184931",
+  headshot: BRIAN_HEADSHOT_IMG,
+  brokerage: "Salt Real Estate Corporate Office",
+  address: "1508 W. Edmond Rd., Edmond, Oklahoma 73003",
+  phone: "(405) 513-3039",
+  phoneRaw: "+14055133039",
+  email: "BJamison@Salt.RealEstate",
+  stats: {
+    volumeSold: "$62M+",
+    volumeNumber: 62,
+    closings: "370+",
+    closingsNumber: 370,
+    producerRank: "Top 2%",
+    guarantee: "100%",
+    yearsExperience: "6+ Years",
+  }
+};
+
+export const CHAPTERS: Chapter[] = [
+  {
+    id: "home-sellers",
+    index: "01",
+    tag: "01 - DEFINITIVE GUIDE",
+    title: "Home Sellers",
+    summary: "High-intent pricing, bespoke exposure, and architectural storytelling across 350+ global luxury portals.",
+    bulletPoints: [
+      "Cinematic 4K walkthroughs and FAA-certified aerial drone mapping",
+      "Staging guidance calibrated for maximum buyer emotional connection",
+      "Dedicated single-property URL and syndicated social retargeting"
+    ],
+    metrics: { label: "List-to-Sale Ratio", value: "98.4%" },
+    ctaText: "EXPLORE SELLER PLAYBOOK →",
+    bgGradient: "from-stone-900/90 via-stone-900/70 to-stone-950/95"
+  },
+  {
+    id: "expired-listings",
+    index: "02",
+    tag: "02 / TURNAROUND PROTOCOL",
+    title: "Expired Listings",
+    summary: "Diagnosing MLS stagnation, overhauling visual media, and relaunching with uncompromised market momentum.",
+    bulletPoints: [
+      "Rigorous 48-hour diagnostic of why previous listing failed to close",
+      "Complete visual reimagining: new photography, drone, and narrative",
+      "Strategic pricing recalibration beneath active search brackets"
+    ],
+    metrics: { label: "Turnaround Escrow Avg", value: "21 Days" },
+    ctaText: "SEE TURNAROUND PLAYBOOK →",
+    bgGradient: "from-neutral-900/90 via-neutral-900/75 to-stone-950/95"
+  },
+  {
+    id: "private-estates",
+    index: "03",
+    tag: "03 / DISCREET TRANSACTIONS",
+    title: "Private Estates",
+    summary: "Off-market discretion, private broker syndication, and high-net-worth vetting for Oklahoma's marquee estates.",
+    bulletPoints: [
+      "Strict NDA vetting prior to any property document release",
+      "Curated direct pitches to Oklahoma City's top luxury broker network",
+      "Total privacy protection for prominent families and executives"
+    ],
+    metrics: { label: "Confidentiality Standard", value: "100%" },
+    ctaText: "INQUIRE CONFIDENTIAL LISTING →",
+    bgGradient: "from-slate-900/90 via-stone-900/75 to-neutral-950/95"
+  },
+  {
+    id: "custom-builds",
+    index: "04",
+    tag: "04 / NEW CONSTRUCTION",
+    title: "Custom Builds",
+    summary: "Lot acquisition, architectural liaison, and spec project positioning from foundation to record-setting closing.",
+    bulletPoints: [
+      "Deep alliances with OKC's premier luxury custom home builders",
+      "Pre-construction floor plan optimization and buyer demographic modeling",
+      "Milestone-based digital marketing during the framing and finish phases"
+    ],
+    metrics: { label: "Premier Builder Network", value: "18+ Partners" },
+    ctaText: "EXPLORE BUILD ADVISORY →",
+    bgGradient: "from-stone-900/90 via-amber-950/60 to-stone-950/95"
+  }
+];
+
+export const METHOD_PHASES: PhaseDeliverable[] = [
+  {
+    id: "phase-1",
+    number: "01",
+    title: "Cinema-Grade 4K Media & Global Distribution",
+    summary: "We do not simply take photos; we produce high-fashion architectural films, 3D tours, and syndication across 350+ global real estate portals.",
+    tacticalImpact: "Surpasses standard MLS listings to command premium buyer emotional investment and multiple offers.",
+    keyDeliverables: [
+      "Bespoke 4K Video Tour (With Audio Score)",
+      "HD Drone Flyovers & Boundary Mapping",
+      "350+ Global Portal Syndication (Zillow, Realtor, Redfin, Luxury MLS)",
+      "Dedicated Single-Property Website URL",
+      "Hyper-Targeted Social Retargeting Ads (Meta & YouTube)",
+      "Luxury Direct-Mail Print Collateral & Neighborhood Door Drops"
+    ]
+  },
+  {
+    id: "phase-2",
+    number: "02",
+    title: "Proactive & Transparent Communication",
+    summary: "Zero guesswork. You receive mandatory telephone showing feedback within 2 hours and plain-English contract debriefs.",
+    tacticalImpact: "Eliminates seller anxiety with real-time insight into buyer objections and pricing elasticity.",
+    keyDeliverables: [
+      "100% Showing Feedback Policy (Call to showing agent within 2 hrs)",
+      "Downtown & Metro Market Intelligence Sharing",
+      "Plain-English Contract, Inspection & Title Translation",
+      "Weekly Milestone Performance Dashboard",
+      "Strategic & Firm Negotiation Protecting Maximum Net Proceeds"
+    ]
+  },
+  {
+    id: "phase-3",
+    number: "03",
+    title: "24/7 Accessibility & Zero-Lead Lag",
+    summary: "High-value buyers and out-of-state transferees don't keep 9-to-5 banking hours. Brian and his team are reachable 7 days a week.",
+    tacticalImpact: "Prevents lost buyers due to delayed agent responses or missed weekend showing windows.",
+    keyDeliverables: [
+      "7-Day-a-Week Direct Reachability (Mornings, Evenings & Weekends)",
+      "Instant Inbound Lead Response Guarantee (<15 minute turnaround)",
+      "Redundant Backup Coverage with Dedicated Salt Senior Associates",
+      "Direct Private Cell Access for Every Client"
+    ]
+  },
+  {
+    id: "phase-4",
+    number: "04",
+    title: "The 7-Person Specialized Support Network",
+    summary: "Solo agents get overwhelmed by logistics. Brian deploys a dedicated specialized division for every phase of your transaction.",
+    tacticalImpact: "Guarantees zero dropped deadlines, contract perfection, and five-star client concierge support.",
+    keyDeliverables: [
+      "Dedicated Personal Executive Assistant",
+      "Certified Transaction Coordinator (Escrow, Title, Disclosures)",
+      "Professional Staging & Space Optimization Consultant",
+      "Listing Operations & MLS Data Feed Specialist",
+      "Creative Media Graphic Designers & Copywriters",
+      "FAA-Part 107 Drone Pilots & HDR Photographers",
+      "Post-Close Escrow Reconciliation & Concierge"
+    ]
+  },
+  {
+    id: "phase-5",
+    number: "05",
+    title: "Data-Driven & Buyer-Minded Pricing Architecture",
+    summary: "We don't guess. We analyze hyper-local absorption velocity, pending sales, and psychological search brackets.",
+    tacticalImpact: "Prevents underpricing while avoiding the deadly trap of overpricing that causes listings to go stale.",
+    keyDeliverables: [
+      "Real-Time Local Absorption & Days-on-Market Analytics",
+      "Comparative Market Analysis (CMA) Including Adjacent Land Comps",
+      "3-Tier Pricing Model: Conservative, Target, and Aspirational",
+      "Search-Bracket Calibration Engineered to Trigger Bidding Wars"
+    ]
+  },
+  {
+    id: "phase-6",
+    number: "06",
+    title: "Zero-Risk Partnership & Cancel-Anytime Pledge",
+    summary: "Complete financial alignment. If Brian Jamison fails to deliver on every written promise, fire him at any time with zero penalty.",
+    tacticalImpact: "Full risk reversal. You retain total control of your listing from day one to the closing table.",
+    keyDeliverables: [
+      "100% Risk-Free Cancel-Anytime Listing Agreement",
+      "Zero Termination Fees, Zero Cancellation Penalties",
+      "No Long-Term Trapping Clauses",
+      "Total Performance Accountability Guaranteed in Writing"
+    ]
+  }
+];
+
+export const PROPERTIES: Property[] = [
+  {
+    id: "grandview-estate",
+    title: "The Grandview Estate",
+    subdivision: "Nichols Hills",
+    city: "Oklahoma City",
+    price: 2745000,
+    formattedPrice: "$2,745,000",
+    bedrooms: 5,
+    bathrooms: 6,
+    sqft: 6840,
+    status: "Closed",
+    badgeText: "FEATURED NOTABLE CLOSING · 11 DAYS TO ESCROW",
+    daysOnMarket: 11,
+    description: "An architectural tour-de-force nestled in the heart of Nichols Hills. Featuring French limestone facades, 24-foot cathedral ceilings, chef's scullery kitchen, climate-controlled wine cellar, and resort-caliber pool pavilion.",
+    features: ["Limestone Masonry", "Resort Pool & Spa", "4-Car Motor Court", "Sub-Zero & Wolf Suite", "Private Gated Grounds"],
+    exteriorImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    interiorImages: [
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80"
+    ],
+    matterportAvailable: true
+  },
+  {
+    id: "falcon-reserve",
+    title: "Falcon Reserve",
+    subdivision: "Deer Creek / Covell Corridor",
+    city: "Edmond",
+    price: 1425000,
+    formattedPrice: "$1,425,000",
+    bedrooms: 4,
+    bathrooms: 4.5,
+    sqft: 4410,
+    status: "Closed",
+    badgeText: "NOTABLE CLOSING · MULTIPLE OFFERS",
+    daysOnMarket: 6,
+    description: "Modern organic luxury on 1.25 private wooded acres in Edmond Deer Creek. Seamless indoor-outdoor sliding glass pocket doors, white oak bespoke cabinetry, and an outdoor living room with wood-burning fireplace.",
+    features: ["1.25 Wooded Acres", "Deer Creek Schools", "Zero-Edge Pool", "Dedicated Theater Room", "Spray-Foam Efficiency"],
+    exteriorImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
+    interiorImages: [
+      "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80"
+    ],
+    matterportAvailable: true
+  },
+  {
+    id: "oak-crest-horizon",
+    title: "The Oak Crest Horizon",
+    subdivision: "Gaillardia Golf Community",
+    city: "Oklahoma City",
+    price: 1850000,
+    formattedPrice: "$1,850,000",
+    bedrooms: 5,
+    bathrooms: 5,
+    sqft: 5200,
+    status: "Closed",
+    badgeText: "GAILLARDIA FAIRWAY RETREAT · SOLD",
+    daysOnMarket: 14,
+    description: "Elevated fairway living inside OKC's preeminent 24/7 guard-gated golf country club. Panoramic 16th green views, iron-railed balconies, primary retreat with dual luxury dressing suites, and smart home automation.",
+    features: ["Golf Course Frontage", "24/7 Guard Gated", "Smart Home Automation", "Commercial Scullery", "Covered Loggia"],
+    exteriorImage: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80",
+    interiorImages: [
+      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1200&q=80"
+    ],
+    matterportAvailable: true
+  },
+  {
+    id: "arcadia-whispering-pines",
+    title: "The Whispering Pines Manor",
+    subdivision: "Lake Hiwassee Enclave",
+    city: "Arcadia",
+    price: 2190000,
+    formattedPrice: "$2,190,000",
+    bedrooms: 5,
+    bathrooms: 5.5,
+    sqft: 6150,
+    status: "Active",
+    badgeText: "EXCLUSIVE REPRESENTATION · NEW LISTING",
+    daysOnMarket: 3,
+    description: "Private 4.5-acre equestrian-capable modern ranch estate in scenic Arcadia. Vaulted cedar timbers, floor-to-ceiling quartz fireplace, climate garage for 5 vehicles, and private stocked fishing pond.",
+    features: ["4.5 Private Acres", "Stocked Pond", "5-Car Heated Garage", "Cedar Timber Framing", "Oakdale School District"],
+    exteriorImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+    interiorImages: [
+      "https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&w=1200&q=80"
+    ],
+    matterportAvailable: true
+  }
+];
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    id: "rev-1",
+    stars: 5,
+    quote: "Brian came in last minute and sold our home in just four days with a triple-offer frame. His communication is undeniable. Without question, the only realtor I’d trust again in Oklahoma.",
+    author: "Dr. Neil K.",
+    location: "Homeowner in Nichols Hills, Oklahoma City",
+    detail: "Sold for $28,000 over asking price with a 14-day cash escrow."
+  },
+  {
+    id: "rev-2",
+    stars: 5,
+    quote: "We've bought and sold a lot of homes across four states and Brian is by far the best agent we have ever had. Sharp, calm during negotiation, and never pushes you into bad decisions.",
+    author: "Sean & Liz R.",
+    location: "Sellers & Buyers in Deer Creek, Edmond",
+    detail: "Closed both sale and contingent purchase seamlessly on the same afternoon."
+  },
+  {
+    id: "rev-3",
+    stars: 5,
+    quote: "Moving cross-country to Oklahoma City, Brian guided us with complete patience: video walk-throughs, and detailed knowledge of Edmond school boundaries and acreage zoning.",
+    author: "Kendra & J.P.",
+    location: "Relocated from California to Arcadia / Oakdale",
+    detail: "Purchased off-market custom build saving $45,000 under builder spec list."
+  }
+];
+
+export const MICRO_MARKETS: MicroMarket[] = [
+  // Luxury & Historic (7)
+  {
+    id: "nichols-hills",
+    name: "Nichols Hills",
+    category: "luxury",
+    medianPrice: "$1,380,000",
+    avgDom: "18 Days",
+    schoolRating: "9/10 Private/Public",
+    lifestyle: "The crown jewel of central Oklahoma luxury estates, mature tree canopy, and prestigious country club traditions.",
+    keySubdivisions: ["Grandview", "Doran", "Nichols Hills Suburban", "Avondale"],
+    overview: "Nichols Hills represents Oklahoma City's premier historic wealth enclave. Characterized by wide winding boulevards, 24/7 dedicated municipal police, and distinctive architectural pedigrees spanning classic English Tudor to modern limestone masterpieces."
+  },
+  {
+    id: "heritage-hills",
+    name: "Heritage Hills Historic",
+    category: "luxury",
+    medianPrice: "$895,000",
+    avgDom: "24 Days",
+    schoolRating: "8/10 Central Hub",
+    lifestyle: "Grand early 20th-century mansions, historic preservation standards, and immediate proximity to Midtown.",
+    keySubdivisions: ["Heritage Hills East", "Overholser District", "Harndale"],
+    overview: "Oklahoma City's premier historic preservation district, showcasing magnificent turn-of-the-century architecture, sprawling carriage houses, and walking access to Midtown dining."
+  },
+  {
+    id: "gaillardia",
+    name: "Gaillardia Golf Community",
+    category: "luxury",
+    medianPrice: "$1,650,000",
+    avgDom: "29 Days",
+    schoolRating: "9/10 Edmond/OKC",
+    lifestyle: "24-hour guarded gate, Arthur Hills championship 18-hole golf, 55,000 sq ft French Normandy clubhouse.",
+    keySubdivisions: ["The Reserve at Gaillardia", "Fairway Villas", "Enclave at Gaillardia"],
+    overview: "Uncompromising security and resort living in northwest OKC. Featuring premier luxury estates along pristine fairways, lakes, and high-end privacy amenities."
+  },
+  {
+    id: "crown-heights",
+    name: "Crown Heights",
+    category: "luxury",
+    medianPrice: "$575,000",
+    avgDom: "12 Days",
+    schoolRating: "8/10",
+    lifestyle: "Charming stone cottages, Mediterranean revivals, and vibrant park culture along Western Avenue.",
+    keySubdivisions: ["Crown Heights Historic", "Edgemere Park Adjacent"],
+    overview: "Beloved urban enclave known for architectural diversity, deep front porches, annual neighborhood gatherings, and steps from gourmet dining on Western Ave."
+  },
+  {
+    id: "the-village",
+    name: "The Village",
+    category: "luxury",
+    medianPrice: "$345,000",
+    avgDom: "9 Days",
+    schoolRating: "8/10",
+    lifestyle: "High-velocity mid-century homes, rapid luxury renovations, and immediate Lake Hefner access.",
+    keySubdivisions: ["Village Central", "Lakeside Enclave", "Penn Square North"],
+    overview: "Surrounded by Nichols Hills and Lake Hefner, The Village is one of OKC's fastest appreciating residential hubs with active buyer competition."
+  },
+  {
+    id: "downtown-midtown",
+    name: "Downtown & Midtown OKC",
+    category: "luxury",
+    medianPrice: "$620,000",
+    avgDom: "31 Days",
+    schoolRating: "Urban Metropolitan",
+    lifestyle: "High-rise luxury penthouses, historic brick townhomes, modern loft spaces, and Michelin-rated dining.",
+    keySubdivisions: ["Automobile Alley Lofts", "Deep Deuce Condos", "Midtown Row"],
+    overview: "The epicenter of Oklahoma City's cultural renaissance, streetcars, rooftop lounges, and prime executive live-work lifestyle."
+  },
+  {
+    id: "quail-creek",
+    name: "Quail Creek Golf Club",
+    category: "luxury",
+    medianPrice: "$540,000",
+    avgDom: "16 Days",
+    schoolRating: "8/10",
+    lifestyle: "Sprawling golf course lots, classic mid-century modern lines, and active tennis & swim club.",
+    keySubdivisions: ["Quail Creek Estates", "The Fairways at Quail Creek"],
+    overview: "Established prestigious northwest OKC golf community offering generous lot sizes, mature oaks, and family country club amenities."
+  },
+
+  // North Metro & Edmond (7)
+  {
+    id: "edmond-oakdale",
+    name: "Edmond / Oakdale",
+    category: "north",
+    medianPrice: "$685,000",
+    avgDom: "15 Days",
+    schoolRating: "10/10 Gold Standard",
+    lifestyle: "Nationally acclaimed public schools, rolling wooded topography, luxury acreage estates, and vibrant downtown rail district.",
+    keySubdivisions: ["Coffee Creek", "Fairfax Golf", "Thornhill", "Woodlands"],
+    overview: "Consistently ranked among the top suburbs in the nation. Edmond delivers exceptional safety, top tier schools, and thriving downtown retail culture."
+  },
+  {
+    id: "deer-creek",
+    name: "Deer Creek School District",
+    category: "north",
+    medianPrice: "$520,000",
+    avgDom: "11 Days",
+    schoolRating: "10/10 Academic Leader",
+    lifestyle: "Premier destination for luxury new construction, young families, and high academic athletics.",
+    keySubdivisions: ["Valencia", "Lone Oak", "Ironstone", "Belmont"],
+    overview: "Northwest Edmond's premier high-growth school district, drawing high-income transferees seeking master-planned luxury communities."
+  },
+  {
+    id: "oak-tree",
+    name: "Oak Tree Golf & Country Club",
+    category: "north",
+    medianPrice: "$1,150,000",
+    avgDom: "22 Days",
+    schoolRating: "10/10 Edmond",
+    lifestyle: "Two Pete Dye championship 36-hole golf courses, PGA tour pedigree, 24-hr gated luxury living.",
+    keySubdivisions: ["Oak Tree National", "Oak Tree Country Club Estates"],
+    overview: "A legendary golf sanctuary hosting major championships, with sprawling custom stone estates, private tennis complex, and world-class dining."
+  },
+  {
+    id: "arcadia-hiwassee",
+    name: "Arcadia & Lake Hiwassee",
+    category: "north",
+    medianPrice: "$790,000",
+    avgDom: "25 Days",
+    schoolRating: "9/10 Oakdale / Edmond",
+    lifestyle: "Equestrian acreage estates, Route 66 charm, water sports, and tranquil forested retreats.",
+    keySubdivisions: ["Hiwassee Lake Estates", "Round Barn Acreages", "Arcadia Woods"],
+    overview: "Where scenic country expanse meets luxury modern architecture. Expansive multi-acre estates just 15 minutes east of I-35."
+  },
+  {
+    id: "guthrie-historic",
+    name: "Guthrie Historic Enclave",
+    category: "north",
+    medianPrice: "$380,000",
+    avgDom: "28 Days",
+    schoolRating: "7/10 Historic District",
+    lifestyle: "Territorial capital architecture, antique stores, sprawling country ranches, and equestrian tracts.",
+    keySubdivisions: ["Guthrie Historic Townsite", "Cimarron River Ranches"],
+    overview: "Historic charm, red-brick Victorian streets, film-production backdrops, and expansive private acreage properties."
+  },
+  {
+    id: "twin-bridges",
+    name: "Twin Bridges & Covell Corridor",
+    category: "north",
+    medianPrice: "$625,000",
+    avgDom: "14 Days",
+    schoolRating: "10/10 Edmond",
+    lifestyle: "Master-planned amenity pools, walking trails, clubhouse, and minutes from Covell retail centers.",
+    keySubdivisions: ["Twin Bridges", "Covell Valley", "Montmartre"],
+    overview: "A sought-after Edmond community combining neighborhood walkability, modern transitional architecture, and top school feeder routes."
+  },
+  {
+    id: "rose-creek",
+    name: "Rose Creek Golf Community",
+    category: "north",
+    medianPrice: "$920,000",
+    avgDom: "19 Days",
+    schoolRating: "9/10 Edmond / Deer Creek",
+    lifestyle: "Guard-gated Arthur Hills 18-hole golf, aquatic park, clubhouse dining, and contemporary luxury design.",
+    keySubdivisions: ["The Greens at Rose Creek", "The Island at Rose Creek"],
+    overview: "Elite guard-gated golf haven with dynamic custom architecture, resort fitness facilities, and vibrant family amenities."
+  },
+
+  // West & South Metro (7)
+  {
+    id: "yukon",
+    name: "Yukon",
+    category: "west-south",
+    medianPrice: "$335,000",
+    avgDom: "10 Days",
+    schoolRating: "9/10",
+    lifestyle: "Czech heritage, Czech Hall corridor growth, family sports complexes, and fast commute along I-40 and Kilpatrick Turnpike.",
+    keySubdivisions: ["Surrey Hills", "Stone Mill", "River Mesa"],
+    overview: "A thriving family-oriented city on OKC's west side, renowned for community pride, top athletics, and accessible luxury neighborhoods."
+  },
+  {
+    id: "mustang",
+    name: "Mustang",
+    category: "west-south",
+    medianPrice: "$320,000",
+    avgDom: "12 Days",
+    schoolRating: "9/10",
+    lifestyle: "Close-knit small town feel, rapid retail corridor expansion, and spacious half-acre lots.",
+    keySubdivisions: ["Spitler Lake", "Hyde Park", "Wildwood"],
+    overview: "Southwest metro favorite featuring exceptional school sports facilities, low taxes, and rapid new home development."
+  },
+  {
+    id: "norman-university",
+    name: "Norman & University Enclave",
+    category: "west-south",
+    medianPrice: "$395,000",
+    avgDom: "17 Days",
+    schoolRating: "9/10 OU Research City",
+    lifestyle: "Home to the University of Oklahoma, historic Chautauqua avenues, Lake Thunderbird, and SEC college game days.",
+    keySubdivisions: ["Chautauqua Historic", "Brookhaven", "Hallbrooke"],
+    overview: "A vibrant cultural and university center offering diverse housing from historic estates near campus to tranquil golf communities like Brookhaven."
+  },
+  {
+    id: "moore",
+    name: "Moore",
+    category: "west-south",
+    medianPrice: "$285,000",
+    avgDom: "13 Days",
+    schoolRating: "8/10",
+    lifestyle: "Family-first parks, central I-35 corridor access to Tinker AFB and Downtown, affordable quality builds.",
+    keySubdivisions: ["Apple Valley", "Sendera Ranch", "Highland Village"],
+    overview: "Conveniently located between OKC and Norman with premier municipal parks, state-of-the-art community recreation, and strong home equity growth."
+  },
+  {
+    id: "midwest-city-choctaw",
+    name: "Midwest City & Choctaw",
+    category: "west-south",
+    medianPrice: "$310,000",
+    avgDom: "15 Days",
+    schoolRating: "8/10",
+    lifestyle: "Proximity to Tinker Air Force Base aerospace hubs, rolling oak acreage, and quiet eastern country living.",
+    keySubdivisions: ["Timber Ridge", "Woodland Hills Choctaw", "Forest Glen"],
+    overview: "A mix of aerospace career convenience and scenic wooded acreages with lower density and spacious property envelopes."
+  },
+  {
+    id: "blanchard-newcastle",
+    name: "Blanchard & Newcastle",
+    category: "west-south",
+    medianPrice: "$360,000",
+    avgDom: "18 Days",
+    schoolRating: "8/10 Tri-City Hub",
+    lifestyle: "Acreage properties with workshops, horses, scenic hill country vistas, and rapid bridge access to OKC.",
+    keySubdivisions: ["Winter Creek Golf Ranches", "Newcastle Ridge", "Fox Lane Estates"],
+    overview: "Fastest-growing rural-suburban corridors south of the Canadian River, celebrated for custom acreage homes and golf communities like Winter Creek."
+  },
+  {
+    id: "piedmont",
+    name: "Piedmont Rural Acreages",
+    category: "west-south",
+    medianPrice: "$415,000",
+    avgDom: "14 Days",
+    schoolRating: "9/10 Academic Focus",
+    lifestyle: "Panoramic prairie sunsets, custom 1-to-5 acre homesites, top-rated school district, and serene quiet.",
+    keySubdivisions: ["Buffalo Creek", "Manning Estates", "Olde Towne"],
+    overview: "The preferred destination for families seeking spacious acreage living with modern custom estates while staying within easy reach of the Kilpatrick Turnpike."
+  }
+];
+
+export const SITEMAP_PAGES = [
+  // Core Brand Pages
+  { path: "/", title: "Home", category: "Core" },
+  { path: "/about", title: "About Brian Jamison & Salt", category: "Core" },
+  { path: "/seller-blueprint", title: "6-Step Seller Blueprint", category: "Core" },
+  { path: "/listings", title: "Active & Featured Listings", category: "Core" },
+  { path: "/past-sales", title: "$62M+ Past Sales Track Record", category: "Core" },
+  { path: "/reviews", title: "Client Experiences & Reviews", category: "Core" },
+  { path: "/home-valuation", title: "Confidential Market Appraisal", category: "Core" },
+  { path: "/contact", title: "Contact Salt Corporate Office", category: "Core" },
+
+  // Audience & Intent Silos
+  { path: "/sellers", title: "Sell for Top Dollar Roadmap", category: "Audience" },
+  { path: "/expired-listings", title: "Expired Listing Turnaround Protocol", category: "Audience" },
+  { path: "/first-time-buyers", title: "First-Time Homebuyer Blueprint", category: "Audience" },
+  { path: "/luxury-buyers", title: "Luxury Buyer Concierge", category: "Audience" },
+  { path: "/custom-builds", title: "Custom Builds & Spec Advisory", category: "Audience" },
+  { path: "/fsbo", title: "For Sale By Owner Partnership", category: "Audience" },
+
+  // Service Phase Pages
+  { path: "/services/elite-marketing", title: "Phase 1: Elite Marketing Engine", category: "Service" },
+  { path: "/services/transparent-communication", title: "Phase 2: Transparent Communication", category: "Service" },
+  { path: "/services/accessibility-guarantee", title: "Phase 3: 24/7 Accessibility", category: "Service" },
+  { path: "/services/support-team", title: "Phase 4: 7-Person Specialized Team", category: "Service" },
+  { path: "/services/precision-pricing", title: "Phase 5: Data-Driven Pricing", category: "Service" },
+  { path: "/services/cancel-anytime-guarantee", title: "Phase 6: Cancel-Anytime Pledge", category: "Service" },
+
+  // Resources
+  { path: "/resources/okc-relocation-guide", title: "OKC Relocation Guide", category: "Resource" },
+  { path: "/resources/home-sellers-checklist", title: "Home Seller's Checklist (PDF)", category: "Resource" },
+  { path: "/resources/mortgage-calculator", title: "Mortgage & Affordability Calculator", category: "Resource" },
+  { path: "/resources/what-to-watch-out-for", title: "What to Watch Out For in OKC Real Estate", category: "Resource" },
+  { path: "/faq", title: "Frequently Asked Questions", category: "Resource" },
+  { path: "/privacy-policy", title: "Privacy Policy", category: "Legal" },
+  { path: "/terms-of-service", title: "Terms of Service", category: "Legal" },
+  { path: "/fair-housing-disclosure", title: "Fair Housing & Equal Opportunity", category: "Legal" }
+];

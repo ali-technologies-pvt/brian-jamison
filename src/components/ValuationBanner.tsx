@@ -1,0 +1,115 @@
+import React, { useState } from 'react';
+import { Search, Shield, CheckCircle } from 'lucide-react';
+import { BrianAvatar } from './BrianAvatar';
+
+interface ValuationBannerProps {
+  onOpenValuation: (address?: string) => void;
+}
+
+export const ValuationBanner: React.FC<ValuationBannerProps> = ({ onOpenValuation }) => {
+  const [address, setAddress] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onOpenValuation(address);
+  };
+
+  const sampleAddresses = [
+    "Nichols Hills, OK",
+    "Gaillardia, OKC",
+    "Deer Creek, Edmond",
+    "Heritage Hills, OKC"
+  ];
+
+  return (
+    <section className="w-full py-20 sm:py-28 bg-[#F4F1EB] border-b border-[#E6E2DA]">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="max-w-4xl mx-auto text-center">
+          <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-semibold text-[#B38F68] block mb-3">
+            Private Client Advisory
+          </span>
+
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#1B1D21] font-medium tracking-tight mb-4 text-balance">
+            Request A Confidential Market Appraisal
+          </h2>
+
+          <p className="font-sans text-sm sm:text-base text-[#6B7280] leading-relaxed max-w-2xl mx-auto mb-8 font-normal">
+            No automated generic calculators. Brian prepares a bespoke comparative audit incorporating closed comparables, pending contracts, and architectural improvements.
+          </p>
+
+          {/* Concierge Assurance Header with 44px Brian Avatar */}
+          <div className="max-w-xl mx-auto mb-8 p-3 sm:p-3.5 rounded-2xl bg-white border border-[#E6E2DA] shadow-xs flex items-center gap-3.5 text-left">
+            <BrianAvatar size={44} showStatusDot={true} alt="Brian Jamison - Confidential Appraisal" />
+            <div className="flex-1">
+              <span className="text-[10px] uppercase font-sans font-bold tracking-widest text-[#B38F68] block">
+                Personal Review Guarantee
+              </span>
+              <p className="font-serif text-xs sm:text-sm font-semibold text-[#1B1D21] leading-snug">
+                “Your custom report will be personally reviewed by Brian Jamison, OKC Top 2% Producer.”
+              </p>
+            </div>
+          </div>
+
+        {/* Form Input */}
+        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto mb-5">
+          <div className="flex flex-col sm:flex-row items-stretch gap-2.5 bg-white p-2 rounded-xl border border-[#E6E2DA] shadow-sm focus-within:border-[#B38F68] transition-colors">
+            <div className="flex-1 flex items-center px-3 gap-2.5">
+              <Search className="w-4 h-4 text-[#6B7280] shrink-0" />
+              <input
+                type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                placeholder="Enter your Oklahoma City or Edmond address..."
+                className="w-full py-2.5 text-xs sm:text-sm text-[#1B1D21] placeholder-[#6B7280] focus:outline-none bg-transparent"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="px-6 py-3.5 text-xs font-semibold tracking-wider uppercase text-white bg-[#B38F68] hover:bg-[#9E7A56] rounded-lg transition-colors cursor-pointer whitespace-nowrap shadow-xs"
+            >
+              Generate Private Valuation
+            </button>
+          </div>
+        </form>
+
+        {/* Quick Suggestion Pills */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-8 text-xs text-[#6B7280]">
+          <span className="text-[11px] uppercase tracking-wider text-[#6B7280]">Recent Areas:</span>
+          {sampleAddresses.map((sample) => (
+            <button
+              key={sample}
+              type="button"
+              onClick={() => {
+                setAddress(sample);
+                onOpenValuation(sample);
+              }}
+              className="text-[#1B1D21] hover:text-[#B38F68] underline decoration-stone-300 underline-offset-4 cursor-pointer"
+            >
+              {sample}
+            </button>
+          ))}
+        </div>
+
+        {/* Trust Badges */}
+        <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-[#6B7280]">
+          <span className="flex items-center gap-1.5">
+            <CheckCircle className="w-3.5 h-3.5 text-[#B38F68]" />
+            No Obligation
+          </span>
+          <span aria-hidden="true" className="text-stone-300">·</span>
+          <span className="flex items-center gap-1.5">
+            <Shield className="w-3.5 h-3.5 text-[#B38F68]" />
+            100% Confidential
+          </span>
+          <span aria-hidden="true" className="text-stone-300">·</span>
+          <span className="flex items-center gap-1.5">
+            <CheckCircle className="w-3.5 h-3.5 text-[#B38F68]" />
+            Backed by Real 2026 Comps
+          </span>
+        </div>
+      </div>
+      </div>
+    </section>
+  );
+};
