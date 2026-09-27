@@ -34,17 +34,17 @@ export const MegaMenuBlueprint: React.FC<MegaMenuBlueprintProps> = ({
       transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
       className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 w-[920px] max-w-[95vw] z-50 pointer-events-auto"
     >
-      <div className="bg-[#FAF9F6]/95 backdrop-blur-2xl border border-[#E6E2DA] rounded-2xl p-7 shadow-2xl shadow-[#1B1D21]/10 text-[#1B1D21]">
+      <div className="bg-[#FAF9F6]/95 backdrop-blur-2xl border border-[#EA580C]/30 rounded-2xl p-7 shadow-2xl shadow-[#0A192F]/10 text-[#0A192F]">
         <div className="grid grid-cols-12 gap-8 items-stretch">
           {/* Column 1: Value Proposition & Seal (Cols 4) */}
-          <div className="col-span-4 bg-[#F4F1EB] border border-[#E6E2DA] rounded-xl p-6 flex flex-col justify-between">
+          <div className="col-span-4 bg-[#F5EFE6] border border-[#EA580C]/30 rounded-xl p-6 flex flex-col justify-between">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white border border-[#E6E2DA] text-[10px] uppercase font-bold tracking-[0.2em] text-[#B38F68] mb-4">
-                <Sparkles className="w-3 h-3 text-[#B38F68]" />
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white border border-[#EA580C]/30 text-[10px] uppercase font-bold tracking-[0.2em] text-[#EA580C] mb-4">
+                <Sparkles className="w-3 h-3 text-[#EA580C]" />
                 <span>The Proven Selling Machine</span>
               </div>
 
-              <h3 className="font-serif text-2xl font-bold text-[#1B1D21] leading-tight mb-3">
+              <h3 className="font-serif text-2xl font-bold text-[#0A192F] leading-tight mb-3">
                 How We Sell Your Home for Top Dollar
               </h3>
 
@@ -53,10 +53,10 @@ export const MegaMenuBlueprint: React.FC<MegaMenuBlueprintProps> = ({
               </p>
 
               {/* Cancel-Anytime Guarantee Micro-Badge with BrianAvatar */}
-              <div className="p-3 bg-white border border-[#E6E2DA] rounded-lg mb-4 flex items-center gap-3">
+              <div className="p-3 bg-white border border-[#EA580C]/30 rounded-lg mb-4 flex items-center gap-3">
                 <BrianAvatar size={36} showStatusDot={true} alt="Brian Jamison - Cancel Anytime Guarantee" />
                 <div>
-                  <span className="font-serif text-xs font-bold text-[#1B1D21] block">
+                  <span className="font-serif text-xs font-bold text-[#0A192F] block">
                     Cancel-Anytime Guarantee
                   </span>
                   <span className="text-[11px] text-[#6B7280] leading-snug block">
@@ -76,7 +76,7 @@ export const MegaMenuBlueprint: React.FC<MegaMenuBlueprintProps> = ({
                   onOpenMethod(0);
                 }
               }}
-              className="w-full py-2.5 px-3 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-md text-xs font-semibold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-xs"
+              className="w-full py-2.5 px-3 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-md text-xs font-semibold tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-xs"
             >
               <span>Explore The 6 Phases</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -85,16 +85,16 @@ export const MegaMenuBlueprint: React.FC<MegaMenuBlueprintProps> = ({
 
           {/* Columns 2 & 3: Interactive 6-Phase Matrix (Cols 8) */}
           <div className="col-span-8 flex flex-col justify-between">
-            <div className="flex items-center justify-between border-b border-[#E6E2DA] pb-3 mb-4">
+            <div className="flex items-center justify-between border-b border-[#EA580C]/30 pb-3 mb-4">
               <div>
-                <span className="text-[11px] font-sans font-bold tracking-wider uppercase text-[#1B1D21]">
+                <span className="text-[11px] font-sans font-bold tracking-wider uppercase text-[#0A192F]">
                   The 6-Phase Execution Hierarchy
                 </span>
                 <span className="text-[11px] text-[#6B7280] ml-2">
                   (Click any phase for dedicated interior page)
                 </span>
               </div>
-              <span className="text-[10px] uppercase font-semibold text-[#B38F68] tracking-widest">
+              <span className="text-[10px] uppercase font-semibold text-[#EA580C] tracking-widest">
                 30+ Milestones
               </span>
             </div>
@@ -112,13 +112,13 @@ export const MegaMenuBlueprint: React.FC<MegaMenuBlueprintProps> = ({
                       onOpenMethod(idx);
                     }
                   }}
-                  className="group text-left p-3.5 rounded-xl border border-[#E6E2DA] bg-white hover:bg-[#F4F1EB] hover:border-[#B38F68]/50 transition-all duration-200 flex items-start gap-3 cursor-pointer shadow-2xs hover:shadow-xs hover:-translate-y-0.5"
+                  className="group text-left p-3.5 rounded-xl border border-[#EA580C]/30 bg-white hover:bg-[#F5EFE6] hover:border-[#EA580C]/50 transition-all duration-200 flex items-start gap-3 cursor-pointer shadow-2xs hover:shadow-xs hover:-translate-y-0.5"
                 >
-                  <span className="font-serif text-lg font-bold text-[#B38F68] group-hover:text-[#9E7A56] tabular-nums shrink-0 mt-0.5">
+                  <span className="font-serif text-lg font-bold text-[#EA580C] group-hover:text-[#C2410C] tabular-nums shrink-0 mt-0.5">
                     {phase.number}
                   </span>
                   <div className="min-w-0">
-                    <span className="font-serif text-sm font-semibold text-[#1B1D21] group-hover:text-[#B38F68] transition-colors block truncate">
+                    <span className="font-serif text-sm font-semibold text-[#0A192F] group-hover:text-[#EA580C] transition-colors block truncate">
                       {phase.title}
                     </span>
                     <span className="text-[11px] text-[#6B7280] line-clamp-1 block mt-0.5 font-sans">
@@ -130,9 +130,9 @@ export const MegaMenuBlueprint: React.FC<MegaMenuBlueprintProps> = ({
             </div>
 
             {/* Bottom Strip */}
-            <div className="mt-5 pt-3.5 border-t border-[#E6E2DA] flex items-center justify-between text-xs text-[#6B7280]">
+            <div className="mt-5 pt-3.5 border-t border-[#EA580C]/30 flex items-center justify-between text-xs text-[#6B7280]">
               <span className="flex items-center gap-1.5">
-                <Check className="w-3.5 h-3.5 text-[#B38F68]" />
+                <Check className="w-3.5 h-3.5 text-[#EA580C]" />
                 Direct Lead Representation by Brian Jamison
               </span>
               <button
@@ -141,7 +141,7 @@ export const MegaMenuBlueprint: React.FC<MegaMenuBlueprintProps> = ({
                   onClose();
                   onOpenConsultation();
                 }}
-                className="font-medium text-[#B38F68] hover:text-[#9E7A56] hover:underline cursor-pointer"
+                className="font-medium text-[#EA580C] hover:text-[#C2410C] hover:underline cursor-pointer"
               >
                 Schedule Private Strategy Briefing →
               </button>

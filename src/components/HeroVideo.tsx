@@ -130,7 +130,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 pt-8 sm:pt-14 pb-12 flex-1 flex flex-col justify-center">
         <div className="max-w-2xl lg:max-w-3xl">
           {/* Floating Authority Proof Trust Pill: 28px mini avatar with emerald live-status verification dot */}
-          <div className="animate-fade-in-up inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md border border-[#E5A93C]/30 shadow-xs mb-4 sm:mb-5">
+          <div className="animate-fade-in-up inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md border border-[#EA580C]/30 shadow-xs mb-4 sm:mb-5">
             <BrianAvatar
               size={28}
               priority={true}
@@ -138,17 +138,17 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
               alt="Brian Jamison - Top 2% OKC Metro Real Estate Producer"
             />
             <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-sans font-semibold text-[#0A192F] tracking-wide">
-              <span className="text-[#E5A93C]">★</span>
+              <span className="text-[#EA580C]">★</span>
               <span>Top 2% OKC Metro Real Estate Producer</span>
-              <span className="text-[#E5A93C]/50 hidden sm:inline">·</span>
+              <span className="text-[#EA580C]/50 hidden sm:inline">·</span>
               <span className="text-[#6B7280] font-normal hidden sm:inline">$62M+ Volume Sold</span>
             </div>
           </div>
 
           {/* Kicker badge with subtle entrance animation */}
           <div className="animate-fade-in-up flex items-center gap-2 mb-4 sm:mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#E5A93C] animate-ping" />
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-semibold text-[#E5A93C]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C] animate-ping" />
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-semibold text-[#EA580C]">
               The One-And-Only Seller Blueprint in Oklahoma
             </span>
           </div>
@@ -156,7 +156,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
           {/* Display Headline with Playfair Serif, Italic Accent and subtle staggered fade */}
           <h1 className="animate-fade-in-delayed font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[68px] leading-[1.08] tracking-tight text-[#0A192F] mb-6 sm:mb-8 text-balance">
             The Agent Who Works Like Every Deal Is{' '}
-            <span className="italic font-normal text-[#E5A93C] pr-1 inline-block transition-transform hover:scale-105 duration-300">
+            <span className="italic font-normal text-[#EA580C] pr-1 inline-block transition-transform hover:scale-105 duration-300">
               Personal.
             </span>
           </h1>
@@ -171,7 +171,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
             <button
               type="button"
               onClick={onOpenValuation}
-              className="px-7 py-4 text-xs font-semibold tracking-wider uppercase text-white bg-[#E5A93C] hover:bg-[#C5902B] rounded-md transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 cursor-pointer text-center"
+              className="px-7 py-3.5 text-xs font-semibold tracking-wide uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-xl transition-all duration-300 shadow-lg shadow-orange-600/30 hover:shadow-orange-600/50 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer text-center"
             >
               Request Bespoke Valuation
             </button>
@@ -179,10 +179,10 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
             <button
               type="button"
               onClick={onExploreMethod}
-              className="group px-7 py-4 text-xs font-semibold tracking-wider uppercase text-[#0A192F] bg-white/85 hover:bg-white border border-[#E5A93C]/30 hover:border-[#0A192F] rounded-md transition-all duration-300 backdrop-blur-xs flex items-center justify-center gap-2.5 cursor-pointer text-center shadow-xs hover:shadow-md hover:-translate-y-0.5"
+              className="group px-7 py-4 text-xs font-semibold tracking-wider uppercase text-[#0A192F] bg-white/85 hover:bg-white border border-[#EA580C]/30 hover:border-[#0A192F] rounded-md transition-all duration-300 backdrop-blur-xs flex items-center justify-center gap-2.5 cursor-pointer text-center shadow-xs hover:shadow-md hover:-translate-y-0.5"
             >
               <span>Explore The Method</span>
-              <ArrowDown className="w-3.5 h-3.5 text-[#E5A93C] group-hover:translate-y-1 transition-transform duration-300" />
+              <ArrowDown className="w-3.5 h-3.5 text-[#EA580C] group-hover:translate-y-1 transition-transform duration-300" />
             </button>
           </div>
         </div>
@@ -195,13 +195,13 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
       */}
       <div
         ref={statsRef}
-        className="relative z-10 w-full bg-[#FAF9F6]/95 border-t border-b border-[#E5A93C]/30 backdrop-blur-sm py-6 sm:py-8"
+        className="relative z-10 w-full bg-[#FAF9F6]/95 border-t border-b border-[#EA580C]/30 backdrop-blur-sm py-6 sm:py-8"
       >
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-[#E5A93C]/20">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-[#EA580C]/20">
             {/* Stat 1: Volume */}
             <div className="flex flex-col items-center justify-center px-3 pt-3 sm:pt-0 group cursor-default">
-              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#0A192F] tracking-tight tabular-nums group-hover:text-[#E5A93C] transition-colors duration-300">
+              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#0A192F] tracking-tight tabular-nums group-hover:text-[#EA580C] transition-colors duration-300">
                 ${counts.volume}M+
               </span>
               <span className="text-[11px] sm:text-xs tracking-[0.2em] uppercase font-sans text-[#6B7280] mt-1.5">
@@ -211,7 +211,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
 
             {/* Stat 2: Closings */}
             <div className="flex flex-col items-center justify-center px-3 pt-3 sm:pt-0 group cursor-default">
-              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#0A192F] tracking-tight tabular-nums group-hover:text-[#E5A93C] transition-colors duration-300">
+              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#0A192F] tracking-tight tabular-nums group-hover:text-[#EA580C] transition-colors duration-300">
                 {counts.closings}+
               </span>
               <span className="text-[11px] sm:text-xs tracking-[0.2em] uppercase font-sans text-[#6B7280] mt-1.5">
@@ -221,7 +221,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
 
             {/* Stat 3: Rank */}
             <div className="flex flex-col items-center justify-center px-3 pt-3 sm:pt-0 group cursor-default">
-              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#0A192F] tracking-tight tabular-nums group-hover:text-[#E5A93C] transition-colors duration-300">
+              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#0A192F] tracking-tight tabular-nums group-hover:text-[#EA580C] transition-colors duration-300">
                 Top {counts.percent}%
               </span>
               <span className="text-[11px] sm:text-xs tracking-[0.2em] uppercase font-sans text-[#6B7280] mt-1.5">
@@ -231,7 +231,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
 
             {/* Stat 4: Guarantee */}
             <div className="flex flex-col items-center justify-center px-3 pt-3 sm:pt-0 group cursor-default">
-              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#0A192F] tracking-tight tabular-nums group-hover:text-[#E5A93C] transition-colors duration-300">
+              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#0A192F] tracking-tight tabular-nums group-hover:text-[#EA580C] transition-colors duration-300">
                 {counts.pledge}%
               </span>
               <span className="text-[11px] sm:text-xs tracking-[0.2em] uppercase font-sans text-[#6B7280] mt-1.5">

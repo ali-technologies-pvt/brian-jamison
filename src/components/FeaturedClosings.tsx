@@ -21,12 +21,12 @@ export const FeaturedClosings: React.FC<FeaturedClosingsProps> = ({ onSelectProp
   const sideProperties = filteredProperties.slice(1);
 
   return (
-    <section id="featured-closings" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#E5A93C]/30">
+    <section id="featured-closings" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/30">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Header with Filter Controls */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div>
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-semibold text-[#E5A93C] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-semibold text-[#EA580C] block mb-3">
               Curated Portfolio
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A192F] font-medium tracking-tight">
@@ -35,7 +35,7 @@ export const FeaturedClosings: React.FC<FeaturedClosingsProps> = ({ onSelectProp
           </div>
 
           {/* Interactive Filter Tabs */}
-          <div className="flex flex-wrap items-center gap-2 p-1 bg-[#F5EFE6] rounded-lg border border-[#E5A93C]/30">
+          <div className="flex flex-wrap items-center gap-2 p-1 bg-[#F5EFE6] rounded-lg border border-[#EA580C]/30">
             <button
               type="button"
               onClick={() => setFilter('all')}
@@ -91,7 +91,7 @@ export const FeaturedClosings: React.FC<FeaturedClosingsProps> = ({ onSelectProp
           {/* Main Panoramic Card (Left Col 7) */}
           <div
             onClick={() => onSelectProperty(heroProperty)}
-            className="lg:col-span-7 group relative rounded-2xl overflow-hidden border border-[#E5A93C]/30 shadow-md bg-[#0A192F] min-h-[460px] lg:min-h-[580px] cursor-pointer flex flex-col justify-end"
+            className="lg:col-span-7 group relative rounded-2xl overflow-hidden border border-[#EA580C]/30 shadow-md bg-[#0A192F] min-h-[460px] lg:min-h-[580px] cursor-pointer flex flex-col justify-end"
           >
             <img
               src={heroProperty.exteriorImage}
@@ -116,14 +116,17 @@ export const FeaturedClosings: React.FC<FeaturedClosingsProps> = ({ onSelectProp
             <div className="relative z-10 p-6 sm:p-10">
               <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-3">
                 <div>
-                  <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-white font-medium tracking-tight">
+                  <h3
+                    style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0, 0, 0, 0.6)' }}
+                    className="font-serif text-2xl sm:text-3xl lg:text-4xl !text-white font-medium tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
+                  >
                     {heroProperty.title}
                   </h3>
-                  <span className="text-xs sm:text-sm text-stone-300 font-sans">
+                  <span className="text-xs sm:text-sm text-stone-200 font-sans drop-shadow-xs">
                     {heroProperty.subdivision}, {heroProperty.city}
                   </span>
                 </div>
-                <div className="font-serif text-2xl sm:text-3xl font-semibold text-[#E5A93C] tabular-nums">
+                <div className="font-serif text-2xl sm:text-3xl font-semibold text-[#EA580C] tabular-nums drop-shadow-xs">
                   {heroProperty.formattedPrice}
                 </div>
               </div>
@@ -131,22 +134,22 @@ export const FeaturedClosings: React.FC<FeaturedClosingsProps> = ({ onSelectProp
               {/* Specs Bar */}
               <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-4 border-t border-white/20 text-xs text-stone-300">
                 <span className="flex items-center gap-1.5">
-                  <Bed className="w-3.5 h-3.5 text-[#E5A93C]" />
+                  <Bed className="w-3.5 h-3.5 text-[#EA580C]" />
                   {heroProperty.bedrooms} Bedrooms
                 </span>
                 <span aria-hidden="true" className="text-stone-500">·</span>
                 <span className="flex items-center gap-1.5">
-                  <Bath className="w-3.5 h-3.5 text-[#E5A93C]" />
+                  <Bath className="w-3.5 h-3.5 text-[#EA580C]" />
                   {heroProperty.bathrooms} Bathrooms
                 </span>
                 <span aria-hidden="true" className="text-stone-500">·</span>
                 <span className="flex items-center gap-1.5">
-                  <Move className="w-3.5 h-3.5 text-[#E5A93C]" />
+                  <Move className="w-3.5 h-3.5 text-[#EA580C]" />
                   {heroProperty.sqft.toLocaleString()} Sq Ft
                 </span>
                 <span aria-hidden="true" className="text-stone-500">·</span>
                 <span className="flex items-center gap-1.5 text-stone-200">
-                  <Calendar className="w-3.5 h-3.5 text-[#E5A93C]" />
+                  <Calendar className="w-3.5 h-3.5 text-[#EA580C]" />
                   {heroProperty.daysOnMarket} Days to Escrow
                 </span>
               </div>
@@ -159,7 +162,7 @@ export const FeaturedClosings: React.FC<FeaturedClosingsProps> = ({ onSelectProp
               <div
                 key={property.id}
                 onClick={() => onSelectProperty(property)}
-                className="group relative rounded-2xl overflow-hidden border border-[#E5A93C]/30 shadow-sm bg-[#0A192F] h-[260px] sm:h-[275px] cursor-pointer flex flex-col justify-end"
+                className="group relative rounded-2xl overflow-hidden border border-[#EA580C]/30 shadow-sm bg-[#0A192F] h-[260px] sm:h-[275px] cursor-pointer flex flex-col justify-end"
               >
                 <img
                   src={property.exteriorImage}
@@ -182,14 +185,17 @@ export const FeaturedClosings: React.FC<FeaturedClosingsProps> = ({ onSelectProp
                 <div className="relative z-10 p-5 sm:p-6">
                   <div className="flex items-baseline justify-between mb-1.5">
                     <div>
-                      <h4 className="font-serif text-xl sm:text-2xl text-white font-medium">
+                      <h4
+                        style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0, 0, 0, 0.6)' }}
+                        className="font-serif text-xl sm:text-2xl !text-white font-medium drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
+                      >
                         {property.title}
                       </h4>
-                      <span className="text-xs text-stone-300 font-sans">
+                      <span className="text-xs text-stone-200 font-sans drop-shadow-xs">
                         {property.subdivision} · {property.city}
                       </span>
                     </div>
-                    <span className="font-serif text-lg sm:text-xl font-semibold text-[#E5A93C] tabular-nums">
+                    <span className="font-serif text-lg sm:text-xl font-semibold text-[#EA580C] tabular-nums">
                       {property.formattedPrice}
                     </span>
                   </div>

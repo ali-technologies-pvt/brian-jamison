@@ -138,7 +138,7 @@ export default function App() {
   const activeInteriorPage = currentPath !== '/' ? getPageByPath(currentPath) : null;
 
   return (
-    <div className="min-h-screen bg-[#FAF9F6] text-[#0A192F] flex flex-col font-sans selection:bg-[#E5A93C]/20 selection:text-[#0A192F]">
+    <div className="min-h-screen bg-[#FAF9F6] text-[#0A192F] flex flex-col font-sans selection:bg-[#EA580C]/20 selection:text-[#0A192F]">
       {/* Top Bar Navigation */}
       <Navbar
         onOpenValuation={handleOpenValuation}

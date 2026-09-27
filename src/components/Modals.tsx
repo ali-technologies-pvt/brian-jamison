@@ -73,7 +73,7 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl bg-[#FAF9F6] border border-[#E5A93C]/30 rounded-2xl shadow-2xl p-6 sm:p-10 max-h-[90vh] overflow-y-auto">
+      <div className="relative w-full max-w-2xl bg-[#FAF9F6] border border-[#EA580C]/30 rounded-2xl shadow-2xl p-6 sm:p-10 max-h-[90vh] overflow-y-auto">
         <button
           type="button"
           onClick={onClose}
@@ -85,7 +85,7 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
         {!isSubmitted ? (
           <div>
             {/* Concierge Header with 44px Brian Avatar */}
-            <div className="mb-6 p-3.5 sm:p-4 rounded-xl bg-white border border-[#E5A93C]/30 shadow-2xs flex items-center gap-3.5">
+            <div className="mb-6 p-3.5 sm:p-4 rounded-xl bg-white border border-[#EA580C]/30 shadow-2xs flex items-center gap-3.5">
               <BrianAvatar
                 size={44}
                 priority={false}
@@ -93,7 +93,7 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
                 alt="Brian Jamison - Personal Report Review"
               />
               <div className="flex-1">
-                <span className="text-[10px] uppercase font-sans font-bold tracking-widest text-[#E5A93C] block">
+                <span className="text-[10px] uppercase font-sans font-bold tracking-widest text-[#EA580C] block">
                   Concierge Review Commitment
                 </span>
                 <p className="font-serif text-xs sm:text-sm font-semibold text-[#0A192F] leading-snug">
@@ -106,7 +106,7 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
             </div>
 
             <div className="mb-6">
-              <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-semibold text-[#E5A93C] block mb-1">
+              <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-semibold text-[#EA580C] block mb-1">
                 Bespoke Comparative Market Analysis
               </span>
               <h3 className="font-serif text-2xl sm:text-3xl text-[#0A192F] font-medium">
@@ -129,7 +129,7 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     placeholder="e.g. 1420 Grandview Blvd, Nichols Hills, OK"
-                    className="w-full px-4 py-3 bg-white border border-[#E5A93C]/30 rounded-lg text-sm text-[#0A192F] focus:outline-none focus:border-[#E5A93C]"
+                    className="w-full px-4 py-3 bg-white border border-[#EA580C]/30 rounded-lg text-sm text-[#0A192F] focus:outline-none focus:border-[#EA580C]"
                   />
                 </div>
 
@@ -140,7 +140,7 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
                   <select
                     value={propertyType}
                     onChange={(e) => setPropertyType(e.target.value)}
-                    className="w-full px-4 py-3 bg-white border border-[#E5A93C]/30 rounded-lg text-sm text-[#0A192F] focus:outline-none focus:border-[#E5A93C]"
+                    className="w-full px-4 py-3 bg-white border border-[#EA580C]/30 rounded-lg text-sm text-[#0A192F] focus:outline-none focus:border-[#EA580C]"
                   >
                     <option>Single Family Luxury Home</option>
                     <option>Private Gated Estate</option>
@@ -154,7 +154,7 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
                   type="button"
                   onClick={() => setStep(2)}
                   disabled={!address.trim()}
-                  className="w-full mt-6 py-3.5 text-xs font-semibold tracking-wider uppercase text-white bg-[#E5A93C] hover:bg-[#C5902B] disabled:bg-stone-300 rounded-md transition-colors cursor-pointer"
+                  className="w-full mt-6 py-3.5 text-xs font-semibold tracking-wider uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] disabled:bg-stone-300 rounded-md transition-colors cursor-pointer"
                 >
                   Continue to Architectural Specifications →
                 </button>
@@ -167,7 +167,7 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
                 <div>
                   <div className="flex justify-between text-xs font-semibold uppercase text-[#0A192F] mb-1.5">
                     <span>Approximate Square Footage</span>
-                    <span className="font-serif text-sm font-bold text-[#E5A93C]">
+                    <span className="font-serif text-sm font-bold text-[#EA580C]">
                       {approxSqft.toLocaleString()} Sq Ft
                     </span>
                   </div>
@@ -178,7 +178,7 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
                     step="100"
                     value={approxSqft}
                     onChange={(e) => setApproxSqft(Number(e.target.value))}
-                    className="w-full accent-[#E5A93C] cursor-pointer"
+                    className="w-full accent-[#EA580C] cursor-pointer"
                   />
                 </div>
 
@@ -194,7 +194,7 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
                           type="button"
                           onClick={() => setBeds(num)}
                           className={`flex-1 py-2 text-xs font-medium rounded-md border ${
-                            beds === num ? 'bg-[#0A192F] text-white border-[#0A192F]' : 'bg-white border-[#E5A93C]/30 text-[#6B7280]'
+                            beds === num ? 'bg-[#0A192F] text-white border-[#0A192F]' : 'bg-white border-[#EA580C]/30 text-[#6B7280]'
                           }`}
                         >
                           {num}
@@ -214,7 +214,7 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
                           type="button"
                           onClick={() => setBaths(num)}
                           className={`flex-1 py-2 text-xs font-medium rounded-md border ${
-                            baths === num ? 'bg-[#0A192F] text-white border-[#0A192F]' : 'bg-white border-[#E5A93C]/30 text-[#6B7280]'
+                            baths === num ? 'bg-[#0A192F] text-white border-[#0A192F]' : 'bg-white border-[#EA580C]/30 text-[#6B7280]'
                           }`}
                         >
                           {num}
@@ -226,24 +226,24 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
 
                 {/* Upgrades Checkbox */}
                 <div className="pt-2 space-y-2.5">
-                  <label className="flex items-center gap-3 p-3 bg-white border border-[#E5A93C]/30 rounded-lg cursor-pointer">
+                  <label className="flex items-center gap-3 p-3 bg-white border border-[#EA580C]/30 rounded-lg cursor-pointer">
                     <input
                       type="checkbox"
                       checked={hasPool}
                       onChange={(e) => setHasPool(e.target.checked)}
-                      className="accent-[#E5A93C] w-4 h-4"
+                      className="accent-[#EA580C] w-4 h-4"
                     />
                     <span className="text-xs text-[#0A192F] font-medium">
                       In-ground Luxury Pool / Spa / Outdoor Living
                     </span>
                   </label>
 
-                  <label className="flex items-center gap-3 p-3 bg-white border border-[#E5A93C]/30 rounded-lg cursor-pointer">
+                  <label className="flex items-center gap-3 p-3 bg-white border border-[#EA580C]/30 rounded-lg cursor-pointer">
                     <input
                       type="checkbox"
                       checked={hasRenovated}
                       onChange={(e) => setHasRenovated(e.target.checked)}
-                      className="accent-[#E5A93C] w-4 h-4"
+                      className="accent-[#EA580C] w-4 h-4"
                     />
                     <span className="text-xs text-[#0A192F] font-medium">
                       Modern Kitchen & Primary Suite Renovation (Post-2020)
@@ -255,14 +255,14 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
                   <button
                     type="button"
                     onClick={() => setStep(1)}
-                    className="px-4 py-3 text-xs uppercase font-medium border border-[#E5A93C]/30 rounded-md text-[#6B7280]"
+                    className="px-4 py-3 text-xs uppercase font-medium border border-[#EA580C]/30 rounded-md text-[#6B7280]"
                   >
                     Back
                   </button>
                   <button
                     type="button"
                     onClick={() => setStep(3)}
-                    className="flex-1 py-3 text-xs font-semibold tracking-wider uppercase text-white bg-[#E5A93C] hover:bg-[#C5902B] rounded-md transition-colors"
+                    className="flex-1 py-3 text-xs font-semibold tracking-wider uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-md transition-colors"
                   >
                     Calculate 3-Tier Valuation Bracket →
                   </button>
@@ -276,7 +276,7 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
                 {/* 3-Tier Pricing Display */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
                   {/* Tier 1 */}
-                  <div className="p-4 bg-white border border-[#E5A93C]/30 rounded-xl text-center">
+                  <div className="p-4 bg-white border border-[#EA580C]/30 rounded-xl text-center">
                     <span className="text-[10px] uppercase tracking-wider text-[#6B7280] block font-sans">
                       Conservative (Liquidity)
                     </span>
@@ -289,11 +289,11 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
                   </div>
 
                   {/* Tier 2 (Highlighted) */}
-                  <div className="p-4 bg-[#FAF9F6] border-2 border-[#E5A93C] rounded-xl text-center relative shadow-xs">
-                    <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#E5A93C] text-white text-[9px] uppercase px-2 py-0.5 rounded-full font-bold">
+                  <div className="p-4 bg-[#FAF9F6] border-2 border-[#EA580C] rounded-xl text-center relative shadow-xs">
+                    <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#EA580C] text-white text-[9px] uppercase px-2 py-0.5 rounded-full font-bold">
                       Target Valuation
                     </span>
-                    <span className="text-[10px] uppercase tracking-wider text-[#E5A93C] block font-sans font-semibold">
+                    <span className="text-[10px] uppercase tracking-wider text-[#EA580C] block font-sans font-semibold">
                       Fair Market Peak
                     </span>
                     <span className="font-serif text-xl font-bold text-[#0A192F] block my-1">
@@ -305,7 +305,7 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
                   </div>
 
                   {/* Tier 3 */}
-                  <div className="p-4 bg-white border border-[#E5A93C]/30 rounded-xl text-center">
+                  <div className="p-4 bg-white border border-[#EA580C]/30 rounded-xl text-center">
                     <span className="text-[10px] uppercase tracking-wider text-[#6B7280] block font-sans">
                       Aspirational (Surge)
                     </span>
@@ -319,7 +319,7 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
                 </div>
 
                 {/* Dispatch Full Audit Form */}
-                <form onSubmit={handleSubmitContact} className="space-y-3 bg-[#F5EFE6] p-5 rounded-xl border border-[#E5A93C]/30">
+                <form onSubmit={handleSubmitContact} className="space-y-3 bg-[#F5EFE6] p-5 rounded-xl border border-[#EA580C]/30">
                   <span className="text-xs font-serif font-bold text-[#0A192F] block">
                     Receive Brian Jamison's Full 24-Page Comparative Analysis Dossier
                   </span>
@@ -334,7 +334,7 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
                       placeholder="Your Full Name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="px-3 py-2.5 bg-white border border-[#E5A93C]/30 rounded-md text-xs focus:outline-none focus:border-[#E5A93C]"
+                      className="px-3 py-2.5 bg-white border border-[#EA580C]/30 rounded-md text-xs focus:outline-none focus:border-[#EA580C]"
                     />
                     <input
                       type="tel"
@@ -342,7 +342,7 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
                       placeholder="Mobile Phone (for instant SMS link)"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="px-3 py-2.5 bg-white border border-[#E5A93C]/30 rounded-md text-xs focus:outline-none focus:border-[#E5A93C]"
+                      className="px-3 py-2.5 bg-white border border-[#EA580C]/30 rounded-md text-xs focus:outline-none focus:border-[#EA580C]"
                     />
                   </div>
 
@@ -352,17 +352,17 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
                     placeholder="Email Address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-3 py-2.5 bg-white border border-[#E5A93C]/30 rounded-md text-xs focus:outline-none focus:border-[#E5A93C]"
+                    className="w-full px-3 py-2.5 bg-white border border-[#EA580C]/30 rounded-md text-xs focus:outline-none focus:border-[#EA580C]"
                   />
 
                   <div className="flex items-center gap-2 pt-1 text-[11px] text-[#6B7280]">
-                    <Shield className="w-3.5 h-3.5 text-[#E5A93C]" />
+                    <Shield className="w-3.5 h-3.5 text-[#EA580C]" />
                     <span>Strict 100% Client Privacy Guarantee. No spam.</span>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-3 text-xs font-semibold tracking-wider uppercase text-white bg-[#E5A93C] hover:bg-[#C5902B] rounded-md transition-colors cursor-pointer shadow-xs"
+                    className="w-full py-3.5 px-7 text-xs font-semibold tracking-wide uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-xl transition-all duration-300 cursor-pointer shadow-lg shadow-orange-600/30 hover:shadow-orange-600/50 hover:-translate-y-0.5"
                   >
                     Dispatch Full CMA Dossier & Connect With Brian →
                   </button>
@@ -429,7 +429,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg bg-[#FAF9F6] border border-[#E5A93C]/30 rounded-2xl shadow-2xl p-6 sm:p-10 max-h-[90vh] overflow-y-auto">
+      <div className="relative w-full max-w-lg bg-[#FAF9F6] border border-[#EA580C]/30 rounded-2xl shadow-2xl p-6 sm:p-10 max-h-[90vh] overflow-y-auto">
         <button
           type="button"
           onClick={onClose}
@@ -443,7 +443,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
             <div className="flex items-center gap-3.5 mb-4">
               <BrianAvatar size={44} showStatusDot={true} alt="Brian Jamison Consultation" />
               <div>
-                <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-semibold text-[#E5A93C] block">
+                <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-semibold text-[#EA580C] block">
                   Direct Representation · OKC Top 2%
                 </span>
                 <h3 className="font-serif text-xl sm:text-2xl text-[#0A192F] font-bold">
@@ -463,7 +463,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                 <select
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
-                  className="w-full px-3 py-2.5 bg-white border border-[#E5A93C]/30 rounded-md text-xs sm:text-sm text-[#0A192F] focus:outline-none focus:border-[#E5A93C]"
+                  className="w-full px-3 py-2.5 bg-white border border-[#EA580C]/30 rounded-md text-xs sm:text-sm text-[#0A192F] focus:outline-none focus:border-[#EA580C]"
                 >
                   <option>Home Seller 6-Step Blueprint Strategy</option>
                   <option>Expired Listing Turnaround Protocol</option>
@@ -482,7 +482,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                     type="date"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full px-3 py-2.5 bg-white border border-[#E5A93C]/30 rounded-md text-xs sm:text-sm text-[#0A192F] focus:outline-none focus:border-[#E5A93C]"
+                    className="w-full px-3 py-2.5 bg-white border border-[#EA580C]/30 rounded-md text-xs sm:text-sm text-[#0A192F] focus:outline-none focus:border-[#EA580C]"
                   />
                 </div>
                 <div>
@@ -492,7 +492,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                   <select
                     value={time}
                     onChange={(e) => setTime(e.target.value)}
-                    className="w-full px-3 py-2.5 bg-white border border-[#E5A93C]/30 rounded-md text-xs sm:text-sm text-[#0A192F] focus:outline-none focus:border-[#E5A93C]"
+                    className="w-full px-3 py-2.5 bg-white border border-[#EA580C]/30 rounded-md text-xs sm:text-sm text-[#0A192F] focus:outline-none focus:border-[#EA580C]"
                   >
                     <option>09:00 AM - Morning Briefing</option>
                     <option>11:00 AM - Midday Review</option>
@@ -512,7 +512,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                   placeholder="e.g. Michael Vance"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3 py-2.5 bg-white border border-[#E5A93C]/30 rounded-md text-xs sm:text-sm text-[#0A192F] focus:outline-none focus:border-[#E5A93C]"
+                  className="w-full px-3 py-2.5 bg-white border border-[#EA580C]/30 rounded-md text-xs sm:text-sm text-[#0A192F] focus:outline-none focus:border-[#EA580C]"
                 />
               </div>
 
@@ -526,7 +526,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                   placeholder="(405) 000-0000"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-3 py-2.5 bg-white border border-[#E5A93C]/30 rounded-md text-xs sm:text-sm text-[#0A192F] focus:outline-none focus:border-[#E5A93C]"
+                  className="w-full px-3 py-2.5 bg-white border border-[#EA580C]/30 rounded-md text-xs sm:text-sm text-[#0A192F] focus:outline-none focus:border-[#EA580C]"
                 />
               </div>
 
@@ -539,13 +539,13 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="Tell Brian about your timeline, neighborhood, or goals..."
-                  className="w-full px-3 py-2 bg-white border border-[#E5A93C]/30 rounded-md text-xs text-[#0A192F] focus:outline-none focus:border-[#E5A93C]"
+                  className="w-full px-3 py-2 bg-white border border-[#EA580C]/30 rounded-md text-xs text-[#0A192F] focus:outline-none focus:border-[#EA580C]"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3.5 text-xs font-semibold tracking-wider uppercase text-white bg-[#E5A93C] hover:bg-[#C5902B] rounded-md transition-colors cursor-pointer shadow-xs"
+                className="w-full py-3.5 px-7 text-xs font-semibold tracking-wide uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-xl transition-all duration-300 cursor-pointer shadow-lg shadow-orange-600/30 hover:shadow-orange-600/50 hover:-translate-y-0.5"
               >
                 Confirm Consultation Request →
               </button>
@@ -604,11 +604,11 @@ export const PropertyModal: React.FC<PropertyModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/75 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-4xl bg-[#FAF9F6] border border-[#E5A93C]/30 rounded-2xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
+      <div className="relative w-full max-w-4xl bg-[#FAF9F6] border border-[#EA580C]/30 rounded-2xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
         {/* Top Header Bar */}
-        <div className="p-4 sm:p-6 border-b border-[#E5A93C]/30 flex items-center justify-between bg-white shrink-0">
+        <div className="p-4 sm:p-6 border-b border-[#EA580C]/30 flex items-center justify-between bg-white shrink-0">
           <div>
-            <span className="text-[10px] tracking-[0.2em] uppercase font-sans font-semibold text-[#E5A93C] block">
+            <span className="text-[10px] tracking-[0.2em] uppercase font-sans font-semibold text-[#EA580C] block">
               {property.status} · {property.subdivision}
             </span>
             <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#0A192F]">
@@ -617,7 +617,7 @@ export const PropertyModal: React.FC<PropertyModalProps> = ({
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="font-serif text-xl sm:text-2xl font-semibold text-[#E5A93C] tabular-nums">
+            <span className="font-serif text-xl sm:text-2xl font-semibold text-[#EA580C] tabular-nums">
               {property.formattedPrice}
             </span>
             <button
@@ -649,7 +649,7 @@ export const PropertyModal: React.FC<PropertyModalProps> = ({
                 type="button"
                 onClick={() => setActiveImageIndex(idx)}
                 className={`relative rounded-lg overflow-hidden w-24 h-16 shrink-0 border-2 cursor-pointer ${
-                  activeImageIndex === idx ? 'border-[#E5A93C]' : 'border-transparent opacity-70 hover:opacity-100'
+                  activeImageIndex === idx ? 'border-[#EA580C]' : 'border-transparent opacity-70 hover:opacity-100'
                 }`}
               >
                 <img src={img} alt="Thumbnail" className="w-full h-full object-cover" />
@@ -658,7 +658,7 @@ export const PropertyModal: React.FC<PropertyModalProps> = ({
           </div>
 
           {/* Key Metrics */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-[#F5EFE6] rounded-xl border border-[#E5A93C]/30 text-center">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-[#F5EFE6] rounded-xl border border-[#EA580C]/30 text-center">
             <div>
               <span className="text-[10px] uppercase tracking-wider text-[#6B7280] block font-sans">
                 Bedrooms
@@ -687,7 +687,7 @@ export const PropertyModal: React.FC<PropertyModalProps> = ({
               <span className="text-[10px] uppercase tracking-wider text-[#6B7280] block font-sans">
                 Days to Escrow
               </span>
-              <span className="font-serif text-lg font-bold text-[#E5A93C]">
+              <span className="font-serif text-lg font-bold text-[#EA580C]">
                 {property.daysOnMarket} Days
               </span>
             </div>
@@ -711,7 +711,7 @@ export const PropertyModal: React.FC<PropertyModalProps> = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#0A192F]">
               {property.features.map((feat, idx) => (
                 <div key={idx} className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-[#E5A93C]" />
+                  <Check className="w-3.5 h-3.5 text-[#EA580C]" />
                   <span>{feat}</span>
                 </div>
               ))}
@@ -720,7 +720,7 @@ export const PropertyModal: React.FC<PropertyModalProps> = ({
         </div>
 
         {/* Bottom Actions */}
-        <div className="p-4 sm:p-6 border-t border-[#E5A93C]/30 bg-white flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+        <div className="p-4 sm:p-6 border-t border-[#EA580C]/30 bg-white flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
           <span className="text-xs text-[#6B7280]">
             Represented Exclusively by Brian Jamison · Salt Real Estate
           </span>
@@ -738,7 +738,7 @@ export const PropertyModal: React.FC<PropertyModalProps> = ({
                 onClose();
                 onOpenConsultation();
               }}
-              className="flex-1 sm:flex-none px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white bg-[#E5A93C] hover:bg-[#C5902B] rounded-md"
+              className="flex-1 sm:flex-none px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-md"
             >
               Inquire Similar Property
             </button>
@@ -768,7 +768,7 @@ export const MarketModal: React.FC<MarketModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl bg-[#FAF9F6] border border-[#E5A93C]/30 rounded-2xl shadow-2xl p-6 sm:p-10 max-h-[90vh] overflow-y-auto">
+      <div className="relative w-full max-w-2xl bg-[#FAF9F6] border border-[#EA580C]/30 rounded-2xl shadow-2xl p-6 sm:p-10 max-h-[90vh] overflow-y-auto">
         <button
           type="button"
           onClick={onClose}
@@ -777,7 +777,7 @@ export const MarketModal: React.FC<MarketModalProps> = ({
           <X className="w-5 h-5" />
         </button>
 
-        <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-semibold text-[#E5A93C] block mb-1">
+        <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-semibold text-[#EA580C] block mb-1">
           Oklahoma City Micro-Market Profile
         </span>
         <h3 className="font-serif text-3xl font-bold text-[#0A192F] mb-2">
@@ -788,7 +788,7 @@ export const MarketModal: React.FC<MarketModalProps> = ({
         </p>
 
         {/* Market Stats Grid */}
-        <div className="grid grid-cols-3 gap-3 p-4 bg-[#F5EFE6] rounded-xl border border-[#E5A93C]/30 mb-6 text-center">
+        <div className="grid grid-cols-3 gap-3 p-4 bg-[#F5EFE6] rounded-xl border border-[#EA580C]/30 mb-6 text-center">
           <div>
             <span className="text-[10px] uppercase tracking-wider text-[#6B7280] block font-sans">
               Median Sale Price
@@ -801,7 +801,7 @@ export const MarketModal: React.FC<MarketModalProps> = ({
             <span className="text-[10px] uppercase tracking-wider text-[#6B7280] block font-sans">
               Avg Days on Market
             </span>
-            <span className="font-serif text-lg font-bold text-[#E5A93C]">
+            <span className="font-serif text-lg font-bold text-[#EA580C]">
               {market.avgDom}
             </span>
           </div>
@@ -834,7 +834,7 @@ export const MarketModal: React.FC<MarketModalProps> = ({
               {market.keySubdivisions.map((sub, idx) => (
                 <span
                   key={idx}
-                  className="px-3 py-1 bg-white border border-[#E5A93C]/30 rounded-full text-xs text-[#0A192F]"
+                  className="px-3 py-1 bg-white border border-[#EA580C]/30 rounded-full text-xs text-[#0A192F]"
                 >
                   {sub}
                 </span>
@@ -844,7 +844,7 @@ export const MarketModal: React.FC<MarketModalProps> = ({
         </div>
 
         {/* CTA */}
-        <div className="pt-6 border-t border-[#E5A93C]/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="pt-6 border-t border-[#EA580C]/30 flex flex-col sm:flex-row items-center justify-between gap-4">
           <span className="text-xs text-[#6B7280]">
             Looking to buy or sell in {market.name}?
           </span>
@@ -854,7 +854,7 @@ export const MarketModal: React.FC<MarketModalProps> = ({
               onClose();
               onOpenConsultation();
             }}
-            className="w-full sm:w-auto px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-white bg-[#E5A93C] hover:bg-[#C5902B] rounded-md transition-colors"
+            className="w-full sm:w-auto px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-md transition-colors"
           >
             Inquire Market Comps with Brian →
           </button>
@@ -883,7 +883,7 @@ export const PlaybookModal: React.FC<PlaybookModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl bg-[#FAF9F6] border border-[#E5A93C]/30 rounded-2xl shadow-2xl p-6 sm:p-10 max-h-[90vh] overflow-y-auto">
+      <div className="relative w-full max-w-2xl bg-[#FAF9F6] border border-[#EA580C]/30 rounded-2xl shadow-2xl p-6 sm:p-10 max-h-[90vh] overflow-y-auto">
         <button
           type="button"
           onClick={onClose}
@@ -892,7 +892,7 @@ export const PlaybookModal: React.FC<PlaybookModalProps> = ({
           <X className="w-5 h-5" />
         </button>
 
-        <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-semibold text-[#E5A93C] block mb-1">
+        <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-semibold text-[#EA580C] block mb-1">
           {chapter.tag}
         </span>
         <h3 className="font-serif text-3xl font-bold text-[#0A192F] mb-2">
@@ -911,9 +911,9 @@ export const PlaybookModal: React.FC<PlaybookModalProps> = ({
             {chapter.bulletPoints.map((point, idx) => (
               <div
                 key={idx}
-                className="flex items-start gap-3 p-3.5 bg-white border border-[#E5A93C]/30 rounded-xl text-xs sm:text-sm text-[#0A192F]"
+                className="flex items-start gap-3 p-3.5 bg-white border border-[#EA580C]/30 rounded-xl text-xs sm:text-sm text-[#0A192F]"
               >
-                <span className="font-serif font-bold text-[#E5A93C] tabular-nums mt-0.5">
+                <span className="font-serif font-bold text-[#EA580C] tabular-nums mt-0.5">
                   0{idx + 1}
                 </span>
                 <p className="font-normal text-[#0A192F]">{point}</p>
@@ -923,8 +923,8 @@ export const PlaybookModal: React.FC<PlaybookModalProps> = ({
         </div>
 
         {/* Risk-Free Assurance */}
-        <div className="p-4 bg-[#F5EFE6] border border-[#E5A93C]/30 rounded-xl mb-6 flex items-start gap-3 text-xs text-[#6B7280]">
-          <Shield className="w-5 h-5 text-[#E5A93C] shrink-0" />
+        <div className="p-4 bg-[#F5EFE6] border border-[#EA580C]/30 rounded-xl mb-6 flex items-start gap-3 text-xs text-[#6B7280]">
+          <Shield className="w-5 h-5 text-[#EA580C] shrink-0" />
           <div>
             <strong className="text-[#0A192F] block mb-0.5">
               100% Risk-Free Cancel-Anytime Agreement
@@ -941,7 +941,7 @@ export const PlaybookModal: React.FC<PlaybookModalProps> = ({
             onClose();
             onOpenConsultation();
           }}
-          className="w-full py-3.5 text-xs font-semibold tracking-wider uppercase text-white bg-[#E5A93C] hover:bg-[#C5902B] rounded-md transition-colors"
+          className="w-full py-3.5 text-xs font-semibold tracking-wider uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-md transition-colors"
         >
           Schedule Strategy Call on This Playbook →
         </button>
@@ -973,7 +973,7 @@ export const MethodModal: React.FC<MethodModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-4xl bg-[#FAF9F6] border border-[#E5A93C]/30 rounded-2xl shadow-2xl p-6 sm:p-10 max-h-[92vh] overflow-y-auto">
+      <div className="relative w-full max-w-4xl bg-[#FAF9F6] border border-[#EA580C]/30 rounded-2xl shadow-2xl p-6 sm:p-10 max-h-[92vh] overflow-y-auto">
         <button
           type="button"
           onClick={onClose}
@@ -982,7 +982,7 @@ export const MethodModal: React.FC<MethodModalProps> = ({
           <X className="w-5 h-5" />
         </button>
 
-        <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-semibold text-[#E5A93C] block mb-1">
+        <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-semibold text-[#EA580C] block mb-1">
           Proprietary Seller Blueprint
         </span>
         <h3 className="font-serif text-3xl font-bold text-[#0A192F] mb-2">
@@ -993,7 +993,7 @@ export const MethodModal: React.FC<MethodModalProps> = ({
         </p>
 
         {/* Phase Selector Tabs */}
-        <div className="flex gap-2 overflow-x-auto pb-3 mb-6 border-b border-[#E5A93C]/30">
+        <div className="flex gap-2 overflow-x-auto pb-3 mb-6 border-b border-[#EA580C]/30">
           {METHOD_PHASES.map((p, idx) => (
             <button
               key={p.id}
@@ -1002,7 +1002,7 @@ export const MethodModal: React.FC<MethodModalProps> = ({
               className={`px-3 py-2 text-xs rounded-md whitespace-nowrap font-medium transition-colors cursor-pointer ${
                 selectedPhase === idx
                   ? 'bg-[#0A192F] text-white'
-                  : 'bg-white text-[#6B7280] hover:text-[#0A192F] border border-[#E5A93C]/30'
+                  : 'bg-white text-[#6B7280] hover:text-[#0A192F] border border-[#EA580C]/30'
               }`}
             >
               Phase {p.number}
@@ -1011,9 +1011,9 @@ export const MethodModal: React.FC<MethodModalProps> = ({
         </div>
 
         {/* Active Phase Deep Dive */}
-        <div className="bg-white border border-[#E5A93C]/30 rounded-xl p-6 mb-6">
+        <div className="bg-white border border-[#EA580C]/30 rounded-xl p-6 mb-6">
           <div className="flex items-center gap-2 mb-2">
-            <span className="font-serif text-2xl font-bold text-[#E5A93C]">
+            <span className="font-serif text-2xl font-bold text-[#EA580C]">
               {phase.number}
             </span>
             <h4 className="font-serif text-xl sm:text-2xl font-bold text-[#0A192F]">
@@ -1025,14 +1025,14 @@ export const MethodModal: React.FC<MethodModalProps> = ({
             {phase.summary}
           </p>
 
-          <div className="border-t border-[#E5A93C]/30 pt-4">
+          <div className="border-t border-[#EA580C]/30 pt-4">
             <span className="text-xs uppercase tracking-wider font-semibold text-[#0A192F] block mb-3 font-sans">
               Mandatory Deliverables in Phase {phase.number}
             </span>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {phase.keyDeliverables.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-2.5 text-xs text-[#0A192F]">
-                  <span className="w-4 h-4 rounded-full bg-[#E5A93C]/15 text-[#E5A93C] flex items-center justify-center shrink-0 mt-0.5">
+                  <span className="w-4 h-4 rounded-full bg-[#EA580C]/15 text-[#EA580C] flex items-center justify-center shrink-0 mt-0.5">
                     <Check className="w-2.5 h-2.5 stroke-[3]" />
                   </span>
                   <span>{item}</span>
@@ -1052,7 +1052,7 @@ export const MethodModal: React.FC<MethodModalProps> = ({
               onClose();
               onOpenConsultation();
             }}
-            className="w-full sm:w-auto px-6 py-3 text-xs font-semibold uppercase tracking-wider text-white bg-[#E5A93C] hover:bg-[#C5902B] rounded-md transition-colors"
+            className="w-full sm:w-auto px-6 py-3 text-xs font-semibold uppercase tracking-wider text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-md transition-colors"
           >
             Apply This Blueprint to My Home →
           </button>
@@ -1095,7 +1095,7 @@ export const CalculatorModal: React.FC<CalculatorModalProps> = ({ isOpen, onClos
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-xl bg-[#FAF9F6] border border-[#E5A93C]/30 rounded-2xl shadow-2xl p-6 sm:p-10 max-h-[90vh] overflow-y-auto">
+      <div className="relative w-full max-w-xl bg-[#FAF9F6] border border-[#EA580C]/30 rounded-2xl shadow-2xl p-6 sm:p-10 max-h-[90vh] overflow-y-auto">
         <button
           type="button"
           onClick={onClose}
@@ -1104,7 +1104,7 @@ export const CalculatorModal: React.FC<CalculatorModalProps> = ({ isOpen, onClos
           <X className="w-5 h-5" />
         </button>
 
-        <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-semibold text-[#E5A93C] block mb-1">
+        <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-semibold text-[#EA580C] block mb-1">
           Financial Advisory
         </span>
         <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#0A192F] mb-2">
@@ -1115,11 +1115,11 @@ export const CalculatorModal: React.FC<CalculatorModalProps> = ({ isOpen, onClos
         </p>
 
         {/* Big Total Monthly Output */}
-        <div className="p-6 bg-white border border-[#E5A93C]/30 rounded-xl text-center mb-6">
+        <div className="p-6 bg-white border border-[#EA580C]/30 rounded-xl text-center mb-6">
           <span className="text-xs uppercase tracking-wider text-[#6B7280] block font-sans">
             Estimated Total Monthly Payment
           </span>
-          <span className="font-serif text-4xl sm:text-5xl font-bold text-[#E5A93C] block my-1 tabular-nums">
+          <span className="font-serif text-4xl sm:text-5xl font-bold text-[#EA580C] block my-1 tabular-nums">
             ${Math.round(totalMonthly).toLocaleString()}/mo
           </span>
           <div className="flex justify-center gap-4 text-xs text-[#6B7280] mt-2">
@@ -1136,7 +1136,7 @@ export const CalculatorModal: React.FC<CalculatorModalProps> = ({ isOpen, onClos
           <div>
             <div className="flex justify-between text-xs font-semibold uppercase text-[#0A192F] mb-1">
               <span>Home Purchase Price</span>
-              <span className="font-serif text-sm font-bold text-[#E5A93C]">
+              <span className="font-serif text-sm font-bold text-[#EA580C]">
                 ${homePrice.toLocaleString()}
               </span>
             </div>
@@ -1147,7 +1147,7 @@ export const CalculatorModal: React.FC<CalculatorModalProps> = ({ isOpen, onClos
               step="25000"
               value={homePrice}
               onChange={(e) => setHomePrice(Number(e.target.value))}
-              className="w-full accent-[#E5A93C]"
+              className="w-full accent-[#EA580C]"
             />
           </div>
 
@@ -1165,7 +1165,7 @@ export const CalculatorModal: React.FC<CalculatorModalProps> = ({ isOpen, onClos
               step="5"
               value={downPaymentPercent}
               onChange={(e) => setDownPaymentPercent(Number(e.target.value))}
-              className="w-full accent-[#E5A93C]"
+              className="w-full accent-[#EA580C]"
             />
           </div>
 
@@ -1177,7 +1177,7 @@ export const CalculatorModal: React.FC<CalculatorModalProps> = ({ isOpen, onClos
               <select
                 value={loanTerm}
                 onChange={(e) => setLoanTerm(Number(e.target.value))}
-                className="w-full p-2.5 bg-white border border-[#E5A93C]/30 rounded-md text-xs text-[#0A192F]"
+                className="w-full p-2.5 bg-white border border-[#EA580C]/30 rounded-md text-xs text-[#0A192F]"
               >
                 <option value={30}>30-Year Fixed</option>
                 <option value={15}>15-Year Fixed</option>
@@ -1194,7 +1194,7 @@ export const CalculatorModal: React.FC<CalculatorModalProps> = ({ isOpen, onClos
                 step="0.1"
                 value={interestRate}
                 onChange={(e) => setInterestRate(Number(e.target.value))}
-                className="w-full p-2 bg-white border border-[#E5A93C]/30 rounded-md text-xs text-[#0A192F]"
+                className="w-full p-2 bg-white border border-[#EA580C]/30 rounded-md text-xs text-[#0A192F]"
               />
             </div>
           </div>
@@ -1242,7 +1242,7 @@ export const ChecklistModal: React.FC<ChecklistModalProps> = ({ isOpen, onClose 
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-xl bg-[#FAF9F6] border border-[#E5A93C]/30 rounded-2xl shadow-2xl p-6 sm:p-10 max-h-[90vh] overflow-y-auto">
+      <div className="relative w-full max-w-xl bg-[#FAF9F6] border border-[#EA580C]/30 rounded-2xl shadow-2xl p-6 sm:p-10 max-h-[90vh] overflow-y-auto">
         <button
           type="button"
           onClick={onClose}
@@ -1251,7 +1251,7 @@ export const ChecklistModal: React.FC<ChecklistModalProps> = ({ isOpen, onClose 
           <X className="w-5 h-5" />
         </button>
 
-        <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-semibold text-[#E5A93C] block mb-1">
+        <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-semibold text-[#EA580C] block mb-1">
           Exclusive Resource
         </span>
         <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#0A192F] mb-2">
@@ -1266,13 +1266,13 @@ export const ChecklistModal: React.FC<ChecklistModalProps> = ({ isOpen, onClose 
             <div
               key={idx}
               onClick={() => toggleCheck(idx)}
-              className="flex items-start gap-3 p-3 bg-white border border-[#E5A93C]/30 rounded-lg cursor-pointer hover:border-[#E5A93C] transition-colors"
+              className="flex items-start gap-3 p-3 bg-white border border-[#EA580C]/30 rounded-lg cursor-pointer hover:border-[#EA580C] transition-colors"
             >
               <input
                 type="checkbox"
                 checked={!!checkedItems[idx]}
                 onChange={() => {}}
-                className="accent-[#E5A93C] w-4 h-4 mt-0.5 shrink-0"
+                className="accent-[#EA580C] w-4 h-4 mt-0.5 shrink-0"
               />
               <span className={`text-xs ${checkedItems[idx] ? 'line-through text-stone-400' : 'text-[#0A192F]'}`}>
                 {item}
@@ -1287,7 +1287,7 @@ export const ChecklistModal: React.FC<ChecklistModalProps> = ({ isOpen, onClose 
             onClick={() => {
               alert("The 28-Point Home Seller's Checklist PDF has been dispatched to your download queue.");
             }}
-            className="flex-1 py-3 text-xs font-semibold tracking-wider uppercase text-white bg-[#E5A93C] hover:bg-[#C5902B] rounded-md transition-colors flex items-center justify-center gap-2"
+            className="flex-1 py-3 text-xs font-semibold tracking-wider uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-md transition-colors flex items-center justify-center gap-2"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Download Official PDF Guide</span>
@@ -1317,7 +1317,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl bg-[#FAF9F6] border border-[#E5A93C]/30 rounded-2xl shadow-2xl p-6 sm:p-10 max-h-[85vh] overflow-y-auto">
+      <div className="relative w-full max-w-2xl bg-[#FAF9F6] border border-[#EA580C]/30 rounded-2xl shadow-2xl p-6 sm:p-10 max-h-[85vh] overflow-y-auto">
         <button
           type="button"
           onClick={onClose}
@@ -1326,7 +1326,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
           <X className="w-5 h-5" />
         </button>
 
-        <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-semibold text-[#E5A93C] block mb-1">
+        <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-semibold text-[#EA580C] block mb-1">
           Regulatory Compliance
         </span>
         <h3 className="font-serif text-2xl font-bold text-[#0A192F] mb-4">

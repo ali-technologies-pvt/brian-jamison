@@ -27,9 +27,9 @@ export const Footer: React.FC<FooterProps> = ({
   onNavigate
 }) => {
   return (
-    <footer className="w-full bg-[#FAF9F6] text-[#0A192F] pt-16 sm:pt-20 pb-12 border-t border-[#E5A93C]/30">
+    <footer className="w-full bg-[#FAF9F6] text-[#0A192F] pt-16 sm:pt-20 pb-12 border-t border-[#EA580C]/30">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14 border-b border-[#E5A93C]/30">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14 border-b border-[#EA580C]/30">
           {/* Column 1: Brand & Brokerage Identity (Cols 4) */}
           <div className="lg:col-span-4">
             {/* Contact Card: 48px Circular Avatar directly beside Brian Jamison, phone, and credentials */}
@@ -45,14 +45,14 @@ export const Footer: React.FC<FooterProps> = ({
                 <span className="font-serif text-2xl font-bold tracking-tight block text-[#0A192F] leading-tight">
                   Brian Jamison
                 </span>
-                <span className="text-[10px] tracking-[0.2em] uppercase font-sans font-semibold text-[#E5A93C] block mt-0.5 mb-2">
+                <span className="text-[10px] tracking-[0.2em] uppercase font-sans font-semibold text-[#EA580C] block mt-0.5 mb-2">
                   Salt Real Estate Corporate Office
                 </span>
                 <a
                   href={`tel:${BROKER_INFO.phoneRaw}`}
-                  className="font-serif font-bold text-sm text-[#0A192F] hover:text-[#E5A93C] transition-colors flex items-center gap-1.5"
+                  className="font-serif font-bold text-sm text-[#0A192F] hover:text-[#EA580C] transition-colors flex items-center gap-1.5"
                 >
-                  <Phone className="w-3.5 h-3.5 text-[#E5A93C]" />
+                  <Phone className="w-3.5 h-3.5 text-[#EA580C]" />
                   <span>{BROKER_INFO.phone}</span>
                 </a>
               </div>
@@ -60,19 +60,19 @@ export const Footer: React.FC<FooterProps> = ({
 
             <div className="space-y-2.5 text-xs text-[#6B7280] font-sans leading-relaxed mb-6 pl-0.5">
               <p className="flex items-start gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#E5A93C] shrink-0 mt-0.5" />
+                <MapPin className="w-3.5 h-3.5 text-[#EA580C] shrink-0 mt-0.5" />
                 <span>1508 W. Edmond Rd., Edmond, Oklahoma 73003</span>
               </p>
               <p className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#E5A93C] shrink-0" />
+                <Mail className="w-3.5 h-3.5 text-[#EA580C] shrink-0" />
                 <a href={`mailto:${BROKER_INFO.email}`} className="hover:text-[#0A192F] transition-colors">
                   {BROKER_INFO.email}
                 </a>
               </p>
             </div>
 
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#F5EFE6] border border-[#E5A93C]/30 text-[11px] text-[#0A192F]">
-              <Shield className="w-3.5 h-3.5 text-[#E5A93C]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#F5EFE6] border border-[#EA580C]/30 text-[11px] text-[#0A192F]">
+              <Shield className="w-3.5 h-3.5 text-[#EA580C]" />
               <span>{BROKER_INFO.license} · REALTOR® · Top 2% Producer</span>
             </div>
           </div>
@@ -155,7 +155,7 @@ export const Footer: React.FC<FooterProps> = ({
                       onOpenValuation();
                     }
                   }}
-                  className="hover:text-[#0A192F] transition-colors text-left font-medium text-[#E5A93C] cursor-pointer"
+                  className="hover:text-[#0A192F] transition-colors text-left font-medium text-[#EA580C] cursor-pointer"
                 >
                   Private Valuation Tool
                 </button>

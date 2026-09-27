@@ -17,14 +17,14 @@ export const InteriorMediaTour: React.FC<InteriorMediaTourProps> = ({
   const [dronePlaying, setDronePlaying] = useState<boolean>(true);
 
   return (
-    <section className="w-full py-16 sm:py-24 bg-[#F4F1EB] border-b border-[#E6E2DA]">
+    <section className="w-full py-16 sm:py-24 bg-[#F5EFE6] border-b border-[#EA580C]/30">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Header */}
         <div className="max-w-3xl mb-10">
-          <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-2">
+          <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-2">
             Immersive Technology
           </span>
-          <h2 className="font-serif text-2xl sm:text-4xl font-bold text-[#1B1D21]">
+          <h2 className="font-serif text-2xl sm:text-4xl font-bold text-[#0A192F]">
             {title}
           </h2>
           <p className="font-sans text-sm sm:text-base text-[#6B7280] mt-2">
@@ -39,11 +39,11 @@ export const InteriorMediaTour: React.FC<InteriorMediaTourProps> = ({
             onClick={() => setActiveTab('3d')}
             className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
               activeTab === '3d'
-                ? 'bg-[#1B1D21] text-white shadow-md'
-                : 'bg-white text-[#1B1D21] border border-[#E6E2DA] hover:bg-[#FAF9F6]'
+                ? 'bg-[#0A192F] text-white shadow-md'
+                : 'bg-white text-[#0A192F] border border-[#EA580C]/30 hover:bg-[#FAF9F6]'
             }`}
           >
-            <Layers className="w-3.5 h-3.5 text-[#B38F68]" />
+            <Layers className="w-3.5 h-3.5 text-[#EA580C]" />
             <span>Interactive 3D Virtual Tour</span>
           </button>
 
@@ -52,11 +52,11 @@ export const InteriorMediaTour: React.FC<InteriorMediaTourProps> = ({
             onClick={() => setActiveTab('drone')}
             className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
               activeTab === 'drone'
-                ? 'bg-[#1B1D21] text-white shadow-md'
-                : 'bg-white text-[#1B1D21] border border-[#E6E2DA] hover:bg-[#FAF9F6]'
+                ? 'bg-[#0A192F] text-white shadow-md'
+                : 'bg-white text-[#0A192F] border border-[#EA580C]/30 hover:bg-[#FAF9F6]'
             }`}
           >
-            <Video className="w-3.5 h-3.5 text-[#B38F68]" />
+            <Video className="w-3.5 h-3.5 text-[#EA580C]" />
             <span>4K Drone Aerial Boundary Flyover</span>
           </button>
 
@@ -65,17 +65,17 @@ export const InteriorMediaTour: React.FC<InteriorMediaTourProps> = ({
             onClick={() => setActiveTab('briefing')}
             className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
               activeTab === 'briefing'
-                ? 'bg-[#1B1D21] text-white shadow-md'
-                : 'bg-white text-[#1B1D21] border border-[#E6E2DA] hover:bg-[#FAF9F6]'
+                ? 'bg-[#0A192F] text-white shadow-md'
+                : 'bg-white text-[#0A192F] border border-[#EA580C]/30 hover:bg-[#FAF9F6]'
             }`}
           >
-            <Compass className="w-3.5 h-3.5 text-[#B38F68]" />
+            <Compass className="w-3.5 h-3.5 text-[#EA580C]" />
             <span>Strategic Agent Video Walkthrough</span>
           </button>
         </div>
 
         {/* Media Container */}
-        <div className="bg-[#FAF9F6] border border-[#E6E2DA] rounded-2xl overflow-hidden shadow-xl p-4 sm:p-6">
+        <div className="bg-[#FAF9F6] border border-[#EA580C]/30 rounded-2xl overflow-hidden shadow-xl p-4 sm:p-6">
           {activeTab === '3d' && (
             <div className="relative w-full h-[450px] sm:h-[580px] bg-stone-900 rounded-xl overflow-hidden flex flex-col justify-between">
               {/* Background 3D Viewport simulation */}
@@ -95,8 +95,8 @@ export const InteriorMediaTour: React.FC<InteriorMediaTourProps> = ({
 
                 {/* Hotspot Markers */}
                 <div className="absolute top-[42%] left-[48%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
-                  <div className="w-8 h-8 rounded-full bg-white/90 border-2 border-[#B38F68] flex items-center justify-center shadow-lg animate-pulse">
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#B38F68]" />
+                  <div className="w-8 h-8 rounded-full bg-white/90 border-2 border-[#EA580C] flex items-center justify-center shadow-lg animate-pulse">
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#EA580C]" />
                   </div>
                   <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block whitespace-nowrap bg-black/90 text-white text-[11px] px-3 py-1 rounded-md shadow-xl border border-white/10">
                     Grand Foyer & 24' Limestone Fireplace
@@ -104,8 +104,8 @@ export const InteriorMediaTour: React.FC<InteriorMediaTourProps> = ({
                 </div>
 
                 <div className="absolute top-[60%] left-[28%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
-                  <div className="w-8 h-8 rounded-full bg-white/90 border-2 border-[#B38F68] flex items-center justify-center shadow-lg">
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#B38F68]" />
+                  <div className="w-8 h-8 rounded-full bg-white/90 border-2 border-[#EA580C] flex items-center justify-center shadow-lg">
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#EA580C]" />
                   </div>
                   <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block whitespace-nowrap bg-black/90 text-white text-[11px] px-3 py-1 rounded-md shadow-xl border border-white/10">
                     Wolf & Sub-Zero Scullery Kitchen
@@ -113,8 +113,8 @@ export const InteriorMediaTour: React.FC<InteriorMediaTourProps> = ({
                 </div>
 
                 <div className="absolute top-[52%] left-[72%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
-                  <div className="w-8 h-8 rounded-full bg-white/90 border-2 border-[#B38F68] flex items-center justify-center shadow-lg">
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#B38F68]" />
+                  <div className="w-8 h-8 rounded-full bg-white/90 border-2 border-[#EA580C] flex items-center justify-center shadow-lg">
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#EA580C]" />
                   </div>
                   <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block whitespace-nowrap bg-black/90 text-white text-[11px] px-3 py-1 rounded-md shadow-xl border border-white/10">
                     Primary Retreat & Spa En-Suite
@@ -131,7 +131,7 @@ export const InteriorMediaTour: React.FC<InteriorMediaTourProps> = ({
                   </span>
                 </div>
                 <div className="flex items-center gap-1.5 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[11px] text-stone-200">
-                  <Layers className="w-3.5 h-3.5 text-[#B38F68]" />
+                  <Layers className="w-3.5 h-3.5 text-[#EA580C]" />
                   <span>Interactive Dollhouse Active</span>
                 </div>
               </div>
@@ -149,7 +149,7 @@ export const InteriorMediaTour: React.FC<InteriorMediaTourProps> = ({
                       onClick={() => setActiveFloor(floor)}
                       className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                         activeFloor === floor
-                          ? 'bg-[#B38F68] text-white shadow-xs'
+                          ? 'bg-[#EA580C] text-white shadow-xs'
                           : 'text-stone-300 hover:text-white hover:bg-white/10'
                       }`}
                     >
@@ -178,12 +178,12 @@ export const InteriorMediaTour: React.FC<InteriorMediaTourProps> = ({
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40 pointer-events-none" />
               <div className="absolute top-4 left-4 z-10 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full text-white text-xs">
-                <Video className="w-3.5 h-3.5 text-[#B38F68]" />
+                <Video className="w-3.5 h-3.5 text-[#EA580C]" />
                 <span>FAA Part-107 Certified 4K Drone Boundary Mapping</span>
               </div>
               <div className="absolute bottom-4 left-4 right-4 z-10 flex items-center justify-between text-white text-xs">
                 <span>Lot boundary, topography & golden hour perimeter scans included in every listing</span>
-                <span className="text-[#B38F68] font-semibold">4K UHD Cinema Grade</span>
+                <span className="text-[#EA580C] font-semibold">4K UHD Cinema Grade</span>
               </div>
             </div>
           )}
@@ -197,7 +197,7 @@ export const InteriorMediaTour: React.FC<InteriorMediaTourProps> = ({
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
               <div className="relative z-10 max-w-2xl">
-                <span className="text-xs uppercase tracking-widest text-[#B38F68] font-bold block mb-2">
+                <span className="text-xs uppercase tracking-widest text-[#EA580C] font-bold block mb-2">
                   Personal Executive Representation
                 </span>
                 <h3 className="font-serif text-2xl sm:text-3xl font-bold mb-3">
@@ -206,7 +206,7 @@ export const InteriorMediaTour: React.FC<InteriorMediaTourProps> = ({
                 <p className="text-sm text-stone-300 leading-relaxed mb-4">
                   Brian delivers an authentic, transparent walkthrough explaining every architectural highlight, structural upgrade, and neighborhood valuation driver directly to pre-approved buyers and luxury agents.
                 </p>
-                <div className="flex items-center gap-4 text-xs text-[#B38F68]">
+                <div className="flex items-center gap-4 text-xs text-[#EA580C]">
                   <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4" /> 100% Showing Feedback Protocol</span>
                   <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4" /> Direct Buyer Inquiry Response</span>
                 </div>

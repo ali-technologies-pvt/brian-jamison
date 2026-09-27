@@ -100,7 +100,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         Sticky Scrolled State:
           Background: rgba(250, 249, 246, 0.92)
           Backdrop Filter: backdrop-blur-2xl
-          Border: 1px solid rgba(229,169,60,0.3)
+          Border: 1px solid rgba(234, 88, 12, 0.3)
           Shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.08)
       */}
       <header className="fixed top-3 sm:top-4 inset-x-0 mx-auto max-w-[1400px] z-50 px-3 sm:px-6 pointer-events-none">
@@ -110,8 +110,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           aria-label="Main Navigation"
           className={`pointer-events-auto w-full transition-all duration-300 rounded-2xl px-5 sm:px-6 py-3 sm:py-3.5 flex items-center justify-between relative ${
             isScrolled
-              ? 'bg-[#FAF9F6]/92 backdrop-blur-2xl border border-[#E5A93C]/30 shadow-[0_12px_40px_-10px_rgba(10,25,47,0.12)]'
-              : 'bg-[#FAF9F6]/85 backdrop-blur-xl saturate-150 border border-[#E5A93C]/25 shadow-[0_8px_32px_0_rgba(10,25,47,0.06)]'
+              ? 'bg-[#FAF9F6]/92 backdrop-blur-2xl border border-[#EA580C]/30 shadow-[0_12px_40px_-10px_rgba(10,25,47,0.12)]'
+              : 'bg-[#FAF9F6]/85 backdrop-blur-xl saturate-150 border border-[#EA580C]/25 shadow-[0_8px_32px_0_rgba(10,25,47,0.06)]'
           }`}
         >
           {/* ZONE 1 (Left - Brand Anchor) */}
@@ -132,7 +132,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <div className="flex items-center gap-2 shrink-0">
                 <div
                   title="Jamison Real Estate Crest"
-                  className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-[#0A192F] border-2 border-[#E5A93C] flex items-center justify-center text-[#E5A93C] font-serif font-bold text-xs shadow-xs"
+                  className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-[#0A192F] border-2 border-[#EA580C] flex items-center justify-center text-[#EA580C] font-serif font-bold text-xs shadow-xs"
                 >
                   J
                 </div>
@@ -146,7 +146,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
               <div className="flex flex-col">
                 <div className="flex items-center gap-2">
-                  <span className="font-serif text-base sm:text-lg md:text-xl font-bold tracking-tight text-[#0A192F] group-hover:text-[#E5A93C] transition-colors leading-tight">
+                  <span className="font-serif text-base sm:text-lg md:text-xl font-bold tracking-tight text-[#0A192F] group-hover:text-[#EA580C] transition-colors leading-tight">
                     BRIAN JAMISON
                   </span>
                   {/* Micro-badge: Green live-status dot with tooltip "Available 7 Days" */}
@@ -178,13 +178,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => toggleMenu('blueprint')}
                 onMouseEnter={() => setActiveMenu('blueprint')}
                 className={`flex items-center gap-1.5 py-1 transition-colors cursor-pointer ${
-                  activeMenu === 'blueprint' ? 'text-[#E5A93C]' : 'hover:text-[#E5A93C]'
+                  activeMenu === 'blueprint' ? 'text-[#EA580C]' : 'hover:text-[#EA580C]'
                 }`}
               >
                 <span>The Blueprint</span>
                 <ChevronDown
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    activeMenu === 'blueprint' ? 'rotate-180 text-[#E5A93C]' : ''
+                    activeMenu === 'blueprint' ? 'rotate-180 text-[#EA580C]' : ''
                   }`}
                 />
               </button>
@@ -202,7 +202,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }
               }}
               onMouseEnter={() => setActiveMenu(null)}
-              className="py-1 hover:text-[#E5A93C] transition-colors cursor-pointer"
+              className="py-1 hover:text-[#EA580C] transition-colors cursor-pointer"
             >
               Featured Closings
             </a>
@@ -216,13 +216,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => toggleMenu('communities')}
                 onMouseEnter={() => setActiveMenu('communities')}
                 className={`flex items-center gap-1.5 py-1 transition-colors cursor-pointer ${
-                  activeMenu === 'communities' ? 'text-[#E5A93C]' : 'hover:text-[#E5A93C]'
+                  activeMenu === 'communities' ? 'text-[#EA580C]' : 'hover:text-[#EA580C]'
                 }`}
               >
                 <span>Communities</span>
                 <ChevronDown
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    activeMenu === 'communities' ? 'rotate-180 text-[#E5A93C]' : ''
+                    activeMenu === 'communities' ? 'rotate-180 text-[#EA580C]' : ''
                   }`}
                 />
               </button>
@@ -237,13 +237,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => toggleMenu('hub')}
                 onMouseEnter={() => setActiveMenu('hub')}
                 className={`flex items-center gap-1.5 py-1 transition-colors cursor-pointer ${
-                  activeMenu === 'hub' ? 'text-[#E5A93C]' : 'hover:text-[#E5A93C]'
+                  activeMenu === 'hub' ? 'text-[#EA580C]' : 'hover:text-[#EA580C]'
                 }`}
               >
                 <span>Client Hub</span>
                 <ChevronDown
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    activeMenu === 'hub' ? 'rotate-180 text-[#E5A93C]' : ''
+                    activeMenu === 'hub' ? 'rotate-180 text-[#EA580C]' : ''
                   }`}
                 />
               </button>
@@ -261,7 +261,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }
               }}
               onMouseEnter={() => setActiveMenu(null)}
-              className="py-1 hover:text-[#E5A93C] transition-colors cursor-pointer"
+              className="py-1 hover:text-[#EA580C] transition-colors cursor-pointer"
             >
               About
             </a>
@@ -272,9 +272,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Direct Call Button */}
             <a
               href={`tel:${BROKER_INFO.phoneRaw}`}
-              className="text-xs font-semibold text-[#0A192F] hover:text-[#E5A93C] transition-colors flex items-center gap-1.5 px-3 py-2 rounded-full hover:bg-black/5"
+              className="text-xs font-semibold text-[#0A192F] hover:text-[#EA580C] transition-colors flex items-center gap-1.5 px-3 py-2 rounded-full hover:bg-black/5"
             >
-              <Phone className="w-3.5 h-3.5 text-[#E5A93C]" />
+              <Phone className="w-3.5 h-3.5 text-[#EA580C]" />
               <span className="tabular-nums tracking-wide">{BROKER_INFO.phone}</span>
             </a>
 
@@ -282,24 +282,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               type="button"
               onClick={() => onOpenValuation()}
-              className="px-5 py-2.5 text-xs font-semibold tracking-wider uppercase text-white bg-[#E5A93C] hover:bg-[#C5902B] rounded-full transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 cursor-pointer whitespace-nowrap"
+              className="px-6 py-2.5 text-xs font-semibold tracking-wide uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-xl transition-all duration-300 shadow-md shadow-orange-600/25 hover:shadow-lg hover:shadow-orange-600/35 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer whitespace-nowrap"
             >
               What's My Home Worth?
-            </button>
-
-            {/* Full Sitemap / Directory Minimalist 2-line Trigger */}
-            <button
-              type="button"
-              onClick={() => {
-                const el = document.getElementById('micro-markets');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              title="Full Metro Directory & Blueprint"
-              aria-label="Toggle directory"
-              className="p-2.5 rounded-full hover:bg-[#F5EFE6] text-[#0A192F] transition-colors cursor-pointer flex flex-col justify-center gap-1 w-9 h-9 items-center"
-            >
-              <span className="w-4 h-0.5 bg-[#0A192F] rounded-full" />
-              <span className="w-2.5 h-0.5 bg-[#0A192F] rounded-full" />
             </button>
           </div>
 
@@ -308,7 +293,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               type="button"
               onClick={() => onOpenValuation()}
-              className="px-3 py-1.5 text-[11px] font-semibold uppercase text-white bg-[#E5A93C] rounded-full"
+              className="px-3.5 py-1.5 text-[11px] font-semibold tracking-wide uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-lg shadow-sm shadow-orange-600/25"
             >
               Valuation
             </button>

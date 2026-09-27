@@ -9,12 +9,12 @@ interface PhilosophySectionProps {
 
 export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenConsultation }) => {
   return (
-    <section id="leadership" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#E5A93C]/30">
+    <section id="leadership" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/30">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Architectural Warm-Sand Framed Card (#F5EFE6) with Brian's Headshot & Athletic Background */}
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl overflow-hidden border-2 border-[#E5A93C]/40 shadow-xl bg-[#F5EFE6] p-6 sm:p-8">
+            <div className="relative rounded-3xl overflow-hidden border-2 border-[#EA580C]/40 shadow-xl bg-[#F5EFE6] p-6 sm:p-8">
               {/* Top Authority Header & Headshot Presentation (160px dynamic sizing) */}
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left mb-6">
                 <div className="shrink-0 relative">
@@ -26,13 +26,13 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenCons
                     alt="Brian Jamison - Collegiate Athlete & Top 2% Producer"
                   />
                   {/* Athletic Division Badge */}
-                  <div className="absolute -bottom-2 -right-2 bg-[#0A192F] text-white p-2 rounded-full border-2 border-[#E5A93C] shadow-md" title="Collegiate Athlete Alum">
-                    <Trophy className="w-4 h-4 text-[#E5A93C]" />
+                  <div className="absolute -bottom-2 -right-2 bg-[#0A192F] text-white p-2 rounded-full border-2 border-[#EA580C] shadow-md" title="Collegiate Athlete Alum">
+                    <Trophy className="w-4 h-4 text-[#EA580C]" />
                   </div>
                 </div>
 
                 <div className="flex-1">
-                  <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-bold text-[#E5A93C] block mb-1">
+                  <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-bold text-[#EA580C] block mb-1">
                     Lead Representative
                   </span>
                   <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#0A192F] mb-1">
@@ -49,8 +49,8 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenCons
                   </p>
 
                   <div className="mt-3 flex flex-wrap items-center justify-center sm:justify-start gap-2">
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white border border-[#E5A93C]/30 text-[11px] font-semibold text-[#0A192F]">
-                      <Award className="w-3.5 h-3.5 text-[#E5A93C]" />
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white border border-[#EA580C]/30 text-[11px] font-semibold text-[#0A192F]">
+                      <Award className="w-3.5 h-3.5 text-[#EA580C]" />
                       Top 2% Producer OKC
                     </span>
                   </div>
@@ -58,24 +58,24 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenCons
               </div>
 
               {/* Collegiate Athletic Discipline & Background Block */}
-              <div className="bg-white/95 backdrop-blur-xs border border-[#E5A93C]/30 rounded-2xl p-4 sm:p-5 mb-5 space-y-3">
+              <div className="bg-white/95 backdrop-blur-xs border border-[#EA580C]/30 rounded-2xl p-4 sm:p-5 mb-5 space-y-3">
                 <div className="flex items-center gap-2 text-xs font-serif font-bold text-[#0A192F]">
-                  <GraduationCap className="w-4 h-4 text-[#E5A93C]" />
+                  <GraduationCap className="w-4 h-4 text-[#EA580C]" />
                   <span>Collegiate Athletic Ethos</span>
                 </div>
                 <p className="font-sans text-xs text-[#4B5563] leading-relaxed">
                   Brian channels collegiate athletic discipline into relentless real estate negotiations. Every contingency, appraisal defense, and closing detail is managed with championship preparation and zero compromise.
                 </p>
-                <div className="pt-2.5 border-t border-[#E5A93C]/20 flex items-center justify-between text-[11px] text-[#6B7280]">
+                <div className="pt-2.5 border-t border-[#EA580C]/20 flex items-center justify-between text-[11px] text-[#6B7280]">
                   <span>Track Record: $62M+ Volume</span>
                   <span className="font-semibold text-[#0A192F]">370+ Closings</span>
                 </div>
               </div>
 
               {/* Direct Reachability & Call CTA */}
-              <div className="flex items-center justify-between bg-[#FAF9F6] border border-[#E5A93C]/30 rounded-xl p-3 sm:p-3.5">
+              <div className="flex items-center justify-between bg-[#FAF9F6] border border-[#EA580C]/30 rounded-xl p-3 sm:p-3.5">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-[#F5EFE6] flex items-center justify-center text-[#E5A93C]">
+                  <div className="w-8 h-8 rounded-full bg-[#F5EFE6] flex items-center justify-center text-[#EA580C]">
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
@@ -84,7 +84,7 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenCons
                     </span>
                     <a
                       href={`tel:${BROKER_INFO.phoneRaw}`}
-                      className="font-serif font-bold text-xs sm:text-sm text-[#0A192F] hover:text-[#E5A93C] transition-colors"
+                      className="font-serif font-bold text-xs sm:text-sm text-[#0A192F] hover:text-[#EA580C] transition-colors"
                     >
                       {BROKER_INFO.phone}
                     </a>
@@ -104,15 +104,15 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenCons
             </div>
 
             {/* Subtle decorative architectural stone badge */}
-            <div className="hidden sm:flex absolute -top-3 -right-3 bg-white border border-[#E5A93C]/40 rounded-xl p-3 shadow-md items-center gap-2 text-xs font-semibold text-[#0A192F] z-10">
-              <Shield className="w-4 h-4 text-[#E5A93C]" />
+            <div className="hidden sm:flex absolute -top-3 -right-3 bg-white border border-[#EA580C]/40 rounded-xl p-3 shadow-md items-center gap-2 text-xs font-semibold text-[#0A192F] z-10">
+              <Shield className="w-4 h-4 text-[#EA580C]" />
               <span>100% Risk-Free Guarantee</span>
             </div>
           </div>
 
           {/* Right Column: Editorial Philosophy & 3 Grounding Principles */}
           <div className="lg:col-span-7">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-semibold text-[#E5A93C] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-semibold text-[#EA580C] block mb-3">
               Philosophy & Ethos
             </span>
 
@@ -128,7 +128,7 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenCons
             <div className="space-y-6 mb-10">
               {/* Pillar 01 */}
               <div className="flex items-start gap-4">
-                <span className="font-serif text-lg sm:text-xl font-bold text-[#E5A93C] tabular-nums shrink-0 mt-0.5">
+                <span className="font-serif text-lg sm:text-xl font-bold text-[#EA580C] tabular-nums shrink-0 mt-0.5">
                   01
                 </span>
                 <div>
@@ -143,7 +143,7 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenCons
 
               {/* Pillar 02 */}
               <div className="flex items-start gap-4">
-                <span className="font-serif text-lg sm:text-xl font-bold text-[#E5A93C] tabular-nums shrink-0 mt-0.5">
+                <span className="font-serif text-lg sm:text-xl font-bold text-[#EA580C] tabular-nums shrink-0 mt-0.5">
                   02
                 </span>
                 <div>
@@ -158,7 +158,7 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenCons
 
               {/* Pillar 03 */}
               <div className="flex items-start gap-4">
-                <span className="font-serif text-lg sm:text-xl font-bold text-[#E5A93C] tabular-nums shrink-0 mt-0.5">
+                <span className="font-serif text-lg sm:text-xl font-bold text-[#EA580C] tabular-nums shrink-0 mt-0.5">
                   03
                 </span>
                 <div>
@@ -176,7 +176,7 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenCons
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
               <a
                 href={`tel:${BROKER_INFO.phoneRaw}`}
-                className="px-6 py-3.5 text-xs font-semibold tracking-wider uppercase text-white bg-[#E5A93C] hover:bg-[#C5902B] rounded-md transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer"
+                className="px-7 py-3.5 text-xs font-semibold tracking-wide uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-xl transition-all shadow-lg shadow-orange-600/30 hover:shadow-orange-600/50 hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Phone className="w-3.5 h-3.5" />
                 <span>Direct: {BROKER_INFO.phone}</span>
@@ -185,7 +185,7 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenCons
               <button
                 type="button"
                 onClick={onOpenConsultation}
-                className="px-6 py-3.5 text-xs font-semibold tracking-wider uppercase text-[#0A192F] hover:text-white bg-white hover:bg-[#0A192F] border border-[#0A192F] rounded-md transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs"
+                className="px-7 py-3.5 text-xs font-semibold tracking-wide uppercase text-[#0A192F] hover:text-white bg-white hover:bg-[#0A192F] border border-[#0A192F] rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow-md hover:-translate-y-0.5"
               >
                 <span>Request Private Consultation</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />

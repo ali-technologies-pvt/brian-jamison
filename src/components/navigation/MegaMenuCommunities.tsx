@@ -26,14 +26,14 @@ export const MegaMenuCommunities: React.FC<MegaMenuCommunitiesProps> = ({
       transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
       className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 w-[1040px] max-w-[96vw] z-50 pointer-events-auto"
     >
-      <div className="bg-[#FAF9F6]/95 backdrop-blur-2xl border border-[#E6E2DA] rounded-2xl p-7 shadow-2xl shadow-[#1B1D21]/10 text-[#1B1D21]">
+      <div className="bg-[#FAF9F6]/95 backdrop-blur-2xl border border-[#EA580C]/30 rounded-2xl p-7 shadow-2xl shadow-[#0A192F]/10 text-[#0A192F]">
         <div className="grid grid-cols-12 gap-6 items-stretch">
           {/* Col 1: Historic & Luxury (Cols 3) */}
-          <div className="col-span-3 border-r border-[#E6E2DA] pr-4">
-            <span className="font-serif text-sm font-bold text-[#1B1D21] block mb-1">
+          <div className="col-span-3 border-r border-[#EA580C]/30 pr-4">
+            <span className="font-serif text-sm font-bold text-[#0A192F] block mb-1">
               Historic & Luxury
             </span>
-            <span className="text-[10px] uppercase font-sans tracking-wider text-[#6B7280] block mb-3 pb-2 border-b border-[#E6E2DA]">
+            <span className="text-[10px] uppercase font-sans tracking-wider text-[#6B7280] block mb-3 pb-2 border-b border-[#EA580C]/30">
               Central OKC Enclaves
             </span>
 
@@ -50,10 +50,10 @@ export const MegaMenuCommunities: React.FC<MegaMenuCommunitiesProps> = ({
                         onOpenMarket(market.id);
                       }
                     }}
-                    className="w-full text-left py-1.5 px-2 rounded-md hover:bg-[#F4F1EB] hover:text-[#B38F68] transition-colors text-xs text-[#1B1D21] flex items-center justify-between group cursor-pointer"
+                    className="w-full text-left py-1.5 px-2 rounded-md hover:bg-[#F5EFE6] hover:text-[#EA580C] transition-colors text-xs text-[#0A192F] flex items-center justify-between group cursor-pointer"
                   >
                     <span className="truncate">{market.name}</span>
-                    <ChevronRight className="w-3 h-3 text-[#6B7280] group-hover:text-[#B38F68] group-hover:translate-x-0.5 transition-all opacity-0 group-hover:opacity-100" />
+                    <ChevronRight className="w-3 h-3 text-[#6B7280] group-hover:text-[#EA580C] group-hover:translate-x-0.5 transition-all opacity-0 group-hover:opacity-100" />
                   </button>
                 </li>
               ))}
@@ -61,11 +61,11 @@ export const MegaMenuCommunities: React.FC<MegaMenuCommunitiesProps> = ({
           </div>
 
           {/* Col 2: North Metro & Waterfront (Cols 3) */}
-          <div className="col-span-3 border-r border-[#E6E2DA] pr-4">
-            <span className="font-serif text-sm font-bold text-[#1B1D21] block mb-1">
+          <div className="col-span-3 border-r border-[#EA580C]/30 pr-4">
+            <span className="font-serif text-sm font-bold text-[#0A192F] block mb-1">
               North Metro & Waterfront
             </span>
-            <span className="text-[10px] uppercase font-sans tracking-wider text-[#6B7280] block mb-3 pb-2 border-b border-[#E6E2DA]">
+            <span className="text-[10px] uppercase font-sans tracking-wider text-[#6B7280] block mb-3 pb-2 border-b border-[#EA580C]/30">
               Edmond & Acreages
             </span>
 
@@ -82,10 +82,10 @@ export const MegaMenuCommunities: React.FC<MegaMenuCommunitiesProps> = ({
                         onOpenMarket(market.id);
                       }
                     }}
-                    className="w-full text-left py-1.5 px-2 rounded-md hover:bg-[#F4F1EB] hover:text-[#B38F68] transition-colors text-xs text-[#1B1D21] flex items-center justify-between group cursor-pointer"
+                    className="w-full text-left py-1.5 px-2 rounded-md hover:bg-[#F5EFE6] hover:text-[#EA580C] transition-colors text-xs text-[#0A192F] flex items-center justify-between group cursor-pointer"
                   >
                     <span className="truncate">{market.name}</span>
-                    <ChevronRight className="w-3 h-3 text-[#6B7280] group-hover:text-[#B38F68] group-hover:translate-x-0.5 transition-all opacity-0 group-hover:opacity-100" />
+                    <ChevronRight className="w-3 h-3 text-[#6B7280] group-hover:text-[#EA580C] group-hover:translate-x-0.5 transition-all opacity-0 group-hover:opacity-100" />
                   </button>
                 </li>
               ))}
@@ -93,11 +93,11 @@ export const MegaMenuCommunities: React.FC<MegaMenuCommunitiesProps> = ({
           </div>
 
           {/* Col 3: West & South Metro (Cols 3) */}
-          <div className="col-span-3 border-r border-[#E6E2DA] pr-4">
-            <span className="font-serif text-sm font-bold text-[#1B1D21] block mb-1">
+          <div className="col-span-3 border-r border-[#EA580C]/30 pr-4">
+            <span className="font-serif text-sm font-bold text-[#0A192F] block mb-1">
               West & South Metro
             </span>
-            <span className="text-[10px] uppercase font-sans tracking-wider text-[#6B7280] block mb-3 pb-2 border-b border-[#E6E2DA]">
+            <span className="text-[10px] uppercase font-sans tracking-wider text-[#6B7280] block mb-3 pb-2 border-b border-[#EA580C]/30">
               Suburban Growth Corridors
             </span>
 
@@ -114,10 +114,10 @@ export const MegaMenuCommunities: React.FC<MegaMenuCommunitiesProps> = ({
                         onOpenMarket(market.id);
                       }
                     }}
-                    className="w-full text-left py-1.5 px-2 rounded-md hover:bg-[#F4F1EB] hover:text-[#B38F68] transition-colors text-xs text-[#1B1D21] flex items-center justify-between group cursor-pointer"
+                    className="w-full text-left py-1.5 px-2 rounded-md hover:bg-[#F5EFE6] hover:text-[#EA580C] transition-colors text-xs text-[#0A192F] flex items-center justify-between group cursor-pointer"
                   >
                     <span className="truncate">{market.name}</span>
-                    <ChevronRight className="w-3 h-3 text-[#6B7280] group-hover:text-[#B38F68] group-hover:translate-x-0.5 transition-all opacity-0 group-hover:opacity-100" />
+                    <ChevronRight className="w-3 h-3 text-[#6B7280] group-hover:text-[#EA580C] group-hover:translate-x-0.5 transition-all opacity-0 group-hover:opacity-100" />
                   </button>
                 </li>
               ))}
@@ -125,7 +125,7 @@ export const MegaMenuCommunities: React.FC<MegaMenuCommunitiesProps> = ({
           </div>
 
           {/* Col 4: Featured Spotlight Card (Cols 3) */}
-          <div className="col-span-3 flex flex-col justify-between bg-[#F4F1EB] rounded-xl p-4 border border-[#E6E2DA]">
+          <div className="col-span-3 flex flex-col justify-between bg-[#F5EFE6] rounded-xl p-4 border border-[#EA580C]/30">
             <div>
               <div className="relative rounded-lg overflow-hidden h-32 mb-3">
                 <img
@@ -138,7 +138,7 @@ export const MegaMenuCommunities: React.FC<MegaMenuCommunitiesProps> = ({
                 </span>
               </div>
 
-              <span className="font-serif text-sm font-bold text-[#1B1D21] block">
+              <span className="font-serif text-sm font-bold text-[#0A192F] block">
                 Nichols Hills & Edmond Corridors
               </span>
               <p className="text-[11px] text-[#6B7280] mt-1 leading-relaxed">
@@ -146,9 +146,9 @@ export const MegaMenuCommunities: React.FC<MegaMenuCommunitiesProps> = ({
               </p>
             </div>
 
-            <div className="pt-3 border-t border-[#E6E2DA]">
-              <div className="flex items-center gap-1.5 text-xs font-semibold text-[#1B1D21] mb-2">
-                <Award className="w-3.5 h-3.5 text-[#B38F68]" />
+            <div className="pt-3 border-t border-[#EA580C]/30">
+              <div className="flex items-center gap-1.5 text-xs font-semibold text-[#0A192F] mb-2">
+                <Award className="w-3.5 h-3.5 text-[#EA580C]" />
                 <span>$62M+ Volume Sold</span>
               </div>
 
@@ -159,10 +159,10 @@ export const MegaMenuCommunities: React.FC<MegaMenuCommunitiesProps> = ({
                   const el = document.getElementById('micro-markets');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="w-full py-2 px-2.5 bg-white hover:bg-[#FAF9F6] border border-[#E6E2DA] rounded-md text-[11px] font-semibold text-[#1B1D21] hover:text-[#B38F68] transition-colors flex items-center justify-between cursor-pointer"
+                className="w-full py-2 px-2.5 bg-white hover:bg-[#FAF9F6] border border-[#EA580C]/30 rounded-md text-[11px] font-semibold text-[#0A192F] hover:text-[#EA580C] transition-colors flex items-center justify-between cursor-pointer"
               >
                 <span>View All 21 Metro Reports</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-[#B38F68]" />
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#EA580C]" />
               </button>
             </div>
           </div>

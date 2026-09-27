@@ -5,24 +5,25 @@
   --font-sans: "DM Sans", sans-serif;
   --color-canvas: #FAF9F6;
   --color-surface: #F5EFE6;
-  --color-surface-subtle: #EFECE6;
+  --color-surface-subtle: #F5EFE6;
   --color-navy: #0A192F;
   --color-charcoal: #0A192F;
   --color-slate-body: #6B7280;
-  --color-gold: #E5A93C;
-  --color-gold-hover: #C5902B;
-  --color-accent-bronze: #E5A93C;
-  --color-accent-dark: #C5902B;
-  --color-border-hairline: rgba(229, 169, 60, 0.3);
+  --color-orange: #EA580C;
+  --color-orange-hover: #C2410C;
+  --color-orange-light: #FB923C;
+  --color-accent-orange: #EA580C;
+  --color-accent-dark: #C2410C;
+  --color-border-hairline: rgba(234, 88, 12, 0.25);
 }
 
 :root {
   --color-primary-navy: #0A192F;
-  --color-accent-gold: #E5A93C;
-  --color-accent-gold-hover: #C5902B;
+  --color-accent-orange: #EA580C;
+  --color-accent-orange-hover: #C2410C;
   --color-bg-linen: #FAF9F6;
   --color-surface-sand: #F5EFE6;
-  --color-border-gold: rgba(229, 169, 60, 0.3);
+  --color-border-orange: rgba(234, 88, 12, 0.25);
 }
 
 html {
@@ -37,8 +38,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Headings inherit by default (Midnight Navy on light canvas, White on dark overlays) */
 h1, h2, h3, h4, h5, h6 {
-  color: #0A192F;
+  color: inherit;
+}
+
+.card-dark-heading {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* 1440px Maximum Content Constraint utility */
@@ -59,12 +66,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #E5A93C;
+  background: #EA580C;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #C5902B;
+  background: #C2410C;
 }
 
 .font-serif {

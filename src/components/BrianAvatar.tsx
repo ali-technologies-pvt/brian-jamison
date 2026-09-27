@@ -83,10 +83,10 @@ export const BrianAvatar: React.FC<BrianAvatarProps> = ({
         Official Headshot Image Container:
         - Strict aspect-square
         - Rounded full
-        - Subtle Sunset Honey Gold outline (border-2 border-[#E5A93C]/80)
-        - Hover gentle scale-up (scale-105) & soft warm shadow (shadow-[0_4px_16px_rgba(229,169,60,0.3)])
+        - Subtle Sunset Honey Gold outline (border-2 border-[#EA580C]/80)
+        - Hover gentle scale-up (scale-105) & soft warm shadow (shadow-[0_4px_16px_rgba(234, 88, 12, 0.3)])
       */}
-      <div className="w-full h-full rounded-full overflow-hidden border-2 border-[#E5A93C] shadow-xs hover:border-[#C5902B] transition-all duration-300 group-hover/brian-avatar:scale-105 group-hover/brian-avatar:shadow-[0_4px_16px_rgba(229,169,60,0.35)] bg-[#F5EFE6]">
+      <div className="w-full h-full rounded-full overflow-hidden border-2 border-[#EA580C] shadow-xs hover:border-[#C2410C] transition-all duration-300 group-hover/brian-avatar:scale-105 group-hover/brian-avatar:shadow-[0_4px_16px_rgba(234, 88, 12, 0.35)] bg-[#F5EFE6]">
         <img
           src={src}
           alt={alt}
