@@ -329,6 +329,22 @@ export const Footer: React.FC<FooterProps> = ({
                   Equal Housing Opportunity
                 </button>
               </li>
+              <li className="pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onNavigate) {
+                      onNavigate('/admin/login');
+                    } else {
+                      window.location.href = '/admin/login';
+                    }
+                  }}
+                  className="text-stone-300 hover:text-[#EA580C] hover:underline transition-colors block text-left font-semibold text-[11px] flex items-center gap-1.5"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
+                  <span>Admin Management Portal</span>
+                </button>
+              </li>
             </ul>
           </div>
         </div>

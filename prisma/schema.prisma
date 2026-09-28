@@ -1,0 +1,136 @@
+// Prisma Schema for Custom Real Estate CMS
+// Provider: PostgreSQL
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  SUPER_ADMIN
+  SEO_MANAGER
+  CLIENT_EDITOR
+}
+
+model User {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  email        String?  @unique
+  passwordHash String
+  name         String?
+  role         Role     @default(CLIENT_EDITOR)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("users")
+}
+
+model PropertyListing {
+  id               String   @id @default(cuid())
+  title            String
+  slug             String   @unique
+  neighborhood     String
+  city             String   @default("Oklahoma City")
+  price            Float
+  bedrooms         Int
+  bathrooms        Float
+  sqft             Int
+  daysToEscrow     Int?
+  status           String   @default("Sold")
+  featuredImage    String
+  featuredAlt      String
+  gallery          Json?
+  matterportUrl    String?
+  reelUrl          String?
+  videoWalkthrough String?
+  metaTitle        String?
+  metaDescription  String?
+  canonicalUrl     String?
+  noIndex          Boolean  @default(false)
+  noFollow         Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("property_listings")
+}
+
+model ServiceArea {
+  id              String   @id @default(cuid())
+  name            String   @unique
+  slug            String   @unique
+  category        String
+  subheading      String
+  medianPrice     Float
+  avgDaysOnMarket Int
+  description     String   @db.Text
+  featuredImage   String
+  imageAlt        String
+  metaTitle       String?
+  metaDescription String?
+  canonicalUrl    String?
+  noIndex         Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("service_areas")
+}
+
+model BlueprintStep {
+  id            String   @id @default(cuid())
+  stepNumber    Int      @unique
+  stepBadge     String
+  categoryBadge String
+  title         String
+  whatWeDo      String   @db.Text
+  sellerBenefit String   @db.Text
+  imageUrl      String
+  imageAlt      String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("blueprint_steps")
+}
+
+model Testimonial {
+  id           String   @id @default(cuid())
+  clientName   String
+  location     String
+  outcomeBadge String
+  quote        String   @db.Text
+  rating       Int      @default(5)
+  order        Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("testimonials")
+}
+
+model Redirect {
+  id         String   @id @default(cuid())
+  fromPath   String   @unique
+  toPath     String
+  statusCode Int      @default(301)
+  createdAt  DateTime @default(now())
+
+  @@map("redirects")
+}
+
+model GlobalSettings {
+  id             String   @id @default("global")
+  agentName      String
+  phone          String
+  email          String
+  licenseNumber  String
+  brokerageName  String
+  brokerAddress  String
+  statVolumeSold String
+  statClosings   String
+  statRank       String
+  updatedAt      DateTime @updatedAt
+
+  @@map("global_settings")
+}

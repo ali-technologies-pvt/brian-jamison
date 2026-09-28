@@ -12,6 +12,7 @@ import { ClosingCta } from './components/ClosingCta';
 import { Footer } from './components/Footer';
 import { InteriorPageView } from './pages/InteriorPageView';
 import { getPageByPath } from './pages/pageData';
+import { AdminLoginView } from './components/admin/AdminLoginView';
 import {
   ValuationModal,
   ConsultationModal,
@@ -135,7 +136,12 @@ export default function App() {
   };
 
   // Resolve current active page
-  const activeInteriorPage = currentPath !== '/' ? getPageByPath(currentPath) : null;
+  const isAdminRoute = currentPath.startsWith('/admin');
+  const activeInteriorPage = currentPath !== '/' && !isAdminRoute ? getPageByPath(currentPath) : null;
+
+  if (isAdminRoute) {
+    return <AdminLoginView onNavigate={navigate} />;
+  }
 
   return (
     <div className="min-h-screen bg-[#FAF9F6] text-[#002D61] flex flex-col font-sans selection:bg-[#EA580C]/20 selection:text-[#002D61]">
