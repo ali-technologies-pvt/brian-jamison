@@ -12,10 +12,10 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ onOpen
     <section id="testimonials" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#E5A93C]/30">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-semibold text-[#E5A93C] block mb-3">
+          <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-bold text-[#EA580C] block mb-3">
             Track Record of Results
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] font-medium tracking-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] font-bold tracking-tight">
             Client Experiences
           </h2>
         </div>

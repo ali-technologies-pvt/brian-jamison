@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Shield, Phone, Sparkles } from 'lucide-react';
-import { BROKER_INFO } from './data/realEstateData';
 import { Navbar } from './components/Navbar';
 import { HeroVideo } from './components/HeroVideo';
 import { ChapterAccordion } from './components/ChapterAccordion';
 import { TheMethodSection } from './components/TheMethodSection';
-import { PhilosophySection } from './components/PhilosophySection';
+import { ListingStandardsSection } from './components/ListingStandardsSection';
 import { FeaturedClosings } from './components/FeaturedClosings';
 import { ValuationBanner } from './components/ValuationBanner';
 import { TestimonialsSection } from './components/TestimonialsSection';
@@ -141,45 +139,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#FAF9F6] text-[#002D61] flex flex-col font-sans selection:bg-[#EA580C]/20 selection:text-[#002D61]">
-      {/* Top Prestigious Royal Navy Announcement Bar (#002D61) */}
-      <header className="relative z-40 w-full bg-[#002D61] text-white py-2 px-4 border-b border-[#001D40] text-[11px] font-sans tracking-wide">
-        <div className="w-full max-w-[1440px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-1.5">
-          <div className="flex items-center gap-2.5 flex-wrap justify-center text-center sm:text-left">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 text-white font-bold text-[10px] tracking-wider uppercase border border-white/15">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C] animate-ping" />
-              OKC Top 2% Producer
-            </span>
-            <span className="text-white/40 hidden md:inline">·</span>
-            <span className="font-semibold text-white">
-              $62M+ Volume Sold
-            </span>
-            <span className="text-white/40 hidden md:inline">·</span>
-            <span className="font-semibold text-white">
-              370+ Career Closings
-            </span>
-            <span className="text-white/40 hidden lg:inline">·</span>
-            <span className="text-stone-300 hidden lg:inline">
-              Salt Real Estate Corporate Office
-            </span>
-          </div>
-
-          <div className="flex items-center gap-4 text-[11px]">
-            <span className="text-[#FB923C] font-semibold flex items-center gap-1">
-              <Shield className="w-3 h-3" />
-              100% Cancel-Anytime Listing Guarantee
-            </span>
-            <span className="text-white/30 hidden sm:inline">|</span>
-            <a
-              href={`tel:${BROKER_INFO.phoneRaw}`}
-              className="text-white hover:text-[#FB923C] font-semibold transition-colors flex items-center gap-1"
-            >
-              <Phone className="w-3 h-3 text-[#EA580C]" />
-              <span>{BROKER_INFO.phone}</span>
-            </a>
-          </div>
-        </div>
-      </header>
-
       {/* Top Bar Navigation */}
       <Navbar
         onOpenValuation={handleOpenValuation}
@@ -217,10 +176,14 @@ export default function App() {
             {/* Section 3: "The Method" (Interactive 6-Step Seller Blueprint Stage with 3D Tour Viewer) */}
             <TheMethodSection onOpenMethodModal={handleOpenMethod} />
 
-            {/* Section 4: Philosophy & Leadership (Brian Jamison Portrait & Ethos) */}
-            <PhilosophySection onOpenConsultation={handleOpenConsultation} />
+            {/* Section 3B: "What We Do To Your Property: The 10-Step Transformation Machine" */}
+            <ListingStandardsSection
+              onNavigate={navigate}
+              onOpenConsultation={handleOpenConsultation}
+              onOpenValuation={() => handleOpenValuation()}
+            />
 
-            {/* Section 5: Featured & Notable Closings (Asymmetrical Magazine Gallery) */}
+            {/* Section 4: Featured & Notable Closings (Asymmetrical Magazine Gallery) */}
             <FeaturedClosings onSelectProperty={(prop) => setSelectedProperty(prop)} />
 
             {/* Section 6: Request A Confidential Market Appraisal (Valuation Funnel) */}

@@ -25,11 +25,11 @@ export const ValuationBanner: React.FC<ValuationBannerProps> = ({ onOpenValuatio
     <section className="w-full py-20 sm:py-28 bg-[#F5EFE6] border-b border-[#EA580C]/30">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
         <div className="max-w-4xl mx-auto text-center">
-          <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-semibold text-[#EA580C] block mb-3">
+          <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-bold text-[#EA580C] block mb-3">
             Private Client Advisory
           </span>
 
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A192F] font-medium tracking-tight mb-4 text-balance">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] font-bold tracking-tight mb-4 text-balance">
             Request A Confidential Market Appraisal
           </h2>
 
@@ -44,7 +44,7 @@ export const ValuationBanner: React.FC<ValuationBannerProps> = ({ onOpenValuatio
               <span className="text-[10px] uppercase font-sans font-bold tracking-widest text-[#EA580C] block">
                 Personal Review Guarantee
               </span>
-              <p className="font-serif text-xs sm:text-sm font-semibold text-[#0A192F] leading-snug">
+              <p className="font-serif text-xs sm:text-sm font-semibold text-[#002D61] leading-snug">
                 “Your custom report will be personally reviewed by Brian Jamison, OKC Top 2% Producer.”
               </p>
             </div>
@@ -60,7 +60,7 @@ export const ValuationBanner: React.FC<ValuationBannerProps> = ({ onOpenValuatio
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 placeholder="Enter your Oklahoma City or Edmond address..."
-                className="w-full py-2.5 text-xs sm:text-sm text-[#0A192F] placeholder-[#6B7280] focus:outline-none bg-transparent"
+                className="w-full py-2.5 text-xs sm:text-sm text-[#002D61] placeholder-[#6B7280] focus:outline-none bg-transparent"
               />
             </div>
 
@@ -84,7 +84,7 @@ export const ValuationBanner: React.FC<ValuationBannerProps> = ({ onOpenValuatio
                 setAddress(sample);
                 onOpenValuation(sample);
               }}
-              className="text-[#0A192F] hover:text-[#EA580C] underline decoration-stone-300 underline-offset-4 cursor-pointer"
+              className="text-[#002D61] hover:text-[#EA580C] underline decoration-stone-300 underline-offset-4 cursor-pointer"
             >
               {sample}
             </button>

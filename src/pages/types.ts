@@ -10,7 +10,17 @@ export interface InteriorPageData {
   heroMetrics?: { label: string; value: string }[];
   overview: string;
   keyTakeaways: string[];
-  deliverables?: { title: string; desc: string; icon?: string }[];
+  deliverables?: {
+    id?: string;
+    slug?: string;
+    title: string;
+    desc: string;
+    icon?: string;
+    image?: string;
+    executionDetail?: string;
+    sellerImpact?: string;
+    badge?: string;
+  }[];
   images: { url: string; caption: string; tag: string }[];
   virtualTourTitle?: string;
   droneVideoUrl?: string;

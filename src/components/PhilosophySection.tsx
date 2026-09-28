@@ -61,14 +61,14 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenCons
               <div className="bg-[#002D61] text-white border-2 border-[#002D61] rounded-2xl p-5 mb-5 space-y-3 shadow-lg">
                 <div className="flex items-center gap-2 text-xs font-serif font-bold text-white">
                   <GraduationCap className="w-4 h-4 text-[#FB923C]" />
-                  <span>Collegiate Athletic Ethos</span>
+                  <span className="font-bold">Collegiate Athletic Ethos</span>
                 </div>
-                <p className="font-sans text-xs text-stone-200 leading-relaxed">
+                <p className="font-sans text-xs text-white leading-relaxed font-medium">
                   Brian channels collegiate athletic discipline into relentless real estate negotiations. Every contingency, appraisal defense, and closing detail is managed with championship preparation and zero compromise.
                 </p>
-                <div className="pt-2.5 border-t border-white/20 flex items-center justify-between text-[11px] text-stone-300">
+                <div className="pt-2.5 border-t border-white/20 flex items-center justify-between text-[11px] text-white font-medium">
                   <span>Track Record: $62M+ Volume</span>
-                  <span className="font-semibold text-[#FB923C]">370+ Career Closings</span>
+                  <span className="font-bold text-[#FB923C]">370+ Career Closings</span>
                 </div>
               </div>
 
@@ -112,11 +112,11 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenCons
 
           {/* Right Column: Editorial Philosophy & 3 Grounding Principles */}
           <div className="lg:col-span-7">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-semibold text-[#EA580C] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-bold text-[#EA580C] block mb-3">
               Philosophy & Ethos
             </span>
 
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] leading-tight font-medium tracking-tight mb-6 text-balance">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] leading-tight font-bold tracking-tight mb-6 text-balance">
               “The Most Expensive Part of Any Real Estate Deal Is What You Don’t Know.”
             </h2>
 
@@ -132,7 +132,7 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenCons
                   01
                 </span>
                 <div>
-                  <h3 className="font-serif text-lg font-semibold text-[#002D61] mb-1">
+                  <h3 className="font-serif text-lg font-bold text-[#002D61] mb-1">
                     He Shows Up
                   </h3>
                   <p className="font-sans text-xs sm:text-sm text-[#6B7280] leading-relaxed">

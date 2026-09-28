@@ -26,10 +26,10 @@ export const FeaturedClosings: React.FC<FeaturedClosingsProps> = ({ onSelectProp
         {/* Header with Filter Controls */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div>
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-semibold text-[#EA580C] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-bold text-[#EA580C] block mb-3">
               Curated Portfolio
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] font-medium tracking-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] font-bold tracking-tight">
               Featured & Notable Closings
             </h2>
           </div>
@@ -117,38 +117,38 @@ export const FeaturedClosings: React.FC<FeaturedClosingsProps> = ({ onSelectProp
               <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-3">
                 <div>
                   <h3
-                    style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0, 0, 0, 0.6)' }}
-                    className="font-serif text-2xl sm:text-3xl lg:text-4xl !text-white font-medium tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
+                    style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0, 0, 0, 0.8)' }}
+                    className="font-serif text-2xl sm:text-3xl lg:text-4xl !text-white font-bold tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]"
                   >
                     {heroProperty.title}
                   </h3>
-                  <span className="text-xs sm:text-sm text-stone-200 font-sans drop-shadow-xs">
+                  <span className="text-xs sm:text-sm !text-stone-100 font-sans font-medium drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
                     {heroProperty.subdivision}, {heroProperty.city}
                   </span>
                 </div>
-                <div className="font-serif text-2xl sm:text-3xl font-semibold text-[#EA580C] tabular-nums drop-shadow-xs">
+                <div className="font-serif text-2xl sm:text-3xl font-extrabold text-[#FB923C] tabular-nums drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
                   {heroProperty.formattedPrice}
                 </div>
               </div>
 
-              {/* Specs Bar */}
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-4 border-t border-white/20 text-xs text-stone-300">
+              {/* Specs Bar: Pure White Font with High Contrast */}
+              <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-4 border-t border-white/20 text-xs !text-white font-medium">
                 <span className="flex items-center gap-1.5">
                   <Bed className="w-3.5 h-3.5 text-[#EA580C]" />
                   {heroProperty.bedrooms} Bedrooms
                 </span>
-                <span aria-hidden="true" className="text-stone-500">·</span>
+                <span aria-hidden="true" className="text-white/60">·</span>
                 <span className="flex items-center gap-1.5">
                   <Bath className="w-3.5 h-3.5 text-[#EA580C]" />
                   {heroProperty.bathrooms} Bathrooms
                 </span>
-                <span aria-hidden="true" className="text-stone-500">·</span>
+                <span aria-hidden="true" className="text-white/60">·</span>
                 <span className="flex items-center gap-1.5">
                   <Move className="w-3.5 h-3.5 text-[#EA580C]" />
                   {heroProperty.sqft.toLocaleString()} Sq Ft
                 </span>
-                <span aria-hidden="true" className="text-stone-500">·</span>
-                <span className="flex items-center gap-1.5 text-stone-200">
+                <span aria-hidden="true" className="text-white/60">·</span>
+                <span className="flex items-center gap-1.5 !text-stone-100 font-semibold">
                   <Calendar className="w-3.5 h-3.5 text-[#EA580C]" />
                   {heroProperty.daysOnMarket} Days to Escrow
                 </span>
@@ -173,7 +173,7 @@ export const FeaturedClosings: React.FC<FeaturedClosingsProps> = ({ onSelectProp
 
                 {/* Badge */}
                 <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
-                  <span className="text-[9px] tracking-[0.2em] uppercase font-sans font-semibold text-white bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20">
+                  <span className="text-[9px] tracking-[0.2em] uppercase font-sans font-bold text-white bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20">
                     {property.badgeText}
                   </span>
                   <span className="w-7 h-7 rounded-full bg-white/20 hover:bg-white text-white hover:text-[#002D61] flex items-center justify-center backdrop-blur-md transition-colors">
@@ -186,25 +186,25 @@ export const FeaturedClosings: React.FC<FeaturedClosingsProps> = ({ onSelectProp
                   <div className="flex items-baseline justify-between mb-1.5">
                     <div>
                       <h4
-                        style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0, 0, 0, 0.6)' }}
-                        className="font-serif text-xl sm:text-2xl !text-white font-medium drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
+                        style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0, 0, 0, 0.8)' }}
+                        className="font-serif text-xl sm:text-2xl !text-white font-bold drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
                       >
                         {property.title}
                       </h4>
-                      <span className="text-xs text-stone-200 font-sans drop-shadow-xs">
+                      <span className="text-xs !text-stone-100 font-sans font-medium drop-shadow-xs">
                         {property.subdivision} · {property.city}
                       </span>
                     </div>
-                    <span className="font-serif text-lg sm:text-xl font-semibold text-[#EA580C] tabular-nums">
+                    <span className="font-serif text-lg sm:text-xl font-bold text-[#FB923C] tabular-nums drop-shadow-xs">
                       {property.formattedPrice}
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-3 pt-2 text-[11px] text-stone-300 border-t border-white/15">
+                  <div className="flex items-center gap-3 pt-2 text-[11px] !text-white font-medium border-t border-white/20">
                     <span>{property.bedrooms} Beds</span>
-                    <span>·</span>
+                    <span className="text-white/60">·</span>
                     <span>{property.bathrooms} Baths</span>
-                    <span>·</span>
+                    <span className="text-white/60">·</span>
                     <span>{property.sqft.toLocaleString()} Sq Ft</span>
                   </div>
                 </div>

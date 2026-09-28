@@ -1,20 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { BROKER_INFO } from '../data/realEstateData';
-import { BrianAvatar } from './BrianAvatar';
+import { JamisonLogo } from './JamisonLogo';
 import { MegaMenuBlueprint } from './navigation/MegaMenuBlueprint';
 import { MegaMenuCommunities } from './navigation/MegaMenuCommunities';
 import { MegaMenuHub } from './navigation/MegaMenuHub';
 import { MobileDock } from './navigation/MobileDock';
-import {
-  ChevronDown,
-  Phone,
-  Menu,
-  X,
-  ArrowUpRight,
-  Shield,
-  Sparkles
-} from 'lucide-react';
+import { ChevronDown, Phone } from 'lucide-react';
 
 interface NavbarProps {
   onOpenValuation: (initialAddress?: string) => void;
@@ -41,10 +33,9 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<'blueprint' | 'communities' | 'hub' | null>(null);
-  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
 
-  // Scroll detection for glass transition
+  // Scroll detection
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 25);
@@ -76,48 +67,36 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, []);
 
   const toggleMenu = (menu: 'blueprint' | 'communities' | 'hub') => {
-    setActiveMenu(activeMenu === menu ? null : menu);
+    setActiveMenu(prev => (prev === menu ? null : menu));
   };
 
   const scrollToSection = (id: string) => {
     setActiveMenu(null);
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
     <>
       {/* 
-        DESKTOP FLOATING NAVBAR:
-        Fixed at top-4 inset-x-0 mx-auto max-w-7xl z-50 px-6 py-3.5 rounded-2xl transition-all duration-300
-        Initial Hero State:
-          Background: rgba(250, 249, 246, 0.75)
-          Backdrop Filter: backdrop-blur-xl saturate-150
-          Border: 1px solid rgba(230, 226, 218, 0.8)
-          Shadow: 0 8px 32px 0 rgba(27, 29, 33, 0.06)
-        Sticky Scrolled State:
-          Background: rgba(250, 249, 246, 0.92)
-          Backdrop Filter: backdrop-blur-2xl
-          Border: 1px solid rgba(234, 88, 12, 0.3)
-          Shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.08)
+        HEADER BAR:
+        Transparent floating over the primary-blue-tinted hero video.
+        - Left: Larger Jamison Real Estate circular emblem logo (standalone, without headshot).
+        - Center: Floating glassy capsule pill container with menus and mega menu triggers.
+        - Right: Orange circular phone badge + Phone number + "Get in touch" navy capsule button.
       */}
-      <header className={`fixed inset-x-0 mx-auto max-w-[1400px] z-50 px-3 sm:px-6 pointer-events-none transition-all duration-300 ${
-        isScrolled ? 'top-3 sm:top-4' : 'top-10 sm:top-12'
-      }`}>
-        <nav
-          ref={navRef}
-          role="navigation"
-          aria-label="Main Navigation"
-          className={`pointer-events-auto w-full transition-all duration-300 rounded-2xl px-5 sm:px-6 py-3 sm:py-3.5 flex items-center justify-between relative ${
-            isScrolled
-              ? 'bg-[#FAF9F6]/95 backdrop-blur-2xl border-2 border-[#002D61]/25 shadow-[0_12px_40px_-10px_rgba(0,45,97,0.18)]'
-              : 'bg-[#FAF9F6]/90 backdrop-blur-xl saturate-150 border-2 border-[#002D61]/15 shadow-[0_8px_32px_0_rgba(0,45,97,0.08)]'
-          }`}
-        >
-          {/* ZONE 1 (Left - Brand Anchor) */}
-          <div className="flex items-center gap-3">
+      <header
+        className={`fixed top-0 inset-x-0 z-50 w-full transition-all duration-300 pointer-events-none ${
+          isScrolled
+            ? 'bg-[#002D61]/90 backdrop-blur-2xl border-b border-white/15 shadow-xl py-2.5 sm:py-3'
+            : 'bg-transparent py-4 sm:py-5'
+        }`}
+      >
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 flex items-center justify-between pointer-events-auto relative">
+          {/* ZONE 1 (Left - Prominent Circular Jamison Logo) */}
+          <div className="flex items-center">
             <a
               href="#"
               onClick={(e) => {
@@ -128,49 +107,26 @@ export const Navbar: React.FC<NavbarProps> = ({
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
               }}
-              className="group flex items-center gap-2.5 sm:gap-3 focus:outline-none cursor-pointer"
+              className="group flex items-center focus:outline-none cursor-pointer"
             >
-              {/* Jamison Real Estate Crest + Official Brian Jamison Circular Avatar (36px desktop, 32px mobile) */}
-              <div className="flex items-center gap-2 shrink-0">
-                <div
-                  title="Jamison Real Estate Crest"
-                  className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-[#002D61] border-2 border-[#EA580C] flex items-center justify-center text-white font-serif font-bold text-xs shadow-xs"
-                >
-                  J
-                </div>
-                <BrianAvatar
-                  size={36}
-                  priority={true}
-                  className="w-8 h-8 md:w-9 md:h-9"
-                  alt="Brian Jamison · Salt Real Estate"
-                />
-              </div>
-
-              <div className="flex flex-col">
-                <div className="flex items-center gap-2">
-                  <span className="font-serif text-base sm:text-lg md:text-xl font-bold tracking-tight text-[#002D61] group-hover:text-[#EA580C] transition-colors leading-tight">
-                    BRIAN JAMISON
-                  </span>
-                  {/* Micro-badge: Green live-status dot with tooltip "Available 7 Days" */}
-                  <div className="relative group/status flex items-center">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                    </span>
-                    <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-1.5 hidden group-hover/status:flex items-center whitespace-nowrap px-2 py-0.5 rounded bg-[#002D61] text-white text-[10px] shadow-md pointer-events-none">
-                      Available 7 Days
-                    </div>
-                  </div>
-                </div>
-                <span className="font-sans text-[9px] uppercase tracking-[0.25em] text-[#002D61] font-bold">
-                  SALT REAL ESTATE · OKC
-                </span>
-              </div>
+              <JamisonLogo
+                size={76}
+                className="w-16 h-16 sm:w-[76px] sm:h-[76px] transition-transform duration-300 group-hover:scale-105"
+                title="Jamison Real Estate · Oklahoma City"
+              />
             </a>
           </div>
 
-          {/* ZONE 2 (Center - Editorial Navigation) */}
-          <div className="hidden lg:flex items-center gap-7 text-[13px] font-sans font-medium text-[#002D61]">
+          {/* ZONE 2 (Center - Frosted Glass Capsule Pill Navigation with Primary Navy Gloss) */}
+          <nav
+            ref={navRef}
+            role="navigation"
+            aria-label="Main Navigation"
+            className="hidden lg:flex items-center gap-1 xl:gap-2 px-6 py-2 rounded-full bg-[#002D61]/70 hover:bg-[#002D61]/80 backdrop-blur-2xl border border-white/20 shadow-xl shadow-[#001D40]/35 text-white relative overflow-hidden transition-all duration-300"
+          >
+            {/* Specular Top Edge Gloss Highlight */}
+            <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none" />
+
             {/* Link 1: The Blueprint (Triggers MegaMenuBlueprint) */}
             <div className="relative">
               <button
@@ -179,14 +135,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                 aria-haspopup="true"
                 onClick={() => toggleMenu('blueprint')}
                 onMouseEnter={() => setActiveMenu('blueprint')}
-                className={`flex items-center gap-1.5 py-1 transition-colors cursor-pointer ${
-                  activeMenu === 'blueprint' ? 'text-[#EA580C]' : 'hover:text-[#EA580C]'
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
+                  activeMenu === 'blueprint'
+                    ? 'bg-white/25 text-[#FB923C] shadow-xs'
+                    : 'text-white hover:text-[#FB923C] hover:bg-white/10'
                 }`}
               >
                 <span>The Blueprint</span>
                 <ChevronDown
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    activeMenu === 'blueprint' ? 'rotate-180 text-[#EA580C]' : ''
+                    activeMenu === 'blueprint' ? 'rotate-180 text-[#FB923C]' : 'text-white/80'
                   }`}
                 />
               </button>
@@ -204,7 +162,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }
               }}
               onMouseEnter={() => setActiveMenu(null)}
-              className="py-1 hover:text-[#EA580C] transition-colors cursor-pointer"
+              className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide text-white hover:text-[#FB923C] hover:bg-white/10 transition-all cursor-pointer"
             >
               Featured Closings
             </a>
@@ -217,14 +175,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                 aria-haspopup="true"
                 onClick={() => toggleMenu('communities')}
                 onMouseEnter={() => setActiveMenu('communities')}
-                className={`flex items-center gap-1.5 py-1 transition-colors cursor-pointer ${
-                  activeMenu === 'communities' ? 'text-[#EA580C]' : 'hover:text-[#EA580C]'
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
+                  activeMenu === 'communities'
+                    ? 'bg-white/25 text-[#FB923C] shadow-xs'
+                    : 'text-white hover:text-[#FB923C] hover:bg-white/10'
                 }`}
               >
                 <span>Communities</span>
                 <ChevronDown
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    activeMenu === 'communities' ? 'rotate-180 text-[#EA580C]' : ''
+                    activeMenu === 'communities' ? 'rotate-180 text-[#FB923C]' : 'text-white/80'
                   }`}
                 />
               </button>
@@ -238,14 +198,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                 aria-haspopup="true"
                 onClick={() => toggleMenu('hub')}
                 onMouseEnter={() => setActiveMenu('hub')}
-                className={`flex items-center gap-1.5 py-1 transition-colors cursor-pointer ${
-                  activeMenu === 'hub' ? 'text-[#EA580C]' : 'hover:text-[#EA580C]'
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
+                  activeMenu === 'hub'
+                    ? 'bg-white/25 text-[#FB923C] shadow-xs'
+                    : 'text-white hover:text-[#FB923C] hover:bg-white/10'
                 }`}
               >
                 <span>Client Hub</span>
                 <ChevronDown
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    activeMenu === 'hub' ? 'rotate-180 text-[#EA580C]' : ''
+                    activeMenu === 'hub' ? 'rotate-180 text-[#FB923C]' : 'text-white/80'
                   }`}
                 />
               </button>
@@ -263,45 +225,45 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }
               }}
               onMouseEnter={() => setActiveMenu(null)}
-              className="py-1 hover:text-[#EA580C] transition-colors cursor-pointer"
+              className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide text-white hover:text-[#FB923C] hover:bg-white/10 transition-all cursor-pointer"
             >
-              About
+              About Brian Jamison
             </a>
-          </div>
+          </nav>
 
-          {/* ZONE 3 (Right - High-Intent CTAs) */}
-          <div className="hidden sm:flex items-center gap-3">
-            {/* Direct Call Button */}
-            <a
-              href={`tel:${BROKER_INFO.phoneRaw}`}
-              className="text-xs font-semibold text-[#002D61] hover:text-[#EA580C] transition-colors flex items-center gap-1.5 px-3 py-2 rounded-full hover:bg-black/5"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#EA580C]" />
-              <span className="tabular-nums tracking-wide">{BROKER_INFO.phone}</span>
-            </a>
+          {/* ZONE 3 (Right - Call & "Get in touch" CTA pill) */}
+          <div className="flex items-center gap-3 sm:gap-4">
+            {/* Direct Call: Orange Circular Badge + White Phone Number */}
+            <div className="flex items-center gap-2">
+              <a
+                href={`tel:${BROKER_INFO.phoneRaw}`}
+                className="w-10 h-10 rounded-full bg-[#EA580C] hover:bg-[#C2410C] text-white flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer shrink-0"
+                title={`Call ${BROKER_INFO.phone}`}
+              >
+                <Phone className="w-4 h-4" />
+              </a>
+              <a
+                href={`tel:${BROKER_INFO.phoneRaw}`}
+                className="hidden sm:inline font-bold text-sm tracking-wide text-white hover:text-[#FB923C] transition-colors tabular-nums"
+              >
+                {BROKER_INFO.phone}
+              </a>
+            </div>
 
-            {/* Primary CTA Pill: "What's My Home Worth?" */}
+            {/* High-Intent Pill Button: "Get in touch" with Pulse Dot */}
             <button
               type="button"
               onClick={() => onOpenValuation()}
-              className="px-6 py-2.5 text-xs font-semibold tracking-wide uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-xl transition-all duration-300 shadow-md shadow-orange-600/25 hover:shadow-lg hover:shadow-orange-600/35 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer whitespace-nowrap"
+              className="flex items-center gap-2 px-5 sm:px-6 py-2.5 rounded-full bg-[#001D40] hover:bg-[#002D61] text-white text-xs font-bold tracking-wide border border-white/20 shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer active:scale-95 whitespace-nowrap"
             >
-              What's My Home Worth?
+              <span>Get in touch</span>
+              <span className="w-2.5 h-2.5 rounded-full bg-[#EA580C] animate-pulse shrink-0" />
             </button>
           </div>
+        </div>
 
-          {/* Mobile Top Bar Quick Trigger */}
-          <div className="flex sm:hidden items-center gap-2">
-            <button
-              type="button"
-              onClick={() => onOpenValuation()}
-              className="px-3.5 py-1.5 text-[11px] font-semibold tracking-wide uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-lg shadow-sm shadow-orange-600/25"
-            >
-              Valuation
-            </button>
-          </div>
-
-          {/* Mega Menus Render with Framer Motion AnimatePresence */}
+        {/* Mega Menus Dropdown Container */}
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 mt-2 pointer-events-auto">
           <AnimatePresence>
             {activeMenu === 'blueprint' && (
               <MegaMenuBlueprint
@@ -330,7 +292,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               />
             )}
           </AnimatePresence>
-        </nav>
+        </div>
       </header>
 
       {/* 

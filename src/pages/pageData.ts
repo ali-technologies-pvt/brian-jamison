@@ -64,6 +64,109 @@ const DEFAULT_ARCHITECTURAL_GALLERY = [
   }
 ];
 
+export const TEN_LISTING_STANDARDS_DELIVERABLES = [
+  {
+    id: "home-prep-guidance",
+    slug: "/services/home-prep-guidance",
+    title: "Home-Prep Guidance & Architectural Staging",
+    desc: "First-impression architectural review, decluttering roadmap, and ROI-driven refresh suggestions.",
+    executionDetail: "Brian conducts a room-by-room architectural walkthrough, identifying high-ROI cosmetic paint, lighting, and depersonalization adjustments so buyers fall in love on arrival.",
+    sellerImpact: "Transforms homes from 'lived in' to an emotional showpiece, generating 3x more opening-weekend private showings and eliminating lowball concessions.",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+    badge: "Step 01 · Curb Appeal"
+  },
+  {
+    id: "professional-photography",
+    slug: "/services/professional-photography",
+    title: "Professional Architectural HDR Photography",
+    desc: "Interior and exterior golden-hour captures using architectural wide-angle glass.",
+    executionDetail: "Captured exclusively at twilight and peak golden-hour with multi-bracket HDR lighting, capturing architectural depth, true window exposure, and sunset illumination.",
+    sellerImpact: "Over 95% of buyers first see your home online; magazine-grade photography stops buyer scrolling instantly.",
+    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
+    badge: "Step 02 · 4K HDR"
+  },
+  {
+    id: "cinematic-video",
+    slug: "/services/cinematic-video",
+    title: "Cinema-Grade 4K Motion Walkthrough Film",
+    desc: "4K high-bitrate video capturing light, scale, and living flow with custom sound design.",
+    executionDetail: "Filmed on cinema-grade gimbal stabilizers with professional color grading, custom sound design, and lifestyle pacing that highlights the architectural flow.",
+    sellerImpact: "Videos average 14.2k+ views across platforms and create strong emotional attachment before buyers ever set foot inside.",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
+    badge: "Step 03 · 60fps Cinema"
+  },
+  {
+    id: "aerial-drone",
+    slug: "/services/aerial-drone",
+    title: "FAA Part-107 HD Aerial Drone Mapping",
+    desc: "Drone flyovers capturing lot lines, roof condition, and scenic surroundings.",
+    executionDetail: "FAA-certified drone pilots film high-altitude 4K aerial sweeps, plotting dynamic parcel boundary lines, tree canopies, and proximity to golf courses and schools.",
+    sellerImpact: "Shows buyers the exact land scale, privacy buffers, and lot value that ground-level photography cannot convey.",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+    badge: "Step 04 · FAA Drone"
+  },
+  {
+    id: "matterport-3d",
+    slug: "/services/matterport-3d",
+    title: "Interactive Matterport Pro3 3D Virtual Tour",
+    desc: "Millimeter-accurate virtual dollhouse allowing 360-degree room exploration.",
+    executionDetail: "Laser-guided spatial cameras scan every square foot of your home, compiling an interactive 3D dollhouse model and digital floor plan.",
+    sellerImpact: "Enables pre-approved corporate transferees moving to OKC from California, Texas, and New York to make confident sight-unseen cash offers.",
+    image: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80",
+    badge: "Step 05 · 3D Dollhouse"
+  },
+  {
+    id: "global-portals",
+    slug: "/services/global-portals",
+    title: "Syndication to 350+ Global Luxury Feeds",
+    desc: "Syndicated instantly to Zillow, Realtor.com, Trulia, Redfin, MLS, and luxury networks.",
+    executionDetail: "Direct API feeds syndicate your listing to every major national and international portal, including Zillow Showcase, Realtor.com Featured, Redfin, and global luxury networks.",
+    sellerImpact: "Ensures your property reaches 100% of active qualified homebuyers worldwide, preventing your home from getting lost in local MLS silos.",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80",
+    badge: "Step 06 · 350+ Portals"
+  },
+  {
+    id: "single-property-website",
+    slug: "/services/single-property-website",
+    title: "Dedicated Single-Property Vanity Domain Website",
+    desc: "Custom vanity domain created solely to showcase your home without competing ads.",
+    executionDetail: "We purchase and launch a custom domain (e.g. 1234GrandviewBlvd.com) featuring full-screen 4K video, complete photo albums, floor plans, and seller disclosures.",
+    sellerImpact: "Zero competing ads or distraction listings; prospective buyers and their agents are locked into your property's exclusive narrative.",
+    image: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1200&q=80",
+    badge: "Step 07 · Custom URL"
+  },
+  {
+    id: "social-advertising",
+    slug: "/services/social-advertising",
+    title: "Hyper-Targeted Meta Paid Retargeting Campaigns",
+    desc: "Algorithmic retargeting reaching high-income buyers within 50 miles.",
+    executionDetail: "Paid targeted advertising campaigns deployed across Instagram & Facebook, targeting high-net-worth professionals, executives, physicians, and transferees searching OKC real estate.",
+    sellerImpact: "Proactively places your home in front of qualified buyers who aren't actively searching MLS feeds daily.",
+    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80",
+    badge: "Step 08 · Meta Ads"
+  },
+  {
+    id: "mls-refreshes",
+    slug: "/services/mls-refreshes",
+    title: "Active MLS Algorithmic Tuning & Refreshes",
+    desc: "Daily algorithmic tuning to prevent listing stagnation in broker search queries.",
+    executionDetail: "Unlike passive agents who enter a listing and wait, Brian monitors daily search impressions, rotating the primary hero photo and updating search tags to keep the listing at the top of buyer auto-searches.",
+    sellerImpact: "Maintains high urgency and prevents the dreaded 'Days on Market' fatigue that leads to price reductions.",
+    image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80",
+    badge: "Step 09 · MLS Algorithm"
+  },
+  {
+    id: "reverse-prospecting",
+    slug: "/services/reverse-prospecting",
+    title: "Reverse Prospecting & Direct Broker Matchmaking",
+    desc: "Direct outreach to buyer agents with clients searching within your exact price bracket.",
+    executionDetail: "Brian pulls MLS database backend analytics to pinpoint every broker who has an active buyer searching in your exact square footage and price bracket, placing direct telephone calls to pitch your property.",
+    sellerImpact: "Creates private showings with pre-qualified buyers before other listings even get noticed.",
+    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
+    badge: "Step 10 · Matchmaking"
+  }
+];
+
 export const SERVICE_PAGES: Record<string, InteriorPageData> = {
   "elite-marketing": {
     id: "elite-marketing",
@@ -88,18 +191,7 @@ export const SERVICE_PAGES: Record<string, InteriorPageData> = {
       "Paid Meta (Facebook & Instagram) hyper-targeted ads retargeting pre-approved buyers",
       "Glossy luxury direct-mail postcards sent to top neighborhood households"
     ],
-    deliverables: [
-      { title: "Home-Prep Guidance", desc: "First-impression architectural review and ROI-driven refresh suggestions." },
-      { title: "Professional HDR Photography", desc: "Interior and exterior golden-hour captures using architectural wide-angle glass." },
-      { title: "Cinematic Walkthrough Video", desc: "4K high-bitrate video capturing light, scale, and living flow." },
-      { title: "HD Aerial Drone Mapping", desc: "Drone flyovers capturing lot lines, roof condition, and scenic surroundings." },
-      { title: "Matterport 3D Model", desc: "Millimeter-accurate virtual dollhouse allowing 360-degree room exploration." },
-      { title: "350+ Global Portal Feeds", desc: "Syndicated instantly to Zillow, Realtor.com, Trulia, Redfin, MLS, and luxury networks." },
-      { title: "Single-Property Website", desc: "Custom vanity domain created solely to showcase your home without competing ads." },
-      { title: "Hyper-Targeted Social Ads", desc: "Algorithmic retargeting reaching high-income buyers within 50 miles." },
-      { title: "Active MLS Refreshes", desc: "Daily algorithmic tuning to prevent listing stagnation in broker search queries." },
-      { title: "Reverse Prospecting", desc: "Direct outreach to buyer agents with clients searching within your exact price bracket." }
-    ],
+    deliverables: TEN_LISTING_STANDARDS_DELIVERABLES,
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "transparent-communication": {
@@ -124,10 +216,38 @@ export const SERVICE_PAGES: Record<string, InteriorPageData> = {
       "Strategic negotiation focused exclusively on defending your bottom-line net proceeds"
     ],
     deliverables: [
-      { title: "100% Showing Feedback Policy", desc: "Direct phone call to showing agents to learn what buyers loved and what held them back." },
-      { title: "Weekly Digital Traffic Report", desc: "Transparent review of page views, saved properties, and inquiry counts." },
-      { title: "Inspection Defense Strategy", desc: "Pragmatic contractor cost estimates to prevent unreasonable buyer repair demands." },
-      { title: "Plain-English Contract Review", desc: "Detailed walkthrough of earnest money, appraisal contingencies, and closing timelines." }
+      {
+        title: "100% Mandatory Showing Feedback Policy",
+        desc: "Direct telephone debrief with every showing broker within 120 minutes of home access.",
+        executionDetail: "Brian personally calls each buyer agent to extract unfiltered feedback on price, architectural flow, and buyer hesitation points.",
+        sellerImpact: "Eliminates seller anxiety and provides real-time market data to counter objections before they stall a sale.",
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 02.1 · Direct Feedback"
+      },
+      {
+        title: "Weekly Digital Traffic & Comp Dashboard",
+        desc: "Transparent Monday morning intelligence report tracking online saves, inquiries, and new neighborhood listings.",
+        executionDetail: "We compile real-time MLS impression stats, Zillow saves, and pending sales within your exact micro-market.",
+        sellerImpact: "Ensures you always have actionable data to stay ahead of competing neighborhood inventory.",
+        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 02.2 · Intelligence"
+      },
+      {
+        title: "Inspection Defense & Repair Strategy",
+        desc: "Pragmatic contractor cost estimates to prevent unreasonable buyer repair concessions.",
+        executionDetail: "We bring pre-vetted Oklahoma tradesmen to verify true repair costs, preventing buyers from demanding inflated credits.",
+        sellerImpact: "Saves homeowners an average of $6,800 in unwarranted post-inspection repair deductions.",
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 02.3 · Equity Defense"
+      },
+      {
+        title: "Plain-English Contract Translations",
+        desc: "Detailed walkthrough of earnest money, appraisal contingencies, and closing timelines.",
+        executionDetail: "Every purchase agreement, counter-offer, and escrow addendum is explained in clear financial terms without legal jargon.",
+        sellerImpact: "Total confidence and legal protection at every milestone of the escrow closing process.",
+        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 02.4 · Contract Clarity"
+      }
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
@@ -153,10 +273,38 @@ export const SERVICE_PAGES: Record<string, InteriorPageData> = {
       "Direct personal cell phone access for every represented homeowner"
     ],
     deliverables: [
-      { title: "Direct Private Cell Access", desc: "Call or text Brian directly without getting transferred to generic call centers." },
-      { title: "Rapid Inbound Triage", desc: "Immediate pre-qualification of incoming buyer leads before scheduling home access." },
-      { title: "Weekend Tour Concierge", desc: "Accommodating buyer schedules on Saturdays, Sundays, and twilight hours." },
-      { title: "Redundant Backup Associate", desc: "Certified Salt senior associate ready to step in if Brian is in a contract closing." }
+      {
+        title: "Direct Personal Cell Phone Access",
+        desc: "Call or text Brian directly without getting transferred to generic receptionists.",
+        executionDetail: "Homeowners receive Brian's direct private cell number for prompt morning, evening, and weekend updates.",
+        sellerImpact: "Immediate clarity on showing requests and offer developments with zero middleman lag.",
+        image: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 03.1 · Direct Line"
+      },
+      {
+        title: "Rapid Buyer Inquiry Triage (< 15 Mins)",
+        desc: "Immediate pre-qualification of incoming buyer leads before scheduling home access.",
+        executionDetail: "We verify pre-approval letters and buyer purchasing readiness before authorizing entry to your home.",
+        sellerImpact: "Protects your family's privacy and guarantees only qualified serious buyers walk through your doors.",
+        image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 03.2 · Lead Triage"
+      },
+      {
+        title: "Weekend & Twilight Showing Concierge",
+        desc: "Accommodating busy executive buyer schedules on Saturdays, Sundays, and golden-hour evenings.",
+        executionDetail: "We facilitate private twilight showings when executive buyers have time off to tour luxury estates.",
+        sellerImpact: "Captures high-net-worth buyers who cannot tour during standard weekday business hours.",
+        image: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 03.3 · Twilight Tours"
+      },
+      {
+        title: "Redundant Senior Broker Associate Coverage",
+        desc: "Dedicated Salt associate ready to step in if Brian is actively in a contract negotiation.",
+        executionDetail: "If Brian is in a multi-offer negotiation, his licensed partner ensures zero incoming calls or tour requests go unanswered.",
+        sellerImpact: "Zero missed opportunities. 100% listing coverage 365 days a year.",
+        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 03.4 · Redundant Coverage"
+      }
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
@@ -185,13 +333,38 @@ export const SERVICE_PAGES: Record<string, InteriorPageData> = {
       "Post-close escrow and moving transition concierge"
     ],
     deliverables: [
-      { title: "Executive Assistant", desc: "Coordinates access schedules, showing approvals, and paperwork dispatch." },
-      { title: "Transaction Coordinator", desc: "Audits contract timelines, title commitments, and disclosure paperwork." },
-      { title: "Staging Consultant", desc: "Optimizes room flow and curb appeal to maximize perceived square footage." },
-      { title: "Listing Operations", desc: "Manages lockboxes, sign installation, and MLS backend data fidelity." },
-      { title: "Creative Media Team", desc: "Designs bespoke property magazines, digital brochures, and social assets." },
-      { title: "FAA Drone & Camera Crew", desc: "Operates 4K cinema cameras and calibrated aerial drones." },
-      { title: "Post-Close Support", desc: "Assists with utility transfers, escrow balance reconciliation, and settlement statements." }
+      {
+        title: "Dedicated Executive Client Liaison",
+        desc: "Coordinates access schedules, showing approvals, and paperwork dispatch.",
+        executionDetail: "Our executive assistant handles calendar bookings, lockbox codes, and private showing notifications so you never experience disruption.",
+        sellerImpact: "Ensures seamless communication and protects your family's schedule during peak showing windows.",
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 04.1 · Operations"
+      },
+      {
+        title: "Certified Escrow & Transaction Coordinator",
+        desc: "Audits contract timelines, title commitments, and disclosure paperwork.",
+        executionDetail: "Oversees every earnest money deposit, title search, and mandatory Oklahoma Real Estate Commission disclosure milestone.",
+        sellerImpact: "Guarantees 100% legal compliance and zero closing delays.",
+        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 04.2 · Escrow Audit"
+      },
+      {
+        title: "Architectural Staging & Design Crew",
+        desc: "Optimizes room flow and curb appeal to maximize perceived square footage.",
+        executionDetail: "Hands-on spatial styling ensuring light angles, furniture spacing, and luxury accents photograph impeccably.",
+        sellerImpact: "Maximizes visual square footage and creates luxury buyer emotional resonance.",
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 04.3 · Visual Staging"
+      },
+      {
+        title: "FAA-Certified Aerial & Media Division",
+        desc: "Operates 4K cinema cameras and calibrated aerial drones.",
+        executionDetail: "Dedicated aerial pilots and videographers shooting sunset golden hours to produce pristine listing assets.",
+        sellerImpact: "Delivers magazine-cover caliber visual marketing without relying on generic subcontractors.",
+        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 04.4 · Drone Media"
+      }
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
@@ -217,10 +390,38 @@ export const SERVICE_PAGES: Record<string, InteriorPageData> = {
       "Bidding-war calibration engineered to attract multiple competing bids within the first 14 days"
     ],
     deliverables: [
-      { title: "Conservative Valuation", desc: "Defensive liquidity price point guaranteeing a swift cash sale if required." },
-      { title: "Target Valuation", desc: "Accurate peak-market appraisal supported by closed micro-market comps." },
-      { title: "Aspirational Valuation", desc: "Testing tier to capture premium surge buyer demand in low-inventory windows." },
-      { title: "Search-Bracket Optimization", desc: "Positioning just below major price filters (e.g. $499k vs $505k) to double buyer eyeballs." }
+      {
+        title: "Conservative Liquidity Valuation",
+        desc: "Defensive liquidity price point guaranteeing a swift cash sale if required.",
+        executionDetail: "Analyzes cash-investor comps and appraisal floor prices to establish an absolute safety baseline.",
+        sellerImpact: "Provides downside certainty and rapid liquidity benchmark.",
+        image: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 05.1 · Conservative"
+      },
+      {
+        title: "Target Peak-Market Valuation",
+        desc: "Accurate peak-market appraisal supported by closed micro-market comps.",
+        executionDetail: "Forensic adjustment for premium lot views, custom joinery, pool pavilions, and recent neighborhood sales within 90 days.",
+        sellerImpact: "The realistic peak sale price achievable under standard competitive marketing.",
+        image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 05.2 · Target Value"
+      },
+      {
+        title: "Aspirational Surge Valuation",
+        desc: "Testing tier to capture premium surge buyer demand in low-inventory windows.",
+        executionDetail: "Calculated ceiling price used when neighborhood inventory drops below 1.2 months of supply.",
+        sellerImpact: "Tests the upper boundary of the market to capture out-of-state transferee cash premiums.",
+        image: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 05.3 · Aspirational"
+      },
+      {
+        title: "Psychological Search-Bracket Calibration",
+        desc: "Positioning just below major price filters (e.g. $499k vs $505k) to double buyer eyeballs.",
+        executionDetail: "Aligns list price directly with MLS round-number auto-search alerts (e.g. $749,000 instead of $755,000).",
+        sellerImpact: "Doubles buyer search impression notifications and triggers immediate multi-offer tension.",
+        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 05.4 · Bracket Pricing"
+      }
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
@@ -246,11 +447,292 @@ export const SERVICE_PAGES: Record<string, InteriorPageData> = {
       "Complete freedom to terminate if Brian fails to meet your standards"
     ],
     deliverables: [
-      { title: "Cancel-Anytime Clause", desc: "Simple one-page guarantee stipulating you may cancel if commitments are unmet." },
-      { title: "Zero Termination Penalty", desc: "You never owe a single dollar for marketing costs or photography upon cancellation." },
-      { title: "Shared Incentive Model", desc: "Brian only gets paid when your home successfully closes at top dollar." },
-      { title: "Written Performance Standard", desc: "Clear checklist of marketing milestones delivered within the first 72 hours." }
+      {
+        title: "Cancel-Anytime Written Contract Clause",
+        desc: "Simple one-page guarantee stipulating you may cancel if commitments are unmet.",
+        executionDetail: "A binding addendum explicitly stating that if you are not 100% satisfied with our marketing or communication, you may terminate immediately.",
+        sellerImpact: "Eliminates all seller risk and locks broker incentives with your satisfaction.",
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 06.1 · Contract Clause"
+      },
+      {
+        title: "$0.00 Termination Fee Guarantee",
+        desc: "You never owe a single dollar for marketing costs or photography upon cancellation.",
+        executionDetail: "Unlike other agents who bill homeowners for photography or drone fees if a listing cancels, Brian covers 100% of upfront media costs.",
+        sellerImpact: "Zero out-of-pocket financial liability for high-end marketing production.",
+        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 06.2 · $0 Penalty"
+      },
+      {
+        title: "Shared Financial Alignment Model",
+        desc: "Brian only gets paid when your home successfully closes at top dollar.",
+        executionDetail: "Our compensation is 100% tied to a successful closing, creating relentless dedication to negotiating maximum net proceeds.",
+        sellerImpact: "Ensures Brian fights for every dollar of your equity at the negotiation table.",
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 06.3 · True Alignment"
+      },
+      {
+        title: "72-Hour Milestone Execution Standard",
+        desc: "Clear written checklist of marketing milestones delivered within the first 72 hours.",
+        executionDetail: "We furnish a written timetable of photography delivery, 3D tour publication, single-property website launch, and 350+ portal syndication.",
+        sellerImpact: "Verifiable accountability from Day 1 with zero guesswork.",
+        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=80",
+        badge: "Phase 06.4 · Accountability"
+      }
     ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+
+  /* -------------------------------------------------------------------------
+     DEDICATED SUBPAGES FOR THE 10 SELLER BLUEPRINT STANDARDS
+     ------------------------------------------------------------------------- */
+  "home-prep-guidance": {
+    id: "home-prep-guidance",
+    slug: "/services/home-prep-guidance",
+    category: "service",
+    kicker: "STANDARD 01 / FIRST IMPRESSIONS",
+    title: "Home-Prep Guidance & Architectural Staging",
+    subtitle: "Room-by-room architectural review, decluttering roadmap, and ROI-driven refresh suggestions that generate multiple competing offers.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Staging ROI Avg", value: "385%" },
+      { label: "Private Showings", value: "+300%" },
+      { label: "Opening Weekend", value: "Multiple Offers" }
+    ],
+    overview: "Before a single camera lens enters your home, Brian Jamison conducts a forensic first-impression walkthrough. By identifying cosmetic refresh opportunities, optimal lighting conditions, and strategic depersonalization, we elevate your home's perceived value before the first open house.",
+    keyTakeaways: [
+      "Room-by-room architectural punch list with zero unnecessary expenditures",
+      "Curb appeal and golden-hour architectural lighting audit",
+      "Staging alignment with the pre-approved target demographic in your price tier",
+      "Pre-vetted preferred trade vendor coordination for rapid turnaround"
+    ],
+    deliverables: TEN_LISTING_STANDARDS_DELIVERABLES,
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+
+  "professional-photography": {
+    id: "professional-photography",
+    slug: "/services/professional-photography",
+    category: "service",
+    kicker: "STANDARD 02 / HIGH-BITRATE VISUALS",
+    title: "Professional Architectural HDR Photography",
+    subtitle: "Magazine-grade golden-hour and twilight architectural photography that captures emotional light and architectural depth.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Buyer First Look", value: "Online 95%" },
+      { label: "Image Resolution", value: "61MP HDR" },
+      { label: "Twilight Shoot", value: "100% Guaranteed" }
+    ],
+    overview: "Over 95% of prospective buyers encounter your listing online before deciding to book a private tour. Brian employs FAA-certified architectural photographers who shoot with wide-angle tilt-shift glass, golden-hour twilight exposures, and custom hand-blended HDR processing.",
+    keyTakeaways: [
+      "Exterior golden-hour and dramatic twilight blue-hour illumination",
+      "Interior exposures balanced with crystal-clear window view preservation",
+      "Architectural wide-angle glass that prevents unnatural fish-eye distortion",
+      "Color-calibrated post-production ensuring warm, natural stone and wood tones"
+    ],
+    deliverables: TEN_LISTING_STANDARDS_DELIVERABLES,
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+
+  "cinematic-video": {
+    id: "cinematic-video",
+    slug: "/services/cinematic-video",
+    category: "service",
+    kicker: "STANDARD 03 / EMOTIONAL STORYTELLING",
+    title: "Cinema-Grade 4K Motion Walkthrough Film",
+    subtitle: "4K cinematic motion walkthrough capturing light, spatial scale, and living flow with custom sound design.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Video View Velocity", value: "14.2k Avg" },
+      { label: "Resolution", value: "4K 60fps" },
+      { label: "Emotional Recall", value: "+84%" }
+    ],
+    overview: "Static photos alone do not convey the emotional cadence of an Oklahoma luxury estate. We produce cinema-grade motion films filmed on high-precision stabilizers, calibrated with warm cinematic color grading, and scored to evoke lifestyle aspiration.",
+    keyTakeaways: [
+      "Cinema-grade gimbal stabilization capturing continuous fluid walkthroughs",
+      "Professional color grading highlighting natural hardwood and stone richness",
+      "Paced lifestyle editing showing seamless transitions from great room to pool loggia",
+      "Dedicated social cuts optimized for Instagram Reels and YouTube 4K"
+    ],
+    deliverables: TEN_LISTING_STANDARDS_DELIVERABLES,
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+
+  "aerial-drone": {
+    id: "aerial-drone",
+    slug: "/services/aerial-drone",
+    category: "service",
+    kicker: "STANDARD 04 / BOUNDARY CONTEXT",
+    title: "FAA Part-107 HD Aerial Drone Mapping",
+    subtitle: "High-altitude 4K drone sweeps capturing property lot lines, roof condition, golf course proximity, and mature oak canopy.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "FAA Certified", value: "Part 107" },
+      { label: "Elevation Sweep", value: "Up to 400ft" },
+      { label: "Lot Perimeter", value: "100% Mapped" }
+    ],
+    overview: "Oklahoma estates are defined as much by their land, sunset vistas, and neighborhood enclaves as by their interior square footage. Our FAA-certified drone pilots document exact parcel boundaries, topography, and privacy buffers.",
+    keyTakeaways: [
+      "FAA Part-107 licensed and fully insured commercial drone flight operations",
+      "Dynamic digital parcel line overlays showing full acreage and boundary markers",
+      "Neighborhood context showing proximity to country clubs, lakes, and schools",
+      "High-angle roof and architectural facade condition transparency"
+    ],
+    deliverables: TEN_LISTING_STANDARDS_DELIVERABLES,
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+
+  "matterport-3d": {
+    id: "matterport-3d",
+    slug: "/services/matterport-3d",
+    category: "service",
+    kicker: "STANDARD 05 / 24/7 GLOBAL OPEN HOUSE",
+    title: "Interactive Matterport Pro3 3D Virtual Tour",
+    subtitle: "Millimeter-accurate virtual dollhouse allowing 360-degree exploration for corporate transferees and out-of-state buyers.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Spatial Accuracy", value: "99.8%" },
+      { label: "Available Hours", value: "24/7 Global" },
+      { label: "Out-of-State Cash", value: "+42%" }
+    ],
+    overview: "Serious executive transferees moving to Oklahoma City from major metro hubs need the ability to inspect floor plans, room dimensions, and ceiling clearances at 11:00 PM from across the country. Our 3D scans enable confident sight-unseen cash offers.",
+    keyTakeaways: [
+      "Pro3 LiDAR laser camera capturing exact interior spatial dimensions",
+      "Interactive 3D Dollhouse and schematic floor plan view",
+      "Digital measurement tool allowing buyers to verify furniture and artwork fits",
+      "Embedded multimedia tags highlighting custom smart home and Sub-Zero appliances"
+    ],
+    deliverables: TEN_LISTING_STANDARDS_DELIVERABLES,
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+
+  "global-portals": {
+    id: "global-portals",
+    slug: "/services/global-portals",
+    category: "service",
+    kicker: "STANDARD 06 / MAXIMUM SYNDICATION",
+    title: "Syndication to 350+ Global Luxury Feeds",
+    subtitle: "Instant API syndication to Zillow Showcase, Realtor.com Featured, Redfin, MLSOK, and international luxury real estate feeds.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Syndicated Portals", value: "350+" },
+      { label: "Global Reach", value: "48 Countries" },
+      { label: "Search Indexing", value: "< 2 Hours" }
+    ],
+    overview: "A listing is only as potent as its distribution. Brian ensures your home is automatically syndicated across 350+ domestic and international real estate portals, with enhanced featured status that prevents listing burial.",
+    keyTakeaways: [
+      "Instant API broadcast to Zillow, Realtor.com, Trulia, Redfin, and Homes.com",
+      "Global luxury real estate portal syndication across Asia, Europe, and the Middle East",
+      "High-priority visual placement ensuring your listing is not buried by competing agents",
+      "Synchronized updates whenever pricing, photos, or open houses are modified"
+    ],
+    deliverables: TEN_LISTING_STANDARDS_DELIVERABLES,
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+
+  "single-property-website": {
+    id: "single-property-website",
+    slug: "/services/single-property-website",
+    category: "service",
+    kicker: "STANDARD 07 / BESPOKE DIGITAL DOMAIN",
+    title: "Dedicated Single-Property Vanity Domain Website",
+    subtitle: "Custom address domain created exclusively for your listing—free of third-party ads or competitor agent popups.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Dedicated URL", value: "100% Custom" },
+      { label: "Competitor Ads", value: "Zero" },
+      { label: "Page Load Speed", value: "< 1.2s" }
+    ],
+    overview: "We secure a custom web address (e.g. 1234GrandviewBlvd.com) configured solely to highlight your estate. Featuring edge-to-edge 4K video, high-resolution photo galleries, digital floor plans, and seller disclosures without competitor distractions.",
+    keyTakeaways: [
+      "Vanity URL matching your exact street address or estate name",
+      "Edge-to-edge mobile-first responsive design engineered for rapid conversion",
+      "Direct one-click private tour scheduling routing straight to Brian's personal cell",
+      "Integrated floor plans, Matterport 3D embeds, and downloadable property brief PDF"
+    ],
+    deliverables: TEN_LISTING_STANDARDS_DELIVERABLES,
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+
+  "social-advertising": {
+    id: "social-advertising",
+    slug: "/services/social-advertising",
+    category: "service",
+    kicker: "STANDARD 08 / ALGORITHMIC TARGETING",
+    title: "Hyper-Targeted Meta Paid Retargeting Campaigns",
+    subtitle: "Targeted paid campaigns reaching high-net-worth buyers, executives, physicians, and transferees within 50 miles.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Impressions Targeted", value: "25k-50k+" },
+      { label: "Radius Coverage", value: "50 Miles" },
+      { label: "Qualified Demographics", value: "Top 5% HNW" }
+    ],
+    overview: "Passive MLS entries miss the massive demographic of passive buyers—qualified individuals who are not browsing Zillow daily but will take action when the right home appears in their Instagram and Facebook feeds.",
+    keyTakeaways: [
+      "Precision demographic targeting focusing on high-income zip codes and executive profiles",
+      "Dynamic retargeting showing secondary photo carousels to anyone who watched the walkthrough video",
+      "Geo-fenced mobile ads deployed around prominent Oklahoma City private clubs and hospitals",
+      "Transparent campaign performance reports showing exact clicks, saves, and inquiries"
+    ],
+    deliverables: TEN_LISTING_STANDARDS_DELIVERABLES,
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+
+  "mls-refreshes": {
+    id: "mls-refreshes",
+    slug: "/services/mls-refreshes",
+    category: "service",
+    kicker: "STANDARD 09 / SEARCH VELOCITY",
+    title: "Active MLS Algorithmic Tuning & Refreshes",
+    subtitle: "Daily algorithmic adjustments to prevent listing stagnation in broker saved-searches and buyer portals.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Audit Frequency", value: "Daily" },
+      { label: "Search Ranking", value: "Top Bracket" },
+      { label: "Stagnation Index", value: "Zero" }
+    ],
+    overview: "When homes sit without strategic updates, MLS algorithms push them down search queues. Brian actively rotates primary showcase photography, adjusts keyword tags, and refreshes listing metadata to maintain top-tier visibility.",
+    keyTakeaways: [
+      "Rotating hero photography between twilight exterior, kitchen island, and primary retreat",
+      "Daily audit of search impression velocity and days-on-market metrics",
+      "Algorithmic keyword optimization targeting active buyer search filters",
+      "Re-triggering automated email alerts to active buyer agents across the metro"
+    ],
+    deliverables: TEN_LISTING_STANDARDS_DELIVERABLES,
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+
+  "reverse-prospecting": {
+    id: "reverse-prospecting",
+    slug: "/services/reverse-prospecting",
+    category: "service",
+    kicker: "STANDARD 10 / PROACTIVE OUTREACH",
+    title: "Reverse Prospecting & Direct Broker Matchmaking",
+    subtitle: "Proactive outreach to buyer agents with clients actively searching within your property's exact price and criteria.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Direct Phone Calls", value: "100% Manual" },
+      { label: "Broker Network", value: "Top 250 OKC" },
+      { label: "Pre-Listing Showings", value: "Guaranteed" }
+    ],
+    overview: "Brian queries backend MLS buyer-agent matching engines daily, identifying which Oklahoma brokers have pre-approved buyers actively searching within your exact price bracket. We pick up the phone and personally pitch your listing.",
+    keyTakeaways: [
+      "Backend MLS agent database extraction identifying buyers with saved searches in your neighborhood",
+      "Direct personal telephone outreach from Brian to top Oklahoma City luxury producing brokers",
+      "Private broker open-house previews hosted before public weekend showings commence",
+      "Proactive matchmaking that creates early competition before other listings get noticed"
+    ],
+    deliverables: TEN_LISTING_STANDARDS_DELIVERABLES,
     images: DEFAULT_ARCHITECTURAL_GALLERY
   }
 };
@@ -1140,6 +1622,7 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
       "Phase 5: 3-tier data-driven pricing architecture calibrated for competition",
       "Phase 6: 100% Risk-Free Cancel-Anytime Listing Guarantee"
     ],
+    deliverables: TEN_LISTING_STANDARDS_DELIVERABLES,
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "listings": {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BROKER_INFO } from '../data/realEstateData';
-import { BrianAvatar } from './BrianAvatar';
-import { Phone, Calendar } from 'lucide-react';
+import { JamisonLogo } from './JamisonLogo';
+import { Phone, Calendar, ShieldCheck } from 'lucide-react';
 
 interface ClosingCtaProps {
   onOpenConsultation: () => void;
@@ -12,24 +12,24 @@ export const ClosingCta: React.FC<ClosingCtaProps> = ({ onOpenConsultation }) =>
     <section className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/30">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Personal Advisor Badge with BrianAvatar (48px) */}
-          <div className="inline-flex items-center gap-3 p-1.5 pr-4 rounded-full bg-white border border-[#EA580C]/30 shadow-2xs mb-5">
-            <BrianAvatar size={40} showStatusDot={true} alt="Brian Jamison - Salt Real Estate" />
+          {/* Official Emblem Badge (No Client Headshot Image) */}
+          <div className="inline-flex items-center gap-3 p-2 pr-5 rounded-full bg-white border border-[#EA580C]/30 shadow-2xs mb-5">
+            <JamisonLogo size={38} className="w-9 h-9 shrink-0" />
             <div className="text-left">
               <span className="font-serif font-bold text-xs text-[#002D61] block leading-tight">
-                Brian Jamison
+                Jamison Real Estate · Salt Corporate Office
               </span>
               <span className="text-[10px] uppercase font-sans font-semibold text-[#EA580C] tracking-wider block">
-                Top 2% Producer · Salt Corporate Office
+                Top 2% Producer · 1508 W. Edmond Rd., Edmond OK
               </span>
             </div>
           </div>
 
-          <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-semibold text-[#EA580C] block mb-3">
+          <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-bold text-[#EA580C] block mb-3">
             Bespoke Representation
           </span>
 
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] font-medium tracking-tight mb-4 text-balance">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] font-bold tracking-tight mb-4 text-balance">
             Ready to Sell With Uncompromised Confidence?
           </h2>
 

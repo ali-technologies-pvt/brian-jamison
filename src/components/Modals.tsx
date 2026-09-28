@@ -777,13 +777,29 @@ export const MarketModal: React.FC<MarketModalProps> = ({
           <X className="w-5 h-5" />
         </button>
 
-        <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-semibold text-[#EA580C] block mb-1">
-          Oklahoma City Micro-Market Profile
-        </span>
-        <h3 className="font-serif text-3xl font-bold text-[#002D61] mb-2">
-          {market.name}
-        </h3>
-        <p className="font-sans text-xs sm:text-sm text-[#6B7280] mb-6">
+        <div className="relative h-44 sm:h-52 rounded-xl overflow-hidden mb-5 border-2 border-[#002D61]/25 shadow-md">
+          <img
+            src={market.image}
+            alt={market.name}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#002D61]/95 via-[#002D61]/40 to-transparent" />
+          <div className="absolute bottom-3.5 left-4 right-4 flex items-end justify-between">
+            <div>
+              <span className="text-[10px] uppercase font-sans font-bold text-[#FB923C] tracking-wider block drop-shadow-xs">
+                {market.highlightBadge || 'Oklahoma Service Area'}
+              </span>
+              <h3 className="font-serif text-2xl sm:text-3xl font-bold !text-white tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">
+                {market.name}
+              </h3>
+            </div>
+            <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#EA580C] text-white shadow-xs tabular-nums">
+              {market.medianPrice}
+            </span>
+          </div>
+        </div>
+
+        <p className="font-sans text-xs sm:text-sm text-[#4B5563] mb-6 leading-relaxed">
           {market.lifestyle}
         </p>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BROKER_INFO, MICRO_MARKETS } from '../data/realEstateData';
-import { BrianAvatar } from './BrianAvatar';
+import { JamisonLogo } from './JamisonLogo';
 import { Phone, Mail, MapPin, Shield } from 'lucide-react';
 
 interface FooterProps {
@@ -32,14 +32,12 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14 border-b border-white/15">
           {/* Column 1: Brand & Brokerage Identity (Cols 4) */}
           <div className="lg:col-span-4">
-            {/* Contact Card: 48px Circular Avatar directly beside Brian Jamison, phone, and credentials */}
+            {/* Contact Card: Jamison Emblem & Information */}
             <div className="flex items-start gap-4 mb-5">
-              <BrianAvatar
-                size={48}
-                priority={false}
-                showStatusDot={true}
-                alt="Brian Jamison - Salt Real Estate Corporate Office"
-                className="mt-0.5"
+              <JamisonLogo
+                size={58}
+                className="w-14 h-14 shrink-0"
+                title="Jamison Real Estate · Official Emblem"
               />
               <div>
                 <span className="font-serif text-2xl font-bold tracking-tight block text-white leading-tight">
@@ -58,20 +56,20 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
             </div>
 
-            <div className="space-y-2.5 text-xs text-stone-300 font-sans leading-relaxed mb-6 pl-0.5">
+            <div className="space-y-2.5 text-xs text-stone-100 font-sans font-medium leading-relaxed mb-6 pl-0.5">
               <p className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#EA580C] shrink-0 mt-0.5" />
                 <span>1508 W. Edmond Rd., Edmond, Oklahoma 73003</span>
               </p>
               <p className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#EA580C] shrink-0" />
-                <a href={`mailto:${BROKER_INFO.email}`} className="hover:text-white transition-colors">
+                <a href={`mailto:${BROKER_INFO.email}`} className="text-stone-100 hover:text-white transition-colors">
                   {BROKER_INFO.email}
                 </a>
               </p>
             </div>
 
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/10 border border-white/20 text-[11px] text-white">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/10 border border-white/20 text-[11px] text-white font-medium">
               <Shield className="w-3.5 h-3.5 text-[#EA580C]" />
               <span>{BROKER_INFO.license} · REALTOR® · Top 2% Producer</span>
             </div>
@@ -79,10 +77,11 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Column 2: Navigation Links (Cols 3) */}
           <div className="lg:col-span-3">
-            <span className="text-xs uppercase tracking-[0.2em] font-sans font-semibold text-[#FB923C] block mb-4">
+            <span className="text-xs uppercase tracking-[0.2em] font-sans font-bold text-white block mb-4 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
               Navigation
             </span>
-            <ul className="space-y-2 text-xs text-stone-300 font-sans">
+            <ul className="space-y-2.5 text-xs text-stone-100 font-sans font-medium">
               <li>
                 <button
                   type="button"
@@ -93,7 +92,7 @@ export const Footer: React.FC<FooterProps> = ({
                       onOpenChapter('home-sellers');
                     }
                   }}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                  className="hover:text-white hover:underline transition-colors text-left cursor-pointer"
                 >
                   Strategic Chapters
                 </button>
@@ -108,7 +107,7 @@ export const Footer: React.FC<FooterProps> = ({
                       onOpenMethod(0);
                     }
                   }}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                  className="hover:text-white hover:underline transition-colors text-left cursor-pointer"
                 >
                   The Method Blueprint
                 </button>
@@ -124,7 +123,7 @@ export const Footer: React.FC<FooterProps> = ({
                       if (el) el.scrollIntoView({ behavior: 'smooth' });
                     }
                   }}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                  className="hover:text-white hover:underline transition-colors text-left cursor-pointer"
                 >
                   Broker Mentality & Ethos
                 </button>
@@ -140,7 +139,7 @@ export const Footer: React.FC<FooterProps> = ({
                       if (el) el.scrollIntoView({ behavior: 'smooth' });
                     }
                   }}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                  className="hover:text-white hover:underline transition-colors text-left cursor-pointer"
                 >
                   Curated Closings
                 </button>
@@ -155,7 +154,7 @@ export const Footer: React.FC<FooterProps> = ({
                       onOpenValuation();
                     }
                   }}
-                  className="hover:text-white transition-colors text-left font-medium text-[#FB923C] cursor-pointer"
+                  className="hover:text-white hover:underline transition-colors text-left font-bold text-[#FB923C] cursor-pointer"
                 >
                   Private Valuation Tool
                 </button>
@@ -170,7 +169,7 @@ export const Footer: React.FC<FooterProps> = ({
                       onOpenChecklist();
                     }
                   }}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                  className="hover:text-white hover:underline transition-colors text-left cursor-pointer"
                 >
                   Home Seller's Checklist (PDF)
                 </button>
@@ -185,7 +184,7 @@ export const Footer: React.FC<FooterProps> = ({
                       onOpenCalculator();
                     }
                   }}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                  className="hover:text-white hover:underline transition-colors text-left cursor-pointer"
                 >
                   Mortgage & Affordability Calc
                 </button>
@@ -195,10 +194,11 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Column 3: Hot Enclaves (Cols 3) */}
           <div className="lg:col-span-3">
-            <span className="text-xs uppercase tracking-[0.2em] font-sans font-semibold text-[#FB923C] block mb-4">
-              Key Enclaves
+            <span className="text-xs uppercase tracking-[0.2em] font-sans font-bold text-white block mb-4 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
+              Key Service Enclaves
             </span>
-            <ul className="space-y-2 text-xs text-stone-300 font-sans">
+            <ul className="space-y-2.5 text-xs text-stone-100 font-sans font-medium">
               <li>
                 <button
                   type="button"
@@ -209,7 +209,7 @@ export const Footer: React.FC<FooterProps> = ({
                       onOpenMarket('nichols-hills');
                     }
                   }}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                  className="hover:text-white hover:underline transition-colors text-left cursor-pointer"
                 >
                   Nichols Hills
                 </button>
@@ -224,7 +224,7 @@ export const Footer: React.FC<FooterProps> = ({
                       onOpenMarket('gaillardia');
                     }
                   }}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                  className="hover:text-white hover:underline transition-colors text-left cursor-pointer"
                 >
                   Gaillardia Golf Community
                 </button>
@@ -239,7 +239,7 @@ export const Footer: React.FC<FooterProps> = ({
                       onOpenMarket('heritage-hills');
                     }
                   }}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                  className="hover:text-white hover:underline transition-colors text-left cursor-pointer"
                 >
                   Heritage Hills Historic
                 </button>
@@ -254,7 +254,7 @@ export const Footer: React.FC<FooterProps> = ({
                       onOpenMarket('oak-tree');
                     }
                   }}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                  className="hover:text-white hover:underline transition-colors text-left cursor-pointer"
                 >
                   Oak Tree & Deer Creek
                 </button>
@@ -269,7 +269,7 @@ export const Footer: React.FC<FooterProps> = ({
                       onOpenMarket('edmond-oakdale');
                     }
                   }}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                  className="hover:text-white hover:underline transition-colors text-left cursor-pointer"
                 >
                   Edmond & Covell Corridor
                 </button>
@@ -284,7 +284,7 @@ export const Footer: React.FC<FooterProps> = ({
                       onOpenMarket('arcadia-hiwassee');
                     }
                   }}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                  className="hover:text-white hover:underline transition-colors text-left cursor-pointer"
                 >
                   Arcadia & Lake Hiwassee
                 </button>
@@ -294,18 +294,19 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Column 4: Credentials & Regulatory (Cols 2) */}
           <div className="lg:col-span-2">
-            <span className="text-xs uppercase tracking-[0.2em] font-sans font-semibold text-[#FB923C] block mb-4">
+            <span className="text-xs uppercase tracking-[0.2em] font-sans font-bold text-white block mb-4 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
               Credentials
             </span>
-            <ul className="space-y-2 text-xs text-stone-300 font-sans">
+            <ul className="space-y-2.5 text-xs text-stone-100 font-sans font-medium">
               <li>Oklahoma Real Estate Commission</li>
-              <li>{BROKER_INFO.license}</li>
+              <li className="font-bold text-white">{BROKER_INFO.license}</li>
               <li>REALTOR® Designation</li>
               <li className="pt-2">
                 <button
                   type="button"
                   onClick={() => onOpenLegal('privacy')}
-                  className="hover:text-white transition-colors block text-left"
+                  className="hover:text-white hover:underline transition-colors block text-left"
                 >
                   Privacy Policy
                 </button>
@@ -314,7 +315,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <button
                   type="button"
                   onClick={() => onOpenLegal('terms')}
-                  className="hover:text-white transition-colors block text-left"
+                  className="hover:text-white hover:underline transition-colors block text-left"
                 >
                   Terms of Service
                 </button>
@@ -323,7 +324,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <button
                   type="button"
                   onClick={() => onOpenLegal('fairhousing')}
-                  className="hover:text-white transition-colors block text-left"
+                  className="hover:text-white hover:underline transition-colors block text-left"
                 >
                   Equal Housing Opportunity
                 </button>
@@ -333,7 +334,7 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         {/* Bottom Copyright & Equal Housing */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-stone-300 gap-4">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-200 font-medium gap-4">
           <p>© {new Date().getFullYear()} Brian Jamison | Salt Real Estate Corporate Office. All Rights Reserved.</p>
           <p className="text-center sm:text-right">
             Equal Housing Opportunity. Information deemed reliable but not guaranteed.

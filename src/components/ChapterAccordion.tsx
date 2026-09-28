@@ -28,10 +28,10 @@ export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChap
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div className="max-w-xl">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-semibold text-[#EA580C] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-bold text-[#EA580C] block mb-3">
               Tailored Strategy
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] tracking-tight font-medium text-balance">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] tracking-tight font-bold text-balance">
               Which Chapter Are You Navigating?
             </h2>
           </div>
@@ -111,28 +111,28 @@ export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChap
                 >
                   <div className="inline-flex items-center gap-2 mb-3">
                     <span className="w-2 h-2 rounded-full bg-[#EA580C] shadow-sm shadow-orange-500/50" />
-                    <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-semibold text-[#FB923C] drop-shadow-xs">
+                    <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-bold text-[#FB923C] drop-shadow-xs">
                       {chapter.tag}
                     </span>
                   </div>
 
                   <h3
-                    style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0, 0, 0, 0.6)' }}
-                    className="font-serif text-3xl lg:text-4xl !text-white font-medium mb-3 tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
+                    style={{ color: '#FFFFFF', textShadow: '0 2px 12px rgba(0, 0, 0, 0.8)' }}
+                    className="font-serif text-3xl lg:text-4xl !text-white font-bold mb-3 tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]"
                   >
                     {chapter.title}
                   </h3>
 
-                  <p className="font-sans text-sm lg:text-base text-[#FAF9F6] leading-relaxed max-w-lg mb-6 font-normal drop-shadow-xs">
+                  <p className="font-sans text-sm lg:text-base !text-white leading-relaxed max-w-lg mb-6 font-medium drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)]">
                     {chapter.summary}
                   </p>
 
                   <div className="flex flex-wrap items-center gap-8 pt-3 border-t border-white/20 mb-6">
                     <div>
-                      <span className="text-[10px] uppercase tracking-wider text-stone-300 block font-sans">
+                      <span className="text-[10px] uppercase tracking-wider !text-stone-200 block font-sans font-bold drop-shadow-xs">
                         {chapter.metrics.label}
                       </span>
-                      <span className="font-serif text-xl font-semibold !text-white tabular-nums drop-shadow-xs">
+                      <span className="font-serif text-xl font-extrabold !text-white tabular-nums drop-shadow-xs">
                         {chapter.metrics.value}
                       </span>
                     </div>
@@ -140,10 +140,10 @@ export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChap
                     <div className="hidden sm:flex items-center gap-2.5">
                       <BrianAvatar size={28} showStatusDot={true} alt="Brian Jamison Direct Advisory" />
                       <div>
-                        <span className="text-[10px] uppercase tracking-wider text-stone-300 block font-sans">
+                        <span className="text-[10px] uppercase tracking-wider !text-stone-200 block font-sans font-bold">
                           Representation
                         </span>
-                        <span className="text-xs sm:text-sm font-medium !text-white drop-shadow-xs">
+                        <span className="text-xs sm:text-sm font-bold !text-white drop-shadow-xs">
                           Direct Advisory by Brian Jamison
                         </span>
                       </div>
@@ -157,9 +157,9 @@ export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChap
                         e.stopPropagation();
                         onSelectChapter(chapter.id);
                       }}
-                      className="group inline-flex items-center gap-2.5 px-7 py-3.5 text-xs font-semibold tracking-wide uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-xl transition-all duration-300 shadow-lg shadow-orange-600/30 hover:shadow-orange-600/50 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                      className="group inline-flex items-center gap-2.5 px-7 py-3.5 text-xs font-bold tracking-wide uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-xl transition-all duration-300 shadow-lg shadow-orange-600/40 hover:shadow-orange-600/60 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
                     >
-                      <span className="text-white font-semibold">{chapter.ctaText}</span>
+                      <span className="text-white font-bold">{chapter.ctaText}</span>
                       <ArrowUpRight className="w-4 h-4 text-white transition-transform duration-300 group-hover:translate-x-1" />
                     </button>
                   </div>
@@ -192,24 +192,24 @@ export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChap
 
                 <div className="relative z-10 p-6 flex flex-col">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] tracking-[0.2em] uppercase font-sans font-semibold text-[#FB923C]">
+                    <span className="text-[10px] tracking-[0.2em] uppercase font-sans font-bold text-[#FB923C]">
                       {chapter.tag}
                     </span>
-                    <span className="font-serif text-sm font-semibold text-white/80">
+                    <span className="font-serif text-sm font-bold text-white">
                       {chapter.index}
                     </span>
                   </div>
 
                   <h3
-                    style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0, 0, 0, 0.6)' }}
-                    className="font-serif text-2xl !text-white font-medium mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
+                    style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0, 0, 0, 0.8)' }}
+                    className="font-serif text-2xl !text-white font-bold mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
                   >
                     {chapter.title}
                   </h3>
 
                   {isActive ? (
                     <div className="mt-2 pt-3 border-t border-white/20 animate-in fade-in duration-200">
-                      <p className="font-sans text-xs text-[#FAF9F6] leading-relaxed mb-4">
+                      <p className="font-sans text-xs !text-white leading-relaxed mb-4 font-medium drop-shadow-xs">
                         {chapter.summary}
                       </p>
                       <button
@@ -218,14 +218,14 @@ export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChap
                           e.stopPropagation();
                           onSelectChapter(chapter.id);
                         }}
-                        className="group w-full py-3.5 px-7 text-center text-xs font-semibold tracking-wide uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-xl shadow-lg shadow-orange-600/30 flex items-center justify-center gap-2 transition-all cursor-pointer"
+                        className="group w-full py-3.5 px-7 text-center text-xs font-bold tracking-wide uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-xl shadow-lg shadow-orange-600/40 flex items-center justify-center gap-2 transition-all cursor-pointer"
                       >
-                        <span className="text-white font-semibold">{chapter.ctaText}</span>
+                        <span className="text-white font-bold">{chapter.ctaText}</span>
                         <ArrowUpRight className="w-3.5 h-3.5 text-white transition-transform group-hover:translate-x-1" />
                       </button>
                     </div>
                   ) : (
-                    <span className="text-[11px] text-stone-200 font-sans mt-1">
+                    <span className="text-[11px] !text-white font-sans font-semibold mt-1 drop-shadow-xs">
                       Tap to examine playbook →
                     </span>
                   )}

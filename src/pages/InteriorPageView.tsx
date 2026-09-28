@@ -1,7 +1,6 @@
 import React from 'react';
 import { InteriorPageData } from './types';
 import { InteriorHeroVideo } from './InteriorHeroVideo';
-import { InteriorGallery } from './InteriorGallery';
 import { InteriorMediaTour } from './InteriorMediaTour';
 import {
   CheckCircle2,
@@ -14,10 +13,15 @@ import {
   Clock,
   Phone,
   HelpCircle,
-  FileCheck
+  FileCheck,
+  ChevronRight,
+  Layers,
+  ArrowUpRight
 } from 'lucide-react';
 import { BROKER_INFO } from '../data/realEstateData';
 import { BrianAvatar } from '../components/BrianAvatar';
+import { PhilosophySection } from '../components/PhilosophySection';
+import { LISTING_STANDARDS_DATA } from '../components/ListingStandardsSection';
 
 interface InteriorPageViewProps {
   page: InteriorPageData;
@@ -48,7 +52,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
   };
 
   return (
-    <article className="w-full bg-[#FAF9F6] text-[#0A192F] selection:bg-[#EA580C]/20 selection:text-[#0A192F]">
+    <article className="w-full bg-[#FAF9F6] text-[#002D61] selection:bg-[#EA580C]/20 selection:text-[#002D61]">
       {/* 1. Cinematic Video Background Hero */}
       <InteriorHeroVideo
         kicker={page.kicker}
@@ -72,7 +76,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
               <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
                 Strategic Briefing
               </span>
-              <h2 className="font-serif text-2xl sm:text-4xl font-bold text-[#0A192F] leading-tight mb-6">
+              <h2 className="font-serif text-2xl sm:text-4xl font-bold text-[#002D61] leading-tight mb-6">
                 Uncompromising Execution for Oklahoma Property Owners
               </h2>
               <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed mb-6 font-normal">
@@ -94,17 +98,17 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                       <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-bold text-[#EA580C] block mb-1">
                         License #184931 · REALTOR®
                       </span>
-                      <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#0A192F] mb-1">
+                      <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#002D61] mb-1">
                         Brian Jamison
                       </h3>
                       <p className="font-sans text-xs text-[#6B7280]">
                         Salt Real Estate Corporate Office · 1508 W. Edmond Rd., Edmond, OK 73003
                       </p>
                       <div className="mt-3 flex flex-wrap items-center justify-center sm:justify-start gap-2">
-                        <span className="px-2.5 py-1 rounded-md bg-white border border-[#EA580C]/30 text-[11px] font-semibold text-[#0A192F]">
+                        <span className="px-2.5 py-1 rounded-md bg-white border border-[#EA580C]/30 text-[11px] font-semibold text-[#002D61]">
                           Top 2% Producer OKC Metro
                         </span>
-                        <span className="px-2.5 py-1 rounded-md bg-white border border-[#EA580C]/30 text-[11px] font-semibold text-[#0A192F]">
+                        <span className="px-2.5 py-1 rounded-md bg-white border border-[#EA580C]/30 text-[11px] font-semibold text-[#002D61]">
                           Collegiate Athlete Alum
                         </span>
                       </div>
@@ -120,7 +124,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
               <div className="bg-[#F5EFE6] border border-[#EA580C]/30 rounded-2xl p-6 sm:p-8 mt-8">
                 <div className="flex items-center gap-2 mb-5">
                   <Sparkles className="w-4 h-4 text-[#EA580C]" />
-                  <h3 className="font-serif text-base sm:text-lg font-bold text-[#0A192F]">
+                  <h3 className="font-serif text-base sm:text-lg font-bold text-[#002D61]">
                     Key Takeaways & Differentiators
                   </h3>
                 </div>
@@ -148,7 +152,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                   </span>
                 </div>
 
-                <h3 className="font-serif text-xl font-bold text-[#0A192F] mb-2">
+                <h3 className="font-serif text-xl font-bold text-[#002D61] mb-2">
                   Cancel-Anytime Listing Pledge
                 </h3>
                 <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed mb-5">
@@ -162,7 +166,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                     <span className="text-[9px] uppercase font-sans font-bold tracking-widest text-[#EA580C] block">
                       Personal Signature Pledge
                     </span>
-                    <span className="font-serif text-sm font-bold text-[#0A192F] block">
+                    <span className="font-serif text-sm font-bold text-[#002D61] block">
                       Brian Jamison
                     </span>
                     <span className="text-[10px] text-[#6B7280]">
@@ -171,7 +175,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                   </div>
                 </div>
 
-                <div className="p-3 rounded-xl bg-[#FAF9F6] border border-[#EA580C]/30 text-xs text-[#0A192F] font-medium flex items-center justify-between mb-5">
+                <div className="p-3 rounded-xl bg-[#FAF9F6] border border-[#EA580C]/30 text-xs text-[#002D61] font-medium flex items-center justify-between mb-5">
                   <span>Contract Termination Fee:</span>
                   <span className="font-serif font-bold text-[#EA580C]">$0.00 Guaranteed</span>
                 </div>
@@ -191,7 +195,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                   <span className="text-[10px] uppercase font-sans font-bold tracking-widest text-[#EA580C] block">
                     Direct Representation
                   </span>
-                  <span className="font-serif text-base font-bold text-[#0A192F] block">
+                  <span className="font-serif text-base font-bold text-[#002D61] block">
                     {BROKER_INFO.name}
                   </span>
                   <a
@@ -208,40 +212,199 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
         </div>
       </section>
 
-      {/* 3. Deliverables Matrix (For Services / Audience Pages) */}
+      {/* 3. Deliverables Matrix (For Services / Audience Pages / Standards) */}
       {page.deliverables && page.deliverables.length > 0 && (
-        <section className="w-full py-16 sm:py-24 bg-[#F5EFE6] border-b border-[#EA580C]/30">
+        <section id="systematic-standards" className="w-full py-16 sm:py-24 bg-[#F5EFE6] border-b border-[#EA580C]/30">
           <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
-            <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-              <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-2">
-                Execution Deliverables
-              </span>
-              <h2 className="font-serif text-2xl sm:text-4xl font-bold text-[#0A192F]">
+            {/* 10-Step Standards Quick Switcher (Always available on Standards & Blueprint pages) */}
+            <div className="mb-12 p-4 sm:p-5 rounded-2xl bg-[#002D61] text-white shadow-lg border border-white/15">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#EA580C] animate-pulse" />
+                  <span className="text-[11px] font-sans font-bold tracking-[0.2em] uppercase text-white">
+                    The 10-Step Transformation Protocol
+                  </span>
+                </div>
+                <span className="text-xs text-stone-300">
+                  Select any standard to inspect what we do to your property
+                </span>
+              </div>
+
+              {/* Horizontal Scroll / Grid of 10 Standards */}
+              <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-10 gap-2">
+                {LISTING_STANDARDS_DATA.map((std) => {
+                  const isCurrent = page.id === std.id || page.slug === std.slug;
+                  return (
+                    <button
+                      key={std.id}
+                      type="button"
+                      onClick={() => onNavigate(std.slug)}
+                      className={`p-2.5 rounded-xl text-left transition-all duration-200 cursor-pointer flex flex-col justify-between ${
+                        isCurrent
+                          ? 'bg-[#EA580C] text-white font-bold shadow-md scale-102 ring-2 ring-white/50'
+                          : 'bg-white/10 hover:bg-white/20 text-white/90 border border-white/10'
+                      }`}
+                    >
+                      <span className="text-[10px] font-sans font-bold tracking-wider block opacity-90">
+                        {std.stepNumber}
+                      </span>
+                      <span className="text-[11px] font-serif font-semibold leading-tight line-clamp-2 mt-1">
+                        {std.title.split(' ')[0]} {std.title.split(' ')[1]}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+              <div className="inline-flex items-center gap-2 mb-2 px-3 py-1 rounded-full bg-white border border-[#EA580C]/30 text-xs font-semibold text-[#EA580C]">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span className="tracking-[0.25em] uppercase font-sans">
+                  Execution Deliverables & Standards
+                </span>
+              </div>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#002D61] tracking-tight">
                 Systematic Roadmap & Standards
               </h2>
-              <p className="font-sans text-sm sm:text-base text-[#6B7280] mt-2">
-                Every deliverable below is executed with precision, audited contract timelines, and dedicated staff.
+              <p className="font-sans text-sm sm:text-base text-[#4B5563] mt-3 leading-relaxed">
+                Here is the exact visual transformation and marketing machine deployed for your property. We don't just put a sign in the yard; we execute each of these standards to maximize your net proceeds.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {page.deliverables.map((item, idx) => (
                 <div
                   key={idx}
-                  className="bg-white border border-[#EA580C]/30 rounded-2xl p-6 shadow-2xs hover:shadow-md hover:border-[#EA580C]/40 transition-all duration-200"
+                  className="group bg-white border-2 border-[#EA580C]/25 rounded-2xl overflow-hidden shadow-xs hover:shadow-xl hover:border-[#EA580C] transition-all duration-300 flex flex-col justify-between"
                 >
-                  <div className="w-8 h-8 rounded-lg bg-[#FAF9F6] border border-[#EA580C]/30 flex items-center justify-center text-[#EA580C] mb-4 font-serif font-bold text-sm">
-                    {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
+                  <div>
+                    {/* Visual Graphic Header with High-Resolution Photography */}
+                    <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-[#002D61]">
+                      {item.image ? (
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-[#002D61] to-[#001D40] flex items-center justify-center text-white">
+                          <Sparkles className="w-10 h-10 text-[#FB923C]" />
+                        </div>
+                      )}
+
+                      {/* Scrim Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#001D40]/92 via-[#002D61]/40 to-transparent" />
+
+                      {/* Badges on Graphic */}
+                      <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
+                        <span className="px-2.5 py-1 rounded-md text-[10px] font-sans font-bold uppercase tracking-wider bg-[#002D61]/90 backdrop-blur-md text-white border border-white/20">
+                          {idx + 1 < 10 ? `Step 0${idx + 1}` : `Step ${idx + 1}`}
+                        </span>
+                        {item.badge && (
+                          <span className="px-2.5 py-1 rounded-md text-[10px] font-sans font-bold bg-[#EA580C] text-white shadow-xs">
+                            {item.badge}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Title on Graphic bottom in Crisp White */}
+                      <div className="absolute bottom-3 left-3 right-3">
+                        <h3 className="font-serif text-lg font-bold !text-white leading-snug drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                          {item.title}
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Card Content Body */}
+                    <div className="p-5 sm:p-6 space-y-3.5">
+                      <p className="font-sans text-xs sm:text-sm text-[#4B5563] leading-relaxed">
+                        {item.desc}
+                      </p>
+
+                      {/* What We Do to Your Property Callout */}
+                      {item.executionDetail && (
+                        <div className="p-3.5 rounded-xl bg-[#FAF9F6] border border-[#EA580C]/25 text-xs text-[#002D61]">
+                          <span className="text-[10px] uppercase font-sans font-bold tracking-wider text-[#EA580C] block mb-1 flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
+                            What We Do To Your Property
+                          </span>
+                          <p className="text-xs text-[#374151] leading-relaxed">
+                            {item.executionDetail}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Seller Impact & Value */}
+                      {item.sellerImpact && (
+                        <div className="flex items-start gap-2 pt-1 text-xs text-[#4B5563]">
+                          <CheckCircle2 className="w-4 h-4 text-[#EA580C] shrink-0 mt-0.5" />
+                          <span className="leading-snug">
+                            <strong className="text-[#002D61]">Seller Benefit: </strong>
+                            {item.sellerImpact}
+                          </span>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                  <h3 className="font-serif text-base sm:text-lg font-bold text-[#0A192F] mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="font-sans text-xs sm:text-sm text-[#6B7280] leading-relaxed">
-                    {item.desc}
-                  </p>
+
+                  {/* Card Bottom CTA Link */}
+                  <div className="p-5 sm:p-6 pt-0">
+                    {item.slug ? (
+                      <button
+                        type="button"
+                        onClick={() => onNavigate(item.slug!)}
+                        className="w-full py-2.5 px-4 rounded-xl bg-[#FAF9F6] hover:bg-[#002D61] text-[#002D61] hover:text-white border border-[#002D61]/20 hover:border-[#002D61] text-xs font-semibold tracking-wide transition-all duration-200 flex items-center justify-between cursor-pointer group/btn"
+                      >
+                        <span>Explore Standard Subpage</span>
+                        <ArrowRight className="w-3.5 h-3.5 text-[#EA580C] group-hover/btn:text-white group-hover/btn:translate-x-1 transition-all" />
+                      </button>
+                    ) : (
+                      <div className="flex items-center justify-between text-[11px] text-[#6B7280] pt-2 border-t border-[#EA580C]/20">
+                        <span className="font-medium text-[#EA580C]">Standard Execution Protocol</span>
+                        <span>Included 100%</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
+
+            {/* Next Standard in Sequence Bar (For standard pages) */}
+            {(() => {
+              const currentStdIndex = LISTING_STANDARDS_DATA.findIndex(
+                (s) => s.id === page.id || s.slug === page.slug
+              );
+              if (currentStdIndex >= 0) {
+                const nextStd = LISTING_STANDARDS_DATA[(currentStdIndex + 1) % LISTING_STANDARDS_DATA.length];
+                return (
+                  <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-white border border-[#EA580C]/30 shadow-md flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div>
+                      <span className="text-[10px] uppercase font-sans font-bold tracking-[0.2em] text-[#EA580C] block mb-1">
+                        Next Standard in the Sequence
+                      </span>
+                      <h4 className="font-serif text-xl sm:text-2xl font-bold text-[#002D61]">
+                        {nextStd.stepNumber}: {nextStd.title}
+                      </h4>
+                      <p className="text-xs sm:text-sm text-[#6B7280] mt-1 max-w-xl">
+                        {nextStd.desc}
+                      </p>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => onNavigate(nextStd.slug)}
+                      className="px-6 py-3.5 bg-[#002D61] hover:bg-[#EA580C] text-white rounded-xl text-xs font-semibold tracking-wider uppercase transition-all duration-300 shadow-md cursor-pointer flex items-center gap-2 shrink-0"
+                    >
+                      <span>Explore {nextStd.stepNumber}</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                );
+              }
+              return null;
+            })()}
           </div>
         </section>
       )}
@@ -259,7 +422,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                     Education & Feeder Zones
                   </span>
                 </div>
-                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0A192F] mb-6">
+                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#002D61] mb-6">
                   Top-Performing Local Schools
                 </h2>
                 <div className="space-y-4">
@@ -269,7 +432,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                       className="p-4 sm:p-5 rounded-xl bg-white border border-[#EA580C]/30 flex items-center justify-between shadow-2xs"
                     >
                       <div>
-                        <h4 className="font-serif text-base font-bold text-[#0A192F]">
+                        <h4 className="font-serif text-base font-bold text-[#002D61]">
                           {school.name}
                         </h4>
                         <span className="text-xs text-[#6B7280]">
@@ -292,7 +455,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                     Area Culture & Amenities
                   </span>
                 </div>
-                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0A192F] mb-6">
+                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#002D61] mb-6">
                   Lifestyle Highlights
                 </h2>
                 {page.lifestyleHighlights && (
@@ -313,18 +476,18 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
         </section>
       )}
 
-      {/* 5. Embedded Media & Interactive Virtual Tour Suite (Videos 2 & 3 + Matterport) */}
-      <InteriorMediaTour
-        title={`Virtual Tour & 4K Drone Suite · ${page.title}`}
-        matterportTitle={`${page.title} — Matterport Pro3 Spatial Scan`}
-      />
+      {/* 5. Embedded Media & Interactive Virtual Tour Suite: Rendered ONLY on Community pages to keep standards pages clean */}
+      {page.category === 'community' && (
+        <InteriorMediaTour
+          title={`Virtual Tour & 4K Drone Suite · ${page.title}`}
+          matterportTitle={`${page.title} — Matterport Pro3 Spatial Scan`}
+        />
+      )}
 
-      {/* 6. Curated 12-Image Visual Portfolio & Before/After Staging Slider */}
-      <InteriorGallery
-        title={`Architectural Portfolio · ${page.title}`}
-        subtitle="12 high-resolution editorial captures demonstrating interior light, luxury finishes, and curb appeal."
-        images={page.images}
-      />
+      {/* Philosophy & Athletic Ethos Section (Dedicated for About Page) */}
+      {page.id === 'about' && (
+        <PhilosophySection onOpenConsultation={onOpenConsultation} />
+      )}
 
       {/* 7. Bottom Call to Action Banner */}
       <section className="w-full py-16 sm:py-24 bg-[#FAF9F6] border-t border-[#EA580C]/30">
@@ -333,7 +496,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
             <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-2">
               Ready to Take Action?
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#0A192F] mb-4">
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#002D61] mb-4">
               Schedule A Private Strategy Session
             </h2>
             <p className="font-sans text-sm sm:text-base text-[#6B7280] mb-8">
@@ -351,7 +514,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
               <button
                 type="button"
                 onClick={onOpenValuation}
-                className="px-8 py-4 bg-white hover:bg-[#F5EFE6] text-[#0A192F] border border-[#EA580C]/30 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 shadow-xs cursor-pointer"
+                className="px-8 py-4 bg-white hover:bg-[#F5EFE6] text-[#002D61] border border-[#EA580C]/30 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 shadow-xs cursor-pointer"
               >
                 Request 3-Tier Valuation
               </button>

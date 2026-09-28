@@ -119,12 +119,12 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
   };
 
   const phaseTabLabels = [
-    "01 MEDIA SUITE",
-    "02 COMMUNICATION",
-    "03 24/7 ACCESS",
-    "04 TEAM SUPPORT",
-    "05 PRICING STRATEGY",
-    "06 CANCEL-ANYTIME PLEDGE"
+    "MEDIA SUITE",
+    "COMMUNICATION",
+    "24/7 ACCESS",
+    "TEAM SUPPORT",
+    "PRICING STRATEGY",
+    "CANCEL-ANYTIME PLEDGE"
   ];
 
   return (
@@ -135,11 +135,11 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
-              <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-semibold text-[#EA580C]">
+              <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-bold text-[#EA580C]">
                 The Proprietary Core Mechanism
               </span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] font-medium tracking-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] font-bold tracking-tight">
               The 6-Step Seller Blueprint
             </h2>
             <p className="font-sans text-sm sm:text-base text-[#6B7280] leading-relaxed mt-3">
@@ -294,10 +294,10 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
               {currentPhaseIndex === 0 ? (
                 <div className="mb-6 rounded-xl overflow-hidden border border-[#EA580C]/30 bg-[#002D61] text-white">
                   {/* Tour Header Bar */}
-                  <div className="px-4 py-3 bg-[#002D61] border-b border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs">
+                  <div className="px-4 py-3 bg-[#002D61] border-b border-white/15 flex flex-wrap items-center justify-between gap-2 text-xs">
                     <div className="flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      <span className="font-sans font-medium tracking-wide uppercase text-[11px] text-stone-200">
+                      <span className="font-sans font-bold tracking-wide uppercase text-[11px] text-white">
                         Matterport 3D Interactive Walkthrough · Nichols Hills Listing
                       </span>
                     </div>
@@ -306,8 +306,8 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                       <button
                         type="button"
                         onClick={() => setViewMode('3d')}
-                        className={`px-2.5 py-1 rounded text-[10px] uppercase font-medium transition-colors ${
-                          viewMode === '3d' ? 'bg-[#EA580C] text-[#002D61] font-bold' : 'text-stone-300 hover:text-white'
+                        className={`px-2.5 py-1 rounded text-[10px] uppercase font-bold transition-colors ${
+                          viewMode === '3d' ? 'bg-[#EA580C] text-white' : 'text-stone-200 hover:text-white'
                         }`}
                       >
                         3D Walkthrough
@@ -315,8 +315,8 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                       <button
                         type="button"
                         onClick={() => setViewMode('dollhouse')}
-                        className={`px-2.5 py-1 rounded text-[10px] uppercase font-medium transition-colors ${
-                          viewMode === 'dollhouse' ? 'bg-[#EA580C] text-[#002D61] font-bold' : 'text-stone-300 hover:text-white'
+                        className={`px-2.5 py-1 rounded text-[10px] uppercase font-bold transition-colors ${
+                          viewMode === 'dollhouse' ? 'bg-[#EA580C] text-white' : 'text-stone-200 hover:text-white'
                         }`}
                       >
                         Dollhouse View
@@ -324,8 +324,8 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                       <button
                         type="button"
                         onClick={() => setViewMode('aerial')}
-                        className={`px-2.5 py-1 rounded text-[10px] uppercase font-medium transition-colors ${
-                          viewMode === 'aerial' ? 'bg-[#EA580C] text-[#002D61] font-bold' : 'text-stone-300 hover:text-white'
+                        className={`px-2.5 py-1 rounded text-[10px] uppercase font-bold transition-colors ${
+                          viewMode === 'aerial' ? 'bg-[#EA580C] text-white' : 'text-stone-200 hover:text-white'
                         }`}
                       >
                         Drone Aerial
@@ -340,21 +340,21 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                       alt={VIRTUAL_ROOMS[activeRoomIndex].name}
                       className="w-full h-full object-cover transition-all duration-700 group-hover:scale-103"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
 
                     {/* Room Overlay Details */}
                     <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                       <div>
-                        <span className="text-[10px] uppercase tracking-wider text-[#FB923C] block font-sans font-semibold drop-shadow-xs">
+                        <span className="text-[10px] uppercase tracking-wider text-[#FB923C] block font-sans font-bold drop-shadow-xs">
                           Active Virtual Hotspot
                         </span>
                         <h4
-                          style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0, 0, 0, 0.6)' }}
-                          className="font-serif text-lg sm:text-xl !text-white font-medium drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
+                          style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0, 0, 0, 0.8)' }}
+                          className="font-serif text-lg sm:text-xl !text-white font-bold drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
                         >
                           {VIRTUAL_ROOMS[activeRoomIndex].name}
                         </h4>
-                        <p className="text-xs text-stone-200 max-w-md hidden sm:block drop-shadow-xs">
+                        <p className="text-xs !text-white font-medium max-w-md hidden sm:block drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
                           {VIRTUAL_ROOMS[activeRoomIndex].detail}
                         </p>
                       </div>
@@ -362,7 +362,7 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                       <button
                         type="button"
                         onClick={() => onOpenMethodModal(0)}
-                        className="p-2.5 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md text-white transition-all cursor-pointer hover:scale-105"
+                        className="p-2.5 rounded-full bg-black/50 hover:bg-white/30 backdrop-blur-md text-white transition-all cursor-pointer hover:scale-105 shadow-md"
                         title="Expand Full Screen"
                       >
                         <Maximize2 className="w-4 h-4" />
@@ -519,8 +519,7 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
 
         {/* 
           Horizontal Phase Navigation Tabs (Segmented Controller):
-          Allow direct one-click jump to any phase.
-          Visitors easily understand each phase at a glance without feeling lost.
+          Clean titles without numbering, with smooth spring hover-lift and active pulse animations
         */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
           {phaseTabLabels.map((label, idx) => {
@@ -530,13 +529,16 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                 key={idx}
                 type="button"
                 onClick={() => setCurrentPhaseIndex(idx)}
-                className={`py-3.5 px-3 text-[11px] font-sans tracking-wider uppercase text-center rounded-xl border transition-all duration-200 cursor-pointer truncate ${
+                className={`py-3.5 px-3 text-[11px] font-sans tracking-wider uppercase text-center rounded-xl border transition-all duration-300 cursor-pointer truncate relative overflow-hidden group flex items-center justify-center gap-1.5 active:scale-95 ${
                   isSelected
-                    ? 'bg-[#EA580C] text-white font-bold border-2 border-[#EA580C] shadow-md shadow-orange-600/25 -translate-y-0.5'
-                    : 'bg-[#FAF9F6] text-[#6B7280] hover:text-[#002D61] border border-[#EA580C]/30 hover:border-[#EA580C] hover:bg-white'
+                    ? 'bg-[#EA580C] text-white font-bold border-2 border-[#EA580C] shadow-lg shadow-orange-600/30 -translate-y-1 scale-[1.02] ring-2 ring-orange-400/30'
+                    : 'bg-[#FAF9F6] text-[#6B7280] hover:text-[#002D61] border border-[#EA580C]/30 hover:border-[#EA580C] hover:bg-white hover:-translate-y-0.5 hover:shadow-md'
                 }`}
               >
-                {label}
+                {isSelected && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse shrink-0" />
+                )}
+                <span>{label}</span>
               </button>
             );
           })}

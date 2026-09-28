@@ -7,7 +7,7 @@ import {
   Compass,
   Building,
   Shield,
-  HelpCircle,
+  ArrowRight,
   ArrowUpRight,
   Sparkles
 } from 'lucide-react';
@@ -33,24 +33,38 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 14, scale: 0.985 }}
+      initial={{ opacity: 0, y: -10, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: 10, scale: 0.985 }}
-      transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-      className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 w-[820px] max-w-[95vw] z-50 pointer-events-auto"
+      exit={{ opacity: 0, y: -8, scale: 0.98 }}
+      transition={{ type: 'spring', damping: 25, stiffness: 350 }}
+      className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 w-[840px] max-w-[95vw] z-50 pointer-events-auto"
     >
-      <div className="bg-[#FAF9F6]/95 backdrop-blur-2xl border border-[#EA580C]/30 rounded-2xl p-7 shadow-2xl shadow-[#0A192F]/10 text-[#0A192F]">
-        <div className="grid grid-cols-2 gap-8">
+      {/* 
+        Glossy Primary Royal Navy Glass Container:
+        - Reflects brand primary #002D61 & midnight #001D40
+        - Multi-layer frosted glass backdrop (backdrop-blur-2xl)
+        - Top specular highlight bar
+        - Ambient radial glow reflections
+      */}
+      <div className="relative rounded-2xl p-7 bg-gradient-to-b from-[#002D61]/95 via-[#001D40]/95 to-[#00142C]/98 backdrop-blur-2xl border border-white/20 shadow-2xl shadow-[#00142C]/70 text-white overflow-hidden">
+        {/* Specular Top Edge Gloss Highlight */}
+        <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none" />
+
+        {/* Ambient Primary Glow Spheres */}
+        <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-blue-500/20 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[#EA580C]/15 blur-3xl pointer-events-none" />
+
+        <div className="relative z-10 grid grid-cols-2 gap-8">
           {/* Seller Resources */}
           <div>
-            <div className="flex items-center gap-2 mb-3 pb-2 border-b border-[#EA580C]/30">
-              <Sparkles className="w-4 h-4 text-[#EA580C]" />
-              <span className="font-serif text-sm font-bold text-[#0A192F]">
+            <div className="flex items-center gap-2 mb-3.5 pb-2.5 border-b border-white/15">
+              <Sparkles className="w-4 h-4 text-[#FB923C] animate-pulse" />
+              <span className="font-serif text-sm font-bold text-white tracking-wide">
                 Seller Intelligence & Playbooks
               </span>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               <button
                 type="button"
                 onClick={() => {
@@ -61,17 +75,17 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                     onOpenValuation();
                   }
                 }}
-                className="w-full text-left p-3 rounded-xl bg-white hover:bg-[#F5EFE6] border border-[#EA580C]/30 transition-all flex items-start gap-3 group cursor-pointer"
+                className="w-full text-left p-3.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 hover:border-white/30 backdrop-blur-md transition-all duration-300 flex items-start gap-3.5 group cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-0.5"
               >
-                <div className="p-2 rounded-lg bg-[#FAF9F6] border border-[#EA580C]/30 text-[#EA580C] group-hover:bg-white">
+                <div className="p-2.5 rounded-lg bg-white/10 border border-white/15 text-[#FB923C] group-hover:bg-[#EA580C] group-hover:text-white group-hover:scale-110 transition-all duration-300 shrink-0">
                   <Calculator className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="font-serif text-sm font-semibold text-[#0A192F] group-hover:text-[#EA580C] transition-colors block">
+                  <span className="font-serif text-sm font-bold text-white group-hover:text-[#FB923C] transition-colors block">
                     Instant CMA Valuation Tool
                   </span>
-                  <span className="text-[11px] text-[#6B7280]">
-                    3-tier pricing breakdown for Oklahoma City homes.
+                  <span className="text-[11px] text-stone-300 leading-snug block mt-0.5">
+                    3-tier pricing breakdown calibrated for Oklahoma City homes.
                   </span>
                 </div>
               </button>
@@ -86,16 +100,16 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                     onOpenChecklist();
                   }
                 }}
-                className="w-full text-left p-3 rounded-xl bg-white hover:bg-[#F5EFE6] border border-[#EA580C]/30 transition-all flex items-start gap-3 group cursor-pointer"
+                className="w-full text-left p-3.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 hover:border-white/30 backdrop-blur-md transition-all duration-300 flex items-start gap-3.5 group cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-0.5"
               >
-                <div className="p-2 rounded-lg bg-[#FAF9F6] border border-[#EA580C]/30 text-[#EA580C] group-hover:bg-white">
+                <div className="p-2.5 rounded-lg bg-white/10 border border-white/15 text-[#FB923C] group-hover:bg-[#EA580C] group-hover:text-white group-hover:scale-110 transition-all duration-300 shrink-0">
                   <FileText className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="font-serif text-sm font-semibold text-[#0A192F] group-hover:text-[#EA580C] transition-colors block">
+                  <span className="font-serif text-sm font-bold text-white group-hover:text-[#FB923C] transition-colors block">
                     28-Point Pre-Listing Checklist (PDF)
                   </span>
-                  <span className="text-[11px] text-[#6B7280]">
+                  <span className="text-[11px] text-stone-300 leading-snug block mt-0.5">
                     Highest ROI home preparation checklist before listing.
                   </span>
                 </div>
@@ -111,17 +125,17 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                     onOpenChapter('expired-listings');
                   }
                 }}
-                className="w-full text-left p-3 rounded-xl bg-white hover:bg-[#F5EFE6] border border-[#EA580C]/30 transition-all flex items-start gap-3 group cursor-pointer"
+                className="w-full text-left p-3.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 hover:border-white/30 backdrop-blur-md transition-all duration-300 flex items-start gap-3.5 group cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-0.5"
               >
-                <div className="p-2 rounded-lg bg-[#FAF9F6] border border-[#EA580C]/30 text-[#EA580C] group-hover:bg-white">
+                <div className="p-2.5 rounded-lg bg-white/10 border border-white/15 text-[#FB923C] group-hover:bg-[#EA580C] group-hover:text-white group-hover:scale-110 transition-all duration-300 shrink-0">
                   <Compass className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="font-serif text-sm font-semibold text-[#0A192F] group-hover:text-[#EA580C] transition-colors block">
+                  <span className="font-serif text-sm font-bold text-white group-hover:text-[#FB923C] transition-colors block">
                     Expired Listing Turnaround Protocol
                   </span>
-                  <span className="text-[11px] text-[#6B7280]">
-                    Why failed listings close in under 21 days with Brian.
+                  <span className="text-[11px] text-stone-300 leading-snug block mt-0.5">
+                    Why failed listings close in under 21 days with Brian Jamison.
                   </span>
                 </div>
               </button>
@@ -130,14 +144,14 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
 
           {/* Buyer & Advisory Tools */}
           <div>
-            <div className="flex items-center gap-2 mb-3 pb-2 border-b border-[#EA580C]/30">
-              <Building className="w-4 h-4 text-[#EA580C]" />
-              <span className="font-serif text-sm font-bold text-[#0A192F]">
+            <div className="flex items-center gap-2 mb-3.5 pb-2.5 border-b border-white/15">
+              <Building className="w-4 h-4 text-[#FB923C]" />
+              <span className="font-serif text-sm font-bold text-white tracking-wide">
                 Buyer Concierge & Relocation
               </span>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               <button
                 type="button"
                 onClick={() => {
@@ -148,16 +162,16 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                     onOpenCalculator();
                   }
                 }}
-                className="w-full text-left p-3 rounded-xl bg-white hover:bg-[#F5EFE6] border border-[#EA580C]/30 transition-all flex items-start gap-3 group cursor-pointer"
+                className="w-full text-left p-3.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 hover:border-white/30 backdrop-blur-md transition-all duration-300 flex items-start gap-3.5 group cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-0.5"
               >
-                <div className="p-2 rounded-lg bg-[#FAF9F6] border border-[#EA580C]/30 text-[#EA580C] group-hover:bg-white">
+                <div className="p-2.5 rounded-lg bg-white/10 border border-white/15 text-[#FB923C] group-hover:bg-[#EA580C] group-hover:text-white group-hover:scale-110 transition-all duration-300 shrink-0">
                   <Calculator className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="font-serif text-sm font-semibold text-[#0A192F] group-hover:text-[#EA580C] transition-colors block">
+                  <span className="font-serif text-sm font-bold text-white group-hover:text-[#FB923C] transition-colors block">
                     OKC Mortgage & Affordability Calculator
                   </span>
-                  <span className="text-[11px] text-[#6B7280]">
+                  <span className="text-[11px] text-stone-300 leading-snug block mt-0.5">
                     Includes real Oklahoma county property tax rates & insurance.
                   </span>
                 </div>
@@ -173,17 +187,17 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                     onOpenChapter('private-estates');
                   }
                 }}
-                className="w-full text-left p-3 rounded-xl bg-white hover:bg-[#F5EFE6] border border-[#EA580C]/30 transition-all flex items-start gap-3 group cursor-pointer"
+                className="w-full text-left p-3.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 hover:border-white/30 backdrop-blur-md transition-all duration-300 flex items-start gap-3.5 group cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-0.5"
               >
-                <div className="p-2 rounded-lg bg-[#FAF9F6] border border-[#EA580C]/30 text-[#EA580C] group-hover:bg-white">
+                <div className="p-2.5 rounded-lg bg-white/10 border border-white/15 text-[#FB923C] group-hover:bg-[#EA580C] group-hover:text-white group-hover:scale-110 transition-all duration-300 shrink-0">
                   <Shield className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="font-serif text-sm font-semibold text-[#0A192F] group-hover:text-[#EA580C] transition-colors block">
+                  <span className="font-serif text-sm font-bold text-white group-hover:text-[#FB923C] transition-colors block">
                     Private & Discreet Estates
                   </span>
-                  <span className="text-[11px] text-[#6B7280]">
-                    Off-market syndication for Oklahoma luxury estates.
+                  <span className="text-[11px] text-stone-300 leading-snug block mt-0.5">
+                    Off-market syndication for high-net-worth Oklahoma luxury estates.
                   </span>
                 </div>
               </button>
@@ -198,14 +212,16 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                     onOpenConsultation();
                   }
                 }}
-                className="w-full text-left p-3 rounded-xl bg-white hover:bg-[#F5EFE6] border border-[#EA580C]/30 transition-all flex items-start gap-3 group cursor-pointer"
+                className="w-full text-left p-3.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 hover:border-white/30 backdrop-blur-md transition-all duration-300 flex items-start gap-3.5 group cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-0.5"
               >
-                <BrianAvatar size={36} showStatusDot={true} alt="Brian Jamison - Direct Consultation" />
+                <div className="shrink-0 mt-0.5">
+                  <BrianAvatar size={38} showStatusDot={true} alt="Brian Jamison - Direct Consultation" />
+                </div>
                 <div>
-                  <span className="font-serif text-sm font-semibold text-[#0A192F] group-hover:text-[#EA580C] transition-colors block">
+                  <span className="font-serif text-sm font-bold text-white group-hover:text-[#FB923C] transition-colors block">
                     Direct Consultation Booking
                   </span>
-                  <span className="text-[11px] text-[#6B7280]">
+                  <span className="text-[11px] text-stone-300 leading-snug block mt-0.5">
                     Schedule a private strategy meeting at Salt Corporate Office.
                   </span>
                 </div>
@@ -215,7 +231,7 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
         </div>
 
         {/* Bottom Banner */}
-        <div className="mt-6 pt-4 border-t border-[#EA580C]/30 flex items-center justify-between text-xs text-[#6B7280]">
+        <div className="mt-6 pt-4 border-t border-white/15 flex items-center justify-between text-xs text-stone-200">
           <span>Corporate Office: 1508 W. Edmond Rd., Edmond, OK 73003</span>
           <button
             type="button"
@@ -223,10 +239,10 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
               onClose();
               onOpenConsultation();
             }}
-            className="font-medium text-[#EA580C] hover:text-[#C2410C] hover:underline cursor-pointer flex items-center gap-1"
+            className="font-semibold text-[#FB923C] hover:text-white hover:underline cursor-pointer flex items-center gap-1.5 transition-colors group"
           >
             <span>Book Private Strategy Session</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </button>
         </div>
       </div>

@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: "Playfair Display", Georgia, serif;
-  --font-sans: "DM Sans", sans-serif;
+  --font-serif: "Manrope", sans-serif;
+  --font-sans: "Manrope", sans-serif;
+  --font-manrope: "Manrope", sans-serif;
   --color-canvas: #FAF9F6;
   --color-surface: #F5EFE6;
   --color-surface-subtle: #F5EFE6;
@@ -90,11 +91,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .font-serif {
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "Manrope", sans-serif;
 }
 
 .font-sans {
-  font-family: "DM Sans", -apple-system, sans-serif;
+  font-family: "Manrope", -apple-system, sans-serif;
 }
 
 /* Subtle editorial animations */
