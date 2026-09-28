@@ -18,7 +18,7 @@ export const MicroMarketsSection: React.FC<MicroMarketsSectionProps> = ({ onSele
           <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-semibold text-[#E5A93C] block mb-3">
             Oklahoma Market
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A192F] font-medium tracking-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] font-medium tracking-tight">
             21 Oklahoma City Micro-Markets
           </h2>
           <p className="font-sans text-sm sm:text-base text-[#6B7280] mt-3">
@@ -31,7 +31,7 @@ export const MicroMarketsSection: React.FC<MicroMarketsSectionProps> = ({ onSele
           {/* Column 1: Luxury & Historic */}
           <div>
             <div className="border-b border-[#E5A93C]/30 pb-3 mb-4">
-              <h3 className="font-serif text-lg font-bold text-[#0A192F] tracking-tight">
+              <h3 className="font-serif text-lg font-bold text-[#002D61] tracking-tight">
                 Luxury & Historic
               </h3>
               <span className="text-[10px] tracking-wider uppercase text-[#6B7280] font-sans">
@@ -45,7 +45,7 @@ export const MicroMarketsSection: React.FC<MicroMarketsSectionProps> = ({ onSele
                   <button
                     type="button"
                     onClick={() => onSelectMarket(market.id)}
-                    className="w-full text-left py-2.5 px-2 rounded-md hover:bg-[#F5EFE6] transition-colors flex items-center justify-between group cursor-pointer text-xs sm:text-sm text-[#0A192F]"
+                    className="w-full text-left py-2.5 px-2 rounded-md hover:bg-[#F5EFE6] transition-colors flex items-center justify-between group cursor-pointer text-xs sm:text-sm text-[#002D61]"
                   >
                     <span className="group-hover:text-[#E5A93C] transition-colors font-medium">
                       {market.name}
@@ -60,7 +60,7 @@ export const MicroMarketsSection: React.FC<MicroMarketsSectionProps> = ({ onSele
           {/* Column 2: North Metro & Edmond */}
           <div>
             <div className="border-b border-[#E5A93C]/30 pb-3 mb-4">
-              <h3 className="font-serif text-lg font-bold text-[#0A192F] tracking-tight">
+              <h3 className="font-serif text-lg font-bold text-[#002D61] tracking-tight">
                 North Metro & Edmond
               </h3>
               <span className="text-[10px] tracking-wider uppercase text-[#6B7280] font-sans">
@@ -74,7 +74,7 @@ export const MicroMarketsSection: React.FC<MicroMarketsSectionProps> = ({ onSele
                   <button
                     type="button"
                     onClick={() => onSelectMarket(market.id)}
-                    className="w-full text-left py-2.5 px-2 rounded-md hover:bg-[#F5EFE6] transition-colors flex items-center justify-between group cursor-pointer text-xs sm:text-sm text-[#0A192F]"
+                    className="w-full text-left py-2.5 px-2 rounded-md hover:bg-[#F5EFE6] transition-colors flex items-center justify-between group cursor-pointer text-xs sm:text-sm text-[#002D61]"
                   >
                     <span className="group-hover:text-[#E5A93C] transition-colors font-medium">
                       {market.name}
@@ -89,7 +89,7 @@ export const MicroMarketsSection: React.FC<MicroMarketsSectionProps> = ({ onSele
           {/* Column 3: West & South Metro */}
           <div>
             <div className="border-b border-[#E5A93C]/30 pb-3 mb-4">
-              <h3 className="font-serif text-lg font-bold text-[#0A192F] tracking-tight">
+              <h3 className="font-serif text-lg font-bold text-[#002D61] tracking-tight">
                 West & South Metro
               </h3>
               <span className="text-[10px] tracking-wider uppercase text-[#6B7280] font-sans">
@@ -103,7 +103,7 @@ export const MicroMarketsSection: React.FC<MicroMarketsSectionProps> = ({ onSele
                   <button
                     type="button"
                     onClick={() => onSelectMarket(market.id)}
-                    className="w-full text-left py-2.5 px-2 rounded-md hover:bg-[#F5EFE6] transition-colors flex items-center justify-between group cursor-pointer text-xs sm:text-sm text-[#0A192F]"
+                    className="w-full text-left py-2.5 px-2 rounded-md hover:bg-[#F5EFE6] transition-colors flex items-center justify-between group cursor-pointer text-xs sm:text-sm text-[#002D61]"
                   >
                     <span className="group-hover:text-[#E5A93C] transition-colors font-medium">
                       {market.name}

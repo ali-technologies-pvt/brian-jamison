@@ -31,7 +31,7 @@ export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChap
             <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-semibold text-[#EA580C] block mb-3">
               Tailored Strategy
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A192F] tracking-tight font-medium text-balance">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] tracking-tight font-medium text-balance">
               Which Chapter Are You Navigating?
             </h2>
           </div>
@@ -57,8 +57,8 @@ export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChap
                 key={chapter.id}
                 onMouseEnter={() => setActiveIndex(index)}
                 onClick={() => onSelectChapter(chapter.id)}
-                className={`relative rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] flex flex-col justify-end will-change-[flex-grow] ${
-                  isActive ? 'flex-[3.8]' : 'flex-1 hover:flex-[1.2]'
+                className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] flex flex-col justify-end will-change-[flex-grow] bg-[#002D61] border border-[#002D61]/30 ${
+                  isActive ? 'flex-[3.8] shadow-2xl' : 'flex-1 hover:flex-[1.2]'
                 }`}
               >
                 {/* Background Image with subtle zoom on active */}
@@ -70,19 +70,19 @@ export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChap
                   }}
                 />
 
-                {/* Dark Vignette Overlay for Crisp Readability */}
+                {/* Dark Vignette Overlay with rich #002D61 Royal Navy depth for crisp contrast */}
                 <div
                   className={`absolute inset-0 transition-opacity duration-700 ${
                     isActive
-                      ? 'bg-gradient-to-t from-black/92 via-black/55 to-black/25'
-                      : 'bg-black/65 hover:bg-black/50'
+                      ? 'bg-gradient-to-t from-[#002D61]/95 via-[#002D61]/65 to-black/35'
+                      : 'bg-[#002D61]/75 hover:bg-[#002D61]/60'
                   }`}
                 />
 
                 {/* Subtle border shine on active */}
                 <div
-                  className={`absolute inset-0 rounded-xl pointer-events-none transition-opacity duration-500 border ${
-                    isActive ? 'border-[#EA580C]/40' : 'border-transparent'
+                  className={`absolute inset-0 rounded-2xl pointer-events-none transition-opacity duration-500 border-2 ${
+                    isActive ? 'border-[#002D61] ring-1 ring-[#EA580C]/40' : 'border-transparent'
                   }`}
                 />
 
@@ -182,13 +182,13 @@ export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChap
               <div
                 key={chapter.id}
                 onClick={() => setActiveIndex(isActive ? -1 : index)}
-                className="relative rounded-xl overflow-hidden border border-[#EA580C]/30 shadow-xs cursor-pointer"
+                className="relative rounded-2xl overflow-hidden border-2 border-[#002D61] bg-[#002D61] shadow-md cursor-pointer"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center"
                   style={{ backgroundImage: `url(${bgImage})` }}
                 />
-                <div className="absolute inset-0 bg-black/80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#002D61]/95 via-[#002D61]/70 to-black/40" />
 
                 <div className="relative z-10 p-6 flex flex-col">
                   <div className="flex items-center justify-between mb-2">

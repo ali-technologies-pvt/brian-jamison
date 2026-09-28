@@ -6,23 +6,26 @@
   --color-canvas: #FAF9F6;
   --color-surface: #F5EFE6;
   --color-surface-subtle: #F5EFE6;
-  --color-navy: #0A192F;
-  --color-charcoal: #0A192F;
+  --color-navy: #002D61;
+  --color-navy-dark: #001D40;
+  --color-charcoal: #002D61;
   --color-slate-body: #6B7280;
   --color-orange: #EA580C;
   --color-orange-hover: #C2410C;
   --color-orange-light: #FB923C;
   --color-accent-orange: #EA580C;
   --color-accent-dark: #C2410C;
-  --color-border-hairline: rgba(234, 88, 12, 0.25);
+  --color-border-hairline: rgba(0, 45, 97, 0.15);
 }
 
 :root {
-  --color-primary-navy: #0A192F;
+  --color-primary-navy: #002D61;
+  --color-navy-dark: #001D40;
   --color-accent-orange: #EA580C;
   --color-accent-orange-hover: #C2410C;
   --color-bg-linen: #FAF9F6;
   --color-surface-sand: #F5EFE6;
+  --color-border-navy: rgba(0, 45, 97, 0.18);
   --color-border-orange: rgba(234, 88, 12, 0.25);
 }
 
@@ -33,14 +36,26 @@ html {
 body {
   font-family: var(--font-sans);
   background-color: #FAF9F6;
-  color: #0A192F;
+  color: #002D61;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Headings inherit by default (Midnight Navy on light canvas, White on dark overlays) */
+/* Headings inherit by default (Royal Navy on light canvas, White on dark overlays) */
 h1, h2, h3, h4, h5, h6 {
   color: inherit;
+}
+
+.bg-royal-navy {
+  background-color: #002D61;
+}
+
+.text-royal-navy {
+  color: #002D61;
+}
+
+.border-royal-navy {
+  border-color: #002D61;
 }
 
 .card-dark-heading {

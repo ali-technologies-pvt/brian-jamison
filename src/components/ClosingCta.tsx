@@ -16,7 +16,7 @@ export const ClosingCta: React.FC<ClosingCtaProps> = ({ onOpenConsultation }) =>
           <div className="inline-flex items-center gap-3 p-1.5 pr-4 rounded-full bg-white border border-[#EA580C]/30 shadow-2xs mb-5">
             <BrianAvatar size={40} showStatusDot={true} alt="Brian Jamison - Salt Real Estate" />
             <div className="text-left">
-              <span className="font-serif font-bold text-xs text-[#0A192F] block leading-tight">
+              <span className="font-serif font-bold text-xs text-[#002D61] block leading-tight">
                 Brian Jamison
               </span>
               <span className="text-[10px] uppercase font-sans font-semibold text-[#EA580C] tracking-wider block">
@@ -29,7 +29,7 @@ export const ClosingCta: React.FC<ClosingCtaProps> = ({ onOpenConsultation }) =>
             Bespoke Representation
           </span>
 
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A192F] font-medium tracking-tight mb-4 text-balance">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] font-medium tracking-tight mb-4 text-balance">
             Ready to Sell With Uncompromised Confidence?
           </h2>
 
@@ -49,9 +49,9 @@ export const ClosingCta: React.FC<ClosingCtaProps> = ({ onOpenConsultation }) =>
 
             <a
               href={`tel:${BROKER_INFO.phoneRaw}`}
-              className="w-full sm:w-auto px-8 py-4 text-xs font-semibold tracking-wide uppercase text-[#0A192F] bg-white hover:bg-[#F5EFE6] border border-[#EA580C]/30 rounded-xl transition-all shadow-sm hover:shadow-md cursor-pointer flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-4 text-xs font-semibold tracking-wide uppercase text-[#002D61] bg-white hover:bg-[#002D61] hover:text-white border-2 border-[#002D61] rounded-xl transition-all shadow-sm hover:shadow-lg cursor-pointer flex items-center justify-center gap-2 group"
             >
-              <Phone className="w-3.5 h-3.5 text-[#EA580C]" />
+              <Phone className="w-3.5 h-3.5 text-[#EA580C] group-hover:text-white transition-colors" />
               <span>{BROKER_INFO.phone}</span>
             </a>
           </div>

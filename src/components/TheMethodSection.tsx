@@ -139,7 +139,7 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                 The Proprietary Core Mechanism
               </span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A192F] font-medium tracking-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] font-medium tracking-tight">
               The 6-Step Seller Blueprint
             </h2>
             <p className="font-sans text-sm sm:text-base text-[#6B7280] leading-relaxed mt-3">
@@ -155,18 +155,18 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
               <button
                 type="button"
                 onClick={prevPhase}
-                className="p-2 rounded-md hover:bg-[#FAF9F6] text-[#0A192F] hover:text-[#EA580C] transition-colors cursor-pointer"
+                className="p-2 rounded-md hover:bg-[#FAF9F6] text-[#002D61] hover:text-[#EA580C] transition-colors cursor-pointer"
                 aria-label="Previous Phase"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="px-2 text-xs font-semibold tabular-nums text-[#0A192F]">
+              <span className="px-2 text-xs font-semibold tabular-nums text-[#002D61]">
                 Phase {currentPhaseIndex + 1} of 6
               </span>
               <button
                 type="button"
                 onClick={nextPhase}
-                className="p-2 rounded-md hover:bg-[#FAF9F6] text-[#0A192F] hover:text-[#EA580C] transition-colors cursor-pointer"
+                className="p-2 rounded-md hover:bg-[#FAF9F6] text-[#002D61] hover:text-[#EA580C] transition-colors cursor-pointer"
                 aria-label="Next Phase"
               >
                 <ChevronRight className="w-4 h-4" />
@@ -188,7 +188,7 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                 <span className="text-xs uppercase tracking-[0.2em] font-sans font-semibold text-[#EA580C]">
                   Phase {phase.number} Roadmap
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-[#EA580C]/15 text-[#0A192F] text-[10px] uppercase font-bold tracking-wider border border-[#EA580C]/30">
+                <span className="px-2.5 py-0.5 rounded-full bg-[#EA580C]/15 text-[#002D61] text-[10px] uppercase font-bold tracking-wider border border-[#EA580C]/30">
                   Active Focus
                 </span>
               </div>
@@ -197,7 +197,7 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                 {phase.number}
               </span>
 
-              <h3 className="font-serif text-2xl sm:text-3xl text-[#0A192F] font-bold tracking-tight mb-4">
+              <h3 className="font-serif text-2xl sm:text-3xl text-[#002D61] font-bold tracking-tight mb-4">
                 {phase.title}
               </h3>
 
@@ -210,7 +210,7 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                 <span className="text-[10px] uppercase tracking-wider text-[#EA580C] font-bold block mb-1 font-sans">
                   The Seller Advantage
                 </span>
-                <p className="text-xs text-[#0A192F] leading-relaxed mb-3">
+                <p className="text-xs text-[#002D61] leading-relaxed mb-3">
                   {phase.tacticalImpact}
                 </p>
 
@@ -222,7 +222,7 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                       <span className="text-[9px] uppercase font-sans font-bold tracking-widest text-[#EA580C] block">
                         Direct Cell Access
                       </span>
-                      <p className="text-xs font-serif font-bold text-[#0A192F] leading-tight">
+                      <p className="text-xs font-serif font-bold text-[#002D61] leading-tight">
                         “You communicate directly with Brian, 7 days a week.”
                       </p>
                       <span className="text-[10px] text-[#6B7280]">
@@ -241,11 +241,11 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                         <span className="text-[9px] uppercase font-sans font-bold tracking-widest text-[#EA580C]">
                           Personal Pledge
                         </span>
-                        <span className="text-[9px] font-sans font-bold text-[#0A192F] bg-white px-2 py-0.5 rounded border border-[#EA580C]">
+                        <span className="text-[9px] font-sans font-bold text-[#002D61] bg-white px-2 py-0.5 rounded border border-[#EA580C]">
                           100% Risk-Free
                         </span>
                       </div>
-                      <p className="text-xs font-serif font-bold text-[#0A192F] leading-tight mt-0.5">
+                      <p className="text-xs font-serif font-bold text-[#002D61] leading-tight mt-0.5">
                         Cancel-Anytime Listing Guarantee
                       </p>
                       <span className="text-[10px] text-[#6B7280] block font-sans">
@@ -272,14 +272,14 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                 <button
                   type="button"
                   onClick={prevPhase}
-                  className="w-9 h-9 rounded-full border border-[#EA580C]/30 bg-white flex items-center justify-center text-[#0A192F] hover:text-[#EA580C] hover:border-[#EA580C] transition-all cursor-pointer shadow-xs"
+                  className="w-9 h-9 rounded-full border border-[#EA580C]/30 bg-white flex items-center justify-center text-[#002D61] hover:text-[#EA580C] hover:border-[#EA580C] transition-all cursor-pointer shadow-xs"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
                 <button
                   type="button"
                   onClick={nextPhase}
-                  className="w-9 h-9 rounded-full border border-[#EA580C]/30 bg-white flex items-center justify-center text-[#0A192F] hover:text-[#EA580C] hover:border-[#EA580C] transition-all cursor-pointer shadow-xs"
+                  className="w-9 h-9 rounded-full border border-[#EA580C]/30 bg-white flex items-center justify-center text-[#002D61] hover:text-[#EA580C] hover:border-[#EA580C] transition-all cursor-pointer shadow-xs"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
@@ -292,9 +292,9 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
             <div>
               {/* Media Module: Phase 1 features the 3D Matterport Interactive Tour, other phases feature rich visual proof */}
               {currentPhaseIndex === 0 ? (
-                <div className="mb-6 rounded-xl overflow-hidden border border-[#EA580C]/30 bg-[#0A192F] text-white">
+                <div className="mb-6 rounded-xl overflow-hidden border border-[#EA580C]/30 bg-[#002D61] text-white">
                   {/* Tour Header Bar */}
-                  <div className="px-4 py-3 bg-[#0A192F] border-b border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs">
+                  <div className="px-4 py-3 bg-[#002D61] border-b border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs">
                     <div className="flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                       <span className="font-sans font-medium tracking-wide uppercase text-[11px] text-stone-200">
@@ -307,7 +307,7 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                         type="button"
                         onClick={() => setViewMode('3d')}
                         className={`px-2.5 py-1 rounded text-[10px] uppercase font-medium transition-colors ${
-                          viewMode === '3d' ? 'bg-[#EA580C] text-[#0A192F] font-bold' : 'text-stone-300 hover:text-white'
+                          viewMode === '3d' ? 'bg-[#EA580C] text-[#002D61] font-bold' : 'text-stone-300 hover:text-white'
                         }`}
                       >
                         3D Walkthrough
@@ -316,7 +316,7 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                         type="button"
                         onClick={() => setViewMode('dollhouse')}
                         className={`px-2.5 py-1 rounded text-[10px] uppercase font-medium transition-colors ${
-                          viewMode === 'dollhouse' ? 'bg-[#EA580C] text-[#0A192F] font-bold' : 'text-stone-300 hover:text-white'
+                          viewMode === 'dollhouse' ? 'bg-[#EA580C] text-[#002D61] font-bold' : 'text-stone-300 hover:text-white'
                         }`}
                       >
                         Dollhouse View
@@ -325,7 +325,7 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                         type="button"
                         onClick={() => setViewMode('aerial')}
                         className={`px-2.5 py-1 rounded text-[10px] uppercase font-medium transition-colors ${
-                          viewMode === 'aerial' ? 'bg-[#EA580C] text-[#0A192F] font-bold' : 'text-stone-300 hover:text-white'
+                          viewMode === 'aerial' ? 'bg-[#EA580C] text-[#002D61] font-bold' : 'text-stone-300 hover:text-white'
                         }`}
                       >
                         Drone Aerial
@@ -371,8 +371,8 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                   </div>
 
                   {/* Room Quick-Switcher */}
-                  <div className="p-3 bg-[#071322] flex items-center gap-2 overflow-x-auto">
-                    <span className="text-[10px] uppercase tracking-wider text-[#EA580C] font-sans shrink-0 pl-1 font-bold">
+                  <div className="p-3 bg-[#002D61] flex items-center gap-2 overflow-x-auto border-t border-white/10">
+                    <span className="text-[10px] uppercase tracking-wider text-[#FB923C] font-sans shrink-0 pl-1 font-bold">
                       Jump Room:
                     </span>
                     {VIRTUAL_ROOMS.map((room, rIdx) => (
@@ -382,8 +382,8 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                         onClick={() => setActiveRoomIndex(rIdx)}
                         className={`px-3 py-1 text-xs rounded-full whitespace-nowrap transition-colors cursor-pointer ${
                           activeRoomIndex === rIdx
-                            ? 'bg-[#EA580C] text-[#0A192F] font-bold'
-                            : 'bg-white/10 hover:bg-white/15 text-stone-300'
+                            ? 'bg-[#EA580C] text-white font-bold shadow-xs'
+                            : 'bg-white/15 hover:bg-white/25 text-white'
                         }`}
                       >
                         {room.name}
@@ -402,7 +402,7 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                           <span>{visualCard.metricLabel}</span>
                         </div>
 
-                        <div className="font-serif text-3xl sm:text-4xl font-bold text-[#0A192F] mb-2 tracking-tight">
+                        <div className="font-serif text-3xl sm:text-4xl font-bold text-[#002D61] mb-2 tracking-tight">
                           {visualCard.metric}
                         </div>
 
@@ -416,7 +416,7 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                           <div className="flex items-center gap-3">
                             <BrianAvatar size={48} showStatusDot={true} alt="Brian Jamison - Cancel Anytime Signature" />
                             <div>
-                              <span className="font-serif font-bold text-sm text-[#0A192F] block">
+                              <span className="font-serif font-bold text-sm text-[#002D61] block">
                                 Brian Jamison
                               </span>
                               <span className="text-[10px] font-sans text-[#6B7280]">
@@ -424,7 +424,7 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                               </span>
                             </div>
                           </div>
-                          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#FAF9F6] border-2 border-[#EA580C] rounded-lg text-[11px] font-bold text-[#0A192F]">
+                          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#FAF9F6] border-2 border-[#EA580C] rounded-lg text-[11px] font-bold text-[#002D61]">
                             <ShieldCheck className="w-4 h-4 text-[#EA580C]" />
                             <span>Cancel-Anytime Pledge</span>
                           </div>
@@ -434,7 +434,7 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                           <div className="flex items-center gap-3">
                             <BrianAvatar size={48} alt="Brian Jamison - Direct Accessibility" />
                             <div>
-                              <span className="font-serif font-bold text-xs text-[#0A192F] block">
+                              <span className="font-serif font-bold text-xs text-[#002D61] block">
                                 Direct Advisor
                               </span>
                               <span className="text-[11px] font-sans text-[#6B7280]">
@@ -446,13 +446,13 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                             <span className="text-[10px] uppercase font-sans font-bold tracking-widest text-[#EA580C] block">
                               Availability
                             </span>
-                            <span className="text-xs font-semibold text-[#0A192F]">
+                            <span className="text-xs font-semibold text-[#002D61]">
                               7 Days / Week
                             </span>
                           </div>
                         </div>
                       ) : (
-                        <div className="pt-4 border-t border-[#EA580C]/30 flex items-center gap-2 text-xs text-[#0A192F] font-medium">
+                        <div className="pt-4 border-t border-[#EA580C]/30 flex items-center gap-2 text-xs text-[#002D61] font-medium">
                           <ShieldCheck className="w-4 h-4 text-[#EA580C]" />
                           <span>Enforced on 100% of Brian Jamison listings</span>
                         </div>
@@ -474,7 +474,7 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
               {/* Deliverables Checklist Grid */}
               <div className="border-t border-[#EA580C]/30 pt-6">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs uppercase tracking-wider font-sans font-semibold text-[#0A192F]">
+                  <span className="text-xs uppercase tracking-wider font-sans font-semibold text-[#002D61]">
                     Key Deliverables in Phase {phase.number}
                   </span>
                   <span className="text-xs text-[#6B7280]">
@@ -486,12 +486,12 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                   {phase.keyDeliverables.map((item, dIdx) => (
                     <div
                       key={dIdx}
-                      className="flex items-start gap-2.5 text-xs sm:text-sm text-[#0A192F] p-2 rounded-lg hover:bg-white transition-colors"
+                      className="flex items-start gap-2.5 text-xs sm:text-sm text-[#002D61] p-2 rounded-lg hover:bg-white transition-colors"
                     >
                       <span className="w-4 h-4 rounded-full bg-[#EA580C]/20 text-[#EA580C] flex items-center justify-center shrink-0 mt-0.5">
                         <Check className="w-2.5 h-2.5 stroke-[3]" />
                       </span>
-                      <span className="font-normal text-[#0A192F]">{item}</span>
+                      <span className="font-normal text-[#002D61]">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -533,7 +533,7 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                 className={`py-3.5 px-3 text-[11px] font-sans tracking-wider uppercase text-center rounded-xl border transition-all duration-200 cursor-pointer truncate ${
                   isSelected
                     ? 'bg-[#EA580C] text-white font-bold border-2 border-[#EA580C] shadow-md shadow-orange-600/25 -translate-y-0.5'
-                    : 'bg-[#FAF9F6] text-[#6B7280] hover:text-[#0A192F] border border-[#EA580C]/30 hover:border-[#EA580C] hover:bg-white'
+                    : 'bg-[#FAF9F6] text-[#6B7280] hover:text-[#002D61] border border-[#EA580C]/30 hover:border-[#EA580C] hover:bg-white'
                 }`}
               >
                 {label}

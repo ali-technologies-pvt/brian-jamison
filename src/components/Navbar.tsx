@@ -103,15 +103,17 @@ export const Navbar: React.FC<NavbarProps> = ({
           Border: 1px solid rgba(234, 88, 12, 0.3)
           Shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.08)
       */}
-      <header className="fixed top-3 sm:top-4 inset-x-0 mx-auto max-w-[1400px] z-50 px-3 sm:px-6 pointer-events-none">
+      <header className={`fixed inset-x-0 mx-auto max-w-[1400px] z-50 px-3 sm:px-6 pointer-events-none transition-all duration-300 ${
+        isScrolled ? 'top-3 sm:top-4' : 'top-10 sm:top-12'
+      }`}>
         <nav
           ref={navRef}
           role="navigation"
           aria-label="Main Navigation"
           className={`pointer-events-auto w-full transition-all duration-300 rounded-2xl px-5 sm:px-6 py-3 sm:py-3.5 flex items-center justify-between relative ${
             isScrolled
-              ? 'bg-[#FAF9F6]/92 backdrop-blur-2xl border border-[#EA580C]/30 shadow-[0_12px_40px_-10px_rgba(10,25,47,0.12)]'
-              : 'bg-[#FAF9F6]/85 backdrop-blur-xl saturate-150 border border-[#EA580C]/25 shadow-[0_8px_32px_0_rgba(10,25,47,0.06)]'
+              ? 'bg-[#FAF9F6]/95 backdrop-blur-2xl border-2 border-[#002D61]/25 shadow-[0_12px_40px_-10px_rgba(0,45,97,0.18)]'
+              : 'bg-[#FAF9F6]/90 backdrop-blur-xl saturate-150 border-2 border-[#002D61]/15 shadow-[0_8px_32px_0_rgba(0,45,97,0.08)]'
           }`}
         >
           {/* ZONE 1 (Left - Brand Anchor) */}
@@ -132,7 +134,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <div className="flex items-center gap-2 shrink-0">
                 <div
                   title="Jamison Real Estate Crest"
-                  className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-[#0A192F] border-2 border-[#EA580C] flex items-center justify-center text-[#EA580C] font-serif font-bold text-xs shadow-xs"
+                  className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-[#002D61] border-2 border-[#EA580C] flex items-center justify-center text-white font-serif font-bold text-xs shadow-xs"
                 >
                   J
                 </div>
@@ -146,7 +148,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
               <div className="flex flex-col">
                 <div className="flex items-center gap-2">
-                  <span className="font-serif text-base sm:text-lg md:text-xl font-bold tracking-tight text-[#0A192F] group-hover:text-[#EA580C] transition-colors leading-tight">
+                  <span className="font-serif text-base sm:text-lg md:text-xl font-bold tracking-tight text-[#002D61] group-hover:text-[#EA580C] transition-colors leading-tight">
                     BRIAN JAMISON
                   </span>
                   {/* Micro-badge: Green live-status dot with tooltip "Available 7 Days" */}
@@ -155,12 +157,12 @@ export const Navbar: React.FC<NavbarProps> = ({
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                     </span>
-                    <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-1.5 hidden group-hover/status:flex items-center whitespace-nowrap px-2 py-0.5 rounded bg-[#0A192F] text-white text-[10px] shadow-md pointer-events-none">
+                    <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-1.5 hidden group-hover/status:flex items-center whitespace-nowrap px-2 py-0.5 rounded bg-[#002D61] text-white text-[10px] shadow-md pointer-events-none">
                       Available 7 Days
                     </div>
                   </div>
                 </div>
-                <span className="font-sans text-[9px] uppercase tracking-[0.25em] text-[#6B7280]">
+                <span className="font-sans text-[9px] uppercase tracking-[0.25em] text-[#002D61] font-bold">
                   SALT REAL ESTATE · OKC
                 </span>
               </div>
@@ -168,7 +170,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* ZONE 2 (Center - Editorial Navigation) */}
-          <div className="hidden lg:flex items-center gap-7 text-[13px] font-sans font-medium text-[#0A192F]">
+          <div className="hidden lg:flex items-center gap-7 text-[13px] font-sans font-medium text-[#002D61]">
             {/* Link 1: The Blueprint (Triggers MegaMenuBlueprint) */}
             <div className="relative">
               <button
@@ -272,7 +274,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Direct Call Button */}
             <a
               href={`tel:${BROKER_INFO.phoneRaw}`}
-              className="text-xs font-semibold text-[#0A192F] hover:text-[#EA580C] transition-colors flex items-center gap-1.5 px-3 py-2 rounded-full hover:bg-black/5"
+              className="text-xs font-semibold text-[#002D61] hover:text-[#EA580C] transition-colors flex items-center gap-1.5 px-3 py-2 rounded-full hover:bg-black/5"
             >
               <Phone className="w-3.5 h-3.5 text-[#EA580C]" />
               <span className="tabular-nums tracking-wide">{BROKER_INFO.phone}</span>
