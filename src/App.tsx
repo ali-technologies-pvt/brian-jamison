@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroVideo } from './components/HeroVideo';
 import { ChapterAccordion } from './components/ChapterAccordion';
-import { TheMethodSection } from './components/TheMethodSection';
-import { ListingStandardsSection } from './components/ListingStandardsSection';
+import { CompanyServicesProcessSection } from './components/CompanyServicesProcessSection';
 import { FeaturedClosings } from './components/FeaturedClosings';
 import { ValuationBanner } from './components/ValuationBanner';
 import { TestimonialsSection } from './components/TestimonialsSection';
@@ -109,12 +108,12 @@ export default function App() {
 
   const handleOpenMethod = (phaseIndex: number = 0) => {
     const phaseSlugs = [
-      '/services/elite-marketing',
-      '/services/transparent-communication',
-      '/services/accessibility-guarantee',
-      '/services/support-team',
-      '/services/precision-pricing',
-      '/services/cancel-anytime-guarantee'
+      '/services/marketing-plan-and-process',
+      '/services/communication',
+      '/services/accessibility',
+      '/services/team-support',
+      '/services/pricing-strategy',
+      '/services/fair-pricing-and-contract-flexibility'
     ];
     if (phaseSlugs[phaseIndex]) {
       navigate(phaseSlugs[phaseIndex]);
@@ -179,14 +178,11 @@ export default function App() {
             {/* Section 2: "Which Chapter Are You Navigating?" (Interactive Hover Accordion) */}
             <ChapterAccordion onSelectChapter={handleOpenChapter} />
 
-            {/* Section 3: "The Method" (Interactive 6-Step Seller Blueprint Stage with 3D Tour Viewer) */}
-            <TheMethodSection onOpenMethodModal={handleOpenMethod} />
-
-            {/* Section 3B: "What We Do To Your Property: The 10-Step Transformation Machine" */}
-            <ListingStandardsSection
-              onNavigate={navigate}
+            {/* Section 3: Services We Provide · The 6 Core Corporate Selling Processes */}
+            <CompanyServicesProcessSection
               onOpenConsultation={handleOpenConsultation}
               onOpenValuation={() => handleOpenValuation()}
+              onNavigate={navigate}
             />
 
             {/* Section 4: Featured & Notable Closings (Asymmetrical Magazine Gallery) */}

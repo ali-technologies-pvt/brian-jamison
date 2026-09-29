@@ -21,22 +21,43 @@ interface MegaMenuBlueprintProps {
   onNavigate?: (path: string) => void;
 }
 
-const PHASE_PATHS = [
-  '/services/elite-marketing',
-  '/services/transparent-communication',
-  '/services/accessibility-guarantee',
-  '/services/support-team',
-  '/services/precision-pricing',
-  '/services/cancel-anytime-guarantee'
-];
-
-const PHASE_ICONS = [
-  Video,
-  Clock,
-  ShieldCheck,
-  Users,
-  Target,
-  FileCheck
+const CORE_PROCESSES = [
+  {
+    title: 'Marketing plan and process',
+    summary: 'Cinema-grade 4K films, drone mapping, 3D Matterport, and 350+ portal syndication.',
+    slug: '/services/marketing-plan-and-process',
+    icon: Video
+  },
+  {
+    title: 'Communication',
+    summary: 'Mandatory showing feedback within 2 hours and weekly milestone traffic dashboards.',
+    slug: '/services/communication',
+    icon: Clock
+  },
+  {
+    title: 'Accessibility',
+    summary: 'Seven-day-a-week reachability with dedicated backup desk coverage.',
+    slug: '/services/accessibility',
+    icon: ShieldCheck
+  },
+  {
+    title: 'Team support',
+    summary: 'Specialized 7-person operations, legal compliance, staging, and media matrix.',
+    slug: '/services/team-support',
+    icon: Users
+  },
+  {
+    title: 'Pricing strategy',
+    summary: 'Econometric 3-tier valuation calibrated beneath search brackets for bidding wars.',
+    slug: '/services/pricing-strategy',
+    icon: Target
+  },
+  {
+    title: 'Fair pricing and contract flexibility',
+    summary: 'Partnership approach backed by our 100% risk-free cancel-anytime guarantee.',
+    slug: '/services/fair-pricing-and-contract-flexibility',
+    icon: FileCheck
+  }
 ];
 
 export const MegaMenuBlueprint: React.FC<MegaMenuBlueprintProps> = ({
@@ -133,16 +154,16 @@ export const MegaMenuBlueprint: React.FC<MegaMenuBlueprintProps> = ({
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              {METHOD_PHASES.map((phase, idx) => {
-                const IconComponent = PHASE_ICONS[idx] || Sparkles;
+              {CORE_PROCESSES.map((proc, idx) => {
+                const IconComponent = proc.icon;
                 return (
                   <button
-                    key={phase.id}
+                    key={proc.slug}
                     type="button"
                     onClick={() => {
                       onClose();
-                      if (onNavigate && PHASE_PATHS[idx]) {
-                        onNavigate(PHASE_PATHS[idx]);
+                      if (onNavigate) {
+                        onNavigate(proc.slug);
                       } else {
                         onOpenMethod(idx);
                       }
@@ -154,10 +175,10 @@ export const MegaMenuBlueprint: React.FC<MegaMenuBlueprintProps> = ({
                     </div>
                     <div className="min-w-0">
                       <span className="font-serif text-sm font-bold text-white group-hover:text-[#FB923C] transition-colors block truncate">
-                        {phase.title}
+                        {proc.title}
                       </span>
                       <span className="text-[11px] text-stone-300 line-clamp-1 block mt-0.5 font-sans">
-                        {phase.summary}
+                        {proc.summary}
                       </span>
                     </div>
                   </button>
@@ -169,7 +190,7 @@ export const MegaMenuBlueprint: React.FC<MegaMenuBlueprintProps> = ({
             <div className="mt-5 pt-3.5 border-t border-white/15 flex items-center justify-between text-xs text-stone-200">
               <span className="flex items-center gap-1.5">
                 <Check className="w-3.5 h-3.5 text-[#FB923C]" />
-                Direct Lead Representation by Brian Jamison
+                Direct Representation by Jamison Real Estate Corporate Office
               </span>
               <button
                 type="button"

@@ -28,4 +28,9 @@ export interface InteriorPageData {
   schools?: { name: string; type: string; rating: string; dist?: string }[];
   lifestyleHighlights?: string[];
   faqs?: { q: string; a: string }[];
+  parentProcess?: {
+    title: string;
+    slug: string;
+    number: string;
+  };
 }

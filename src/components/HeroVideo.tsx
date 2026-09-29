@@ -150,7 +150,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
           <div className="animate-fade-in-up inline-flex items-center gap-2 mb-4 sm:mb-6 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md text-white border border-white/25 shadow-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C] animate-ping" />
             <span className="text-[10px] sm:text-xs tracking-[0.2em] uppercase font-sans font-bold text-white">
-              The One-And-Only Seller Blueprint in Oklahoma
+              Full-Service Oklahoma Brokerage · 6 Core Selling Processes
             </span>
           </div>
 
@@ -182,7 +182,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
               onClick={onExploreMethod}
               className="group px-7 py-3.5 text-xs font-bold tracking-wide uppercase text-white bg-black/40 hover:bg-white hover:text-[#002D61] border border-white/40 rounded-xl transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer text-center shadow-md hover:shadow-lg hover:-translate-y-0.5 backdrop-blur-md"
             >
-              <span>Explore The Method</span>
+              <span>Explore Our 6 Selling Processes</span>
               <ArrowDown className="w-3.5 h-3.5 text-white group-hover:text-[#002D61] group-hover:translate-y-1 transition-all duration-300" />
             </button>
           </div>

@@ -89,11 +89,11 @@ export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChap
                 {/* Collapsed State: Vertical Text & Index */}
                 {!isActive && (
                   <div className="absolute inset-0 p-6 flex flex-col justify-between items-center z-10 select-none transition-opacity duration-300">
-                    <span className="font-serif text-xl font-light text-white/70">
+                    <span className="font-serif text-xl font-bold !text-white drop-shadow-xs">
                       {chapter.index}
                     </span>
                     <div className="[writing-mode:vertical-rl] rotate-180 flex items-center gap-3">
-                      <span className="text-xs uppercase tracking-[0.25em] font-sans font-semibold text-white/90 whitespace-nowrap">
+                      <span className="text-xs uppercase tracking-[0.25em] font-sans font-bold !text-white whitespace-nowrap drop-shadow-xs">
                         {chapter.title}
                       </span>
                     </div>

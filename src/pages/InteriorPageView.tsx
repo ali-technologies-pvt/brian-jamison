@@ -22,6 +22,7 @@ import { BROKER_INFO } from '../data/realEstateData';
 import { BrianAvatar } from '../components/BrianAvatar';
 import { PhilosophySection } from '../components/PhilosophySection';
 import { LISTING_STANDARDS_DATA } from '../components/ListingStandardsSection';
+import { CORE_PROCESSES_NAV } from './serviceData';
 
 interface InteriorPageViewProps {
   page: InteriorPageData;
@@ -73,6 +74,18 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Narrative Column */}
             <div className="lg:col-span-7">
+              {page.parentProcess && (
+                <div className="mb-5">
+                  <button
+                    type="button"
+                    onClick={() => onNavigate(page.parentProcess!.slug)}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white hover:bg-[#FAF8F5] border border-[#EA580C]/40 text-xs font-semibold text-[#002D61] shadow-2xs hover:border-[#EA580C] transition-all cursor-pointer group"
+                  >
+                    <ArrowRight className="w-3.5 h-3.5 text-[#EA580C] rotate-180 group-hover:-translate-x-1 transition-transform" />
+                    <span>Part of Process {page.parentProcess.number}: <strong className="text-[#EA580C] underline decoration-[#EA580C]/40 underline-offset-2">{page.parentProcess.title}</strong></span>
+                  </button>
+                </div>
+              )}
               <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
                 Strategic Briefing
               </span>
@@ -216,40 +229,43 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
       {page.deliverables && page.deliverables.length > 0 && (
         <section id="systematic-standards" className="w-full py-16 sm:py-24 bg-[#F5EFE6] border-b border-[#EA580C]/30">
           <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
-            {/* 10-Step Standards Quick Switcher (Always available on Standards & Blueprint pages) */}
+            {/* 6 Core Corporate Selling Processes Switcher */}
             <div className="mb-12 p-4 sm:p-5 rounded-2xl bg-[#002D61] text-white shadow-lg border border-white/15">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-[#EA580C] animate-pulse" />
                   <span className="text-[11px] font-sans font-bold tracking-[0.2em] uppercase text-white">
-                    The 10-Step Transformation Protocol
+                    Our 6 Core Selling Processes
                   </span>
                 </div>
                 <span className="text-xs text-stone-300">
-                  Select any standard to inspect what we do to your property
+                  Select any process to explore corporate standards & sub-processes
                 </span>
               </div>
 
-              {/* Horizontal Scroll / Grid of 10 Standards */}
-              <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-10 gap-2">
-                {LISTING_STANDARDS_DATA.map((std) => {
-                  const isCurrent = page.id === std.id || page.slug === std.slug;
+              {/* Horizontal Grid of 6 Processes */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+                {CORE_PROCESSES_NAV.map((proc) => {
+                  const isCurrent =
+                    page.id === proc.id ||
+                    page.slug === proc.slug ||
+                    page.parentProcess?.slug === proc.slug;
                   return (
                     <button
-                      key={std.id}
+                      key={proc.id}
                       type="button"
-                      onClick={() => onNavigate(std.slug)}
-                      className={`p-2.5 rounded-xl text-left transition-all duration-200 cursor-pointer flex flex-col justify-between ${
+                      onClick={() => onNavigate(proc.slug)}
+                      className={`p-2.5 sm:p-3 rounded-xl text-left transition-all duration-200 cursor-pointer flex flex-col justify-between ${
                         isCurrent
-                          ? 'bg-[#EA580C] text-white font-bold shadow-md scale-102 ring-2 ring-white/50'
-                          : 'bg-white/10 hover:bg-white/20 text-white/90 border border-white/10'
+                          ? 'bg-[#EA580C] !text-white font-bold shadow-md scale-102 ring-2 ring-white/50'
+                          : 'bg-white/10 hover:bg-white/20 !text-white border border-white/10'
                       }`}
                     >
-                      <span className="text-[10px] font-sans font-bold tracking-wider block opacity-90">
-                        {std.stepNumber}
+                      <span className="text-[10px] font-sans font-bold tracking-wider block !text-white">
+                        Process {proc.number}
                       </span>
-                      <span className="text-[11px] font-serif font-semibold leading-tight line-clamp-2 mt-1">
-                        {std.title.split(' ')[0]} {std.title.split(' ')[1]}
+                      <span className="text-[11px] font-serif font-semibold leading-tight line-clamp-2 mt-1 !text-white">
+                        {proc.title}
                       </span>
                     </button>
                   );
@@ -371,38 +387,68 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
               ))}
             </div>
 
-            {/* Next Standard in Sequence Bar (For standard pages) */}
+            {/* Next in Sequence Navigator */}
             {(() => {
-              const currentStdIndex = LISTING_STANDARDS_DATA.findIndex(
-                (s) => s.id === page.id || s.slug === page.slug
+              // 1. If this is a main process page
+              const currentProcIndex = CORE_PROCESSES_NAV.findIndex(
+                (p) => p.id === page.id || p.slug === page.slug
               );
-              if (currentStdIndex >= 0) {
-                const nextStd = LISTING_STANDARDS_DATA[(currentStdIndex + 1) % LISTING_STANDARDS_DATA.length];
+              if (currentProcIndex >= 0) {
+                const nextProc = CORE_PROCESSES_NAV[(currentProcIndex + 1) % CORE_PROCESSES_NAV.length];
                 return (
                   <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-white border border-[#EA580C]/30 shadow-md flex flex-col sm:flex-row items-center justify-between gap-6">
                     <div>
                       <span className="text-[10px] uppercase font-sans font-bold tracking-[0.2em] text-[#EA580C] block mb-1">
-                        Next Standard in the Sequence
+                        Next Process in the Corporate Sequence
                       </span>
                       <h4 className="font-serif text-xl sm:text-2xl font-bold text-[#002D61]">
-                        {nextStd.stepNumber}: {nextStd.title}
+                        Process {nextProc.number}: {nextProc.title}
                       </h4>
                       <p className="text-xs sm:text-sm text-[#6B7280] mt-1 max-w-xl">
-                        {nextStd.desc}
+                        Discover how our firm executes the next stage of listing marketing and transaction management.
                       </p>
                     </div>
 
                     <button
                       type="button"
-                      onClick={() => onNavigate(nextStd.slug)}
+                      onClick={() => onNavigate(nextProc.slug)}
                       className="px-6 py-3.5 bg-[#002D61] hover:bg-[#EA580C] text-white rounded-xl text-xs font-semibold tracking-wider uppercase transition-all duration-300 shadow-md cursor-pointer flex items-center gap-2 shrink-0"
                     >
-                      <span>Explore {nextStd.stepNumber}</span>
+                      <span>Explore Process {nextProc.number}</span>
                       <ArrowRight className="w-4 h-4" />
                     </button>
                   </div>
                 );
               }
+
+              // 2. If this is a sub-process page with parentProcess
+              if (page.parentProcess) {
+                return (
+                  <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-white border border-[#EA580C]/30 shadow-md flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div>
+                      <span className="text-[10px] uppercase font-sans font-bold tracking-[0.2em] text-[#EA580C] block mb-1">
+                        Corporate Hierarchy
+                      </span>
+                      <h4 className="font-serif text-xl sm:text-2xl font-bold text-[#002D61]">
+                        Process {page.parentProcess.number}: {page.parentProcess.title}
+                      </h4>
+                      <p className="text-xs sm:text-sm text-[#6B7280] mt-1 max-w-xl">
+                        Explore all sister deliverables and marketing standards within this core phase.
+                      </p>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => onNavigate(page.parentProcess!.slug)}
+                      className="px-6 py-3.5 bg-[#002D61] hover:bg-[#EA580C] text-white rounded-xl text-xs font-semibold tracking-wider uppercase transition-all duration-300 shadow-md cursor-pointer flex items-center gap-2 shrink-0"
+                    >
+                      <span>View Full Process Overview</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                );
+              }
+
               return null;
             })()}
           </div>
