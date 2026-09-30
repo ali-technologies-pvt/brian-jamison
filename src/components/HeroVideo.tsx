@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BROKER_INFO } from '../data/realEstateData';
 import { BrianAvatar } from './BrianAvatar';
-import { ArrowDown, Shield, Sparkles } from 'lucide-react';
+import { ArrowDown, ArrowRight, ShieldCheck, Sparkles, CheckCircle2, Award } from 'lucide-react';
 
 interface HeroVideoProps {
   onOpenValuation: () => void;
@@ -118,73 +118,103 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
         </video>
 
         {/* 
-          Balanced Luxury Navy Overlay Engine:
-          Reduced overlay opacity so drone estate video is prominent and vibrant,
-          with subtle left vignette ensuring crisp WCAG AAA white text legibility.
+          Ultra-Premium Cinematic Color Engine:
+          Multi-layer architectural grade combining subtle warm ambient light, 
+          royal navy depth (#001D40), and soft vignette ensuring pristine WCAG AAA legibility.
         */}
-        <div className="absolute inset-0 bg-[#002D61]/35 mix-blend-multiply transition-opacity" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#001D40]/80 via-[#002D61]/45 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#001D40]/85 via-transparent to-black/35" />
+        <div className="absolute inset-0 bg-[#001D40]/50 mix-blend-multiply transition-opacity" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#00142C]/90 via-[#001D40]/60 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-amber-500/15 via-transparent to-black/50 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#00142C]/95 via-transparent to-black/35 pointer-events-none" />
       </div>
 
       {/* Main Hero Content constrained strictly inside max-w-[1440px] */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 pt-28 sm:pt-36 pb-12 flex-1 flex flex-col justify-center">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 pt-28 sm:pt-36 pb-14 flex-1 flex flex-col justify-center">
         <div className="max-w-2xl lg:max-w-3xl">
-          {/* Floating Authority Proof Trust Pill: 28px mini avatar with emerald live-status verification dot */}
-          <div className="animate-fade-in-up inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/25 shadow-md mb-4 sm:mb-5">
+          {/* Floating Authority Proof Trust Pill: Frosted crystal glass container */}
+          <div className="animate-fade-in-up inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-black/55 backdrop-blur-xl border border-white/25 shadow-xl shadow-black/30 mb-4 sm:mb-5">
             <BrianAvatar
               size={28}
               priority={true}
               showStatusDot={true}
               alt="Brian Jamison - Top 2% OKC Metro Real Estate Producer"
             />
-            <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-sans font-semibold text-white tracking-wide">
-              <span className="text-[#FB923C]">★</span>
-              <span>Top 2% OKC Metro Real Estate Producer</span>
-              <span className="text-white/60 hidden sm:inline">·</span>
-              <span className="text-white font-medium hidden sm:inline">$62M+ Volume Sold</span>
+            <div className="flex items-center gap-2 text-[11px] sm:text-xs font-sans font-semibold text-white tracking-wide">
+              <span className="text-[#F59E0B]">★</span>
+              <span className="text-white font-bold">Top 2% Producer</span>
+              <span className="text-white/40">·</span>
+              <span className="text-stone-200">Oklahoma City Metro</span>
+              <span className="text-white/40 hidden sm:inline">·</span>
+              <span className="text-stone-300 font-medium hidden sm:inline">$62M+ Volume Sold</span>
             </div>
           </div>
 
-          {/* Kicker badge with frosted glass container */}
-          <div className="animate-fade-in-up inline-flex items-center gap-2 mb-4 sm:mb-6 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md text-white border border-white/25 shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C] animate-ping" />
-            <span className="text-[10px] sm:text-xs tracking-[0.2em] uppercase font-sans font-bold text-white">
-              Full-Service Oklahoma Brokerage · 6 Core Selling Processes
+          {/* Kicker badge with luxury coordinates & corporate brokerage seal */}
+          <div className="animate-fade-in-up flex items-center gap-2 mb-4 sm:mb-5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-[#EA580C] animate-ping" />
+              <span className="text-[10px] sm:text-xs tracking-[0.22em] uppercase font-sans font-bold text-stone-100">
+                Salt Real Estate Corporate Office · Edmond, OK
+              </span>
+            </div>
+            <span className="hidden md:inline-block text-[10px] font-mono tracking-widest uppercase text-stone-300/80">
+              35.6528° N, 97.4781° W
             </span>
           </div>
 
-          {/* Display Headline: Bold and prominent with drop-shadow for crystal-clear readability */}
-          <h1 className="animate-fade-in-delayed font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-bold leading-[1.08] tracking-tight !text-white mb-6 sm:mb-8 text-balance drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]">
+          {/* Display Headline: Bold luxury serif with golden gradient italic accent */}
+          <h1 className="animate-fade-in-delayed font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-bold leading-[1.08] tracking-tight !text-white mb-6 sm:mb-7 text-balance drop-shadow-[0_2px_16px_rgba(0,0,0,0.9)]">
             The Agent Who Works Like Every Deal Is{' '}
-            <span className="italic font-bold text-[#FB923C] pr-1 inline-block transition-transform hover:scale-105 duration-300 drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
+            <span className="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#FDE68A] via-[#F59E0B] to-[#D97706] pr-1 inline-block transition-transform hover:scale-105 duration-300 drop-shadow-[0_2px_14px_rgba(217,119,6,0.6)]">
               Personal.
             </span>
           </h1>
 
-          {/* Subtitle: Pure white font with drop shadow to prevent mixing with video background */}
-          <p className="animate-fade-in-delayed-2 font-sans text-base sm:text-lg md:text-xl !text-white leading-relaxed max-w-xl mb-8 sm:mb-10 font-medium drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]">
-            Elevating Oklahoma City home sales through cinematic marketing, uncompromised transparency, and zero-risk listing agreements.
+          {/* Subtitle: High-contrast white font with drop shadow for effortless readability */}
+          <p className="animate-fade-in-delayed-2 font-sans text-base sm:text-lg md:text-xl !text-white leading-relaxed max-w-2xl mb-8 sm:mb-9 font-normal drop-shadow-[0_1px_8px_rgba(0,0,0,0.95)]">
+            Elevating Oklahoma City, Edmond & Nichols Hills home sales through cinematic architectural marketing, institutional transparency, and our unconditional Cancel-Anytime Pledge.
           </p>
 
-          {/* Action CTAs with subtle hover elevate physics */}
-          <div className="animate-fade-in-delayed-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5">
+          {/* Action CTAs: Bespoke Luxury Styling with Warm Gold Shimmer & Frosted Glass */}
+          <div className="animate-fade-in-delayed-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5 mb-6">
             <button
               type="button"
               onClick={onOpenValuation}
-              className="px-7 py-3.5 text-xs font-bold tracking-wide uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-xl transition-all duration-300 shadow-lg shadow-orange-600/40 hover:shadow-orange-600/60 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer text-center"
+              className="group relative px-8 py-4 text-xs font-bold tracking-wider uppercase text-white bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#92400E] hover:from-[#B45309] hover:to-[#78350F] rounded-xl transition-all duration-300 shadow-xl shadow-amber-950/40 hover:shadow-amber-600/40 border border-amber-300/40 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer flex items-center justify-center gap-2.5 overflow-hidden"
             >
-              Request Bespoke Valuation
+              <span className="relative z-10 flex items-center gap-2">
+                <span>Request Bespoke Valuation</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
             </button>
 
             <button
               type="button"
               onClick={onExploreMethod}
-              className="group px-7 py-3.5 text-xs font-bold tracking-wide uppercase text-white bg-black/40 hover:bg-white hover:text-[#002D61] border border-white/40 rounded-xl transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer text-center shadow-md hover:shadow-lg hover:-translate-y-0.5 backdrop-blur-md"
+              className="group px-7 py-4 text-xs font-bold tracking-wider uppercase text-white bg-black/45 hover:bg-white hover:text-[#001D40] border border-white/35 rounded-xl transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer text-center shadow-lg hover:shadow-xl hover:-translate-y-0.5 backdrop-blur-xl"
             >
-              <span>Explore Our 6 Selling Processes</span>
-              <ArrowDown className="w-3.5 h-3.5 text-white group-hover:text-[#002D61] group-hover:translate-y-1 transition-all duration-300" />
+              <span>Explore 3 Major Services</span>
+              <ArrowDown className="w-3.5 h-3.5 text-white group-hover:text-[#001D40] group-hover:translate-y-1 transition-all duration-300" />
             </button>
+          </div>
+
+          {/* Trust Markers Bar */}
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-stone-200 font-medium">
+            <div className="flex items-center gap-1.5">
+              <ShieldCheck className="w-4 h-4 text-[#F59E0B]" />
+              <span>100% Risk-Free Guarantee</span>
+            </div>
+            <span className="text-white/40">·</span>
+            <div className="flex items-center gap-1.5">
+              <Sparkles className="w-4 h-4 text-[#F59E0B]" />
+              <span>350+ Global Portals</span>
+            </div>
+            <span className="text-white/40 hidden sm:inline">·</span>
+            <div className="hidden sm:flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-[#F59E0B]" />
+              <span>Direct Desk: (405) 513-3039</span>
+            </div>
           </div>
         </div>
       </div>

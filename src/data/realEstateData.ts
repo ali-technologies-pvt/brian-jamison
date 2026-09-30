@@ -87,66 +87,53 @@ export const BROKER_INFO = {
 
 export const CHAPTERS: Chapter[] = [
   {
-    id: "home-sellers",
+    id: "home-buying",
     index: "01",
-    tag: "01 - DEFINITIVE GUIDE",
-    title: "Home Sellers",
-    summary: "High-intent pricing, bespoke exposure, and architectural storytelling across 350+ global luxury portals.",
+    tag: "01 / BUYER CONCIERGE & EQUITY ADVISORY",
+    title: "Home Buying",
+    summary: "Curated off-market inventory access, structural & inspection defense, and veteran negotiation protecting your equity across Edmond and Greater OKC.",
     bulletPoints: [
-      "Cinematic 4K walkthroughs and FAA-certified aerial drone mapping",
-      "Staging guidance calibrated for maximum buyer emotional connection",
-      "Dedicated single-property URL and syndicated social retargeting"
+      "Exclusive access to coming-soon and unlisted pocket luxury inventory",
+      "Rigorous architectural, foundation, and mechanical due diligence",
+      "Winning offer structuring calibrated to prevail without overpaying"
     ],
-    metrics: { label: "List-to-Sale Ratio", value: "98.4%" },
-    ctaText: "EXPLORE SELLER PLAYBOOK →",
+    metrics: { label: "Client Price Advantage", value: "$24,500 Avg" },
+    ctaText: "EXPLORE BUYING BLUEPRINT →",
     bgGradient: "from-stone-900/90 via-stone-900/70 to-stone-950/95"
   },
   {
-    id: "expired-listings",
+    id: "home-selling",
     index: "02",
-    tag: "02 / TURNAROUND PROTOCOL",
-    title: "Expired Listings",
-    summary: "Diagnosing MLS stagnation, overhauling visual media, and relaunching with uncompromised market momentum.",
+    tag: "02 / 6-STEP SELLING BLUEPRINT",
+    title: "Home Selling",
+    summary: "Our proprietary 6-step selling machine: cinema-grade 4K media, 350+ portal syndication, and disciplined negotiation engineered for record-setting bidding wars.",
     bulletPoints: [
-      "Rigorous 48-hour diagnostic of why previous listing failed to close",
-      "Complete visual reimagining: new photography, drone, and narrative",
-      "Strategic pricing recalibration beneath active search brackets"
+      "Cinema-grade 4K video, FAA drone mapping, and Matterport 3D tours",
+      "High-ROI pre-listing refresh and architectural staging guidance",
+      "100% Risk-Free Cancel-Anytime Listing Guarantee backed by corporate office"
     ],
-    metrics: { label: "Turnaround Escrow Avg", value: "21 Days" },
-    ctaText: "SEE TURNAROUND PLAYBOOK →",
+    metrics: { label: "List-to-Sale Ratio", value: "98.6%" },
+    ctaText: "EXPLORE SELLING BLUEPRINT →",
     bgGradient: "from-neutral-900/90 via-neutral-900/75 to-stone-950/95"
   },
   {
-    id: "private-estates",
+    id: "land-buying-and-selling",
     index: "03",
-    tag: "03 / DISCREET TRANSACTIONS",
-    title: "Private Estates",
-    summary: "Off-market discretion, private broker syndication, and high-net-worth vetting for Oklahoma's marquee estates.",
+    tag: "03 / ACREAGE & DEVELOPMENT ENCLAVES",
+    title: "Land Buying and selling",
+    summary: "Comprehensive parcel boundary mapping, utility & soil feasibility audits, and strategic marketing for custom home lots, residential developments, and Oklahoma acreage.",
     bulletPoints: [
-      "Strict NDA vetting prior to any property document release",
-      "Curated direct pitches to Oklahoma City's top luxury broker network",
-      "Total privacy protection for prominent families and executives"
+      "Topographical drone surveys, aerial boundary overlays, and soil tests",
+      "Zoning, utility easement, and municipal permitting feasibility audits",
+      "Targeted marketing reaching custom home builders, developers, and estate buyers"
     ],
-    metrics: { label: "Confidentiality Standard", value: "100%" },
-    ctaText: "INQUIRE CONFIDENTIAL LISTING →",
+    metrics: { label: "Acreage Transacted", value: "1,450+ Acres" },
+    ctaText: "EXPLORE LAND ADVISORY →",
     bgGradient: "from-slate-900/90 via-stone-900/75 to-neutral-950/95"
-  },
-  {
-    id: "custom-builds",
-    index: "04",
-    tag: "04 / NEW CONSTRUCTION",
-    title: "Custom Builds",
-    summary: "Lot acquisition, architectural liaison, and spec project positioning from foundation to record-setting closing.",
-    bulletPoints: [
-      "Deep alliances with OKC's premier luxury custom home builders",
-      "Pre-construction floor plan optimization and buyer demographic modeling",
-      "Milestone-based digital marketing during the framing and finish phases"
-    ],
-    metrics: { label: "Premier Builder Network", value: "18+ Partners" },
-    ctaText: "EXPLORE BUILD ADVISORY →",
-    bgGradient: "from-stone-900/90 via-amber-950/60 to-stone-950/95"
   }
 ];
+
+export const MAJOR_SERVICES = CHAPTERS;
 
 export const METHOD_PHASES: PhaseDeliverable[] = [
   {

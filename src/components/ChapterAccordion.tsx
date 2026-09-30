@@ -7,44 +7,42 @@ interface ChapterAccordionProps {
   onSelectChapter: (chapterId: string) => void;
 }
 
-// Curated high-fidelity architectural imagery for the 4 chapters
+// Curated high-fidelity architectural imagery for our 3 major services
 const CHAPTER_IMAGES = [
-  // 01 Home Sellers: Warm luxury living room with fireplace and coffered ceilings
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80",
-  // 02 Expired Listings: Architect examining architectural blueprints and market data
-  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=80",
-  // 03 Private Estates: Grand private gated mansion at golden hour
-  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1400&q=80",
-  // 04 Custom Builds: Modern architectural timber structure under construction / pristine finishes
-  "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1400&q=80"
+  // 01 Home Buying: Warm luxury estate exterior & welcoming front porch
+  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+  // 02 Home Selling: Grand architectural luxury great room & fireplace showcase
+  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+  // 03 Land Buying and Selling: Panoramic Oklahoma estate acreage & development grounds
+  "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80"
 ];
 
 export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChapter }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   return (
-    <section id="strategy-accordion" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/30">
+    <section id="major-services" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/30">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div className="max-w-xl">
             <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-bold text-[#EA580C] block mb-3">
-              Tailored Strategy
+              Core Representation · Full-Spectrum Advisory
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] tracking-tight font-bold text-balance">
-              Which Chapter Are You Navigating?
+              Our 3 Major Services
             </h2>
           </div>
 
           <div className="max-w-md">
             <p className="font-sans text-sm sm:text-base text-[#6B7280] leading-relaxed">
-              Every transaction demands a bespoke, disciplined strategy. Hover to examine the custom playbook engineered for your property goals.
+              Every transaction demands a bespoke, disciplined strategy. Hover to examine the custom execution framework engineered for your real estate goals.
             </p>
           </div>
         </div>
 
         {/* 
-          Interactive Horizontal Accordion (Desktop):
+          Interactive Horizontal Accordion (Desktop - 3 Major Services):
           Subtle & sophisticated spring-like easing physics, hover-expansion, and smooth layered transitions.
         */}
         <div className="hidden md:flex h-[520px] lg:h-[580px] gap-3.5 rounded-2xl overflow-hidden p-1.5 bg-[#F5EFE6] border border-[#EA580C]/30 shadow-xs">
@@ -58,7 +56,7 @@ export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChap
                 onMouseEnter={() => setActiveIndex(index)}
                 onClick={() => onSelectChapter(chapter.id)}
                 className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] flex flex-col justify-end will-change-[flex-grow] bg-[#002D61] border border-[#002D61]/30 ${
-                  isActive ? 'flex-[3.8] shadow-2xl' : 'flex-1 hover:flex-[1.2]'
+                  isActive ? 'flex-[3.5] shadow-2xl' : 'flex-1 hover:flex-[1.15]'
                 }`}
               >
                 {/* Background Image with subtle zoom on active */}

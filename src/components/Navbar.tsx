@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { BROKER_INFO } from '../data/realEstateData';
 import { JamisonLogo } from './JamisonLogo';
+import { MegaMenuServices } from './navigation/MegaMenuServices';
 import { MegaMenuBlueprint } from './navigation/MegaMenuBlueprint';
 import { MegaMenuCommunities } from './navigation/MegaMenuCommunities';
 import { MegaMenuHub } from './navigation/MegaMenuHub';
@@ -32,7 +33,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onNavigate
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeMenu, setActiveMenu] = useState<'blueprint' | 'communities' | 'hub' | null>(null);
+  const [activeMenu, setActiveMenu] = useState<'services' | 'blueprint' | 'communities' | 'hub' | null>(null);
   const navRef = useRef<HTMLDivElement>(null);
 
   // Scroll detection
@@ -66,7 +67,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     };
   }, []);
 
-  const toggleMenu = (menu: 'blueprint' | 'communities' | 'hub') => {
+  const toggleMenu = (menu: 'services' | 'blueprint' | 'communities' | 'hub') => {
     setActiveMenu(prev => (prev === menu ? null : menu));
   };
 
@@ -126,6 +127,29 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             {/* Specular Top Edge Gloss Highlight */}
             <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none" />
+
+            {/* Link 0: Services (Triggers MegaMenuServices with 3 Major Services) */}
+            <div className="relative">
+              <button
+                type="button"
+                aria-expanded={activeMenu === 'services'}
+                aria-haspopup="true"
+                onClick={() => toggleMenu('services')}
+                onMouseEnter={() => setActiveMenu('services')}
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
+                  activeMenu === 'services'
+                    ? 'bg-white/25 text-[#FB923C] shadow-xs'
+                    : 'text-white hover:text-[#FB923C] hover:bg-white/10'
+                }`}
+              >
+                <span>Services</span>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                    activeMenu === 'services' ? 'rotate-180 text-[#FB923C]' : 'text-white/80'
+                  }`}
+                />
+              </button>
+            </div>
 
             {/* Link 1: The Blueprint (Triggers MegaMenuBlueprint) */}
             <div className="relative">
@@ -265,6 +289,14 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Mega Menus Dropdown Container */}
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 mt-2 pointer-events-auto">
           <AnimatePresence>
+            {activeMenu === 'services' && (
+              <MegaMenuServices
+                onClose={() => setActiveMenu(null)}
+                onNavigate={onNavigate}
+                onOpenConsultation={onOpenConsultation}
+                onOpenMethod={onOpenMethod}
+              />
+            )}
             {activeMenu === 'blueprint' && (
               <MegaMenuBlueprint
                 onOpenMethod={onOpenMethod}

@@ -98,6 +98,11 @@ export default function App() {
   };
 
   const handleOpenChapter = (chapterId: string) => {
+    const servicePage = getPageByPath('/services/' + chapterId);
+    if (servicePage) {
+      navigate('/services/' + chapterId);
+      return;
+    }
     const page = getPageByPath('/' + chapterId);
     if (page) {
       navigate('/' + chapterId);
@@ -125,6 +130,11 @@ export default function App() {
 
   const handleExploreMethod = () => {
     if (currentPath === '/') {
+      const servicesEl = document.getElementById('major-services');
+      if (servicesEl) {
+        servicesEl.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
       const el = document.getElementById('the-method');
       if (el) {
         el.scrollIntoView({ behavior: 'smooth' });

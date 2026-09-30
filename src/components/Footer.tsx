@@ -79,7 +79,7 @@ export const Footer: React.FC<FooterProps> = ({
           <div className="lg:col-span-3">
             <span className="text-xs uppercase tracking-[0.2em] font-sans font-bold text-white block mb-4 flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
-              Navigation
+              Major Services
             </span>
             <ul className="space-y-2.5 text-xs text-stone-100 font-sans font-medium">
               <li>
@@ -87,14 +87,44 @@ export const Footer: React.FC<FooterProps> = ({
                   type="button"
                   onClick={() => {
                     if (onNavigate) {
-                      onNavigate('/sellers');
+                      onNavigate('/services/home-buying');
                     } else {
-                      onOpenChapter('home-sellers');
+                      onOpenChapter('home-buying');
                     }
                   }}
                   className="hover:text-white hover:underline transition-colors text-left cursor-pointer"
                 >
-                  Strategic Chapters
+                  1. Home Buying Advisory
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onNavigate) {
+                      onNavigate('/services/home-selling');
+                    } else {
+                      onOpenChapter('home-selling');
+                    }
+                  }}
+                  className="hover:text-white hover:underline transition-colors text-left cursor-pointer"
+                >
+                  2. Home Selling Machine
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onNavigate) {
+                      onNavigate('/services/land-buying-and-selling');
+                    } else {
+                      onOpenChapter('land-buying-and-selling');
+                    }
+                  }}
+                  className="hover:text-white hover:underline transition-colors text-left cursor-pointer"
+                >
+                  3. Land Buying & Selling
                 </button>
               </li>
               <li>
@@ -107,9 +137,9 @@ export const Footer: React.FC<FooterProps> = ({
                       onOpenMethod(0);
                     }
                   }}
-                  className="hover:text-white hover:underline transition-colors text-left cursor-pointer"
+                  className="hover:text-[#FB923C] hover:underline transition-colors text-left cursor-pointer font-bold text-[#FB923C]"
                 >
-                  The Method Blueprint
+                  6-Step Seller Blueprint →
                 </button>
               </li>
               <li>

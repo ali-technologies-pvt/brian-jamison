@@ -1603,11 +1603,270 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
 };
 
 /* =========================================================================
-   COMBINED SERVICE PAGES (Main Processes + Sub-Processes + Aliases)
+   3 MAJOR REAL ESTATE SERVICES (Home Buying, Home Selling, Land Buying & Selling)
    ========================================================================= */
 
-// Legacy Aliases for seamless backwards compatibility
+export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
+  "home-buying": {
+    id: "home-buying",
+    slug: "/services/home-buying",
+    category: "service",
+    kicker: "01 / BUYER CONCIERGE & EQUITY ADVISORY",
+    title: "Home Buying: Private Advisory & Fiduciary Representation",
+    subtitle: "From exclusive off-market pocket listings to rigorous structural inspections and winning contract negotiation, our firm defends your equity across Edmond & Greater Oklahoma City.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Client Price Advantage", value: "$24,500 Avg" },
+      { label: "Off-Market Access", value: "Priority" },
+      { label: "Inspection Defended", value: "100%" }
+    ],
+    overview: "Purchasing a home in the Oklahoma City metropolitan area is both a significant financial investment and a defining lifestyle transition. Jamison Real Estate operates as your exclusive fiduciary advocate. We refuse to let our clients overpay, accept deferred structural maintenance, or navigate complex Oklahoma real estate contracts without aggressive protection. A former collegiate athlete, Brian Jamison brings championship stamina and hands-on presence to every private showing, crawlspace inspection, and escrow deadline.",
+    keyTakeaways: [
+      "Direct access to pre-market and unlisted pocket luxury inventory before public MLS distribution",
+      "Exhaustive architectural, foundation, HVAC, and roof due diligence with trusted engineering partners",
+      "Custom multiple-bid offer architecture utilizing calibrated escalation formulas without overpaying",
+      "Zero-fee buyer representation with 100% fiduciary loyalty to your financial goals"
+    ],
+    deliverables: [
+      {
+        id: "hb-pocket-sourcing",
+        title: "Private Off-Market Pocket Sourcing",
+        desc: "Proactive outreach to Oklahoma luxury homeowners and broker networks to source unlisted pocket listings before public release.",
+        executionDetail: "We cross-reference private broker feeds, title data, and neighborhood databases to find homes matching your exact parameters before other buyers know they are available.",
+        sellerImpact: "Eliminates public bidding frenzy and secures priority negotiation positioning for our buyers.",
+        badge: "Step 01 · Priority Sourcing",
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "hb-valuation-audit",
+        title: "Comparative Valuation Audit",
+        desc: "Comprehensive algorithmic comp analysis cross-referencing closed sales, active competition, and cost-per-square-foot benchmarks.",
+        executionDetail: "We conduct an institutional audit of adjacent subdivision pricing, historical appreciation, and recent appraisal trends to pinpoint the exact fair market value.",
+        sellerImpact: "Guarantees you never overpay or fall into appraisal shortage traps.",
+        badge: "Step 02 · Valuation Audit",
+        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "hb-inspection-defense",
+        title: "Structural, Roof & Mechanical Due Diligence",
+        desc: "Physical inspection attendance by Brian Jamison alongside certified engineers to test foundation, HVAC, roof, and plumbing.",
+        executionDetail: "Brian personally accompanies every inspector on-site, testing drainage grading, slab movement, panel capacity, and sewer lines to uncover latent defects.",
+        sellerImpact: "Saves our buyer clients tens of thousands in post-closing repair disputes or renegotiates credits before escrow closes.",
+        badge: "Step 03 · Inspection Defense",
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "hb-contract-terms",
+        title: "Strategic Contract Structuring & Escalation Formula",
+        desc: "Drafting fortified purchase agreements tailored to win competitive multi-offer situations while retaining inspection rights.",
+        executionDetail: "We calibrate earnest money buffers, inspection timeframes, and targeted escalation caps that make your offer stand out to sellers without sacrificing legal safeguards.",
+        sellerImpact: "Highest win rate in competitive multiple-bid scenarios across Nichols Hills, Edmond, and Gaillardia.",
+        badge: "Step 04 · Winning Terms",
+        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "hb-escrow-oversight",
+        title: "Title, Escrow & Closing Fiduciary Oversight",
+        desc: "Full coordination with Salt Corporate Office transaction coordinators, title attorneys, and vetted Oklahoma mortgage partners.",
+        executionDetail: "Daily timeline tracking ensures clear title commitment, survey approval, appraisal resolution, and seamless wire transfer execution.",
+        sellerImpact: "Zero last-minute closing delays or surprise escrow charges.",
+        badge: "Step 05 · Title & Escrow",
+        image: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "hb-concierge-transition",
+        title: "Post-Close Concierge & Transition Network",
+        desc: "Curated introductions to Oklahoma City's premier interior designers, landscapers, pool technicians, and security specialists.",
+        executionDetail: "Our client relationship does not end at closing. We dispatch our vetted vendor directory and provide key exchange coordination.",
+        sellerImpact: "Effortless move-in experience and peace of mind from day one.",
+        badge: "Step 06 · Concierge Service",
+        image: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1200&q=80"
+      }
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "home-selling": {
+    id: "home-selling",
+    slug: "/services/home-selling",
+    category: "service",
+    kicker: "02 / MAXIMUM-NET LISTING MACHINE",
+    title: "Home Selling: The Proprietary 6-Step Selling Machine",
+    subtitle: "We do not passively place a sign in the yard. Jamison Real Estate executes an institutional 6-step selling blueprint backed by cinema-grade 4K media, 350+ portal syndication, and our 100% Risk-Free Cancel-Anytime Pledge.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "List-to-Sale Ratio", value: "98.6%" },
+      { label: "Volume Sold", value: "$62M+" },
+      { label: "Days to Escrow", value: "14 Days Avg" }
+    ],
+    overview: "Selling an Oklahoma estate for peak market price requires active demand generation, not passive MLS placement. Jamison Real Estate executes a proprietary multi-phase marketing and negotiation framework engineered to ignite competitive bidding wars. From golden-hour architectural cinematography and Matterport 3D dollhouses to reverse prospecting and our unconditional 100% Risk-Free Cancel-Anytime Listing Guarantee, every dollar of your home equity is defended with championship athletic discipline.",
+    keyTakeaways: [
+      "ROI-driven pre-listing refresh consultation that delivers $3-$5 in net proceeds for every $1 invested",
+      "Cinema-grade 4K motion video walkthroughs, FAA-certified drone mapping, and architectural twilight HDR",
+      "Instant syndication to 350+ national and global real estate portals including Zillow Showcase and Realtor.com",
+      "Unconditional Cancel-Anytime Listing Pledge: fire our firm at any moment with zero penalties if we fall short"
+    ],
+    deliverables: [
+      {
+        id: "hs-staging-prep",
+        title: "ROI-Driven Pre-Listing Refresh Guidance",
+        desc: "Strategic first-impression walk-through identifying high-leverage cosmetic, landscaping, and staging enhancements.",
+        executionDetail: "We audit curb appeal, paint tones, decluttering flow, and fixture upgrades, focusing strictly on high-ROI improvements that generate multiple competitive offers.",
+        sellerImpact: "Every $1 invested in targeted prep returns $3 to $5 at the closing table.",
+        badge: "Step 01 · Staging & Prep",
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "hs-hdr-photo",
+        title: "Magazine-Grade Architectural & Twilight HDR Photography",
+        desc: "Captured exclusively during golden hour and dusk using professional wide-angle tilt-shift lenses and multi-exposure lighting.",
+        executionDetail: "We schedule golden-hour exterior shoots and HDR interior bracket exposures that make your listing shine on mobile feeds.",
+        sellerImpact: "Stops buyers scrolling on Zillow and Realtor.com, resulting in 4x more saved listings.",
+        badge: "Step 02 · 4K HDR Photography",
+        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "hs-cinema-film",
+        title: "Cinema-Grade 4K Motion Walkthrough Film",
+        desc: "High-bitrate cinematic video on stabilized gimbals with bespoke musical score and color grading.",
+        executionDetail: "We film an evocative lifestyle motion picture that takes buyers on an emotional walkthrough of your home's architectural rhythm and natural light.",
+        sellerImpact: "Generates over 14,000+ views across Instagram, YouTube, and Facebook targeted ad campaigns.",
+        badge: "Step 03 · Cinema Walkthrough",
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "hs-drone-mapping",
+        title: "FAA Part-107 Aerial Drone Mapping & Boundary Plotting",
+        desc: "High-altitude 4K drone sweeps illustrating dynamic lot boundaries, privacy buffers, and proximity to golf courses and schools.",
+        executionDetail: "FAA-licensed drone pilots plot custom animated boundary overlays, roof inspections, and neighborhood panoramas.",
+        sellerImpact: "Allows out-of-state buyers to understand the exact acreage, privacy, and outdoor amenities instantly.",
+        badge: "Step 04 · FAA Drone Mapping",
+        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "hs-global-syndication",
+        title: "Syndication Across 350+ Global Luxury Portals",
+        desc: "Direct API syndication to Zillow Showcase, Realtor.com Featured, Redfin, Trulia, and global luxury partner networks.",
+        executionDetail: "We secure priority placement so your home appears at the very top of search results in Edmond, Nichols Hills, and Oklahoma City.",
+        sellerImpact: "Puts your listing directly in front of 100% of active qualified homebuyers worldwide.",
+        badge: "Step 05 · Global Syndication",
+        image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "hs-bidding-wars",
+        title: "3-Tier Strategic Pricing & Bidding War Architecture",
+        desc: "Econometric pricing calibration positioned beneath buyer search brackets to trigger multiple competitive bids.",
+        executionDetail: "We model buyer search behavior in $25k and $50k increments to capture the largest pool of qualified pre-approved shoppers on day one.",
+        sellerImpact: "Triggers competitive buyer tension, often producing offers substantially over list price.",
+        badge: "Step 06 · Bidding War Engine",
+        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80"
+      }
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "land-buying-and-selling": {
+    id: "land-buying-and-selling",
+    slug: "/services/land-buying-and-selling",
+    category: "service",
+    kicker: "03 / ACREAGE & DEVELOPMENT ENCLAVES",
+    title: "Land Buying and Selling: Acreage & Parcel Advisory",
+    subtitle: "Navigating topography, soil percolation, utility easements, and zoning requires specialized land expertise. Our firm represents landowners, developers, and estate buyers across Oklahoma.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Acreage Transacted", value: "1,450+ Acres" },
+      { label: "Land Parcels Closed", value: "85+ Parcels" },
+      { label: "Builder Network", value: "24+ Partners" }
+    ],
+    overview: "Raw land, residential acreage, and development parcels require an entirely different technical and marketing discipline than standard single-family residential transactions. Jamison Real Estate provides end-to-end land advisory for buyers and sellers across Oklahoma. From aerial topographical drone surveys and soil perk tests to utility corridor verification, municipal zoning analysis, and direct outreach to custom home builders, we ensure maximum valuation and risk protection on every acre.",
+    keyTakeaways: [
+      "FAA drone boundary mapping with GPS coordinate overlays and topographical elevation models",
+      "Technical due diligence: soil percolation tests, well water quality, flood plain status, and septic feasibility",
+      "Utility corridor verification: electrical capacity, municipal water access, natural gas, and road easements",
+      "Direct marketing network linking land sellers directly to Oklahoma's top custom home builders and developers"
+    ],
+    deliverables: [
+      {
+        id: "land-drone-mapping",
+        title: "Aerial Drone Topographical & Boundary Mapping",
+        desc: "High-resolution aerial drone sweeps plotting precision GPS boundary overlays, tree canopies, and elevation contours.",
+        executionDetail: "We produce interactive drone maps and boundary graphics illustrating exact property lines, gate entrances, and building envelopes.",
+        sellerImpact: "Prospective buyers and builders can visualize the layout, driveway placement, and homesite orientation immediately.",
+        badge: "Step 01 · Drone Boundary",
+        image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "land-soil-perk",
+        title: "Soil Perk, Well & Septic Feasibility Audits",
+        desc: "Technical verification of soil conditions, percolation rates, and water well sustainability.",
+        executionDetail: "We coordinate with certified soil scientists and environmental inspectors to verify suitability for conventional or aerobic septic systems and water tables.",
+        sellerImpact: "Eliminates deal-killing surprises during buyer inspection periods and validates property value.",
+        badge: "Step 02 · Soil & Perk Audit",
+        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "land-utility-corridor",
+        title: "Utility Corridor & Access Easement Verification",
+        desc: "Investigating electrical availability (OG&E), rural water meters, natural gas/propane lines, and public road access rights.",
+        executionDetail: "We review county recorded surveys, utility tap fees, line extension estimates, and deeded ingress/egress easements.",
+        sellerImpact: "Provides clear cost projections for buyers and protects sellers against misrepresentation claims.",
+        badge: "Step 03 · Utility Due Diligence",
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "land-zoning-analysis",
+        title: "Zoning, Covenants & Highest-and-Best-Use Modeling",
+        desc: "Analyzing agricultural vs. residential zoning, subdivision potential, minimum square footage deed restrictions, and outbuilding allowances.",
+        executionDetail: "We consult with county commissioners and planning departments to determine parcel split potential and deed restrictions.",
+        sellerImpact: "Unlocks hidden land equity by marketing acreage for its highest economic use.",
+        badge: "Step 04 · Zoning Analysis",
+        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "land-builder-network",
+        title: "Builder & Developer Network Distribution",
+        desc: "Direct pitches to our established network of 24+ Oklahoma custom builders, spec home contractors, and land investors.",
+        executionDetail: "We pitch your parcel directly to builders searching for custom homesite envelopes in Edmond, Piedmont, Arcadia, and Deer Creek.",
+        sellerImpact: "Generates pre-qualified cash buyer inquiries without waiting for random internet shoppers.",
+        badge: "Step 05 · Builder Network",
+        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "land-mineral-title",
+        title: "Mineral Rights & Title Boundary Guarantee",
+        desc: "Comprehensive title search ensuring clear surface ownership, boundary line agreements, and mineral rights clarification.",
+        executionDetail: "We partner with experienced Oklahoma title attorneys to ensure seamless title insurance and ironclad closing documentation.",
+        sellerImpact: "Guarantees an airtight transaction with zero lingering boundary or mineral title disputes.",
+        badge: "Step 06 · Mineral & Title",
+        image: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1200&q=80"
+      }
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  }
+};
+
+/* =========================================================================
+   COMBINED SERVICE PAGES (Major Services + Main Processes + Sub-Processes + Aliases)
+   ========================================================================= */
+
+// Legacy and direct route aliases for seamless navigation
 const LEGACY_ALIASES: Record<string, InteriorPageData> = {
+  "home-buying-direct": {
+    ...MAJOR_SERVICE_PAGES["home-buying"],
+    id: "home-buying-direct",
+    slug: "/home-buying"
+  },
+  "home-selling-direct": {
+    ...MAJOR_SERVICE_PAGES["home-selling"],
+    id: "home-selling-direct",
+    slug: "/home-selling"
+  },
+  "land-buying-direct": {
+    ...MAJOR_SERVICE_PAGES["land-buying-and-selling"],
+    id: "land-buying-direct",
+    slug: "/land-buying-and-selling"
+  },
   "elite-marketing": {
     ...MAIN_PROCESS_PAGES["marketing-plan-and-process"],
     id: "elite-marketing",
@@ -1641,6 +1900,7 @@ const LEGACY_ALIASES: Record<string, InteriorPageData> = {
 };
 
 export const SERVICE_PAGES: Record<string, InteriorPageData> = {
+  ...MAJOR_SERVICE_PAGES,
   ...MAIN_PROCESS_PAGES,
   ...SUB_PROCESS_PAGES,
   ...LEGACY_ALIASES

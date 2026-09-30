@@ -50,9 +50,9 @@ export const MobileDock: React.FC<MobileDockProps> = ({
   onNavigate
 }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [expandedSection, setExpandedSection] = useState<'blueprint' | 'areas' | 'guides' | null>('blueprint');
+  const [expandedSection, setExpandedSection] = useState<'services' | 'blueprint' | 'areas' | 'guides' | null>('services');
 
-  const toggleSection = (section: 'blueprint' | 'areas' | 'guides') => {
+  const toggleSection = (section: 'services' | 'blueprint' | 'areas' | 'guides') => {
     setExpandedSection(expandedSection === section ? null : section);
   };
 
@@ -144,6 +144,74 @@ export const MobileDock: React.FC<MobileDockProps> = ({
 
               {/* Drawer Body Accordions */}
               <div className="p-5 space-y-4 flex-1">
+                {/* Accordion 0: Our 3 Major Services */}
+                <div className="border border-[#EA580C]/40 rounded-xl overflow-hidden bg-white shadow-2xs">
+                  <button
+                    type="button"
+                    onClick={() => toggleSection('services')}
+                    className="w-full p-4 text-left flex items-center justify-between font-serif font-bold text-[#0A192F] text-sm bg-gradient-to-r from-orange-50/50 to-white"
+                  >
+                    <span className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-[#EA580C]" />
+                      <span>Our 3 Major Services</span>
+                    </span>
+                    <ChevronDown
+                      className={`w-4 h-4 text-[#EA580C] transition-transform ${
+                        expandedSection === 'services' ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+
+                  {expandedSection === 'services' && (
+                    <div className="p-4 pt-2 border-t border-[#EA580C]/30 space-y-2.5 bg-[#FAF9F6]">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setDrawerOpen(false);
+                          if (onNavigate) onNavigate('/services/home-buying');
+                        }}
+                        className="w-full text-left p-3 rounded-lg bg-white border border-stone-200 text-xs text-[#0A192F] flex items-center justify-between hover:border-[#EA580C] shadow-2xs"
+                      >
+                        <div>
+                          <span className="font-serif font-bold text-sm text-[#0A192F] block">1. Home Buying</span>
+                          <span className="text-[11px] text-[#6B7280]">Buyer Concierge & Equity Advisory</span>
+                        </div>
+                        <ArrowRight className="w-4 h-4 text-[#EA580C]" />
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setDrawerOpen(false);
+                          if (onNavigate) onNavigate('/services/home-selling');
+                        }}
+                        className="w-full text-left p-3 rounded-lg bg-white border border-stone-200 text-xs text-[#0A192F] flex items-center justify-between hover:border-[#EA580C] shadow-2xs"
+                      >
+                        <div>
+                          <span className="font-serif font-bold text-sm text-[#0A192F] block">2. Home Selling</span>
+                          <span className="text-[11px] text-[#6B7280]">6-Step Selling Machine · Cancel-Anytime</span>
+                        </div>
+                        <ArrowRight className="w-4 h-4 text-[#EA580C]" />
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setDrawerOpen(false);
+                          if (onNavigate) onNavigate('/services/land-buying-and-selling');
+                        }}
+                        className="w-full text-left p-3 rounded-lg bg-white border border-stone-200 text-xs text-[#0A192F] flex items-center justify-between hover:border-[#EA580C] shadow-2xs"
+                      >
+                        <div>
+                          <span className="font-serif font-bold text-sm text-[#0A192F] block">3. Land Buying and selling</span>
+                          <span className="text-[11px] text-[#6B7280]">Acreage, Soil & Utility Due Diligence</span>
+                        </div>
+                        <ArrowRight className="w-4 h-4 text-[#EA580C]" />
+                      </button>
+                    </div>
+                  )}
+                </div>
+
                 {/* Accordion 1: The 6 Steps */}
                 <div className="border border-[#EA580C]/30 rounded-xl overflow-hidden bg-white">
                   <button
