@@ -8,6 +8,7 @@ import { ValuationBanner } from './components/ValuationBanner';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { MicroMarketsSection } from './components/MicroMarketsSection';
 import { ClosingCta } from './components/ClosingCta';
+import { VideoMarqueeFooter } from './components/VideoMarqueeFooter';
 import { Footer } from './components/Footer';
 import { InteriorPageView } from './pages/InteriorPageView';
 import { getPageByPath } from './pages/pageData';
@@ -205,13 +206,21 @@ export default function App() {
             <TestimonialsSection onOpenConsultation={handleOpenConsultation} />
 
             {/* Section 8: 21 Oklahoma City Micro-Markets */}
-            <MicroMarketsSection onSelectMarket={handleOpenMarket} />
+            <MicroMarketsSection onSelectMarket={handleOpenMarket} onNavigate={navigate} />
 
             {/* Section 9: Bespoke Representation CTA Banner */}
             <ClosingCta onOpenConsultation={handleOpenConsultation} />
           </>
         )}
       </main>
+
+      {/* Video Marquee: Rendered on Homepage and all other pages EXCEPT service areas detail pages */}
+      {!currentPath.startsWith('/areas') && (
+        <VideoMarqueeFooter
+          onOpenConsultation={handleOpenConsultation}
+          onOpenValuation={() => handleOpenValuation()}
+        />
+      )}
 
       {/* Editorial Footer with Full 50+ Page Sitemap Links & Compliance */}
       <Footer

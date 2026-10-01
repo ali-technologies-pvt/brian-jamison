@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BROKER_INFO } from '../data/realEstateData';
 import { BrianAvatar } from './BrianAvatar';
-import { ArrowDown, ArrowRight, ShieldCheck, Sparkles, CheckCircle2, Award } from 'lucide-react';
+import { ArrowDown, ArrowRight, Award } from 'lucide-react';
 
 interface HeroVideoProps {
   onOpenValuation: () => void;
@@ -149,19 +149,6 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
             </div>
           </div>
 
-          {/* Kicker badge with luxury coordinates & corporate brokerage seal */}
-          <div className="animate-fade-in-up flex items-center gap-2 mb-4 sm:mb-5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#EA580C] animate-ping" />
-              <span className="text-[10px] sm:text-xs tracking-[0.22em] uppercase font-sans font-bold text-stone-100">
-                Salt Real Estate Corporate Office · Edmond, OK
-              </span>
-            </div>
-            <span className="hidden md:inline-block text-[10px] font-mono tracking-widest uppercase text-stone-300/80">
-              35.6528° N, 97.4781° W
-            </span>
-          </div>
-
           {/* Display Headline: Bold luxury serif with golden gradient italic accent */}
           <h1 className="animate-fade-in-delayed font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-bold leading-[1.08] tracking-tight !text-white mb-6 sm:mb-7 text-balance drop-shadow-[0_2px_16px_rgba(0,0,0,0.9)]">
             The Agent Who Works Like Every Deal Is{' '}
@@ -176,7 +163,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
           </p>
 
           {/* Action CTAs: Bespoke Luxury Styling with Warm Gold Shimmer & Frosted Glass */}
-          <div className="animate-fade-in-delayed-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5 mb-6">
+          <div className="animate-fade-in-delayed-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5">
             <button
               type="button"
               onClick={onOpenValuation}
@@ -197,24 +184,6 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
               <span>Explore 3 Major Services</span>
               <ArrowDown className="w-3.5 h-3.5 text-white group-hover:text-[#001D40] group-hover:translate-y-1 transition-all duration-300" />
             </button>
-          </div>
-
-          {/* Trust Markers Bar */}
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-stone-200 font-medium">
-            <div className="flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-[#F59E0B]" />
-              <span>100% Risk-Free Guarantee</span>
-            </div>
-            <span className="text-white/40">·</span>
-            <div className="flex items-center gap-1.5">
-              <Sparkles className="w-4 h-4 text-[#F59E0B]" />
-              <span>350+ Global Portals</span>
-            </div>
-            <span className="text-white/40 hidden sm:inline">·</span>
-            <div className="hidden sm:flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-[#F59E0B]" />
-              <span>Direct Desk: (405) 513-3039</span>
-            </div>
           </div>
         </div>
       </div>

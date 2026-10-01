@@ -171,6 +171,29 @@ export const TEN_LISTING_STANDARDS_DELIVERABLES = [
 export { SERVICE_PAGES, CORE_PROCESSES_NAV };
 
 export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
+  "areas": {
+    id: "areas",
+    slug: "/areas",
+    category: "community",
+    kicker: "METROPOLITAN SERVICE AREAS",
+    title: "21 Oklahoma City Metropolitan Service Areas & Communities",
+    subtitle: "Explore our primary service areas across Greater Oklahoma City, Edmond, Nichols Hills, Norman, and surrounding acreage enclaves.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Metro Communities", value: "21 Areas" },
+      { label: "Volume Sold", value: "$62M+" },
+      { label: "Active Comps", value: "100% Updated" }
+    ],
+    overview: "Brian Jamison and Salt Real Estate provide comprehensive, top-tier advisory and transactional representation across the entire Oklahoma City metropolitan area. From the historic mansions of Heritage Hills and Nichols Hills to the gated golf fairways of Gaillardia, the acclaimed academic corridors of Edmond and Deer Creek, and sprawling rural acreage in Arcadia and Guthrie, our local market intelligence gives our clients an undeniable competitive edge.",
+    keyTakeaways: [
+      "In-depth micro-market data covering Days on Market (DOM), absorption velocity, and school feeder ratings",
+      "Full representation across both luxury residential enclaves and rural development acreage",
+      "Direct connections with local planning commissions, utility districts, and municipal inspectors",
+      "Tailored strategies for sellers, relocation buyers, custom builds, and expired listing turnarounds"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
   "oklahoma-city": {
     id: "oklahoma-city",
     slug: "/areas/oklahoma-city",

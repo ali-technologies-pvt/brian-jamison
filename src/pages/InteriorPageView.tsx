@@ -23,6 +23,9 @@ import { BrianAvatar } from '../components/BrianAvatar';
 import { PhilosophySection } from '../components/PhilosophySection';
 import { LISTING_STANDARDS_DATA } from '../components/ListingStandardsSection';
 import { CORE_PROCESSES_NAV } from './serviceData';
+import { HomeSellingPage } from './HomeSellingPage';
+import { HomeBuyingPage } from './HomeBuyingPage';
+import { LandSalesPage } from './LandSalesPage';
 
 interface InteriorPageViewProps {
   page: InteriorPageData;
@@ -37,6 +40,58 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
   onOpenConsultation,
   onOpenValuation
 }) => {
+  // 1. Dedicated Home Buying Service Page (/services/home-buying)
+  if (
+    page.id === 'home-buying' ||
+    page.id === 'home-buying-direct' ||
+    page.slug === '/services/home-buying' ||
+    page.slug === '/home-buying'
+  ) {
+    return (
+      <HomeBuyingPage
+        onNavigate={onNavigate}
+        onOpenConsultation={onOpenConsultation}
+        onOpenValuation={onOpenValuation}
+      />
+    );
+  }
+
+  // 2. Dedicated Home Selling Service Page (/services/home-selling)
+  if (
+    page.id === 'home-selling' ||
+    page.id === 'home-selling-direct' ||
+    page.slug === '/services/home-selling' ||
+    page.slug === '/home-selling'
+  ) {
+    return (
+      <HomeSellingPage
+        onNavigate={onNavigate}
+        onOpenConsultation={onOpenConsultation}
+        onOpenValuation={onOpenValuation}
+      />
+    );
+  }
+
+  // 3. Dedicated Land Buying & Selling Service Page (/services/land-sales & /services/land-buying-and-selling)
+  if (
+    page.id === 'land-buying-and-selling' ||
+    page.id === 'land-buying-direct' ||
+    page.id === 'land-sales' ||
+    page.id === 'land-sales-direct' ||
+    page.slug === '/services/land-sales' ||
+    page.slug === '/services/land-buying-and-selling' ||
+    page.slug === '/land-sales' ||
+    page.slug === '/land-buying-and-selling'
+  ) {
+    return (
+      <LandSalesPage
+        onNavigate={onNavigate}
+        onOpenConsultation={onOpenConsultation}
+        onOpenValuation={onOpenValuation}
+      />
+    );
+  }
+
   const getCategoryLabel = () => {
     switch (page.category) {
       case 'service':

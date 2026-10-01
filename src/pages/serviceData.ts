@@ -1867,6 +1867,16 @@ const LEGACY_ALIASES: Record<string, InteriorPageData> = {
     id: "land-buying-direct",
     slug: "/land-buying-and-selling"
   },
+  "land-sales": {
+    ...MAJOR_SERVICE_PAGES["land-buying-and-selling"],
+    id: "land-sales",
+    slug: "/services/land-sales"
+  },
+  "land-sales-direct": {
+    ...MAJOR_SERVICE_PAGES["land-buying-and-selling"],
+    id: "land-sales-direct",
+    slug: "/land-sales"
+  },
   "elite-marketing": {
     ...MAIN_PROCESS_PAGES["marketing-plan-and-process"],
     id: "elite-marketing",
