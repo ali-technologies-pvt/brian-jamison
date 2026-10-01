@@ -35,6 +35,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<'services' | 'blueprint' | 'communities' | 'hub' | null>(null);
   const navRef = useRef<HTMLDivElement>(null);
+  const menuContainerRef = useRef<HTMLDivElement>(null);
+  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Scroll detection
   useEffect(() => {
@@ -45,16 +47,30 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+      }
+    };
+  }, []);
+
   // Keyboard navigation & click outside handling (Escape & Tab closure)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
+        if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
         setActiveMenu(null);
       }
     };
 
     const handleClickOutside = (e: MouseEvent) => {
-      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+      const inNav = navRef.current && navRef.current.contains(target);
+      const inMenu = menuContainerRef.current && menuContainerRef.current.contains(target);
+      if (!inNav && !inMenu) {
+        if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
         setActiveMenu(null);
       }
     };
@@ -67,11 +83,38 @@ export const Navbar: React.FC<NavbarProps> = ({
     };
   }, []);
 
+  // Hover Management with Grace Period Buffer
+  const handleOpenMenu = (menu: 'services' | 'blueprint' | 'communities' | 'hub') => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setActiveMenu(menu);
+  };
+
+  const handleScheduleClose = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+    }
+    closeTimeoutRef.current = setTimeout(() => {
+      setActiveMenu(null);
+    }, 220); // 220ms grace period so cursor can effortlessly cross between trigger and dropdown
+  };
+
+  const handleCancelClose = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  };
+
   const toggleMenu = (menu: 'services' | 'blueprint' | 'communities' | 'hub') => {
+    handleCancelClose();
     setActiveMenu(prev => (prev === menu ? null : menu));
   };
 
   const scrollToSection = (id: string) => {
+    handleCancelClose();
     setActiveMenu(null);
     const element = document.getElementById(id);
     if (element) {
@@ -123,6 +166,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             ref={navRef}
             role="navigation"
             aria-label="Main Navigation"
+            onMouseEnter={handleCancelClose}
+            onMouseLeave={handleScheduleClose}
             className="hidden lg:flex items-center gap-1 xl:gap-2 px-6 py-2 rounded-full bg-[#002D61]/70 hover:bg-[#002D61]/80 backdrop-blur-2xl border border-white/20 shadow-xl shadow-[#001D40]/35 text-white relative overflow-hidden transition-all duration-300"
           >
             {/* Specular Top Edge Gloss Highlight */}
@@ -135,7 +180,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 aria-expanded={activeMenu === 'services'}
                 aria-haspopup="true"
                 onClick={() => toggleMenu('services')}
-                onMouseEnter={() => setActiveMenu('services')}
+                onMouseEnter={() => handleOpenMenu('services')}
                 className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                   activeMenu === 'services'
                     ? 'bg-white/25 text-[#FB923C] shadow-xs'
@@ -158,7 +203,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 aria-expanded={activeMenu === 'blueprint'}
                 aria-haspopup="true"
                 onClick={() => toggleMenu('blueprint')}
-                onMouseEnter={() => setActiveMenu('blueprint')}
+                onMouseEnter={() => handleOpenMenu('blueprint')}
                 className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                   activeMenu === 'blueprint'
                     ? 'bg-white/25 text-[#FB923C] shadow-xs'
@@ -185,7 +230,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onNavigate('/listings');
                 }
               }}
-              onMouseEnter={() => setActiveMenu(null)}
+              onMouseEnter={() => {
+                handleCancelClose();
+                setActiveMenu(null);
+              }}
               className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide text-white hover:text-[#FB923C] hover:bg-white/10 transition-all cursor-pointer"
             >
               Featured Closings
@@ -198,7 +246,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 aria-expanded={activeMenu === 'communities'}
                 aria-haspopup="true"
                 onClick={() => toggleMenu('communities')}
-                onMouseEnter={() => setActiveMenu('communities')}
+                onMouseEnter={() => handleOpenMenu('communities')}
                 className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                   activeMenu === 'communities'
                     ? 'bg-white/25 text-[#FB923C] shadow-xs'
@@ -221,7 +269,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 aria-expanded={activeMenu === 'hub'}
                 aria-haspopup="true"
                 onClick={() => toggleMenu('hub')}
-                onMouseEnter={() => setActiveMenu('hub')}
+                onMouseEnter={() => handleOpenMenu('hub')}
                 className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                   activeMenu === 'hub'
                     ? 'bg-white/25 text-[#FB923C] shadow-xs'
@@ -248,7 +296,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onNavigate('/about');
                 }
               }}
-              onMouseEnter={() => setActiveMenu(null)}
+              onMouseEnter={() => {
+                handleCancelClose();
+                setActiveMenu(null);
+              }}
               className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide text-white hover:text-[#FB923C] hover:bg-white/10 transition-all cursor-pointer"
             >
               About Brian Jamison
@@ -287,7 +338,12 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Mega Menus Dropdown Container */}
-        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 mt-2 pointer-events-auto">
+        <div
+          ref={menuContainerRef}
+          onMouseEnter={handleCancelClose}
+          onMouseLeave={handleScheduleClose}
+          className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 mt-1 pointer-events-auto"
+        >
           <AnimatePresence>
             {activeMenu === 'services' && (
               <MegaMenuServices
