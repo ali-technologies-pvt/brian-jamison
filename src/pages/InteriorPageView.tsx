@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { InteriorPageData } from './types';
 import { InteriorHeroVideo } from './InteriorHeroVideo';
 import { InteriorMediaTour } from './InteriorMediaTour';
@@ -16,9 +16,11 @@ import {
   FileCheck,
   ChevronRight,
   Layers,
-  ArrowUpRight
+  ArrowUpRight,
+  Search,
+  Building
 } from 'lucide-react';
-import { BROKER_INFO } from '../data/realEstateData';
+import { BROKER_INFO, MICRO_MARKETS, MicroMarket } from '../data/realEstateData';
 import { BrianAvatar } from '../components/BrianAvatar';
 import { PhilosophySection } from '../components/PhilosophySection';
 import { LISTING_STANDARDS_DATA } from '../components/ListingStandardsSection';
@@ -26,6 +28,7 @@ import { CORE_PROCESSES_NAV } from './serviceData';
 import { HomeSellingPage } from './HomeSellingPage';
 import { HomeBuyingPage } from './HomeBuyingPage';
 import { LandSalesPage } from './LandSalesPage';
+import { NeighborhoodDetailView } from './NeighborhoodDetailView';
 
 interface InteriorPageViewProps {
   page: InteriorPageData;
@@ -40,6 +43,8 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
   onOpenConsultation,
   onOpenValuation
 }) => {
+  const [areasCategoryFilter, setAreasCategoryFilter] = useState<'all' | 'luxury' | 'north' | 'west-south'>('all');
+  const [areasSearchQuery, setAreasSearchQuery] = useState('');
   // 1. Dedicated Home Buying Service Page (/services/home-buying)
   if (
     page.id === 'home-buying' ||
@@ -85,6 +90,22 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
   ) {
     return (
       <LandSalesPage
+        onNavigate={onNavigate}
+        onOpenConsultation={onOpenConsultation}
+        onOpenValuation={onOpenValuation}
+      />
+    );
+  }
+
+  // 4. Dedicated 8-Section Neighborhood & Community Detail View for all 21 Oklahoma Enclaves
+  if (
+    page.category === 'community' &&
+    page.id !== 'areas' &&
+    page.slug !== '/areas'
+  ) {
+    return (
+      <NeighborhoodDetailView
+        page={page}
         onNavigate={onNavigate}
         onOpenConsultation={onOpenConsultation}
         onOpenValuation={onOpenValuation}
@@ -279,6 +300,156 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
           </div>
         </div>
       </section>
+
+      {/* 2.5. Dedicated 21-Community Directory on /areas Index Page */}
+      {page.id === 'areas' && (
+        <section className="w-full py-16 sm:py-24 bg-[#F4F1EB] border-b border-[#EA580C]/30">
+          <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#EA580C]/30 text-[#EA580C] text-xs font-bold uppercase tracking-widest mb-3 shadow-2xs">
+                  <Building className="w-3.5 h-3.5" />
+                  <span>Oklahoma City Metropolitan Enclaves</span>
+                </div>
+                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#002D61] tracking-tight">
+                  Browse All 21 Service Areas
+                </h2>
+              </div>
+
+              {/* Search Input Filter */}
+              <div className="relative w-full md:w-80">
+                <Search className="w-4 h-4 text-[#EA580C] absolute left-4 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  value={areasSearchQuery}
+                  onChange={(e) => setAreasSearchQuery(e.target.value)}
+                  placeholder="Search city or school district..."
+                  className="w-full pl-11 pr-4 py-3 rounded-full bg-white border border-[#EA580C]/30 text-xs font-medium text-[#002D61] placeholder-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#EA580C]"
+                />
+              </div>
+            </div>
+
+            {/* Category Filter Pills */}
+            <div className="flex flex-wrap gap-2 mb-10">
+              <button
+                type="button"
+                onClick={() => setAreasCategoryFilter('all')}
+                className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all cursor-pointer ${
+                  areasCategoryFilter === 'all'
+                    ? 'bg-[#002D61] text-white shadow-md'
+                    : 'bg-white text-[#4B5563] border border-[#EA580C]/25 hover:border-[#EA580C]'
+                }`}
+              >
+                All 21 Communities
+              </button>
+              <button
+                type="button"
+                onClick={() => setAreasCategoryFilter('luxury')}
+                className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all cursor-pointer ${
+                  areasCategoryFilter === 'luxury'
+                    ? 'bg-[#002D61] text-white shadow-md'
+                    : 'bg-white text-[#4B5563] border border-[#EA580C]/25 hover:border-[#EA580C]'
+                }`}
+              >
+                Historic & Luxury Enclaves
+              </button>
+              <button
+                type="button"
+                onClick={() => setAreasCategoryFilter('north')}
+                className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all cursor-pointer ${
+                  areasCategoryFilter === 'north'
+                    ? 'bg-[#002D61] text-white shadow-md'
+                    : 'bg-white text-[#4B5563] border border-[#EA580C]/25 hover:border-[#EA580C]'
+                }`}
+              >
+                North Metro & Edmond Corridors
+              </button>
+              <button
+                type="button"
+                onClick={() => setAreasCategoryFilter('west-south')}
+                className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all cursor-pointer ${
+                  areasCategoryFilter === 'west-south'
+                    ? 'bg-[#002D61] text-white shadow-md'
+                    : 'bg-white text-[#4B5563] border border-[#EA580C]/25 hover:border-[#EA580C]'
+                }`}
+              >
+                West & South Metro Expansion
+              </button>
+            </div>
+
+            {/* Communities Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {MICRO_MARKETS.filter((m) => {
+                const matchesCat =
+                  areasCategoryFilter === 'all' || m.category === areasCategoryFilter;
+                const matchesSearch =
+                  !areasSearchQuery.trim() ||
+                  m.name.toLowerCase().includes(areasSearchQuery.toLowerCase()) ||
+                  m.overview.toLowerCase().includes(areasSearchQuery.toLowerCase()) ||
+                  m.lifestyle.toLowerCase().includes(areasSearchQuery.toLowerCase());
+                return matchesCat && matchesSearch;
+              }).map((market) => (
+                <div
+                  key={market.id}
+                  onClick={() => onNavigate(`/areas/${market.id}`)}
+                  className="group rounded-2xl overflow-hidden bg-white border border-[#EA580C]/25 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between cursor-pointer"
+                >
+                  <div>
+                    <div className="relative h-48 w-full overflow-hidden bg-[#001D40]">
+                      <img
+                        src={market.image}
+                        alt={market.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+
+                      <div className="absolute top-3 left-3">
+                        <span className="px-2.5 py-1 rounded-md text-[10px] font-sans font-bold uppercase tracking-wider bg-[#001D40]/90 backdrop-blur-md text-white border border-white/20">
+                          {market.highlightBadge}
+                        </span>
+                      </div>
+
+                      <div className="absolute bottom-3 left-3 right-3 text-white">
+                        <h3 className="font-serif text-xl font-bold !text-white drop-shadow-md">
+                          {market.name}
+                        </h3>
+                      </div>
+                    </div>
+
+                    <div className="p-5 space-y-3">
+                      <p className="text-xs text-[#4B5563] line-clamp-2 leading-relaxed">
+                        {market.lifestyle}
+                      </p>
+
+                      <div className="grid grid-cols-2 gap-2 pt-3 border-t border-[#EA580C]/20 text-xs">
+                        <div>
+                          <span className="text-[10px] uppercase font-bold text-[#EA580C] block">Median Price</span>
+                          <span className="font-serif font-bold text-[#002D61] text-sm">{market.medianPrice}</span>
+                        </div>
+                        <div>
+                          <span className="text-[10px] uppercase font-bold text-[#EA580C] block">Avg DOM</span>
+                          <span className="font-serif font-bold text-[#002D61] text-sm">{market.avgDom}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-5 pt-0">
+                    <button
+                      type="button"
+                      className="w-full py-2.5 px-4 rounded-xl bg-[#FAF9F6] group-hover:bg-[#002D61] text-[#002D61] group-hover:text-white border border-[#002D61]/20 group-hover:border-[#002D61] text-xs font-semibold tracking-wide transition-all duration-200 flex items-center justify-between"
+                    >
+                      <span>Explore 8-Section Enclave Guide</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-[#EA580C] group-hover:text-white group-hover:translate-x-1 transition-all" />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* 3. Deliverables Matrix (For Services / Audience Pages / Standards) */}
       {page.deliverables && page.deliverables.length > 0 && (

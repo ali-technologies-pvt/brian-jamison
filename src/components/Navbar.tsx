@@ -83,6 +83,72 @@ export const Navbar: React.FC<NavbarProps> = ({
     };
   }, []);
 
+  // Global Cursor Boundary Tracker: Closes mega menu reliably when mouse leaves the nav or dropdown
+  useEffect(() => {
+    if (!activeMenu) return;
+
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      const navEl = navRef.current;
+      const menuEl = menuContainerRef.current;
+
+      const x = e.clientX;
+      const y = e.clientY;
+
+      let isInside = false;
+
+      // Check if inside Nav Bar
+      if (navEl) {
+        const navRect = navEl.getBoundingClientRect();
+        if (
+          x >= navRect.left - 14 &&
+          x <= navRect.right + 14 &&
+          y >= navRect.top - 14 &&
+          y <= navRect.bottom + 14
+        ) {
+          isInside = true;
+        }
+      }
+
+      // Check if inside Active Mega Menu Dropdown or the connecting bridge
+      if (!isInside && menuEl) {
+        const dialogBox = menuEl.querySelector<HTMLElement>('.relative.rounded-2xl') || menuEl;
+        const menuRect = dialogBox.getBoundingClientRect();
+        const topBoundary = navEl ? navEl.getBoundingClientRect().top : menuRect.top - 20;
+
+        if (
+          x >= menuRect.left - 16 &&
+          x <= menuRect.right + 16 &&
+          y >= topBoundary &&
+          y <= menuRect.bottom + 16
+        ) {
+          isInside = true;
+        }
+      }
+
+      if (isInside) {
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+          timeoutId = null;
+        }
+      } else {
+        // Cursor has left both nav and mega menu
+        if (!timeoutId) {
+          timeoutId = setTimeout(() => {
+            setActiveMenu(null);
+          }, 120);
+        }
+      }
+    };
+
+    window.addEventListener('mousemove', handleGlobalMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', handleGlobalMouseMove);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [activeMenu]);
+
   // Hover Management with Grace Period Buffer
   const handleOpenMenu = (menu: 'services' | 'blueprint' | 'communities' | 'hub') => {
     if (closeTimeoutRef.current) {
@@ -342,8 +408,15 @@ export const Navbar: React.FC<NavbarProps> = ({
           ref={menuContainerRef}
           onMouseEnter={handleCancelClose}
           onMouseLeave={handleScheduleClose}
-          className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 mt-1 pointer-events-auto"
+          className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 mt-1 pointer-events-auto relative"
         >
+          {/* Invisible interactive hover bridge between nav pill and dropdown */}
+          {activeMenu && (
+            <div
+              className="absolute -top-3 inset-x-0 h-4 pointer-events-auto"
+              onMouseEnter={handleCancelClose}
+            />
+          )}
           <AnimatePresence>
             {activeMenu === 'services' && (
               <MegaMenuServices
