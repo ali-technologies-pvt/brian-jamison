@@ -14,6 +14,7 @@ import { InteriorPageView } from './pages/InteriorPageView';
 import { getPageByPath } from './pages/pageData';
 import { AdminLoginView } from './components/admin/AdminLoginView';
 import { IdxTestPage } from './pages/IdxTestPage';
+import { SitemapPage } from './pages/SitemapPage';
 import {
   ValuationModal,
   ConsultationModal,
@@ -149,7 +150,8 @@ export default function App() {
   // Resolve current active page
   const isAdminRoute = currentPath.startsWith('/admin');
   const isIdxRoute = currentPath === '/idx-test' || currentPath === '/idx-search-test' || currentPath === '/idx';
-  const activeInteriorPage = currentPath !== '/' && !isAdminRoute && !isIdxRoute ? getPageByPath(currentPath) : null;
+  const isSitemapRoute = currentPath === '/sitemap' || currentPath === '/site-map' || currentPath === '/sitemap.html';
+  const activeInteriorPage = currentPath !== '/' && !isAdminRoute && !isIdxRoute && !isSitemapRoute ? getPageByPath(currentPath) : null;
 
   if (isAdminRoute) {
     return <AdminLoginView onNavigate={navigate} />;
@@ -174,6 +176,13 @@ export default function App() {
         {isIdxRoute ? (
           /* Dedicated IDX Broker Quick Search Test Page */
           <IdxTestPage
+            onNavigate={navigate}
+            onOpenConsultation={handleOpenConsultation}
+            onOpenValuation={() => handleOpenValuation()}
+          />
+        ) : isSitemapRoute ? (
+          /* Dedicated Platform Sitemap & Architecture Directory */
+          <SitemapPage
             onNavigate={navigate}
             onOpenConsultation={handleOpenConsultation}
             onOpenValuation={() => handleOpenValuation()}

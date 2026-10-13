@@ -1,0 +1,7 @@
+# Jamison Real Estate OKC robots.txt
+User-agent: *
+Allow: /
+Disallow: /admin
+
+# Canonical XML Sitemap
+Sitemap: https://jamisonrealestateokc.com/sitemap.xml

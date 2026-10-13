@@ -13,35 +13,39 @@ import {
   ChevronLeft
 } from 'lucide-react';
 
+import { useAdmin } from '../../context/AdminContext';
+
 interface AdminLoginViewProps {
   onNavigate: (path: string) => void;
 }
 
 export const AdminLoginView: React.FC<AdminLoginViewProps> = ({ onNavigate }) => {
-  const [username, setUsername] = useState('brianjamison');
+  const { login, isAdmin, setIsEditMode } = useAdmin();
+  const [username, setUsername] = useState('Admin');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(isAdmin);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
     setIsLoading(true);
 
-    setTimeout(() => {
-      if (
-        (username.trim().toLowerCase() === 'brianjamison' || username.trim().toLowerCase() === 'bjamison@salt.realestate') &&
-        password === 'Imthepassword@123'
-      ) {
+    try {
+      const res = await login(username.trim(), password);
+      if (res.success) {
         setIsLoggedIn(true);
-        setIsLoading(false);
+        setIsEditMode(true);
       } else {
-        setErrorMessage('Invalid username or password. Please verify your credentials.');
-        setIsLoading(false);
+        setErrorMessage(res.error || 'Invalid username or password. Please verify your credentials.');
       }
-    }, 600);
+    } catch {
+      setErrorMessage('Authentication request failed. Please check credentials.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (isLoggedIn) {

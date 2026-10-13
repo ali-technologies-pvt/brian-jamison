@@ -464,6 +464,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         onOpenCalculator={onOpenCalculator}
         onOpenChecklist={onOpenChecklist}
         onOpenLegal={onOpenLegal}
+        onNavigate={onNavigate}
       />
     </>
   );

@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { signIn } from 'next-auth/react';
 import {
   ShieldCheck,
   Lock,
@@ -22,7 +21,7 @@ export default function AdminLoginPage() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl') || '/admin';
 
-  const [username, setUsername] = useState('brianjamison');
+  const [username, setUsername] = useState('Admin');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -34,21 +33,24 @@ export default function AdminLoginPage() {
     setIsLoading(true);
 
     try {
-      // Relative, domain-agnostic signIn via NextAuth
-      const res = await signIn('credentials', {
-        redirect: false,
-        username: username.trim(),
-        password,
-        callbackUrl,
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: username.trim(),
+          password,
+        }),
       });
 
-      if (res?.error) {
-        setErrorMessage('Invalid username or password. Please verify your credentials.');
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        setErrorMessage(data.error || 'Invalid username or password. Please verify your credentials.');
         setIsLoading(false);
         return;
       }
 
-      // Successful authentication: navigate to admin portal using relative URL
+      // Successful authentication
       router.push(callbackUrl);
       router.refresh();
     } catch (err) {
@@ -221,18 +223,18 @@ export default function AdminLoginPage() {
             {/* Quick-Fill Helper for Development & Demonstration */}
             <div className="mt-8 pt-5 border-t border-[#E5E0D8] text-center">
               <span className="text-[11px] text-[#6B7280] block mb-2">
-                Phase 1 Testing Seed Credentials:
+                Secure Administrator Credentials:
               </span>
               <button
                 type="button"
                 onClick={() => {
-                  setUsername('brianjamison');
-                  setPassword('Imthepassword@123');
+                  setUsername('Admin');
+                  setPassword('#Imthepassword@123#');
                 }}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#FAF8F5] hover:bg-[#E5E0D8]/50 border border-[#E5E0D8] text-[11px] font-medium text-[#0A2540] transition-colors cursor-pointer"
               >
                 <CheckCircle2 className="w-3 h-3 text-[#E07A28]" />
-                <span>Auto-Fill: <strong>brianjamison</strong></span>
+                <span>Auto-Fill: <strong>Admin</strong></span>
               </button>
             </div>
           </div>

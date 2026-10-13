@@ -1191,6 +1191,28 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
       "Prompt consultation scheduling with zero pressure"
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "sitemap": {
+    id: "sitemap",
+    slug: "/sitemap",
+    category: "brand",
+    kicker: "PLATFORM DIRECTORY",
+    title: "Complete Sitemap & Platform Architecture (58+ Pages)",
+    subtitle: "Explore all 58+ indexed portals, community guides, seller blueprint phases, and advisory resources for Jamison Real Estate in the Oklahoma City metropolitan area.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Indexed Pages", value: "58+ Pages" },
+      { label: "Metro Enclaves", value: "21 Areas" },
+      { label: "XML Sitemap", value: "sitemap.xml" }
+    ],
+    overview: "Comprehensive directory indexing every core brand page, 3 major services, 6-phase seller blueprint, 10 listing standards, and 21 Oklahoma City metro community hubs.",
+    keyTakeaways: [
+      "Live search & category filter covering all 58+ platform pages",
+      "Direct canonical links with XML sitemap for search engine crawlers",
+      "Complete transparency into Oklahoma City metro market coverage"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
   }
 };
 

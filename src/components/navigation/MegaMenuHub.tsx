@@ -236,9 +236,23 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
           </div>
         </div>
 
-        {/* Bottom Banner */}
-        <div className="mt-6 pt-4 border-t border-white/15 flex items-center justify-between text-xs text-stone-200">
-          <span>Office Location: 1508 W. Edmond Rd., Edmond, OK 73003</span>
+        {/* Bottom Banner with Sitemap and Strategy Booking */}
+        <div className="mt-6 pt-4 border-t border-white/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-stone-200">
+          <button
+            type="button"
+            onClick={() => {
+              onClose();
+              if (onNavigate) {
+                onNavigate('/sitemap');
+              } else {
+                window.location.href = '/sitemap';
+              }
+            }}
+            className="font-semibold text-stone-200 hover:text-[#FB923C] hover:underline cursor-pointer flex items-center gap-1.5 transition-colors"
+          >
+            <Compass className="w-3.5 h-3.5 text-[#FB923C]" />
+            <span>Platform Sitemap (58+ Directory Pages)</span>
+          </button>
           <button
             type="button"
             onClick={() => {

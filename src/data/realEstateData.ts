@@ -899,6 +899,61 @@ export const SITEMAP_PAGES = [
   { path: "/reviews", title: "Client Experiences & Reviews", category: "Core" },
   { path: "/home-valuation", title: "Confidential Market Appraisal", category: "Core" },
   { path: "/contact", title: "Contact Jamison Real Estate", category: "Core" },
+  { path: "/sitemap", title: "Complete Platform Sitemap & Directory (58+ Pages)", category: "Core" },
+  { path: "/idx-test", title: "IDX Broker MLS Quick Search Test", category: "Core" },
+
+  // 3 Major Services
+  { path: "/services/home-buying", title: "Major Service 1: Home Buying Advisory", category: "Service" },
+  { path: "/services/home-selling", title: "Major Service 2: Home Selling Machine", category: "Service" },
+  { path: "/services/land-buying-and-selling", title: "Major Service 3: Land Buying & Selling", category: "Service" },
+
+  // Service Blueprint Phase Pages
+  { path: "/services/elite-marketing", title: "Phase 1: Elite Marketing Engine", category: "Service" },
+  { path: "/services/transparent-communication", title: "Phase 2: Transparent Communication", category: "Service" },
+  { path: "/services/accessibility-guarantee", title: "Phase 3: 24/7 Accessibility", category: "Service" },
+  { path: "/services/support-team", title: "Phase 4: 7-Person Specialized Team", category: "Service" },
+  { path: "/services/precision-pricing", title: "Phase 5: Data-Driven Pricing", category: "Service" },
+  { path: "/services/cancel-anytime-guarantee", title: "Phase 6: Cancel-Anytime Pledge", category: "Service" },
+
+  // 10 Core Marketing & Seller Blueprint Standards
+  { path: "/services/home-prep-guidance", title: "Standard 1: Home-Prep Guidance & Staging", category: "Standard" },
+  { path: "/services/professional-photography", title: "Standard 2: Professional Architectural HDR Photography", category: "Standard" },
+  { path: "/services/cinematic-video", title: "Standard 3: Cinema-Grade 4K Motion Walkthrough Film", category: "Standard" },
+  { path: "/services/aerial-drone", title: "Standard 4: FAA Part-107 HD Aerial Drone Mapping", category: "Standard" },
+  { path: "/services/matterport-3d", title: "Standard 5: Interactive Matterport Pro3 3D Virtual Tour", category: "Standard" },
+  { path: "/services/global-portals", title: "Standard 6: Syndication to 350+ Global Luxury Feeds", category: "Standard" },
+  { path: "/services/single-property-website", title: "Standard 7: Dedicated Single-Property Website", category: "Standard" },
+  { path: "/services/social-advertising", title: "Standard 8: Hyper-Targeted Meta Paid Retargeting", category: "Standard" },
+  { path: "/services/mls-refreshes", title: "Standard 9: Active MLS Algorithmic Tuning", category: "Standard" },
+  { path: "/services/reverse-prospecting", title: "Standard 10: Reverse Prospecting & Matchmaking", category: "Standard" },
+
+  // 21 Local SEO Metro Communities & Enclaves
+  { path: "/areas", title: "Metropolitan Service Areas & 21 Community Hubs", category: "Community" },
+  { path: "/areas/oklahoma-city", title: "Oklahoma City Luxury Real Estate & Historic Enclaves", category: "Community" },
+  { path: "/areas/edmond", title: "Edmond Premier Estates & Family Enclaves", category: "Community" },
+  { path: "/areas/nichols-hills", title: "Nichols Hills Crown Jewel Luxury Estates", category: "Community" },
+  { path: "/areas/heritage-hills", title: "Heritage Hills Historic Preservation Enclaves", category: "Community" },
+  { path: "/areas/gaillardia", title: "Gaillardia Guard-Gated Golf Community", category: "Community" },
+  { path: "/areas/crown-heights", title: "Crown Heights Tudor & Mediterranean Revivals", category: "Community" },
+  { path: "/areas/the-village", title: "The Village Mid-Century Enclaves", category: "Community" },
+  { path: "/areas/downtown-midtown", title: "Downtown & Midtown OKC Condos & Urban Living", category: "Community" },
+  { path: "/areas/quail-creek", title: "Quail Creek Golf & Country Club Estates", category: "Community" },
+  { path: "/areas/edmond-oakdale", title: "Edmond Oakdale Luxury & Acreage Living", category: "Community" },
+  { path: "/areas/deer-creek", title: "Deer Creek Top-Rated Academic Enclaves", category: "Community" },
+  { path: "/areas/oak-tree", title: "Oak Tree Championship Golf Fairway Estates", category: "Community" },
+  { path: "/areas/arcadia", title: "Arcadia & Lake Hiwassee Waterfront & Acreage", category: "Community" },
+  { path: "/areas/guthrie", title: "Guthrie Historic Victorian & Prairie Estates", category: "Community" },
+  { path: "/areas/twin-bridges", title: "Twin Bridges Gated Waterfront Community", category: "Community" },
+  { path: "/areas/rose-creek", title: "Rose Creek Guard-Gated Golf & Country Club", category: "Community" },
+  { path: "/areas/yukon", title: "Yukon Family Communities & New Builds", category: "Community" },
+  { path: "/areas/mustang", title: "Mustang Fast-Growing Suburban Living", category: "Community" },
+  { path: "/areas/norman", title: "Norman University & Cultural Enclaves", category: "Community" },
+  { path: "/areas/moore", title: "Moore High-Demand Family Neighborhoods", category: "Community" },
+  { path: "/areas/midwest-city", title: "Midwest City Aerospace Corridor Homes", category: "Community" },
+  { path: "/areas/choctaw", title: "Choctaw Wooded Acreage & Custom Estates", category: "Community" },
+  { path: "/areas/blanchard", title: "Blanchard Scenic Acreage & Equestrian Homes", category: "Community" },
+  { path: "/areas/newcastle", title: "Newcastle Rapid Equity & Acreage Living", category: "Community" },
+  { path: "/areas/piedmont", title: "Piedmont Prairie Estates & Rural Freedom", category: "Community" },
 
   // Audience & Intent Silos
   { path: "/sellers", title: "Sell for Top Dollar Roadmap", category: "Audience" },
@@ -908,27 +963,7 @@ export const SITEMAP_PAGES = [
   { path: "/custom-builds", title: "Custom Builds & Spec Advisory", category: "Audience" },
   { path: "/fsbo", title: "For Sale By Owner Partnership", category: "Audience" },
 
-  // Service Phase Pages
-  { path: "/services/elite-marketing", title: "Phase 1: Elite Marketing Engine", category: "Service" },
-  { path: "/services/transparent-communication", title: "Phase 2: Transparent Communication", category: "Service" },
-  { path: "/services/accessibility-guarantee", title: "Phase 3: 24/7 Accessibility", category: "Service" },
-  { path: "/services/support-team", title: "Phase 4: 7-Person Specialized Team", category: "Service" },
-  { path: "/services/precision-pricing", title: "Phase 5: Data-Driven Pricing", category: "Service" },
-  { path: "/services/cancel-anytime-guarantee", title: "Phase 6: Cancel-Anytime Pledge", category: "Service" },
-
-  // 10 Core Marketing & Seller Blueprint Standards
-  { path: "/services/home-prep-guidance", title: "Standard 1: Home-Prep Guidance & Staging", category: "Service" },
-  { path: "/services/professional-photography", title: "Standard 2: Professional Architectural HDR Photography", category: "Service" },
-  { path: "/services/cinematic-video", title: "Standard 3: Cinema-Grade 4K Motion Walkthrough Film", category: "Service" },
-  { path: "/services/aerial-drone", title: "Standard 4: FAA Part-107 HD Aerial Drone Mapping", category: "Service" },
-  { path: "/services/matterport-3d", title: "Standard 5: Interactive Matterport Pro3 3D Virtual Tour", category: "Service" },
-  { path: "/services/global-portals", title: "Standard 6: Syndication to 350+ Global Luxury Feeds", category: "Service" },
-  { path: "/services/single-property-website", title: "Standard 7: Dedicated Single-Property Website", category: "Service" },
-  { path: "/services/social-advertising", title: "Standard 8: Hyper-Targeted Meta Paid Retargeting", category: "Service" },
-  { path: "/services/mls-refreshes", title: "Standard 9: Active MLS Algorithmic Tuning", category: "Service" },
-  { path: "/services/reverse-prospecting", title: "Standard 10: Reverse Prospecting & Matchmaking", category: "Service" },
-
-  // Resources
+  // Resources, Guides & Legal Compliance
   { path: "/resources/okc-relocation-guide", title: "OKC Relocation Guide", category: "Resource" },
   { path: "/resources/home-sellers-checklist", title: "Home Seller's Checklist (PDF)", category: "Resource" },
   { path: "/resources/mortgage-calculator", title: "Mortgage & Affordability Calculator", category: "Resource" },

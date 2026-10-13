@@ -235,6 +235,22 @@ export const Footer: React.FC<FooterProps> = ({
                   <span>IDX Broker MLS Search Test</span>
                 </button>
               </li>
+              <li className="pt-1">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onNavigate) {
+                      onNavigate('/sitemap');
+                    } else {
+                      window.location.href = '/sitemap';
+                    }
+                  }}
+                  className="hover:text-white hover:underline transition-colors text-left cursor-pointer text-[#FB923C] font-bold flex items-center gap-1.5"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
+                  <span>Platform Sitemap (58+ Pages) →</span>
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -374,6 +390,31 @@ export const Footer: React.FC<FooterProps> = ({
                 >
                   Equal Housing Opportunity
                 </button>
+              </li>
+              <li className="pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onNavigate) {
+                      onNavigate('/sitemap');
+                    } else {
+                      window.location.href = '/sitemap';
+                    }
+                  }}
+                  className="hover:text-[#FB923C] hover:underline transition-colors block text-left font-bold text-white text-[12px] flex items-center gap-1.5"
+                >
+                  <span>Complete HTML Sitemap (58+ Pages)</span>
+                </button>
+              </li>
+              <li>
+                <a
+                  href="/sitemap.xml"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-stone-300 hover:text-white hover:underline transition-colors block text-left text-[11px] font-mono"
+                >
+                  XML Sitemap (sitemap.xml)
+                </a>
               </li>
               <li className="pt-2">
                 <button
