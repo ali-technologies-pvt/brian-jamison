@@ -17,13 +17,17 @@ interface MegaMenuServicesProps {
   onNavigate?: (path: string) => void;
   onOpenConsultation?: () => void;
   onOpenMethod?: (phaseIndex?: number) => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 export const MegaMenuServices: React.FC<MegaMenuServicesProps> = ({
   onClose,
   onNavigate,
   onOpenConsultation,
-  onOpenMethod
+  onOpenMethod,
+  onMouseEnter,
+  onMouseLeave
 }) => {
   const handleNav = (slug: string) => {
     onClose();
@@ -79,7 +83,9 @@ export const MegaMenuServices: React.FC<MegaMenuServicesProps> = ({
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: -8, scale: 0.98 }}
       transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-      className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 w-[980px] max-w-[95vw] z-50 pointer-events-auto"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className="mega-menu-card absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 w-[980px] max-w-[95vw] z-50 pointer-events-auto"
     >
       <div className="relative rounded-2xl p-6 sm:p-7 bg-gradient-to-b from-[#002D61]/98 via-[#001D40]/98 to-[#00142C]/98 backdrop-blur-2xl border border-white/20 shadow-2xl shadow-[#00142C]/70 text-white overflow-hidden">
         {/* Specular Top Edge Gloss Highlight */}

@@ -49,7 +49,7 @@ export const PROCESS_CATEGORIES: ProcessCategory[] = [
     name: 'Marketing plan and process',
     slug: '/services/marketing-plan-and-process',
     subheading:
-      'Our firm executes an institutional multi-channel marketing campaign designed to capture maximum qualified buyer demand.',
+      'Every listing gets a full marketing campaign built to put your home in front of every qualified buyer.',
     items: PROCESS_ONE_DELIVERABLES.map((d) => ({
       id: d.id,
       number: d.badge.replace('Step ', ''),
@@ -67,7 +67,7 @@ export const PROCESS_CATEGORIES: ProcessCategory[] = [
     name: 'Communication',
     slug: '/services/communication',
     subheading:
-      'Our firm enforces transparent, timely, and disciplined communication so you retain total control throughout the transaction.',
+      'Jamison Real Estate enforces transparent, timely, and disciplined communication so you retain total control throughout the transaction.',
     items: PROCESS_TWO_DELIVERABLES.map((d) => ({
       id: d.id,
       number: d.badge.replace('Step ', ''),
@@ -103,7 +103,7 @@ export const PROCESS_CATEGORIES: ProcessCategory[] = [
     name: 'Team support',
     slug: '/services/team-support',
     subheading:
-      'Our firm operates a full specialized organizational matrix so every operational, legal, and creative detail is handled by an expert.',
+      'Jamison Real Estate operates a dedicated specialized support network so every operational, legal, and creative detail is handled by an expert.',
     items: PROCESS_FOUR_DELIVERABLES.map((d) => ({
       id: d.id,
       number: d.badge.replace('Step ', ''),
@@ -273,7 +273,7 @@ export const CompanyServicesProcessSection: React.FC<CompanyServicesProcessSecti
               onClick={onOpenConsultation}
               className="hidden sm:inline-flex px-5 py-2.5 rounded-full bg-[#E07A28] hover:bg-[#C86518] text-white text-xs font-bold tracking-wide uppercase transition-all shadow-sm cursor-pointer items-center gap-2"
             >
-              <span>Consult Our Firm</span>
+              <span>Schedule Consultation</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -374,10 +374,10 @@ export const CompanyServicesProcessSection: React.FC<CompanyServicesProcessSecti
               <span>100% Risk-Free Seller Protection</span>
             </div>
             <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white">
-              Ready to List with Oklahoma's Premier Real Estate Firm?
+              Ready to sell with a Top 2% OKC agent?
             </h3>
             <p className="text-xs sm:text-sm text-stone-300 mt-2 leading-relaxed">
-              Every listing agreement includes our unconditional Cancel-Anytime Pledge: if our firm fails to meet our contractual marketing, communication, and fiduciary commitments, fire us with zero penalty.
+              Every listing agreement includes our unconditional Cancel-Anytime Pledge: if Brian Jamison fails to meet our contractual marketing, communication, and fiduciary commitments, fire us with zero penalty.
             </p>
           </div>
 

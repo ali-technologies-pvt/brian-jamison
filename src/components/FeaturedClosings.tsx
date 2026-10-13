@@ -7,13 +7,14 @@ interface FeaturedClosingsProps {
 }
 
 export const FeaturedClosings: React.FC<FeaturedClosingsProps> = ({ onSelectProperty }) => {
-  const [filter, setFilter] = useState<'all' | 'nichols' | 'edmond' | 'gaillardia'>('all');
+  const [filter, setFilter] = useState<'all' | 'norman' | 'edmond' | 'okc' | 'luxury'>('all');
 
   const filteredProperties = PROPERTIES.filter((prop) => {
     if (filter === 'all') return true;
-    if (filter === 'nichols') return prop.subdivision.toLowerCase().includes('nichols');
+    if (filter === 'norman') return prop.city.toLowerCase().includes('norman');
     if (filter === 'edmond') return prop.city.toLowerCase().includes('edmond');
-    if (filter === 'gaillardia') return prop.subdivision.toLowerCase().includes('gaillardia');
+    if (filter === 'okc') return prop.city.toLowerCase().includes('oklahoma city') && prop.price < 1000000;
+    if (filter === 'luxury') return prop.price >= 1000000;
     return true;
   });
 
@@ -27,11 +28,14 @@ export const FeaturedClosings: React.FC<FeaturedClosingsProps> = ({ onSelectProp
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div>
             <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-sans font-bold text-[#EA580C] block mb-3">
-              Curated Portfolio
+              Verified Track Record
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] font-bold tracking-tight">
-              Featured & Notable Closings
+              Actual Closings & Results
             </h2>
+            <p className="font-sans text-sm text-[#6B7280] mt-2 max-w-lg">
+              From $160K starter homes to $2.7M+ luxury estates — every client receives the exact same high-level dedication, marketing, and communication.
+            </p>
           </div>
 
           {/* Interactive Filter Tabs */}
@@ -39,46 +43,57 @@ export const FeaturedClosings: React.FC<FeaturedClosingsProps> = ({ onSelectProp
             <button
               type="button"
               onClick={() => setFilter('all')}
-              className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
+              className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
                 filter === 'all'
                   ? 'bg-[#002D61] text-white shadow-md'
                   : 'text-[#002D61] hover:bg-[#002D61]/10'
               }`}
             >
-              Exclusive Representation
+              All Actual Closings
             </button>
             <button
               type="button"
-              onClick={() => setFilter('nichols')}
-              className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
-                filter === 'nichols'
+              onClick={() => setFilter('norman')}
+              className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
+                filter === 'norman'
                   ? 'bg-[#002D61] text-white shadow-md'
                   : 'text-[#002D61] hover:bg-[#002D61]/10'
               }`}
             >
-              Nichols Hills
+              Norman (2x Seller)
             </button>
             <button
               type="button"
               onClick={() => setFilter('edmond')}
-              className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
+              className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
                 filter === 'edmond'
                   ? 'bg-[#002D61] text-white shadow-md'
                   : 'text-[#002D61] hover:bg-[#002D61]/10'
               }`}
             >
-              Edmond / Deer Creek
+              Edmond & Deer Creek
             </button>
             <button
               type="button"
-              onClick={() => setFilter('gaillardia')}
-              className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
-                filter === 'gaillardia'
+              onClick={() => setFilter('okc')}
+              className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
+                filter === 'okc'
                   ? 'bg-[#002D61] text-white shadow-md'
                   : 'text-[#002D61] hover:bg-[#002D61]/10'
               }`}
             >
-              Gaillardia
+              OKC Metro ($160k - $515k)
+            </button>
+            <button
+              type="button"
+              onClick={() => setFilter('luxury')}
+              className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
+                filter === 'luxury'
+                  ? 'bg-[#002D61] text-white shadow-md'
+                  : 'text-[#002D61] hover:bg-[#002D61]/10'
+              }`}
+            >
+              Luxury Estates
             </button>
           </div>
         </div>

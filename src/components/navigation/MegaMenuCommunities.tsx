@@ -7,12 +7,16 @@ interface MegaMenuCommunitiesProps {
   onOpenMarket: (marketId: string) => void;
   onClose: () => void;
   onNavigate?: (path: string) => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 export const MegaMenuCommunities: React.FC<MegaMenuCommunitiesProps> = ({
   onOpenMarket,
   onClose,
-  onNavigate
+  onNavigate,
+  onMouseEnter,
+  onMouseLeave
 }) => {
   const luxuryMarkets = MICRO_MARKETS.filter((m) => m.category === 'luxury');
   const northMarkets = MICRO_MARKETS.filter((m) => m.category === 'north');
@@ -24,7 +28,9 @@ export const MegaMenuCommunities: React.FC<MegaMenuCommunitiesProps> = ({
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: -8, scale: 0.98 }}
       transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-      className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 w-[1060px] max-w-[96vw] z-50 pointer-events-auto"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className="mega-menu-card absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 w-[1060px] max-w-[96vw] z-50 pointer-events-auto"
     >
       {/* 
         Glossy Primary Royal Navy Glass Container:
@@ -163,7 +169,7 @@ export const MegaMenuCommunities: React.FC<MegaMenuCommunitiesProps> = ({
             <div className="pt-3 border-t border-white/15">
               <div className="flex items-center gap-1.5 text-xs font-semibold text-white mb-2.5">
                 <Award className="w-3.5 h-3.5 text-[#FB923C]" />
-                <span className="tabular-nums font-bold text-white">$62M+ Volume Sold</span>
+                <span className="tabular-nums font-bold text-white">$70M+ Volume Sold</span>
               </div>
 
               <button

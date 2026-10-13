@@ -52,7 +52,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
             const easeOut = 1 - Math.pow(1 - progress, 3);
 
             setCounts({
-              volume: Math.floor(easeOut * 62),
+              volume: Math.floor(easeOut * 70),
               closings: Math.floor(easeOut * 370),
               percent: Math.floor(easeOut * 2),
               pledge: Math.floor(easeOut * 100),
@@ -62,7 +62,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
               requestAnimationFrame(animateCounts);
             } else {
               setCounts({
-                volume: 62,
+                volume: 70,
                 closings: 370,
                 percent: 2,
                 pledge: 100,
@@ -145,7 +145,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
               <span className="text-white/40">·</span>
               <span className="text-stone-200">Oklahoma City Metro</span>
               <span className="text-white/40 hidden sm:inline">·</span>
-              <span className="text-stone-300 font-medium hidden sm:inline">$62M+ Volume Sold</span>
+              <span className="text-stone-300 font-medium hidden sm:inline">$70M+ Volume Sold</span>
             </div>
           </div>
 
@@ -159,7 +159,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
 
           {/* Subtitle: High-contrast white font with drop shadow for effortless readability */}
           <p className="animate-fade-in-delayed-2 font-sans text-base sm:text-lg md:text-xl !text-white leading-relaxed max-w-2xl mb-8 sm:mb-9 font-normal drop-shadow-[0_1px_8px_rgba(0,0,0,0.95)]">
-            Elevating Oklahoma City, Edmond & Nichols Hills home sales through cinematic architectural marketing, institutional transparency, and our unconditional Cancel-Anytime Pledge.
+            I help Oklahoma City, Edmond and Nichols Hills homeowners sell for top dollar with professional video, real marketing, and a listing you can cancel anytime.
           </p>
 
           {/* Action CTAs: Bespoke Luxury Styling with Warm Gold Shimmer & Frosted Glass */}
@@ -170,7 +170,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
               className="group relative px-8 py-4 text-xs font-bold tracking-wider uppercase text-white bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#92400E] hover:from-[#B45309] hover:to-[#78350F] rounded-xl transition-all duration-300 shadow-xl shadow-amber-950/40 hover:shadow-amber-600/40 border border-amber-300/40 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer flex items-center justify-center gap-2.5 overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-2">
-                <span>Request Bespoke Valuation</span>
+                <span>What&apos;s My Home Worth?</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
@@ -191,7 +191,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
       {/* 
         Live Stats Strip Banner:
         Full width section, inner content constrained strictly inside 1440px.
-        Dynamic live count-up transitions for $62M+, 370+ Closings, Top 2% Producer, and 100% Cancel-Anytime Pledge.
+        Dynamic live count-up transitions for $70M+, 370+ Closings, Top 2% Producer, and 100% Cancel-Anytime Pledge.
       */}
       <div
         ref={statsRef}

@@ -81,7 +81,7 @@ export const TEN_LISTING_STANDARDS_DELIVERABLES = [
     slug: "/services/professional-photography",
     title: "Professional Architectural HDR Photography",
     desc: "Interior and exterior golden-hour captures using architectural wide-angle glass.",
-    executionDetail: "Captured exclusively at twilight and peak golden-hour with multi-bracket HDR lighting, capturing architectural depth, true window exposure, and sunset illumination.",
+    executionDetail: "Captured with natural ambient light and golden-hour multi-bracket HDR lighting, preserving structural depth, true window exposure, and natural interior warmth.",
     sellerImpact: "Over 95% of buyers first see your home online; magazine-grade photography stops buyer scrolling instantly.",
     image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
     badge: "Step 02 · 4K HDR"
@@ -140,7 +140,7 @@ export const TEN_LISTING_STANDARDS_DELIVERABLES = [
     id: "social-advertising",
     slug: "/services/social-advertising",
     title: "Hyper-Targeted Meta Paid Retargeting Campaigns",
-    desc: "Algorithmic retargeting reaching high-income buyers within 50 miles.",
+    desc: "Targeted digital campaigns reaching active buyers and relocating families across the OKC metro.",
     executionDetail: "Paid targeted advertising campaigns deployed across Instagram & Facebook, targeting high-net-worth professionals, executives, physicians, and transferees searching OKC real estate.",
     sellerImpact: "Proactively places your home in front of qualified buyers who aren't actively searching MLS feeds daily.",
     image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80",
@@ -182,7 +182,7 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
     heroMetrics: [
       { label: "Metro Communities", value: "21 Areas" },
-      { label: "Volume Sold", value: "$62M+" },
+      { label: "Volume Sold", value: "$70M+" },
       { label: "Active Comps", value: "100% Updated" }
     ],
     overview: "Brian Jamison and Salt Real Estate provide comprehensive, top-tier advisory and transactional representation across the entire Oklahoma City metropolitan area. From the historic mansions of Heritage Hills and Nichols Hills to the gated golf fairways of Gaillardia, the acclaimed academic corridors of Edmond and Deer Creek, and sprawling rural acreage in Arcadia and Guthrie, our local market intelligence gives our clients an undeniable competitive edge.",
@@ -860,7 +860,7 @@ export const AUDIENCE_PAGES: Record<string, InteriorPageData> = {
     heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
     heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
     heroMetrics: [
-      { label: "Volume Sold", value: "$62M+" },
+      { label: "Volume Sold", value: "$70M+" },
       { label: "List-to-Sale Ratio", value: "98.4%" },
       { label: "Career Closings", value: "370+" }
     ],
@@ -1037,16 +1037,16 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
     heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
     heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
     heroMetrics: [
-      { label: "Career Volume", value: "$62M+" },
+      { label: "Career Volume", value: "$70M+" },
       { label: "Career Closings", value: "370+" },
       { label: "Statewide Rank", value: "Top 2%" }
     ],
-    overview: "Brian Jamison operates with an athlete's discipline. License #184931. Affiliated with the premier Salt Real Estate Corporate Office in Edmond, Brian has built a reputation for relentless client advocacy, creative marketing, and transparent communication.",
+    overview: "Brian Jamison operates with an athlete's discipline. License #184931. Operating as Jamison Real Estate in Edmond, Brian has built a reputation for relentless client advocacy, creative marketing, and transparent communication.",
     keyTakeaways: [
-      "Top 2% Real Estate Producer statewide with over $62 Million in closed career volume",
+      "Top 2% Real Estate Producer statewide with over $70 Million in closed career volume",
       "Collegiate athletic pedigree driving a relentless work ethic and meticulous preparation",
       "Direct personal availability 7 days a week with zero corporate runaround",
-      "Backed by Salt Real Estate's corporate infrastructure at 1508 W. Edmond Rd."
+      "Located at 1508 W. Edmond Rd., Edmond, Oklahoma"
     ],
     deliverables: [
       { title: "Athletic Discipline", desc: "Early mornings, daily prospect calls, and constant market studying." },
@@ -1108,12 +1108,12 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
     slug: "/past-sales",
     category: "brand",
     kicker: "VERIFIED TRACK RECORD",
-    title: "$62M+ Past Sales Track Record",
+    title: "$70M+ Past Sales Track Record",
     subtitle: "Over 370+ career closings across central Oklahoma. Explore our history of record-setting prices and rapid days-on-market.",
     heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
     heroFallbackImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
     heroMetrics: [
-      { label: "Career Volume", value: "$62M+" },
+      { label: "Career Volume", value: "$70M+" },
       { label: "Total Closings", value: "370+" },
       { label: "Avg Escrow", value: "11 Days" }
     ],
@@ -1137,7 +1137,7 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
     heroMetrics: [
       { label: "Google Rating", value: "5.0 ★" },
       { label: "Repeat & Referral", value: "84%" },
-      { label: "Verified Reviews", value: "100+" }
+      { label: "Verified Reviews", value: "100%" }
     ],
     overview: "Real estate is a relationship built on trust, transparency, and execution. Read firsthand how Brian's 6-step blueprint delivers results without anxiety.",
     keyTakeaways: [
@@ -1173,9 +1173,9 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
     id: "contact",
     slug: "/contact",
     category: "brand",
-    kicker: "SALT CORPORATE OFFICE",
-    title: "Contact Brian Jamison | Salt Corporate Office",
-    subtitle: "Direct access: Call, text, or schedule an in-person advisory meeting at Salt Real Estate Corporate Office in Edmond, Oklahoma.",
+    kicker: "JAMISON REAL ESTATE",
+    title: "Contact Brian Jamison | Jamison Real Estate",
+    subtitle: "Direct access: Call, text, or schedule an in-person advisory meeting at Jamison Real Estate in Edmond, Oklahoma.",
     heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
     heroFallbackImage: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1600&q=80",
     heroMetrics: [

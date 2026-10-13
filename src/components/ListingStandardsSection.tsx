@@ -56,12 +56,12 @@ export const LISTING_STANDARDS_DATA: ListingStandardItem[] = [
     category: "media",
     categoryLabel: "High-Res Photography",
     title: "Professional Architectural HDR Photography",
-    desc: "Golden-hour and sunset twilight captures using wide-angle tilt-shift architectural glass.",
-    executionDetail: "Captured exclusively at twilight and peak golden-hour with multi-bracket HDR lighting, capturing architectural depth, true window exposure, and warm sunset illumination.",
+    desc: "Natural-light and golden-hour architectural captures using wide-angle tilt-shift professional glass.",
+    executionDetail: "Captured with natural ambient light and golden-hour multi-bracket HDR lighting, preserving structural depth, true window exposure, and natural interior warmth.",
     sellerImpact: "Stops online buyers in their tracks. Over 95% of buyers first decide whether to visit based on photo quality.",
     image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
     metric: "61MP HDR",
-    metricLabel: "Twilight Guaranteed"
+    metricLabel: "Architectural Quality"
   },
   {
     id: "cinematic-video",
@@ -100,13 +100,13 @@ export const LISTING_STANDARDS_DATA: ListingStandardItem[] = [
     badge: "Step 05 · 3D Dollhouse",
     category: "media",
     categoryLabel: "3D LiDAR Spatial",
-    title: "Interactive Matterport Pro3 3D Virtual Tour",
-    desc: "Millimeter-accurate 3D dollhouse model allowing 24/7 global open houses from any device.",
-    executionDetail: "Laser-guided spatial cameras scan every square foot of your home, compiling an interactive 3D dollhouse model and digital floor plan with digital measuring tools.",
-    sellerImpact: "Enables out-of-state transferees from California, Texas, and New York to make confident sight-unseen cash offers.",
+    title: "Strategic 3D Virtual Walkthroughs",
+    desc: "Interactive 3D walkthroughs and digital floor plans deployed where strategically optimal for the property.",
+    executionDetail: "Detailed spatial camera scans compile an interactive 3D dollhouse model and digital floor plan with measurement tools, tailored to capture out-of-area buyers.",
+    sellerImpact: "Enables out-of-state transferees and busy families to explore the property and submit confident offers.",
     image: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80",
     metric: "24/7 Global",
-    metricLabel: "Remote Cash Offers"
+    metricLabel: "Tailored 3D Tours"
   },
   {
     id: "global-portals",
@@ -146,12 +146,12 @@ export const LISTING_STANDARDS_DATA: ListingStandardItem[] = [
     category: "outreach",
     categoryLabel: "Targeted Retargeting",
     title: "Hyper-Targeted Meta Paid Retargeting Campaigns",
-    desc: "Targeted paid campaigns reaching high-net-worth buyers, executives, physicians, and transferees within 50 miles.",
-    executionDetail: "Paid targeted advertising campaigns deployed across Instagram & Facebook, targeting high-net-worth professionals, executives, physicians, and transferees searching OKC real estate.",
+    desc: "Targeted paid campaigns reaching active pre-approved buyers, relocating families, and high-intent shoppers across the OKC metro.",
+    executionDetail: "Paid targeted advertising campaigns deployed across Instagram & Facebook, targeting active buyers, relocating families, and local professionals searching OKC metro real estate.",
     sellerImpact: "Proactively places your home in front of qualified buyers who aren't browsing MLS feeds daily.",
     image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80",
-    metric: "Top 5% HNW",
-    metricLabel: "Algorithmic Retargeting"
+    metric: "Targeted Ads",
+    metricLabel: "Active Buyer Reach"
   },
   {
     id: "mls-refreshes",

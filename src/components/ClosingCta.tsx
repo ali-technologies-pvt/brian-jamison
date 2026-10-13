@@ -17,7 +17,7 @@ export const ClosingCta: React.FC<ClosingCtaProps> = ({ onOpenConsultation }) =>
             <JamisonLogo size={38} className="w-9 h-9 shrink-0" />
             <div className="text-left">
               <span className="font-serif font-bold text-xs text-[#002D61] block leading-tight">
-                Jamison Real Estate · Salt Corporate Office
+                Jamison Real Estate · Edmond, Oklahoma
               </span>
               <span className="text-[10px] uppercase font-sans font-semibold text-[#EA580C] tracking-wider block">
                 Top 2% Producer · 1508 W. Edmond Rd., Edmond OK

@@ -36,7 +36,7 @@ export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChap
 
           <div className="max-w-md">
             <p className="font-sans text-sm sm:text-base text-[#6B7280] leading-relaxed">
-              Every transaction demands a bespoke, disciplined strategy. Hover to examine the custom execution framework engineered for your real estate goals.
+              Every transaction demands a bespoke, disciplined strategy. Tap any service to see how it works.
             </p>
           </div>
         </div>

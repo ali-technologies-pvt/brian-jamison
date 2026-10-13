@@ -13,6 +13,7 @@ import { Footer } from './components/Footer';
 import { InteriorPageView } from './pages/InteriorPageView';
 import { getPageByPath } from './pages/pageData';
 import { AdminLoginView } from './components/admin/AdminLoginView';
+import { IdxTestPage } from './pages/IdxTestPage';
 import {
   ValuationModal,
   ConsultationModal,
@@ -147,7 +148,8 @@ export default function App() {
 
   // Resolve current active page
   const isAdminRoute = currentPath.startsWith('/admin');
-  const activeInteriorPage = currentPath !== '/' && !isAdminRoute ? getPageByPath(currentPath) : null;
+  const isIdxRoute = currentPath === '/idx-test' || currentPath === '/idx-search-test' || currentPath === '/idx';
+  const activeInteriorPage = currentPath !== '/' && !isAdminRoute && !isIdxRoute ? getPageByPath(currentPath) : null;
 
   if (isAdminRoute) {
     return <AdminLoginView onNavigate={navigate} />;
@@ -169,7 +171,14 @@ export default function App() {
       />
 
       <main className="flex-1">
-        {activeInteriorPage ? (
+        {isIdxRoute ? (
+          /* Dedicated IDX Broker Quick Search Test Page */
+          <IdxTestPage
+            onNavigate={navigate}
+            onOpenConsultation={handleOpenConsultation}
+            onOpenValuation={() => handleOpenValuation()}
+          />
+        ) : activeInteriorPage ? (
           /* Dedicated Interior Page Architecture */
           <InteriorPageView
             page={activeInteriorPage}
@@ -214,8 +223,8 @@ export default function App() {
         )}
       </main>
 
-      {/* Video Marquee: Rendered on Homepage and all other pages EXCEPT service areas detail pages */}
-      {!currentPath.startsWith('/areas') && (
+      {/* Video Marquee: Rendered on Homepage and all other pages EXCEPT service areas detail pages and idx test */}
+      {!currentPath.startsWith('/areas') && !isIdxRoute && (
         <VideoMarqueeFooter
           onOpenConsultation={handleOpenConsultation}
           onOpenValuation={() => handleOpenValuation()}

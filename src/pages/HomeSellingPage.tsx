@@ -171,7 +171,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
       views: "31.9K",
       thumbnail: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
       description: "The brutal reality of passive MLS listings: cell phone photos, zero video marketing, and no showing feedback loop. Here's our 48-hour resuscitation.",
-      takeaway: "We reshot 4K twilight media and launched reverse prospecting in 48 hours."
+      takeaway: "We reshot 4K media and launched reverse prospecting in 48 hours."
     },
     {
       id: 4,
@@ -179,7 +179,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
       duration: "0:49",
       views: "15.7K",
       thumbnail: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
-      description: "Follow our FAA-certified aerial team and 3D Matterport pro as we capture an architectural masterpiece from golden hour into twilight dusk.",
+      description: "Follow our FAA-certified aerial team and 3D Matterport pro as we capture an architectural masterpiece with golden hour and natural interior light.",
       takeaway: "Out-of-state buyers from California & Texas submitted sight-unseen bids."
     },
     {
@@ -210,7 +210,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
         {
           num: "1.2",
           name: "Professional Photography",
-          detail: "Golden-hour & twilight HDR interior/exterior shoots with architectural wide-angle tilt-shift lenses."
+          detail: "Golden-hour & architectural HDR interior/exterior shoots with specialized wide-angle tilt-shift lenses."
         },
         {
           num: "1.3",
@@ -602,7 +602,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center divide-x-0 md:divide-x divide-white/15">
               <div className="px-2">
                 <span className="block font-serif text-xl sm:text-2xl font-bold text-white tracking-tight">
-                  $62M+
+                  $70M+
                 </span>
                 <span className="text-[11px] sm:text-xs uppercase tracking-wider text-white/70 font-sans">
                   Volume Sold
@@ -1402,7 +1402,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                       The Brian Jamison Solution:
                     </strong>
                     <p className="text-[#374151] leading-relaxed">
-                      Executed our 6-Phase Selling Blueprint: professional architectural twilight HDR photography, physical and virtual staging to define dead space, and a strategic $10k pricing realignment just beneath the search threshold.
+                      Executed our 6-Phase Selling Blueprint: professional architectural HDR photography, physical and virtual staging to define dead space, and a strategic $10k pricing realignment just beneath the search threshold.
                     </p>
                   </div>
 

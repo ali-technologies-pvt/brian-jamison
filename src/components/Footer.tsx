@@ -219,6 +219,22 @@ export const Footer: React.FC<FooterProps> = ({
                   Mortgage & Affordability Calc
                 </button>
               </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onNavigate) {
+                      onNavigate('/idx-test');
+                    } else {
+                      window.location.href = '/idx-test';
+                    }
+                  }}
+                  className="hover:text-white hover:underline transition-colors text-left cursor-pointer text-[#FB923C] font-semibold flex items-center gap-1.5"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>IDX Broker MLS Search Test</span>
+                </button>
+              </li>
             </ul>
           </div>
 

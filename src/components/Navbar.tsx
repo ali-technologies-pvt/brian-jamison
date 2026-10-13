@@ -87,84 +87,41 @@ export const Navbar: React.FC<NavbarProps> = ({
   useEffect(() => {
     if (!activeMenu) return;
 
-    let timeoutId: ReturnType<typeof setTimeout> | null = null;
-
     const handleGlobalMouseMove = (e: MouseEvent) => {
-      const navEl = navRef.current;
-      const menuEl = menuContainerRef.current;
+      const target = document.elementFromPoint(e.clientX, e.clientY) as HTMLElement | null;
+      if (!target) return;
 
-      const x = e.clientX;
-      const y = e.clientY;
+      const inNav = navRef.current?.contains(target);
+      const inMenu = target.closest('.mega-menu-card') !== null;
+      const inBridge = target.classList.contains('nav-menu-bridge');
 
-      let isInside = false;
-
-      // Check if inside Nav Bar
-      if (navEl) {
-        const navRect = navEl.getBoundingClientRect();
-        if (
-          x >= navRect.left - 14 &&
-          x <= navRect.right + 14 &&
-          y >= navRect.top - 14 &&
-          y <= navRect.bottom + 14
-        ) {
-          isInside = true;
-        }
-      }
-
-      // Check if inside Active Mega Menu Dropdown or the connecting bridge
-      if (!isInside && menuEl) {
-        const dialogBox = menuEl.querySelector<HTMLElement>('.relative.rounded-2xl') || menuEl;
-        const menuRect = dialogBox.getBoundingClientRect();
-        const topBoundary = navEl ? navEl.getBoundingClientRect().top : menuRect.top - 20;
-
-        if (
-          x >= menuRect.left - 16 &&
-          x <= menuRect.right + 16 &&
-          y >= topBoundary &&
-          y <= menuRect.bottom + 16
-        ) {
-          isInside = true;
-        }
-      }
-
-      if (isInside) {
-        if (timeoutId) {
-          clearTimeout(timeoutId);
-          timeoutId = null;
-        }
+      if (!inNav && !inMenu && !inBridge) {
+        // Cursor has departed both the nav pill and the active mega menu card
+        handleScheduleClose(80);
       } else {
-        // Cursor has left both nav and mega menu
-        if (!timeoutId) {
-          timeoutId = setTimeout(() => {
-            setActiveMenu(null);
-          }, 120);
-        }
+        handleCancelClose();
       }
     };
 
     window.addEventListener('mousemove', handleGlobalMouseMove, { passive: true });
     return () => {
       window.removeEventListener('mousemove', handleGlobalMouseMove);
-      if (timeoutId) clearTimeout(timeoutId);
     };
   }, [activeMenu]);
 
-  // Hover Management with Grace Period Buffer
+  // Hover Management with Responsive Quick Close
   const handleOpenMenu = (menu: 'services' | 'blueprint' | 'communities' | 'hub') => {
-    if (closeTimeoutRef.current) {
-      clearTimeout(closeTimeoutRef.current);
-      closeTimeoutRef.current = null;
-    }
+    handleCancelClose();
     setActiveMenu(menu);
   };
 
-  const handleScheduleClose = () => {
+  const handleScheduleClose = (delay = 100) => {
     if (closeTimeoutRef.current) {
       clearTimeout(closeTimeoutRef.current);
     }
     closeTimeoutRef.current = setTimeout(() => {
       setActiveMenu(null);
-    }, 220); // 220ms grace period so cursor can effortlessly cross between trigger and dropdown
+    }, delay);
   };
 
   const handleCancelClose = () => {
@@ -217,6 +174,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
               }}
+              onMouseEnter={() => {
+                handleCancelClose();
+                setActiveMenu(null);
+              }}
               className="group flex items-center focus:outline-none cursor-pointer"
             >
               <JamisonLogo
@@ -233,7 +194,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             role="navigation"
             aria-label="Main Navigation"
             onMouseEnter={handleCancelClose}
-            onMouseLeave={handleScheduleClose}
+            onMouseLeave={() => handleScheduleClose(80)}
             className="hidden lg:flex items-center gap-1 xl:gap-2 px-6 py-2 rounded-full bg-[#002D61]/70 hover:bg-[#002D61]/80 backdrop-blur-2xl border border-white/20 shadow-xl shadow-[#001D40]/35 text-white relative overflow-hidden transition-all duration-300"
           >
             {/* Specular Top Edge Gloss Highlight */}
@@ -370,10 +331,37 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               About Brian Jamison
             </a>
+
+            {/* Link 6: IDX Search Test */}
+            <a
+              href="/idx-test"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigate) {
+                  onNavigate('/idx-test');
+                } else {
+                  window.location.href = '/idx-test';
+                }
+              }}
+              onMouseEnter={() => {
+                handleCancelClose();
+                setActiveMenu(null);
+              }}
+              className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide text-[#FB923C] hover:text-white hover:bg-white/15 transition-all cursor-pointer flex items-center gap-1.5"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>IDX Search</span>
+            </a>
           </nav>
 
           {/* ZONE 3 (Right - Call & "Get in touch" CTA pill) */}
-          <div className="flex items-center gap-3 sm:gap-4">
+          <div
+            onMouseEnter={() => {
+              handleCancelClose();
+              setActiveMenu(null);
+            }}
+            className="flex items-center gap-3 sm:gap-4"
+          >
             {/* Direct Call: Orange Circular Badge + White Phone Number */}
             <div className="flex items-center gap-2">
               <a
@@ -406,21 +394,22 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Mega Menus Dropdown Container */}
         <div
           ref={menuContainerRef}
-          onMouseEnter={handleCancelClose}
-          onMouseLeave={handleScheduleClose}
-          className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 mt-1 pointer-events-auto relative"
+          className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 mt-1 pointer-events-none relative"
         >
           {/* Invisible interactive hover bridge between nav pill and dropdown */}
           {activeMenu && (
             <div
-              className="absolute -top-3 inset-x-0 h-4 pointer-events-auto"
+              className="nav-menu-bridge absolute -top-3 inset-x-0 h-4 pointer-events-auto"
               onMouseEnter={handleCancelClose}
+              onMouseLeave={() => handleScheduleClose(80)}
             />
           )}
           <AnimatePresence>
             {activeMenu === 'services' && (
               <MegaMenuServices
                 onClose={() => setActiveMenu(null)}
+                onMouseEnter={handleCancelClose}
+                onMouseLeave={() => handleScheduleClose(80)}
                 onNavigate={onNavigate}
                 onOpenConsultation={onOpenConsultation}
                 onOpenMethod={onOpenMethod}
@@ -431,6 +420,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onOpenMethod={onOpenMethod}
                 onOpenConsultation={onOpenConsultation}
                 onClose={() => setActiveMenu(null)}
+                onMouseEnter={handleCancelClose}
+                onMouseLeave={() => handleScheduleClose(80)}
                 onNavigate={onNavigate}
               />
             )}
@@ -438,6 +429,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               <MegaMenuCommunities
                 onOpenMarket={onOpenMarket}
                 onClose={() => setActiveMenu(null)}
+                onMouseEnter={handleCancelClose}
+                onMouseLeave={() => handleScheduleClose(80)}
                 onNavigate={onNavigate}
               />
             )}
@@ -449,6 +442,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onOpenConsultation={onOpenConsultation}
                 onOpenChapter={onOpenChapter}
                 onClose={() => setActiveMenu(null)}
+                onMouseEnter={handleCancelClose}
+                onMouseLeave={() => handleScheduleClose(80)}
                 onNavigate={onNavigate}
               />
             )}

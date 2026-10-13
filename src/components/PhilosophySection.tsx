@@ -67,7 +67,7 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenCons
                   Brian channels collegiate athletic discipline into relentless real estate negotiations. Every contingency, appraisal defense, and closing detail is managed with championship preparation and zero compromise.
                 </p>
                 <div className="pt-2.5 border-t border-white/20 flex items-center justify-between text-[11px] text-white font-medium">
-                  <span>Track Record: $62M+ Volume</span>
+                  <span>Track Record: $70M+ Volume</span>
                   <span className="font-bold text-[#FB923C]">370+ Career Closings</span>
                 </div>
               </div>

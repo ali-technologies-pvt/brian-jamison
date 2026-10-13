@@ -100,8 +100,8 @@ export const PROCESS_ONE_DELIVERABLES = [
     slug: "/services/professional-photography",
     badge: "Step 1.2",
     title: "Professional photography",
-    desc: "Captured exclusively at twilight and peak golden hour using specialized architectural wide-angle glass and multi-exposure HDR lighting.",
-    executionDetail: "Our architectural photographers balance interior ambient lighting with exterior twilight sky illumination, preserving crystal-clear window views and natural architectural depth.",
+    desc: "Captured with natural ambient light and golden-hour lighting using specialized architectural wide-angle glass and multi-exposure HDR.",
+    executionDetail: "Our architectural photographers balance interior ambient lighting with natural exterior light, preserving crystal-clear window views and natural architectural depth.",
     sellerImpact: "Over 95% of prospective buyers discover homes online; magazine-grade photography stops buyer scrolling instantly.",
     image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80"
   },
@@ -150,7 +150,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     slug: "/services/social-advertising",
     badge: "Step 1.7",
     title: "Consistent social media exposure",
-    desc: "Paid hyper-targeted social advertising campaigns deployed across Instagram and Facebook reaching high-income buyers within 50 miles.",
+    desc: "Paid hyper-targeted social advertising campaigns deployed across Instagram and Facebook reaching active local and relocating buyers across the OKC metro.",
     executionDetail: "Precision demographic targeting focusing on high-net-worth professionals, corporate relocations, and active real estate investors.",
     sellerImpact: "Proactively places your home in front of qualified buyers who are not actively searching MLS feeds daily.",
     image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80"
@@ -455,7 +455,7 @@ export const PROCESS_SIX_DELIVERABLES = [
     slug: "/services/cancel-anytime-listing-agreement",
     badge: "Step 6.2",
     title: "Cancel-anytime listing agreement: if promises aren't met, fire us, no strings attached",
-    desc: "If our firm fails to meet any contractual commitment, you hold the unconditional right to cancel the agreement immediately. Zero penalty, no fees, no hassle.",
+    desc: "If Brian Jamison fails to meet any contractual commitment, you hold the unconditional right to cancel the agreement immediately. Zero penalty, no fees, no hassle.",
     executionDetail: "A binding addendum explicitly stating that if you are not 100% satisfied with our marketing or communication, you may terminate immediately with $0.00 fee.",
     sellerImpact: "Zero risk, zero penalty, and total peace of mind throughout the listing experience.",
     image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80"
@@ -473,7 +473,7 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
     category: "service",
     kicker: "PROCESS 01 OF 06 · EXPOSURE ENGINE",
     title: "Marketing plan and process",
-    subtitle: "Our firm executes an institutional multi-channel marketing campaign designed to capture maximum qualified buyer demand and trigger competitive bidding.",
+    subtitle: "Every listing gets a full marketing campaign built to put your home in front of every qualified buyer and trigger competitive bidding.",
     heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
     heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
     heroMetrics: [
@@ -484,7 +484,7 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
     overview: "In modern luxury real estate, buyers make emotional decisions within the first 8 seconds of seeing a home online. Jamison Real Estate deploys a comprehensive media production engine for every listing—transforming standard properties into high-demand lifestyle assets through professional cinematography, 3D spatial mapping, and hyper-targeted advertising.",
     keyTakeaways: [
       "Home-prep guidance: first-impression review, refresh recommendations, and ROI-based suggestions",
-      "Architectural HDR photography captured at golden hour and dramatic twilight",
+      "Architectural HDR photography captured with natural light and golden hour illumination",
       "Cinema-grade 4K motion walkthrough video with professional editing and sound design",
       "FAA Part-107 certified aerial drone video capturing grounds, acreage, and neighborhood amenities",
       "Automated syndication across 350+ domestic and international real estate portals",
@@ -503,7 +503,7 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
     category: "service",
     kicker: "PROCESS 02 OF 06 · ZERO GUESSWORK",
     title: "Communication",
-    subtitle: "Our firm enforces transparent, timely, and disciplined communication so you retain total control throughout the transaction.",
+    subtitle: "Jamison Real Estate enforces transparent, timely, and disciplined communication so you retain total control throughout the transaction.",
     heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
     heroFallbackImage: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80",
     heroMetrics: [
@@ -616,12 +616,12 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
       { label: "Seller Risk", value: "Zero" },
       { label: "Client Satisfaction", value: "100%" }
     ],
-    overview: "Traditional brokerages trap sellers in 6-to-12 month contracts even when their service is substandard. Jamison Real Estate believes that trust must be earned through daily execution. If our firm fails to meet every written marketing, communication, and fiduciary commitment, you can fire us immediately. No penalty, no fees, no strings attached.",
+    overview: "Traditional brokerages trap sellers in 6-to-12 month contracts even when their service is substandard. Jamison Real Estate believes that trust must be earned through daily execution. If Brian Jamison fails to meet every written marketing, communication, and fiduciary commitment, you can fire us immediately. No penalty, no fees, no strings attached.",
     keyTakeaways: [
       "Partnership approach focused strictly on your most profitable net outcome",
       "Cancel-anytime listing agreement: if promises aren't met, fire us, no strings attached",
       "Zero termination penalties, zero administrative fees, and no media repayment charges",
-      "Complete performance accountability backed by Salt Real Estate Corporate Office"
+      "Complete performance accountability backed by Jamison Real Estate"
     ],
     deliverables: PROCESS_SIX_DELIVERABLES,
     images: DEFAULT_ARCHITECTURAL_GALLERY
@@ -669,17 +669,17 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     category: "service",
     kicker: "SUB-PROCESS 1.2 · MARKETING PLAN AND PROCESS",
     title: "Professional photography",
-    subtitle: "Magazine-grade golden-hour and twilight architectural photography that captures emotional light and structural depth.",
+    subtitle: "Magazine-grade golden-hour and natural-light architectural photography that captures emotional warmth and structural depth.",
     heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
     heroFallbackImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
     heroMetrics: [
       { label: "Buyer First Look", value: "Online 95%" },
       { label: "Camera Resolution", value: "61MP HDR" },
-      { label: "Twilight Shoot", value: "100% Guaranteed" }
+      { label: "Photo Standard", value: "Magazine HDR" }
     ],
-    overview: "Over 95% of prospective buyers encounter your listing online before deciding to book a private tour. Our firm employs dedicated architectural photographers who shoot with wide-angle tilt-shift glass, golden-hour twilight exposures, and custom hand-blended HDR processing.",
+    overview: "Over 95% of prospective buyers encounter your listing online before deciding to book a private tour. Jamison Real Estate employs dedicated architectural photographers who shoot with wide-angle tilt-shift glass, natural ambient and golden-hour exposures, and custom hand-blended HDR processing.",
     keyTakeaways: [
-      "Exterior golden-hour and dramatic twilight blue-hour illumination",
+      "Exterior golden-hour and natural daylight architectural illumination",
       "Interior exposures balanced with crystal-clear window view preservation",
       "Architectural wide-angle glass that prevents unnatural fish-eye distortion",
       "Color-calibrated post-production ensuring warm, natural stone and wood tones"
@@ -814,12 +814,12 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     category: "service",
     kicker: "SUB-PROCESS 1.7 · MARKETING PLAN AND PROCESS",
     title: "Consistent social media exposure",
-    subtitle: "Targeted paid campaigns reaching high-net-worth buyers, executives, physicians, and transferees within 50 miles.",
+    subtitle: "Targeted paid campaigns reaching active pre-approved buyers, relocating families, and high-intent home shoppers across the OKC metropolitan area.",
     heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
     heroFallbackImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
     heroMetrics: [
       { label: "Impressions Targeted", value: "25k-50k+" },
-      { label: "Radius Coverage", value: "50 Miles" },
+      { label: "Target Coverage", value: "OKC Metro" },
       { label: "Qualified Demographics", value: "Top 5% HNW" }
     ],
     overview: "Passive MLS entries miss the massive demographic of passive buyers—qualified individuals who are not browsing Zillow daily but will take action when the right home appears in their Instagram and Facebook feeds.",
@@ -1668,7 +1668,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
       {
         id: "hb-escrow-oversight",
         title: "Title, Escrow & Closing Fiduciary Oversight",
-        desc: "Full coordination with Salt Corporate Office transaction coordinators, title attorneys, and vetted Oklahoma mortgage partners.",
+        desc: "Full coordination with Jamison Real Estate transaction coordinators, title attorneys, and vetted Oklahoma mortgage partners.",
         executionDetail: "Daily timeline tracking ensures clear title commitment, survey approval, appraisal resolution, and seamless wire transfer execution.",
         sellerImpact: "Zero last-minute closing delays or surprise escrow charges.",
         badge: "Step 05 · Title & Escrow",
@@ -1697,15 +1697,15 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
     heroFallbackImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
     heroMetrics: [
       { label: "List-to-Sale Ratio", value: "98.6%" },
-      { label: "Volume Sold", value: "$62M+" },
+      { label: "Volume Sold", value: "$70M+" },
       { label: "Days to Escrow", value: "14 Days Avg" }
     ],
     overview: "Selling an Oklahoma estate for peak market price requires active demand generation, not passive MLS placement. Jamison Real Estate executes a proprietary multi-phase marketing and negotiation framework engineered to ignite competitive bidding wars. From golden-hour architectural cinematography and Matterport 3D dollhouses to reverse prospecting and our unconditional 100% Risk-Free Cancel-Anytime Listing Guarantee, every dollar of your home equity is defended with championship athletic discipline.",
     keyTakeaways: [
       "ROI-driven pre-listing refresh consultation that delivers $3-$5 in net proceeds for every $1 invested",
-      "Cinema-grade 4K motion video walkthroughs, FAA-certified drone mapping, and architectural twilight HDR",
+      "Cinema-grade 4K motion video walkthroughs, FAA-certified drone mapping, and architectural HDR photography",
       "Instant syndication to 350+ national and global real estate portals including Zillow Showcase and Realtor.com",
-      "Unconditional Cancel-Anytime Listing Pledge: fire our firm at any moment with zero penalties if we fall short"
+      "Unconditional Cancel-Anytime Listing Pledge: fire Brian Jamison at any moment with zero penalties if we fall short"
     ],
     deliverables: [
       {
@@ -1719,8 +1719,8 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
       },
       {
         id: "hs-hdr-photo",
-        title: "Magazine-Grade Architectural & Twilight HDR Photography",
-        desc: "Captured exclusively during golden hour and dusk using professional wide-angle tilt-shift lenses and multi-exposure lighting.",
+        title: "Magazine-Grade Architectural HDR Photography",
+        desc: "Captured with natural ambient light and golden-hour illumination using professional wide-angle tilt-shift lenses and multi-exposure lighting.",
         executionDetail: "We schedule golden-hour exterior shoots and HDR interior bracket exposures that make your listing shine on mobile feeds.",
         sellerImpact: "Stops buyers scrolling on Zillow and Realtor.com, resulting in 4x more saved listings.",
         badge: "Step 02 · 4K HDR Photography",

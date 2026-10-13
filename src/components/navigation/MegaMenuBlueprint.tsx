@@ -19,6 +19,8 @@ interface MegaMenuBlueprintProps {
   onOpenConsultation: () => void;
   onClose: () => void;
   onNavigate?: (path: string) => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 const CORE_PROCESSES = [
@@ -64,7 +66,9 @@ export const MegaMenuBlueprint: React.FC<MegaMenuBlueprintProps> = ({
   onOpenMethod,
   onOpenConsultation,
   onClose,
-  onNavigate
+  onNavigate,
+  onMouseEnter,
+  onMouseLeave
 }) => {
   return (
     <motion.div
@@ -72,7 +76,9 @@ export const MegaMenuBlueprint: React.FC<MegaMenuBlueprintProps> = ({
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: -8, scale: 0.98 }}
       transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-      className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 w-[940px] max-w-[95vw] z-50 pointer-events-auto"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className="mega-menu-card absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 w-[940px] max-w-[95vw] z-50 pointer-events-auto"
     >
       {/* 
         Glossy Primary Royal Navy Glass Container:

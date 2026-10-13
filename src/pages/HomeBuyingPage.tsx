@@ -330,7 +330,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
     },
     {
       q: "How quickly can we view homes when a new listing hits the market?",
-      a: "Immediately. Through our 7-day mobile availability and dedicated listing team at Salt Corporate Office, we can book private showings within 1 to 2 hours of a listing becoming active. For urgent properties, we can often arrange same-day early morning or evening access."
+      a: "Immediately. Through our 7-day mobile availability and dedicated listing team at Jamison Real Estate, we can book private showings within 1 to 2 hours of a listing becoming active. For urgent properties, we can often arrange same-day early morning or evening access."
     }
   ];
 

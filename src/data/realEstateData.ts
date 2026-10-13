@@ -39,6 +39,21 @@ export interface PhaseDeliverable {
   tacticalImpact: string;
 }
 
+export interface GoogleReview {
+  id: string;
+  author: string;
+  authorBadge?: string;
+  rating: number;
+  review: string;
+  date: string;
+  initials: string;
+  bgColor: string;
+  isLocalGuide: boolean;
+  reviewCountText: string;
+  verifiedCategory: 'Seller' | 'Buyer' | 'Investor' | 'Repeat Client';
+  highlight: string;
+}
+
 export interface Testimonial {
   id: string;
   stars: number;
@@ -46,6 +61,8 @@ export interface Testimonial {
   author: string;
   location: string;
   detail: string;
+  badge?: string;
+  isGoogleReview?: boolean;
 }
 
 export interface MicroMarket {
@@ -69,14 +86,15 @@ export const BROKER_INFO = {
   title: "Top 2% Real Estate Producer",
   license: "License #184931",
   headshot: BRIAN_HEADSHOT_IMG,
-  brokerage: "Salt Real Estate Corporate Office",
+  brokerage: "Jamison Real Estate · Brokered by Salt Real Estate",
+  firmName: "Jamison Real Estate",
   address: "1508 W. Edmond Rd., Edmond, Oklahoma 73003",
   phone: "(405) 513-3039",
   phoneRaw: "+14055133039",
   email: "BJamison@Salt.RealEstate",
   stats: {
-    volumeSold: "$62M+",
-    volumeNumber: 62,
+    volumeSold: "$70M+",
+    volumeNumber: 70,
     closings: "370+",
     closingsNumber: 370,
     producerRank: "Top 2%",
@@ -139,16 +157,17 @@ export const METHOD_PHASES: PhaseDeliverable[] = [
   {
     id: "phase-1",
     number: "01",
-    title: "Cinema-Grade 4K Media & Global Distribution",
-    summary: "We do not simply take photos; we produce high-fashion architectural films, 3D tours, and syndication across 350+ global real estate portals.",
+    title: "High-End Media & Targeted Exposure Engine",
+    summary: "Every listing gets a comprehensive marketing campaign built to put your home in front of every qualified buyer through cinematic 4K video, professional HDR photography, and 350+ portal syndication.",
     tacticalImpact: "Surpasses standard MLS listings to command premium buyer emotional investment and multiple offers.",
     keyDeliverables: [
-      "Bespoke 4K Video Tour (With Audio Score)",
-      "HD Drone Flyovers & Boundary Mapping",
+      "Professional Architectural HDR Photography (Natural Light & Golden Hour)",
+      "Bespoke 4K Video Walkthrough (With Audio Score)",
+      "HD Drone Flyovers & Lot Boundary Mapping",
       "350+ Global Portal Syndication (Zillow, Realtor, Redfin, Luxury MLS)",
       "Dedicated Single-Property Website URL",
-      "Hyper-Targeted Social Retargeting Ads (Meta & YouTube)",
-      "Luxury Direct-Mail Print Collateral & Neighborhood Door Drops"
+      "Hyper-Targeted Digital Retargeting Ads to Active Local & Relocating Buyers",
+      "Tailored Marketing Collateral & Targeted Buyer Outreach"
     ]
   },
   {
@@ -174,7 +193,7 @@ export const METHOD_PHASES: PhaseDeliverable[] = [
     keyDeliverables: [
       "7-Day-a-Week Direct Reachability (Mornings, Evenings & Weekends)",
       "Instant Inbound Lead Response Guarantee (<15 minute turnaround)",
-      "Redundant Backup Coverage with Dedicated Salt Senior Associates",
+      "Redundant Backup Coverage with Dedicated Jamison Real Estate Associates",
       "Direct Private Cell Access for Every Client"
     ]
   },
@@ -224,6 +243,134 @@ export const METHOD_PHASES: PhaseDeliverable[] = [
 
 export const PROPERTIES: Property[] = [
   {
+    id: "norman-two-time-sale",
+    title: "Norman Residential Home (2-Time Sale)",
+    subdivision: "University Enclave / West Norman",
+    city: "Norman",
+    price: 425000,
+    formattedPrice: "$425,000",
+    bedrooms: 4,
+    bathrooms: 3,
+    sqft: 2840,
+    status: "Closed",
+    badgeText: "SOLD TWICE (2022 & 2024) · OUT-OF-STATE SELLER",
+    daysOnMarket: 8,
+    description: "Successfully prepared, marketed, and closed not just once, but TWICE for an out-of-state homeowner. Full remote listing preparation, coordinate trades, and seamless closing without the sellers having to travel back to Oklahoma.",
+    features: ["Remote Seller Concierge", "Trade Fix-Up Prep", "Norman West Corridor", "Multi-Offer Realization", "Rapid Escrow Closing"],
+    exteriorImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+    interiorImages: [
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
+    ],
+    matterportAvailable: true
+  },
+  {
+    id: "okc-mirk-residential",
+    title: "Oklahoma City Metro Residential Home",
+    subdivision: "Southwest OKC Enclave",
+    city: "Oklahoma City",
+    price: 160000,
+    formattedPrice: "$160,000",
+    bedrooms: 3,
+    bathrooms: 2,
+    sqft: 1420,
+    status: "Closed",
+    badgeText: "NOTABLE CLOSING · UNMATCHED AGENT DEDICATION",
+    daysOnMarket: 12,
+    description: "Proof that Brian Jamison works as hard for a $160K listing as agents do for $500K estates. Rapid response, relentless contract management, and constant client communication from listing day to final signature.",
+    features: ["Full Marketing Campaign", "Relentless Communication", "Zero Lead Lag", "Quick Buyer Sourcing", "Smooth Title Closing"],
+    exteriorImage: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80",
+    interiorImages: [
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80"
+    ],
+    matterportAvailable: false
+  },
+  {
+    id: "edmond-simpson-estate",
+    title: "Edmond Residential Residence & Trade Prep",
+    subdivision: "Covell Corridor / East Edmond",
+    city: "Edmond",
+    price: 475000,
+    formattedPrice: "$475,000",
+    bedrooms: 4,
+    bathrooms: 3.5,
+    sqft: 3150,
+    status: "Closed",
+    badgeText: "PRE-MARKET TRADE FIX-UPS · SEAMLESS SALE",
+    daysOnMarket: 5,
+    description: "Pre-listing preparation executed to perfection with Brian's vetted contact list of trades. From minor repairs and refresh to pricing strategy and multi-channel buyer reach, achieving a solid, top-dollar sale.",
+    features: ["Pre-Listing Trade Coordination", "Edmond School District", "HDR Architectural Photography", "Competitive Price Bracket", "100% Showing Feedback"],
+    exteriorImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
+    interiorImages: [
+      "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1200&q=80"
+    ],
+    matterportAvailable: true
+  },
+  {
+    id: "edmond-investment-renovation",
+    title: "Edmond Residential Investment & Renovation",
+    subdivision: "Central Edmond Enclave",
+    city: "Edmond",
+    price: 340000,
+    formattedPrice: "$340,000",
+    bedrooms: 3,
+    bathrooms: 2,
+    sqft: 2180,
+    status: "Closed",
+    badgeText: "FULL RENOVATION MANAGED · MAX PROFIT",
+    daysOnMarket: 7,
+    description: "Turnaround investment property where Brian handled the entire renovation from start to finish — coordinating contractors, managing detail work, and executing smart updates that maximized investor net profit.",
+    features: ["Turnkey Remodel Management", "Contractor Coordination", "High-ROI Material Selection", "Fast Escrow Turnaround", "Maximum Net Return"],
+    exteriorImage: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=80",
+    interiorImages: [
+      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=80"
+    ],
+    matterportAvailable: false
+  },
+  {
+    id: "okc-contingency-rescue",
+    title: "Oklahoma City Contingency Rescue Sale",
+    subdivision: "Northwest Oklahoma City",
+    city: "Oklahoma City",
+    price: 515000,
+    formattedPrice: "$515,000",
+    bedrooms: 4,
+    bathrooms: 3,
+    sqft: 3220,
+    status: "Closed",
+    badgeText: "CONTINGENCY RESCUE · SAVED IN 2023",
+    daysOnMarket: 9,
+    description: "Swooped in to save the day when a prior contingency deal fell apart with another agent. Brian immediately restructured the marketing campaign, sourced qualified back-up buyers, and closed without a hitch.",
+    features: ["Contingency Recovery Strategy", "Aggressive Buyer Retargeting", "Firm Negotiation", "Zero Delay Escrow", "Protected Equity"],
+    exteriorImage: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80",
+    interiorImages: [
+      "https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&w=1200&q=80"
+    ],
+    matterportAvailable: true
+  },
+  {
+    id: "edmond-first-time-buyer",
+    title: "Edmond First-Time Buyer Family Residence",
+    subdivision: "West Edmond / Deer Creek Area",
+    city: "Edmond",
+    price: 285000,
+    formattedPrice: "$285,000",
+    bedrooms: 3,
+    bathrooms: 2,
+    sqft: 1890,
+    status: "Closed",
+    badgeText: "UNDER CONTRACT IN 2 WEEKS · FIRST-TIME BUYER",
+    daysOnMarket: 14,
+    description: "Helped a first-time homebuyer family navigate anxiety, find their dream property in under 2 weeks, and negotiated favorable purchase terms that protected their family budget.",
+    features: ["First-Time Buyer Advocacy", "Under Contract in 14 Days", "Inspection Repair Credits", "Low Stress Navigation", "Edmond Schools"],
+    exteriorImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+    interiorImages: [
+      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80"
+    ],
+    matterportAvailable: false
+  },
+  {
     id: "grandview-estate",
     title: "The Grandview Estate",
     subdivision: "Nichols Hills",
@@ -234,37 +381,14 @@ export const PROPERTIES: Property[] = [
     bathrooms: 6,
     sqft: 6840,
     status: "Closed",
-    badgeText: "FEATURED NOTABLE CLOSING · 11 DAYS TO ESCROW",
+    badgeText: "PRESTIGE CLOSING · 11 DAYS TO ESCROW",
     daysOnMarket: 11,
-    description: "An architectural tour-de-force nestled in the heart of Nichols Hills. Featuring French limestone facades, 24-foot cathedral ceilings, chef's scullery kitchen, climate-controlled wine cellar, and resort-caliber pool pavilion.",
+    description: "An architectural tour-de-force nestled in the heart of Nichols Hills. French limestone facades, 24-foot cathedral ceilings, chef's scullery kitchen, wine cellar, and resort-caliber pool pavilion.",
     features: ["Limestone Masonry", "Resort Pool & Spa", "4-Car Motor Court", "Sub-Zero & Wolf Suite", "Private Gated Grounds"],
     exteriorImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
     interiorImages: [
       "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80"
-    ],
-    matterportAvailable: true
-  },
-  {
-    id: "falcon-reserve",
-    title: "Falcon Reserve",
-    subdivision: "Deer Creek / Covell Corridor",
-    city: "Edmond",
-    price: 1425000,
-    formattedPrice: "$1,425,000",
-    bedrooms: 4,
-    bathrooms: 4.5,
-    sqft: 4410,
-    status: "Closed",
-    badgeText: "NOTABLE CLOSING · MULTIPLE OFFERS",
-    daysOnMarket: 6,
-    description: "Modern organic luxury on 1.25 private wooded acres in Edmond Deer Creek. Seamless indoor-outdoor sliding glass pocket doors, white oak bespoke cabinetry, and an outdoor living room with wood-burning fireplace.",
-    features: ["1.25 Wooded Acres", "Deer Creek Schools", "Zero-Edge Pool", "Dedicated Theater Room", "Spray-Foam Efficiency"],
-    exteriorImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
-    interiorImages: [
-      "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80"
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
     ],
     matterportAvailable: true
   },
@@ -281,62 +405,206 @@ export const PROPERTIES: Property[] = [
     status: "Closed",
     badgeText: "GAILLARDIA FAIRWAY RETREAT · SOLD",
     daysOnMarket: 14,
-    description: "Elevated fairway living inside OKC's preeminent 24/7 guard-gated golf country club. Panoramic 16th green views, iron-railed balconies, primary retreat with dual luxury dressing suites, and smart home automation.",
+    description: "Fairway living inside OKC's preeminent 24/7 guard-gated golf country club. Panoramic 16th green views, iron-railed balconies, primary retreat with dual luxury dressing suites, and smart home automation.",
     features: ["Golf Course Frontage", "24/7 Guard Gated", "Smart Home Automation", "Commercial Scullery", "Covered Loggia"],
     exteriorImage: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80",
     interiorImages: [
-      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1200&q=80"
-    ],
-    matterportAvailable: true
-  },
-  {
-    id: "arcadia-whispering-pines",
-    title: "The Whispering Pines Manor",
-    subdivision: "Lake Hiwassee Enclave",
-    city: "Arcadia",
-    price: 2190000,
-    formattedPrice: "$2,190,000",
-    bedrooms: 5,
-    bathrooms: 5.5,
-    sqft: 6150,
-    status: "Active",
-    badgeText: "EXCLUSIVE REPRESENTATION · NEW LISTING",
-    daysOnMarket: 3,
-    description: "Private 4.5-acre equestrian-capable modern ranch estate in scenic Arcadia. Vaulted cedar timbers, floor-to-ceiling quartz fireplace, climate garage for 5 vehicles, and private stocked fishing pond.",
-    features: ["4.5 Private Acres", "Stocked Pond", "5-Car Heated Garage", "Cedar Timber Framing", "Oakdale School District"],
-    exteriorImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
-    interiorImages: [
-      "https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&w=1200&q=80"
+      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=80"
     ],
     matterportAvailable: true
   }
 ];
 
+export const GOOGLE_REVIEWS_GMB_URL = "https://share.google/v0HUn7vLvE3vuU6gk";
+
+export const GOOGLE_REVIEWS: GoogleReview[] = [
+  {
+    id: "g-1",
+    author: "Jazen Morgan",
+    authorBadge: "Local Guide · 12 reviews",
+    rating: 5,
+    review: "Brian has been exceptional since the day we met at an open house. He kept in touch with us even though we didn’t end up purchasing that house. He was always responsive and made himself available to take us to see any house we asked about. Brian is knowledgeable, thorough, and exceeds the standard of being personable. Would recommend him to anyone looking to buy or sell. He will have your back and go above and beyond!",
+    date: "Verified Google Review",
+    initials: "JM",
+    bgColor: "bg-blue-600",
+    isLocalGuide: true,
+    reviewCountText: "12 reviews",
+    verifiedCategory: "Buyer",
+    highlight: "Went above and beyond on every single home showing"
+  },
+  {
+    id: "g-2",
+    author: "Huiwen Lin",
+    authorBadge: "9 reviews",
+    rating: 5,
+    review: "Brian did a fantastic job on selling our 2nd home in Norman, not just once, but TWICE. One in 2022, one in this year. Brian is very responsive, reliable, honest and acknowledgeable. Especially we live out of state. He helped us preparing the house for listing in every way possible. Thank you Brian, you are a super rock star!",
+    date: "Verified Google Review",
+    initials: "HL",
+    bgColor: "bg-emerald-600",
+    isLocalGuide: false,
+    reviewCountText: "9 reviews",
+    verifiedCategory: "Repeat Client",
+    highlight: "Sold our Norman home TWICE while we lived out of state"
+  },
+  {
+    id: "g-3",
+    author: "Cindy Simpson",
+    authorBadge: "2 reviews",
+    rating: 5,
+    review: "We are forever grateful to Brian for his work as our realtor. During a seamless process Brian demonstrated great professional knowledge and acumen to ensure a successful and solid sale. We highly recommend and commend his work to others.",
+    date: "Verified Google Review",
+    initials: "CS",
+    bgColor: "bg-purple-600",
+    isLocalGuide: false,
+    reviewCountText: "2 reviews",
+    verifiedCategory: "Seller",
+    highlight: "Seamless process and acumen ensuring a solid sale"
+  },
+  {
+    id: "g-4",
+    author: "Shaun Mirk",
+    authorBadge: "Local Guide · 163 reviews",
+    rating: 5,
+    review: "I've bought/sold a few houses, and had half a dozen agents, none hold a candle to Brian! He worked harder to sell my little $160k mobile home than most agents would work for on a $500k home. Very responsive, keeps the process moving, will always have your back. Highly recommend him for any real estate transaction.",
+    date: "Verified Google Review",
+    initials: "SM",
+    bgColor: "bg-amber-600",
+    isLocalGuide: true,
+    reviewCountText: "163 reviews",
+    verifiedCategory: "Seller",
+    highlight: "Worked harder for my $160k home than most do on a $500k home"
+  },
+  {
+    id: "g-5",
+    author: "Wanderlusters",
+    authorBadge: "Local Guide · 65 reviews",
+    rating: 5,
+    review: "Brian Jamison is, without question, the ONLY realtor I will ever use in the state of Oklahoma. We first had the privilege of meeting Brian when he swooped in to save the day on a home sale in 2023 after a contingency fell through. Brian stepped in, handled everything, and got it closed without a hitch.",
+    date: "Verified Google Review",
+    initials: "WL",
+    bgColor: "bg-indigo-600",
+    isLocalGuide: true,
+    reviewCountText: "65 reviews",
+    verifiedCategory: "Seller",
+    highlight: "The ONLY realtor I will ever use in the state of Oklahoma"
+  },
+  {
+    id: "g-6",
+    author: "Kimberley Smith",
+    authorBadge: "15 reviews",
+    rating: 5,
+    review: "Brian Jamison is the most and best realtor around. He is there for all your needs and will be with every step of the way. If you need anything call on Brian. He’s the only realtor I will ever use💜💜",
+    date: "Verified Google Review",
+    initials: "KS",
+    bgColor: "bg-pink-600",
+    isLocalGuide: false,
+    reviewCountText: "15 reviews",
+    verifiedCategory: "Buyer",
+    highlight: "There for all your needs and with you every step of the way"
+  },
+  {
+    id: "g-7",
+    author: "Ronald Simpson",
+    authorBadge: "14 reviews",
+    rating: 5,
+    review: "The entire process of preparing our house for sale, listing it, showing it, and closing on it was thoroughly professional with Brian. He had an amazing contact list of trades to help with fix-ups in preparation for listing (many of whom he coordinated directly). Very satisfied!",
+    date: "Verified Google Review",
+    initials: "RS",
+    bgColor: "bg-teal-600",
+    isLocalGuide: false,
+    reviewCountText: "14 reviews",
+    verifiedCategory: "Seller",
+    highlight: "Amazing contact list of trades to help with listing fix-ups"
+  },
+  {
+    id: "g-8",
+    author: "Aaron Anderson",
+    authorBadge: "3 reviews",
+    rating: 5,
+    review: "Brian helped my wife and I find a home within 2 weeks! It was a process as a first time buyer I was nervous and overwhelmed with but he made it easy and worked out a great deal for my family. S/O to Brian 🙌🏽",
+    date: "Verified Google Review",
+    initials: "AA",
+    bgColor: "bg-cyan-600",
+    isLocalGuide: false,
+    reviewCountText: "3 reviews",
+    verifiedCategory: "Buyer",
+    highlight: "Helped find our home within 2 weeks as nervous first-time buyers"
+  },
+  {
+    id: "g-9",
+    author: "wendy ranlett",
+    authorBadge: "Local Guide · 13 reviews",
+    rating: 5,
+    review: "If you a selling a home, you need Brian Jamison! Right from the start I could tell this would be a different experience from a previous realtor. He showed up on time, walked me through home improvements, did them himself or had people who could help. Fantastic results!",
+    date: "Verified Google Review",
+    initials: "WR",
+    bgColor: "bg-rose-600",
+    isLocalGuide: true,
+    reviewCountText: "13 reviews",
+    verifiedCategory: "Seller",
+    highlight: "Showed up on time, walked me through improvements, fantastic results"
+  },
+  {
+    id: "g-10",
+    author: "Bryce Page",
+    authorBadge: "Local Guide · 5 reviews",
+    rating: 5,
+    review: "I partnered with Brian Jamison on a residential investment property, and he exceeded every expectation. Brian handled the entire renovation from start to finish — coordinating contractors, managing the details, and making smart updates that maximized our profit.",
+    date: "Verified Google Review",
+    initials: "BP",
+    bgColor: "bg-orange-600",
+    isLocalGuide: true,
+    reviewCountText: "5 reviews",
+    verifiedCategory: "Investor",
+    highlight: "Handled entire residential investment renovation from start to finish"
+  },
+  {
+    id: "g-11",
+    author: "Ken Billinger",
+    authorBadge: "Verified Client",
+    rating: 5,
+    review: "He goes above and beyond and our outcome and experience was great.",
+    date: "Verified Google Review",
+    initials: "KB",
+    bgColor: "bg-slate-700",
+    isLocalGuide: false,
+    reviewCountText: "Verified Review",
+    verifiedCategory: "Seller",
+    highlight: "Goes above and beyond — great outcome and experience"
+  }
+];
+
+// Top 3 featured testimonials on homepage, drawn from real Google reviews
 export const TESTIMONIALS: Testimonial[] = [
   {
-    id: "rev-1",
+    id: "rev-shaun",
     stars: 5,
-    quote: "Brian came in last minute and sold our home in just four days with a triple-offer frame. His communication is undeniable. Without question, the only realtor I’d trust again in Oklahoma.",
-    author: "Dr. Neil K.",
-    location: "Homeowner in Nichols Hills, Oklahoma City",
-    detail: "Sold for $28,000 over asking price with a 14-day cash escrow."
+    quote: "I've bought/sold a few houses, and had half a dozen agents, none hold a candle to Brian! He worked harder to sell my little $160k mobile home than most agents would work for on a $500k home. Very responsive, keeps the process moving, will always have your back.",
+    author: "Shaun Mirk",
+    location: "Verified Google Review · Local Guide (163 reviews)",
+    detail: "Sold OKC residential home with same 100% dedication as luxury estates.",
+    badge: "Local Guide · 163 Reviews",
+    isGoogleReview: true
   },
   {
-    id: "rev-2",
+    id: "rev-huiwen",
     stars: 5,
-    quote: "We've bought and sold a lot of homes across four states and Brian is by far the best agent we have ever had. Sharp, calm during negotiation, and never pushes you into bad decisions.",
-    author: "Sean & Liz R.",
-    location: "Sellers & Buyers in Deer Creek, Edmond",
-    detail: "Closed both sale and contingent purchase seamlessly on the same afternoon."
+    quote: "Brian did a fantastic job on selling our 2nd home in Norman, not just once, but TWICE. One in 2022, one in this year. Brian is very responsive, reliable, honest and acknowledgeable. Especially we live out of state. He helped us preparing the house for listing in every way possible. You are a super rock star!",
+    author: "Huiwen Lin",
+    location: "Verified Google Review · 2-Time Home Seller",
+    detail: "Closed two separate Norman, OK home sales while living out of state.",
+    badge: "Repeat Client · 9 Reviews",
+    isGoogleReview: true
   },
   {
-    id: "rev-3",
+    id: "rev-wanderlusters",
     stars: 5,
-    quote: "Moving cross-country to Oklahoma City, Brian guided us with complete patience: video walk-throughs, and detailed knowledge of Edmond school boundaries and acreage zoning.",
-    author: "Kendra & J.P.",
-    location: "Relocated from California to Arcadia / Oakdale",
-    detail: "Purchased off-market custom build saving $45,000 under builder spec list."
+    quote: "Brian Jamison is, without question, the ONLY realtor I will ever use in the state of Oklahoma. We first had the privilege of meeting Brian when he swooped in to save the day on a home sale in 2023 after a contingency fell through. Handled everything and got it closed without a hitch.",
+    author: "Wanderlusters",
+    location: "Verified Google Review · Local Guide (65 reviews)",
+    detail: "Saved home sale after a contingency fell through in 2023.",
+    badge: "Local Guide · 65 Reviews",
+    isGoogleReview: true
   }
 ];
 
@@ -627,10 +895,10 @@ export const SITEMAP_PAGES = [
   { path: "/about", title: "About Brian Jamison & Salt", category: "Core" },
   { path: "/seller-blueprint", title: "6-Step Seller Blueprint", category: "Core" },
   { path: "/listings", title: "Active & Featured Listings", category: "Core" },
-  { path: "/past-sales", title: "$62M+ Past Sales Track Record", category: "Core" },
+  { path: "/past-sales", title: "$70M+ Past Sales Track Record", category: "Core" },
   { path: "/reviews", title: "Client Experiences & Reviews", category: "Core" },
   { path: "/home-valuation", title: "Confidential Market Appraisal", category: "Core" },
-  { path: "/contact", title: "Contact Salt Corporate Office", category: "Core" },
+  { path: "/contact", title: "Contact Jamison Real Estate", category: "Core" },
 
   // Audience & Intent Silos
   { path: "/sellers", title: "Sell for Top Dollar Roadmap", category: "Audience" },

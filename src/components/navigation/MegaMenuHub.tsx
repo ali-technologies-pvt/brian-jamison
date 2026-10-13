@@ -20,6 +20,8 @@ interface MegaMenuHubProps {
   onOpenChapter: (chapterId: string) => void;
   onClose: () => void;
   onNavigate?: (path: string) => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
@@ -29,7 +31,9 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
   onOpenConsultation,
   onOpenChapter,
   onClose,
-  onNavigate
+  onNavigate,
+  onMouseEnter,
+  onMouseLeave
 }) => {
   return (
     <motion.div
@@ -37,7 +41,9 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: -8, scale: 0.98 }}
       transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-      className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 w-[840px] max-w-[95vw] z-50 pointer-events-auto"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className="mega-menu-card absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 w-[840px] max-w-[95vw] z-50 pointer-events-auto"
     >
       {/* 
         Glossy Primary Royal Navy Glass Container:
@@ -222,7 +228,7 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                     Direct Consultation Booking
                   </span>
                   <span className="text-[11px] text-stone-300 leading-snug block mt-0.5">
-                    Schedule a private strategy meeting at Salt Corporate Office.
+                    Schedule a private strategy meeting with Brian Jamison in Edmond.
                   </span>
                 </div>
               </button>
@@ -232,7 +238,7 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
 
         {/* Bottom Banner */}
         <div className="mt-6 pt-4 border-t border-white/15 flex items-center justify-between text-xs text-stone-200">
-          <span>Corporate Office: 1508 W. Edmond Rd., Edmond, OK 73003</span>
+          <span>Office Location: 1508 W. Edmond Rd., Edmond, OK 73003</span>
           <button
             type="button"
             onClick={() => {

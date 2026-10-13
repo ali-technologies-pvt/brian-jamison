@@ -20,7 +20,7 @@ import {
   Search,
   Building
 } from 'lucide-react';
-import { BROKER_INFO, MICRO_MARKETS, MicroMarket } from '../data/realEstateData';
+import { BROKER_INFO, MICRO_MARKETS, MicroMarket, GOOGLE_REVIEWS_GMB_URL } from '../data/realEstateData';
 import { BrianAvatar } from '../components/BrianAvatar';
 import { PhilosophySection } from '../components/PhilosophySection';
 import { LISTING_STANDARDS_DATA } from '../components/ListingStandardsSection';
@@ -29,6 +29,7 @@ import { HomeSellingPage } from './HomeSellingPage';
 import { HomeBuyingPage } from './HomeBuyingPage';
 import { LandSalesPage } from './LandSalesPage';
 import { NeighborhoodDetailView } from './NeighborhoodDetailView';
+import { TestimonialsSection, GoogleLogoIcon } from '../components/TestimonialsSection';
 
 interface InteriorPageViewProps {
   page: InteriorPageData;
@@ -110,6 +111,77 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
         onOpenConsultation={onOpenConsultation}
         onOpenValuation={onOpenValuation}
       />
+    );
+  }
+
+  // 5. Dedicated Full Google Reviews & Client Feedback Experience (/reviews)
+  if (page.id === 'reviews' || page.slug === '/reviews') {
+    return (
+      <article className="w-full bg-[#FAF9F6] text-[#002D61] selection:bg-[#EA580C]/20 selection:text-[#002D61]">
+        <InteriorHeroVideo
+          kicker="VERIFIED GOOGLE REVIEWS"
+          title="Verified Client Reviews & Track Record"
+          subtitle="Explore authentic experiences from homeowners, buyers, and investors across Oklahoma City, Edmond, and Norman who trusted Brian Jamison's 6-Phase Selling Machine."
+          categoryLabel="Verified Client Feedback"
+          heroVideoUrl={page.heroVideoUrl}
+          heroFallbackImage={page.heroFallbackImage}
+          metrics={[
+            { label: 'Google Rating', value: '5.0 ★' },
+            { label: 'Verified Reviews', value: '11 Reviews' },
+            { label: 'Cancel-Anytime', value: '100% Risk-Free' }
+          ]}
+          onNavigate={onNavigate}
+          onOpenValuation={onOpenValuation}
+          onOpenConsultation={onOpenConsultation}
+        />
+
+        {/* Full Google Verified Reviews Suite with all 11 reviews expanded */}
+        <TestimonialsSection
+          onOpenConsultation={onOpenConsultation}
+          initialExpandAll={true}
+        />
+
+        {/* Write a Review & Direct Fiduciary Advisory Banner */}
+        <section className="w-full py-16 bg-[#001D40] text-white border-t border-white/10">
+          <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
+                <GoogleLogoIcon className="w-8 h-8" />
+              </div>
+              <div>
+                <span className="text-[10px] uppercase font-sans font-bold tracking-widest text-[#FB923C] block mb-1">
+                  Share Your Story On Google
+                </span>
+                <h3 className="font-serif text-2xl font-bold text-white">
+                  Have You Worked With Brian Jamison?
+                </h3>
+                <p className="text-xs sm:text-sm text-stone-300 mt-1 max-w-xl">
+                  We believe complete transparency builds lasting trust. Help future Oklahoma sellers and buyers make confident decisions by posting your verified review on Google.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0 w-full sm:w-auto">
+              <a
+                href={GOOGLE_REVIEWS_GMB_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#EA580C] hover:bg-[#C2410C] text-white text-xs font-bold tracking-wider uppercase transition-all shadow-md hover:shadow-lg cursor-pointer text-center inline-flex items-center justify-center gap-2"
+              >
+                <GoogleLogoIcon className="w-4 h-4" />
+                <span>Write a Review on Google</span>
+              </a>
+              <button
+                type="button"
+                onClick={onOpenConsultation}
+                className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold tracking-wider uppercase transition-colors cursor-pointer text-center"
+              >
+                Schedule Private Consultation
+              </button>
+            </div>
+          </div>
+        </section>
+      </article>
     );
   }
 
@@ -259,7 +331,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                       Brian Jamison
                     </span>
                     <span className="text-[10px] text-[#6B7280]">
-                      License #184931 · Salt Corporate Office
+                      License #184931 · Jamison Real Estate
                     </span>
                   </div>
                 </div>
@@ -631,7 +703,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                         Process {nextProc.number}: {nextProc.title}
                       </h4>
                       <p className="text-xs sm:text-sm text-[#6B7280] mt-1 max-w-xl">
-                        Discover how our firm executes the next stage of listing marketing and transaction management.
+                        Discover how Jamison Real Estate executes the next stage of listing marketing and transaction management.
                       </p>
                     </div>
 

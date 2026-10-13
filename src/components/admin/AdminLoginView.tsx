@@ -120,7 +120,7 @@ export const AdminLoginView: React.FC<AdminLoginViewProps> = ({ onNavigate }) =>
             <div className="bg-white border border-[#E5E0D8] rounded-2xl p-6 shadow-2xs">
               <h3 className="font-serif text-lg font-bold text-[#0A2540] mb-2">Global Settings</h3>
               <p className="text-xs text-[#6B7280] mb-4">
-                Prisma model `GlobalSettings` holds verified $62M+ volume, 370+ closings, and license data.
+                Prisma model `GlobalSettings` holds verified $70M+ volume, 370+ closings, and license data.
               </p>
               <span className="text-xs font-semibold text-[#E07A28]">Seeded & Ready</span>
             </div>

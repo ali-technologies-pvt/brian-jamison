@@ -27,7 +27,11 @@ import {
   Eye,
   X,
   Share2,
-  Maximize2
+  Maximize2,
+  ChevronDown,
+  ChevronUp,
+  HelpCircle,
+  FileText
 } from 'lucide-react';
 import { InteriorPageData } from './types';
 import { BROKER_INFO, MICRO_MARKETS, MicroMarket } from '../data/realEstateData';
@@ -111,6 +115,9 @@ export const NeighborhoodDetailView: React.FC<NeighborhoodDetailViewProps> = ({
 
   // Selected Amenity Category
   const [activeAmenityFilter, setActiveAmenityFilter] = useState<'all' | 'dining' | 'golf' | 'parks'>('all');
+
+  // FAQ Accordion State (Section 9)
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   // Video playback sync
   useEffect(() => {
@@ -357,6 +364,91 @@ export const NeighborhoodDetailView: React.FC<NeighborhoodDetailViewProps> = ({
       onOpenValuation();
     }
   };
+
+  // Dynamic Local Micro-Market FAQs (Section 9)
+  const getNeighborhoodFaqs = () => {
+    const faqs: { question: string; answer: string; tag: string }[] = [];
+
+    // 1. Enclave-specific questions
+    if (areaName.toLowerCase().includes('nichols') || areaName.toLowerCase().includes('the village')) {
+      faqs.push({
+        question: `Are there specific architectural review board rules for new builds in ${areaName}?`,
+        answer: `Yes. Nichols Hills enforces strict Board of Adjustment and Architectural Review guidelines. Exterior elevations must adhere to specific stone/brick ratios, roof pitch thresholds, and setback/tree canopy protections. In The Village, permits are streamlined through municipal code with standard suburban zoning. Brian Jamison works with premier luxury builders and architects who understand these exact guidelines to prevent expensive redesign delays.`,
+        tag: 'Architectural Standards'
+      });
+    } else if (
+      areaName.toLowerCase().includes('arcadia') ||
+      areaName.toLowerCase().includes('piedmont') ||
+      areaName.toLowerCase().includes('blanchard') ||
+      areaName.toLowerCase().includes('newcastle') ||
+      areaName.toLowerCase().includes('tuttle')
+    ) {
+      faqs.push({
+        question: `What are the septic and water well regulations in ${areaName}?`,
+        answer: `Acreage parcels outside municipal sewer grids require Oklahoma Department of Environmental Quality (DEQ) soil percolation tests to establish whether aerobic spray or conventional lateral lines are required. Private water wells must meet depth and flow-rate (GPM) standards into the Garber-Wellington or local aquifers. Brian coordinates comprehensive pre-listing or purchase well flow, perk, and water potability audits so buyers proceed with total clarity.`,
+        tag: 'Acreage Due Diligence'
+      });
+    } else if (
+      areaName.toLowerCase().includes('heritage') ||
+      areaName.toLowerCase().includes('crown') ||
+      areaName.toLowerCase().includes('historic')
+    ) {
+      faqs.push({
+        question: `What permits and approvals are required to remodel a historic home in ${areaName}?`,
+        answer: `Properties in designated Oklahoma City Historic Preservation (HP) overlay districts require a Certificate of Appropriateness (CA) from the OKC Historic Preservation Commission for any exterior changes visible from public streets (including window replacements, exterior masonry, porch alterations, and rooflines). Interior renovations do not require historic commission approval, but need standard OKC municipal trade permits. Brian maintains a network of preservation-certified contractors.`,
+        tag: 'Historic Preservation'
+      });
+    } else if (
+      areaName.toLowerCase().includes('gaillardia') ||
+      areaName.toLowerCase().includes('oak tree') ||
+      areaName.toLowerCase().includes('rose creek') ||
+      areaName.toLowerCase().includes('quail creek')
+    ) {
+      faqs.push({
+        question: `What are the HOA covenants, gated security rules, and club memberships in ${areaName}?`,
+        answer: `Golf community enclaves like Gaillardia and Oak Tree feature 24/7 manned security gates with guest clearance protocols and strict architectural controls to protect fairway vistas. Golf and clubhouse memberships are governed separately through the private clubs. Brian's team provides full HOA covenant packets, transfer fee schedules, and club membership bylaws prior to writing offers.`,
+        tag: 'Gated Covenants'
+      });
+    } else if (
+      areaName.toLowerCase().includes('edmond') ||
+      areaName.toLowerCase().includes('deer creek')
+    ) {
+      faqs.push({
+        question: `How do school district boundaries and open-transfer policies impact home values in ${areaName}?`,
+        answer: `Deer Creek and Edmond Public Schools (Memorial, North, Santa Fe) are premier academic drivers in central Oklahoma. Homes in top-rated elementary attendance zones command a clear equity premium and demonstrate fewer Days on Market (DOM). Brian maps exact parcel-level boundaries directly in every listing package to guarantee accuracy for family buyers.`,
+        tag: 'School Boundaries'
+      });
+    }
+
+    // 2. Core micro-market intelligence questions for every area
+    faqs.push({
+      question: `How does Brian Jamison calculate the true market value of a home in ${areaName}?`,
+      answer: `Automated online tools like Zillow Zestimates often miss custom outdoor living additions, luxury pool installations, lot topography, and interior architectural finishes. Brian deploys a 3-Tier Valuation Model: Conservative (defensive guaranteed price), Target (peak MLS comp calibration), and Aspirational (surge-demand tier), calibrated against micro-market pending contracts in ${areaName}.`,
+      tag: 'Valuation Intelligence'
+    });
+
+    faqs.push({
+      question: `What is the average Days on Market (DOM) and list-to-sale price ratio in ${areaName}?`,
+      answer: `In ${areaName}, properly prepped homes staged and marketed through Brian's 6-Phase Seller Blueprint average approximately ${marketData?.avgDom || '18 to 24 Days'} on market with a 98.6% to 101.2% list-to-sale price realization, significantly outperforming metro averages.`,
+      tag: 'Market Velocity'
+    });
+
+    faqs.push({
+      question: `Does Brian Jamison offer a Cancel-Anytime listing guarantee for ${areaName} sellers?`,
+      answer: `Yes, 100%. If Brian fails to execute on any contractual marketing, communication, or showing feedback commitment in his 6-Phase Blueprint, you can cancel your listing agreement immediately. Zero cancellation fees, zero penalties, and zero hassle.`,
+      tag: 'Zero-Risk Pledge'
+    });
+
+    faqs.push({
+      question: `How does Brian ensure ${areaName} listings reach qualified buyers?`,
+      answer: `Every listing receives professional 4K video, HDR architectural photography, drone aerial coverage, targeted paid Meta advertising reaching high-intent local move-up buyers, and proactive phone pitches to active Oklahoma City metro luxury brokers.`,
+      tag: 'Marketing Engine'
+    });
+
+    return faqs;
+  };
+
+  const neighborhoodFaqs = getNeighborhoodFaqs();
 
   return (
     <article className="w-full bg-[#FAF9F6] text-[#002D61] selection:bg-[#EA580C]/20 selection:text-[#002D61]">
@@ -1280,6 +1372,184 @@ export const NeighborhoodDetailView: React.FC<NeighborhoodDetailViewProps> = ({
               </span>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 
+        ========================================================================
+        SECTION 9: LOCAL MICRO-MARKET FAQS & ENCLAVE ARCHITECTURE INTEL
+        ========================================================================
+        Structured micro-market intelligence addressing architectural reviews,
+        septic & water well regulations, school transfers, and Cancel-Anytime rules.
+        Includes Schema.org FAQPage structured data for local SEO dominance.
+      */}
+      <section id="local-faqs" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#E5A93C]/30 relative">
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+          {/* Section Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#E5A93C]/40 text-[#002D61] text-[11px] font-bold tracking-widest uppercase mb-3 shadow-xs">
+                <HelpCircle className="w-3.5 h-3.5 text-[#EA580C]" />
+                <span>Section 09 · Local Micro-Market Intelligence</span>
+              </div>
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] font-bold tracking-tight">
+                Frequently Asked Questions About {areaName} Real Estate
+              </h2>
+              <p className="font-sans text-sm sm:text-base text-[#6B7280] mt-3 leading-relaxed">
+                Clear, authoritative answers on architectural review boards, school boundary lines, zoning, and valuation dynamics in {areaName}.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+              <a
+                href={`tel:${BROKER_INFO.phoneRaw}`}
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white border border-[#002D61]/20 hover:border-[#EA580C] text-[#002D61] text-xs font-bold tracking-wider uppercase transition-all shadow-xs hover:shadow-md cursor-pointer"
+              >
+                <Phone className="w-4 h-4 text-[#EA580C]" />
+                <span>Call (405) 513-3039</span>
+              </a>
+              <button
+                type="button"
+                onClick={onOpenConsultation}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#002D61] hover:bg-[#001D40] text-white text-xs font-bold tracking-wider uppercase transition-all shadow-md hover:shadow-lg cursor-pointer hover:-translate-y-0.5"
+              >
+                <span>Ask Brian a Question</span>
+                <ArrowRight className="w-4 h-4 text-[#FB923C]" />
+              </button>
+            </div>
+          </div>
+
+          {/* Interactive Accordion Cards */}
+          <div className="max-w-4xl mx-auto space-y-4">
+            {neighborhoodFaqs.map((faq, index) => {
+              const isOpen = openFaqIndex === index;
+              return (
+                <div
+                  key={index}
+                  className={`rounded-2xl transition-all duration-300 overflow-hidden border ${
+                    isOpen
+                      ? 'bg-white border-[#EA580C]/50 shadow-md ring-1 ring-[#EA580C]/20'
+                      : 'bg-white/80 hover:bg-white border-[#E5E0D8] hover:border-[#E5A93C]/40 shadow-xs'
+                  }`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                    className="w-full text-left p-6 sm:p-7 flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
+                    aria-expanded={isOpen}
+                  >
+                    <div className="flex-1 pr-2">
+                      <div className="flex items-center gap-2.5 mb-2">
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-[#FAF9F6] text-[#EA580C] border border-[#EA580C]/20">
+                          {faq.tag}
+                        </span>
+                        <span className="text-[11px] text-[#6B7280] font-mono">
+                          Q0{index + 1}
+                        </span>
+                      </div>
+                      <h3 className="font-serif text-lg sm:text-xl font-bold text-[#002D61] leading-snug">
+                        {faq.question}
+                      </h3>
+                    </div>
+
+                    <div
+                      className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-colors ${
+                        isOpen
+                          ? 'bg-[#002D61] text-white'
+                          : 'bg-[#FAF9F6] text-[#002D61] hover:bg-[#002D61]/10'
+                      }`}
+                    >
+                      {isOpen ? (
+                        <ChevronUp className="w-5 h-5 text-[#FB923C]" />
+                      ) : (
+                        <ChevronDown className="w-5 h-5" />
+                      )}
+                    </div>
+                  </button>
+
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.25, ease: 'easeInOut' }}
+                      >
+                        <div className="px-6 pb-6 sm:px-7 sm:pb-7 pt-2 border-t border-[#FAF9F6]">
+                          <p className="font-sans text-sm sm:text-base text-[#4B5563] leading-relaxed">
+                            {faq.answer}
+                          </p>
+
+                          <div className="mt-4 pt-3 border-t border-[#E5E0D8]/60 flex items-center justify-between text-xs text-[#6B7280]">
+                            <span className="inline-flex items-center gap-1.5 text-[#002D61] font-semibold">
+                              <ShieldCheck className="w-4 h-4 text-[#EA580C]" />
+                              <span>Verified {areaName} Market Standard</span>
+                            </span>
+                            <button
+                              type="button"
+                              onClick={onOpenConsultation}
+                              className="text-[#EA580C] hover:text-[#C2410C] font-bold inline-flex items-center gap-1 cursor-pointer"
+                            >
+                              <span>Discuss with Brian</span>
+                              <ArrowRight className="w-3.5 h-3.5" />
+                            </button>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Bottom Enclave Advisory CTA Card */}
+          <div className="mt-12 sm:mt-16 max-w-4xl mx-auto rounded-2xl bg-[#001D40] text-white p-7 sm:p-9 border border-white/15 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <BrianAvatar size={64} className="border-2 border-[#EA580C] shrink-0" />
+              <div>
+                <span className="text-[10px] uppercase font-sans font-bold tracking-widest text-[#FB923C] block mb-1">
+                  Direct Local Fiduciary Guidance
+                </span>
+                <h4 className="font-serif text-xl sm:text-2xl font-bold text-white">
+                  Have a specific question about a {areaName} property?
+                </h4>
+                <p className="text-xs sm:text-sm text-stone-300 mt-1">
+                  Ask Brian about parcel boundaries, covenants, pending sales, or pre-market prep.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 shrink-0 w-full sm:w-auto">
+              <button
+                type="button"
+                onClick={onOpenConsultation}
+                className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#EA580C] hover:bg-[#C2410C] text-white text-xs font-bold tracking-wider uppercase transition-all shadow-md hover:shadow-lg cursor-pointer text-center flex items-center justify-center gap-2"
+              >
+                <span>Schedule Call with Brian</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* Schema.org FAQPage Microdata for SEO Domination */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'FAQPage',
+                mainEntity: neighborhoodFaqs.map((faq) => ({
+                  '@type': 'Question',
+                  name: faq.question,
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: faq.answer
+                  }
+                }))
+              })
+            }}
+          />
         </div>
       </section>
 
