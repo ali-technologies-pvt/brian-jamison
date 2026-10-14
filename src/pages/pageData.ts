@@ -846,6 +846,488 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Country lifestyle with quick urban access"
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "heritage-hills": {
+    id: "heritage-hills",
+    slug: "/areas/heritage-hills",
+    category: "community",
+    kicker: "HISTORIC PRESERVATION ENCLAVE",
+    title: "Heritage Hills Historic Estates & Mansions",
+    subtitle: "Oklahoma City's premier historic preservation district, showcasing grand 1920s architecture, tree-canopied boulevards, and century-old brick mansions.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Median Price", value: "$895,000" },
+      { label: "Historic Designation", value: "National Register" },
+      { label: "Downtown Commute", value: "4 Mins" }
+    ],
+    overview: "Heritage Hills was the original home of Oklahoma City's founding families, oil barons, and civic leaders. Today, it remains an architectural sanctuary protected by strict historical preservation covenants with restored Italianate, Georgian, and Tudor mansions.",
+    keyTakeaways: [
+      "Protected architectural district ensuring permanent character preservation",
+      "Walking distance to Midtown rooftop dining, streetcars, and Scissortail Park",
+      "Active neighborhood association maintaining private security patrols and tree-shaded parks",
+      "Outstanding historic appreciation and resilient equity retention"
+    ],
+    schools: [
+      { name: "Casady School", type: "Private (PK-12)", rating: "10/10 Gold Standard" },
+      { name: "Wilson Elementary School", type: "Public Arts Integration (K-5)", rating: "9/10 Acclaimed" },
+      { name: "Classen SAS High School", type: "Public Magnet (6-12)", rating: "10/10 IB World School" }
+    ],
+    lifestyleHighlights: [
+      "Annual Heritage Hills Historic Homes Tour",
+      "Overholser Mansion landmark and museum",
+      "Midtown streetcar dining and cultural venues"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "gaillardia": {
+    id: "gaillardia",
+    slug: "/areas/gaillardia",
+    category: "community",
+    kicker: "24/7 GUARD-GATED LUXURY GOLF",
+    title: "Gaillardia Golf Community & Country Club Estates",
+    subtitle: "Oklahoma City's premier guard-gated golf country club sanctuary, featuring Arthur Hills championship golf, 55,000 sq ft French Normandy clubhouse, and private gated villas.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Median Estate Price", value: "$1,650,000" },
+      { label: "Security", value: "24/7 Guard-Gated" },
+      { label: "Championship Golf", value: "Arthur Hills 18" }
+    ],
+    overview: "Gaillardia offers unmatched security and resort-level privacy in northwest Oklahoma City. Set across 600 lush acres, the community features private lakes, manicured fairways, and multi-million dollar custom stone estates.",
+    keyTakeaways: [
+      "24-hour guarded security gate with electronic perimeter monitoring",
+      "Arthur Hills-designed championship 18-hole golf course and private training facility",
+      "55,000 sq ft clubhouse with formal dining, aquatic center, and tennis facilities",
+      "Coveted feeder into top Edmond and northwest OKC academic schools"
+    ],
+    schools: [
+      { name: "Deer Creek Schools", type: "Public (PK-12)", rating: "10/10 Academic Leader" },
+      { name: "Casady School", type: "Private Independent (PK-12)", rating: "10/10" },
+      { name: "Crossings Christian School", type: "Private Christian (PK-12)", rating: "9/10" }
+    ],
+    lifestyleHighlights: [
+      "Private Gaillardia Country Club championship golf and pro shop",
+      "Resort-style infinity pool, cabanas, and fitness pavilion",
+      "Wine tasting dinners and executive networking events"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "crown-heights": {
+    id: "crown-heights",
+    slug: "/areas/crown-heights",
+    category: "community",
+    kicker: "HISTORIC URBAN SANCTUARY",
+    title: "Crown Heights Historic District Real Estate",
+    subtitle: "Charming stone cottages, Spanish and Tudor revivals, and deep-porch living along OKC's Western Avenue gourmet corridor.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Median Price", value: "$575,000" },
+      { label: "Avg Days on Market", value: "12 Days" },
+      { label: "Western Ave Proximity", value: "Walking Distance" }
+    ],
+    overview: "Built predominantly in the 1930s, Crown Heights is celebrated for architectural variety, mature tree canopies, and vibrant community spirit. Steps from Western Avenue's celebrated culinary strip.",
+    keyTakeaways: [
+      "Enchanting mix of Tudor Revival, Spanish Colonial, and French Eclectic architecture",
+      "Crown Heights Park hosting annual Fourth of July parades and music festivals",
+      "Immediate proximity to Western Avenue dining and Classen Curve shopping",
+      "High equity resilience with sustained buyer demand"
+    ],
+    schools: [
+      { name: "Bishop McGuinness High School", type: "Private Catholic (9-12)", rating: "9/10 Acclaimed" },
+      { name: "Wilson Elementary", type: "Public Arts Focus (K-5)", rating: "9/10" },
+      { name: "Classen SAS", type: "Public Magnet (6-12)", rating: "10/10" }
+    ],
+    lifestyleHighlights: [
+      "Western Avenue antique shops, bakeries, and gourmet bistros",
+      "Crown Heights Park tennis courts and central green space",
+      "Short 8-minute commute to downtown OKC financial district"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "downtown-midtown": {
+    id: "downtown-midtown",
+    slug: "/areas/downtown-midtown",
+    category: "community",
+    kicker: "URBAN SKYLINE & PENTHOUSES",
+    title: "Downtown & Midtown OKC Luxury Condos & Lofts",
+    subtitle: "High-rise luxury penthouses, historic brick townhomes, modern loft spaces, and Michelin-rated dining in the urban epicenter.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Median Penthouse", value: "$620,000" },
+      { label: "Walk Score", value: "92 Walkers Paradise" },
+      { label: "Streetcar Transit", value: "Full Connectivity" }
+    ],
+    overview: "Downtown and Midtown Oklahoma City provide the premier urban live-work-play address. With streetcar access, Scissortail Park, and rooftop lounges, this district draws top executives and creative entrepreneurs.",
+    keyTakeaways: [
+      "Skyline panoramic views, private garage parking, and concierge living",
+      "Automobile Alley historic industrial lofts and contemporary rowhouses",
+      "Walking access to Paycom Center for NBA Oklahoma City Thunder games",
+      "Strong corporate relocation executive demand"
+    ],
+    schools: [
+      { name: "Classen SAS Middle & High", type: "Public Magnet (6-12)", rating: "10/10" },
+      { name: "John Rex Charter Elementary", type: "Public Charter (PK-5)", rating: "9/10" }
+    ],
+    lifestyleHighlights: [
+      "Scissortail Park 70-acre botanical gardens and concert stage",
+      "Midtown rooftop cocktail lounges and Michelin-guide chef dining",
+      "Oklahoma City Museum of Art and Civic Center performances"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "quail-creek": {
+    id: "quail-creek",
+    slug: "/areas/quail-creek",
+    category: "community",
+    kicker: "FAIRWAY GOLF SANCTUARY",
+    title: "Quail Creek Golf Club Real Estate & Homes",
+    subtitle: "Sprawling golf course homes, classic mid-century transitional architecture, mature shade trees, and active country club living in northwest OKC.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Median Price", value: "$540,000" },
+      { label: "Avg Days on Market", value: "16 Days" },
+      { label: "Country Club Golf", value: "18-Hole Championship" }
+    ],
+    overview: "Established around the prestigious Quail Creek Golf & Country Club, this neighborhood is celebrated for wide lots, golf cart lifestyle, and swift Kilpatrick Turnpike connectivity.",
+    keyTakeaways: [
+      "Quail Creek Golf & Country Club with championship greens and tennis",
+      "Generous third-acre to half-acre manicured residential parcels",
+      "Convenient access to Lake Hefner and Chisholm Creek entertainment district",
+      "High family retention and sustained multi-generational equity"
+    ],
+    schools: [
+      { name: "Quail Creek Elementary", type: "Public (K-5)", rating: "8/10" },
+      { name: "Crossings Christian School", type: "Private (PK-12)", rating: "9/10" }
+    ],
+    lifestyleHighlights: [
+      "Quail Creek Country Club junior Olympic pool and golf programs",
+      "Lake Hefner sailing and cycling trails 5 minutes south",
+      "Chisholm Creek outdoor dining, Topgolf, and shopping hub"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "edmond-oakdale": {
+    id: "edmond-oakdale",
+    slug: "/areas/edmond-oakdale",
+    category: "community",
+    kicker: "10/10 ACADEMIC GOLD STANDARD",
+    title: "Edmond & Oakdale Corridor Luxury Real Estate",
+    subtitle: "Nationally acclaimed 10/10 schools, rolling wooded topography, luxury acreage estates, and vibrant downtown Edmond rail district living.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Median Luxury Price", value: "$685,000" },
+      { label: "Oakdale Feeder", value: "10/10 Gold Standard" },
+      { label: "Avg Days on Market", value: "15 Days" }
+    ],
+    overview: "The prestigious corridor uniting East Edmond and Oakdale represents central Oklahoma's most desired family address. Offering private wooded acreages and elite public and private schooling.",
+    keyTakeaways: [
+      "Celebrated Oakdale and Edmond school districts with unmatched academic honors",
+      "Private 1-to-5 acre wooded estate parcels with low Logan/Oklahoma County tax burdens",
+      "Minutes from Arcadia Lake recreation and I-35 regional transit corridor",
+      "Consistently ranked among America's safest and highest-appreciating suburbs"
+    ],
+    schools: [
+      { name: "Oakdale Elementary & Middle", type: "Public (PK-8)", rating: "10/10 Gold Standard" },
+      { name: "Edmond Memorial High School", type: "Public (9-12)", rating: "10/10 Blue Ribbon" }
+    ],
+    lifestyleHighlights: [
+      "Arcadia Lake trails, horseback riding, and fishing",
+      "Downtown Edmond historic rail district boutique dining",
+      "Mitch Park & YMCA 280-acre multi-sport complex"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "deer-creek": {
+    id: "deer-creek",
+    slug: "/areas/deer-creek",
+    category: "community",
+    kicker: "MASTER-PLANNED CUSTOM LUXURY",
+    title: "Deer Creek School District Real Estate & Custom Builds",
+    subtitle: "Premier destination for luxury new construction, young professional families, and state champion academic and athletic programs in northwest Edmond.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Median Price", value: "$520,000" },
+      { label: "Feeder Rating", value: "10/10 Academic Leader" },
+      { label: "Avg Days on Market", value: "11 Days" }
+    ],
+    overview: "Deer Creek represents the primary high-growth luxury corridor for Northwest Edmond. Drawing executive families seeking master-planned communities, resort amenities, and modern transitional floorplans.",
+    keyTakeaways: [
+      "Acclaimed Deer Creek Public Schools with top athletic championships and STEM scores",
+      "Master-planned neighborhoods featuring community pools, walking trails, and lakes",
+      "Fast access to Kilpatrick Turnpike, Mercy Hospital, and Paycom campus",
+      "Tremendous appreciation and resale velocity on turnkey custom homes"
+    ],
+    schools: [
+      { name: "Deer Creek High School", type: "Public (9-12)", rating: "10/10 State Athletics & STEM" },
+      { name: "Deer Creek Middle School", type: "Public (7-8)", rating: "10/10" }
+    ],
+    lifestyleHighlights: [
+      "Deer Creek community athletics complexes and Friday night lights",
+      "Fast access to Rose Creek and Gaillardia private golf clubs",
+      "Covell Corridor shopping and family medical centers"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "oak-tree": {
+    id: "oak-tree",
+    slug: "/areas/oak-tree",
+    category: "community",
+    kicker: "PGA CHAMPIONSHIP PETE DYE GREENS",
+    title: "Oak Tree Golf & Country Club Luxury Estates",
+    subtitle: "Two Pete Dye championship 36-hole golf courses, PGA Tour pedigree, 24-hr guarded gate, and sprawling custom stone architecture in North Edmond.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Median Luxury Price", value: "$1,150,000" },
+      { label: "Pete Dye Championship", value: "36 Holes" },
+      { label: "Guarded Security", value: "24/7 Gated" }
+    ],
+    overview: "A legendary golf enclave that has hosted major PGA championships and Senior PGA tours. Oak Tree provides multi-million dollar custom residences set against mature wooded fairways and water hazards.",
+    keyTakeaways: [
+      "Two Pete Dye championship 18-hole courses: Oak Tree National & Oak Tree Country Club",
+      "24-hour guarded security entrance with dedicated perimeter patrols",
+      "World-class private tennis pavilion, Olympic pool, and private dining rooms",
+      "Premier North Edmond location with unmatched address prestige"
+    ],
+    schools: [
+      { name: "Edmond North High School", type: "Public (9-12)", rating: "10/10 Blue Ribbon" },
+      { name: "Sequoyah Middle School", type: "Public (6-8)", rating: "10/10" }
+    ],
+    lifestyleHighlights: [
+      "Oak Tree National elite championship golf experience",
+      "Country club social events, wine dinners, and junior golf academies",
+      "Scenic walking paths and golf-cart friendly streets"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "arcadia-hiwassee": {
+    id: "arcadia-hiwassee",
+    slug: "/areas/arcadia-hiwassee",
+    category: "community",
+    kicker: "LAKE & EQUESTRIAN ACREAGES",
+    title: "Arcadia & Lake Hiwassee Waterfront & Acreage Estates",
+    subtitle: "Equestrian acreage estates, Route 66 historic charm, water sports, and tranquil forested retreats just 15 minutes east of I-35.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Median Price", value: "$790,000" },
+      { label: "Lot Sizes", value: "2 - 40+ Ac" },
+      { label: "Lake Proximity", value: "Waterfront Access" }
+    ],
+    overview: "Where scenic country expanse meets modern architectural luxury. Arcadia and Lake Hiwassee offer expansive multi-acre wooded compounds with private horse stables, docks, and scenic privacy.",
+    keyTakeaways: [
+      "Rare private lakefront lots and equestrian-zoned multi-acre tracts",
+      "Oakdale and Edmond school feeder zones",
+      "Iconic Route 66 landmarks including POPS 66 and the Historic Round Barn",
+      "Fast commute into Edmond and North OKC via Route 66 and Covell Rd"
+    ],
+    schools: [
+      { name: "Oakdale Public School", type: "Public (PK-8)", rating: "10/10" },
+      { name: "Edmond Memorial High School", type: "Public (9-12)", rating: "10/10" }
+    ],
+    lifestyleHighlights: [
+      "Private skiing, fishing, and boating on Lake Hiwassee",
+      "Spring Creek and Arcadia Lake equestrian trail networks",
+      "Tranquil starry skies without urban light pollution"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "guthrie-historic": {
+    id: "guthrie-historic",
+    slug: "/areas/guthrie-historic",
+    category: "community",
+    kicker: "VICTORIAN ARCHITECTURE & RANCHES",
+    title: "Guthrie Historic Enclave & Country Acreage Ranches",
+    subtitle: "Territorial capital architecture, antique stores, sprawling country ranches, and equestrian tracts along the scenic Cimarron River.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Median Price", value: "$380,000" },
+      { label: "Historic Landmark", value: "Largest in US" },
+      { label: "Avg Days on Market", value: "28 Days" }
+    ],
+    overview: "Oklahoma's first state capital provides majestic red-brick Victorian downtown blocks, antique shops, and film-production backdrops alongside expansive private acreage properties.",
+    keyTakeaways: [
+      "Largest National Historic Landmark District in the United States",
+      "Generous acreage properties with horse barns, shops, and ponds",
+      "Thriving arts, theater, and annual frontier festivals",
+      "Direct 20-minute north drive into Edmond along I-35"
+    ],
+    schools: [
+      { name: "Guthrie High School", type: "Public (9-12)", rating: "8/10" }
+    ],
+    lifestyleHighlights: [
+      "Historic downtown Guthrie Pollard Theatre performances",
+      "Cimarron National Golf Club and country recreation",
+      "89er Days celebration and frontier parades"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "twin-bridges": {
+    id: "twin-bridges",
+    slug: "/areas/twin-bridges",
+    category: "community",
+    kicker: "COVELL CORRIDOR RESORT COMMUNITY",
+    title: "Twin Bridges & Covell Corridor Luxury Real Estate",
+    subtitle: "Master-planned amenity pools, walking trails, clubhouse, and modern transitional architecture in Edmond's high-demand north corridor.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Median Price", value: "$625,000" },
+      { label: "Avg Days on Market", value: "14 Days" },
+      { label: "Edmond Schools", value: "10/10 Feeder" }
+    ],
+    overview: "Twin Bridges combines neighborhood walkability, lake views, resort pool amenities, and modern transitional architecture with Edmond's premier school feeder routes.",
+    keyTakeaways: [
+      "Resort community clubhouse, aquatic center, and scenic walking trails",
+      "Minutes from Covell retail centers, dining, and Interstate 35",
+      "Feeder into top-ranked Edmond Public Schools",
+      "High family retention and strong resale equity appreciation"
+    ],
+    schools: [
+      { name: "Edmond Memorial High School", type: "Public (9-12)", rating: "10/10" },
+      { name: "Central Middle School", type: "Public (6-8)", rating: "9/10" }
+    ],
+    lifestyleHighlights: [
+      "Twin Bridges clubhouse and community social events",
+      "Mitch Park sports complex and ice rink 5 minutes west",
+      "Covell Village shopping and artisan cafes"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "rose-creek": {
+    id: "rose-creek",
+    slug: "/areas/rose-creek",
+    category: "community",
+    kicker: "GUARD-GATED ARTHUR HILLS GOLF",
+    title: "Rose Creek Golf Community & Country Club Living",
+    subtitle: "Guard-gated Arthur Hills 18-hole golf, aquatic park, modern clubhouse dining, and contemporary luxury design in Edmond/Deer Creek.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Median Price", value: "$920,000" },
+      { label: "Security", value: "24/7 Guard-Gated" },
+      { label: "Arthur Hills Golf", value: "Championship 18" }
+    ],
+    overview: "Elite guard-gated haven with dramatic custom architecture, resort fitness facilities, aquatic park, and vibrant country club dining on the fairways.",
+    keyTakeaways: [
+      "24-hour guarded security with controlled visitor access",
+      "Arthur Hills championship 18-hole links golf course",
+      "Resort clubhouse with full-service bar, restaurant, and aquatic complex",
+      "Exceptional academic feeder options across Edmond and Deer Creek"
+    ],
+    schools: [
+      { name: "Deer Creek High School", type: "Public (9-12)", rating: "10/10" },
+      { name: "Edmond North High School", type: "Public (9-12)", rating: "10/10" }
+    ],
+    lifestyleHighlights: [
+      "The Club at Rose Creek golf tournaments and dining",
+      "Resort-style aquatic center with children's splash pad",
+      "Fitness center with personal training and group classes"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "norman-university": {
+    id: "norman-university",
+    slug: "/areas/norman-university",
+    category: "community",
+    kicker: "OU CAMPUS & BROOKHAVEN ENCLAVE",
+    title: "Norman & University Enclave Luxury Real Estate",
+    subtitle: "Historic Chautauqua avenues, prestigious Brookhaven golf living, Lake Thunderbird retreats, and SEC game-day energy in Norman.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Median Price", value: "$395,000" },
+      { label: "Avg Days on Market", value: "17 Days" },
+      { label: "Campus Feeder", value: "OU Research Tier 1" }
+    ],
+    overview: "Home to the University of Oklahoma, Norman merges college-town intellect with affluent enclaves like Brookhaven, Hallbrooke, and private wooded properties.",
+    keyTakeaways: [
+      "Historic Chautauqua avenues with protected pre-war architectural estates",
+      "Brookhaven Country Club golf community on Norman's affluent west side",
+      "Top-tier research faculty, healthcare, and engineering career hubs",
+      "Dynamic cultural lifestyle with museums, arts, and SEC athletics"
+    ],
+    schools: [
+      { name: "Norman North High School", type: "Public (9-12)", rating: "9/10" },
+      { name: "Norman High School", type: "Public (9-12)", rating: "9/10" }
+    ],
+    lifestyleHighlights: [
+      "OU Sooners game day at Gaylord Family Oklahoma Memorial Stadium",
+      "Sam Noble Oklahoma Museum of Natural History",
+      "Brookhaven Square upscale dining and boutiques"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "midwest-city-choctaw": {
+    id: "midwest-city-choctaw",
+    slug: "/areas/midwest-city-choctaw",
+    category: "community",
+    kicker: "AEROSPACE & WOODED ACREAGES",
+    title: "Midwest City & Choctaw Acreage Real Estate",
+    subtitle: "Tinker Air Force Base aerospace career convenience combined with scenic wooded acreages, private shops, and quiet eastern country living.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Median Price", value: "$310,000" },
+      { label: "Lot Dimensions", value: "1 - 10+ Ac" },
+      { label: "Tinker AFB Commute", value: "8 Mins" }
+    ],
+    overview: "A blend of aerospace career stability and scenic rolling oak acreages. Offering lower density, spacious shop-friendly properties, and top Choctaw-Nicoma Park schools.",
+    keyTakeaways: [
+      "Proximity to Tinker Air Force Base—the largest single-site employer in Oklahoma",
+      "Spacious wooded residential parcels permitting workshops and outbuildings",
+      "Highly regarded Choctaw-Nicoma Park academic and athletic programs",
+      "Peaceful country feel with fast I-40 and Kickapoo Turnpike connections"
+    ],
+    schools: [
+      { name: "Choctaw High School", type: "Public (9-12)", rating: "9/10" },
+      { name: "Carl Albert High School", type: "Public (9-12)", rating: "9/10" }
+    ],
+    lifestyleHighlights: [
+      "Choctaw Creek Golf Course and nature trails",
+      "Annual Oktoberfest festival in Choctaw",
+      "Spacious wooded acreage with dark night skies"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "blanchard-newcastle": {
+    id: "blanchard-newcastle",
+    slug: "/areas/blanchard-newcastle",
+    category: "community",
+    kicker: "HILL COUNTRY RANCHES & GOLF",
+    title: "Blanchard & Newcastle Luxury Acreages & Winter Creek",
+    subtitle: "Custom acreage properties with workshops, championship golf at Winter Creek, scenic hill country vistas, and rapid bridge access to OKC.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Median Price", value: "$360,000" },
+      { label: "Lot Sizes", value: "1 - 15+ Ac" },
+      { label: "Winter Creek Golf", value: "18-Hole Championship" }
+    ],
+    overview: "Fastest-growing rural-suburban corridors south of the Canadian River, celebrated for custom acreage homes, equestrian ranches, and golf communities like Winter Creek.",
+    keyTakeaways: [
+      "Scenic rolling hill country topography with panoramic horizons",
+      "Winter Creek Golf & Country Club championship 18-hole course",
+      "Generous acreage parcels accommodating custom workshops and horse barns",
+      "Convenient multi-lane highway commute into South OKC and Norman"
+    ],
+    schools: [
+      { name: "Newcastle High School", type: "Public (9-12)", rating: "9/10" },
+      { name: "Blanchard High School", type: "Public (9-12)", rating: "9/10" }
+    ],
+    lifestyleHighlights: [
+      "Winter Creek Golf & Country Club dining and tournaments",
+      "Tri-City retail amenities and regional parks",
+      "Breathtaking Oklahoma country sunsets"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
   }
 };
 
@@ -1216,17 +1698,311 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
   }
 };
 
+export const RESOURCE_PAGES: Record<string, InteriorPageData> = {
+  "services": {
+    id: "services",
+    slug: "/services",
+    category: "service",
+    kicker: "FULL-SPECTRUM ADVISORY",
+    title: "Comprehensive Real Estate Services & 6-Phase Selling Machine",
+    subtitle: "From private home buying concierge and land development to the proprietary 6-step selling machine with 100% cancel-anytime guarantee.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Core Practices", value: "3 Pillars" },
+      { label: "Blueprint Phases", value: "6 Steps" },
+      { label: "Risk Guarantee", value: "100% Free" }
+    ],
+    overview: "Explore the comprehensive real estate practice of Brian Jamison. Every service is delivered with athletic discipline, fiduciary rigor, and cancel-anytime flexibility.",
+    keyTakeaways: [
+      "Home Buying Advisory & Private Client Representation",
+      "The 6-Phase Selling Machine with HDR Cinema & Matterport 3D",
+      "Land & Acreage Development Feasibility",
+      "Direct personal reachability 7 days a week"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "home-sellers-checklist": {
+    id: "home-sellers-checklist",
+    slug: "/resources/home-sellers-checklist",
+    category: "audience",
+    kicker: "SELLER PREPARATION DOSSIER",
+    title: "The 2026 Home Seller's Readiness Checklist",
+    subtitle: "A comprehensive room-by-room preparation guide designed to eliminate buyer inspection renegotiations and spark multiple-offer bidding wars.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Action Items", value: "15 Key Tasks" },
+      { label: "Inspection Risk", value: "Minimized" },
+      { label: "Print Format", value: "PDF Ready" }
+    ],
+    overview: "Preparation is the foundation of peak net proceeds. This checklist walks you through exterior curb appeal, interior flow, and mechanical inspections prior to going active on MLS.",
+    keyTakeaways: [
+      "Curb appeal high-ROI refresh recommendations",
+      "Strategic depersonalization and architectural flow guidelines",
+      "Pre-listing HVAC and mechanical checks to avoid price concessions"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "mortgage-calculator": {
+    id: "mortgage-calculator",
+    slug: "/resources/mortgage-calculator",
+    category: "audience",
+    kicker: "FINANCIAL ENGINE",
+    title: "Oklahoma City Mortgage & Payment Calculator",
+    subtitle: "Calculate exact monthly obligations including principal, interest, Oklahoma County ad valorem taxes, and hazard homeowners insurance.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Oklahoma Tax", value: "1.15% Avg" },
+      { label: "Amortization", value: "15/30 Yr" },
+      { label: "Accuracy", value: "Instant" }
+    ],
+    overview: "Model your purchasing power across central Oklahoma's luxury communities. Calculate exact monthly payments with real-time tax and insurance estimates.",
+    keyTakeaways: [
+      "Principal and interest amortization calculation",
+      "County-specific property tax rate modeling",
+      "Integration with Brian Jamison's vetted local mortgage lenders"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "okc-relocation-guide": {
+    id: "okc-relocation-guide",
+    slug: "/resources/okc-relocation-guide",
+    category: "audience",
+    kicker: "EXECUTIVE RELOCATION",
+    title: "Relocating to the Oklahoma City Metropolitan Area",
+    subtitle: "Everything you need to know when moving from California, Texas, New York, or Colorado to Oklahoma's thriving luxury enclaves.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Cost Index", value: "84.2 vs US" },
+      { label: "Top Schools", value: "10/10 Gold" },
+      { label: "Airport Transit", value: "20 Mins" }
+    ],
+    overview: "Central Oklahoma offers extraordinary luxury purchasing power, premier independent college preparatory academies, and a thriving corporate economy.",
+    keyTakeaways: [
+      "Neighborhood comparison across Nichols Hills, Edmond, and Gaillardia",
+      "School feeder zone analysis for public and private academies",
+      "Corporate tax advantages and executive lifestyle amenities"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "what-to-watch-out-for": {
+    id: "what-to-watch-out-for",
+    slug: "/resources/what-to-watch-out-for",
+    category: "audience",
+    kicker: "FIDUCIARY PROTECTION",
+    title: "What to Watch Out For: The Most Costly Real Estate Traps in Oklahoma",
+    subtitle: "Protect your equity from expansive red clay soil settling, hail insurance ACV schedules, and restrictive non-cancellable listing agreements.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Red Clay Soil", value: "Foundation Trap" },
+      { label: "Roof Deductible", value: "ACV vs RCV" },
+      { label: "Cancel Clause", value: "100% Free" }
+    ],
+    overview: "Don't fall victim to costly Oklahoma real estate traps. Learn how Brian Jamison shields buyers and sellers through relentless inspection audits.",
+    keyTakeaways: [
+      "Oklahoma red clay soil expansion and drainage protocols",
+      "Navigating post-storm roof insurance replacement claims",
+      "Avoiding brokerages that hold you hostage in rigid agreements"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "faq": {
+    id: "faq",
+    slug: "/faq",
+    category: "brand",
+    kicker: "CLEAR ANSWERS",
+    title: "Frequently Asked Questions",
+    subtitle: "Everything you need to know about our 6-Phase Selling Machine, cancel-anytime guarantee, pricing philosophy, and fiduciary duties.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Transparency", value: "100%" },
+      { label: "Reachability", value: "7 Days" },
+      { label: "Office Location", value: "Edmond OK" }
+    ],
+    overview: "Browse frequently asked questions regarding listing agreements, buyer representation, marketing syndication, and showing feedback.",
+    keyTakeaways: [
+      "How the Cancel-Anytime Listing Guarantee protects homeowners",
+      "How 3-tier pricing triggers competitive bidding wars",
+      "What happens during buyer showings and mandatory feedback calls"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "privacy-policy": {
+    id: "privacy-policy",
+    slug: "/privacy-policy",
+    category: "brand",
+    kicker: "LEGAL COMPLIANCE",
+    title: "Privacy Policy",
+    subtitle: "Our commitment to client confidentiality, data protection, and federal communication compliance.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Data Sharing", value: "Zero" },
+      { label: "Security", value: "Protected" },
+      { label: "Jurisdiction", value: "Oklahoma" }
+    ],
+    overview: "We protect your confidential property, contact, and valuation data in strict accordance with federal and state regulations.",
+    keyTakeaways: [
+      "No selling or renting of personal information",
+      "Strict data privacy for home valuation submissions",
+      "Salt Real Estate Corporate Office compliance"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "terms-of-service": {
+    id: "terms-of-service",
+    slug: "/terms-of-service",
+    category: "brand",
+    kicker: "LEGAL TERMS",
+    title: "Terms of Service",
+    subtitle: "Official platform terms, copyright disclosures, and licensing information.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "License", value: "#184931" },
+      { label: "Brokerage", value: "Salt Real Estate" },
+      { label: "Governing Law", value: "Oklahoma" }
+    ],
+    overview: "Terms of use governing all property listings, valuation calculators, and media assets on this platform.",
+    keyTakeaways: [
+      "Proprietary media and architectural copyright protection",
+      "Professional valuation disclaimers",
+      "OREC compliance and brokerage affiliation"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
+  "fair-housing-disclosure": {
+    id: "fair-housing-disclosure",
+    slug: "/fair-housing-disclosure",
+    category: "brand",
+    kicker: "EQUAL HOUSING OPPORTUNITY",
+    title: "Fair Housing & Equal Opportunity",
+    subtitle: "Uncompromising commitment to federal, state, and municipal fair housing laws.",
+    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
+    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroMetrics: [
+      { label: "Equal Housing", value: "100%" },
+      { label: "Federal Law", value: "Title VIII" },
+      { label: "Discrimination", value: "Zero Tolerance" }
+    ],
+    overview: "Brian Jamison and Salt Real Estate conduct all business in strict compliance with the Federal Fair Housing Act.",
+    keyTakeaways: [
+      "Equal opportunity in all real estate transactions",
+      "Zero tolerance for discrimination based on protected classes",
+      "HUD complaint filing instructions and regulatory contacts"
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  }
+};
+
 export const ALL_INTERIOR_PAGES: Record<string, InteriorPageData> = {
   ...SERVICE_PAGES,
   ...COMMUNITY_PAGES,
   ...AUDIENCE_PAGES,
-  ...BRAND_PAGES
+  ...BRAND_PAGES,
+  ...RESOURCE_PAGES
+};
+
+// Aliases lookup table for broken-link prevention
+const PATH_ALIASES: Record<string, string> = {
+  // About Brian Jamison aliases
+  "about": "about",
+  "about-jamison": "about",
+  "about-brian-jamison": "about",
+  "about/jamison": "about",
+  "about/brian-jamison": "about",
+  "brian-jamison": "about",
+  "leadership": "about",
+  "bio": "about",
+
+  // Community & Micro-Markets aliases
+  "community": "areas",
+  "communities": "areas",
+  "areas": "areas",
+  "community-hub": "areas",
+  "micro-markets": "areas",
+  "neighborhoods": "areas",
+
+  // Services aliases
+  "services": "services",
+  "all-services": "services",
+  "services-hub": "services",
+  "home-buying": "home-buying",
+  "services/home-buying": "home-buying",
+  "home-selling": "home-selling",
+  "services/home-selling": "home-selling",
+  "land-sales": "land-buying-and-selling",
+  "services/land-sales": "land-buying-and-selling",
+  "land-buying-and-selling": "land-buying-and-selling",
+  "services/land-buying-and-selling": "land-buying-and-selling",
+
+  // Blueprint aliases
+  "seller-blueprint": "seller-blueprint",
+  "the-blueprint": "seller-blueprint",
+  "blueprint": "seller-blueprint",
+  "6-step-blueprint": "seller-blueprint",
+  "the-method": "seller-blueprint",
+
+  // Resource aliases
+  "resources/home-sellers-checklist": "home-sellers-checklist",
+  "home-sellers-checklist": "home-sellers-checklist",
+  "sellers-checklist": "home-sellers-checklist",
+  "checklist": "home-sellers-checklist",
+
+  "resources/mortgage-calculator": "mortgage-calculator",
+  "mortgage-calculator": "mortgage-calculator",
+  "calculator": "mortgage-calculator",
+
+  "resources/okc-relocation-guide": "okc-relocation-guide",
+  "okc-relocation-guide": "okc-relocation-guide",
+  "relocation-guide": "okc-relocation-guide",
+  "relocation": "okc-relocation-guide",
+
+  "resources/what-to-watch-out-for": "what-to-watch-out-for",
+  "what-to-watch-out-for": "what-to-watch-out-for",
+  "pitfalls": "what-to-watch-out-for",
+
+  "faq": "faq",
+  "faqs": "faq",
+
+  "privacy-policy": "privacy-policy",
+  "privacy": "privacy-policy",
+
+  "terms-of-service": "terms-of-service",
+  "terms": "terms-of-service",
+
+  "fair-housing-disclosure": "fair-housing-disclosure",
+  "fairhousing": "fair-housing-disclosure",
+  "fair-housing": "fair-housing-disclosure",
+
+  // Brand aliases
+  "listings": "listings",
+  "featured-closings": "listings",
+  "past-sales": "past-sales",
+  "closings": "past-sales",
+  "reviews": "reviews",
+  "testimonials": "reviews",
+  "home-valuation": "home-valuation",
+  "valuation": "home-valuation",
+  "cma": "home-valuation",
+  "contact": "contact"
 };
 
 export function getPageByPath(path: string): InteriorPageData | null {
   const clean = path.replace(/^\//, '').replace(/\/$/, '');
   if (!clean) return null;
 
+  // 1. Check exact alias table
+  if (PATH_ALIASES[clean] && ALL_INTERIOR_PAGES[PATH_ALIASES[clean]]) {
+    return ALL_INTERIOR_PAGES[PATH_ALIASES[clean]];
+  }
+
+  // 2. Direct match by slug or id
   for (const page of Object.values(ALL_INTERIOR_PAGES)) {
     const pageClean = page.slug.replace(/^\//, '').replace(/\/$/, '');
     if (pageClean === clean || page.id === clean) {
@@ -1234,13 +2010,20 @@ export function getPageByPath(path: string): InteriorPageData | null {
     }
   }
 
+  // 3. Match last path segment (e.g. /areas/edmond or /services/accessibility)
   const parts = clean.split('/');
   const lastPart = parts[parts.length - 1];
+
+  if (PATH_ALIASES[lastPart] && ALL_INTERIOR_PAGES[PATH_ALIASES[lastPart]]) {
+    return ALL_INTERIOR_PAGES[PATH_ALIASES[lastPart]];
+  }
+
   if (ALL_INTERIOR_PAGES[lastPart]) {
     return ALL_INTERIOR_PAGES[lastPart];
   }
 
   return null;
 }
+
 
 

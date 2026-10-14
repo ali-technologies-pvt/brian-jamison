@@ -41,6 +41,7 @@ import {
   Maximize2
 } from 'lucide-react';
 import { BrianAvatar } from '../components/BrianAvatar';
+import { SocialLinks } from '../components/SocialLinks';
 import { BROKER_INFO } from '../data/realEstateData';
 
 interface LandSalesPageProps {
@@ -316,15 +317,15 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
   ];
 
   return (
-    <div className="w-full bg-[#FAF9F6] text-[#002D61] selection:bg-[#EA580C]/20 selection:text-[#002D61] overflow-x-hidden">
+    <div className="w-full bg-[#FAF9F6] text-[#1B1D21] selection:bg-[#B38F68]/20 selection:text-[#1B1D21] overflow-x-hidden">
       {/* 
         ========================================================================
         SECTION 1: HERO SECTION (ACREAGE & DEVELOPMENTS)
         ========================================================================
       */}
-      <section className="relative w-full min-h-[92vh] sm:min-h-[95vh] flex flex-col justify-between overflow-hidden bg-[#0A192F]">
+      <section className="relative w-full min-h-[85vh] sm:min-h-[88vh] flex flex-col justify-between overflow-hidden bg-[#FAF9F6] border-b border-[#E6E2DA]">
         {/* Full-Bleed Pasture, Timber & Sunset Drone Looping Video */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <video
             ref={heroVideoRef}
             autoPlay
@@ -346,16 +347,28 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
             />
           </video>
 
-          {/* Warm Ambient Cinematic Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0A192F]/90 via-[#0A192F]/70 to-[#EA580C]/25" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-transparent to-black/40" />
+          {/* Warm Sunlit Filmic Scrim: Preserves Golden Hour Lighting while delivering high contrast */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1B1D21]/88 via-[#1B1D21]/55 to-amber-950/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1B1D21]/90 via-transparent to-black/30" />
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#FAF9F6] to-transparent opacity-10" />
         </div>
 
-        {/* Top Micro Header */}
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 pt-8 sm:pt-12 flex items-center justify-between">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[11px] font-semibold text-white tracking-widest uppercase shadow-lg">
-            <Trees className="w-3.5 h-3.5 text-[#FB923C]" />
-            <span>Acreage, Residential Lots & Development Enclaves · Oklahoma</span>
+        {/* Top License & Authority Badge */}
+        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 pt-32 sm:pt-36 flex items-center justify-between">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 shadow-xs">
+            <BrianAvatar
+              size={22}
+              priority={true}
+              showStatusDot={true}
+              alt="Brian Jamison - License #184931"
+            />
+            <span className="text-xs font-sans font-medium text-stone-200 tracking-wide flex items-center gap-2">
+              <span className="font-semibold text-white">Brian Jamison</span>
+              <span className="text-white/40">·</span>
+              <span className="text-[#B38F68] font-semibold">{BROKER_INFO.license}</span>
+              <span className="text-white/40 hidden sm:inline">·</span>
+              <span className="text-stone-300 hidden sm:inline">Salt Real Estate Corporate Office</span>
+            </span>
           </div>
 
           <button
@@ -366,40 +379,38 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                 heroVideoRef.current.muted = !heroMuted;
               }
             }}
-            className="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 text-white text-xs font-medium transition-all cursor-pointer"
+            className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/45 hover:bg-black/65 backdrop-blur-md border border-white/20 text-white text-xs font-medium transition-all cursor-pointer"
           >
             {heroMuted ? (
               <>
-                <VolumeX className="w-3.5 h-3.5 text-white/70" />
-                <span className="text-[11px]">Unmute Atmosphere</span>
+                <VolumeX className="w-3.5 h-3.5 text-stone-300" />
+                <span className="text-[11px] text-stone-200 hidden sm:inline">Unmute Atmosphere</span>
               </>
             ) : (
               <>
-                <Volume2 className="w-3.5 h-3.5 text-[#EA580C]" />
-                <span className="text-[11px] text-[#FB923C]">Audio Active</span>
+                <Volume2 className="w-3.5 h-3.5 text-[#B38F68]" />
+                <span className="text-[11px] text-[#B38F68] hidden sm:inline">Audio Active</span>
               </>
             )}
           </button>
         </div>
 
-        {/* Hero Narrative & Primary CTA */}
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 py-16 sm:py-24 my-auto">
+        {/* Hero Narrative & Exactly 2 Action Buttons */}
+        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 py-16 sm:py-20 my-auto">
           <div className="max-w-3xl">
-            <span className="inline-block px-3 py-1 rounded bg-[#EA580C]/90 text-white font-sans text-xs font-bold tracking-[0.2em] uppercase mb-4 shadow-md">
-              03 / ACREAGE & DEVELOPMENT SPECIALISTS
-            </span>
-            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white font-bold leading-[1.12] tracking-tight mb-6 drop-shadow-md">
-              Oklahoma Land, Acreage & <span className="italic font-normal text-[#FDBA74]">Development Specialists</span>.
+            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl !text-white font-bold leading-[1.12] tracking-tight mb-6 drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]">
+              Oklahoma Land, Acreage & <span className="italic font-normal text-[#B38F68]">Development Specialists</span>.
             </h1>
-            <p className="font-sans text-base sm:text-lg text-white/90 font-light leading-relaxed max-w-2xl mb-10 drop-shadow">
+            <p className="font-sans text-base sm:text-lg !text-stone-200 font-normal leading-relaxed max-w-2xl mb-8 drop-shadow-[0_1px_6px_rgba(0,0,0,0.7)]">
               From 1-acre luxury custom home lots to 100+ acre rural tracts—leveraging 4K aerial mapping, zoning forensics, and targeted investor syndication.
             </p>
 
+            {/* Exactly 2 Action Buttons */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5">
               <button
                 type="button"
                 onClick={onOpenValuation}
-                className="px-8 py-4 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-300 shadow-xl shadow-[#EA580C]/40 hover:shadow-2xl hover:scale-[1.02] cursor-pointer flex items-center justify-center gap-3 text-center"
+                className="px-8 py-4 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-300 shadow-xl shadow-[#B38F68]/35 hover:shadow-2xl hover:scale-[1.02] cursor-pointer flex items-center justify-center gap-3 text-center"
               >
                 <span>Request a Land Valuation & Boundary Report</span>
                 <ArrowRight className="w-4 h-4" />
@@ -408,51 +419,11 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
               <button
                 type="button"
                 onClick={() => scrollToSection('section-checklist')}
-                className="px-8 py-4 bg-white/15 hover:bg-white/25 text-white backdrop-blur-md border border-white/30 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-300 shadow-lg cursor-pointer flex items-center justify-center gap-2.5 text-center"
+                className="px-8 py-4 bg-black/40 hover:bg-[#FAF9F6] hover:text-[#1B1D21] text-white backdrop-blur-md border border-white/30 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-300 shadow-md cursor-pointer flex items-center justify-center gap-2.5 text-center"
               >
                 <Compass className="w-4 h-4 text-white" />
                 <span>7-Point Due Diligence Checklist</span>
               </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Trust Badges Strip (Hero Footer) */}
-        <div className="relative z-10 w-full border-t border-white/15 bg-black/40 backdrop-blur-md py-4 sm:py-5">
-          <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center divide-x-0 md:divide-x divide-white/15">
-              <div className="px-2">
-                <span className="block font-serif text-xl sm:text-2xl font-bold text-white tracking-tight">
-                  1,450+
-                </span>
-                <span className="text-[11px] sm:text-xs uppercase tracking-wider text-white/70 font-sans">
-                  Oklahoma Acres Closed
-                </span>
-              </div>
-              <div className="px-2">
-                <span className="block font-serif text-xl sm:text-2xl font-bold text-white tracking-tight">
-                  85+
-                </span>
-                <span className="text-[11px] sm:text-xs uppercase tracking-wider text-white/70 font-sans">
-                  Land Parcels Transacted
-                </span>
-              </div>
-              <div className="px-2">
-                <span className="block font-serif text-xl sm:text-2xl font-bold text-[#FB923C] tracking-tight">
-                  24+ Partners
-                </span>
-                <span className="text-[11px] sm:text-xs uppercase tracking-wider text-white/70 font-sans">
-                  Custom Builder Network
-                </span>
-              </div>
-              <div className="px-2">
-                <span className="block font-serif text-xl sm:text-2xl font-bold text-white tracking-tight">
-                  4K Drone
-                </span>
-                <span className="text-[11px] sm:text-xs uppercase tracking-wider text-[#FDBA74] font-sans font-semibold">
-                  FAA Boundary Mapping
-                </span>
-              </div>
             </div>
           </div>
         </div>
@@ -463,7 +434,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
         STICKY SECTION SUB-NAVIGATION RIBBON
         ========================================================================
       */}
-      <div className="sticky top-0 z-40 w-full bg-[#002D61] text-white border-b border-white/15 shadow-md backdrop-blur-md">
+      <div className="sticky top-0 z-40 w-full bg-[#1B1D21] text-white border-b border-white/15 shadow-md backdrop-blur-md">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           <div className="flex items-center justify-between overflow-x-auto no-scrollbar py-3.5 gap-2 sm:gap-4 text-xs font-semibold uppercase tracking-wider whitespace-nowrap">
             {[
@@ -481,7 +452,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                 onClick={() => scrollToSection(item.id)}
                 className={`px-3 py-1.5 rounded-full transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
                   activeSection === item.key
-                    ? 'bg-[#EA580C] text-white font-bold shadow-md'
+                    ? 'bg-[#B38F68] text-white font-bold shadow-md'
                     : 'text-white/80 hover:text-white hover:bg-white/10'
                 }`}
               >
@@ -492,7 +463,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
             <button
               type="button"
               onClick={onOpenValuation}
-              className="hidden lg:flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#EA580C] hover:bg-[#C2410C] text-white text-[11px] font-bold tracking-wider uppercase transition-colors cursor-pointer shadow-sm ml-auto"
+              className="hidden lg:flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#B38F68] hover:bg-[#9E7A56] text-white text-[11px] font-bold tracking-wider uppercase transition-colors cursor-pointer shadow-sm ml-auto"
             >
               <span>Land Appraisal</span>
               <ArrowUpRight className="w-3 h-3" />
@@ -506,14 +477,14 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
         SECTION 2: THE 6 CORE PROCESSES ADAPTED FOR LAND
         ========================================================================
       */}
-      <section id="section-processes" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/25">
+      <section id="section-processes" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#B38F68]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Section Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-3">
               Specialized Acreage Framework
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B1D21] leading-tight mb-5">
               The 6 Core Processes Adapted for Land
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
@@ -530,17 +501,17 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                 onClick={() => setActiveProcessTab(idx)}
                 className={`p-3.5 sm:p-4 rounded-xl text-left transition-all duration-300 cursor-pointer flex flex-col justify-between border ${
                   activeProcessTab === idx
-                    ? 'bg-[#002D61] text-white border-[#002D61] shadow-lg scale-[1.02]'
-                    : 'bg-white text-[#002D61] border-[#E5E0D8] hover:border-[#EA580C]/50 hover:bg-[#F5EFE6]'
+                    ? 'bg-[#1B1D21] text-white border-[#1B1D21] shadow-lg scale-[1.02]'
+                    : 'bg-white text-[#1B1D21] border-[#E6E2DA] hover:border-[#B38F68]/50 hover:bg-[#F4F1EB]'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className={`text-xs font-mono font-bold px-2 py-0.5 rounded ${
-                    activeProcessTab === idx ? 'bg-[#EA580C] text-white' : 'bg-[#FAF9F6] text-[#EA580C] border border-[#EA580C]/30'
+                    activeProcessTab === idx ? 'bg-[#B38F68] text-white' : 'bg-[#FAF9F6] text-[#B38F68] border border-[#B38F68]/30'
                   }`}>
                     Process {proc.number}
                   </span>
-                  {activeProcessTab === idx && <Sparkles className="w-3.5 h-3.5 text-[#FB923C]" />}
+                  {activeProcessTab === idx && <Sparkles className="w-3.5 h-3.5 text-[#B38F68]" />}
                 </div>
                 <h4 className="font-serif text-xs sm:text-sm font-bold line-clamp-2">
                   {proc.title}
@@ -550,18 +521,18 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
           </div>
 
           {/* Active Process Deep-Dive Container */}
-          <div className="bg-[#F5EFE6] border border-[#EA580C]/30 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm">
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-[#002D61]/15 mb-8">
+          <div className="bg-[#F4F1EB] border border-[#B38F68]/30 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-[#1B1D21]/15 mb-8">
               <div className="max-w-2xl">
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="px-3 py-1 rounded bg-[#002D61] text-white text-xs font-bold tracking-widest uppercase">
+                  <span className="px-3 py-1 rounded bg-[#1B1D21] text-white text-xs font-bold tracking-widest uppercase">
                     Process {LAND_PROCESSES[activeProcessTab].number}
                   </span>
-                  <span className="text-xs uppercase font-sans font-bold tracking-wider text-[#EA580C]">
+                  <span className="text-xs uppercase font-sans font-bold tracking-wider text-[#B38F68]">
                     {LAND_PROCESSES[activeProcessTab].subtitle}
                   </span>
                 </div>
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#002D61] mb-3">
+                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#1B1D21] mb-3">
                   {LAND_PROCESSES[activeProcessTab].title}
                 </h3>
                 <p className="font-sans text-sm sm:text-base text-[#4B5563] leading-relaxed">
@@ -573,7 +544,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                 <button
                   type="button"
                   onClick={onOpenConsultation}
-                  className="px-6 py-3 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-md cursor-pointer flex items-center gap-2"
+                  className="px-6 py-3 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-md cursor-pointer flex items-center gap-2"
                 >
                   <span>Request Land Review</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -586,11 +557,11 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
               {LAND_PROCESSES[activeProcessTab].deliverables.map((item, i) => (
                 <div
                   key={i}
-                  className="bg-white rounded-2xl p-5 sm:p-6 border border-[#E5E0D8] shadow-2xs flex items-start gap-3"
+                  className="bg-white rounded-2xl p-5 sm:p-6 border border-[#E6E2DA] shadow-2xs flex items-start gap-3"
                 >
                   <CheckCircle2 className="w-5 h-5 text-[#16A34A] shrink-0 mt-0.5" />
                   <div>
-                    <h5 className="font-serif text-sm font-bold text-[#002D61] mb-1">
+                    <h5 className="font-serif text-sm font-bold text-[#1B1D21] mb-1">
                       Deliverable 0{i + 1}
                     </h5>
                     <p className="font-sans text-xs sm:text-sm text-[#4B5563]">
@@ -609,12 +580,12 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
         SECTION 3: VIDEO SHOWCASE & 9:16 VERTICAL REELS HUB
         ========================================================================
       */}
-      <section id="section-reels" className="w-full py-20 sm:py-28 bg-[#001D40] text-white border-b border-white/10">
+      <section id="section-reels" className="w-full py-20 sm:py-28 bg-[#1B1D21] text-white border-b border-white/10">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EA580C]/20 border border-[#EA580C]/40 text-[#FB923C] text-xs font-bold uppercase tracking-widest mb-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B38F68]/20 border border-[#B38F68]/40 text-[#B38F68] text-xs font-bold uppercase tracking-widest mb-3">
                 <Video className="w-3.5 h-3.5" />
                 <span>60-Second Land Guides</span>
               </div>
@@ -636,7 +607,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                   setSelectedReelIndex(index);
                   setReelPlaying(true);
                 }}
-                className="group relative rounded-2xl overflow-hidden aspect-[9/16] bg-[#0A192F] border border-white/20 hover:border-[#EA580C] shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between p-4"
+                className="group relative rounded-2xl overflow-hidden aspect-[9/16] bg-[#1B1D21] border border-white/20 hover:border-[#B38F68] shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between p-4"
               >
                 {/* Background image */}
                 <div
@@ -650,14 +621,14 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                   <span className="px-2 py-0.5 rounded bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold text-white border border-white/20">
                     Land Reel 0{reel.id}
                   </span>
-                  <span className="px-2 py-0.5 rounded bg-[#EA580C] text-[10px] font-bold text-white tracking-wider">
+                  <span className="px-2 py-0.5 rounded bg-[#B38F68] text-[10px] font-bold text-white tracking-wider">
                     {reel.duration}
                   </span>
                 </div>
 
                 {/* Center Play Button Overlay */}
                 <div className="relative z-10 my-auto self-center">
-                  <div className="w-12 h-12 rounded-full bg-white/25 backdrop-blur-md border border-white/50 flex items-center justify-center text-white group-hover:bg-[#EA580C] group-hover:scale-110 transition-all duration-300 shadow-xl">
+                  <div className="w-12 h-12 rounded-full bg-white/25 backdrop-blur-md border border-white/50 flex items-center justify-center text-white group-hover:bg-[#B38F68] group-hover:scale-110 transition-all duration-300 shadow-xl">
                     <Play className="w-5 h-5 fill-white text-white ml-0.5" />
                   </div>
                 </div>
@@ -669,7 +640,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                   </h4>
                   <div className="flex items-center justify-between text-[11px] text-white/70">
                     <span>{reel.views} views</span>
-                    <span className="text-[#FB923C] font-semibold underline underline-offset-2">Watch Now</span>
+                    <span className="text-[#B38F68] font-semibold underline underline-offset-2">Watch Now</span>
                   </div>
                 </div>
               </div>
@@ -681,7 +652,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
       {/* Reel Modal Player */}
       {selectedReelIndex !== null && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-          <div className="relative w-full max-w-sm sm:max-w-md bg-[#001D40] rounded-3xl overflow-hidden border border-white/30 shadow-2xl">
+          <div className="relative w-full max-w-sm sm:max-w-md bg-[#1B1D21] rounded-3xl overflow-hidden border border-white/30 shadow-2xl">
             <button
               type="button"
               onClick={() => setSelectedReelIndex(null)}
@@ -720,10 +691,10 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
 
               <div className="absolute bottom-0 inset-x-0 p-5 z-10 bg-gradient-to-t from-black via-black/90 to-transparent">
                 <div className="w-full h-1 bg-white/30 rounded-full mb-3 overflow-hidden">
-                  <div className="h-full bg-[#EA580C] w-2/3 animate-pulse" />
+                  <div className="h-full bg-[#B38F68] w-2/3 animate-pulse" />
                 </div>
 
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#FB923C] block mb-1">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#B38F68] block mb-1">
                   Land Due Diligence Takeaway
                 </span>
                 <h4 className="font-serif text-base font-bold text-white mb-2 leading-snug">
@@ -740,7 +711,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                       setSelectedReelIndex(null);
                       onOpenConsultation();
                     }}
-                    className="flex-1 py-2.5 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-md text-center"
+                    className="flex-1 py-2.5 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-md text-center"
                   >
                     Consult With Brian
                   </button>
@@ -763,14 +734,14 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
         SECTION 4: THE 7-POINT LAND DUE DILIGENCE & FEASIBILITY CHECKLIST
         ========================================================================
       */}
-      <section id="section-checklist" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/25">
+      <section id="section-checklist" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#B38F68]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Section Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-3">
               Uncompromising Due Diligence
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B1D21] leading-tight mb-5">
               The 7-Point Land Due Diligence & Feasibility Checklist
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
@@ -788,22 +759,22 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                   onClick={() => setCheckedChecklist(prev => ({ ...prev, [point.id]: !prev[point.id] }))}
                   className={`p-6 rounded-2xl border transition-all duration-300 cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-4 select-none ${
                     isChecked
-                      ? 'bg-white border-[#EA580C]/50 shadow-sm'
-                      : 'bg-[#FAF9F6] border-[#E5E0D8]'
+                      ? 'bg-white border-[#B38F68]/50 shadow-sm'
+                      : 'bg-[#FAF9F6] border-[#E6E2DA]'
                   }`}
                 >
                   <div className="flex items-start gap-4">
                     <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
-                      isChecked ? 'bg-[#EA580C] text-white' : 'border border-[#9CA3AF] bg-white'
+                      isChecked ? 'bg-[#B38F68] text-white' : 'border border-[#9CA3AF] bg-white'
                     }`}>
                       {isChecked && <Check className="w-4 h-4 stroke-[3]" />}
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-xs font-mono font-bold text-[#EA580C]">
+                        <span className="text-xs font-mono font-bold text-[#B38F68]">
                           Point {point.number}
                         </span>
-                        <h4 className="font-serif text-base sm:text-lg font-bold text-[#002D61]">
+                        <h4 className="font-serif text-base sm:text-lg font-bold text-[#1B1D21]">
                           {point.title}
                         </h4>
                       </div>
@@ -817,7 +788,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                     <span className="text-[10px] font-mono uppercase tracking-wider text-[#6B7280] block">
                       Governing Authority
                     </span>
-                    <span className="text-xs font-bold text-[#002D61]">
+                    <span className="text-xs font-bold text-[#1B1D21]">
                       {point.authority}
                     </span>
                   </div>
@@ -833,14 +804,14 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
         SECTION 5: LAND VALUATION ARCHITECTURE (PER-ACRE PRICING MATRIX)
         ========================================================================
       */}
-      <section id="section-valuation" className="w-full py-20 sm:py-28 bg-[#F5EFE6] border-b border-[#EA580C]/25">
+      <section id="section-valuation" className="w-full py-20 sm:py-28 bg-[#F4F1EB] border-b border-[#B38F68]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Section Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-3">
               Per-Acre Pricing Matrix
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B1D21] leading-tight mb-5">
               Land Valuation Architecture
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
@@ -850,18 +821,18 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12">
             {/* Left Inputs */}
-            <div className="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-8 border border-[#E5E0D8] shadow-sm space-y-6">
-              <h3 className="font-serif text-xl font-bold text-[#002D61] pb-3 border-b border-[#FAF9F6]">
+            <div className="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-8 border border-[#E6E2DA] shadow-sm space-y-6">
+              <h3 className="font-serif text-xl font-bold text-[#1B1D21] pb-3 border-b border-[#FAF9F6]">
                 Configure Land Characteristics
               </h3>
 
               {/* Number of Acres Slider */}
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-[#002D61]">
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#1B1D21]">
                     Parcel Size (Acres)
                   </label>
-                  <span className="font-mono text-lg font-bold text-[#EA580C]">
+                  <span className="font-mono text-lg font-bold text-[#B38F68]">
                     {acresInput} Acres
                   </span>
                 </div>
@@ -872,7 +843,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                   step="1"
                   value={acresInput}
                   onChange={(e) => setAcresInput(Number(e.target.value))}
-                  className="w-full accent-[#EA580C] cursor-pointer"
+                  className="w-full accent-[#B38F68] cursor-pointer"
                 />
                 <div className="flex justify-between text-[11px] text-[#6B7280] mt-1 font-mono">
                   <span>1 Acre</span>
@@ -883,7 +854,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
 
               {/* Land Improvement Tier */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#002D61] mb-2">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#1B1D21] mb-2">
                   Infrastructure & Improvement Status
                 </label>
                 <div className="space-y-2">
@@ -898,8 +869,8 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                       onClick={() => setSelectedLandTier(tier.key as any)}
                       className={`w-full p-3.5 rounded-xl text-left border transition-all cursor-pointer flex items-center justify-between ${
                         selectedLandTier === tier.key
-                          ? 'bg-[#002D61] text-white border-[#002D61] shadow-md'
-                          : 'bg-[#FAF9F6] text-[#002D61] border-[#E5E0D8] hover:bg-[#F5EFE6]'
+                          ? 'bg-[#1B1D21] text-white border-[#1B1D21] shadow-md'
+                          : 'bg-[#FAF9F6] text-[#1B1D21] border-[#E6E2DA] hover:bg-[#F4F1EB]'
                       }`}
                     >
                       <div>
@@ -943,9 +914,9 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
             </div>
 
             {/* Right Output Panel */}
-            <div className="lg:col-span-6 bg-[#001D40] text-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-white/20 shadow-xl flex flex-col justify-between">
+            <div className="lg:col-span-6 bg-[#1B1D21] text-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-white/20 shadow-xl flex flex-col justify-between">
               <div>
-                <span className="text-[11px] uppercase tracking-widest font-bold text-[#FB923C] block mb-2">
+                <span className="text-[11px] uppercase tracking-widest font-bold text-[#B38F68] block mb-2">
                   Estimated Total Parcel Valuation
                 </span>
                 <div className="mb-6">
@@ -968,7 +939,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                   </div>
                   <div className="flex justify-between items-center text-white/80">
                     <span>Net Calibrated Per-Acre Value</span>
-                    <span className="font-mono text-[#FB923C] font-semibold">${totalPerAcreValue.toLocaleString()} / acre</span>
+                    <span className="font-mono text-[#B38F68] font-semibold">${totalPerAcreValue.toLocaleString()} / acre</span>
                   </div>
                   <div className="flex justify-between items-center text-white/80">
                     <span>Estimated Total Parcel Value</span>
@@ -981,7 +952,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                 <button
                   type="button"
                   onClick={onOpenValuation}
-                  className="w-full py-4 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer flex items-center justify-center gap-2 text-center"
+                  className="w-full py-4 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer flex items-center justify-center gap-2 text-center"
                 >
                   <span>Request Full On-Site Drone & Comps Audit</span>
                   <ArrowRight className="w-4 h-4" />
@@ -997,14 +968,14 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
         SECTION 6: RURAL LAND FINANCING & LENDER NETWORK
         ========================================================================
       */}
-      <section id="section-financing" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/25">
+      <section id="section-financing" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#B38F68]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-3">
               Agricultural & Rural Financing
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B1D21] leading-tight mb-5">
               Rural Land Financing & Lender Network
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
@@ -1013,11 +984,11 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E5E0D8] shadow-xs">
-              <span className="px-3 py-1 rounded bg-[#002D61] text-white text-[10px] font-mono font-bold uppercase mb-4 block w-fit">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E6E2DA] shadow-xs">
+              <span className="px-3 py-1 rounded bg-[#1B1D21] text-white text-[10px] font-mono font-bold uppercase mb-4 block w-fit">
                 Ag Credit Specialist
               </span>
-              <h3 className="font-serif text-xl font-bold text-[#002D61] mb-2">
+              <h3 className="font-serif text-xl font-bold text-[#1B1D21] mb-2">
                 Farm Credit of Western Oklahoma
               </h3>
               <p className="text-xs text-[#4B5563] leading-relaxed mb-4">
@@ -1028,11 +999,11 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
               </span>
             </div>
 
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E5E0D8] shadow-xs">
-              <span className="px-3 py-1 rounded bg-[#EA580C] text-white text-[10px] font-mono font-bold uppercase mb-4 block w-fit">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E6E2DA] shadow-xs">
+              <span className="px-3 py-1 rounded bg-[#B38F68] text-white text-[10px] font-mono font-bold uppercase mb-4 block w-fit">
                 Community Banking
               </span>
-              <h3 className="font-serif text-xl font-bold text-[#002D61] mb-2">
+              <h3 className="font-serif text-xl font-bold text-[#1B1D21] mb-2">
                 Local Oklahoma Community Banks
               </h3>
               <p className="text-xs text-[#4B5563] leading-relaxed mb-4">
@@ -1043,11 +1014,11 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
               </span>
             </div>
 
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E5E0D8] shadow-xs">
-              <span className="px-3 py-1 rounded bg-[#001D40] text-white text-[10px] font-mono font-bold uppercase mb-4 block w-fit">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E6E2DA] shadow-xs">
+              <span className="px-3 py-1 rounded bg-[#1B1D21] text-white text-[10px] font-mono font-bold uppercase mb-4 block w-fit">
                 Private Deal Structuring
               </span>
-              <h3 className="font-serif text-xl font-bold text-[#002D61] mb-2">
+              <h3 className="font-serif text-xl font-bold text-[#1B1D21] mb-2">
                 Seller-Financed Note Structures
               </h3>
               <p className="text-xs text-[#4B5563] leading-relaxed mb-4">
@@ -1066,11 +1037,11 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
         SECTION 7: LAND DEVELOPMENT & PARCEL SPLIT ADVISORY
         ========================================================================
       */}
-      <section id="section-development" className="w-full py-20 sm:py-28 bg-[#F5EFE6] border-b border-[#EA580C]/25">
+      <section id="section-development" className="w-full py-20 sm:py-28 bg-[#F4F1EB] border-b border-[#B38F68]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="bg-[#002D61] text-white rounded-3xl p-8 sm:p-12 lg:p-14 border border-white/20 shadow-xl relative overflow-hidden">
+          <div className="bg-[#1B1D21] text-white rounded-3xl p-8 sm:p-12 lg:p-14 border border-white/20 shadow-xl relative overflow-hidden">
             <div className="relative z-10 max-w-3xl">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EA580C]/20 border border-[#EA580C]/40 text-[#FB923C] text-xs font-bold uppercase tracking-widest mb-4">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B38F68]/20 border border-[#B38F68]/40 text-[#B38F68] text-xs font-bold uppercase tracking-widest mb-4">
                 <Building className="w-3.5 h-3.5" />
                 <span>Equity Multiplication Advisory</span>
               </span>
@@ -1082,19 +1053,19 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm mb-8">
                 <div className="p-4 rounded-xl bg-white/10 border border-white/15">
-                  <strong className="text-[#FB923C] block mb-1">01. County Plat & Lot Split</strong>
+                  <strong className="text-[#B38F68] block mb-1">01. County Plat & Lot Split</strong>
                   <p className="text-white/70">
                     We navigate county planning commissioners and deed split exemptions without expensive municipal PUD rezoning.
                   </p>
                 </div>
                 <div className="p-4 rounded-xl bg-white/10 border border-white/15">
-                  <strong className="text-[#FB923C] block mb-1">02. Road Frontage Geometry</strong>
+                  <strong className="text-[#B38F68] block mb-1">02. Road Frontage Geometry</strong>
                   <p className="text-white/70">
                     We calculate minimum frontage widths (e.g. 150–300 ft) to ensure every newly created parcel has dedicated legal access.
                   </p>
                 </div>
                 <div className="p-4 rounded-xl bg-white/10 border border-white/15">
-                  <strong className="text-[#FB923C] block mb-1">03. Custom Builder Syndication</strong>
+                  <strong className="text-[#B38F68] block mb-1">03. Custom Builder Syndication</strong>
                   <p className="text-white/70">
                     We pitch newly split parcels directly to our network of 24+ Oklahoma custom builders seeking executive spec homesites.
                   </p>
@@ -1103,7 +1074,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
               <button
                 type="button"
                 onClick={onOpenConsultation}
-                className="px-8 py-4 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer"
+                className="px-8 py-4 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer"
               >
                 Schedule A Parcel Split Feasibility Review
               </button>
@@ -1117,14 +1088,14 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
         SECTION 8: LAND FAQS & FEASIBILITY LEAD MAGNET
         ========================================================================
       */}
-      <section id="section-faqs" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/25">
+      <section id="section-faqs" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#B38F68]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-3">
               Forensic Land Clarifications
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B1D21] leading-tight mb-5">
               Frequently Asked Land Questions
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
@@ -1139,18 +1110,18 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
               return (
                 <div
                   key={idx}
-                  className="bg-white rounded-2xl border border-[#E5E0D8] overflow-hidden transition-all duration-200 shadow-2xs"
+                  className="bg-white rounded-2xl border border-[#E6E2DA] overflow-hidden transition-all duration-200 shadow-2xs"
                 >
                   <button
                     type="button"
                     onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
                     className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer select-none hover:bg-[#FAF9F6]"
                   >
-                    <span className="font-serif text-base sm:text-lg font-bold text-[#002D61]">
+                    <span className="font-serif text-base sm:text-lg font-bold text-[#1B1D21]">
                       {faq.q}
                     </span>
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform ${
-                      isOpen ? 'bg-[#EA580C] text-white rotate-180' : 'bg-[#F5EFE6] text-[#002D61]'
+                      isOpen ? 'bg-[#B38F68] text-white rotate-180' : 'bg-[#F4F1EB] text-[#1B1D21]'
                     }`}>
                       <ChevronDown className="w-4 h-4" />
                     </div>
@@ -1167,9 +1138,9 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
           </div>
 
           {/* Downloadable PDF Lead Magnet Box */}
-          <div className="bg-[#002D61] text-white rounded-3xl p-8 sm:p-12 border border-white/20 shadow-xl relative overflow-hidden mb-16">
+          <div className="bg-[#1B1D21] text-white rounded-3xl p-8 sm:p-12 border border-white/20 shadow-xl relative overflow-hidden mb-16">
             <div className="relative z-10 max-w-2xl">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EA580C]/20 border border-[#EA580C]/40 text-[#FB923C] text-xs font-bold uppercase tracking-widest mb-3">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B38F68]/20 border border-[#B38F68]/40 text-[#B38F68] text-xs font-bold uppercase tracking-widest mb-3">
                 <FileText className="w-3.5 h-3.5" />
                 <span>Instant Digital PDF Resource</span>
               </span>
@@ -1192,7 +1163,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                     setDownloadSuccess(true);
                     setTimeout(() => setDownloadSuccess(false), 5000);
                   }}
-                  className="px-8 py-4 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer flex items-center gap-2.5"
+                  className="px-8 py-4 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer flex items-center gap-2.5"
                 >
                   <Download className="w-4 h-4" />
                   <span>Download The Free Land Due Diligence Checklist (PDF)</span>
@@ -1202,14 +1173,14 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
           </div>
 
           {/* Final Call to Action Card */}
-          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#EA580C]/30 shadow-lg text-center max-w-4xl mx-auto">
+          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#B38F68]/30 shadow-lg text-center max-w-4xl mx-auto">
             <div className="flex justify-center mb-5">
               <BrianAvatar size="lg" />
             </div>
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-2">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-2">
               Ready To Transact Land In Oklahoma?
             </span>
-            <h3 className="font-serif text-2xl sm:text-4xl font-bold text-[#002D61] mb-3">
+            <h3 className="font-serif text-2xl sm:text-4xl font-bold text-[#1B1D21] mb-3">
               Request a Land Feasibility Review
             </h3>
             <p className="font-sans text-sm sm:text-base text-[#6B7280] max-w-xl mx-auto mb-8">
@@ -1220,7 +1191,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
               <button
                 type="button"
                 onClick={onOpenValuation}
-                className="w-full sm:w-auto px-8 py-4 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-md cursor-pointer flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-8 py-4 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-md cursor-pointer flex items-center justify-center gap-2"
               >
                 <span>Request Land Feasibility Report</span>
                 <ArrowRight className="w-4 h-4" />
@@ -1228,7 +1199,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
 
               <a
                 href="tel:4055133039"
-                className="w-full sm:w-auto px-8 py-4 bg-[#002D61] hover:bg-[#001D40] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-8 py-4 bg-[#1B1D21] hover:bg-[#1B1D21] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2"
               >
                 <Phone className="w-4 h-4" />
                 <span>Call Brian (405) 513-3039</span>

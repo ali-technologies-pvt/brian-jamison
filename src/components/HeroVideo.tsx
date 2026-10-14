@@ -118,79 +118,69 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
           />
         </video>
 
-        {/* 
-          Ultra-Premium Cinematic Color Engine:
-          Multi-layer architectural grade combining subtle warm ambient light, 
-          royal navy depth (#001D40), and soft vignette ensuring pristine WCAG AAA legibility.
-        */}
-        <div className="absolute inset-0 bg-[#001D40]/50 mix-blend-multiply transition-opacity" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#00142C]/90 via-[#001D40]/60 to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-amber-500/15 via-transparent to-black/50 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#00142C]/95 via-transparent to-black/35 pointer-events-none" />
+        {/* Warm Filmic Scrim: Sunlit warmth with deep graphite contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1B1D21]/88 via-[#1B1D21]/55 to-amber-950/25 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1B1D21]/90 via-transparent to-black/30 pointer-events-none" />
       </div>
 
       {/* Main Hero Content constrained strictly inside max-w-[1440px] */}
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 pt-28 sm:pt-36 pb-14 flex-1 flex flex-col justify-center">
         <div className="max-w-2xl lg:max-w-3xl">
-          {/* Floating Authority Proof Trust Pill: Frosted crystal glass container */}
-          <div className="animate-fade-in-up inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-black/55 backdrop-blur-xl border border-white/25 shadow-xl shadow-black/30 mb-4 sm:mb-5">
+          {/* 1. License & Authority Badge */}
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 mb-6 shadow-xs">
             <BrianAvatar
-              size={28}
+              size={22}
               priority={true}
               showStatusDot={true}
-              alt="Brian Jamison - Top 2% OKC Metro Real Estate Producer"
+              alt="Brian Jamison - License #184931"
             />
-            <div className="flex items-center gap-2 text-[11px] sm:text-xs font-sans font-semibold text-white tracking-wide">
-              <span className="text-[#F59E0B]">★</span>
-              <span className="text-white font-bold">Top 2% Producer</span>
+            <span className="text-xs font-sans font-medium text-stone-200 tracking-wide flex items-center gap-2">
+              <span className="font-semibold text-white">Brian Jamison</span>
               <span className="text-white/40">·</span>
-              <span className="text-stone-200">Oklahoma City Metro</span>
+              <span className="text-[#B38F68] font-semibold">{BROKER_INFO.license}</span>
               <span className="text-white/40 hidden sm:inline">·</span>
-              <span className="text-stone-300 font-medium hidden sm:inline">$70M+ Volume Sold</span>
-            </div>
+              <span className="text-stone-300 hidden sm:inline">Salt Real Estate Corporate Office</span>
+            </span>
           </div>
 
-          {/* Display Headline: Bold luxury serif with inline editing support */}
+          {/* 2. Heading */}
           <div className="mb-6 sm:mb-7">
             <EditableText
               contentKey="home_hero_title"
               initialContent="The Agent Who Works Like Every Deal Is Personal."
               as="h1"
-              className="animate-fade-in-delayed font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-bold leading-[1.08] tracking-tight !text-white text-balance drop-shadow-[0_2px_16px_rgba(0,0,0,0.9)]"
+              className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-bold leading-[1.08] tracking-tight !text-white text-balance drop-shadow-[0_2px_16px_rgba(0,0,0,0.9)]"
             />
           </div>
 
-          {/* Subtitle: High-contrast white font with inline editing support */}
+          {/* 3. Description */}
           <div className="mb-8 sm:mb-9">
             <EditableText
               contentKey="home_hero_subtitle"
               initialContent="I help Oklahoma City, Edmond and Nichols Hills homeowners sell for top dollar with professional video, real marketing, and a listing you can cancel anytime."
               as="p"
-              className="animate-fade-in-delayed-2 font-sans text-base sm:text-lg md:text-xl !text-white leading-relaxed max-w-2xl font-normal drop-shadow-[0_1px_8px_rgba(0,0,0,0.95)]"
+              className="font-sans text-base sm:text-lg md:text-xl !text-stone-200 leading-relaxed max-w-2xl font-normal drop-shadow-[0_1px_8px_rgba(0,0,0,0.95)]"
             />
           </div>
 
-          {/* Action CTAs: Bespoke Luxury Styling with Warm Gold Shimmer & Frosted Glass */}
-          <div className="animate-fade-in-delayed-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5">
+          {/* 4. Exactly 2 Action Buttons */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5">
             <button
               type="button"
               onClick={onOpenValuation}
-              className="group relative px-8 py-4 text-xs font-bold tracking-wider uppercase text-white bg-gradient-to-r from-[#D97706] via-[#B45309] to-[#92400E] hover:from-[#B45309] hover:to-[#78350F] rounded-xl transition-all duration-300 shadow-xl shadow-amber-950/40 hover:shadow-amber-600/40 border border-amber-300/40 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer flex items-center justify-center gap-2.5 overflow-hidden"
+              className="px-8 py-4 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-300 shadow-xl shadow-[#B38F68]/35 hover:shadow-2xl hover:scale-[1.02] cursor-pointer flex items-center justify-center gap-3 text-center"
             >
-              <span className="relative z-10 flex items-center gap-2">
-                <span>What&apos;s My Home Worth?</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              <span>What&apos;s My Home Worth?</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
 
             <button
               type="button"
               onClick={onExploreMethod}
-              className="group px-7 py-4 text-xs font-bold tracking-wider uppercase text-white bg-black/45 hover:bg-white hover:text-[#001D40] border border-white/35 rounded-xl transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer text-center shadow-lg hover:shadow-xl hover:-translate-y-0.5 backdrop-blur-xl"
+              className="px-8 py-4 bg-black/40 hover:bg-[#FAF9F6] hover:text-[#1B1D21] text-white backdrop-blur-md border border-white/30 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-300 shadow-md cursor-pointer flex items-center justify-center gap-2.5 text-center"
             >
-              <span>Explore 3 Major Services</span>
-              <ArrowDown className="w-3.5 h-3.5 text-white group-hover:text-[#001D40] group-hover:translate-y-1 transition-all duration-300" />
+              <span>Explore The 6-Step Blueprint</span>
+              <ArrowDown className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>
@@ -203,13 +193,13 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
       */}
       <div
         ref={statsRef}
-        className="relative z-10 w-full bg-[#001D40]/95 border-t border-b border-white/20 backdrop-blur-md py-6 sm:py-8 shadow-lg text-white"
+        className="relative z-10 w-full bg-[#1B1D21]/95 border-t border-b border-white/15 backdrop-blur-md py-6 sm:py-8 shadow-lg text-white"
       >
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-white/20">
             {/* Stat 1: Volume */}
             <div className="flex flex-col items-center justify-center px-3 pt-3 sm:pt-0 group cursor-default">
-              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold !text-white tracking-tight tabular-nums group-hover:text-[#FB923C] transition-colors duration-300 drop-shadow-xs">
+              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold !text-white tracking-tight tabular-nums group-hover:text-[#B38F68] transition-colors duration-300 drop-shadow-xs">
                 ${counts.volume}M+
               </span>
               <span className="text-[11px] sm:text-xs tracking-[0.2em] uppercase font-sans font-bold !text-stone-100 mt-1.5">
@@ -219,7 +209,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
 
             {/* Stat 2: Closings */}
             <div className="flex flex-col items-center justify-center px-3 pt-3 sm:pt-0 group cursor-default">
-              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold !text-white tracking-tight tabular-nums group-hover:text-[#FB923C] transition-colors duration-300 drop-shadow-xs">
+              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold !text-white tracking-tight tabular-nums group-hover:text-[#B38F68] transition-colors duration-300 drop-shadow-xs">
                 {counts.closings}+
               </span>
               <span className="text-[11px] sm:text-xs tracking-[0.2em] uppercase font-sans font-bold !text-stone-100 mt-1.5">
@@ -229,7 +219,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
 
             {/* Stat 3: Rank */}
             <div className="flex flex-col items-center justify-center px-3 pt-3 sm:pt-0 group cursor-default">
-              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold !text-white tracking-tight tabular-nums group-hover:text-[#FB923C] transition-colors duration-300 drop-shadow-xs">
+              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold !text-white tracking-tight tabular-nums group-hover:text-[#B38F68] transition-colors duration-300 drop-shadow-xs">
                 Top {counts.percent}%
               </span>
               <span className="text-[11px] sm:text-xs tracking-[0.2em] uppercase font-sans font-bold !text-stone-100 mt-1.5">
@@ -239,7 +229,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
 
             {/* Stat 4: Guarantee */}
             <div className="flex flex-col items-center justify-center px-3 pt-3 sm:pt-0 group cursor-default">
-              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold !text-white tracking-tight tabular-nums group-hover:text-[#FB923C] transition-colors duration-300 drop-shadow-xs">
+              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold !text-white tracking-tight tabular-nums group-hover:text-[#B38F68] transition-colors duration-300 drop-shadow-xs">
                 {counts.pledge}%
               </span>
               <span className="text-[11px] sm:text-xs tracking-[0.2em] uppercase font-sans font-bold !text-stone-100 mt-1.5">

@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: "Manrope", sans-serif;
-  --font-sans: "Manrope", sans-serif;
-  --font-manrope: "Manrope", sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-manrope: "DM Sans", sans-serif;
   --color-canvas: #FAF9F6;
   --color-surface: #F5EFE6;
   --color-surface-subtle: #F5EFE6;
   --color-navy: #002D61;
   --color-navy-dark: #001D40;
-  --color-charcoal: #002D61;
+  --color-charcoal: #1B1D21;
   --color-slate-body: #6B7280;
   --color-orange: #EA580C;
   --color-orange-hover: #C2410C;
@@ -37,14 +37,18 @@ html {
 body {
   font-family: var(--font-sans);
   background-color: #FAF9F6;
-  color: #002D61;
+  color: #1B1D21;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Headings inherit by default (Royal Navy on light canvas, White on dark overlays) */
-h1, h2, h3, h4, h5, h6 {
-  color: inherit;
+.font-serif, h1.font-serif, h2.font-serif, h3.font-serif, .font-serif h1, .font-serif h2, .font-serif h3 {
+  font-family: 'Playfair Display', Georgia, Cambria, 'Times New Roman', serif !important;
+  letter-spacing: -0.015em;
+}
+
+.font-sans {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
 }
 
 .bg-royal-navy {

@@ -30,6 +30,17 @@ import { HomeBuyingPage } from './HomeBuyingPage';
 import { LandSalesPage } from './LandSalesPage';
 import { NeighborhoodDetailView } from './NeighborhoodDetailView';
 import { TestimonialsSection, GoogleLogoIcon } from '../components/TestimonialsSection';
+import { AboutJamisonPage } from './AboutJamisonPage';
+import { CommunityHubPage } from './CommunityHubPage';
+import { ServicesHubPage } from './ServicesHubPage';
+import {
+  HomeSellersChecklistPage,
+  MortgageCalculatorPage,
+  RelocationGuidePage,
+  WhatToWatchOutForPage,
+  FaqPage,
+  LegalCompliancePage
+} from './ResourcePages';
 
 interface InteriorPageViewProps {
   page: InteriorPageData;
@@ -114,10 +125,155 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
     );
   }
 
-  // 5. Dedicated Full Google Reviews & Client Feedback Experience (/reviews)
+  // 5. Dedicated About Brian Jamison & Salt Real Estate Corporate Office Page
+  if (
+    page.id === 'about' ||
+    page.slug === '/about' ||
+    page.slug === '/about-jamison' ||
+    page.slug === '/about-brian-jamison'
+  ) {
+    return (
+      <AboutJamisonPage
+        onNavigate={onNavigate}
+        onOpenConsultation={onOpenConsultation}
+        onOpenValuation={onOpenValuation}
+      />
+    );
+  }
+
+  // 6. Dedicated 21 Oklahoma City Communities Hub Page (/areas, /community, /communities)
+  if (
+    page.id === 'areas' ||
+    page.slug === '/areas' ||
+    page.slug === '/community' ||
+    page.slug === '/communities'
+  ) {
+    return (
+      <CommunityHubPage
+        onNavigate={onNavigate}
+        onOpenConsultation={onOpenConsultation}
+        onOpenValuation={onOpenValuation}
+      />
+    );
+  }
+
+  // 7. Dedicated Services Directory Hub Page (/services)
+  if (page.id === 'services' || page.slug === '/services') {
+    return (
+      <ServicesHubPage
+        onNavigate={onNavigate}
+        onOpenConsultation={onOpenConsultation}
+        onOpenValuation={onOpenValuation}
+      />
+    );
+  }
+
+  // 8. Dedicated Home Seller's Readiness Checklist (/resources/home-sellers-checklist)
+  if (
+    page.id === 'home-sellers-checklist' ||
+    page.slug === '/resources/home-sellers-checklist' ||
+    page.slug === '/sellers-checklist'
+  ) {
+    return (
+      <HomeSellersChecklistPage
+        onNavigate={onNavigate}
+        onOpenConsultation={onOpenConsultation}
+        onOpenValuation={onOpenValuation}
+      />
+    );
+  }
+
+  // 9. Dedicated Oklahoma Mortgage Calculator (/resources/mortgage-calculator)
+  if (
+    page.id === 'mortgage-calculator' ||
+    page.slug === '/resources/mortgage-calculator'
+  ) {
+    return (
+      <MortgageCalculatorPage
+        onNavigate={onNavigate}
+        onOpenConsultation={onOpenConsultation}
+        onOpenValuation={onOpenValuation}
+      />
+    );
+  }
+
+  // 10. Dedicated OKC Relocation Guide (/resources/okc-relocation-guide)
+  if (
+    page.id === 'okc-relocation-guide' ||
+    page.slug === '/resources/okc-relocation-guide'
+  ) {
+    return (
+      <RelocationGuidePage
+        onNavigate={onNavigate}
+        onOpenConsultation={onOpenConsultation}
+        onOpenValuation={onOpenValuation}
+      />
+    );
+  }
+
+  // 11. Dedicated What to Watch Out For Pitfalls (/resources/what-to-watch-out-for)
+  if (
+    page.id === 'what-to-watch-out-for' ||
+    page.slug === '/resources/what-to-watch-out-for'
+  ) {
+    return (
+      <WhatToWatchOutForPage
+        onNavigate={onNavigate}
+        onOpenConsultation={onOpenConsultation}
+        onOpenValuation={onOpenValuation}
+      />
+    );
+  }
+
+  // 12. Dedicated Frequently Asked Questions Page (/faq)
+  if (page.id === 'faq' || page.slug === '/faq') {
+    return (
+      <FaqPage
+        onNavigate={onNavigate}
+        onOpenConsultation={onOpenConsultation}
+        onOpenValuation={onOpenValuation}
+      />
+    );
+  }
+
+  // 13. Dedicated Legal Compliance Pages (/privacy-policy, /terms-of-service, /fair-housing-disclosure)
+  if (page.id === 'privacy-policy' || page.slug === '/privacy-policy') {
+    return (
+      <LegalCompliancePage
+        type="privacy"
+        onNavigate={onNavigate}
+        onOpenConsultation={onOpenConsultation}
+        onOpenValuation={onOpenValuation}
+      />
+    );
+  }
+
+  if (page.id === 'terms-of-service' || page.slug === '/terms-of-service') {
+    return (
+      <LegalCompliancePage
+        type="terms"
+        onNavigate={onNavigate}
+        onOpenConsultation={onOpenConsultation}
+        onOpenValuation={onOpenValuation}
+      />
+    );
+  }
+
+  if (page.id === 'fair-housing-disclosure' || page.slug === '/fair-housing-disclosure') {
+    return (
+      <LegalCompliancePage
+        type="fairhousing"
+        onNavigate={onNavigate}
+        onOpenConsultation={onOpenConsultation}
+        onOpenValuation={onOpenValuation}
+      />
+    );
+  }
+
+  // 14. Dedicated Full Google Reviews & Client Feedback Experience (/reviews)
   if (page.id === 'reviews' || page.slug === '/reviews') {
     return (
-      <article className="w-full bg-[#FAF9F6] text-[#002D61] selection:bg-[#EA580C]/20 selection:text-[#002D61]">
+      <article className="w-full bg-[#FAF9F6] text-[#1B1D21] selection:bg-[#B38F68]/20 selection:text-[#1B1D21]">
         <InteriorHeroVideo
           kicker="VERIFIED GOOGLE REVIEWS"
           title="Verified Client Reviews & Track Record"
@@ -142,14 +298,14 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
         />
 
         {/* Write a Review & Direct Fiduciary Advisory Banner */}
-        <section className="w-full py-16 bg-[#001D40] text-white border-t border-white/10">
+        <section className="w-full py-16 bg-[#1B1D21] text-white border-t border-white/10">
           <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
                 <GoogleLogoIcon className="w-8 h-8" />
               </div>
               <div>
-                <span className="text-[10px] uppercase font-sans font-bold tracking-widest text-[#FB923C] block mb-1">
+                <span className="text-[10px] uppercase font-sans font-bold tracking-widest text-[#B38F68] block mb-1">
                   Share Your Story On Google
                 </span>
                 <h3 className="font-serif text-2xl font-bold text-white">
@@ -166,7 +322,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                 href={GOOGLE_REVIEWS_GMB_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#EA580C] hover:bg-[#C2410C] text-white text-xs font-bold tracking-wider uppercase transition-all shadow-md hover:shadow-lg cursor-pointer text-center inline-flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#B38F68] hover:bg-[#9E7A56] text-white text-xs font-bold tracking-wider uppercase transition-all shadow-md hover:shadow-lg cursor-pointer text-center inline-flex items-center justify-center gap-2"
               >
                 <GoogleLogoIcon className="w-4 h-4" />
                 <span>Write a Review on Google</span>
@@ -201,7 +357,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
   };
 
   return (
-    <article className="w-full bg-[#FAF9F6] text-[#002D61] selection:bg-[#EA580C]/20 selection:text-[#002D61]">
+    <article className="w-full bg-[#FAF9F6] text-[#1B1D21] selection:bg-[#B38F68]/20 selection:text-[#1B1D21]">
       {/* 1. Cinematic Video Background Hero */}
       <InteriorHeroVideo
         kicker={page.kicker}
@@ -217,7 +373,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
       />
 
       {/* 2. Executive Overview & Takeaway Highlights */}
-      <section className="w-full py-16 sm:py-24 border-b border-[#EA580C]/30 bg-[#FAF9F6]">
+      <section className="w-full py-16 sm:py-24 border-b border-[#B38F68]/30 bg-[#FAF9F6]">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Narrative Column */}
@@ -227,26 +383,26 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                   <button
                     type="button"
                     onClick={() => onNavigate(page.parentProcess!.slug)}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white hover:bg-[#FAF8F5] border border-[#EA580C]/40 text-xs font-semibold text-[#002D61] shadow-2xs hover:border-[#EA580C] transition-all cursor-pointer group"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white hover:bg-[#FAF8F5] border border-[#B38F68]/40 text-xs font-semibold text-[#1B1D21] shadow-2xs hover:border-[#B38F68] transition-all cursor-pointer group"
                   >
-                    <ArrowRight className="w-3.5 h-3.5 text-[#EA580C] rotate-180 group-hover:-translate-x-1 transition-transform" />
-                    <span>Part of Process {page.parentProcess.number}: <strong className="text-[#EA580C] underline decoration-[#EA580C]/40 underline-offset-2">{page.parentProcess.title}</strong></span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#B38F68] rotate-180 group-hover:-translate-x-1 transition-transform" />
+                    <span>Part of Process {page.parentProcess.number}: <strong className="text-[#B38F68] underline decoration-[#B38F68]/40 underline-offset-2">{page.parentProcess.title}</strong></span>
                   </button>
                 </div>
               )}
-              <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
+              <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-3">
                 Strategic Briefing
               </span>
-              <h2 className="font-serif text-2xl sm:text-4xl font-bold text-[#002D61] leading-tight mb-6">
+              <h2 className="font-serif text-2xl sm:text-4xl font-bold text-[#1B1D21] leading-tight mb-6">
                 Uncompromising Execution for Oklahoma Property Owners
               </h2>
               <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed mb-6 font-normal">
                 {page.overview}
               </p>
 
-              {/* Dedicated Architectural Warm-Sand Card (#F5EFE6) for About Page */}
+              {/* Dedicated Architectural Warm-Sand Card (#F4F1EB) for About Page */}
               {page.id === 'about' && (
-                <div className="my-8 p-6 sm:p-8 rounded-3xl bg-[#F5EFE6] border border-[#EA580C]/30 shadow-md">
+                <div className="my-8 p-6 sm:p-8 rounded-3xl bg-[#F4F1EB] border border-[#B38F68]/30 shadow-md">
                   <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-6">
                     <BrianAvatar
                       size={160}
@@ -256,20 +412,20 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                       alt="Brian Jamison - Collegiate Athlete & Top 2% Producer"
                     />
                     <div className="flex-1 text-center sm:text-left">
-                      <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-bold text-[#EA580C] block mb-1">
+                      <span className="text-[10px] tracking-[0.25em] uppercase font-sans font-bold text-[#B38F68] block mb-1">
                         License #184931 · REALTOR®
                       </span>
-                      <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#002D61] mb-1">
+                      <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#1B1D21] mb-1">
                         Brian Jamison
                       </h3>
                       <p className="font-sans text-xs text-[#6B7280]">
                         Salt Real Estate Corporate Office · 1508 W. Edmond Rd., Edmond, OK 73003
                       </p>
                       <div className="mt-3 flex flex-wrap items-center justify-center sm:justify-start gap-2">
-                        <span className="px-2.5 py-1 rounded-md bg-white border border-[#EA580C]/30 text-[11px] font-semibold text-[#002D61]">
+                        <span className="px-2.5 py-1 rounded-md bg-white border border-[#B38F68]/30 text-[11px] font-semibold text-[#1B1D21]">
                           Top 2% Producer OKC Metro
                         </span>
-                        <span className="px-2.5 py-1 rounded-md bg-white border border-[#EA580C]/30 text-[11px] font-semibold text-[#002D61]">
+                        <span className="px-2.5 py-1 rounded-md bg-white border border-[#B38F68]/30 text-[11px] font-semibold text-[#1B1D21]">
                           Collegiate Athlete Alum
                         </span>
                       </div>
@@ -282,17 +438,17 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
               )}
 
               {/* Key Takeaways Grid */}
-              <div className="bg-[#F5EFE6] border border-[#EA580C]/30 rounded-2xl p-6 sm:p-8 mt-8">
+              <div className="bg-[#F4F1EB] border border-[#B38F68]/30 rounded-2xl p-6 sm:p-8 mt-8">
                 <div className="flex items-center gap-2 mb-5">
-                  <Sparkles className="w-4 h-4 text-[#EA580C]" />
-                  <h3 className="font-serif text-base sm:text-lg font-bold text-[#002D61]">
+                  <Sparkles className="w-4 h-4 text-[#B38F68]" />
+                  <h3 className="font-serif text-base sm:text-lg font-bold text-[#1B1D21]">
                     Key Takeaways & Differentiators
                   </h3>
                 </div>
                 <ul className="space-y-3.5">
                   {page.keyTakeaways.map((takeaway, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-sm text-[#374151] leading-relaxed">
-                      <CheckCircle2 className="w-4 h-4 text-[#EA580C] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-[#B38F68] shrink-0 mt-0.5" />
                       <span>{takeaway}</span>
                     </li>
                   ))}
@@ -303,17 +459,17 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
             {/* Right Card Column: Cancel-Anytime & Advisory Card */}
             <div className="lg:col-span-5 space-y-6">
               {/* Cancel-Anytime Pledge Callout with Brian Headshot & Commitment Signature */}
-              <div className="bg-white border border-[#EA580C]/30 rounded-2xl p-6 sm:p-8 shadow-sm">
+              <div className="bg-white border border-[#B38F68]/30 rounded-2xl p-6 sm:p-8 shadow-sm">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-full bg-[#F5EFE6] flex items-center justify-center text-[#EA580C]">
+                  <div className="w-10 h-10 rounded-full bg-[#F4F1EB] flex items-center justify-center text-[#B38F68]">
                     <ShieldCheck className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] uppercase font-sans font-bold tracking-widest text-[#EA580C] bg-[#F5EFE6] px-2.5 py-1 rounded-full border border-[#EA580C]/30">
+                  <span className="text-[10px] uppercase font-sans font-bold tracking-widest text-[#B38F68] bg-[#F4F1EB] px-2.5 py-1 rounded-full border border-[#B38F68]/30">
                     100% Risk-Free Guarantee
                   </span>
                 </div>
 
-                <h3 className="font-serif text-xl font-bold text-[#002D61] mb-2">
+                <h3 className="font-serif text-xl font-bold text-[#1B1D21] mb-2">
                   Cancel-Anytime Listing Pledge
                 </h3>
                 <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed mb-5">
@@ -321,13 +477,13 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                 </p>
 
                 {/* Personal Commitment Signature Block */}
-                <div className="p-3.5 rounded-xl bg-[#FAF9F6] border border-[#EA580C]/40 mb-5 flex items-center gap-3">
+                <div className="p-3.5 rounded-xl bg-[#FAF9F6] border border-[#B38F68]/40 mb-5 flex items-center gap-3">
                   <BrianAvatar size={48} showStatusDot={true} alt="Brian Jamison - Personal Guarantee" />
                   <div>
-                    <span className="text-[9px] uppercase font-sans font-bold tracking-widest text-[#EA580C] block">
+                    <span className="text-[9px] uppercase font-sans font-bold tracking-widest text-[#B38F68] block">
                       Personal Signature Pledge
                     </span>
-                    <span className="font-serif text-sm font-bold text-[#002D61] block">
+                    <span className="font-serif text-sm font-bold text-[#1B1D21] block">
                       Brian Jamison
                     </span>
                     <span className="text-[10px] text-[#6B7280]">
@@ -336,34 +492,34 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                   </div>
                 </div>
 
-                <div className="p-3 rounded-xl bg-[#FAF9F6] border border-[#EA580C]/30 text-xs text-[#002D61] font-medium flex items-center justify-between mb-5">
+                <div className="p-3 rounded-xl bg-[#FAF9F6] border border-[#B38F68]/30 text-xs text-[#1B1D21] font-medium flex items-center justify-between mb-5">
                   <span>Contract Termination Fee:</span>
-                  <span className="font-serif font-bold text-[#EA580C]">$0.00 Guaranteed</span>
+                  <span className="font-serif font-bold text-[#B38F68]">$0.00 Guaranteed</span>
                 </div>
                 <button
                   type="button"
                   onClick={onOpenConsultation}
-                  className="w-full py-3 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer shadow-xs text-center"
+                  className="w-full py-3 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer shadow-xs text-center"
                 >
                   Consult with Brian Jamison
                 </button>
               </div>
 
               {/* Direct Desk Badge with BrianAvatar */}
-              <div className="p-6 bg-[#F5EFE6] border border-[#EA580C]/30 rounded-2xl flex items-center gap-4">
+              <div className="p-6 bg-[#F4F1EB] border border-[#B38F68]/30 rounded-2xl flex items-center gap-4">
                 <BrianAvatar size={48} alt={BROKER_INFO.name} />
                 <div>
-                  <span className="text-[10px] uppercase font-sans font-bold tracking-widest text-[#EA580C] block">
+                  <span className="text-[10px] uppercase font-sans font-bold tracking-widest text-[#B38F68] block">
                     Direct Representation
                   </span>
-                  <span className="font-serif text-base font-bold text-[#002D61] block">
+                  <span className="font-serif text-base font-bold text-[#1B1D21] block">
                     {BROKER_INFO.name}
                   </span>
                   <a
                     href={`tel:${BROKER_INFO.phoneRaw}`}
-                    className="text-xs text-[#4B5563] hover:text-[#EA580C] flex items-center gap-1 mt-0.5"
+                    className="text-xs text-[#4B5563] hover:text-[#B38F68] flex items-center gap-1 mt-0.5"
                   >
-                    <Phone className="w-3 h-3 text-[#EA580C]" />
+                    <Phone className="w-3 h-3 text-[#B38F68]" />
                     <span>{BROKER_INFO.phone}</span>
                   </a>
                 </div>
@@ -375,28 +531,28 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
 
       {/* 2.5. Dedicated 21-Community Directory on /areas Index Page */}
       {page.id === 'areas' && (
-        <section className="w-full py-16 sm:py-24 bg-[#F4F1EB] border-b border-[#EA580C]/30">
+        <section className="w-full py-16 sm:py-24 bg-[#F4F1EB] border-b border-[#B38F68]/30">
           <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#EA580C]/30 text-[#EA580C] text-xs font-bold uppercase tracking-widest mb-3 shadow-2xs">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#B38F68]/30 text-[#B38F68] text-xs font-bold uppercase tracking-widest mb-3 shadow-2xs">
                   <Building className="w-3.5 h-3.5" />
                   <span>Oklahoma City Metropolitan Enclaves</span>
                 </div>
-                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#002D61] tracking-tight">
+                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B1D21] tracking-tight">
                   Browse All 21 Service Areas
                 </h2>
               </div>
 
               {/* Search Input Filter */}
               <div className="relative w-full md:w-80">
-                <Search className="w-4 h-4 text-[#EA580C] absolute left-4 top-1/2 -translate-y-1/2" />
+                <Search className="w-4 h-4 text-[#B38F68] absolute left-4 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   value={areasSearchQuery}
                   onChange={(e) => setAreasSearchQuery(e.target.value)}
                   placeholder="Search city or school district..."
-                  className="w-full pl-11 pr-4 py-3 rounded-full bg-white border border-[#EA580C]/30 text-xs font-medium text-[#002D61] placeholder-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#EA580C]"
+                  className="w-full pl-11 pr-4 py-3 rounded-full bg-white border border-[#B38F68]/30 text-xs font-medium text-[#1B1D21] placeholder-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#B38F68]"
                 />
               </div>
             </div>
@@ -408,8 +564,8 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                 onClick={() => setAreasCategoryFilter('all')}
                 className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all cursor-pointer ${
                   areasCategoryFilter === 'all'
-                    ? 'bg-[#002D61] text-white shadow-md'
-                    : 'bg-white text-[#4B5563] border border-[#EA580C]/25 hover:border-[#EA580C]'
+                    ? 'bg-[#1B1D21] text-white shadow-md'
+                    : 'bg-white text-[#4B5563] border border-[#B38F68]/25 hover:border-[#B38F68]'
                 }`}
               >
                 All 21 Communities
@@ -419,8 +575,8 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                 onClick={() => setAreasCategoryFilter('luxury')}
                 className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all cursor-pointer ${
                   areasCategoryFilter === 'luxury'
-                    ? 'bg-[#002D61] text-white shadow-md'
-                    : 'bg-white text-[#4B5563] border border-[#EA580C]/25 hover:border-[#EA580C]'
+                    ? 'bg-[#1B1D21] text-white shadow-md'
+                    : 'bg-white text-[#4B5563] border border-[#B38F68]/25 hover:border-[#B38F68]'
                 }`}
               >
                 Historic & Luxury Enclaves
@@ -430,8 +586,8 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                 onClick={() => setAreasCategoryFilter('north')}
                 className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all cursor-pointer ${
                   areasCategoryFilter === 'north'
-                    ? 'bg-[#002D61] text-white shadow-md'
-                    : 'bg-white text-[#4B5563] border border-[#EA580C]/25 hover:border-[#EA580C]'
+                    ? 'bg-[#1B1D21] text-white shadow-md'
+                    : 'bg-white text-[#4B5563] border border-[#B38F68]/25 hover:border-[#B38F68]'
                 }`}
               >
                 North Metro & Edmond Corridors
@@ -441,8 +597,8 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                 onClick={() => setAreasCategoryFilter('west-south')}
                 className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all cursor-pointer ${
                   areasCategoryFilter === 'west-south'
-                    ? 'bg-[#002D61] text-white shadow-md'
-                    : 'bg-white text-[#4B5563] border border-[#EA580C]/25 hover:border-[#EA580C]'
+                    ? 'bg-[#1B1D21] text-white shadow-md'
+                    : 'bg-white text-[#4B5563] border border-[#B38F68]/25 hover:border-[#B38F68]'
                 }`}
               >
                 West & South Metro Expansion
@@ -464,10 +620,10 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                 <div
                   key={market.id}
                   onClick={() => onNavigate(`/areas/${market.id}`)}
-                  className="group rounded-2xl overflow-hidden bg-white border border-[#EA580C]/25 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between cursor-pointer"
+                  className="group rounded-2xl overflow-hidden bg-white border border-[#B38F68]/25 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
                   <div>
-                    <div className="relative h-48 w-full overflow-hidden bg-[#001D40]">
+                    <div className="relative h-48 w-full overflow-hidden bg-[#1B1D21]">
                       <img
                         src={market.image}
                         alt={market.name}
@@ -477,7 +633,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
 
                       <div className="absolute top-3 left-3">
-                        <span className="px-2.5 py-1 rounded-md text-[10px] font-sans font-bold uppercase tracking-wider bg-[#001D40]/90 backdrop-blur-md text-white border border-white/20">
+                        <span className="px-2.5 py-1 rounded-md text-[10px] font-sans font-bold uppercase tracking-wider bg-[#1B1D21]/90 backdrop-blur-md text-white border border-white/20">
                           {market.highlightBadge}
                         </span>
                       </div>
@@ -494,14 +650,14 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                         {market.lifestyle}
                       </p>
 
-                      <div className="grid grid-cols-2 gap-2 pt-3 border-t border-[#EA580C]/20 text-xs">
+                      <div className="grid grid-cols-2 gap-2 pt-3 border-t border-[#B38F68]/20 text-xs">
                         <div>
-                          <span className="text-[10px] uppercase font-bold text-[#EA580C] block">Median Price</span>
-                          <span className="font-serif font-bold text-[#002D61] text-sm">{market.medianPrice}</span>
+                          <span className="text-[10px] uppercase font-bold text-[#B38F68] block">Median Price</span>
+                          <span className="font-serif font-bold text-[#1B1D21] text-sm">{market.medianPrice}</span>
                         </div>
                         <div>
-                          <span className="text-[10px] uppercase font-bold text-[#EA580C] block">Avg DOM</span>
-                          <span className="font-serif font-bold text-[#002D61] text-sm">{market.avgDom}</span>
+                          <span className="text-[10px] uppercase font-bold text-[#B38F68] block">Avg DOM</span>
+                          <span className="font-serif font-bold text-[#1B1D21] text-sm">{market.avgDom}</span>
                         </div>
                       </div>
                     </div>
@@ -510,10 +666,10 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                   <div className="p-5 pt-0">
                     <button
                       type="button"
-                      className="w-full py-2.5 px-4 rounded-xl bg-[#FAF9F6] group-hover:bg-[#002D61] text-[#002D61] group-hover:text-white border border-[#002D61]/20 group-hover:border-[#002D61] text-xs font-semibold tracking-wide transition-all duration-200 flex items-center justify-between"
+                      className="w-full py-2.5 px-4 rounded-xl bg-[#FAF9F6] group-hover:bg-[#1B1D21] text-[#1B1D21] group-hover:text-white border border-[#1B1D21]/20 group-hover:border-[#1B1D21] text-xs font-semibold tracking-wide transition-all duration-200 flex items-center justify-between"
                     >
                       <span>Explore 8-Section Enclave Guide</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-[#EA580C] group-hover:text-white group-hover:translate-x-1 transition-all" />
+                      <ArrowRight className="w-3.5 h-3.5 text-[#B38F68] group-hover:text-white group-hover:translate-x-1 transition-all" />
                     </button>
                   </div>
                 </div>
@@ -525,13 +681,13 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
 
       {/* 3. Deliverables Matrix (For Services / Audience Pages / Standards) */}
       {page.deliverables && page.deliverables.length > 0 && (
-        <section id="systematic-standards" className="w-full py-16 sm:py-24 bg-[#F5EFE6] border-b border-[#EA580C]/30">
+        <section id="systematic-standards" className="w-full py-16 sm:py-24 bg-[#F4F1EB] border-b border-[#B38F68]/30">
           <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
             {/* 6 Core Corporate Selling Processes Switcher */}
-            <div className="mb-12 p-4 sm:p-5 rounded-2xl bg-[#002D61] text-white shadow-lg border border-white/15">
+            <div className="mb-12 p-4 sm:p-5 rounded-2xl bg-[#1B1D21] text-white shadow-lg border border-white/15">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#EA580C] animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-[#B38F68] animate-pulse" />
                   <span className="text-[11px] font-sans font-bold tracking-[0.2em] uppercase text-white">
                     Our 6 Core Selling Processes
                   </span>
@@ -555,7 +711,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                       onClick={() => onNavigate(proc.slug)}
                       className={`p-2.5 sm:p-3 rounded-xl text-left transition-all duration-200 cursor-pointer flex flex-col justify-between ${
                         isCurrent
-                          ? 'bg-[#EA580C] !text-white font-bold shadow-md scale-102 ring-2 ring-white/50'
+                          ? 'bg-[#B38F68] !text-white font-bold shadow-md scale-102 ring-2 ring-white/50'
                           : 'bg-white/10 hover:bg-white/20 !text-white border border-white/10'
                       }`}
                     >
@@ -572,13 +728,13 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
             </div>
 
             <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-              <div className="inline-flex items-center gap-2 mb-2 px-3 py-1 rounded-full bg-white border border-[#EA580C]/30 text-xs font-semibold text-[#EA580C]">
+              <div className="inline-flex items-center gap-2 mb-2 px-3 py-1 rounded-full bg-white border border-[#B38F68]/30 text-xs font-semibold text-[#B38F68]">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span className="tracking-[0.25em] uppercase font-sans">
                   Execution Deliverables & Standards
                 </span>
               </div>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#002D61] tracking-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1B1D21] tracking-tight">
                 Systematic Roadmap & Standards
               </h2>
               <p className="font-sans text-sm sm:text-base text-[#4B5563] mt-3 leading-relaxed">
@@ -590,11 +746,11 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
               {page.deliverables.map((item, idx) => (
                 <div
                   key={idx}
-                  className="group bg-white border-2 border-[#EA580C]/25 rounded-2xl overflow-hidden shadow-xs hover:shadow-xl hover:border-[#EA580C] transition-all duration-300 flex flex-col justify-between"
+                  className="group bg-white border-2 border-[#B38F68]/25 rounded-2xl overflow-hidden shadow-xs hover:shadow-xl hover:border-[#B38F68] transition-all duration-300 flex flex-col justify-between"
                 >
                   <div>
                     {/* Visual Graphic Header with High-Resolution Photography */}
-                    <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-[#002D61]">
+                    <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-[#1B1D21]">
                       {item.image ? (
                         <img
                           src={item.image}
@@ -603,21 +759,21 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                           loading="lazy"
                         />
                       ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-[#002D61] to-[#001D40] flex items-center justify-center text-white">
-                          <Sparkles className="w-10 h-10 text-[#FB923C]" />
+                        <div className="w-full h-full bg-gradient-to-br from-[#1B1D21] to-[#1B1D21] flex items-center justify-center text-white">
+                          <Sparkles className="w-10 h-10 text-[#B38F68]" />
                         </div>
                       )}
 
                       {/* Scrim Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#001D40]/92 via-[#002D61]/40 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#1B1D21]/92 via-[#1B1D21]/40 to-transparent" />
 
                       {/* Badges on Graphic */}
                       <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                        <span className="px-2.5 py-1 rounded-md text-[10px] font-sans font-bold uppercase tracking-wider bg-[#002D61]/90 backdrop-blur-md text-white border border-white/20">
+                        <span className="px-2.5 py-1 rounded-md text-[10px] font-sans font-bold uppercase tracking-wider bg-[#1B1D21]/90 backdrop-blur-md text-white border border-white/20">
                           {idx + 1 < 10 ? `Step 0${idx + 1}` : `Step ${idx + 1}`}
                         </span>
                         {item.badge && (
-                          <span className="px-2.5 py-1 rounded-md text-[10px] font-sans font-bold bg-[#EA580C] text-white shadow-xs">
+                          <span className="px-2.5 py-1 rounded-md text-[10px] font-sans font-bold bg-[#B38F68] text-white shadow-xs">
                             {item.badge}
                           </span>
                         )}
@@ -639,9 +795,9 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
 
                       {/* What We Do to Your Property Callout */}
                       {item.executionDetail && (
-                        <div className="p-3.5 rounded-xl bg-[#FAF9F6] border border-[#EA580C]/25 text-xs text-[#002D61]">
-                          <span className="text-[10px] uppercase font-sans font-bold tracking-wider text-[#EA580C] block mb-1 flex items-center gap-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C]" />
+                        <div className="p-3.5 rounded-xl bg-[#FAF9F6] border border-[#B38F68]/25 text-xs text-[#1B1D21]">
+                          <span className="text-[10px] uppercase font-sans font-bold tracking-wider text-[#B38F68] block mb-1 flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#B38F68]" />
                             What We Do To Your Property
                           </span>
                           <p className="text-xs text-[#374151] leading-relaxed">
@@ -653,9 +809,9 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                       {/* Seller Impact & Value */}
                       {item.sellerImpact && (
                         <div className="flex items-start gap-2 pt-1 text-xs text-[#4B5563]">
-                          <CheckCircle2 className="w-4 h-4 text-[#EA580C] shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-4 h-4 text-[#B38F68] shrink-0 mt-0.5" />
                           <span className="leading-snug">
-                            <strong className="text-[#002D61]">Seller Benefit: </strong>
+                            <strong className="text-[#1B1D21]">Seller Benefit: </strong>
                             {item.sellerImpact}
                           </span>
                         </div>
@@ -669,14 +825,14 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                       <button
                         type="button"
                         onClick={() => onNavigate(item.slug!)}
-                        className="w-full py-2.5 px-4 rounded-xl bg-[#FAF9F6] hover:bg-[#002D61] text-[#002D61] hover:text-white border border-[#002D61]/20 hover:border-[#002D61] text-xs font-semibold tracking-wide transition-all duration-200 flex items-center justify-between cursor-pointer group/btn"
+                        className="w-full py-2.5 px-4 rounded-xl bg-[#FAF9F6] hover:bg-[#1B1D21] text-[#1B1D21] hover:text-white border border-[#1B1D21]/20 hover:border-[#1B1D21] text-xs font-semibold tracking-wide transition-all duration-200 flex items-center justify-between cursor-pointer group/btn"
                       >
                         <span>Explore Standard Subpage</span>
-                        <ArrowRight className="w-3.5 h-3.5 text-[#EA580C] group-hover/btn:text-white group-hover/btn:translate-x-1 transition-all" />
+                        <ArrowRight className="w-3.5 h-3.5 text-[#B38F68] group-hover/btn:text-white group-hover/btn:translate-x-1 transition-all" />
                       </button>
                     ) : (
-                      <div className="flex items-center justify-between text-[11px] text-[#6B7280] pt-2 border-t border-[#EA580C]/20">
-                        <span className="font-medium text-[#EA580C]">Standard Execution Protocol</span>
+                      <div className="flex items-center justify-between text-[11px] text-[#6B7280] pt-2 border-t border-[#B38F68]/20">
+                        <span className="font-medium text-[#B38F68]">Standard Execution Protocol</span>
                         <span>Included 100%</span>
                       </div>
                     )}
@@ -694,12 +850,12 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
               if (currentProcIndex >= 0) {
                 const nextProc = CORE_PROCESSES_NAV[(currentProcIndex + 1) % CORE_PROCESSES_NAV.length];
                 return (
-                  <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-white border border-[#EA580C]/30 shadow-md flex flex-col sm:flex-row items-center justify-between gap-6">
+                  <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-white border border-[#B38F68]/30 shadow-md flex flex-col sm:flex-row items-center justify-between gap-6">
                     <div>
-                      <span className="text-[10px] uppercase font-sans font-bold tracking-[0.2em] text-[#EA580C] block mb-1">
+                      <span className="text-[10px] uppercase font-sans font-bold tracking-[0.2em] text-[#B38F68] block mb-1">
                         Next Process in the Corporate Sequence
                       </span>
-                      <h4 className="font-serif text-xl sm:text-2xl font-bold text-[#002D61]">
+                      <h4 className="font-serif text-xl sm:text-2xl font-bold text-[#1B1D21]">
                         Process {nextProc.number}: {nextProc.title}
                       </h4>
                       <p className="text-xs sm:text-sm text-[#6B7280] mt-1 max-w-xl">
@@ -710,7 +866,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                     <button
                       type="button"
                       onClick={() => onNavigate(nextProc.slug)}
-                      className="px-6 py-3.5 bg-[#002D61] hover:bg-[#EA580C] text-white rounded-xl text-xs font-semibold tracking-wider uppercase transition-all duration-300 shadow-md cursor-pointer flex items-center gap-2 shrink-0"
+                      className="px-6 py-3.5 bg-[#1B1D21] hover:bg-[#B38F68] text-white rounded-xl text-xs font-semibold tracking-wider uppercase transition-all duration-300 shadow-md cursor-pointer flex items-center gap-2 shrink-0"
                     >
                       <span>Explore Process {nextProc.number}</span>
                       <ArrowRight className="w-4 h-4" />
@@ -722,12 +878,12 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
               // 2. If this is a sub-process page with parentProcess
               if (page.parentProcess) {
                 return (
-                  <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-white border border-[#EA580C]/30 shadow-md flex flex-col sm:flex-row items-center justify-between gap-6">
+                  <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-white border border-[#B38F68]/30 shadow-md flex flex-col sm:flex-row items-center justify-between gap-6">
                     <div>
-                      <span className="text-[10px] uppercase font-sans font-bold tracking-[0.2em] text-[#EA580C] block mb-1">
+                      <span className="text-[10px] uppercase font-sans font-bold tracking-[0.2em] text-[#B38F68] block mb-1">
                         Corporate Hierarchy
                       </span>
-                      <h4 className="font-serif text-xl sm:text-2xl font-bold text-[#002D61]">
+                      <h4 className="font-serif text-xl sm:text-2xl font-bold text-[#1B1D21]">
                         Process {page.parentProcess.number}: {page.parentProcess.title}
                       </h4>
                       <p className="text-xs sm:text-sm text-[#6B7280] mt-1 max-w-xl">
@@ -738,7 +894,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                     <button
                       type="button"
                       onClick={() => onNavigate(page.parentProcess!.slug)}
-                      className="px-6 py-3.5 bg-[#002D61] hover:bg-[#EA580C] text-white rounded-xl text-xs font-semibold tracking-wider uppercase transition-all duration-300 shadow-md cursor-pointer flex items-center gap-2 shrink-0"
+                      className="px-6 py-3.5 bg-[#1B1D21] hover:bg-[#B38F68] text-white rounded-xl text-xs font-semibold tracking-wider uppercase transition-all duration-300 shadow-md cursor-pointer flex items-center gap-2 shrink-0"
                     >
                       <span>View Full Process Overview</span>
                       <ArrowRight className="w-4 h-4" />
@@ -755,35 +911,35 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
 
       {/* 4. Local Schools & Lifestyle Matrix (For Community Pages) */}
       {page.schools && page.schools.length > 0 && (
-        <section className="w-full py-16 sm:py-24 bg-[#FAF9F6] border-b border-[#EA580C]/30">
+        <section className="w-full py-16 sm:py-24 bg-[#FAF9F6] border-b border-[#B38F68]/30">
           <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
               {/* Schools Column */}
               <div className="lg:col-span-7">
                 <div className="flex items-center gap-2 mb-3">
-                  <GraduationCap className="w-5 h-5 text-[#EA580C]" />
-                  <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C]">
+                  <GraduationCap className="w-5 h-5 text-[#B38F68]" />
+                  <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68]">
                     Education & Feeder Zones
                   </span>
                 </div>
-                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#002D61] mb-6">
+                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#1B1D21] mb-6">
                   Top-Performing Local Schools
                 </h2>
                 <div className="space-y-4">
                   {page.schools.map((school, idx) => (
                     <div
                       key={idx}
-                      className="p-4 sm:p-5 rounded-xl bg-white border border-[#EA580C]/30 flex items-center justify-between shadow-2xs"
+                      className="p-4 sm:p-5 rounded-xl bg-white border border-[#B38F68]/30 flex items-center justify-between shadow-2xs"
                     >
                       <div>
-                        <h4 className="font-serif text-base font-bold text-[#002D61]">
+                        <h4 className="font-serif text-base font-bold text-[#1B1D21]">
                           {school.name}
                         </h4>
                         <span className="text-xs text-[#6B7280]">
                           {school.type} {school.dist ? `· ${school.dist}` : ''}
                         </span>
                       </div>
-                      <span className="px-3 py-1 rounded-full bg-[#FAF9F6] border border-[#EA580C]/30 text-xs font-bold text-[#EA580C] shrink-0">
+                      <span className="px-3 py-1 rounded-full bg-[#FAF9F6] border border-[#B38F68]/30 text-xs font-bold text-[#B38F68] shrink-0">
                         {school.rating}
                       </span>
                     </div>
@@ -794,20 +950,20 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
               {/* Lifestyle Highlights Column */}
               <div className="lg:col-span-5">
                 <div className="flex items-center gap-2 mb-3">
-                  <Compass className="w-5 h-5 text-[#EA580C]" />
-                  <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C]">
+                  <Compass className="w-5 h-5 text-[#B38F68]" />
+                  <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68]">
                     Area Culture & Amenities
                   </span>
                 </div>
-                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#002D61] mb-6">
+                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#1B1D21] mb-6">
                   Lifestyle Highlights
                 </h2>
                 {page.lifestyleHighlights && (
-                  <div className="bg-[#F5EFE6] border border-[#EA580C]/30 rounded-2xl p-6 sm:p-8">
+                  <div className="bg-[#F4F1EB] border border-[#B38F68]/30 rounded-2xl p-6 sm:p-8">
                     <ul className="space-y-4">
                       {page.lifestyleHighlights.map((hl, idx) => (
                         <li key={idx} className="flex items-start gap-3 text-sm text-[#374151]">
-                          <MapPin className="w-4 h-4 text-[#EA580C] shrink-0 mt-0.5" />
+                          <MapPin className="w-4 h-4 text-[#B38F68] shrink-0 mt-0.5" />
                           <span>{hl}</span>
                         </li>
                       ))}
@@ -834,13 +990,13 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
       )}
 
       {/* 7. Bottom Call to Action Banner */}
-      <section className="w-full py-16 sm:py-24 bg-[#FAF9F6] border-t border-[#EA580C]/30">
+      <section className="w-full py-16 sm:py-24 bg-[#FAF9F6] border-t border-[#B38F68]/30">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 text-center">
           <div className="max-w-3xl mx-auto">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-2">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-2">
               Ready to Take Action?
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#002D61] mb-4">
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#1B1D21] mb-4">
               Schedule A Private Strategy Session
             </h2>
             <p className="font-sans text-sm sm:text-base text-[#6B7280] mb-8">
@@ -850,7 +1006,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
               <button
                 type="button"
                 onClick={onOpenConsultation}
-                className="px-8 py-4 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 shadow-md cursor-pointer flex items-center gap-2"
+                className="px-8 py-4 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 shadow-md cursor-pointer flex items-center gap-2"
               >
                 <span>Book Direct Consultation</span>
                 <ArrowRight className="w-4 h-4" />
@@ -858,7 +1014,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
               <button
                 type="button"
                 onClick={onOpenValuation}
-                className="px-8 py-4 bg-white hover:bg-[#F5EFE6] text-[#002D61] border border-[#EA580C]/30 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 shadow-xs cursor-pointer"
+                className="px-8 py-4 bg-white hover:bg-[#F4F1EB] text-[#1B1D21] border border-[#B38F68]/30 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 shadow-xs cursor-pointer"
               >
                 Request 3-Tier Valuation
               </button>

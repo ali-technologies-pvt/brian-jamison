@@ -248,13 +248,13 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Link 2: Featured Closings */}
             <a
-              href="#featured-closings"
+              href="/listings"
               onClick={(e) => {
                 e.preventDefault();
-                if (window.location.pathname === '/' || !onNavigate) {
-                  scrollToSection('featured-closings');
-                } else {
+                if (onNavigate) {
                   onNavigate('/listings');
+                } else {
+                  window.location.href = '/listings';
                 }
               }}
               onMouseEnter={() => {
@@ -312,15 +312,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
             </div>
 
-            {/* Link 5: About (Direct link to Leadership / About) */}
+            {/* Link 5: About (Direct link to About Brian Jamison) */}
             <a
-              href="#leadership"
+              href="/about"
               onClick={(e) => {
                 e.preventDefault();
-                if (window.location.pathname === '/' || !onNavigate) {
-                  scrollToSection('leadership');
-                } else {
+                if (onNavigate) {
                   onNavigate('/about');
+                } else {
+                  window.location.href = '/about';
                 }
               }}
               onMouseEnter={() => {

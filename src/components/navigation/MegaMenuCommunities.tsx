@@ -176,8 +176,11 @@ export const MegaMenuCommunities: React.FC<MegaMenuCommunitiesProps> = ({
                 type="button"
                 onClick={() => {
                   onClose();
-                  const el = document.getElementById('micro-markets');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  if (onNavigate) {
+                    onNavigate('/areas');
+                  } else {
+                    window.location.href = '/areas';
+                  }
                 }}
                 className="w-full py-2 px-3 bg-gradient-to-r from-[#EA580C] to-[#FB923C] hover:from-[#C2410C] hover:to-[#EA580C] text-white rounded-md text-[11px] font-semibold transition-all duration-300 flex items-center justify-between shadow-md shadow-orange-600/30 hover:shadow-orange-600/50 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
               >

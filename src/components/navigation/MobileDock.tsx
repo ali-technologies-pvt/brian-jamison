@@ -145,6 +145,50 @@ export const MobileDock: React.FC<MobileDockProps> = ({
 
               {/* Drawer Body Accordions */}
               <div className="p-5 space-y-4 flex-1">
+                {/* Primary Fast Navigation Links */}
+                <div className="grid grid-cols-2 gap-2 pb-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setDrawerOpen(false);
+                      if (onNavigate) onNavigate('/');
+                    }}
+                    className="p-2.5 rounded-xl bg-white border border-stone-200 text-xs font-semibold text-[#0A192F] hover:border-[#EA580C] text-center cursor-pointer shadow-2xs"
+                  >
+                    Home
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setDrawerOpen(false);
+                      if (onNavigate) onNavigate('/about');
+                    }}
+                    className="p-2.5 rounded-xl bg-white border border-stone-200 text-xs font-semibold text-[#0A192F] hover:border-[#EA580C] text-center cursor-pointer shadow-2xs"
+                  >
+                    About Brian
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setDrawerOpen(false);
+                      if (onNavigate) onNavigate('/listings');
+                    }}
+                    className="p-2.5 rounded-xl bg-white border border-stone-200 text-xs font-semibold text-[#0A192F] hover:border-[#EA580C] text-center cursor-pointer shadow-2xs"
+                  >
+                    Featured Closings
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setDrawerOpen(false);
+                      if (onNavigate) onNavigate('/areas');
+                    }}
+                    className="p-2.5 rounded-xl bg-white border border-stone-200 text-xs font-semibold text-[#0A192F] hover:border-[#EA580C] text-center cursor-pointer shadow-2xs"
+                  >
+                    21 Communities
+                  </button>
+                </div>
+
                 {/* Accordion 0: Our 3 Major Services */}
                 <div className="border border-[#EA580C]/40 rounded-xl overflow-hidden bg-white shadow-2xs">
                   <button

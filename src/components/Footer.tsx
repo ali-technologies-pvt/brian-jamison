@@ -2,6 +2,7 @@ import React from 'react';
 import { BROKER_INFO, MICRO_MARKETS } from '../data/realEstateData';
 import { JamisonLogo } from './JamisonLogo';
 import { Phone, Mail, MapPin, Shield } from 'lucide-react';
+import { SocialLinks } from './SocialLinks';
 
 interface FooterProps {
   onOpenValuation: () => void;
@@ -69,9 +70,17 @@ export const Footer: React.FC<FooterProps> = ({
               </p>
             </div>
 
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/10 border border-white/20 text-[11px] text-white font-medium">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/10 border border-white/20 text-[11px] text-white font-medium mb-6">
               <Shield className="w-3.5 h-3.5 text-[#EA580C]" />
               <span>{BROKER_INFO.license} · REALTOR® · Top 2% Producer</span>
+            </div>
+
+            {/* Official Social & Portal Verification Links */}
+            <div className="pt-4 border-t border-white/10">
+              <span className="text-[10px] uppercase font-sans font-bold tracking-[0.2em] text-[#FB923C] block mb-2.5">
+                Verified Portals & Networks
+              </span>
+              <SocialLinks variant="footer" />
             </div>
           </div>
 
@@ -351,8 +360,22 @@ export const Footer: React.FC<FooterProps> = ({
               <li className="pt-2">
                 <button
                   type="button"
-                  onClick={() => onOpenLegal('privacy')}
-                  className="hover:text-white hover:underline transition-colors block text-left"
+                  onClick={() => {
+                    if (onNavigate) onNavigate('/faq');
+                  }}
+                  className="hover:text-white hover:underline transition-colors block text-left cursor-pointer text-[#FB923C] font-semibold"
+                >
+                  Frequently Asked Questions
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onNavigate) onNavigate('/privacy-policy');
+                    else onOpenLegal('privacy');
+                  }}
+                  className="hover:text-white hover:underline transition-colors block text-left cursor-pointer"
                 >
                   Privacy Policy
                 </button>
@@ -360,8 +383,11 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   type="button"
-                  onClick={() => onOpenLegal('terms')}
-                  className="hover:text-white hover:underline transition-colors block text-left"
+                  onClick={() => {
+                    if (onNavigate) onNavigate('/terms-of-service');
+                    else onOpenLegal('terms');
+                  }}
+                  className="hover:text-white hover:underline transition-colors block text-left cursor-pointer"
                 >
                   Terms of Service
                 </button>
@@ -369,8 +395,11 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   type="button"
-                  onClick={() => onOpenLegal('fairhousing')}
-                  className="hover:text-white hover:underline transition-colors block text-left"
+                  onClick={() => {
+                    if (onNavigate) onNavigate('/fair-housing-disclosure');
+                    else onOpenLegal('fairhousing');
+                  }}
+                  className="hover:text-white hover:underline transition-colors block text-left cursor-pointer"
                 >
                   Equal Housing Opportunity
                 </button>
@@ -379,10 +408,14 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
         </div>
 
-        {/* Bottom Copyright & Equal Housing */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-200 font-medium gap-4">
+        {/* Bottom Copyright, Social Links & Equal Housing */}
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-stone-200 font-medium gap-4">
           <p>© {new Date().getFullYear()} Brian Jamison | Salt Real Estate Corporate Office. All Rights Reserved.</p>
-          <p className="text-center sm:text-right">
+          <div className="flex items-center gap-2.5">
+            <span className="text-[11px] text-stone-300 hidden sm:inline">Official Profiles:</span>
+            <SocialLinks variant="footer" itemClassName="w-7 h-7 text-xs" />
+          </div>
+          <p className="text-center md:text-right">
             Equal Housing Opportunity. Information deemed reliable but not guaranteed.
           </p>
         </div>

@@ -100,6 +100,14 @@ export const BROKER_INFO = {
     producerRank: "Top 2%",
     guarantee: "100%",
     yearsExperience: "6+ Years",
+  },
+  socialLinks: {
+    zillow: "https://www.zillow.com/profile/Brianjamison4#reviews",
+    linkedin: "https://www.linkedin.com/in/brian-jamison-okc",
+    realtor: "https://www.realtor.com/realestateagents/603f285097175500126300c8",
+    landsearch: "https://www.landsearch.com/agents/brian-jamison/496173",
+    instagram: "https://www.instagram.com/brianjamisonokc/",
+    facebook: "https://www.facebook.com/profile.php?id=100085437993627"
   }
 };
 

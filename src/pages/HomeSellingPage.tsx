@@ -39,6 +39,7 @@ import {
   Compass
 } from 'lucide-react';
 import { BrianAvatar } from '../components/BrianAvatar';
+import { SocialLinks } from '../components/SocialLinks';
 import { BROKER_INFO } from '../data/realEstateData';
 
 interface HomeSellingPageProps {
@@ -493,15 +494,15 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
   ];
 
   return (
-    <div className="w-full bg-[#FAF9F6] text-[#002D61] selection:bg-[#EA580C]/20 selection:text-[#002D61] overflow-x-hidden">
+    <div className="w-full bg-[#FAF9F6] text-[#1B1D21] selection:bg-[#B38F68]/20 selection:text-[#1B1D21] overflow-x-hidden">
       {/* 
         ========================================================================
         SECTION 1: CINEMATIC SUNSET VIDEO HERO
         ========================================================================
       */}
-      <section className="relative w-full min-h-[92vh] sm:min-h-[95vh] flex flex-col justify-between overflow-hidden bg-[#0A192F]">
+      <section className="relative w-full min-h-[85vh] sm:min-h-[88vh] flex flex-col justify-between overflow-hidden bg-[#FAF9F6] border-b border-[#E6E2DA]">
         {/* Full-Bleed 4K Looping Drone Sunset Video */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <video
             ref={heroVideoRef}
             autoPlay
@@ -523,16 +524,28 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
             />
           </video>
 
-          {/* Warm Ambient Cinematic Overlay from Deep Navy to Vibrant Sunset Amber/Orange */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0A192F]/85 via-[#0A192F]/65 to-[#EA580C]/25" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-transparent to-black/40" />
+          {/* Warm Sunlit Filmic Scrim: Preserves Golden Hour Lighting while ensuring high typography contrast */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1B1D21]/88 via-[#1B1D21]/55 to-amber-950/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1B1D21]/90 via-transparent to-black/30" />
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#FAF9F6] to-transparent opacity-10" />
         </div>
 
-        {/* Ambient Top Micro Header / Breadcrumb */}
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 pt-8 sm:pt-12 flex items-center justify-between">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[11px] font-semibold text-white tracking-widest uppercase shadow-lg">
-            <Sparkles className="w-3.5 h-3.5 text-[#FB923C]" />
-            <span>Dedicated Seller Representation · Oklahoma City Metro</span>
+        {/* Top License & Authority Badge */}
+        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 pt-32 sm:pt-36 flex items-center justify-between">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 shadow-xs">
+            <BrianAvatar
+              size={22}
+              priority={true}
+              showStatusDot={true}
+              alt="Brian Jamison - License #184931"
+            />
+            <span className="text-xs font-sans font-medium text-stone-200 tracking-wide flex items-center gap-2">
+              <span className="font-semibold text-white">Brian Jamison</span>
+              <span className="text-white/40">·</span>
+              <span className="text-[#B38F68] font-semibold">{BROKER_INFO.license}</span>
+              <span className="text-white/40 hidden sm:inline">·</span>
+              <span className="text-stone-300 hidden sm:inline">Salt Real Estate Corporate Office</span>
+            </span>
           </div>
 
           {/* Sound Toggle for Hero Video */}
@@ -544,41 +557,38 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                 heroVideoRef.current.muted = !heroMuted;
               }
             }}
-            className="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 text-white text-xs font-medium transition-all cursor-pointer"
+            className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/45 hover:bg-black/65 backdrop-blur-md border border-white/20 text-white text-xs font-medium transition-all cursor-pointer"
           >
             {heroMuted ? (
               <>
-                <VolumeX className="w-3.5 h-3.5 text-white/70" />
-                <span className="text-[11px]">Unmute Drone Atmosphere</span>
+                <VolumeX className="w-3.5 h-3.5 text-stone-300" />
+                <span className="text-[11px] text-stone-200 hidden sm:inline">Unmute Atmosphere</span>
               </>
             ) : (
               <>
-                <Volume2 className="w-3.5 h-3.5 text-[#EA580C]" />
-                <span className="text-[11px] text-[#FB923C]">Audio Active</span>
+                <Volume2 className="w-3.5 h-3.5 text-[#B38F68]" />
+                <span className="text-[11px] text-[#B38F68] hidden sm:inline">Audio Active</span>
               </>
             )}
           </button>
         </div>
 
-        {/* Hero Narrative & Dual Action Buttons */}
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 py-16 sm:py-24 my-auto">
+        {/* Hero Narrative & Exactly 2 Action Buttons */}
+        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 py-16 sm:py-20 my-auto">
           <div className="max-w-3xl">
-            <span className="inline-block px-3 py-1 rounded bg-[#EA580C]/90 text-white font-sans text-xs font-bold tracking-[0.2em] uppercase mb-4 shadow-md">
-              02 / THE 6-STEP SELLER BLUEPRINT
-            </span>
-            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white font-bold leading-[1.12] tracking-tight mb-6 drop-shadow-md">
-              How We Sell Oklahoma City Homes for <span className="italic font-normal text-[#FDBA74]">Maximum Net Proceeds</span>.
+            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl !text-white font-bold leading-[1.12] tracking-tight mb-6 drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]">
+              How We Sell Oklahoma City Homes for <span className="italic font-normal text-[#B38F68]">Maximum Net Proceeds</span>.
             </h1>
-            <p className="font-sans text-base sm:text-lg text-white/90 font-light leading-relaxed max-w-2xl mb-10 drop-shadow">
+            <p className="font-sans text-base sm:text-lg !text-stone-200 font-normal leading-relaxed max-w-2xl mb-8 drop-shadow-[0_1px_6px_rgba(0,0,0,0.7)]">
               From pre-listing architectural media and 350+ portal syndication to data-backed pricing and 24/7 negotiation—here is the exact 6-phase playbook we execute for your property.
             </p>
 
-            {/* Dual Action Buttons */}
+            {/* Exactly 2 Action Buttons */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5">
               <button
                 type="button"
                 onClick={onOpenValuation}
-                className="px-8 py-4 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-300 shadow-xl shadow-[#EA580C]/40 hover:shadow-2xl hover:scale-[1.02] cursor-pointer flex items-center justify-center gap-3 text-center"
+                className="px-8 py-4 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-300 shadow-xl shadow-[#B38F68]/35 hover:shadow-2xl hover:scale-[1.02] cursor-pointer flex items-center justify-center gap-3 text-center"
               >
                 <span>Request Your Confidential Home Valuation</span>
                 <ArrowRight className="w-4 h-4" />
@@ -586,52 +596,11 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
 
               <button
                 type="button"
-                onClick={() => scrollToSection('section-reels')}
-                className="px-8 py-4 bg-white/15 hover:bg-white/25 text-white backdrop-blur-md border border-white/30 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-300 shadow-lg cursor-pointer flex items-center justify-center gap-2.5 text-center"
+                onClick={() => scrollToSection('section-processes')}
+                className="px-8 py-4 bg-black/40 hover:bg-[#FAF9F6] hover:text-[#1B1D21] text-white border border-white/30 backdrop-blur-md rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-300 shadow-md cursor-pointer flex items-center justify-center gap-2.5 text-center"
               >
-                <Play className="w-4 h-4 fill-white text-white" />
-                <span>Watch Our 6-Phase Selling Video</span>
+                <span>Explore The 6-Step Blueprint</span>
               </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Trust Badges Strip (Hero Footer) */}
-        <div className="relative z-10 w-full border-t border-white/15 bg-black/40 backdrop-blur-md py-4 sm:py-5">
-          <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center divide-x-0 md:divide-x divide-white/15">
-              <div className="px-2">
-                <span className="block font-serif text-xl sm:text-2xl font-bold text-white tracking-tight">
-                  $70M+
-                </span>
-                <span className="text-[11px] sm:text-xs uppercase tracking-wider text-white/70 font-sans">
-                  Volume Sold
-                </span>
-              </div>
-              <div className="px-2">
-                <span className="block font-serif text-xl sm:text-2xl font-bold text-white tracking-tight">
-                  370+
-                </span>
-                <span className="text-[11px] sm:text-xs uppercase tracking-wider text-white/70 font-sans">
-                  Career Closings
-                </span>
-              </div>
-              <div className="px-2">
-                <span className="block font-serif text-xl sm:text-2xl font-bold text-[#FB923C] tracking-tight">
-                  99.4%
-                </span>
-                <span className="text-[11px] sm:text-xs uppercase tracking-wider text-white/70 font-sans">
-                  Sale-to-List Ratio
-                </span>
-              </div>
-              <div className="px-2">
-                <span className="block font-serif text-xl sm:text-2xl font-bold text-white tracking-tight">
-                  100% Risk-Free
-                </span>
-                <span className="text-[11px] sm:text-xs uppercase tracking-wider text-[#FDBA74] font-sans font-semibold">
-                  Cancel-Anytime Guarantee
-                </span>
-              </div>
             </div>
           </div>
         </div>
@@ -642,7 +611,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
         SECTION 2: STICKY SECTION SUB-NAVIGATION RIBBON
         ========================================================================
       */}
-      <div className="sticky top-0 z-40 w-full bg-[#002D61] text-white border-b border-white/15 shadow-md backdrop-blur-md">
+      <div className="sticky top-0 z-40 w-full bg-[#1B1D21] text-white border-b border-white/15 shadow-md backdrop-blur-md">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           <div className="flex items-center justify-between overflow-x-auto no-scrollbar py-3.5 gap-2 sm:gap-4 text-xs font-semibold uppercase tracking-wider whitespace-nowrap">
             {[
@@ -661,7 +630,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                 onClick={() => scrollToSection(item.id)}
                 className={`px-3 py-1.5 rounded-full transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
                   activeSection === item.key
-                    ? 'bg-[#EA580C] text-white font-bold shadow-md'
+                    ? 'bg-[#B38F68] text-white font-bold shadow-md'
                     : 'text-white/80 hover:text-white hover:bg-white/10'
                 }`}
               >
@@ -673,7 +642,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
             <button
               type="button"
               onClick={onOpenValuation}
-              className="hidden lg:flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#EA580C] hover:bg-[#C2410C] text-white text-[11px] font-bold tracking-wider uppercase transition-colors cursor-pointer shadow-sm ml-auto"
+              className="hidden lg:flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#B38F68] hover:bg-[#9E7A56] text-white text-[11px] font-bold tracking-wider uppercase transition-colors cursor-pointer shadow-sm ml-auto"
             >
               <span>Instant Appraisal</span>
               <ArrowUpRight className="w-3 h-3" />
@@ -687,14 +656,14 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
         SECTION 3: THE 6 CORE SELLING PROCESSES (THE MASTER FRAMEWORK)
         ========================================================================
       */}
-      <section id="section-processes" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/25">
+      <section id="section-processes" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#B38F68]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Section Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-3">
               The Master Selling Playbook
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B1D21] leading-tight mb-5">
               The 6 Core Selling Processes
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
@@ -711,17 +680,17 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                 onClick={() => setActiveProcessTab(idx)}
                 className={`p-3.5 sm:p-4 rounded-xl text-left transition-all duration-300 cursor-pointer flex flex-col justify-between border ${
                   activeProcessTab === idx
-                    ? 'bg-[#002D61] text-white border-[#002D61] shadow-lg scale-[1.02]'
-                    : 'bg-white text-[#002D61] border-[#E5E0D8] hover:border-[#EA580C]/50 hover:bg-[#F5EFE6]'
+                    ? 'bg-[#1B1D21] text-white border-[#1B1D21] shadow-lg scale-[1.02]'
+                    : 'bg-white text-[#1B1D21] border-[#E6E2DA] hover:border-[#B38F68]/50 hover:bg-[#F4F1EB]'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className={`text-xs font-mono font-bold px-2 py-0.5 rounded ${
-                    activeProcessTab === idx ? 'bg-[#EA580C] text-white' : 'bg-[#FAF9F6] text-[#EA580C] border border-[#EA580C]/30'
+                    activeProcessTab === idx ? 'bg-[#B38F68] text-white' : 'bg-[#FAF9F6] text-[#B38F68] border border-[#B38F68]/30'
                   }`}>
                     {proc.number}
                   </span>
-                  {activeProcessTab === idx && <Sparkles className="w-3.5 h-3.5 text-[#FB923C]" />}
+                  {activeProcessTab === idx && <Sparkles className="w-3.5 h-3.5 text-[#B38F68]" />}
                 </div>
                 <h4 className="font-serif text-xs sm:text-sm font-bold line-clamp-2">
                   {proc.title}
@@ -731,18 +700,18 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
           </div>
 
           {/* Active Process Deep-Dive Container */}
-          <div className="bg-[#F5EFE6] border border-[#EA580C]/30 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm">
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-[#002D61]/15 mb-8">
+          <div className="bg-[#F4F1EB] border border-[#B38F68]/30 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-[#1B1D21]/15 mb-8">
               <div className="max-w-2xl">
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="px-3 py-1 rounded bg-[#002D61] text-white text-xs font-bold tracking-widest uppercase">
+                  <span className="px-3 py-1 rounded bg-[#1B1D21] text-white text-xs font-bold tracking-widest uppercase">
                     Process {PROCESSES_DATA[activeProcessTab].number}
                   </span>
-                  <span className="text-xs uppercase font-sans font-bold tracking-wider text-[#EA580C]">
+                  <span className="text-xs uppercase font-sans font-bold tracking-wider text-[#B38F68]">
                     {PROCESSES_DATA[activeProcessTab].subtitle}
                   </span>
                 </div>
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#002D61] mb-3">
+                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#1B1D21] mb-3">
                   {PROCESSES_DATA[activeProcessTab].title}
                 </h3>
                 <p className="font-sans text-sm sm:text-base text-[#4B5563] leading-relaxed">
@@ -754,7 +723,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                 <button
                   type="button"
                   onClick={onOpenConsultation}
-                  className="px-6 py-3 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-md cursor-pointer flex items-center gap-2"
+                  className="px-6 py-3 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-md cursor-pointer flex items-center gap-2"
                 >
                   <span>Discuss This Phase</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -767,16 +736,16 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
               {PROCESSES_DATA[activeProcessTab].subDeliverables.map((item) => (
                 <div
                   key={item.num}
-                  className="bg-white rounded-2xl p-5 sm:p-6 border border-[#E5E0D8] hover:border-[#EA580C] transition-all duration-300 shadow-2xs hover:shadow-md flex flex-col justify-between"
+                  className="bg-white rounded-2xl p-5 sm:p-6 border border-[#E6E2DA] hover:border-[#B38F68] transition-all duration-300 shadow-2xs hover:shadow-md flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <span className="px-2.5 py-1 rounded-md bg-[#FAF9F6] border border-[#EA580C]/30 text-xs font-mono font-bold text-[#EA580C]">
+                      <span className="px-2.5 py-1 rounded-md bg-[#FAF9F6] border border-[#B38F68]/30 text-xs font-mono font-bold text-[#B38F68]">
                         {item.num}
                       </span>
                       <CheckCircle2 className="w-4 h-4 text-[#16A34A]" />
                     </div>
-                    <h5 className="font-serif text-base font-bold text-[#002D61] mb-2 leading-snug">
+                    <h5 className="font-serif text-base font-bold text-[#1B1D21] mb-2 leading-snug">
                       {item.name}
                     </h5>
                     <p className="font-sans text-xs sm:text-sm text-[#4B5563] leading-relaxed">
@@ -795,12 +764,12 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
         SECTION 4: VIDEO SHOWCASE & 9:16 VERTICAL REELS HUB
         ========================================================================
       */}
-      <section id="section-reels" className="w-full py-20 sm:py-28 bg-[#001D40] text-white border-b border-white/10">
+      <section id="section-reels" className="w-full py-20 sm:py-28 bg-[#1B1D21] text-white border-b border-white/10">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EA580C]/20 border border-[#EA580C]/40 text-[#FB923C] text-xs font-bold uppercase tracking-widest mb-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B38F68]/20 border border-[#B38F68]/40 text-[#B38F68] text-xs font-bold uppercase tracking-widest mb-3">
                 <Video className="w-3.5 h-3.5" />
                 <span>60-Second Seller Masterclass</span>
               </div>
@@ -822,7 +791,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                   setSelectedReelIndex(index);
                   setReelPlaying(true);
                 }}
-                className="group relative rounded-2xl overflow-hidden aspect-[9/16] bg-[#0A192F] border border-white/20 hover:border-[#EA580C] shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between p-4"
+                className="group relative rounded-2xl overflow-hidden aspect-[9/16] bg-[#1B1D21] border border-white/20 hover:border-[#B38F68] shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between p-4"
               >
                 {/* Background image */}
                 <div
@@ -836,14 +805,14 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                   <span className="px-2 py-0.5 rounded bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold text-white border border-white/20">
                     Reel 0{reel.id}
                   </span>
-                  <span className="px-2 py-0.5 rounded bg-[#EA580C] text-[10px] font-bold text-white tracking-wider">
+                  <span className="px-2 py-0.5 rounded bg-[#B38F68] text-[10px] font-bold text-white tracking-wider">
                     {reel.duration}
                   </span>
                 </div>
 
                 {/* Center Play Button Overlay */}
                 <div className="relative z-10 my-auto self-center">
-                  <div className="w-12 h-12 rounded-full bg-white/25 backdrop-blur-md border border-white/50 flex items-center justify-center text-white group-hover:bg-[#EA580C] group-hover:scale-110 transition-all duration-300 shadow-xl">
+                  <div className="w-12 h-12 rounded-full bg-white/25 backdrop-blur-md border border-white/50 flex items-center justify-center text-white group-hover:bg-[#B38F68] group-hover:scale-110 transition-all duration-300 shadow-xl">
                     <Play className="w-5 h-5 fill-white text-white ml-0.5" />
                   </div>
                 </div>
@@ -855,7 +824,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                   </h4>
                   <div className="flex items-center justify-between text-[11px] text-white/70">
                     <span>{reel.views} views</span>
-                    <span className="text-[#FB923C] font-semibold underline underline-offset-2">Watch Now</span>
+                    <span className="text-[#B38F68] font-semibold underline underline-offset-2">Watch Now</span>
                   </div>
                 </div>
               </div>
@@ -867,7 +836,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
       {/* Reel Modal Player */}
       {selectedReelIndex !== null && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-          <div className="relative w-full max-w-sm sm:max-w-md bg-[#001D40] rounded-3xl overflow-hidden border border-white/30 shadow-2xl">
+          <div className="relative w-full max-w-sm sm:max-w-md bg-[#1B1D21] rounded-3xl overflow-hidden border border-white/30 shadow-2xl">
             {/* Close Button */}
             <button
               type="button"
@@ -912,10 +881,10 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
               <div className="absolute bottom-0 inset-x-0 p-5 z-10 bg-gradient-to-t from-black via-black/90 to-transparent">
                 {/* Progress bar simulation */}
                 <div className="w-full h-1 bg-white/30 rounded-full mb-3 overflow-hidden">
-                  <div className="h-full bg-[#EA580C] w-2/3 animate-pulse" />
+                  <div className="h-full bg-[#B38F68] w-2/3 animate-pulse" />
                 </div>
 
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#FB923C] block mb-1">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#B38F68] block mb-1">
                   Masterclass Takeaway
                 </span>
                 <h4 className="font-serif text-base font-bold text-white mb-2 leading-snug">
@@ -932,7 +901,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                       setSelectedReelIndex(null);
                       onOpenConsultation();
                     }}
-                    className="flex-1 py-2.5 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-md text-center"
+                    className="flex-1 py-2.5 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-md text-center"
                   >
                     Consult With Brian
                   </button>
@@ -955,14 +924,14 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
         SECTION 5: PRE-LISTING ROOM-BY-ROOM HIGH-ROI CHECKLIST
         ========================================================================
       */}
-      <section id="section-checklist" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/25">
+      <section id="section-checklist" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#B38F68]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 sm:mb-16">
             <div className="max-w-2xl">
-              <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
+              <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-3">
                 Pre-Flight Preparation Roadmap
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-4">
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B1D21] leading-tight mb-4">
                 Room-by-Room High-ROI Checklist
               </h2>
               <p className="font-sans text-sm sm:text-base text-[#4B5563] leading-relaxed">
@@ -971,18 +940,18 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
             </div>
 
             {/* Interactive Readiness Score Meter */}
-            <div className="bg-[#F5EFE6] border border-[#EA580C]/30 rounded-2xl p-5 sm:p-6 min-w-[280px]">
+            <div className="bg-[#F4F1EB] border border-[#B38F68]/30 rounded-2xl p-5 sm:p-6 min-w-[280px]">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#002D61]">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#1B1D21]">
                   Listing Readiness Score
                 </span>
-                <span className="font-mono text-lg font-bold text-[#EA580C]">
+                <span className="font-mono text-lg font-bold text-[#B38F68]">
                   {checklistScore}%
                 </span>
               </div>
-              <div className="w-full h-2.5 bg-[#E5E0D8] rounded-full overflow-hidden mb-2">
+              <div className="w-full h-2.5 bg-[#E6E2DA] rounded-full overflow-hidden mb-2">
                 <div
-                  className="h-full bg-gradient-to-r from-[#EA580C] to-[#16A34A] transition-all duration-500"
+                  className="h-full bg-gradient-to-r from-[#B38F68] to-[#16A34A] transition-all duration-500"
                   style={{ width: `${checklistScore}%` }}
                 />
               </div>
@@ -997,13 +966,13 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
             {CHECKLIST_SECTIONS.map((sec, sIdx) => (
               <div
                 key={sIdx}
-                className="bg-white rounded-2xl p-6 sm:p-8 border border-[#E5E0D8] shadow-xs"
+                className="bg-white rounded-2xl p-6 sm:p-8 border border-[#E6E2DA] shadow-xs"
               >
                 <div className="flex items-center gap-3 pb-4 mb-4 border-b border-[#FAF9F6]">
-                  <div className="w-8 h-8 rounded-full bg-[#EA580C]/10 text-[#EA580C] flex items-center justify-center font-serif font-bold text-sm">
+                  <div className="w-8 h-8 rounded-full bg-[#B38F68]/10 text-[#B38F68] flex items-center justify-center font-serif font-bold text-sm">
                     0{sIdx + 1}
                   </div>
-                  <h3 className="font-serif text-lg sm:text-xl font-bold text-[#002D61]">
+                  <h3 className="font-serif text-lg sm:text-xl font-bold text-[#1B1D21]">
                     {sec.category}
                   </h3>
                 </div>
@@ -1018,7 +987,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                         className={`p-3.5 rounded-xl border transition-all duration-200 cursor-pointer flex items-start gap-3 select-none ${
                           isDone
                             ? 'bg-[#F0FDF4] border-[#86EFAC]/60 text-[#14532D]'
-                            : 'bg-[#FAF9F6] border-[#E5E0D8] text-[#374151] hover:border-[#EA580C]/40'
+                            : 'bg-[#FAF9F6] border-[#E6E2DA] text-[#374151] hover:border-[#B38F68]/40'
                         }`}
                       >
                         <div
@@ -1029,10 +998,10 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                           {isDone && <Check className="w-3.5 h-3.5 stroke-[3]" />}
                         </div>
                         <div className="flex-1">
-                          <p className={`text-xs sm:text-sm font-medium ${isDone ? 'line-through text-[#4B5563]' : 'text-[#002D61]'}`}>
+                          <p className={`text-xs sm:text-sm font-medium ${isDone ? 'line-through text-[#4B5563]' : 'text-[#1B1D21]'}`}>
                             {item.title}
                           </p>
-                          <span className="text-[11px] font-mono text-[#EA580C] font-semibold block mt-0.5">
+                          <span className="text-[11px] font-mono text-[#B38F68] font-semibold block mt-0.5">
                             {item.impact}
                           </span>
                         </div>
@@ -1051,14 +1020,14 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
         SECTION 6: OKLAHOMA LOCAL REALITIES (LOCAL AUTHORITY)
         ========================================================================
       */}
-      <section id="section-realities" className="w-full py-20 sm:py-28 bg-[#F5EFE6] border-b border-[#EA580C]/25">
+      <section id="section-realities" className="w-full py-20 sm:py-28 bg-[#F4F1EB] border-b border-[#B38F68]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Section Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-3">
               Forensic Local Real Estate Defense
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B1D21] leading-tight mb-5">
               Oklahoma Local Realities
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
@@ -1069,22 +1038,22 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
           {/* 3 Major Local Realities Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {/* Reality 1: TRRA Period */}
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E5E0D8] shadow-sm flex flex-col justify-between">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E6E2DA] shadow-sm flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#002D61] text-[#FB923C] flex items-center justify-center mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-[#1B1D21] text-[#B38F68] flex items-center justify-center mb-6">
                   <FileCheck className="w-6 h-6" />
                 </div>
-                <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#EA580C] block mb-2">
+                <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#B38F68] block mb-2">
                   OREC Contract Standard
                 </span>
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#002D61] mb-3">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1B1D21] mb-3">
                   The 10-Day TRRA Period
                 </h3>
                 <p className="font-sans text-xs sm:text-sm text-[#4B5563] leading-relaxed mb-4">
                   Under standard Oklahoma Real Estate Commission contracts, buyers have 10 calendar days to conduct home inspections and issue a Treatment, Repair, and Replacement (TRRA) request.
                 </p>
-                <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#EA580C]/20 text-xs text-[#374151] space-y-2 mb-6">
-                  <div className="font-bold text-[#002D61]">Our Defense Protocol:</div>
+                <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#B38F68]/20 text-xs text-[#374151] space-y-2 mb-6">
+                  <div className="font-bold text-[#1B1D21]">Our Defense Protocol:</div>
                   <ul className="list-disc pl-4 space-y-1 text-xs text-[#4B5563]">
                     <li>Pre-listing HVAC & electrical checkup to identify flags first.</li>
                     <li>Vetted contractor quotes ready within 24 hours of TRRA delivery.</li>
@@ -1098,22 +1067,22 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
             </div>
 
             {/* Reality 2: Hail Storm Damage & Roof Claims */}
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E5E0D8] shadow-sm flex flex-col justify-between">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E6E2DA] shadow-sm flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#002D61] text-[#FB923C] flex items-center justify-center mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-[#1B1D21] text-[#B38F68] flex items-center justify-center mb-6">
                   <AlertCircle className="w-6 h-6" />
                 </div>
-                <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#EA580C] block mb-2">
+                <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#B38F68] block mb-2">
                   Severe Weather Reality
                 </span>
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#002D61] mb-3">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1B1D21] mb-3">
                   Hail Damage & Roof Claims
                 </h3>
                 <p className="font-sans text-xs sm:text-sm text-[#4B5563] leading-relaxed mb-4">
                   Spring hail storms frequently impact Oklahoma roofs. If a buyer's insurance inspector flags unaddressed hail bruises, lender financing can be held hostage right before closing.
                 </p>
-                <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#EA580C]/20 text-xs text-[#374151] space-y-2 mb-6">
-                  <div className="font-bold text-[#002D61]">Our Defense Protocol:</div>
+                <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#B38F68]/20 text-xs text-[#374151] space-y-2 mb-6">
+                  <div className="font-bold text-[#1B1D21]">Our Defense Protocol:</div>
                   <ul className="list-disc pl-4 space-y-1 text-xs text-[#4B5563]">
                     <li>Pre-listing drone roof scan by FAA Part-107 pilots.</li>
                     <li>Direct liaison with your insurance adjuster to settle claims early.</li>
@@ -1127,22 +1096,22 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
             </div>
 
             {/* Reality 3: Red Clay Soil & Foundation Shifts */}
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E5E0D8] shadow-sm flex flex-col justify-between">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E6E2DA] shadow-sm flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#002D61] text-[#FB923C] flex items-center justify-center mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-[#1B1D21] text-[#B38F68] flex items-center justify-center mb-6">
                   <Compass className="w-6 h-6" />
                 </div>
-                <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#EA580C] block mb-2">
+                <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#B38F68] block mb-2">
                   Oklahoma Geological Factor
                 </span>
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#002D61] mb-3">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1B1D21] mb-3">
                   Red Clay Soil & Foundations
                 </h3>
                 <p className="font-sans text-xs sm:text-sm text-[#4B5563] leading-relaxed mb-4">
                   Oklahoma's expansive red Permian clay expands in wet seasons and shrinks severely in summer heat, creating cosmetic dry-wall hairline cracks that terrify uneducated buyers.
                 </p>
-                <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#EA580C]/20 text-xs text-[#374151] space-y-2 mb-6">
-                  <div className="font-bold text-[#002D61]">Our Defense Protocol:</div>
+                <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#B38F68]/20 text-xs text-[#374151] space-y-2 mb-6">
+                  <div className="font-bold text-[#1B1D21]">Our Defense Protocol:</div>
                   <ul className="list-disc pl-4 space-y-1 text-xs text-[#4B5563]">
                     <li>Differentiate harmless seasonal settlement from structural defects.</li>
                     <li>Provide existing foundation piering warranties directly in MLS files.</li>
@@ -1163,14 +1132,14 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
         SECTION 7: INTERACTIVE SELLER NET PROCEEDS CALCULATOR
         ========================================================================
       */}
-      <section id="section-calculator" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/25">
+      <section id="section-calculator" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#B38F68]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Section Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-3">
               Transparency & Financial Modeling
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B1D21] leading-tight mb-5">
               Interactive Seller Net Proceeds Calculator
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
@@ -1181,18 +1150,18 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
           {/* Calculator Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Left Inputs Panel */}
-            <div className="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-8 border border-[#E5E0D8] shadow-sm space-y-6">
-              <h3 className="font-serif text-xl font-bold text-[#002D61] pb-3 border-b border-[#FAF9F6]">
+            <div className="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-8 border border-[#E6E2DA] shadow-sm space-y-6">
+              <h3 className="font-serif text-xl font-bold text-[#1B1D21] pb-3 border-b border-[#FAF9F6]">
                 Enter Property Figures
               </h3>
 
               {/* Estimated Sale Price Slider */}
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-[#002D61]">
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#1B1D21]">
                     Estimated Selling Price
                   </label>
-                  <span className="font-mono text-lg font-bold text-[#EA580C]">
+                  <span className="font-mono text-lg font-bold text-[#B38F68]">
                     ${calcPrice.toLocaleString()}
                   </span>
                 </div>
@@ -1203,7 +1172,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                   step="10000"
                   value={calcPrice}
                   onChange={(e) => setCalcPrice(Number(e.target.value))}
-                  className="w-full accent-[#EA580C] cursor-pointer"
+                  className="w-full accent-[#B38F68] cursor-pointer"
                 />
                 <div className="flex justify-between text-[11px] text-[#6B7280] mt-1 font-mono">
                   <span>$200,000</span>
@@ -1215,10 +1184,10 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
               {/* Existing Mortgage Balance */}
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-[#002D61]">
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#1B1D21]">
                     Existing Mortgage Payoff
                   </label>
-                  <span className="font-mono text-lg font-bold text-[#002D61]">
+                  <span className="font-mono text-lg font-bold text-[#1B1D21]">
                     ${calcMortgage.toLocaleString()}
                   </span>
                 </div>
@@ -1229,7 +1198,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                   step="5000"
                   value={calcMortgage}
                   onChange={(e) => setCalcMortgage(Number(e.target.value))}
-                  className="w-full accent-[#002D61] cursor-pointer"
+                  className="w-full accent-[#1B1D21] cursor-pointer"
                 />
                 <div className="flex justify-between text-[11px] text-[#6B7280] mt-1 font-mono">
                   <span>$0 (Owned Free & Clear)</span>
@@ -1240,10 +1209,10 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
               {/* Commission Percentage */}
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-[#002D61]">
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#1B1D21]">
                     Total Brokerage Commission
                   </label>
-                  <span className="font-mono text-lg font-bold text-[#002D61]">
+                  <span className="font-mono text-lg font-bold text-[#1B1D21]">
                     {calcCommissionPct.toFixed(1)}%
                   </span>
                 </div>
@@ -1255,8 +1224,8 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                       onClick={() => setCalcCommissionPct(rate)}
                       className={`flex-1 py-2 rounded-xl text-xs font-bold font-mono transition-all cursor-pointer border ${
                         calcCommissionPct === rate
-                          ? 'bg-[#002D61] text-white border-[#002D61]'
-                          : 'bg-[#FAF9F6] text-[#002D61] border-[#E5E0D8] hover:bg-[#F5EFE6]'
+                          ? 'bg-[#1B1D21] text-white border-[#1B1D21]'
+                          : 'bg-[#FAF9F6] text-[#1B1D21] border-[#E6E2DA] hover:bg-[#F4F1EB]'
                       }`}
                     >
                       {rate.toFixed(1)}%
@@ -1272,9 +1241,9 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
             </div>
 
             {/* Right Output Panel */}
-            <div className="lg:col-span-6 bg-[#001D40] text-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-white/20 shadow-xl flex flex-col justify-between">
+            <div className="lg:col-span-6 bg-[#1B1D21] text-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-white/20 shadow-xl flex flex-col justify-between">
               <div>
-                <span className="text-[11px] uppercase tracking-widest font-bold text-[#FB923C] block mb-2">
+                <span className="text-[11px] uppercase tracking-widest font-bold text-[#B38F68] block mb-2">
                   Estimated Walk-Away Equity
                 </span>
                 <div className="mb-6">
@@ -1289,7 +1258,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                 {/* Progress bar */}
                 <div className="w-full h-3 bg-white/15 rounded-full overflow-hidden mb-8">
                   <div
-                    className="h-full bg-gradient-to-r from-[#EA580C] to-[#16A34A] transition-all duration-300"
+                    className="h-full bg-gradient-to-r from-[#B38F68] to-[#16A34A] transition-all duration-300"
                     style={{ width: `${Math.min(100, Math.max(10, netProceedsPercentage))}%` }}
                   />
                 </div>
@@ -1327,7 +1296,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                 <button
                   type="button"
                   onClick={onOpenValuation}
-                  className="w-full py-4 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer flex items-center justify-center gap-2 text-center"
+                  className="w-full py-4 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer flex items-center justify-center gap-2 text-center"
                 >
                   <span>Request Full Formal CMA & Title Audit</span>
                   <ArrowRight className="w-4 h-4" />
@@ -1343,14 +1312,14 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
         SECTION 8: REAL DEAL CASE STUDIES (BEFORE & AFTER)
         ========================================================================
       */}
-      <section id="section-cases" className="w-full py-20 sm:py-28 bg-[#F5EFE6] border-b border-[#EA580C]/25">
+      <section id="section-cases" className="w-full py-20 sm:py-28 bg-[#F4F1EB] border-b border-[#B38F68]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Section Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-3">
               Documented Field Results
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B1D21] leading-tight mb-5">
               Real Deal Case Studies
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
@@ -1361,9 +1330,9 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
           {/* Case Studies 2-Column Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Case Study 1: The Expired Listing Turnaround in Edmond */}
-            <div className="bg-white rounded-3xl overflow-hidden border border-[#E5E0D8] shadow-sm flex flex-col justify-between">
+            <div className="bg-white rounded-3xl overflow-hidden border border-[#E6E2DA] shadow-sm flex flex-col justify-between">
               <div>
-                <div className="relative h-64 w-full bg-[#002D61] overflow-hidden">
+                <div className="relative h-64 w-full bg-[#1B1D21] overflow-hidden">
                   <img
                     src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
                     alt="Edmond Expired Listing Turnaround"
@@ -1397,8 +1366,8 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                   </div>
 
                   {/* Solution */}
-                  <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#EA580C]/30 text-xs sm:text-sm">
-                    <strong className="text-[#EA580C] block mb-1 uppercase text-[11px] tracking-wider">
+                  <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#B38F68]/30 text-xs sm:text-sm">
+                    <strong className="text-[#B38F68] block mb-1 uppercase text-[11px] tracking-wider">
                       The Brian Jamison Solution:
                     </strong>
                     <p className="text-[#374151] leading-relaxed">
@@ -1422,7 +1391,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                 <button
                   type="button"
                   onClick={onOpenConsultation}
-                  className="w-full py-3 bg-[#002D61] hover:bg-[#001D40] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors cursor-pointer text-center"
+                  className="w-full py-3 bg-[#1B1D21] hover:bg-[#1B1D21] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors cursor-pointer text-center"
                 >
                   Turn Around Your Stale Listing
                 </button>
@@ -1430,9 +1399,9 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
             </div>
 
             {/* Case Study 2: Nichols Hills Luxury Estate */}
-            <div className="bg-white rounded-3xl overflow-hidden border border-[#E5E0D8] shadow-sm flex flex-col justify-between">
+            <div className="bg-white rounded-3xl overflow-hidden border border-[#E6E2DA] shadow-sm flex flex-col justify-between">
               <div>
-                <div className="relative h-64 w-full bg-[#002D61] overflow-hidden">
+                <div className="relative h-64 w-full bg-[#1B1D21] overflow-hidden">
                   <img
                     src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80"
                     alt="Nichols Hills Luxury Estate"
@@ -1466,8 +1435,8 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                   </div>
 
                   {/* Solution */}
-                  <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#EA580C]/30 text-xs sm:text-sm">
-                    <strong className="text-[#EA580C] block mb-1 uppercase text-[11px] tracking-wider">
+                  <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#B38F68]/30 text-xs sm:text-sm">
+                    <strong className="text-[#B38F68] block mb-1 uppercase text-[11px] tracking-wider">
                       The Brian Jamison Solution:
                     </strong>
                     <p className="text-[#374151] leading-relaxed">
@@ -1491,7 +1460,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                 <button
                   type="button"
                   onClick={onOpenValuation}
-                  className="w-full py-3 bg-[#002D61] hover:bg-[#001D40] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors cursor-pointer text-center"
+                  className="w-full py-3 bg-[#1B1D21] hover:bg-[#1B1D21] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors cursor-pointer text-center"
                 >
                   Price Your Luxury Estate
                 </button>
@@ -1506,14 +1475,14 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
         SECTION 9: COMPARISON MATRIX: BRIAN JAMISON VS. SOLO AGENT VS. IBUYER
         ========================================================================
       */}
-      <section id="section-comparison" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/25">
+      <section id="section-comparison" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#B38F68]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Section Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-3">
               Fiduciary Transparency
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B1D21] leading-tight mb-5">
               Representation Matrix
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
@@ -1522,16 +1491,16 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
           </div>
 
           {/* Structured Table */}
-          <div className="overflow-x-auto rounded-3xl border border-[#E5E0D8] bg-white shadow-sm">
+          <div className="overflow-x-auto rounded-3xl border border-[#E6E2DA] bg-white shadow-sm">
             <table className="w-full text-left border-collapse min-w-[700px]">
               <thead>
-                <tr className="border-b border-[#E5E0D8] bg-[#F5EFE6]">
-                  <th className="p-5 sm:p-6 text-xs font-bold uppercase tracking-wider text-[#002D61] w-1/4">
+                <tr className="border-b border-[#E6E2DA] bg-[#F4F1EB]">
+                  <th className="p-5 sm:p-6 text-xs font-bold uppercase tracking-wider text-[#1B1D21] w-1/4">
                     Listing Criteria
                   </th>
-                  <th className="p-5 sm:p-6 text-xs font-bold uppercase tracking-wider text-white bg-[#002D61] w-1/3 border-x border-[#002D61]">
+                  <th className="p-5 sm:p-6 text-xs font-bold uppercase tracking-wider text-white bg-[#1B1D21] w-1/3 border-x border-[#1B1D21]">
                     <div className="flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-[#FB923C]" />
+                      <Sparkles className="w-4 h-4 text-[#B38F68]" />
                       <span>Brian Jamison (Salt Real Estate)</span>
                     </div>
                   </th>
@@ -1543,12 +1512,12 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E5E0D8] text-xs sm:text-sm">
+              <tbody className="divide-y divide-[#E6E2DA] text-xs sm:text-sm">
                 <tr>
-                  <td className="p-5 font-semibold text-[#002D61]">
+                  <td className="p-5 font-semibold text-[#1B1D21]">
                     Upfront Marketing Budget
                   </td>
-                  <td className="p-5 bg-[#002D61]/5 border-x border-[#002D61]/15 font-bold text-[#002D61]">
+                  <td className="p-5 bg-[#1B1D21]/5 border-x border-[#1B1D21]/15 font-bold text-[#1B1D21]">
                     $3,500+ out of pocket (4K video, drone, paid Meta ads, 350+ portals)
                   </td>
                   <td className="p-5 text-[#4B5563]">
@@ -1560,10 +1529,10 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                 </tr>
 
                 <tr>
-                  <td className="p-5 font-semibold text-[#002D61]">
+                  <td className="p-5 font-semibold text-[#1B1D21]">
                     3D Matterport & 4K Drone
                   </td>
-                  <td className="p-5 bg-[#002D61]/5 border-x border-[#002D61]/15 font-bold text-[#16A34A] flex items-center gap-2">
+                  <td className="p-5 bg-[#1B1D21]/5 border-x border-[#1B1D21]/15 font-bold text-[#16A34A] flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 shrink-0" />
                     <span>Included Standard on Every Listing</span>
                   </td>
@@ -1576,10 +1545,10 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                 </tr>
 
                 <tr>
-                  <td className="p-5 font-semibold text-[#002D61]">
+                  <td className="p-5 font-semibold text-[#1B1D21]">
                     Average Sale-to-List Ratio
                   </td>
-                  <td className="p-5 bg-[#002D61]/5 border-x border-[#002D61]/15 font-bold text-[#EA580C] text-base font-mono">
+                  <td className="p-5 bg-[#1B1D21]/5 border-x border-[#1B1D21]/15 font-bold text-[#B38F68] text-base font-mono">
                     99.4% List-to-Sale
                   </td>
                   <td className="p-5 text-[#4B5563] font-mono">
@@ -1591,10 +1560,10 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                 </tr>
 
                 <tr>
-                  <td className="p-5 font-semibold text-[#002D61]">
+                  <td className="p-5 font-semibold text-[#1B1D21]">
                     Hidden Fees & Deductions
                   </td>
-                  <td className="p-5 bg-[#002D61]/5 border-x border-[#002D61]/15 font-bold text-[#002D61]">
+                  <td className="p-5 bg-[#1B1D21]/5 border-x border-[#1B1D21]/15 font-bold text-[#1B1D21]">
                     Zero hidden fees. Standard negotiated commission only.
                   </td>
                   <td className="p-5 text-[#4B5563]">
@@ -1606,10 +1575,10 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                 </tr>
 
                 <tr>
-                  <td className="p-5 font-semibold text-[#002D61]">
+                  <td className="p-5 font-semibold text-[#1B1D21]">
                     Contract Flexibility & Risk
                   </td>
-                  <td className="p-5 bg-[#002D61]/5 border-x border-[#002D61]/15 font-bold text-[#16A34A] flex items-center gap-2">
+                  <td className="p-5 bg-[#1B1D21]/5 border-x border-[#1B1D21]/15 font-bold text-[#16A34A] flex items-center gap-2">
                     <ShieldCheck className="w-4 h-4 shrink-0" />
                     <span>100% Risk-Free Cancel-Anytime Pledge</span>
                   </td>
@@ -1622,10 +1591,10 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                 </tr>
 
                 <tr>
-                  <td className="p-5 font-semibold text-[#002D61]">
+                  <td className="p-5 font-semibold text-[#1B1D21]">
                     Support Network
                   </td>
-                  <td className="p-5 bg-[#002D61]/5 border-x border-[#002D61]/15 font-bold text-[#002D61]">
+                  <td className="p-5 bg-[#1B1D21]/5 border-x border-[#1B1D21]/15 font-bold text-[#1B1D21]">
                     7-Person Specialized Machine (Coordination, Staging, Media, Legal)
                   </td>
                   <td className="p-5 text-[#4B5563]">
@@ -1646,14 +1615,14 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
         SECTION 10: FORENSIC SELLER FAQS & HIGH-CONVERTING LEAD MAGNET
         ========================================================================
       */}
-      <section id="section-faqs" className="w-full py-20 sm:py-28 bg-[#F5EFE6] border-b border-[#EA580C]/25">
+      <section id="section-faqs" className="w-full py-20 sm:py-28 bg-[#F4F1EB] border-b border-[#B38F68]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Section Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-3">
               Forensic Seller Clarifications
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B1D21] leading-tight mb-5">
               Frequently Asked Questions
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
@@ -1668,18 +1637,18 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
               return (
                 <div
                   key={idx}
-                  className="bg-white rounded-2xl border border-[#E5E0D8] overflow-hidden transition-all duration-200 shadow-2xs"
+                  className="bg-white rounded-2xl border border-[#E6E2DA] overflow-hidden transition-all duration-200 shadow-2xs"
                 >
                   <button
                     type="button"
                     onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
                     className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer select-none hover:bg-[#FAF9F6]"
                   >
-                    <span className="font-serif text-base sm:text-lg font-bold text-[#002D61]">
+                    <span className="font-serif text-base sm:text-lg font-bold text-[#1B1D21]">
                       {faq.q}
                     </span>
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform ${
-                      isOpen ? 'bg-[#EA580C] text-white rotate-180' : 'bg-[#F5EFE6] text-[#002D61]'
+                      isOpen ? 'bg-[#B38F68] text-white rotate-180' : 'bg-[#F4F1EB] text-[#1B1D21]'
                     }`}>
                       <ChevronDown className="w-4 h-4" />
                     </div>
@@ -1696,11 +1665,11 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
           </div>
 
           {/* Downloadable PDF Lead Magnet Box */}
-          <div className="bg-[#002D61] text-white rounded-3xl p-8 sm:p-12 border border-white/20 shadow-xl relative overflow-hidden mb-16">
-            <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-[#EA580C]/20 to-transparent pointer-events-none" />
+          <div className="bg-[#1B1D21] text-white rounded-3xl p-8 sm:p-12 border border-white/20 shadow-xl relative overflow-hidden mb-16">
+            <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-[#B38F68]/20 to-transparent pointer-events-none" />
 
             <div className="relative z-10 max-w-2xl">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EA580C]/20 border border-[#EA580C]/40 text-[#FB923C] text-xs font-bold uppercase tracking-widest mb-3">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B38F68]/20 border border-[#B38F68]/40 text-[#B38F68] text-xs font-bold uppercase tracking-widest mb-3">
                 <FileText className="w-3.5 h-3.5" />
                 <span>Instant Digital PDF Resource</span>
               </span>
@@ -1723,7 +1692,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                     setDownloadSuccess(true);
                     setTimeout(() => setDownloadSuccess(false), 5000);
                   }}
-                  className="px-8 py-4 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer flex items-center gap-2.5"
+                  className="px-8 py-4 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer flex items-center gap-2.5"
                 >
                   <Download className="w-4 h-4" />
                   <span>Download The Free 2026 Seller Playbook (PDF)</span>
@@ -1733,14 +1702,14 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
           </div>
 
           {/* Final Call to Action Card */}
-          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#EA580C]/30 shadow-lg text-center max-w-4xl mx-auto">
+          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#B38F68]/30 shadow-lg text-center max-w-4xl mx-auto">
             <div className="flex justify-center mb-5">
               <BrianAvatar size="lg" />
             </div>
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-2">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-2">
               Ready To Maximize Your Proceeds?
             </span>
-            <h3 className="font-serif text-2xl sm:text-4xl font-bold text-[#002D61] mb-3">
+            <h3 className="font-serif text-2xl sm:text-4xl font-bold text-[#1B1D21] mb-3">
               Schedule Your Private Seller Strategy Consultation
             </h3>
             <p className="font-sans text-sm sm:text-base text-[#6B7280] max-w-xl mx-auto mb-8">
@@ -1751,7 +1720,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
               <button
                 type="button"
                 onClick={onOpenValuation}
-                className="w-full sm:w-auto px-8 py-4 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-md cursor-pointer flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-8 py-4 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-md cursor-pointer flex items-center justify-center gap-2"
               >
                 <span>Request 3-Tier Valuation</span>
                 <ArrowRight className="w-4 h-4" />
@@ -1759,7 +1728,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
 
               <a
                 href="tel:4055133039"
-                className="w-full sm:w-auto px-8 py-4 bg-[#002D61] hover:bg-[#001D40] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-8 py-4 bg-[#1B1D21] hover:bg-[#1B1D21] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2"
               >
                 <Phone className="w-4 h-4" />
                 <span>Call Brian (405) 513-3039</span>
