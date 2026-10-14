@@ -13,6 +13,8 @@ import { Footer } from './components/Footer';
 import { InteriorPageView } from './pages/InteriorPageView';
 import { getPageByPath } from './pages/pageData';
 import { AdminLoginView } from './components/admin/AdminLoginView';
+import { AdminProvider } from './context/AdminContext';
+import { AdminToolbar } from './components/AdminToolbar';
 import { IdxTestPage } from './pages/IdxTestPage';
 import { SitemapPage } from './pages/SitemapPage';
 import {
@@ -304,6 +306,9 @@ export default function App() {
         type={legalType}
         onClose={() => setLegalType(null)}
       />
+
+      {/* Admin Floating Inline Toolbar (Only visible when admin is logged in) */}
+      <AdminToolbar onNavigate={navigate} />
     </div>
   );
 }

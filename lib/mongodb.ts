@@ -29,10 +29,15 @@ export async function connectToDatabase(): Promise<typeof mongoose> {
     const opts: mongoose.ConnectOptions = {
       bufferCommands: false,
       dbName: 'jamison_real_estate',
+      serverSelectionTimeoutMS: 2000,
+      connectTimeoutMS: 2000,
     };
 
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongooseInstance) => {
       return mongooseInstance;
+    }).catch((err) => {
+      cached.promise = null;
+      throw err;
     });
   }
 

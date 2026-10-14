@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
-import { connectToDatabase } from '@/lib/mongodb';
-import { SiteContent } from '@/models/SiteContent';
+import { updateSiteContent } from '@/lib/contentStore';
 import { verifyAdminToken, COOKIE_NAME } from '@/lib/jwt';
 
 export async function POST(req: NextRequest) {
@@ -33,14 +32,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 3. Connect to MongoDB and upsert content
-    await connectToDatabase();
-
-    const updated = await SiteContent.findOneAndUpdate(
-      { key: key.trim() },
-      { content, updatedAt: new Date() },
-      { upsert: true, new: true, setDefaultsOnInsert: true }
-    );
+    // 3. Persist content (MongoDB upsert with resilient fallback)
+    const updated = await updateSiteContent(key, content);
 
     // 4. Purge static cache for SEO
     try {
@@ -54,6 +47,7 @@ export async function POST(req: NextRequest) {
       key: updated.key,
       content: updated.content,
       updatedAt: updated.updatedAt,
+      source: updated.source,
     });
   } catch (error) {
     console.error('Content update error:', error);

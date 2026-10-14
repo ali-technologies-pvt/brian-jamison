@@ -399,22 +399,6 @@ export const MobileDock: React.FC<MobileDockProps> = ({
                   >
                     Book Private Strategy Session
                   </button>
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setDrawerOpen(false);
-                      if (onNavigate) {
-                        onNavigate('/sitemap');
-                      } else {
-                        window.location.href = '/sitemap';
-                      }
-                    }}
-                    className="w-full py-2.5 text-center text-xs font-semibold text-[#002D61] bg-[#FAF9F6] border border-stone-200 rounded-xl hover:border-[#EA580C] transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
-                  >
-                    <Compass className="w-3.5 h-3.5 text-[#EA580C]" />
-                    <span>View 58+ Page Platform Sitemap</span>
-                  </button>
                 </div>
               </div>
 

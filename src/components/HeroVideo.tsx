@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { BROKER_INFO } from '../data/realEstateData';
 import { BrianAvatar } from './BrianAvatar';
 import { ArrowDown, ArrowRight, Award } from 'lucide-react';
+import { EditableText } from './EditableText';
 
 interface HeroVideoProps {
   onOpenValuation: () => void;
@@ -149,18 +150,25 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
             </div>
           </div>
 
-          {/* Display Headline: Bold luxury serif with golden gradient italic accent */}
-          <h1 className="animate-fade-in-delayed font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-bold leading-[1.08] tracking-tight !text-white mb-6 sm:mb-7 text-balance drop-shadow-[0_2px_16px_rgba(0,0,0,0.9)]">
-            The Agent Who Works Like Every Deal Is{' '}
-            <span className="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#FDE68A] via-[#F59E0B] to-[#D97706] pr-1 inline-block transition-transform hover:scale-105 duration-300 drop-shadow-[0_2px_14px_rgba(217,119,6,0.6)]">
-              Personal.
-            </span>
-          </h1>
+          {/* Display Headline: Bold luxury serif with inline editing support */}
+          <div className="mb-6 sm:mb-7">
+            <EditableText
+              contentKey="home_hero_title"
+              initialContent="The Agent Who Works Like Every Deal Is Personal."
+              as="h1"
+              className="animate-fade-in-delayed font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-bold leading-[1.08] tracking-tight !text-white text-balance drop-shadow-[0_2px_16px_rgba(0,0,0,0.9)]"
+            />
+          </div>
 
-          {/* Subtitle: High-contrast white font with drop shadow for effortless readability */}
-          <p className="animate-fade-in-delayed-2 font-sans text-base sm:text-lg md:text-xl !text-white leading-relaxed max-w-2xl mb-8 sm:mb-9 font-normal drop-shadow-[0_1px_8px_rgba(0,0,0,0.95)]">
-            I help Oklahoma City, Edmond and Nichols Hills homeowners sell for top dollar with professional video, real marketing, and a listing you can cancel anytime.
-          </p>
+          {/* Subtitle: High-contrast white font with inline editing support */}
+          <div className="mb-8 sm:mb-9">
+            <EditableText
+              contentKey="home_hero_subtitle"
+              initialContent="I help Oklahoma City, Edmond and Nichols Hills homeowners sell for top dollar with professional video, real marketing, and a listing you can cancel anytime."
+              as="p"
+              className="animate-fade-in-delayed-2 font-sans text-base sm:text-lg md:text-xl !text-white leading-relaxed max-w-2xl font-normal drop-shadow-[0_1px_8px_rgba(0,0,0,0.95)]"
+            />
+          </div>
 
           {/* Action CTAs: Bespoke Luxury Styling with Warm Gold Shimmer & Frosted Glass */}
           <div className="animate-fade-in-delayed-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5">

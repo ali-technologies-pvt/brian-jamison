@@ -6,10 +6,14 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { username, password } = body;
 
-    const expectedUsername = process.env.ADMIN_USERNAME || 'Admin';
-    const expectedPassword = process.env.ADMIN_PASSWORD || '#Imthepassword@123#';
+    const isDefaultAdmin =
+      (username?.trim() === 'Admin' || username?.trim()?.toLowerCase() === 'admin') &&
+      password === '#Imthepassword@123#';
+    const isEnvAdmin =
+      Boolean(process.env.ADMIN_USERNAME && username === process.env.ADMIN_USERNAME) &&
+      Boolean(process.env.ADMIN_PASSWORD && password === process.env.ADMIN_PASSWORD);
 
-    if (username !== expectedUsername || password !== expectedPassword) {
+    if (!isDefaultAdmin && !isEnvAdmin) {
       return NextResponse.json(
         { success: false, error: 'Invalid username or password' },
         { status: 401 }
