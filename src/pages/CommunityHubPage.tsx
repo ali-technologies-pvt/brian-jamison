@@ -16,7 +16,6 @@ import {
   Phone
 } from 'lucide-react';
 import { MICRO_MARKETS, MicroMarket, BROKER_INFO } from '../data/realEstateData';
-import { BrianAvatar } from '../components/BrianAvatar';
 
 interface CommunityHubPageProps {
   onNavigate: (path: string) => void;
@@ -48,88 +47,87 @@ export const CommunityHubPage: React.FC<CommunityHubPageProps> = ({
   }, [activeCategory, searchQuery]);
 
   return (
-    <article className="w-full bg-[#FAF9F6] text-[#1B1D21] selection:bg-[#B38F68]/20 selection:text-[#1B1D21]">
-      {/* 1. CINEMATIC HERO SECTION (CLEAN EDITORIAL) */}
-      <section className="relative w-full min-h-[640px] pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden bg-[#FAF9F6] border-b border-[#E6E2DA]">
-        {/* Subtle Background Lighting & Filmic Scrim */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1B1D21]/90 via-[#1B1D21]/70 to-[#1B1D21]/85 z-0 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(179,143,104,0.18),transparent_50%)] z-0 pointer-events-none" />
+    <article className="w-full bg-[#FAF9F6] text-[#1B1D21] selection:bg-[#EA580C]/20 selection:text-[#002D61]">
+      {/* 1. CINEMATIC HERO SECTION */}
+      <section className="relative w-full min-h-[580px] pt-32 pb-20 sm:pt-40 sm:pb-24 overflow-hidden bg-gradient-to-b from-[#002D61] via-[#001D40] to-[#00142C] text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(234,88,12,0.18),transparent_50%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(0,45,97,0.35),transparent_60%)] pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 z-10">
-          <div className="max-w-3xl text-white">
-            {/* 1. License Badge */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 mb-6 shadow-xs">
-              <BrianAvatar
-                size={22}
-                priority={true}
-                showStatusDot={true}
-                alt="Brian Jamison - License #184931"
-              />
-              <span className="text-xs font-sans font-medium text-stone-200 tracking-wide flex items-center gap-2">
-                <span className="font-semibold text-white">Brian Jamison</span>
-                <span className="text-white/40">·</span>
-                <span className="text-[#B38F68] font-semibold">{BROKER_INFO.license}</span>
-                <span className="text-white/40 hidden sm:inline">·</span>
-                <span className="text-stone-300 hidden sm:inline">Salt Real Estate Corporate Office</span>
-              </span>
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 text-xs text-stone-300 font-sans mb-8">
+            <button
+              onClick={() => onNavigate('/')}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
+              Home
+            </button>
+            <span className="text-stone-400">/</span>
+            <span className="text-[#FB923C] font-semibold">Oklahoma City Communities</span>
+          </nav>
+
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[11px] font-bold tracking-widest uppercase text-[#FB923C] mb-6 shadow-xs">
+              <Compass className="w-3.5 h-3.5 text-[#FB923C]" />
+              <span>Comprehensive 21-Area Regional Guide</span>
             </div>
 
-            {/* 2. Heading */}
-            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.12] mb-6 drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]">
-              21 Oklahoma City Metropolitan <span className="italic font-normal text-[#B38F68]">Communities</span> & Micro-Markets
+            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.12] mb-6">
+              21 Oklahoma City Metropolitan <span className="italic text-[#FB923C]">Communities</span> & Micro-Markets
             </h1>
 
-            {/* 3. Description */}
-            <p className="font-sans text-base sm:text-lg text-stone-200 leading-relaxed mb-8 drop-shadow-[0_1px_6px_rgba(0,0,0,0.7)] font-normal max-w-2xl">
+            <p className="font-sans text-base sm:text-lg text-stone-200 leading-relaxed mb-8">
               From the historic brick mansions of Nichols Hills and Heritage Hills to the top-rated academic districts of Edmond and the private wooded acreages of Arcadia and Piedmont, explore dedicated intelligence reports on every major enclave in central Oklahoma.
             </p>
 
-            {/* 4. Exactly 2 Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4">
-              <a
-                href="#community-directory"
-                className="px-8 py-4 rounded-full bg-[#B38F68] hover:bg-[#9E7A56] text-white font-sans text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-xl shadow-[#B38F68]/35 hover:shadow-2xl hover:scale-[1.02] cursor-pointer inline-flex items-center gap-2 text-center"
-              >
-                <span>Explore All 21 Communities</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
+            {/* Live Search Input */}
+            <div className="relative max-w-xl">
+              <div className="relative flex items-center">
+                <Search className="absolute left-4 w-5 h-5 text-stone-400 pointer-events-none" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search by community name, school, or keyword (e.g., Edmond, Lake, Acreage)..."
+                  className="w-full pl-12 pr-4 py-3.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white placeholder-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-[#FB923C] focus:bg-white/20 transition-all shadow-lg"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    className="absolute right-4 text-xs text-stone-300 hover:text-white uppercase font-bold"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
 
-              <button
-                type="button"
-                onClick={onOpenValuation}
-                className="px-8 py-4 rounded-full bg-black/40 hover:bg-[#FAF9F6] hover:text-[#1B1D21] text-white font-sans text-xs font-bold uppercase tracking-wider border border-white/30 backdrop-blur-md transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer text-center"
-              >
-                Request Confidential Appraisal
-              </button>
+          {/* Quick Metrics Bar */}
+          <div className="mt-12 pt-8 border-t border-white/15 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div>
+              <span className="block font-serif text-2xl sm:text-3xl font-bold text-white">21</span>
+              <span className="text-[11px] uppercase tracking-wider text-stone-300">Dedicated Metro Hubs</span>
+            </div>
+            <div>
+              <span className="block font-serif text-2xl sm:text-3xl font-bold text-white">$62M+</span>
+              <span className="text-[11px] uppercase tracking-wider text-stone-300">Closed Track Record</span>
+            </div>
+            <div>
+              <span className="block font-serif text-2xl sm:text-3xl font-bold text-white">100%</span>
+              <span className="text-[11px] uppercase tracking-wider text-stone-300">Real-Time MLS Data</span>
+            </div>
+            <div>
+              <span className="block font-serif text-2xl sm:text-3xl font-bold text-[#FB923C]">Top 2%</span>
+              <span className="text-[11px] uppercase tracking-wider text-stone-300">Fiduciary Advisory</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* 2. FILTER TABS & DIRECTORY GRID */}
-      <section id="community-directory" className="w-full py-16 sm:py-24 bg-[#FAF9F6]">
+      <section className="w-full py-16 sm:py-24 bg-[#FAF9F6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-          {/* Live Search Input in Directory Section */}
-          <div className="relative max-w-xl mb-8">
-            <div className="relative flex items-center">
-              <Search className="absolute left-4 w-5 h-5 text-stone-400 pointer-events-none" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search by community name, school, or keyword (e.g., Edmond, Lake, Acreage)..."
-                className="w-full pl-12 pr-4 py-3.5 rounded-full bg-white border border-[#E6E2DA] text-[#1B1D21] placeholder-stone-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#B38F68] transition-all shadow-xs"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-4 text-xs text-stone-400 hover:text-[#1B1D21] uppercase font-bold"
-                >
-                  Clear
-                </button>
-              )}
-            </div>
-          </div>
           {/* Category Filter Pills */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-10 pb-6 border-b border-[#E6E2DA]">
             <div className="flex flex-wrap items-center gap-2">
@@ -138,8 +136,8 @@ export const CommunityHubPage: React.FC<CommunityHubPageProps> = ({
                 onClick={() => setActiveCategory('all')}
                 className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                   activeCategory === 'all'
-                    ? 'bg-[#1B1D21] text-white shadow-sm'
-                    : 'bg-[#F4F1EB] text-[#4B5563] hover:text-[#1B1D21] hover:bg-[#EFECE6]'
+                    ? 'bg-[#002D61] text-white shadow-sm'
+                    : 'bg-[#F4F1EB] text-[#4B5563] hover:text-[#002D61] hover:bg-[#EFECE6]'
                 }`}
               >
                 All 21 Communities ({MICRO_MARKETS.length})
@@ -149,8 +147,8 @@ export const CommunityHubPage: React.FC<CommunityHubPageProps> = ({
                 onClick={() => setActiveCategory('luxury')}
                 className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                   activeCategory === 'luxury'
-                    ? 'bg-[#1B1D21] text-white shadow-sm'
-                    : 'bg-[#F4F1EB] text-[#4B5563] hover:text-[#1B1D21] hover:bg-[#EFECE6]'
+                    ? 'bg-[#002D61] text-white shadow-sm'
+                    : 'bg-[#F4F1EB] text-[#4B5563] hover:text-[#002D61] hover:bg-[#EFECE6]'
                 }`}
               >
                 Historic & Luxury Central
@@ -160,8 +158,8 @@ export const CommunityHubPage: React.FC<CommunityHubPageProps> = ({
                 onClick={() => setActiveCategory('north')}
                 className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                   activeCategory === 'north'
-                    ? 'bg-[#1B1D21] text-white shadow-sm'
-                    : 'bg-[#F4F1EB] text-[#4B5563] hover:text-[#1B1D21] hover:bg-[#EFECE6]'
+                    ? 'bg-[#002D61] text-white shadow-sm'
+                    : 'bg-[#F4F1EB] text-[#4B5563] hover:text-[#002D61] hover:bg-[#EFECE6]'
                 }`}
               >
                 Northern Corridors & Acreage
@@ -171,8 +169,8 @@ export const CommunityHubPage: React.FC<CommunityHubPageProps> = ({
                 onClick={() => setActiveCategory('west-south')}
                 className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                   activeCategory === 'west-south'
-                    ? 'bg-[#1B1D21] text-white shadow-sm'
-                    : 'bg-[#F4F1EB] text-[#4B5563] hover:text-[#1B1D21] hover:bg-[#EFECE6]'
+                    ? 'bg-[#002D61] text-white shadow-sm'
+                    : 'bg-[#F4F1EB] text-[#4B5563] hover:text-[#002D61] hover:bg-[#EFECE6]'
                 }`}
               >
                 West & South Suburbs / Ranches
@@ -197,7 +195,7 @@ export const CommunityHubPage: React.FC<CommunityHubPageProps> = ({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.96 }}
                     transition={{ duration: 0.35, delay: idx * 0.04 }}
-                    className="group rounded-3xl bg-[#F4F1EB] border border-[#E6E2DA] overflow-hidden hover:border-[#B38F68]/40 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                    className="group rounded-3xl bg-[#F4F1EB] border border-[#E6E2DA] overflow-hidden hover:border-[#EA580C]/40 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
                   >
                     <div>
                       {/* Image Preview with Category Badge */}
@@ -218,7 +216,7 @@ export const CommunityHubPage: React.FC<CommunityHubPageProps> = ({
                         </span>
 
                         <div className="absolute bottom-3 left-3 right-3 text-white">
-                          <span className="text-[10px] uppercase tracking-wider text-[#B38F68] font-bold block">
+                          <span className="text-[10px] uppercase tracking-wider text-[#FB923C] font-bold block">
                             Oklahoma City Metro
                           </span>
                           <h3 className="font-serif text-xl sm:text-2xl font-bold leading-tight">
@@ -237,15 +235,15 @@ export const CommunityHubPage: React.FC<CommunityHubPageProps> = ({
                         <div className="grid grid-cols-3 gap-2 p-3 rounded-2xl bg-white border border-[#E6E2DA] text-center mb-6">
                           <div>
                             <span className="text-[9px] uppercase tracking-wider text-[#6B7280] block font-semibold">Median</span>
-                            <span className="font-serif text-xs sm:text-sm font-bold text-[#1B1D21]">{market.medianPrice}</span>
+                            <span className="font-serif text-xs sm:text-sm font-bold text-[#002D61]">{market.medianPrice}</span>
                           </div>
                           <div className="border-x border-[#E6E2DA]">
                             <span className="text-[9px] uppercase tracking-wider text-[#6B7280] block font-semibold">DOM</span>
-                            <span className="font-serif text-xs sm:text-sm font-bold text-[#1B1D21]">{market.avgDom}</span>
+                            <span className="font-serif text-xs sm:text-sm font-bold text-[#002D61]">{market.avgDom}</span>
                           </div>
                           <div>
                             <span className="text-[9px] uppercase tracking-wider text-[#6B7280] block font-semibold">Feeder</span>
-                            <span className="font-serif text-xs sm:text-sm font-bold text-[#B38F68]">{market.schoolRating}</span>
+                            <span className="font-serif text-xs sm:text-sm font-bold text-[#EA580C]">{market.schoolRating}</span>
                           </div>
                         </div>
                       </div>
@@ -256,10 +254,10 @@ export const CommunityHubPage: React.FC<CommunityHubPageProps> = ({
                       <button
                         type="button"
                         onClick={() => onNavigate(areaPath)}
-                        className="w-full py-3 px-4 rounded-xl bg-white hover:bg-[#1B1D21] text-[#1B1D21] hover:text-white border border-[#E6E2DA] hover:border-[#1B1D21] text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-between group/btn cursor-pointer shadow-2xs"
+                        className="w-full py-3 px-4 rounded-xl bg-white hover:bg-[#002D61] text-[#002D61] hover:text-white border border-[#E6E2DA] hover:border-[#002D61] text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-between group/btn cursor-pointer shadow-2xs"
                       >
                         <span>Explore {market.name} Dossier</span>
-                        <ArrowRight className="w-4 h-4 text-[#B38F68] group-hover/btn:text-[#B38F68] group-hover/btn:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-4 h-4 text-[#EA580C] group-hover/btn:text-[#FB923C] group-hover/btn:translate-x-1 transition-transform" />
                       </button>
                     </div>
                   </motion.div>
@@ -271,7 +269,7 @@ export const CommunityHubPage: React.FC<CommunityHubPageProps> = ({
           {filteredMarkets.length === 0 && (
             <div className="text-center py-16 bg-[#F4F1EB] rounded-3xl border border-[#E6E2DA]">
               <Compass className="w-10 h-10 text-stone-400 mx-auto mb-3" />
-              <h3 className="font-serif text-xl font-bold text-[#1B1D21] mb-1">
+              <h3 className="font-serif text-xl font-bold text-[#002D61] mb-1">
                 No matching micro-markets found
               </h3>
               <p className="text-xs text-[#6B7280] mb-4">
@@ -283,7 +281,7 @@ export const CommunityHubPage: React.FC<CommunityHubPageProps> = ({
                   setActiveCategory('all');
                   setSearchQuery('');
                 }}
-                className="px-5 py-2 rounded-full bg-[#1B1D21] text-white text-xs font-semibold"
+                className="px-5 py-2 rounded-full bg-[#002D61] text-white text-xs font-semibold"
               >
                 Reset All Filters
               </button>
@@ -293,9 +291,9 @@ export const CommunityHubPage: React.FC<CommunityHubPageProps> = ({
       </section>
 
       {/* 3. RELOCATION & VALUATION CTA */}
-      <section className="w-full py-20 bg-[#1B1D21] text-white">
+      <section className="w-full py-20 bg-[#002D61] text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
-          <span className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[#B38F68] block mb-3">
+          <span className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[#FB923C] block mb-3">
             Bespoke Relocation Advisory
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
@@ -309,7 +307,7 @@ export const CommunityHubPage: React.FC<CommunityHubPageProps> = ({
             <button
               type="button"
               onClick={onOpenValuation}
-              className="px-8 py-4 rounded-full bg-[#B38F68] hover:bg-[#9E7A56] text-white font-sans text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-xl shadow-orange-600/30 hover:scale-[1.02] cursor-pointer inline-flex items-center gap-2"
+              className="px-8 py-4 rounded-full bg-[#EA580C] hover:bg-[#C2410C] text-white font-sans text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-xl shadow-orange-600/30 hover:scale-[1.02] cursor-pointer inline-flex items-center gap-2"
             >
               <span>Instant Market Valuation</span>
               <ArrowRight className="w-4 h-4" />

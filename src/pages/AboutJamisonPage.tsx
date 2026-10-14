@@ -73,55 +73,53 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
   ];
 
   return (
-    <article className="w-full bg-[#FAF9F6] text-[#1B1D21] selection:bg-[#B38F68]/20 selection:text-[#1B1D21]">
-      {/* 1. CINEMATIC HERO SECTION (CLEAN EDITORIAL) */}
-      <section className="relative w-full min-h-[640px] pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden bg-[#FAF9F6] border-b border-[#E6E2DA]">
-        {/* Subtle Background Lighting & Filmic Scrim */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1B1D21]/90 via-[#1B1D21]/70 to-[#1B1D21]/85 z-0 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(179,143,104,0.18),transparent_50%)] z-0 pointer-events-none" />
+    <article className="w-full bg-[#FAF9F6] text-[#1B1D21] selection:bg-[#EA580C]/20 selection:text-[#002D61]">
+      {/* 1. CINEMATIC HERO SECTION */}
+      <section className="relative w-full min-h-[640px] pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden bg-gradient-to-b from-[#002D61] via-[#001D40] to-[#00142C] text-white">
+        {/* Subtle Background Lighting & Ambient Elements */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(234,88,12,0.18),transparent_50%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(0,45,97,0.35),transparent_60%)] pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 z-10">
+          {/* Breadcrumbs */}
+          <nav className="flex items-center gap-2 text-xs text-stone-300 font-sans mb-8">
+            <button
+              onClick={() => onNavigate('/')}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
+              Home
+            </button>
+            <span className="text-stone-400">/</span>
+            <span className="text-[#FB923C] font-semibold">About Brian Jamison</span>
+          </nav>
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left Content: Strictly License, Heading, Description, 2 CTAs */}
+            {/* Left Content */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="lg:col-span-7 text-white"
+              className="lg:col-span-7"
             >
-              {/* 1. License Badge */}
-              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 mb-6 shadow-xs">
-                <BrianAvatar
-                  size={22}
-                  priority={true}
-                  showStatusDot={true}
-                  alt="Brian Jamison - License #184931"
-                />
-                <span className="text-xs font-sans font-medium text-stone-200 tracking-wide flex items-center gap-2">
-                  <span className="font-semibold text-white">Brian Jamison</span>
-                  <span className="text-white/40">·</span>
-                  <span className="text-[#B38F68] font-semibold">{BROKER_INFO.license}</span>
-                  <span className="text-white/40 hidden sm:inline">·</span>
-                  <span className="text-stone-300 hidden sm:inline">Salt Real Estate Corporate Office</span>
-                </span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[11px] font-bold tracking-widest uppercase text-[#FB923C] mb-6 shadow-xs">
+                <Award className="w-3.5 h-3.5 text-[#FB923C]" />
+                <span>Salt Real Estate Corporate Office · Edmond, Oklahoma</span>
               </div>
 
-              {/* 2. Heading */}
-              <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.12] mb-6 drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]">
-                The Agent Who Works Like <span className="italic font-normal text-[#B38F68]">Every Deal</span> Is Personal.
+              <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.12] mb-6">
+                The Agent Who Works Like <span className="italic text-[#FB923C]">Every Deal</span> Is Personal.
               </h1>
 
-              {/* 3. Description */}
-              <p className="font-sans text-base sm:text-lg text-stone-200 leading-relaxed max-w-2xl mb-8 drop-shadow-[0_1px_6px_rgba(0,0,0,0.7)] font-normal">
+              <p className="font-sans text-base sm:text-lg text-stone-200 leading-relaxed max-w-2xl mb-8">
                 Brian Jamison is a Top 2% Real Estate Producer in Oklahoma with over $62M+ volume sold and 370+ career closings. A former collegiate athlete, Brian combines championship preparation, transparent communication, and a 100% Risk-Free Cancel-Anytime Listing Guarantee.
               </p>
 
-              {/* 4. Exactly 2 Action Buttons */}
+              {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-4">
                 <button
                   type="button"
                   onClick={onOpenConsultation}
-                  className="px-8 py-4 rounded-full bg-[#B38F68] hover:bg-[#9E7A56] text-white font-sans text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-xl shadow-[#B38F68]/35 hover:shadow-2xl hover:scale-[1.02] cursor-pointer inline-flex items-center gap-2"
+                  className="px-7 py-3.5 rounded-full bg-[#EA580C] hover:bg-[#C2410C] text-white font-sans text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-lg shadow-orange-600/30 hover:shadow-orange-600/50 hover:scale-[1.02] active:scale-[0.98] cursor-pointer inline-flex items-center gap-2"
                 >
                   <span>Book Private Consultation</span>
                   <ArrowRight className="w-4 h-4" />
@@ -130,10 +128,32 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
                 <button
                   type="button"
                   onClick={onOpenValuation}
-                  className="px-8 py-4 rounded-full bg-black/40 hover:bg-[#FAF9F6] hover:text-[#1B1D21] text-white font-sans text-xs font-bold uppercase tracking-wider border border-white/30 backdrop-blur-md transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer"
+                  className="px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-sans text-xs font-bold uppercase tracking-wider border border-white/25 transition-all duration-300 cursor-pointer backdrop-blur-xs"
                 >
                   Request Market Valuation
                 </button>
+              </div>
+
+              {/* Quick Contact Micro-Row */}
+              <div className="mt-10 pt-8 border-t border-white/15 flex flex-wrap items-center gap-6 text-xs text-stone-300">
+                <a
+                  href={`tel:${BROKER_INFO.phoneRaw}`}
+                  className="flex items-center gap-2 hover:text-[#FB923C] transition-colors"
+                >
+                  <Phone className="w-3.5 h-3.5 text-[#FB923C]" />
+                  <span className="font-semibold text-white">{BROKER_INFO.phone}</span>
+                </a>
+                <a
+                  href={`mailto:${BROKER_INFO.email}`}
+                  className="flex items-center gap-2 hover:text-[#FB923C] transition-colors"
+                >
+                  <Mail className="w-3.5 h-3.5 text-[#FB923C]" />
+                  <span className="text-stone-300">{BROKER_INFO.email}</span>
+                </a>
+                <span className="flex items-center gap-1.5 text-stone-400">
+                  <MapPin className="w-3.5 h-3.5 text-[#FB923C]" />
+                  <span>1508 W. Edmond Rd., Edmond OK</span>
+                </span>
               </div>
             </motion.div>
 
@@ -145,7 +165,7 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
               className="lg:col-span-5"
             >
               <div className="relative rounded-3xl p-6 sm:p-8 bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-2xl overflow-hidden">
-                <div className="absolute top-0 right-0 w-48 h-48 bg-[#B38F68]/20 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute top-0 right-0 w-48 h-48 bg-[#EA580C]/20 rounded-full blur-3xl pointer-events-none" />
 
                 <div className="flex flex-col items-center text-center">
                   <div className="relative mb-5">
@@ -156,7 +176,7 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
                       className="w-40 h-40 sm:w-48 sm:h-48 shadow-2xl border-4 border-white/30"
                       alt="Brian Jamison - Salt Real Estate Corporate Office"
                     />
-                    <div className="absolute -bottom-2 -right-2 px-3 py-1 rounded-full bg-[#B38F68] text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
+                    <div className="absolute -bottom-2 -right-2 px-3 py-1 rounded-full bg-[#EA580C] text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
                       Top 2%
                     </div>
                   </div>
@@ -164,7 +184,7 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
                   <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white">
                     Brian Jamison
                   </h3>
-                  <p className="font-sans text-xs text-[#B38F68] font-semibold mt-1">
+                  <p className="font-sans text-xs text-[#FB923C] font-semibold mt-1">
                     License #184931 · REALTOR® · Former Collegiate Athlete
                   </p>
                   <p className="text-xs text-stone-300 mt-2 max-w-sm">
@@ -186,14 +206,14 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
                       <span className="text-[10px] uppercase tracking-wider text-stone-300 font-medium">Statewide Rank</span>
                     </div>
                     <div className="p-3 rounded-xl bg-white/10 border border-white/15 text-center">
-                      <span className="block font-serif text-xl sm:text-2xl font-bold text-[#B38F68]">100%</span>
+                      <span className="block font-serif text-xl sm:text-2xl font-bold text-[#FB923C]">100%</span>
                       <span className="text-[10px] uppercase tracking-wider text-stone-300 font-medium">Cancel Anytime</span>
                     </div>
                   </div>
 
                   {/* Verified Social & Regulatory Portals Strip */}
                   <div className="w-full mt-6 pt-5 border-t border-white/15">
-                    <span className="text-[10px] uppercase font-sans font-bold tracking-[0.2em] text-[#B38F68] block mb-2.5">
+                    <span className="text-[10px] uppercase font-sans font-bold tracking-[0.2em] text-[#FB923C] block mb-2.5">
                       Verified Profiles & Networks
                     </span>
                     <div className="flex justify-center">
@@ -211,10 +231,10 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
       <section className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#E6E2DA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[#B38F68] block mb-2">
+            <span className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[#EA580C] block mb-2">
               The Athlete’s Mindset
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B1D21] leading-tight mb-4">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-4">
               Why an Athletic Background Changes Real Estate Representation
             </h2>
             <p className="font-sans text-base text-[#4B5563] leading-relaxed">
@@ -232,18 +252,18 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="rounded-3xl p-8 bg-[#F4F1EB] border border-[#E6E2DA] shadow-xs hover:border-[#B38F68]/40 hover:shadow-md transition-all duration-300"
+                  className="rounded-3xl p-8 bg-[#F4F1EB] border border-[#E6E2DA] shadow-xs hover:border-[#EA580C]/40 hover:shadow-md transition-all duration-300"
                 >
                   <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 rounded-2xl bg-[#1B1D21] text-white flex items-center justify-center shadow-md">
-                      <Icon className="w-6 h-6 text-[#B38F68]" />
+                    <div className="w-12 h-12 rounded-2xl bg-[#002D61] text-white flex items-center justify-center shadow-md">
+                      <Icon className="w-6 h-6 text-[#FB923C]" />
                     </div>
-                    <span className="px-3 py-1 rounded-full bg-white border border-[#E6E2DA] text-[10px] font-bold uppercase tracking-wider text-[#1B1D21]">
+                    <span className="px-3 py-1 rounded-full bg-white border border-[#E6E2DA] text-[10px] font-bold uppercase tracking-wider text-[#002D61]">
                       {pillar.badge}
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1B1D21] mb-3">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#002D61] mb-3">
                     {pillar.title}
                   </h3>
                   <p className="font-sans text-sm sm:text-base text-[#4B5563] leading-relaxed">
@@ -261,10 +281,10 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-6">
-              <span className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[#B38F68] block mb-2">
+              <span className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[#EA580C] block mb-2">
                 Brokerage Strength
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#1B1D21] leading-tight mb-6">
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#002D61] leading-tight mb-6">
                 Backed by Salt Real Estate Corporate Headquarters
               </h2>
               <p className="font-sans text-base text-[#4B5563] leading-relaxed mb-6">
@@ -273,19 +293,19 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
               
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#B38F68] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-[#EA580C] shrink-0 mt-0.5" />
                   <span className="font-sans text-sm sm:text-base text-[#374151]">
                     <strong>Corporate Media Hub:</strong> In-house 4K cinema cameras, FAA-certified drone operators, and Matterport 3D imaging specialists.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#B38F68] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-[#EA580C] shrink-0 mt-0.5" />
                   <span className="font-sans text-sm sm:text-base text-[#374151]">
                     <strong>350+ Global Portals:</strong> Immediate worldwide syndication to Zillow, Realtor.com, Redfin, luxury feeder networks, and social channels.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#B38F68] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-[#EA580C] shrink-0 mt-0.5" />
                   <span className="font-sans text-sm sm:text-base text-[#374151]">
                     <strong>7-Person Transaction Squad:</strong> Transaction coordinators, personal assistants, staging advisors, and title liaisons.
                   </span>
@@ -295,10 +315,10 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
               <button
                 type="button"
                 onClick={() => onNavigate('/contact')}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1B1D21] hover:bg-[#1B1D21] text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-md"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#002D61] hover:bg-[#001D40] text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-md"
               >
                 <span>Visit Salt Corporate Office</span>
-                <ArrowRight className="w-4 h-4 text-[#B38F68]" />
+                <ArrowRight className="w-4 h-4 text-[#FB923C]" />
               </button>
             </div>
 
@@ -309,9 +329,9 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
                   alt="Salt Real Estate Corporate Headquarters Edmond OK"
                   className="w-full h-[420px] object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1B1D21]/80 via-transparent to-transparent flex items-end p-8">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#001D40]/80 via-transparent to-transparent flex items-end p-8">
                   <div className="text-white">
-                    <span className="text-xs uppercase tracking-widest text-[#B38F68] font-bold block mb-1">
+                    <span className="text-xs uppercase tracking-widest text-[#FB923C] font-bold block mb-1">
                       Corporate Office · Edmond OK
                     </span>
                     <h3 className="font-serif text-2xl font-bold">1508 W. Edmond Rd., Edmond, OK 73003</h3>
@@ -328,10 +348,10 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
       <section className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#E6E2DA]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[#B38F68] block mb-2">
+            <span className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[#EA580C] block mb-2">
               Career Trajectory
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#1B1D21] leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#002D61] leading-tight">
               A History of Relentless Execution
             </h2>
           </div>
@@ -344,13 +364,13 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
-                className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 p-6 rounded-2xl bg-[#F4F1EB] border border-[#E6E2DA] hover:border-[#B38F68]/40 transition-colors"
+                className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 p-6 rounded-2xl bg-[#F4F1EB] border border-[#E6E2DA] hover:border-[#EA580C]/40 transition-colors"
               >
-                <div className="px-4 py-2 rounded-xl bg-[#1B1D21] text-white font-serif text-lg font-bold shrink-0">
+                <div className="px-4 py-2 rounded-xl bg-[#002D61] text-white font-serif text-lg font-bold shrink-0">
                   {m.year}
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-serif text-lg font-bold text-[#1B1D21] mb-1">
+                  <h3 className="font-serif text-lg font-bold text-[#002D61] mb-1">
                     {m.title}
                   </h3>
                   <p className="font-sans text-xs sm:text-sm text-[#4B5563] leading-relaxed">
@@ -364,9 +384,9 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
       </section>
 
       {/* 5. THE 6-STEP SELLER BLUEPRINT CTA BANNER */}
-      <section className="w-full py-20 sm:py-24 bg-[#1B1D21] text-white">
+      <section className="w-full py-20 sm:py-24 bg-[#002D61] text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
-          <span className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[#B38F68] block mb-3">
+          <span className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[#FB923C] block mb-3">
             The Proprietary Machine
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
@@ -380,7 +400,7 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
             <button
               type="button"
               onClick={() => onNavigate('/seller-blueprint')}
-              className="px-8 py-4 rounded-full bg-[#B38F68] hover:bg-[#9E7A56] text-white font-sans text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-xl shadow-orange-600/30 hover:scale-[1.02] cursor-pointer inline-flex items-center gap-2"
+              className="px-8 py-4 rounded-full bg-[#EA580C] hover:bg-[#C2410C] text-white font-sans text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-xl shadow-orange-600/30 hover:scale-[1.02] cursor-pointer inline-flex items-center gap-2"
             >
               <span>Explore 6-Step Blueprint</span>
               <ArrowRight className="w-4 h-4" />

@@ -336,7 +336,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
   ];
 
   return (
-    <div className="w-full bg-[#FAF9F6] text-[#1B1D21] selection:bg-[#B38F68]/20 selection:text-[#1B1D21] overflow-x-hidden">
+    <div className="w-full bg-[#FAF9F6] text-[#002D61] selection:bg-[#EA580C]/20 selection:text-[#002D61] overflow-x-hidden">
       {/* 
         ========================================================================
         SECTION 1: HERO SECTION (THE BUYER'S COMPETITIVE ADVANTAGE)
@@ -372,22 +372,26 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#FAF9F6] to-transparent opacity-10" />
         </div>
 
-        {/* Top License & Authority Badge */}
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 pt-32 sm:pt-36 flex items-center justify-between">
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 shadow-xs">
-            <BrianAvatar
-              size={22}
-              priority={true}
-              showStatusDot={true}
-              alt="Brian Jamison - License #184931"
-            />
-            <span className="text-xs font-sans font-medium text-stone-200 tracking-wide flex items-center gap-2">
-              <span className="font-semibold text-white">Brian Jamison</span>
+        {/* Top Micro Navigation & Authority Pill */}
+        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 pt-32 sm:pt-36 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-wrap items-center gap-2.5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/45 backdrop-blur-md border border-white/20 text-white text-[11px] font-sans font-bold tracking-wide shadow-sm">
+              <BrianAvatar
+                size={24}
+                priority={true}
+                showStatusDot={true}
+                alt="Brian Jamison - Top 2% Producer"
+              />
+              <span className="text-[#B38F68]">★</span>
+              <span>Top 2% Producer</span>
               <span className="text-white/40">·</span>
-              <span className="text-[#B38F68] font-semibold">{BROKER_INFO.license}</span>
-              <span className="text-white/40 hidden sm:inline">·</span>
-              <span className="text-stone-300 hidden sm:inline">Salt Real Estate Corporate Office</span>
-            </span>
+              <span className="text-stone-300 font-normal">{BROKER_INFO.license}</span>
+            </div>
+
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/45 backdrop-blur-md border border-[#B38F68]/50 text-white text-[11px] font-sans font-bold tracking-widest uppercase shadow-sm">
+              <Sparkles className="w-3.5 h-3.5 text-[#B38F68]" />
+              <span>Dedicated Buyer Representation · OKC Metro</span>
+            </div>
           </div>
 
           {/* Sound Toggle for Hero Video */}
@@ -404,20 +408,23 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
             {heroMuted ? (
               <>
                 <VolumeX className="w-3.5 h-3.5 text-stone-300" />
-                <span className="text-[11px] text-stone-200 hidden sm:inline">Unmute Atmosphere</span>
+                <span className="text-[11px] text-stone-200">Unmute Atmosphere</span>
               </>
             ) : (
               <>
                 <Volume2 className="w-3.5 h-3.5 text-[#B38F68]" />
-                <span className="text-[11px] text-[#B38F68] hidden sm:inline">Audio Active</span>
+                <span className="text-[11px] text-[#B38F68]">Audio Active</span>
               </>
             )}
           </button>
         </div>
 
-        {/* Hero Narrative & Exactly 2 Action Buttons */}
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 py-16 sm:py-20 my-auto">
+        {/* Hero Narrative & Primary CTA */}
+        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 py-12 sm:py-16 my-auto">
           <div className="max-w-3xl">
+            <span className="inline-block px-3.5 py-1.5 rounded-full bg-[#B38F68] text-white font-sans text-[11px] font-bold tracking-[0.2em] uppercase mb-5 shadow-sm">
+              01 / BUYER CONCIERGE & EQUITY ADVISORY
+            </span>
             <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl !text-white font-bold leading-[1.12] tracking-tight mb-6 drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]">
               Gain an <span className="italic font-normal text-[#B38F68]">Unfair Advantage</span> in the Oklahoma City Housing Market.
             </h1>
@@ -425,8 +432,8 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
               Why hiring an active Top 2% listing agent gives buyers early access to off-market properties, ruthless contract negotiation, and zero-stress closings.
             </p>
 
-            {/* Exactly 2 Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5">
+            {/* Primary Action Button */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5 mb-8">
               <button
                 type="button"
                 onClick={onOpenConsultation}
@@ -439,11 +446,59 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
               <button
                 type="button"
                 onClick={() => scrollToSection('section-roadmap')}
-                className="px-8 py-4 bg-black/40 hover:bg-[#FAF9F6] hover:text-[#1B1D21] text-white backdrop-blur-md border border-white/30 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-300 shadow-md cursor-pointer flex items-center justify-center gap-2.5 text-center"
+                className="px-8 py-4 bg-white/15 hover:bg-white/25 text-white backdrop-blur-md border border-white/30 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-300 shadow-md cursor-pointer flex items-center justify-center gap-2.5 text-center"
               >
                 <Compass className="w-4 h-4 text-white" />
                 <span>Explore the 10-Step Buyer Roadmap</span>
               </button>
+            </div>
+
+            {/* Official Social Links in Hero */}
+            <div className="pt-4 border-t border-white/20 flex flex-wrap items-center gap-4">
+              <span className="text-[10px] uppercase font-sans font-bold tracking-[0.2em] text-stone-300">
+                Verified Portals & Networks:
+              </span>
+              <SocialLinks variant="hero" />
+            </div>
+          </div>
+        </div>
+
+        {/* Trust Badges Strip (Hero Footer) */}
+        <div className="relative z-10 w-full border-t border-white/15 bg-black/45 backdrop-blur-md py-4 sm:py-5">
+          <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center divide-x-0 md:divide-x divide-white/15">
+              <div className="px-2">
+                <span className="block font-serif text-xl sm:text-2xl font-bold text-white tracking-tight">
+                  $24,500
+                </span>
+                <span className="text-[11px] sm:text-xs uppercase tracking-wider text-stone-300 font-sans">
+                  Avg Client Price Advantage
+                </span>
+              </div>
+              <div className="px-2">
+                <span className="block font-serif text-xl sm:text-2xl font-bold text-white tracking-tight">
+                  Priority
+                </span>
+                <span className="text-[11px] sm:text-xs uppercase tracking-wider text-stone-300 font-sans">
+                  Off-Market Pocket Access
+                </span>
+              </div>
+              <div className="px-2">
+                <span className="block font-serif text-xl sm:text-2xl font-bold text-[#B38F68] tracking-tight">
+                  100% Defended
+                </span>
+                <span className="text-[11px] sm:text-xs uppercase tracking-wider text-stone-300 font-sans">
+                  10-Day TRRA Inspections
+                </span>
+              </div>
+              <div className="px-2">
+                <span className="block font-serif text-xl sm:text-2xl font-bold text-white tracking-tight">
+                  $0 Fee To Buyer
+                </span>
+                <span className="text-[11px] sm:text-xs uppercase tracking-wider text-[#B38F68] font-sans font-semibold">
+                  Seller-Paid Commission
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -454,7 +509,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
         STICKY SECTION SUB-NAVIGATION RIBBON
         ========================================================================
       */}
-      <div className="sticky top-0 z-40 w-full bg-[#1B1D21] text-white border-b border-white/15 shadow-md backdrop-blur-md">
+      <div className="sticky top-0 z-40 w-full bg-[#002D61] text-white border-b border-white/15 shadow-md backdrop-blur-md">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           <div className="flex items-center justify-between overflow-x-auto no-scrollbar py-3.5 gap-2 sm:gap-4 text-xs font-semibold uppercase tracking-wider whitespace-nowrap">
             {[
@@ -473,7 +528,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                 onClick={() => scrollToSection(item.id)}
                 className={`px-3 py-1.5 rounded-full transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
                   activeSection === item.key
-                    ? 'bg-[#B38F68] text-white font-bold shadow-md'
+                    ? 'bg-[#EA580C] text-white font-bold shadow-md'
                     : 'text-white/80 hover:text-white hover:bg-white/10'
                 }`}
               >
@@ -484,7 +539,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
             <button
               type="button"
               onClick={onOpenConsultation}
-              className="hidden lg:flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#B38F68] hover:bg-[#9E7A56] text-white text-[11px] font-bold tracking-wider uppercase transition-colors cursor-pointer shadow-sm ml-auto"
+              className="hidden lg:flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#EA580C] hover:bg-[#C2410C] text-white text-[11px] font-bold tracking-wider uppercase transition-colors cursor-pointer shadow-sm ml-auto"
             >
               <span>Consult With Brian</span>
               <ArrowUpRight className="w-3 h-3" />
@@ -498,14 +553,14 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
         SECTION 2: THE 10-STEP OKLAHOMA HOME BUYER ROADMAP
         ========================================================================
       */}
-      <section id="section-roadmap" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#B38F68]/25">
+      <section id="section-roadmap" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Section Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
               Strategic Step-by-Step Acquisition
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B1D21] leading-tight mb-5">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
               The 10-Step Oklahoma Home Buyer Roadmap
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
@@ -521,20 +576,20 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                 onClick={() => setActiveRoadmapStep(idx)}
                 className={`p-5 rounded-2xl border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
                   activeRoadmapStep === idx
-                    ? 'bg-[#1B1D21] text-white border-[#1B1D21] shadow-xl scale-[1.02]'
-                    : 'bg-white text-[#1B1D21] border-[#E6E2DA] hover:border-[#B38F68] hover:bg-[#F4F1EB]'
+                    ? 'bg-[#002D61] text-white border-[#002D61] shadow-xl scale-[1.02]'
+                    : 'bg-white text-[#002D61] border-[#E5E0D8] hover:border-[#EA580C] hover:bg-[#F5EFE6]'
                 }`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className={`text-xs font-mono font-bold px-2 py-0.5 rounded ${
                       activeRoadmapStep === idx
-                        ? 'bg-[#B38F68] text-white'
-                        : 'bg-[#FAF9F6] text-[#B38F68] border border-[#B38F68]/30'
+                        ? 'bg-[#EA580C] text-white'
+                        : 'bg-[#FAF9F6] text-[#EA580C] border border-[#EA580C]/30'
                     }`}>
                       Step {step.step}
                     </span>
-                    {activeRoadmapStep === idx && <Sparkles className="w-3.5 h-3.5 text-[#B38F68]" />}
+                    {activeRoadmapStep === idx && <Sparkles className="w-3.5 h-3.5 text-[#FB923C]" />}
                   </div>
                   <h4 className="font-serif text-sm font-bold leading-snug mb-2">
                     {step.title}
@@ -550,18 +605,18 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
           </div>
 
           {/* Step Detail Spotlight Card */}
-          <div className="bg-[#F4F1EB] border border-[#B38F68]/30 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm">
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-[#1B1D21]/15 mb-6">
+          <div className="bg-[#F5EFE6] border border-[#EA580C]/30 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-[#002D61]/15 mb-6">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="px-3 py-1 rounded bg-[#1B1D21] text-white text-xs font-bold font-mono">
+                  <span className="px-3 py-1 rounded bg-[#002D61] text-white text-xs font-bold font-mono">
                     Step {ROADMAP_STEPS[activeRoadmapStep].step} of 10
                   </span>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#B38F68]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#EA580C]">
                     Core Milestone
                   </span>
                 </div>
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#1B1D21]">
+                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#002D61]">
                   {ROADMAP_STEPS[activeRoadmapStep].title}
                 </h3>
               </div>
@@ -570,7 +625,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                 <button
                   type="button"
                   onClick={onOpenConsultation}
-                  className="px-6 py-3 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-md cursor-pointer flex items-center gap-2"
+                  className="px-6 py-3 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-md cursor-pointer flex items-center gap-2"
                 >
                   <span>Book Buyer Session</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -583,24 +638,24 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                 <p className="font-sans text-sm sm:text-base text-[#4B5563] leading-relaxed mb-6">
                   {ROADMAP_STEPS[activeRoadmapStep].desc}
                 </p>
-                <div className="p-4 rounded-xl bg-white border border-[#B38F68]/30 text-xs sm:text-sm text-[#1B1D21] flex items-start gap-3">
+                <div className="p-4 rounded-xl bg-white border border-[#EA580C]/30 text-xs sm:text-sm text-[#002D61] flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-[#16A34A] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-[#1B1D21] mb-0.5">Tangible Milestone Deliverable:</strong>
+                    <strong className="block text-[#002D61] mb-0.5">Tangible Milestone Deliverable:</strong>
                     <span className="text-[#4B5563]">{ROADMAP_STEPS[activeRoadmapStep].deliverable}</span>
                   </div>
                 </div>
               </div>
 
-              <div className="lg:col-span-4 bg-white rounded-2xl p-6 border border-[#E6E2DA] text-center">
+              <div className="lg:col-span-4 bg-white rounded-2xl p-6 border border-[#E5E0D8] text-center">
                 <BrianAvatar size="md" />
-                <span className="block font-bold text-xs text-[#1B1D21] mt-3">Brian Jamison, Realtor</span>
+                <span className="block font-bold text-xs text-[#002D61] mt-3">Brian Jamison, Realtor</span>
                 <span className="text-[11px] text-[#6B7280]">Direct Buyer Fiduciary · Salt Real Estate</span>
                 <a
                   href="tel:4055133039"
-                  className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1B1D21] text-white text-xs font-bold hover:bg-[#1B1D21] transition-colors"
+                  className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002D61] text-white text-xs font-bold hover:bg-[#001D40] transition-colors"
                 >
-                  <Phone className="w-3.5 h-3.5 text-[#B38F68]" />
+                  <Phone className="w-3.5 h-3.5 text-[#FB923C]" />
                   <span>(405) 513-3039</span>
                 </a>
               </div>
@@ -614,11 +669,11 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
         SECTION 3: THE 6 PROCESSES ADAPTED AS "THE BUYER'S SHIELD"
         ========================================================================
       */}
-      <section id="section-shield" className="w-full py-20 sm:py-28 bg-[#1B1D21] text-white border-b border-white/10">
+      <section id="section-shield" className="w-full py-20 sm:py-28 bg-[#001D40] text-white border-b border-white/10">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B38F68]/20 border border-[#B38F68]/40 text-[#B38F68] text-xs font-bold uppercase tracking-widest mb-3">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EA580C]/20 border border-[#EA580C]/40 text-[#FB923C] text-xs font-bold uppercase tracking-widest mb-3">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>Institutional Fiduciary Representation</span>
             </span>
@@ -635,14 +690,14 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
             {BUYER_SHIELD_PROCESSES.map((proc, idx) => (
               <div
                 key={proc.number}
-                className="bg-[#1B1D21] rounded-3xl p-6 sm:p-8 border border-white/15 hover:border-[#B38F68] transition-all duration-300 shadow-xl flex flex-col justify-between"
+                className="bg-[#0A192F] rounded-3xl p-6 sm:p-8 border border-white/15 hover:border-[#EA580C] transition-all duration-300 shadow-xl flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="px-3 py-1 rounded-md bg-[#B38F68] text-white text-xs font-mono font-bold">
+                    <span className="px-3 py-1 rounded-md bg-[#EA580C] text-white text-xs font-mono font-bold">
                       Process {proc.number}
                     </span>
-                    <ShieldCheck className="w-5 h-5 text-[#B38F68]" />
+                    <ShieldCheck className="w-5 h-5 text-[#FB923C]" />
                   </div>
                   <span className="text-xs uppercase font-sans font-bold tracking-wider text-[#FDBA74] block mb-1">
                     {proc.subtitle}
@@ -671,16 +726,16 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
         SECTION 4: VIDEO SHOWCASE & 9:16 VERTICAL REELS HUB
         ========================================================================
       */}
-      <section id="section-reels" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#B38F68]/25">
+      <section id="section-reels" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B38F68]/10 border border-[#B38F68]/30 text-[#B38F68] text-xs font-bold uppercase tracking-widest mb-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EA580C]/10 border border-[#EA580C]/30 text-[#EA580C] text-xs font-bold uppercase tracking-widest mb-3">
                 <Video className="w-3.5 h-3.5" />
                 <span>60-Second Buyer Masterclass</span>
               </div>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#1B1D21] tracking-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#002D61] tracking-tight">
                 The Oklahoma City Buyer's Playbook: Watch Before You Tour
               </h2>
             </div>
@@ -698,7 +753,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                   setSelectedReelIndex(index);
                   setReelPlaying(true);
                 }}
-                className="group relative rounded-2xl overflow-hidden aspect-[9/16] bg-[#1B1D21] border border-[#E6E2DA] hover:border-[#B38F68] shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between p-4"
+                className="group relative rounded-2xl overflow-hidden aspect-[9/16] bg-[#0A192F] border border-[#E5E0D8] hover:border-[#EA580C] shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between p-4"
               >
                 {/* Background image */}
                 <div
@@ -712,14 +767,14 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                   <span className="px-2 py-0.5 rounded bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold text-white border border-white/20">
                     Reel 0{reel.id}
                   </span>
-                  <span className="px-2 py-0.5 rounded bg-[#B38F68] text-[10px] font-bold text-white tracking-wider">
+                  <span className="px-2 py-0.5 rounded bg-[#EA580C] text-[10px] font-bold text-white tracking-wider">
                     {reel.duration}
                   </span>
                 </div>
 
                 {/* Center Play Button Overlay */}
                 <div className="relative z-10 my-auto self-center">
-                  <div className="w-12 h-12 rounded-full bg-white/25 backdrop-blur-md border border-white/50 flex items-center justify-center text-white group-hover:bg-[#B38F68] group-hover:scale-110 transition-all duration-300 shadow-xl">
+                  <div className="w-12 h-12 rounded-full bg-white/25 backdrop-blur-md border border-white/50 flex items-center justify-center text-white group-hover:bg-[#EA580C] group-hover:scale-110 transition-all duration-300 shadow-xl">
                     <Play className="w-5 h-5 fill-white text-white ml-0.5" />
                   </div>
                 </div>
@@ -731,7 +786,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                   </h4>
                   <div className="flex items-center justify-between text-[11px] text-white/70">
                     <span>{reel.views} views</span>
-                    <span className="text-[#B38F68] font-semibold underline underline-offset-2">Watch Now</span>
+                    <span className="text-[#FB923C] font-semibold underline underline-offset-2">Watch Now</span>
                   </div>
                 </div>
               </div>
@@ -743,7 +798,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
       {/* Reel Modal Player */}
       {selectedReelIndex !== null && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-          <div className="relative w-full max-w-sm sm:max-w-md bg-[#1B1D21] rounded-3xl overflow-hidden border border-white/30 shadow-2xl">
+          <div className="relative w-full max-w-sm sm:max-w-md bg-[#001D40] rounded-3xl overflow-hidden border border-white/30 shadow-2xl">
             {/* Close Button */}
             <button
               type="button"
@@ -787,10 +842,10 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
               {/* Bottom Scrubber & Masterclass Takeaway */}
               <div className="absolute bottom-0 inset-x-0 p-5 z-10 bg-gradient-to-t from-black via-black/90 to-transparent">
                 <div className="w-full h-1 bg-white/30 rounded-full mb-3 overflow-hidden">
-                  <div className="h-full bg-[#B38F68] w-2/3 animate-pulse" />
+                  <div className="h-full bg-[#EA580C] w-2/3 animate-pulse" />
                 </div>
 
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#B38F68] block mb-1">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#FB923C] block mb-1">
                   Buyer Playbook Key Lesson
                 </span>
                 <h4 className="font-serif text-base font-bold text-white mb-2 leading-snug">
@@ -807,7 +862,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                       setSelectedReelIndex(null);
                       onOpenConsultation();
                     }}
-                    className="flex-1 py-2.5 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-md text-center"
+                    className="flex-1 py-2.5 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-md text-center"
                   >
                     Discuss With Brian
                   </button>
@@ -830,14 +885,14 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
         SECTION 5: OKLAHOMA STRUCTURAL & WEATHER DUE DILIGENCE
         ========================================================================
       */}
-      <section id="section-due-diligence" className="w-full py-20 sm:py-28 bg-[#F4F1EB] border-b border-[#B38F68]/25">
+      <section id="section-due-diligence" className="w-full py-20 sm:py-28 bg-[#F5EFE6] border-b border-[#EA580C]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Section Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
               Regional Environmental Nuances
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B1D21] leading-tight mb-5">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
               Oklahoma Structural & Weather Due Diligence
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
@@ -848,22 +903,22 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
           {/* 4 Architectural Due Diligence Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {/* 1. Tornado Shelters & Safe Rooms */}
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E6E2DA] shadow-sm flex flex-col justify-between">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E5E0D8] shadow-sm flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#1B1D21] text-[#B38F68] flex items-center justify-center mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-[#002D61] text-[#FB923C] flex items-center justify-center mb-6">
                   <ShieldAlert className="w-6 h-6" />
                 </div>
-                <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#B38F68] block mb-1">
+                <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#EA580C] block mb-1">
                   Severe Weather Defense
                 </span>
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1B1D21] mb-3">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#002D61] mb-3">
                   Tornado Shelters & Safe Rooms
                 </h3>
                 <p className="font-sans text-xs sm:text-sm text-[#4B5563] leading-relaxed mb-4">
                   Oklahoma is in Tornado Alley. We inspect whether the home features an in-ground garage flush shelter, an exterior underground storm cellar, or an above-ground reinforced concrete safe room meeting FEMA 320 / 361 standards.
                 </p>
-                <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#B38F68]/20 text-xs text-[#374151] space-y-2 mb-4">
-                  <div className="font-bold text-[#1B1D21]">Our Verification Checklist:</div>
+                <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#EA580C]/20 text-xs text-[#374151] space-y-2 mb-4">
+                  <div className="font-bold text-[#002D61]">Our Verification Checklist:</div>
                   <ul className="list-disc pl-4 space-y-1 text-xs text-[#4B5563]">
                     <li>FEMA impact rating tag & emergency hatch seal verification.</li>
                     <li>Sump pump & groundwater water-seepage inspection for garage units.</li>
@@ -877,22 +932,22 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
             </div>
 
             {/* 2. Roof & Hail Impact Nuances */}
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E6E2DA] shadow-sm flex flex-col justify-between">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E5E0D8] shadow-sm flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#1B1D21] text-[#B38F68] flex items-center justify-center mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-[#002D61] text-[#FB923C] flex items-center justify-center mb-6">
                   <AlertCircle className="w-6 h-6" />
                 </div>
-                <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#B38F68] block mb-1">
+                <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#EA580C] block mb-1">
                   Insurance Premium Optimization
                 </span>
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1B1D21] mb-3">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#002D61] mb-3">
                   Roof & Class 4 Hail Shingles
                 </h3>
                 <p className="font-sans text-xs sm:text-sm text-[#4B5563] leading-relaxed mb-4">
                   Hail storm damage can affect home insurance insurability. We check the shingle manufacture certificate to verify if the roof is a Class 4 Impact-Resistant (IR) system (UL 2218 certified).
                 </p>
-                <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#B38F68]/20 text-xs text-[#374151] space-y-2 mb-4">
-                  <div className="font-bold text-[#1B1D21]">Financial Advantage:</div>
+                <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#EA580C]/20 text-xs text-[#374151] space-y-2 mb-4">
+                  <div className="font-bold text-[#002D61]">Financial Advantage:</div>
                   <ul className="list-disc pl-4 space-y-1 text-xs text-[#4B5563]">
                     <li>Class 4 roofs qualify for a 15% to 25% annual homeowners insurance discount.</li>
                     <li>We ensure any pre-existing hail claims are fully replaced before closing.</li>
@@ -906,22 +961,22 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
             </div>
 
             {/* 3. Top School District Profiles */}
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E6E2DA] shadow-sm flex flex-col justify-between">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E5E0D8] shadow-sm flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#1B1D21] text-[#B38F68] flex items-center justify-center mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-[#002D61] text-[#FB923C] flex items-center justify-center mb-6">
                   <GraduationCap className="w-6 h-6" />
                 </div>
-                <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#B38F68] block mb-1">
+                <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#EA580C] block mb-1">
                   Educational Equity & Resale Value
                 </span>
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1B1D21] mb-3">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#002D61] mb-3">
                   Top School District Profiles
                 </h3>
                 <p className="font-sans text-xs sm:text-sm text-[#4B5563] leading-relaxed mb-4">
                   Edmond Public Schools, Deer Creek, Norman, and Oak Tree golf enclaves command the highest long-term appreciation in Oklahoma. We verify exact attendance boundaries—neighborhood boundary lines can change across a single street.
                 </p>
-                <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#B38F68]/20 text-xs text-[#374151] space-y-2 mb-4">
-                  <div className="font-bold text-[#1B1D21]">Attendance Verification:</div>
+                <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#EA580C]/20 text-xs text-[#374151] space-y-2 mb-4">
+                  <div className="font-bold text-[#002D61]">Attendance Verification:</div>
                   <ul className="list-disc pl-4 space-y-1 text-xs text-[#4B5563]">
                     <li>Direct verification with district registrars before submitting purchase offers.</li>
                     <li>STEM academies, AP course ratings, and high school athletic facilities.</li>
@@ -935,22 +990,22 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
             </div>
 
             {/* 4. Military Relocation (Tinker AFB) */}
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E6E2DA] shadow-sm flex flex-col justify-between">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E5E0D8] shadow-sm flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#1B1D21] text-[#B38F68] flex items-center justify-center mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-[#002D61] text-[#FB923C] flex items-center justify-center mb-6">
                   <Award className="w-6 h-6" />
                 </div>
-                <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#B38F68] block mb-1">
+                <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#EA580C] block mb-1">
                   Military Concierge
                 </span>
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1B1D21] mb-3">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#002D61] mb-3">
                   Military Relocation & Tinker AFB
                 </h3>
                 <p className="font-sans text-xs sm:text-sm text-[#4B5563] leading-relaxed mb-4">
                   Tinker Air Force Base is the largest single-site employer in Oklahoma. We specialize in PCS (Permanent Change of Station) transitions, VA home loans, and BAH budgeting.
                 </p>
-                <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#B38F68]/20 text-xs text-[#374151] space-y-2 mb-4">
-                  <div className="font-bold text-[#1B1D21]">Military Advantage:</div>
+                <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#EA580C]/20 text-xs text-[#374151] space-y-2 mb-4">
+                  <div className="font-bold text-[#002D61]">Military Advantage:</div>
                   <ul className="list-disc pl-4 space-y-1 text-xs text-[#4B5563]">
                     <li>0% down payment VA home loan structuring with VA certified lenders.</li>
                     <li>BAH housing allowance optimization for Midwest City, Moore, and Choctaw.</li>
@@ -971,14 +1026,14 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
         SECTION 6: INTERACTIVE MORTGAGE & AFFORDABILITY CALCULATOR
         ========================================================================
       */}
-      <section id="section-calculator" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#B38F68]/25">
+      <section id="section-calculator" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Section Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
               Transparent Financial Engineering
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B1D21] leading-tight mb-5">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
               Interactive Mortgage & Affordability Calculator
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
@@ -988,18 +1043,18 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Left Inputs Panel */}
-            <div className="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-8 border border-[#E6E2DA] shadow-sm space-y-6">
-              <h3 className="font-serif text-xl font-bold text-[#1B1D21] pb-3 border-b border-[#FAF9F6]">
+            <div className="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-8 border border-[#E5E0D8] shadow-sm space-y-6">
+              <h3 className="font-serif text-xl font-bold text-[#002D61] pb-3 border-b border-[#FAF9F6]">
                 Adjust Financing Variables
               </h3>
 
               {/* Home Price Slider */}
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-[#1B1D21]">
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#002D61]">
                     Purchase Price
                   </label>
-                  <span className="font-mono text-lg font-bold text-[#B38F68]">
+                  <span className="font-mono text-lg font-bold text-[#EA580C]">
                     ${homePrice.toLocaleString()}
                   </span>
                 </div>
@@ -1010,7 +1065,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                   step="5000"
                   value={homePrice}
                   onChange={(e) => setHomePrice(Number(e.target.value))}
-                  className="w-full accent-[#B38F68] cursor-pointer"
+                  className="w-full accent-[#EA580C] cursor-pointer"
                 />
                 <div className="flex justify-between text-[11px] text-[#6B7280] mt-1 font-mono">
                   <span>$150,000</span>
@@ -1022,10 +1077,10 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
               {/* Down Payment % Slider */}
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-[#1B1D21]">
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#002D61]">
                     Down Payment ({downPaymentPercent}%)
                   </label>
-                  <span className="font-mono text-base font-bold text-[#1B1D21]">
+                  <span className="font-mono text-base font-bold text-[#002D61]">
                     ${downPaymentAmount.toLocaleString()}
                   </span>
                 </div>
@@ -1036,7 +1091,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                   step="1"
                   value={downPaymentPercent}
                   onChange={(e) => setDownPaymentPercent(Number(e.target.value))}
-                  className="w-full accent-[#1B1D21] cursor-pointer"
+                  className="w-full accent-[#002D61] cursor-pointer"
                 />
                 <div className="flex justify-between text-[11px] text-[#6B7280] mt-1 font-mono">
                   <span>0% (VA / OHFA)</span>
@@ -1048,10 +1103,10 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
               {/* Interest Rate */}
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-[#1B1D21]">
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#002D61]">
                     Interest Rate
                   </label>
-                  <span className="font-mono text-base font-bold text-[#1B1D21]">
+                  <span className="font-mono text-base font-bold text-[#002D61]">
                     {interestRate.toFixed(2)}%
                   </span>
                 </div>
@@ -1062,13 +1117,13 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                   step="0.125"
                   value={interestRate}
                   onChange={(e) => setInterestRate(Number(e.target.value))}
-                  className="w-full accent-[#B38F68] cursor-pointer"
+                  className="w-full accent-[#EA580C] cursor-pointer"
                 />
               </div>
 
               {/* Loan Term Selection */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#1B1D21] mb-2">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#002D61] mb-2">
                   Loan Term
                 </label>
                 <div className="flex gap-3">
@@ -1079,8 +1134,8 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                       onClick={() => setLoanTermYears(term)}
                       className={`flex-1 py-2.5 rounded-xl text-xs font-bold font-mono transition-all border ${
                         loanTermYears === term
-                          ? 'bg-[#1B1D21] text-white border-[#1B1D21]'
-                          : 'bg-[#FAF9F6] text-[#1B1D21] border-[#E6E2DA]'
+                          ? 'bg-[#002D61] text-white border-[#002D61]'
+                          : 'bg-[#FAF9F6] text-[#002D61] border-[#E5E0D8]'
                       }`}
                     >
                       {term}-Year Fixed
@@ -1091,9 +1146,9 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
             </div>
 
             {/* Right Output Panel */}
-            <div className="lg:col-span-6 bg-[#1B1D21] text-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-white/20 shadow-xl flex flex-col justify-between">
+            <div className="lg:col-span-6 bg-[#001D40] text-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-white/20 shadow-xl flex flex-col justify-between">
               <div>
-                <span className="text-[11px] uppercase tracking-widest font-bold text-[#B38F68] block mb-2">
+                <span className="text-[11px] uppercase tracking-widest font-bold text-[#FB923C] block mb-2">
                   Estimated Total Monthly Payment (PITI)
                 </span>
                 <div className="mb-6">
@@ -1140,7 +1195,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                 <button
                   type="button"
                   onClick={onOpenConsultation}
-                  className="w-full py-4 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer flex items-center justify-center gap-2 text-center"
+                  className="w-full py-4 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer flex items-center justify-center gap-2 text-center"
                 >
                   <span>Connect With Our Preferred Local Lenders</span>
                   <ArrowRight className="w-4 h-4" />
@@ -1156,14 +1211,14 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
         SECTION 7: DOWN PAYMENT ASSISTANCE & FINANCING OPTIONS IN OKLAHOMA
         ========================================================================
       */}
-      <section id="section-financing" className="w-full py-20 sm:py-28 bg-[#F4F1EB] border-b border-[#B38F68]/25">
+      <section id="section-financing" className="w-full py-20 sm:py-28 bg-[#F5EFE6] border-b border-[#EA580C]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Section Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
               Government Grants & Lending Programs
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B1D21] leading-tight mb-5">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
               Down Payment Assistance & Financing in Oklahoma
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
@@ -1173,12 +1228,12 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* 1. OHFA Grants */}
-            <div className="bg-white rounded-2xl p-6 border border-[#E6E2DA] shadow-xs flex flex-col justify-between">
+            <div className="bg-white rounded-2xl p-6 border border-[#E5E0D8] shadow-xs flex flex-col justify-between">
               <div>
-                <span className="px-2.5 py-1 rounded bg-[#B38F68]/10 text-[#B38F68] text-[10px] font-mono font-bold uppercase tracking-wider block w-fit mb-3">
+                <span className="px-2.5 py-1 rounded bg-[#EA580C]/10 text-[#EA580C] text-[10px] font-mono font-bold uppercase tracking-wider block w-fit mb-3">
                   State Grant Program
                 </span>
-                <h3 className="font-serif text-lg font-bold text-[#1B1D21] mb-2">
+                <h3 className="font-serif text-lg font-bold text-[#002D61] mb-2">
                   OHFA Down Payment Assistance
                 </h3>
                 <p className="text-xs text-[#4B5563] leading-relaxed mb-4">
@@ -1191,12 +1246,12 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
             </div>
 
             {/* 2. VA Loans */}
-            <div className="bg-white rounded-2xl p-6 border border-[#E6E2DA] shadow-xs flex flex-col justify-between">
+            <div className="bg-white rounded-2xl p-6 border border-[#E5E0D8] shadow-xs flex flex-col justify-between">
               <div>
-                <span className="px-2.5 py-1 rounded bg-[#1B1D21]/10 text-[#1B1D21] text-[10px] font-mono font-bold uppercase tracking-wider block w-fit mb-3">
+                <span className="px-2.5 py-1 rounded bg-[#002D61]/10 text-[#002D61] text-[10px] font-mono font-bold uppercase tracking-wider block w-fit mb-3">
                   Military & Veterans
                 </span>
-                <h3 className="font-serif text-lg font-bold text-[#1B1D21] mb-2">
+                <h3 className="font-serif text-lg font-bold text-[#002D61] mb-2">
                   0% Down VA Home Loans
                 </h3>
                 <p className="text-xs text-[#4B5563] leading-relaxed mb-4">
@@ -1209,12 +1264,12 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
             </div>
 
             {/* 3. FHA Loans */}
-            <div className="bg-white rounded-2xl p-6 border border-[#E6E2DA] shadow-xs flex flex-col justify-between">
+            <div className="bg-white rounded-2xl p-6 border border-[#E5E0D8] shadow-xs flex flex-col justify-between">
               <div>
-                <span className="px-2.5 py-1 rounded bg-[#B38F68]/10 text-[#B38F68] text-[10px] font-mono font-bold uppercase tracking-wider block w-fit mb-3">
+                <span className="px-2.5 py-1 rounded bg-[#EA580C]/10 text-[#EA580C] text-[10px] font-mono font-bold uppercase tracking-wider block w-fit mb-3">
                   Flexible Credit
                 </span>
-                <h3 className="font-serif text-lg font-bold text-[#1B1D21] mb-2">
+                <h3 className="font-serif text-lg font-bold text-[#002D61] mb-2">
                   3.5% Down FHA Financing
                 </h3>
                 <p className="text-xs text-[#4B5563] leading-relaxed mb-4">
@@ -1227,12 +1282,12 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
             </div>
 
             {/* 4. Conventional Loans */}
-            <div className="bg-white rounded-2xl p-6 border border-[#E6E2DA] shadow-xs flex flex-col justify-between">
+            <div className="bg-white rounded-2xl p-6 border border-[#E5E0D8] shadow-xs flex flex-col justify-between">
               <div>
-                <span className="px-2.5 py-1 rounded bg-[#1B1D21]/10 text-[#1B1D21] text-[10px] font-mono font-bold uppercase tracking-wider block w-fit mb-3">
+                <span className="px-2.5 py-1 rounded bg-[#002D61]/10 text-[#002D61] text-[10px] font-mono font-bold uppercase tracking-wider block w-fit mb-3">
                   Market Standard
                 </span>
-                <h3 className="font-serif text-lg font-bold text-[#1B1D21] mb-2">
+                <h3 className="font-serif text-lg font-bold text-[#002D61] mb-2">
                   3% to 20% Conventional
                 </h3>
                 <p className="text-xs text-[#4B5563] leading-relaxed mb-4">
@@ -1252,9 +1307,9 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
         SECTION 8: THE DUAL-AGENCY WARNING (DIRECT AGENT VS. INDEPENDENT)
         ========================================================================
       */}
-      <section id="section-dual-agency" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#B38F68]/25">
+      <section id="section-dual-agency" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="bg-[#1B1D21] text-white rounded-3xl p-8 sm:p-12 lg:p-14 border border-white/20 shadow-xl relative overflow-hidden">
+          <div className="bg-[#002D61] text-white rounded-3xl p-8 sm:p-12 lg:p-14 border border-white/20 shadow-xl relative overflow-hidden">
             <div className="relative z-10 max-w-3xl">
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EF4444]/20 border border-[#EF4444]/40 text-[#FCA5A5] text-xs font-bold uppercase tracking-widest mb-4">
                 <AlertCircle className="w-3.5 h-3.5" />
@@ -1273,8 +1328,8 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                     The agent cannot tell you true neighborhood comps, cannot aggressively demand TRRA repairs, and must disclose your financial motivation to the seller.
                   </p>
                 </div>
-                <div className="p-4 rounded-xl bg-[#B38F68]/20 border border-[#B38F68]/40">
-                  <strong className="text-[#B38F68] block mb-1">Hiring Brian Jamison As Your Buyer Advocate:</strong>
+                <div className="p-4 rounded-xl bg-[#EA580C]/20 border border-[#EA580C]/40">
+                  <strong className="text-[#FB923C] block mb-1">Hiring Brian Jamison As Your Buyer Advocate:</strong>
                   <p className="text-white/90">
                     100% undivided fiduciary loyalty to you. We fight for price reductions, repair credits, and escrow protection—and our fee is paid by the seller.
                   </p>
@@ -1283,7 +1338,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
               <button
                 type="button"
                 onClick={onOpenConsultation}
-                className="px-8 py-4 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer"
+                className="px-8 py-4 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer"
               >
                 Hire Brian As Your Exclusive Buyer Advocate
               </button>
@@ -1297,14 +1352,14 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
         SECTION 9: BUYER FAQS & RELOCATION LEAD MAGNET
         ========================================================================
       */}
-      <section id="section-faqs" className="w-full py-20 sm:py-28 bg-[#F4F1EB] border-b border-[#B38F68]/25">
+      <section id="section-faqs" className="w-full py-20 sm:py-28 bg-[#F5EFE6] border-b border-[#EA580C]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-3">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
               Forensic Buyer Clarifications
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B1D21] leading-tight mb-5">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
               Frequently Asked Buyer Questions
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
@@ -1319,18 +1374,18 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
               return (
                 <div
                   key={idx}
-                  className="bg-white rounded-2xl border border-[#E6E2DA] overflow-hidden transition-all duration-200 shadow-2xs"
+                  className="bg-white rounded-2xl border border-[#E5E0D8] overflow-hidden transition-all duration-200 shadow-2xs"
                 >
                   <button
                     type="button"
                     onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
                     className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer select-none hover:bg-[#FAF9F6]"
                   >
-                    <span className="font-serif text-base sm:text-lg font-bold text-[#1B1D21]">
+                    <span className="font-serif text-base sm:text-lg font-bold text-[#002D61]">
                       {faq.q}
                     </span>
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform ${
-                      isOpen ? 'bg-[#B38F68] text-white rotate-180' : 'bg-[#F4F1EB] text-[#1B1D21]'
+                      isOpen ? 'bg-[#EA580C] text-white rotate-180' : 'bg-[#F5EFE6] text-[#002D61]'
                     }`}>
                       <ChevronDown className="w-4 h-4" />
                     </div>
@@ -1347,9 +1402,9 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
           </div>
 
           {/* Downloadable PDF Lead Magnet Box */}
-          <div className="bg-[#1B1D21] text-white rounded-3xl p-8 sm:p-12 border border-white/20 shadow-xl relative overflow-hidden mb-16">
+          <div className="bg-[#002D61] text-white rounded-3xl p-8 sm:p-12 border border-white/20 shadow-xl relative overflow-hidden mb-16">
             <div className="relative z-10 max-w-2xl">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B38F68]/20 border border-[#B38F68]/40 text-[#B38F68] text-xs font-bold uppercase tracking-widest mb-3">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EA580C]/20 border border-[#EA580C]/40 text-[#FB923C] text-xs font-bold uppercase tracking-widest mb-3">
                 <FileText className="w-3.5 h-3.5" />
                 <span>Instant Digital PDF Resource</span>
               </span>
@@ -1372,7 +1427,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                     setDownloadSuccess(true);
                     setTimeout(() => setDownloadSuccess(false), 5000);
                   }}
-                  className="px-8 py-4 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer flex items-center gap-2.5"
+                  className="px-8 py-4 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer flex items-center gap-2.5"
                 >
                   <Download className="w-4 h-4" />
                   <span>Download The Free 2026 Relocation Guide (PDF)</span>
@@ -1382,14 +1437,14 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
           </div>
 
           {/* Final Call to Action Card */}
-          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#B38F68]/30 shadow-lg text-center max-w-4xl mx-auto">
+          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#EA580C]/30 shadow-lg text-center max-w-4xl mx-auto">
             <div className="flex justify-center mb-5">
               <BrianAvatar size="lg" />
             </div>
-            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#B38F68] block mb-2">
+            <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-2">
               Ready To Tour Homes In Edmond & OKC?
             </span>
-            <h3 className="font-serif text-2xl sm:text-4xl font-bold text-[#1B1D21] mb-3">
+            <h3 className="font-serif text-2xl sm:text-4xl font-bold text-[#002D61] mb-3">
               Schedule Your Private Buyer Consultation
             </h3>
             <p className="font-sans text-sm sm:text-base text-[#6B7280] max-w-xl mx-auto mb-8">
@@ -1400,7 +1455,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
               <button
                 type="button"
                 onClick={onOpenConsultation}
-                className="w-full sm:w-auto px-8 py-4 bg-[#B38F68] hover:bg-[#9E7A56] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-md cursor-pointer flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-8 py-4 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-md cursor-pointer flex items-center justify-center gap-2"
               >
                 <span>Book VIP Buyer Session</span>
                 <ArrowRight className="w-4 h-4" />
@@ -1408,7 +1463,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
 
               <a
                 href="tel:4055133039"
-                className="w-full sm:w-auto px-8 py-4 bg-[#1B1D21] hover:bg-[#1B1D21] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-8 py-4 bg-[#002D61] hover:bg-[#001D40] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2"
               >
                 <Phone className="w-4 h-4" />
                 <span>Call Brian (405) 513-3039</span>
