@@ -1,0 +1,11 @@
+[
+  {
+    "id": "usr_admin",
+    "username": "Admin",
+    "email": "admin@jamisonrealestate.com",
+    "name": "Brian Jamison",
+    "role": "Administrator",
+    "isActive": true,
+    "createdAt": "2026-08-16T16:27:48.829Z"
+  }
+]

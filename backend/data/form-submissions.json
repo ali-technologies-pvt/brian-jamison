@@ -1,0 +1,20 @@
+[
+  {
+    "id": "sub_sample_2",
+    "name": "Marcus Sterling",
+    "email": "msterling@okcdev.com",
+    "phone": "(405) 819-3312",
+    "formType": "consultation",
+    "service": "Out-of-State Relocation Concierge",
+    "serviceArea": "Edmond / Gaillardia",
+    "details": {
+      "topic": "Private Gated Estate Advisory (Off-Market)",
+      "date": "2026-10-20",
+      "time": "02:00 PM"
+    },
+    "notes": "Relocating medical practice from Dallas to Oklahoma City.",
+    "isRead": true,
+    "status": "contacted",
+    "createdAt": "2026-10-14T16:27:08.222Z"
+  }
+]
