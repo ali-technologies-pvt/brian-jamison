@@ -34,8 +34,9 @@ if (config.NODE_ENV !== 'production') {
   });
 }
 
-// Mount all API endpoints under /api
+// Mount all API endpoints under /api and root for serverless compatibility
 app.use('/api', apiRoutes);
+app.use('/', apiRoutes);
 
 // Root greeting / health check
 app.get('/', (req: Request, res: Response) => {
