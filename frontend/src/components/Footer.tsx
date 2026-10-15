@@ -274,7 +274,7 @@ export const Footer: React.FC<FooterProps> = ({
                   type="button"
                   onClick={() => {
                     if (onNavigate) {
-                      onNavigate('/areas/oklahoma-city');
+                      onNavigate('/areas/gaillardia');
                     } else {
                       onOpenMarket('gaillardia');
                     }
@@ -289,7 +289,7 @@ export const Footer: React.FC<FooterProps> = ({
                   type="button"
                   onClick={() => {
                     if (onNavigate) {
-                      onNavigate('/areas/edmond');
+                      onNavigate('/areas/heritage-hills');
                     } else {
                       onOpenMarket('heritage-hills');
                     }
@@ -304,7 +304,7 @@ export const Footer: React.FC<FooterProps> = ({
                   type="button"
                   onClick={() => {
                     if (onNavigate) {
-                      onNavigate('/areas/edmond');
+                      onNavigate('/areas/oak-tree');
                     } else {
                       onOpenMarket('oak-tree');
                     }
@@ -319,7 +319,7 @@ export const Footer: React.FC<FooterProps> = ({
                   type="button"
                   onClick={() => {
                     if (onNavigate) {
-                      onNavigate('/areas/edmond');
+                      onNavigate('/areas/edmond-oakdale');
                     } else {
                       onOpenMarket('edmond-oakdale');
                     }
@@ -334,7 +334,7 @@ export const Footer: React.FC<FooterProps> = ({
                   type="button"
                   onClick={() => {
                     if (onNavigate) {
-                      onNavigate('/areas/arcadia');
+                      onNavigate('/areas/arcadia-hiwassee');
                     } else {
                       onOpenMarket('arcadia-hiwassee');
                     }

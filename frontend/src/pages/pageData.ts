@@ -1948,6 +1948,47 @@ const PATH_ALIASES: Record<string, string> = {
   "6-step-blueprint": "seller-blueprint",
   "the-method": "seller-blueprint",
 
+  // 6 Core Blueprint Phases
+  "services/marketing-plan-and-process": "marketing-plan-and-process",
+  "marketing-plan-and-process": "marketing-plan-and-process",
+  "services/elite-marketing": "elite-marketing",
+  "elite-marketing": "elite-marketing",
+
+  "services/communication": "communication",
+  "communication": "communication",
+  "services/transparent-communication": "transparent-communication",
+  "transparent-communication": "transparent-communication",
+
+  "services/accessibility": "accessibility",
+  "accessibility": "accessibility",
+  "services/accessibility-guarantee": "accessibility-guarantee",
+  "accessibility-guarantee": "accessibility-guarantee",
+
+  "services/team-support": "team-support",
+  "team-support": "team-support",
+  "services/support-team": "support-team",
+  "support-team": "support-team",
+
+  "services/pricing-strategy": "pricing-strategy",
+  "pricing-strategy": "pricing-strategy",
+  "services/precision-pricing": "precision-pricing",
+  "precision-pricing": "precision-pricing",
+
+  "services/fair-pricing-and-contract-flexibility": "fair-pricing-and-contract-flexibility",
+  "fair-pricing-and-contract-flexibility": "fair-pricing-and-contract-flexibility",
+  "services/cancel-anytime-guarantee": "cancel-anytime-guarantee",
+  "cancel-anytime-guarantee": "cancel-anytime-guarantee",
+
+  // Audience & Specialized Hubs
+  "expired-listings": "expired-listings",
+  "services/expired-listings": "expired-listings",
+  "luxury-buyers": "luxury-buyers",
+  "services/luxury-buyers": "luxury-buyers",
+  "relocation-buyers": "relocation-buyers",
+  "first-time-buyers": "first-time-buyers",
+  "fsbo-unrepresented": "fsbo-unrepresented",
+  "trusts-probate": "trusts-probate",
+
   // Resource aliases
   "resources/home-sellers-checklist": "home-sellers-checklist",
   "home-sellers-checklist": "home-sellers-checklist",

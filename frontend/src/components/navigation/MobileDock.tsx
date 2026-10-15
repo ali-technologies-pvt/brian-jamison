@@ -409,12 +409,14 @@ export const MobileDock: React.FC<MobileDockProps> = ({
                         type="button"
                         onClick={() => {
                           setDrawerOpen(false);
-                          onOpenCalculator();
+                          if (onNavigate) {
+                            onNavigate('/resources/okc-relocation-guide');
+                          }
                         }}
                         className="w-full text-left py-2 px-2.5 rounded-lg hover:bg-white text-xs text-[#0A192F] flex items-center gap-2"
                       >
-                        <Calculator className="w-3.5 h-3.5 text-[#EA580C]" />
-                        <span>OKC Mortgage Calculator</span>
+                        <Compass className="w-3.5 h-3.5 text-[#EA580C]" />
+                        <span>OKC Relocation & Community Guide</span>
                       </button>
                     </div>
                   )}

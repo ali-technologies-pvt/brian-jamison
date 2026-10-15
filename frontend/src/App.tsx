@@ -235,13 +235,21 @@ export default function App() {
         )}
       </main>
 
-      {/* Video Marquee: Rendered on Homepage and all other pages EXCEPT service areas detail pages and idx test */}
-      {!currentPath.startsWith('/areas') && !isIdxRoute && (
-        <VideoMarqueeFooter
-          onOpenConsultation={handleOpenConsultation}
-          onOpenValuation={() => handleOpenValuation()}
-        />
-      )}
+      {/* Video Marquee: Rendered on Homepage and strategic pages; omitted on pages that already feature a dedicated video showcase or legal/directory pages */}
+      {!currentPath.startsWith('/areas') &&
+        !isIdxRoute &&
+        !isSitemapRoute &&
+        !currentPath.includes('/home-selling') &&
+        !currentPath.includes('/home-buying') &&
+        !currentPath.includes('/land-') &&
+        currentPath !== '/privacy-policy' &&
+        currentPath !== '/terms-of-service' &&
+        currentPath !== '/fair-housing-disclosure' && (
+          <VideoMarqueeFooter
+            onOpenConsultation={handleOpenConsultation}
+            onOpenValuation={() => handleOpenValuation()}
+          />
+        )}
 
       {/* Editorial Footer with Full 50+ Page Sitemap Links & Compliance */}
       <Footer
