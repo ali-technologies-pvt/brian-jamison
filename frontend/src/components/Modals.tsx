@@ -26,8 +26,8 @@ import {
   Clock,
   Sparkles,
   ChevronRight,
-  CheckCircle2
 } from 'lucide-react';
+import { submitFormLead } from '../utils/formSubmissions';
 
 /* -------------------------------------------------------------
    1. VALUATION MODAL (Multi-Step Instant Valuation & CMA Tool)
@@ -69,33 +69,27 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
   const handleSubmitContact = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitted(true);
-    try {
-      await fetch('/api/forms/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name,
-          email,
-          phone,
-          formType: 'valuation',
-          service: 'Valuation / CMA Dossier',
-          serviceArea: 'Oklahoma City Metro',
-          details: {
-            address,
-            propertyType,
-            approxSqft,
-            beds,
-            baths,
-            hasPool,
-            hasRenovated,
-            estimatedTarget,
-          },
-          notes: `Requested CMA Dossier for ${address}`,
-        }),
-      });
-    } catch (err) {
-      console.error('Error submitting valuation lead:', err);
-    }
+    await submitFormLead({
+      name,
+      email,
+      phone,
+      formType: 'valuation',
+      service: 'Valuation / CMA Dossier',
+      serviceArea: address ? address.split(',')[1]?.trim() || 'Oklahoma City Metro' : 'Oklahoma City Metro',
+      details: {
+        address,
+        propertyType,
+        approxSqft,
+        beds,
+        baths,
+        hasPool,
+        hasRenovated,
+        estimatedTarget,
+        estimatedConservative,
+        estimatedAspirational,
+      },
+      notes: `Requested CMA Dossier for ${address}`,
+    });
   };
 
   return (
@@ -440,9 +434,13 @@ interface ConsultationModalProps {
 
 export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }) => {
   const [topic, setTopic] = useState('Home Seller Strategy Consultation');
-  const [date, setDate] = useState('2026-09-28');
+  const [date, setDate] = useState(() => {
+    const tomorrow = new Date(Date.now() + 86400000);
+    return tomorrow.toISOString().split('T')[0];
+  });
   const [time, setTime] = useState('10:00 AM');
   const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [notes, setNotes] = useState('');
   const [isBooked, setIsBooked] = useState(false);
@@ -452,27 +450,20 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsBooked(true);
-    try {
-      await fetch('/api/forms/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name,
-          phone,
-          formType: 'consultation',
-          service: topic,
-          serviceArea: 'Oklahoma City Metro',
-          details: {
-            topic,
-            date,
-            time,
-          },
-          notes: notes || `Private Consultation booking for ${date} at ${time}`,
-        }),
-      });
-    } catch (err) {
-      console.error('Error submitting consultation lead:', err);
-    }
+    await submitFormLead({
+      name,
+      email,
+      phone,
+      formType: 'consultation',
+      service: topic,
+      serviceArea: 'Oklahoma City Metro',
+      details: {
+        topic,
+        date,
+        time,
+      },
+      notes: notes || `Private Consultation booking for ${date} at ${time}`,
+    });
   };
 
   return (
@@ -564,18 +555,33 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                 />
               </div>
 
-              <div>
-                <label className="block text-xs uppercase tracking-wider font-semibold text-[#002D61] mb-1">
-                  Direct Mobile Phone
-                </label>
-                <input
-                  type="tel"
-                  required
-                  placeholder="(405) 000-0000"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-3 py-2.5 bg-white border border-[#EA580C]/30 rounded-md text-xs sm:text-sm text-[#002D61] focus:outline-none focus:border-[#EA580C]"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs uppercase tracking-wider font-semibold text-[#002D61] mb-1">
+                    Direct Mobile Phone
+                  </label>
+                  <input
+                    type="tel"
+                    required
+                    placeholder="(405) 000-0000"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="w-full px-3 py-2.5 bg-white border border-[#EA580C]/30 rounded-md text-xs sm:text-sm text-[#002D61] focus:outline-none focus:border-[#EA580C]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs uppercase tracking-wider font-semibold text-[#002D61] mb-1">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="name@example.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full px-3 py-2.5 bg-white border border-[#EA580C]/30 rounded-md text-xs sm:text-sm text-[#002D61] focus:outline-none focus:border-[#EA580C]"
+                  />
+                </div>
               </div>
 
               <div>

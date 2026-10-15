@@ -1,5 +1,26 @@
 [
   {
+    "id": "sub_1792093459122_434udc",
+    "name": "Alexander Wright",
+    "email": "alexander.wright@luxurytest.com",
+    "phone": "(405) 555-0199",
+    "formType": "valuation",
+    "service": "Valuation / CMA Dossier",
+    "serviceArea": "Nichols Hills",
+    "details": {
+      "estimatedTarget": 1850000,
+      "beds": 5,
+      "approxSqft": 5200,
+      "baths": 5,
+      "address": "6701 NW Grand Blvd, Nichols Hills, OK"
+    },
+    "notes": "Automated verification test submission",
+    "isRead": false,
+    "status": "new",
+    "createdAt": "2026-10-15T19:44:19.122Z",
+    "updatedAt": "2026-10-15T19:44:19.122Z"
+  },
+  {
     "id": "sub_sample_2",
     "name": "Marcus Sterling",
     "email": "msterling@okcdev.com",

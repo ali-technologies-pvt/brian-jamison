@@ -147,19 +147,51 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
   const [userSuccessMessage, setUserSuccessMessage] = useState<string | null>(null);
   const [userErrorMessage, setUserErrorMessage] = useState<string | null>(null);
 
-  // Fetch Form Submissions
+  // Fetch Form Submissions with Dual Sync (Server + localStorage)
   const fetchSubmissions = async () => {
     setIsLoadingSubmissions(true);
     try {
-      const res = await fetch('/api/forms');
-      if (res.ok) {
-        const data = await res.json();
-        if (data.success && data.submissions) {
-          setSubmissions(data.submissions);
+      let remoteSubs: FormSubmissionItem[] = [];
+      try {
+        const res = await fetch('/api/forms');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success && Array.isArray(data.submissions)) {
+            remoteSubs = data.submissions;
+          }
+        }
+      } catch (networkErr) {
+        console.warn('Network issue fetching forms, using local storage cache:', networkErr);
+      }
+
+      // Read local storage cache for instant offline & cross-tab sync
+      let localSubs: FormSubmissionItem[] = [];
+      try {
+        const raw = localStorage.getItem('jamison_form_submissions');
+        if (raw) {
+          localSubs = JSON.parse(raw);
+        }
+      } catch {}
+
+      // Deduplicate merging by id or _id
+      const map = new Map<string, FormSubmissionItem>();
+      for (const item of remoteSubs) {
+        const id = item.id || item._id;
+        if (id) map.set(id, item);
+      }
+      for (const item of localSubs) {
+        const id = item.id || item._id;
+        if (id && !map.has(id)) {
+          map.set(id, item);
         }
       }
+
+      const combined = Array.from(map.values()).sort(
+        (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
+      setSubmissions(combined);
     } catch (e) {
-      console.error(e);
+      console.error('Error in fetchSubmissions:', e);
     } finally {
       setIsLoadingSubmissions(false);
     }
@@ -199,6 +231,27 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
     fetchSubmissions();
     fetchBlogs();
     fetchUsers();
+
+    // Auto-poll for new submissions every 5 seconds
+    const interval = setInterval(() => {
+      fetchSubmissions();
+    }, 5000);
+
+    // Instant update on custom submission event, storage change, or window focus
+    const handleSync = () => {
+      fetchSubmissions();
+    };
+
+    window.addEventListener('jamison_form_submitted', handleSync);
+    window.addEventListener('storage', handleSync);
+    window.addEventListener('focus', handleSync);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('jamison_form_submitted', handleSync);
+      window.removeEventListener('storage', handleSync);
+      window.removeEventListener('focus', handleSync);
+    };
   }, []);
 
   // Filter and sort submissions
@@ -207,19 +260,28 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
       // Search by name, email, phone, or address
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase();
-        const matchesName = item.name.toLowerCase().includes(q);
-        const matchesEmail = item.email?.toLowerCase().includes(q);
-        const matchesPhone = item.phone?.toLowerCase().includes(q);
-        const matchesAddress = item.details?.address?.toLowerCase().includes(q);
-        if (!matchesName && !matchesEmail && !matchesPhone && !matchesAddress) return false;
+        const matchesName = (item.name || '').toLowerCase().includes(q);
+        const matchesEmail = (item.email || '').toLowerCase().includes(q);
+        const matchesPhone = (item.phone || '').toLowerCase().includes(q);
+        const matchesAddress = (item.details?.address || '').toLowerCase().includes(q);
+        const matchesNotes = (item.notes || '').toLowerCase().includes(q);
+        if (!matchesName && !matchesEmail && !matchesPhone && !matchesAddress && !matchesNotes) return false;
       }
       // Service filter
-      if (selectedService !== 'All Services' && item.service !== selectedService) {
-        return false;
+      if (selectedService !== 'All Services') {
+        const itemService = (item.service || '').toLowerCase();
+        const selService = selectedService.toLowerCase();
+        if (!itemService.includes(selService) && !selService.includes(itemService)) {
+          return false;
+        }
       }
       // Service Area filter
-      if (selectedArea !== 'All Areas' && item.serviceArea !== selectedArea) {
-        return false;
+      if (selectedArea !== 'All Areas') {
+        const itemArea = (item.serviceArea || '').toLowerCase();
+        const selArea = selectedArea.toLowerCase();
+        if (!itemArea.includes(selArea) && !selArea.includes(itemArea)) {
+          return false;
+        }
       }
       // Unread only toggle
       if (unreadOnly && item.isRead) {
@@ -235,6 +297,22 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
 
   const unreadCount = submissions.filter((s) => !s.isRead).length;
 
+  const availableAreas = Array.from(
+    new Set([
+      'All Areas',
+      ...SERVICE_AREAS_FILTER.filter((a) => a !== 'All Areas'),
+      ...submissions.map((s) => s.serviceArea).filter(Boolean),
+    ])
+  );
+
+  const availableServices = Array.from(
+    new Set([
+      'All Services',
+      ...SERVICES_FILTER.filter((s) => s !== 'All Services'),
+      ...submissions.map((s) => s.service).filter(Boolean),
+    ])
+  );
+
   // Mark submission as read/unread
   const handleToggleRead = async (submission: FormSubmissionItem) => {
     const nextRead = !submission.isRead;
@@ -245,14 +323,18 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ isRead: nextRead }),
       });
-      setSubmissions((prev) =>
-        prev.map((s) => (s.id === id || s._id === id ? { ...s, isRead: nextRead } : s))
-      );
-      if (selectedSubmission && (selectedSubmission.id === id || selectedSubmission._id === id)) {
-        setSelectedSubmission({ ...selectedSubmission, isRead: nextRead });
-      }
     } catch (e) {
       console.error(e);
+    }
+    setSubmissions((prev) => {
+      const updated = prev.map((s) => (s.id === id || s._id === id ? { ...s, isRead: nextRead } : s));
+      try {
+        localStorage.setItem('jamison_form_submissions', JSON.stringify(updated));
+      } catch {}
+      return updated;
+    });
+    if (selectedSubmission && (selectedSubmission.id === id || selectedSubmission._id === id)) {
+      setSelectedSubmission({ ...selectedSubmission, isRead: nextRead });
     }
   };
 
@@ -261,12 +343,18 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
     if (!id || !confirm('Are you sure you want to delete this submission entry?')) return;
     try {
       await fetch(`/api/forms/${id}`, { method: 'DELETE' });
-      setSubmissions((prev) => prev.filter((s) => s.id !== id && s._id !== id));
-      if (selectedSubmission && (selectedSubmission.id === id || selectedSubmission._id === id)) {
-        setSelectedSubmission(null);
-      }
     } catch (e) {
       console.error(e);
+    }
+    setSubmissions((prev) => {
+      const updated = prev.filter((s) => s.id !== id && s._id !== id);
+      try {
+        localStorage.setItem('jamison_form_submissions', JSON.stringify(updated));
+      } catch {}
+      return updated;
+    });
+    if (selectedSubmission && (selectedSubmission.id === id || selectedSubmission._id === id)) {
+      setSelectedSubmission(null);
     }
   };
 
@@ -484,7 +572,7 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
                   onChange={(e) => setSelectedArea(e.target.value)}
                   className="px-3 py-2 rounded-xl bg-[#FAF9F6] border border-[#E5E0D8] text-[#002D61] focus:outline-none focus:border-[#EA580C]"
                 >
-                  {SERVICE_AREAS_FILTER.map((area) => (
+                  {availableAreas.map((area) => (
                     <option key={area} value={area}>
                       {area}
                     </option>
@@ -497,7 +585,7 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
                   onChange={(e) => setSelectedService(e.target.value)}
                   className="px-3 py-2 rounded-xl bg-[#FAF9F6] border border-[#E5E0D8] text-[#002D61] focus:outline-none focus:border-[#EA580C]"
                 >
-                  {SERVICES_FILTER.map((service) => (
+                  {availableServices.map((service) => (
                     <option key={service} value={service}>
                       {service}
                     </option>
