@@ -149,12 +149,12 @@ export const IdxWidgetTestPage: React.FC<IdxWidgetTestPageProps> = ({
           <style>{`
             .idx-fullwidth-map-stage {
               width: 100% !important;
-              height: 820px !important;
-              min-height: 760px !important;
+              height: 500px !important;
+              min-height: 500px !important;
               position: relative !important;
-              border-radius: 1.5rem !important;
+              border-radius: 1.25rem !important;
               overflow: hidden !important;
-              background-color: #FAF9F6 !important;
+              background-color: transparent !important;
               border: 1px solid #E5E0D8 !important;
             }
             idx-prime-map-search,
@@ -163,15 +163,15 @@ export const IdxWidgetTestPage: React.FC<IdxWidgetTestPageProps> = ({
             #idx-prime-target-${WIDGET_ID} {
               display: block !important;
               width: 100% !important;
-              height: 100% !important;
-              min-height: 760px !important;
+              height: 500px !important;
+              min-height: 500px !important;
               position: relative !important;
             }
           `}</style>
 
           {/* Map Loading State */}
           {widgetStatus === 'loading' && (
-            <div className="py-24 flex flex-col items-center justify-center text-center">
+            <div className="py-20 flex flex-col items-center justify-center text-center">
               <div className="w-12 h-12 rounded-full border-3 border-[#EA580C] border-t-transparent animate-spin mb-4" />
               <h3 className="font-serif text-lg font-bold text-[#002D61] mb-1">
                 Loading Interactive Oklahoma MLS Map...
@@ -184,7 +184,7 @@ export const IdxWidgetTestPage: React.FC<IdxWidgetTestPageProps> = ({
 
           {/* Full Width Live Map Stage */}
           <div className="idx-fullwidth-map-stage">
-            <div ref={directMountRef} id={`idx-prime-target-${WIDGET_ID}`} className="w-full h-full min-h-[760px]" />
+            <div ref={directMountRef} id={`idx-prime-target-${WIDGET_ID}`} className="w-full h-[500px]" />
           </div>
 
           {/* Clean Compliance & Concierge Footer */}
