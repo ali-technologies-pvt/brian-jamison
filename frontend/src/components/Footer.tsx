@@ -361,9 +361,31 @@ export const Footer: React.FC<FooterProps> = ({
                 <button
                   type="button"
                   onClick={() => {
-                    if (onNavigate) onNavigate('/faq');
+                    if (onNavigate) onNavigate('/idx-widget');
                   }}
                   className="hover:text-white hover:underline transition-colors block text-left cursor-pointer text-[#FB923C] font-semibold"
+                >
+                  ⚡ MLS Showcase Widget (#179291)
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onNavigate) onNavigate('/idx-test');
+                  }}
+                  className="hover:text-white hover:underline transition-colors block text-left cursor-pointer text-[#FB923C]/90 font-medium"
+                >
+                  MLS Quick Search (#15844)
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onNavigate) onNavigate('/faq');
+                  }}
+                  className="hover:text-white hover:underline transition-colors block text-left cursor-pointer text-stone-200"
                 >
                   Frequently Asked Questions
                 </button>

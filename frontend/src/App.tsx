@@ -17,6 +17,7 @@ import { AdminProvider } from './context/AdminContext';
 import { AdminToolbar } from './components/AdminToolbar';
 import { GlobalInlineEditor } from './components/admin/GlobalInlineEditor';
 import { IdxTestPage } from './pages/IdxTestPage';
+import { IdxWidgetTestPage } from './pages/IdxWidgetTestPage';
 import { SitemapPage } from './pages/SitemapPage';
 import {
   ValuationModal,
@@ -153,8 +154,9 @@ export default function App() {
   // Resolve current active page
   const isAdminRoute = currentPath.startsWith('/admin');
   const isIdxRoute = currentPath === '/idx-test' || currentPath === '/idx-search-test' || currentPath === '/idx';
+  const isIdxWidgetRoute = currentPath === '/idx-widget' || currentPath === '/idx-widget-test' || currentPath === '/idx-179291' || currentPath === '/idx-showcase';
   const isSitemapRoute = currentPath === '/sitemap' || currentPath === '/site-map' || currentPath === '/sitemap.html';
-  const activeInteriorPage = currentPath !== '/' && !isAdminRoute && !isIdxRoute && !isSitemapRoute ? getPageByPath(currentPath) : null;
+  const activeInteriorPage = currentPath !== '/' && !isAdminRoute && !isIdxRoute && !isIdxWidgetRoute && !isSitemapRoute ? getPageByPath(currentPath) : null;
 
   if (isAdminRoute) {
     return <AdminLoginView onNavigate={navigate} />;
@@ -176,7 +178,14 @@ export default function App() {
       />
 
       <main className="flex-1">
-        {isIdxRoute ? (
+        {isIdxWidgetRoute ? (
+          /* Dedicated IDX Broker Showcase Widget #179291 Test Page */
+          <IdxWidgetTestPage
+            onNavigate={navigate}
+            onOpenConsultation={handleOpenConsultation}
+            onOpenValuation={() => handleOpenValuation()}
+          />
+        ) : isIdxRoute ? (
           /* Dedicated IDX Broker Quick Search Test Page */
           <IdxTestPage
             onNavigate={navigate}
@@ -238,6 +247,7 @@ export default function App() {
       {/* Video Marquee: Rendered on Homepage and strategic pages; omitted on pages that already feature a dedicated video showcase or legal/directory pages */}
       {!currentPath.startsWith('/areas') &&
         !isIdxRoute &&
+        !isIdxWidgetRoute &&
         !isSitemapRoute &&
         !currentPath.includes('/home-selling') &&
         !currentPath.includes('/home-buying') &&

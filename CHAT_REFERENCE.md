@@ -110,6 +110,13 @@ Divided into 4 dedicated workspaces:
   - Verified Producer badge with 44px Brian Jamison Concierge Avatar.
   - High-intent address calculation lead funnels.
 
+### D. IDX Broker Integrations & Test Sandboxes
+- **Showcase Widget #179291 Page:** [`frontend/src/pages/IdxWidgetTestPage.tsx`](frontend/src/pages/IdxWidgetTestPage.tsx) (Accessible at `/idx-widget`, `/idx-179291`, `/idx-showcase`).
+  - Supports 3 view modes: *Luxury Theme Container*, *Isolated Safe Frame (Recommended for scripts)*, and *Raw DOM Mode*.
+  - Technical inspector, copy snippet button, and live status indicators.
+- **Quick Search Widget #15844 Page:** [`frontend/src/pages/IdxTestPage.tsx`](frontend/src/pages/IdxTestPage.tsx) (Accessible at `/idx-test` or `/idx`).
+  - Dynamic form inspector for search fields, property types, and city filters.
+
 ---
 
 ## ⚡ 4. Vercel & Serverless Deployment Safeguards
