@@ -34,7 +34,7 @@ import {
   FileText
 } from 'lucide-react';
 import { InteriorPageData } from './types';
-import { BROKER_INFO, MICRO_MARKETS, MicroMarket } from '../data/realEstateData';
+import { BROKER_INFO, MICRO_MARKETS, MicroMarket, getNeighborhoodWidgetId } from '../data/realEstateData';
 import { BrianAvatar } from '../components/BrianAvatar';
 import { InteriorMediaTour } from './InteriorMediaTour';
 import { InteriorHeroVideo } from './InteriorHeroVideo';
@@ -59,20 +59,178 @@ interface NeighborhoodReel {
   keyTakeaway: string;
 }
 
-// Active Property / Past Closing Mock Data
-interface AreaListing {
-  id: string;
-  address: string;
-  price: string;
-  beds: number;
-  baths: number;
-  sqft: string;
-  status: 'Active' | 'Under Contract' | 'Recently Sold';
-  type: string;
-  image: string;
-  soldNote?: string;
-  daysOnMarket?: number;
+// Dedicated Neighborhood IDX Map & Listings Component
+interface NeighborhoodIdxMapWidgetProps {
+  widgetId: string;
+  areaName: string;
+  onOpenConsultation: () => void;
+  onOpenValuation: () => void;
 }
+
+const NeighborhoodIdxMapWidget: React.FC<NeighborhoodIdxMapWidgetProps> = ({
+  widgetId,
+  areaName,
+  onOpenConsultation,
+  onOpenValuation
+}) => {
+  const [widgetStatus, setWidgetStatus] = useState<'loading' | 'loaded'>('loading');
+  const directMountRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = directMountRef.current;
+    if (!container) return;
+
+    setWidgetStatus('loading');
+    container.innerHTML = '';
+
+    // Remove any previously mounted script / custom element
+    const existingScript = document.getElementById(`idxwidgetsrc-${widgetId}`);
+    if (existingScript && existingScript.parentNode) {
+      existingScript.parentNode.removeChild(existingScript);
+    }
+    const existingMap = document.getElementById(`idx-prime-map-search-${widgetId}`);
+    if (existingMap && existingMap.parentNode) {
+      existingMap.parentNode.removeChild(existingMap);
+    }
+
+    const mountHost = document.createElement('div');
+    mountHost.id = `idx-mount-${widgetId}`;
+    mountHost.style.width = '100%';
+    mountHost.style.height = '100%';
+    container.appendChild(mountHost);
+
+    const script = document.createElement('script');
+    script.charset = 'UTF-8';
+    script.type = 'text/javascript';
+    script.id = `idxwidgetsrc-${widgetId}`;
+    script.src = `https://jamisonrealestateokc.idxbroker.com/idx/widgets/${widgetId}`;
+
+    script.onload = () => {
+      setWidgetStatus('loaded');
+    };
+
+    mountHost.appendChild(script);
+
+    // Watch for custom element creation
+    const checkTimer = setInterval(() => {
+      const mapEl = document.getElementById(`idx-prime-map-search-${widgetId}`) ||
+                    container.querySelector('idx-prime-map-search');
+      if (mapEl) {
+        setWidgetStatus('loaded');
+        clearInterval(checkTimer);
+      }
+    }, 400);
+
+    const safetyTimer = setTimeout(() => {
+      clearInterval(checkTimer);
+      setWidgetStatus('loaded');
+    }, 8000);
+
+    return () => {
+      clearInterval(checkTimer);
+      clearTimeout(safetyTimer);
+    };
+  }, [widgetId]);
+
+  return (
+    <div className="w-full">
+      {/* Scoped CSS for Full-Width Prime Map & Listing Rail */}
+      <style>{`
+        .idx-fullwidth-map-stage-${widgetId} {
+          width: 100% !important;
+          height: 500px !important;
+          min-height: 500px !important;
+          position: relative !important;
+          border-radius: 1.25rem !important;
+          overflow: hidden !important;
+          background-color: transparent !important;
+          border: 1px solid #E5E0D8 !important;
+        }
+        #idx-prime-map-search-${widgetId},
+        #idx-mount-${widgetId},
+        #idx-prime-target-${widgetId} {
+          display: block !important;
+          width: 100% !important;
+          height: 500px !important;
+          min-height: 500px !important;
+          position: relative !important;
+        }
+      `}</style>
+
+      {/* Map Card */}
+      <div className="w-full rounded-3xl bg-white border-2 border-[#EA580C]/25 shadow-xl overflow-hidden p-4 sm:p-6 lg:p-8">
+        {/* Header Bar */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-5 border-b border-[#EA580C]/15">
+          <div className="flex items-center gap-3">
+            <span className="relative flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+            </span>
+            <div>
+              <h3 className="font-serif text-lg sm:text-xl font-bold text-[#002D61]">
+                Real-Time MLSOK Interactive Map · {areaName}
+              </h3>
+              <p className="text-xs text-[#6B7280]">
+                Verified MLS Feed · Direct Brokerage Syndication
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 text-xs text-[#002D61] bg-[#F4F1EB] px-3.5 py-1.5 rounded-full border border-[#E6E2DA]">
+            <Building className="w-3.5 h-3.5 text-[#EA580C]" />
+            <span className="font-semibold">{areaName} Enclave</span>
+          </div>
+        </div>
+
+        {/* Loading Spinner */}
+        {widgetStatus === 'loading' && (
+          <div className="py-20 flex flex-col items-center justify-center text-center">
+            <div className="w-10 h-10 rounded-full border-3 border-[#EA580C] border-t-transparent animate-spin mb-3" />
+            <p className="font-serif text-base font-bold text-[#002D61] mb-1">
+              Loading {areaName} MLS Properties...
+            </p>
+            <p className="text-xs text-[#6B7280]">
+              Fetching live coordinates, active listings, and neighborhood polygon boundaries.
+            </p>
+          </div>
+        )}
+
+        {/* Map Stage */}
+        <div className={`idx-fullwidth-map-stage-${widgetId}`}>
+          <div ref={directMountRef} id={`idx-prime-target-${widgetId}`} className="w-full h-[500px]" />
+        </div>
+
+        {/* Clean Compliance & Concierge Footer */}
+        <div className="mt-6 pt-5 border-t border-[#EA580C]/20 flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs text-[#4B5563]">
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="w-4 h-4 text-[#EA580C] shrink-0" />
+            <span>
+              Listing data verified from MLSOK. Information deemed reliable but not guaranteed.
+            </span>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={onOpenConsultation}
+              className="px-4 py-2 rounded-xl bg-[#002D61] hover:bg-[#EA580C] text-white text-xs font-bold tracking-wider uppercase transition-colors cursor-pointer shadow-sm flex items-center gap-1.5"
+            >
+              <span>Schedule Showing</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+            <button
+              type="button"
+              onClick={onOpenValuation}
+              className="px-4 py-2 rounded-xl bg-white hover:bg-stone-50 text-[#002D61] border border-[#002D61]/30 text-xs font-bold tracking-wider uppercase transition-colors cursor-pointer"
+            >
+              Request Area Valuation
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 // Commute Destination
 interface CommuteDestination {
@@ -99,14 +257,14 @@ export const NeighborhoodDetailView: React.FC<NeighborhoodDetailViewProps> = ({
 
   const areaName = marketData?.name || page.title.replace(' Luxury Real Estate & Historic Enclaves', '').replace(' Luxury Real Estate & Custom Acreage Living', '').replace(' Real Estate, Golf Estates & University Living', '').replace(' Homes for Sale & Family Neighborhoods', '').replace(' Premier Estates & Grand Enclaves', '');
 
+  // Resolve Real-Time IDX Broker Widget ID for this specific service area
+  const activeWidgetId = marketData?.idxWidgetId || getNeighborhoodWidgetId(marketData?.id || page.id || page.slug);
+
   // Video State
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  // Tab State for Listings Section
-  const [listingsTab, setListingsTab] = useState<'active' | 'sold'>('active');
 
   // Selected Reel Modal State
   const [selectedReel, setSelectedReel] = useState<NeighborhoodReel | null>(null);
@@ -253,72 +411,6 @@ export const NeighborhoodDetailView: React.FC<NeighborhoodDetailViewProps> = ({
     }
   ];
 
-  // Mock Active & Sold Listings for this specific area
-  const areaListings: AreaListing[] = [
-    {
-      id: "listing-1",
-      address: `1428 ${areaName} Parkway`,
-      price: marketData?.medianPrice ? `$${(parseInt(marketData.medianPrice.replace(/[^0-9]/g, '')) * 1.15).toLocaleString()}` : "$875,000",
-      beds: 4,
-      baths: 4.5,
-      sqft: "4,250",
-      status: "Active",
-      type: "Executive Custom Residence",
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-      daysOnMarket: 4
-    },
-    {
-      id: "listing-2",
-      address: `821 Grandview Ridge Lane`,
-      price: marketData?.medianPrice ? marketData.medianPrice : "$685,000",
-      beds: 5,
-      baths: 5,
-      sqft: "5,120",
-      status: "Active",
-      type: "Modern Craftsman Estate",
-      image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
-      daysOnMarket: 8
-    },
-    {
-      id: "listing-3",
-      address: `312 Whispering Pines Court`,
-      price: marketData?.medianPrice ? `$${(parseInt(marketData.medianPrice.replace(/[^0-9]/g, '')) * 0.92).toLocaleString()}` : "$540,000",
-      beds: 4,
-      baths: 3.5,
-      sqft: "3,480",
-      status: "Active",
-      type: "Transitional Single Family",
-      image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80",
-      daysOnMarket: 12
-    }
-  ];
-
-  const areaSoldListings: AreaListing[] = [
-    {
-      id: "sold-1",
-      address: `904 Heritage Oak Drive`,
-      price: marketData?.medianPrice ? `$${(parseInt(marketData.medianPrice.replace(/[^0-9]/g, '')) * 1.04).toLocaleString()}` : "$925,000",
-      beds: 5,
-      baths: 5.5,
-      sqft: "5,450",
-      status: "Recently Sold",
-      type: "Brian Jamison Listing Representation",
-      image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80",
-      soldNote: "Sold in 3 Days · Multiple Competing Cash Bids · $28,000 Over Asking"
-    },
-    {
-      id: "sold-2",
-      address: `1702 Meadowlands Circle`,
-      price: marketData?.medianPrice ? `$${(parseInt(marketData.medianPrice.replace(/[^0-9]/g, '')) * 0.98).toLocaleString()}` : "$615,000",
-      beds: 4,
-      baths: 4,
-      sqft: "3,890",
-      status: "Recently Sold",
-      type: "Brian Jamison Buyer Representation",
-      image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80",
-      soldNote: "Secured Off-Market · Full TRRA Roof Replacement Negotiated on Behalf of Buyer"
-    }
-  ];
 
   // Local Amenities Data
   const localAmenities = [
@@ -714,181 +806,48 @@ export const NeighborhoodDetailView: React.FC<NeighborhoodDetailViewProps> = ({
         SECTION 5: ACTIVE LISTINGS & PAST CLOSINGS (MLS FEED INTEGRATION)
         ========================================================================
       */}
-      <section id="active-listings" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/25">
+      {/* 
+        ========================================================================
+        SECTION 5: LIVE MLSOK ACTIVE HOMES FOR SALE & INTERACTIVE MAP SEARCH
+        ========================================================================
+      */}
+      <section id="active-listings" className="w-full py-16 sm:py-24 bg-[#FAF9F6] border-b border-[#EA580C]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EA580C]/10 border border-[#EA580C]/30 text-[#EA580C] text-xs font-bold uppercase tracking-widest mb-3">
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-12">
+            <div className="max-w-3xl">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EA580C]/10 border border-[#EA580C]/30 text-[#EA580C] text-xs font-bold uppercase tracking-widest mb-3">
                 <Building className="w-3.5 h-3.5" />
-                <span>Oklahoma MLS Live Properties</span>
+                <span>Verified MLS Real-Time Mapping & Inventory</span>
               </div>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#002D61] tracking-tight">
-                Homes For Sale & Track Record in {areaName}
+                Active Homes For Sale in <span className="text-[#EA580C]">{areaName}</span>
               </h2>
+              <p className="font-sans text-sm sm:text-base text-[#4B5563] mt-3 leading-relaxed">
+                Explore real-time MLS inventory, price movements, and neighborhood boundaries across {areaName}. Use the interactive GIS map controls to browse available luxury homes and properties.
+              </p>
             </div>
 
-            {/* Filter Toggle: Live Active MLS vs Brian Jamison Track Record */}
-            <div className="inline-flex p-1.5 rounded-full bg-[#EFECE6] border border-[#EA580C]/25">
+            {/* Direct Consultation / Showing Concierge CTA */}
+            <div className="flex items-center gap-3">
               <button
                 type="button"
-                onClick={() => setListingsTab('active')}
-                className={`px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all cursor-pointer ${
-                  listingsTab === 'active'
-                    ? 'bg-[#002D61] text-white shadow-md'
-                    : 'text-[#4B5563] hover:text-[#002D61]'
-                }`}
+                onClick={onOpenConsultation}
+                className="px-6 py-3.5 rounded-full bg-[#002D61] hover:bg-[#EA580C] text-white text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-md flex items-center gap-2 cursor-pointer"
               >
-                Live Homes For Sale (3)
-              </button>
-              <button
-                type="button"
-                onClick={() => setListingsTab('sold')}
-                className={`px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all cursor-pointer ${
-                  listingsTab === 'sold'
-                    ? 'bg-[#002D61] text-white shadow-md'
-                    : 'text-[#4B5563] hover:text-[#002D61]'
-                }`}
-              >
-                Brian's Track Record in {areaName}
+                <span>Schedule Private Tour</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>
 
-          {/* Tab 1: Live Active MLS Listings */}
-          {listingsTab === 'active' && (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-              {areaListings.map((listing) => (
-                <div
-                  key={listing.id}
-                  className="group rounded-2xl overflow-hidden bg-white border border-[#EA580C]/25 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
-                >
-                  <div>
-                    {/* Visual Photo Header */}
-                    <div className="relative h-60 w-full overflow-hidden bg-[#001D40]">
-                      <img
-                        src={listing.image}
-                        alt={listing.address}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-
-                      <div className="absolute top-3 left-3 flex items-center gap-2">
-                        <span className="px-3 py-1 rounded-full text-[10px] font-sans font-bold uppercase tracking-wider bg-emerald-600 text-white shadow-md">
-                          {listing.status}
-                        </span>
-                        <span className="px-2.5 py-1 rounded-full text-[10px] font-sans font-bold bg-black/60 backdrop-blur-md text-white border border-white/20">
-                          {listing.daysOnMarket} Days on Market
-                        </span>
-                      </div>
-
-                      <div className="absolute bottom-3 left-3 right-3 text-white">
-                        <div className="font-serif text-2xl font-extrabold text-white">
-                          {listing.price}
-                        </div>
-                        <span className="text-xs text-white/80">{listing.type}</span>
-                      </div>
-                    </div>
-
-                    {/* Listing Specs */}
-                    <div className="p-5 sm:p-6 space-y-3">
-                      <h4 className="font-serif text-lg font-bold text-[#002D61]">
-                        {listing.address}
-                      </h4>
-                      <p className="text-xs text-[#6B7280]">
-                        {areaName}, Oklahoma Metro
-                      </p>
-
-                      <div className="grid grid-cols-3 gap-2 py-3 border-y border-[#EA580C]/20 text-center text-xs font-semibold text-[#002D61]">
-                        <div>
-                          <span className="block text-[#EA580C] font-extrabold text-sm">{listing.beds}</span>
-                          <span className="text-[10px] text-[#6B7280] uppercase">Beds</span>
-                        </div>
-                        <div>
-                          <span className="block text-[#EA580C] font-extrabold text-sm">{listing.baths}</span>
-                          <span className="text-[10px] text-[#6B7280] uppercase">Baths</span>
-                        </div>
-                        <div>
-                          <span className="block text-[#EA580C] font-extrabold text-sm">{listing.sqft}</span>
-                          <span className="text-[10px] text-[#6B7280] uppercase">Sq Ft</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Card Bottom CTA */}
-                  <div className="p-5 sm:p-6 pt-0">
-                    <button
-                      type="button"
-                      onClick={onOpenConsultation}
-                      className="w-full py-3 rounded-xl bg-[#002D61] hover:bg-[#EA580C] text-white text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-md flex items-center justify-center gap-2 cursor-pointer"
-                    >
-                      <span>Schedule Private Showing</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* Tab 2: Brian Jamison Track Record & Past Closings */}
-          {listingsTab === 'sold' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-              {areaSoldListings.map((listing) => (
-                <div
-                  key={listing.id}
-                  className="rounded-2xl overflow-hidden bg-white border-2 border-[#EA580C]/35 shadow-md flex flex-col justify-between"
-                >
-                  <div className="relative h-64 w-full overflow-hidden bg-[#001D40]">
-                    <img
-                      src={listing.image}
-                      alt={listing.address}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
-
-                    <div className="absolute top-3 left-3">
-                      <span className="px-3 py-1 rounded-full text-[10px] font-sans font-bold uppercase tracking-wider bg-[#EA580C] text-white shadow-md">
-                        {listing.status}
-                      </span>
-                    </div>
-
-                    <div className="absolute bottom-3 left-4 right-4 text-white">
-                      <span className="text-xs uppercase font-sans font-bold text-[#FB923C] block mb-0.5">
-                        {listing.type}
-                      </span>
-                      <div className="font-serif text-2xl font-extrabold text-white">
-                        {listing.price}
-                      </div>
-                      <h4 className="font-serif text-lg font-bold text-white mt-1">
-                        {listing.address}
-                      </h4>
-                    </div>
-                  </div>
-
-                  <div className="p-6 bg-[#FAF9F6] border-t border-[#EA580C]/25 flex-1 flex flex-col justify-between">
-                    <div className="p-3.5 rounded-xl bg-white border border-[#EA580C]/30 text-xs text-[#002D61] font-medium leading-relaxed mb-4">
-                      <strong className="text-[#EA580C] block mb-0.5 uppercase tracking-wide text-[10px]">
-                        Proven Track Record Result:
-                      </strong>
-                      {listing.soldNote}
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() => onOpenValuation()}
-                      className="w-full py-3 rounded-xl bg-[#002D61] hover:bg-[#EA580C] text-white text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-md flex items-center justify-center gap-2 cursor-pointer"
-                    >
-                      <span>Sell Your {areaName} Home with Brian</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+          {/* Dedicated Neighborhood Live IDX Widget Stage */}
+          <NeighborhoodIdxMapWidget
+            widgetId={activeWidgetId}
+            areaName={areaName}
+            onOpenConsultation={onOpenConsultation}
+            onOpenValuation={() => onOpenValuation()}
+          />
         </div>
       </section>
 

@@ -77,6 +77,7 @@ export interface MicroMarket {
   overview: string;
   image: string;
   highlightBadge?: string;
+  idxWidgetId?: string;
 }
 
 export const BRIAN_HEADSHOT_IMG = "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlcPhzgBsJAUqNniVDY3J_2aBktpM3n1qCn01xoXaqdAtfSXekbaT3K4-Ppg_hImsbuLLP3hgN0pDKze8jksH4z0qd_Mix4edrzihEGAwQqgChB2q2Iic9S3gm28B1zeP8D85ZPBBFD8E6o=s1360-w1360-h1020-rw";
@@ -629,7 +630,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["Grandview", "Doran", "Nichols Hills Suburban", "Avondale"],
     overview: "Nichols Hills represents Oklahoma City's premier historic wealth enclave. Characterized by wide winding boulevards, 24/7 dedicated municipal police, and distinctive architectural pedigrees spanning classic English Tudor to modern limestone masterpieces.",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "Crown Jewel Enclave"
+    highlightBadge: "Crown Jewel Enclave",
+    idxWidgetId: "179291"
   },
   {
     id: "heritage-hills",
@@ -642,7 +644,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["Heritage Hills East", "Overholser District", "Harndale"],
     overview: "Oklahoma City's premier historic preservation district, showcasing magnificent turn-of-the-century architecture, sprawling carriage houses, and walking access to Midtown dining.",
     image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "Historic Preservation"
+    highlightBadge: "Historic Preservation",
+    idxWidgetId: "179292"
   },
   {
     id: "gaillardia",
@@ -655,7 +658,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["The Reserve at Gaillardia", "Fairway Villas", "Enclave at Gaillardia"],
     overview: "Uncompromising security and resort living in northwest OKC. Featuring premier luxury estates along pristine fairways, lakes, and high-end privacy amenities.",
     image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "24/7 Guard-Gated Golf"
+    highlightBadge: "24/7 Guard-Gated Golf",
+    idxWidgetId: "179294"
   },
   {
     id: "crown-heights",
@@ -668,7 +672,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["Crown Heights Historic", "Edgemere Park Adjacent"],
     overview: "Beloved urban enclave known for architectural diversity, deep front porches, annual neighborhood gatherings, and steps from gourmet dining on Western Ave.",
     image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "Tudor & Mission Revivals"
+    highlightBadge: "Tudor & Mission Revivals",
+    idxWidgetId: "179296"
   },
   {
     id: "the-village",
@@ -681,7 +686,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["Village Central", "Lakeside Enclave", "Penn Square North"],
     overview: "Surrounded by Nichols Hills and Lake Hefner, The Village is one of OKC's fastest appreciating residential hubs with active buyer competition.",
     image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "High-Velocity Escrow"
+    highlightBadge: "High-Velocity Escrow",
+    idxWidgetId: "179297"
   },
   {
     id: "downtown-midtown",
@@ -694,7 +700,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["Automobile Alley Lofts", "Deep Deuce Condos", "Midtown Row"],
     overview: "The epicenter of Oklahoma City's cultural renaissance, streetcars, rooftop lounges, and prime executive live-work lifestyle.",
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "Skyline Lofts & Penthouse"
+    highlightBadge: "Skyline Lofts & Penthouse",
+    idxWidgetId: "179307"
   },
   {
     id: "quail-creek",
@@ -707,7 +714,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["Quail Creek Estates", "The Fairways at Quail Creek"],
     overview: "Established prestigious northwest OKC golf community offering generous lot sizes, mature oaks, and family country club amenities.",
     image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "Classic Golf Living"
+    highlightBadge: "Classic Golf Living",
+    idxWidgetId: "179807"
   },
 
   // North Metro & Edmond (7)
@@ -722,7 +730,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["Coffee Creek", "Fairfax Golf", "Thornhill", "Woodlands"],
     overview: "Consistently ranked among the top suburbs in the nation. Edmond delivers exceptional safety, top tier schools, and thriving downtown retail culture.",
     image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "10/10 Schools Corridor"
+    highlightBadge: "10/10 Schools Corridor",
+    idxWidgetId: "179808"
   },
   {
     id: "deer-creek",
@@ -735,7 +744,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["Valencia", "Lone Oak", "Ironstone", "Belmont"],
     overview: "Northwest Edmond's premier high-growth school district, drawing high-income transferees seeking master-planned luxury communities.",
     image: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "Modern Custom Builds"
+    highlightBadge: "Modern Custom Builds",
+    idxWidgetId: "179809"
   },
   {
     id: "oak-tree",
@@ -748,7 +758,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["Oak Tree National", "Oak Tree Country Club Estates"],
     overview: "A legendary golf sanctuary hosting major championships, with sprawling custom stone estates, private tennis complex, and world-class dining.",
     image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "PGA Championship Greens"
+    highlightBadge: "PGA Championship Greens",
+    idxWidgetId: "179810"
   },
   {
     id: "arcadia-hiwassee",
@@ -761,7 +772,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["Hiwassee Lake Estates", "Round Barn Acreages", "Arcadia Woods"],
     overview: "Where scenic country expanse meets luxury modern architecture. Expansive multi-acre estates just 15 minutes east of I-35.",
     image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "Lake & Equestrian Acreages"
+    highlightBadge: "Lake & Equestrian Acreages",
+    idxWidgetId: "179811"
   },
   {
     id: "guthrie-historic",
@@ -774,7 +786,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["Guthrie Historic Townsite", "Cimarron River Ranches"],
     overview: "Historic charm, red-brick Victorian streets, film-production backdrops, and expansive private acreage properties.",
     image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "Victorian & Wooded Tracts"
+    highlightBadge: "Victorian & Wooded Tracts",
+    idxWidgetId: "179812"
   },
   {
     id: "twin-bridges",
@@ -787,7 +800,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["Twin Bridges", "Covell Valley", "Montmartre"],
     overview: "A sought-after Edmond community combining neighborhood walkability, modern transitional architecture, and top school feeder routes.",
     image: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "Resort Pool & Trails"
+    highlightBadge: "Resort Pool & Trails",
+    idxWidgetId: "179813"
   },
   {
     id: "rose-creek",
@@ -800,7 +814,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["The Greens at Rose Creek", "The Island at Rose Creek"],
     overview: "Elite guard-gated golf haven with dynamic custom architecture, resort fitness facilities, and vibrant family amenities.",
     image: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "Guard-Gated Clubhouse"
+    highlightBadge: "Guard-Gated Clubhouse",
+    idxWidgetId: "179815"
   },
 
   // West & South Metro (7)
@@ -815,7 +830,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["Surrey Hills", "Stone Mill", "River Mesa"],
     overview: "A thriving family-oriented city on OKC's west side, renowned for community pride, top athletics, and accessible luxury neighborhoods.",
     image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "Turnpike Transit & Schools"
+    highlightBadge: "Turnpike Transit & Schools",
+    idxWidgetId: "179817"
   },
   {
     id: "mustang",
@@ -828,7 +844,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["Spitler Lake", "Hyde Park", "Wildwood"],
     overview: "Southwest metro favorite featuring exceptional school sports facilities, low taxes, and rapid new home development.",
     image: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "Half-Acre Homesites"
+    highlightBadge: "Half-Acre Homesites",
+    idxWidgetId: "179818"
   },
   {
     id: "norman-university",
@@ -841,7 +858,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["Chautauqua Historic", "Brookhaven", "Hallbrooke"],
     overview: "A vibrant cultural and university center offering diverse housing from historic estates near campus to tranquil golf communities like Brookhaven.",
     image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "OU Campus & Brookhaven"
+    highlightBadge: "OU Campus & Brookhaven",
+    idxWidgetId: "179819"
   },
   {
     id: "moore",
@@ -854,7 +872,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["Apple Valley", "Sendera Ranch", "Highland Village"],
     overview: "Conveniently located between OKC and Norman with premier municipal parks, state-of-the-art community recreation, and strong home equity growth.",
     image: "https://images.unsplash.com/photo-1598228723793-52759bba239c?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "High-Equity Parks Hub"
+    highlightBadge: "High-Equity Parks Hub",
+    idxWidgetId: "179821"
   },
   {
     id: "midwest-city-choctaw",
@@ -867,7 +886,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["Timber Ridge", "Woodland Hills Choctaw", "Forest Glen"],
     overview: "A mix of aerospace career convenience and scenic wooded acreages with lower density and spacious property envelopes.",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "Aerospace & Wooded Acreages"
+    highlightBadge: "Aerospace & Wooded Acreages",
+    idxWidgetId: "179822"
   },
   {
     id: "blanchard-newcastle",
@@ -880,7 +900,8 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["Winter Creek Golf Ranches", "Newcastle Ridge", "Fox Lane Estates"],
     overview: "Fastest-growing rural-suburban corridors south of the Canadian River, celebrated for custom acreage homes and golf communities like Winter Creek.",
     image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "Hill Country Ranches"
+    highlightBadge: "Hill Country Ranches",
+    idxWidgetId: "179827"
   },
   {
     id: "piedmont",
@@ -893,9 +914,107 @@ export const MICRO_MARKETS: MicroMarket[] = [
     keySubdivisions: ["Buffalo Creek", "Manning Estates", "Olde Towne"],
     overview: "The preferred destination for families seeking spacious acreage living with modern custom estates while staying within easy reach of the Kilpatrick Turnpike.",
     image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80",
-    highlightBadge: "1-5 Acre Prairie Estates"
+    highlightBadge: "1-5 Acre Prairie Estates",
+    idxWidgetId: "179836"
   }
 ];
+
+// Complete 21 Service Area IDX Broker Widget ID Mapping
+export const NEIGHBORHOOD_IDX_WIDGETS: Record<string, string> = {
+  // 1- Nichols Hills
+  'nichols-hills': '179291',
+  
+  // 2- Heritage Hills
+  'heritage-hills': '179292',
+  
+  // 3- Gaillardia Golf
+  'gaillardia': '179294',
+  
+  // 4- Crown Heights
+  'crown-heights': '179296',
+  
+  // 5- The Village
+  'the-village': '179297',
+  
+  // 6- Downtown & Midtown
+  'downtown-midtown': '179307',
+  
+  // 7- Quail Creek Golf Club
+  'quail-creek': '179807',
+  
+  // 8- Edmond Oakdale
+  'edmond-oakdale': '179808',
+  'edmond': '179808',
+  'oakdale': '179808',
+  
+  // 9- Deer Creek
+  'deer-creek': '179809',
+  
+  // 10- Oak Tree Golf & Country Club
+  'oak-tree': '179810',
+  
+  // 11- Arcadia & Lake Hiwassee
+  'arcadia-hiwassee': '179811',
+  'arcadia': '179811',
+  'lake-hiwassee': '179811',
+  
+  // 12- Guthrie Historic Enclave
+  'guthrie-historic': '179812',
+  'guthrie': '179812',
+  
+  // 13- Twin Bridges
+  'twin-bridges': '179813',
+  
+  // 14- Rose Creek Golf Community
+  'rose-creek': '179815',
+  
+  // 15- Yukon
+  'yukon': '179817',
+  
+  // 16- Mustang
+  'mustang': '179818',
+  
+  // 17- Norman & University Enclave
+  'norman-university': '179819',
+  'norman': '179819',
+  
+  // 18- Moore
+  'moore': '179821',
+  
+  // 19- Midwest City & Choctaw
+  'midwest-city-choctaw': '179822',
+  'midwest-city': '179822',
+  'choctaw': '179822',
+  'nicoma-park': '179822',
+  'harrah': '179822',
+  
+  // 20- Blanchard & Newcastle
+  'blanchard-newcastle': '179827',
+  'blanchard': '179827',
+  'newcastle': '179827',
+  'tuttle': '179827',
+  
+  // 21- Piedmont Rural Acreages
+  'piedmont': '179836',
+  'piedmont-acreage': '179836',
+  'piedmont-rural-acreages': '179836',
+  
+  // General / Fallbacks
+  'oklahoma-city': '179291',
+  'bethany': '179297',
+  'warr-acres': '179297',
+  'jones': '179811'
+};
+
+export const getNeighborhoodWidgetId = (idOrSlug?: string): string => {
+  if (!idOrSlug) return '179291';
+  const clean = idOrSlug.replace('/areas/', '').replace(/^\//, '').trim().toLowerCase();
+  if (NEIGHBORHOOD_IDX_WIDGETS[clean]) return NEIGHBORHOOD_IDX_WIDGETS[clean];
+  for (const [key, val] of Object.entries(NEIGHBORHOOD_IDX_WIDGETS)) {
+    if (clean.includes(key) || key.includes(clean)) return val;
+  }
+  return '179291';
+};
 
 export const SITEMAP_PAGES = [
   // Core Brand Pages
