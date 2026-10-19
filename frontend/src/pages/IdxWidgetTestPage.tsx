@@ -429,10 +429,10 @@ export const IdxWidgetTestPage: React.FC<IdxWidgetTestPageProps> = ({
                   </div>
                   <div>
                     <h2 className="font-serif text-lg font-bold text-[#002D61]">
-                      Live IDX Widget Output
+                      Combined Luxury MLS Search & Map Portal
                     </h2>
                     <span className="text-[11px] text-[#6B7280]">
-                      Rendering via: {renderMode === 'luxury' ? 'Modern Luxury Container' : renderMode === 'isolated' ? 'Isolated Frame Sandbox' : 'Raw Unstyled Script'}
+                      Search Filters + Prime Map Search (Widget #{WIDGET_ID})
                     </span>
                   </div>
                 </div>
@@ -442,6 +442,149 @@ export const IdxWidgetTestPage: React.FC<IdxWidgetTestPageProps> = ({
                     Widget ID: {WIDGET_ID}
                   </span>
                 </div>
+              </div>
+
+              {/* Integrated Quick Search Filter Capsule */}
+              <div className="mb-6 p-4 sm:p-5 rounded-2xl bg-[#001D40] text-white border border-white/10 shadow-lg">
+                <div className="flex items-center justify-between gap-2 mb-3 pb-2.5 border-b border-white/15">
+                  <div className="flex items-center gap-2">
+                    <Sliders className="w-4 h-4 text-[#FB923C]" />
+                    <span className="font-serif text-sm font-bold text-white tracking-wide">
+                      MLS Search Criteria & Filters
+                    </span>
+                  </div>
+                  <span className="text-[11px] text-[#FB923C] font-semibold">
+                    Direct MLSOK Search Engine
+                  </span>
+                </div>
+
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    const form = e.currentTarget as HTMLFormElement;
+                    const formData = new FormData(form);
+                    const params = new URLSearchParams();
+                    const city = formData.get('city') as string;
+                    const pt = formData.get('pt') as string;
+                    const lp = formData.get('lp') as string;
+                    const hp = formData.get('hp') as string;
+                    const bd = formData.get('bd') as string;
+                    const tb = formData.get('tb') as string;
+                    if (city && city !== 'all') params.append('city', city);
+                    if (pt && pt !== 'all') params.append('pt', pt);
+                    if (lp && lp !== 'any') params.append('lp', lp);
+                    if (hp && hp !== 'any') params.append('hp', hp);
+                    if (bd && bd !== 'any') params.append('bd', bd);
+                    if (tb && tb !== 'any') params.append('tb', tb);
+
+                    window.open(
+                      `https://jamisonrealestateokc.idxbroker.com/idx/results/listings?${params.toString()}`,
+                      '_blank'
+                    );
+                  }}
+                  className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5"
+                >
+                  {/* City Selector */}
+                  <div>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-[#FB923C] mb-1">
+                      City / Area
+                    </label>
+                    <select
+                      name="city"
+                      defaultValue="32966"
+                      className="w-full text-xs py-2 px-2.5 rounded-xl bg-white/10 border border-white/20 text-white focus:outline-none focus:border-[#EA580C] cursor-pointer"
+                    >
+                      <option value="32966" className="text-[#002D61] bg-white">Oklahoma City</option>
+                      <option value="12874" className="text-[#002D61] bg-white">Edmond</option>
+                      <option value="all" className="text-[#002D61] bg-white">Nichols Hills / All</option>
+                      <option value="31652" className="text-[#002D61] bg-white">Norman</option>
+                      <option value="48962" className="text-[#002D61] bg-white">Yukon</option>
+                    </select>
+                  </div>
+
+                  {/* Property Type */}
+                  <div>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-[#FB923C] mb-1">
+                      Property Type
+                    </label>
+                    <select
+                      name="pt"
+                      defaultValue="1"
+                      className="w-full text-xs py-2 px-2.5 rounded-xl bg-white/10 border border-white/20 text-white focus:outline-none focus:border-[#EA580C] cursor-pointer"
+                    >
+                      <option value="1" className="text-[#002D61] bg-white">Single Family</option>
+                      <option value="2" className="text-[#002D61] bg-white">Condo / Townhouse</option>
+                      <option value="3" className="text-[#002D61] bg-white">Luxury Estates</option>
+                      <option value="4" className="text-[#002D61] bg-white">Land / Acreage</option>
+                      <option value="all" className="text-[#002D61] bg-white">All Properties</option>
+                    </select>
+                  </div>
+
+                  {/* Min Price */}
+                  <div>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-[#FB923C] mb-1">
+                      Min Price
+                    </label>
+                    <select
+                      name="lp"
+                      defaultValue="any"
+                      className="w-full text-xs py-2 px-2.5 rounded-xl bg-white/10 border border-white/20 text-white focus:outline-none focus:border-[#EA580C] cursor-pointer"
+                    >
+                      <option value="any" className="text-[#002D61] bg-white">No Min</option>
+                      <option value="300000" className="text-[#002D61] bg-white">$300,000</option>
+                      <option value="500000" className="text-[#002D61] bg-white">$500,000</option>
+                      <option value="750000" className="text-[#002D61] bg-white">$750,000</option>
+                      <option value="1000000" className="text-[#002D61] bg-white">$1,000,000+</option>
+                    </select>
+                  </div>
+
+                  {/* Max Price */}
+                  <div>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-[#FB923C] mb-1">
+                      Max Price
+                    </label>
+                    <select
+                      name="hp"
+                      defaultValue="any"
+                      className="w-full text-xs py-2 px-2.5 rounded-xl bg-white/10 border border-white/20 text-white focus:outline-none focus:border-[#EA580C] cursor-pointer"
+                    >
+                      <option value="any" className="text-[#002D61] bg-white">No Max</option>
+                      <option value="600000" className="text-[#002D61] bg-white">$600,000</option>
+                      <option value="900000" className="text-[#002D61] bg-white">$900,000</option>
+                      <option value="1500000" className="text-[#002D61] bg-white">$1,500,000</option>
+                      <option value="3000000" className="text-[#002D61] bg-white">$3,000,000+</option>
+                    </select>
+                  </div>
+
+                  {/* Bedrooms */}
+                  <div>
+                    <label className="block text-[10px] font-bold uppercase tracking-wider text-[#FB923C] mb-1">
+                      Beds
+                    </label>
+                    <select
+                      name="bd"
+                      defaultValue="any"
+                      className="w-full text-xs py-2 px-2.5 rounded-xl bg-white/10 border border-white/20 text-white focus:outline-none focus:border-[#EA580C] cursor-pointer"
+                    >
+                      <option value="any" className="text-[#002D61] bg-white">Any Beds</option>
+                      <option value="2" className="text-[#002D61] bg-white">2+ Beds</option>
+                      <option value="3" className="text-[#002D61] bg-white">3+ Beds</option>
+                      <option value="4" className="text-[#002D61] bg-white">4+ Beds</option>
+                      <option value="5" className="text-[#002D61] bg-white">5+ Beds</option>
+                    </select>
+                  </div>
+
+                  {/* Submit Button */}
+                  <div className="flex items-end">
+                    <button
+                      type="submit"
+                      className="w-full py-2 px-3 rounded-xl bg-[#EA580C] hover:bg-[#C2410C] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-md cursor-pointer"
+                    >
+                      <span>Search</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </form>
               </div>
 
               {/* Scoped CSS to harmonize IDX Broker output with Jamison Real Estate luxury design */}
