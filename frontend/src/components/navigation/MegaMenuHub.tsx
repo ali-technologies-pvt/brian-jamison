@@ -236,7 +236,33 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
           </div>
         </div>
 
-        <div className="mt-6 pt-4 border-t border-white/15 flex flex-col sm:flex-row items-start sm:items-center justify-end gap-2 text-xs text-stone-200">
+        <div className="mt-6 pt-4 border-t border-white/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-stone-200">
+          <div className="flex items-center gap-4">
+            <button
+              type="button"
+              onClick={() => {
+                onClose();
+                if (onNavigate) onNavigate('/map-search');
+              }}
+              className="text-stone-300 hover:text-[#FB923C] cursor-pointer flex items-center gap-1 transition-colors"
+            >
+              <Compass className="w-3.5 h-3.5 text-[#FB923C]" />
+              <span>Interactive MLS Map Search</span>
+            </button>
+            <span className="text-white/20">•</span>
+            <button
+              type="button"
+              onClick={() => {
+                onClose();
+                if (onNavigate) onNavigate('/listings');
+              }}
+              className="text-stone-300 hover:text-[#FB923C] cursor-pointer flex items-center gap-1 transition-colors"
+            >
+              <Building className="w-3.5 h-3.5 text-[#FB923C]" />
+              <span>Active Listings</span>
+            </button>
+          </div>
+
           <button
             type="button"
             onClick={() => {

@@ -43,6 +43,7 @@ import { BrianAvatar } from '../components/BrianAvatar';
 import { SocialLinks } from '../components/SocialLinks';
 import { BROKER_INFO } from '../data/realEstateData';
 import { InteriorHeroVideo } from './InteriorHeroVideo';
+import { IdxUniversalWidget } from '../components/IdxUniversalWidget';
 
 interface HomeBuyingPageProps {
   onNavigate: (path: string) => void;
@@ -91,6 +92,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
   useEffect(() => {
     const handleScroll = () => {
       const sections = [
+        { id: 'section-mls-search', key: 'search' },
         { id: 'section-roadmap', key: 'roadmap' },
         { id: 'section-shield', key: 'shield' },
         { id: 'section-reels', key: 'reels' },
@@ -378,14 +380,15 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           <div className="flex items-center justify-between overflow-x-auto no-scrollbar py-3.5 gap-2 sm:gap-4 text-xs font-semibold uppercase tracking-wider whitespace-nowrap">
             {[
-              { id: 'section-roadmap', key: 'roadmap', label: '01 10-Step Roadmap' },
-              { id: 'section-shield', key: 'shield', label: "02 The Buyer's Shield" },
-              { id: 'section-reels', key: 'reels', label: '03 Video Playbook' },
-              { id: 'section-due-diligence', key: 'diligence', label: '04 OKC Due Diligence' },
-              { id: 'section-calculator', key: 'calculator', label: '05 Mortgage PITI' },
-              { id: 'section-financing', key: 'financing', label: '06 Loan Options & Grants' },
-              { id: 'section-dual-agency', key: 'dual-agency', label: '07 Dual-Agency Warning' },
-              { id: 'section-faqs', key: 'faqs', label: '08 FAQs & Guide' }
+              { id: 'section-mls-search', key: 'search', label: '01 MLS Quick Search' },
+              { id: 'section-roadmap', key: 'roadmap', label: '02 10-Step Roadmap' },
+              { id: 'section-shield', key: 'shield', label: "03 The Buyer's Shield" },
+              { id: 'section-reels', key: 'reels', label: '04 Video Playbook' },
+              { id: 'section-due-diligence', key: 'diligence', label: '05 OKC Due Diligence' },
+              { id: 'section-calculator', key: 'calculator', label: '06 Mortgage PITI' },
+              { id: 'section-financing', key: 'financing', label: '07 Loan Options & Grants' },
+              { id: 'section-dual-agency', key: 'dual-agency', label: '08 Dual-Agency Warning' },
+              { id: 'section-faqs', key: 'faqs', label: '09 FAQs & Guide' }
             ].map(item => (
               <button
                 key={item.key}
@@ -412,6 +415,24 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
           </div>
         </div>
       </div>
+
+      {/* 
+        ========================================================================
+        SECTION 1: LIVE MLS QUICK SEARCH FOR BUYERS (Widget 15844)
+        ========================================================================
+      */}
+      <section id="section-mls-search" className="w-full py-16 sm:py-20 bg-white border-b border-[#EA580C]/25">
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+          <IdxUniversalWidget
+            widgetId="15844"
+            type="quicksearch"
+            title="Search Active Oklahoma City Metro Homes"
+            subtitle="Live MLSOK broker syndication for single-family residences, luxury golf estates, and acreage across Central Oklahoma."
+            badge="Live MLS Search"
+            minHeight="140px"
+          />
+        </div>
+      </section>
 
       {/* 
         ========================================================================

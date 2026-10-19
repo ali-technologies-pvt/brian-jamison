@@ -17,7 +17,7 @@ import { AdminProvider } from './context/AdminContext';
 import { AdminToolbar } from './components/AdminToolbar';
 import { GlobalInlineEditor } from './components/admin/GlobalInlineEditor';
 import { IdxTestPage } from './pages/IdxTestPage';
-import { IdxWidgetTestPage } from './pages/IdxWidgetTestPage';
+import { MapSearchPage } from './pages/MapSearchPage';
 import { SitemapPage } from './pages/SitemapPage';
 import {
   ValuationModal,
@@ -179,8 +179,8 @@ export default function App() {
 
       <main className="flex-1">
         {isIdxWidgetRoute ? (
-          /* Dedicated IDX Broker Showcase Widget #179291 Test Page */
-          <IdxWidgetTestPage
+          /* Interactive Oklahoma City MLS Map Search */
+          <MapSearchPage
             onNavigate={navigate}
             onOpenConsultation={handleOpenConsultation}
             onOpenValuation={() => handleOpenValuation()}
@@ -227,7 +227,10 @@ export default function App() {
             />
 
             {/* Section 4: Featured & Notable Closings (Asymmetrical Magazine Gallery) */}
-            <FeaturedClosings onSelectProperty={(prop) => setSelectedProperty(prop)} />
+            <FeaturedClosings
+              onSelectProperty={(prop) => setSelectedProperty(prop)}
+              onNavigate={navigate}
+            />
 
             {/* Section 6: Request A Confidential Market Appraisal (Valuation Funnel) */}
             <ValuationBanner onOpenValuation={handleOpenValuation} />

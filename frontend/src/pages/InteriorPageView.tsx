@@ -41,6 +41,9 @@ import {
   FaqPage,
   LegalCompliancePage
 } from './ResourcePages';
+import { ListingsPage } from './ListingsPage';
+import { PastSalesPage } from './PastSalesPage';
+import { MapSearchPage } from './MapSearchPage';
 
 interface InteriorPageViewProps {
   page: InteriorPageData;
@@ -338,6 +341,39 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
           </div>
         </section>
       </article>
+    );
+  }
+
+  // 15. Dedicated Active MLS Listings & Featured Portfolio (/listings)
+  if (page.id === 'listings' || page.slug === '/listings') {
+    return (
+      <ListingsPage
+        onNavigate={onNavigate}
+        onOpenConsultation={onOpenConsultation}
+        onOpenValuation={onOpenValuation}
+      />
+    );
+  }
+
+  // 16. Dedicated $70M+ Past Sales & Track Record (/past-sales)
+  if (page.id === 'past-sales' || page.slug === '/past-sales') {
+    return (
+      <PastSalesPage
+        onNavigate={onNavigate}
+        onOpenConsultation={onOpenConsultation}
+        onOpenValuation={onOpenValuation}
+      />
+    );
+  }
+
+  // 17. Dedicated Geospatial MLS Map Search (/map-search, /properties/map)
+  if (page.id === 'map-search' || page.slug === '/map-search' || page.slug === '/properties/map') {
+    return (
+      <MapSearchPage
+        onNavigate={onNavigate}
+        onOpenConsultation={onOpenConsultation}
+        onOpenValuation={onOpenValuation}
+      />
     );
   }
 

@@ -6,9 +6,10 @@ import { EditableText } from './EditableText';
 
 interface FeaturedClosingsProps {
   onSelectProperty: (property: Property) => void;
+  onNavigate?: (path: string) => void;
 }
 
-export const FeaturedClosings: React.FC<FeaturedClosingsProps> = ({ onSelectProperty }) => {
+export const FeaturedClosings: React.FC<FeaturedClosingsProps> = ({ onSelectProperty, onNavigate }) => {
   const [filter, setFilter] = useState<'all' | 'norman' | 'edmond' | 'okc' | 'luxury'>('all');
 
   const filteredProperties = PROPERTIES.filter((prop) => {
@@ -228,6 +229,34 @@ export const FeaturedClosings: React.FC<FeaturedClosingsProps> = ({ onSelectProp
               </div>
             ))}
           </div>
+
+          {/* Luxury Editorial Action Bar linking cleanly to Active MLS Listings and Past Track Record */}
+          {onNavigate && (
+            <div className="mt-12 sm:mt-16 pt-8 border-t border-[#002D61]/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#002D61]">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="font-semibold text-xs text-[#002D61]">Direct MLSOK Verified Broker Feed</span>
+              </div>
+              <div className="flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => onNavigate('/listings')}
+                  className="px-5 py-2.5 rounded-full bg-[#002D61] hover:bg-[#001D40] text-white font-bold tracking-wider uppercase text-[11px] transition-all shadow-sm cursor-pointer flex items-center gap-1.5"
+                >
+                  <span>Active Featured Listings</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#FB923C]" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('/past-sales')}
+                  className="px-5 py-2.5 rounded-full border border-[#002D61]/25 hover:border-[#EA580C] text-[#002D61] hover:text-[#EA580C] font-bold tracking-wider uppercase text-[11px] transition-all cursor-pointer flex items-center gap-1.5"
+                >
+                  <span>$70M+ Sales Track Record</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
