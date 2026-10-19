@@ -227,10 +227,7 @@ export default function App() {
             />
 
             {/* Section 4: Featured & Notable Closings (Asymmetrical Magazine Gallery) */}
-            <FeaturedClosings
-              onSelectProperty={(prop) => setSelectedProperty(prop)}
-              onNavigate={navigate}
-            />
+            <FeaturedClosings onSelectProperty={(prop) => setSelectedProperty(prop)} />
 
             {/* Section 6: Request A Confidential Market Appraisal (Valuation Funnel) */}
             <ValuationBanner onOpenValuation={handleOpenValuation} />

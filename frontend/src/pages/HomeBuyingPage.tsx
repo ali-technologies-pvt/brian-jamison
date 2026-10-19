@@ -43,7 +43,6 @@ import { BrianAvatar } from '../components/BrianAvatar';
 import { SocialLinks } from '../components/SocialLinks';
 import { BROKER_INFO } from '../data/realEstateData';
 import { InteriorHeroVideo } from './InteriorHeroVideo';
-import { IdxUniversalWidget } from '../components/IdxUniversalWidget';
 
 interface HomeBuyingPageProps {
   onNavigate: (path: string) => void;
@@ -92,7 +91,6 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
   useEffect(() => {
     const handleScroll = () => {
       const sections = [
-        { id: 'section-mls-search', key: 'search' },
         { id: 'section-roadmap', key: 'roadmap' },
         { id: 'section-shield', key: 'shield' },
         { id: 'section-reels', key: 'reels' },
@@ -380,15 +378,14 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           <div className="flex items-center justify-between overflow-x-auto no-scrollbar py-3.5 gap-2 sm:gap-4 text-xs font-semibold uppercase tracking-wider whitespace-nowrap">
             {[
-              { id: 'section-mls-search', key: 'search', label: '01 MLS Quick Search' },
-              { id: 'section-roadmap', key: 'roadmap', label: '02 10-Step Roadmap' },
-              { id: 'section-shield', key: 'shield', label: "03 The Buyer's Shield" },
-              { id: 'section-reels', key: 'reels', label: '04 Video Playbook' },
-              { id: 'section-due-diligence', key: 'diligence', label: '05 OKC Due Diligence' },
-              { id: 'section-calculator', key: 'calculator', label: '06 Mortgage PITI' },
-              { id: 'section-financing', key: 'financing', label: '07 Loan Options & Grants' },
-              { id: 'section-dual-agency', key: 'dual-agency', label: '08 Dual-Agency Warning' },
-              { id: 'section-faqs', key: 'faqs', label: '09 FAQs & Guide' }
+              { id: 'section-roadmap', key: 'roadmap', label: '01 10-Step Roadmap' },
+              { id: 'section-shield', key: 'shield', label: "02 The Buyer's Shield" },
+              { id: 'section-reels', key: 'reels', label: '03 Video Playbook' },
+              { id: 'section-due-diligence', key: 'diligence', label: '04 OKC Due Diligence' },
+              { id: 'section-calculator', key: 'calculator', label: '05 Mortgage PITI' },
+              { id: 'section-financing', key: 'financing', label: '06 Loan Options & Grants' },
+              { id: 'section-dual-agency', key: 'dual-agency', label: '07 Dual-Agency Warning' },
+              { id: 'section-faqs', key: 'faqs', label: '08 FAQs & Guide' }
             ].map(item => (
               <button
                 key={item.key}
@@ -415,24 +412,6 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
           </div>
         </div>
       </div>
-
-      {/* 
-        ========================================================================
-        SECTION 1: LIVE MLS QUICK SEARCH FOR BUYERS (Widget 15844)
-        ========================================================================
-      */}
-      <section id="section-mls-search" className="w-full py-16 sm:py-20 bg-white border-b border-[#EA580C]/25">
-        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
-          <IdxUniversalWidget
-            widgetId="15844"
-            type="quicksearch"
-            title="Search Active Oklahoma City Metro Homes"
-            subtitle="Live MLSOK broker syndication for single-family residences, luxury golf estates, and acreage across Central Oklahoma."
-            badge="Live MLS Search"
-            minHeight="140px"
-          />
-        </div>
-      </section>
 
       {/* 
         ========================================================================
@@ -1248,7 +1227,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
         SECTION 9: BUYER FAQS & RELOCATION LEAD MAGNET
         ========================================================================
       */}
-      <section id="section-faqs" className="w-full py-20 sm:py-28 bg-[#F5EFE6] border-b border-[#EA580C]/25">
+      <section id="section-faqs" className="w-full py-20 sm:py-28 pb-28 sm:pb-36 bg-[#F5EFE6] border-b border-[#EA580C]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           {/* Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
@@ -1288,7 +1267,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                   </button>
 
                   {isOpen && (
-                    <div className="px-5 pb-6 sm:px-6 sm:pb-6 text-xs sm:text-sm text-[#4B5563] font-normal leading-relaxed border-t border-[#FAF9F6] pt-4">
+                    <div className="px-5 pb-6 sm:px-6 sm:pb-6 text-sm sm:text-base text-[#1E293B] font-normal leading-relaxed border-t border-[#F1ECE4] pt-4">
                       {faq.a}
                     </div>
                   )}
@@ -1304,7 +1283,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                 <FileText className="w-3.5 h-3.5" />
                 <span>Instant Digital PDF Resource</span>
               </span>
-              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3">
+              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 leading-snug">
                 Download The 2026 Oklahoma City Relocation & Buyer Guide
               </h3>
               <p className="font-sans text-xs sm:text-sm text-white/80 leading-relaxed mb-6">
@@ -1323,17 +1302,17 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                     setDownloadSuccess(true);
                     setTimeout(() => setDownloadSuccess(false), 5000);
                   }}
-                  className="px-8 py-4 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer flex items-center gap-2.5"
+                  className="inline-flex items-center justify-center gap-2.5 px-8 py-4 min-h-[52px] bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer leading-normal select-none"
                 >
-                  <Download className="w-4 h-4" />
-                  <span>Download The Free 2026 Relocation Guide (PDF)</span>
+                  <Download className="w-4 h-4 shrink-0" />
+                  <span className="leading-normal inline-block">Download The Free 2026 Relocation Guide (PDF)</span>
                 </button>
               )}
             </div>
           </div>
 
           {/* Final Call to Action Card */}
-          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#EA580C]/30 shadow-lg text-center max-w-4xl mx-auto">
+          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#EA580C]/30 shadow-lg text-center max-w-4xl mx-auto mb-12">
             <div className="flex justify-center mb-5">
               <BrianAvatar size="lg" />
             </div>

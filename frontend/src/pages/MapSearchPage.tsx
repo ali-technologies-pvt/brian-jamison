@@ -163,3 +163,4 @@ export const MapSearchPage: React.FC<MapSearchPageProps> = ({
     </article>
   );
 };
+

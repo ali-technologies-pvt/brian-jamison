@@ -42,7 +42,6 @@ import { BrianAvatar } from '../components/BrianAvatar';
 import { SocialLinks } from '../components/SocialLinks';
 import { BROKER_INFO } from '../data/realEstateData';
 import { InteriorHeroVideo } from './InteriorHeroVideo';
-import { IdxUniversalWidget } from '../components/IdxUniversalWidget';
 
 interface HomeSellingPageProps {
   onNavigate: (path: string) => void;
@@ -1398,18 +1397,6 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                 </button>
               </div>
             </div>
-          </div>
-
-          {/* Live Verified MLS Sold / Pending Representations (Widget 176754) */}
-          <div className="mt-14 sm:mt-16">
-            <IdxUniversalWidget
-              widgetId="176754"
-              type="showcase"
-              title="Verified Sold & Pending MLS Representations"
-              subtitle="Live MLSOK broker syndication documenting Brian Jamison's recent closed escrows and active pending contracts."
-              badge="Verified Sales Feed"
-              minHeight="480px"
-            />
           </div>
         </div>
       </section>

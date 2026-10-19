@@ -117,3 +117,4 @@ export const PastSalesPage: React.FC<PastSalesPageProps> = ({
     </article>
   );
 };
+

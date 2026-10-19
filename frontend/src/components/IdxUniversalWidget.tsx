@@ -394,3 +394,4 @@ export const IdxUniversalWidget: React.FC<IdxUniversalWidgetProps> = ({
     </div>
   );
 };
+

@@ -152,3 +152,4 @@ export const ListingsPage: React.FC<ListingsPageProps> = ({
     </article>
   );
 };
+
