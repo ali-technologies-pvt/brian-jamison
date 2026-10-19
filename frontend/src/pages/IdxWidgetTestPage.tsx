@@ -82,35 +82,32 @@ export const IdxWidgetTestPage: React.FC<IdxWidgetTestPageProps> = ({
               <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
               <style>
                 * { box-sizing: border-box; }
-                body {
+                html, body {
+                  width: 100%;
+                  height: 100%;
+                  min-height: 700px;
                   margin: 0;
-                  padding: 16px;
+                  padding: 8px;
                   background-color: #FAF9F6;
                   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
                   color: #002D61;
                 }
+                #idx-widget-container-${WIDGET_ID},
+                idx-prime-map-search,
+                #idx-prime-map-search-${WIDGET_ID} {
+                  display: block !important;
+                  width: 100% !important;
+                  height: 100% !important;
+                  min-height: 680px !important;
+                  position: relative !important;
+                }
                 a { color: #EA580C; text-decoration: none; font-weight: 600; }
                 a:hover { color: #C2410C; text-decoration: underline; }
-                /* General IDX Widget Styling */
-                .IDX-widget-wrap, [id^="IDX-"], .idx-content {
-                  font-family: inherit !important;
-                }
-                img { max-width: 100%; height: auto; border-radius: 8px; }
-                input[type="submit"], button[type="submit"] {
-                  background: #EA580C !important;
-                  color: #FFFFFF !important;
-                  border: none !important;
-                  padding: 10px 24px !important;
-                  border-radius: 9999px !important;
-                  font-weight: 700 !important;
-                  cursor: pointer !important;
-                  text-transform: uppercase !important;
-                  letter-spacing: 0.05em !important;
-                }
+                img { max-width: 100%; height: auto; }
               </style>
             </head>
             <body>
-              <div id="idx-widget-container-${WIDGET_ID}">
+              <div id="idx-widget-container-${WIDGET_ID}" style="width: 100%; height: 100%; min-height: 680px;">
                 <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-${WIDGET_ID}" src="${SCRIPT_URL}"></script>
               </div>
             </body>
@@ -247,21 +244,20 @@ export const IdxWidgetTestPage: React.FC<IdxWidgetTestPageProps> = ({
           <div className="relative z-10 max-w-4xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#FB923C] text-[11px] font-bold uppercase tracking-widest mb-4">
               <Database className="w-3.5 h-3.5" />
-              <span>Live IDX Broker Showcase Integration</span>
+              <span>Live IDX Broker Prime Map Search Integration</span>
             </div>
 
             <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-4 leading-[1.1]">
-              Live MLS Showcase <span className="text-[#FB923C] italic font-normal">Widget #{WIDGET_ID}</span>
+              Prime Map Search <span className="text-[#FB923C] italic font-normal">Widget #{WIDGET_ID}</span>
             </h1>
 
             <p className="font-sans text-sm sm:text-base text-white/80 leading-relaxed max-w-3xl mb-8">
-              Real-time validation and luxury UI sandbox for IDX Broker widget{' '}
-              <strong className="text-white font-semibold">#{WIDGET_ID}</strong> on behalf of{' '}
-              <strong className="text-white font-semibold">Brian Jamison Real Estate</strong> (Account:{' '}
+              Live validation sandbox for IDX Broker's <strong className="text-white font-semibold">Prime Map Search</strong> widget{' '}
+              <strong className="text-[#FB923C] font-semibold">#{WIDGET_ID}</strong> (Account:{' '}
               <code className="text-[#FB923C] font-mono text-xs px-2 py-0.5 rounded bg-black/40">
                 jamisonrealestateokc.idxbroker.com
               </code>
-              ). This page allows you to inspect DOM elements, verify MLS link functionality, test responsive layouts, and verify live listing feeds.
+              ). Ye widget Oklahoma City metro area (<code className="text-[#FB923C] font-mono text-xs">lat: 35.5508, lng: -97.5489</code>) ka interactive GIS map render karta hai jisme active MLS listing pins, polygon boundary drawing tools, aur zoom controls integrated hain.
             </p>
 
             {/* Status Pills */}
@@ -452,10 +448,24 @@ export const IdxWidgetTestPage: React.FC<IdxWidgetTestPageProps> = ({
               <style>{`
                 .idx-luxury-showcase {
                   width: 100%;
+                  height: 720px;
+                  min-height: 680px;
                   border-radius: 1.25rem;
-                  padding: 1rem;
+                  padding: 0.5rem;
                   background: #FAF9F6;
-                  border: 1px solid #E5E0D8;
+                  border: 1.5px solid rgba(234, 88, 12, 0.25);
+                  position: relative;
+                  overflow: hidden;
+                }
+                idx-prime-map-search,
+                #idx-prime-map-search-179291,
+                [id^="idx-mount-179291"],
+                #idx-direct-target-179291 {
+                  display: block !important;
+                  width: 100% !important;
+                  height: 100% !important;
+                  min-height: 680px !important;
+                  position: relative !important;
                 }
                 .idx-luxury-showcase table {
                   width: 100% !important;
@@ -493,7 +503,7 @@ export const IdxWidgetTestPage: React.FC<IdxWidgetTestPageProps> = ({
                     Connecting to IDX Broker API...
                   </h4>
                   <p className="text-xs text-[#6B7280] max-w-sm">
-                    Retrieving widget feed from <code className="text-[#EA580C]">jamisonrealestateokc.idxbroker.com/idx/widgets/{WIDGET_ID}</code>
+                    Retrieving Prime Map Search feed from <code className="text-[#EA580C]">jamisonrealestateokc.idxbroker.com/idx/widgets/{WIDGET_ID}</code>
                   </p>
                 </div>
               )}
@@ -503,14 +513,14 @@ export const IdxWidgetTestPage: React.FC<IdxWidgetTestPageProps> = ({
                 <div className="w-full overflow-hidden rounded-2xl border border-[#E5E0D8] bg-[#FAF9F6]">
                   <iframe
                     ref={iframeRef}
-                    title={`IDX Broker Widget ${WIDGET_ID}`}
-                    className="w-full min-h-[580px] border-0 bg-transparent"
-                    sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                    title={`IDX Broker Prime Map Search ${WIDGET_ID}`}
+                    className="w-full h-[720px] min-h-[680px] border-0 bg-transparent block"
+                    sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals"
                   />
                 </div>
               ) : (
-                <div className={renderMode === 'luxury' ? 'idx-luxury-showcase' : 'p-2'}>
-                  <div ref={directMountRef} id={`idx-direct-target-${WIDGET_ID}`} />
+                <div className={renderMode === 'luxury' ? 'idx-luxury-showcase' : 'p-2 w-full h-[720px] min-h-[680px]'}>
+                  <div ref={directMountRef} id={`idx-direct-target-${WIDGET_ID}`} className="w-full h-full min-h-[680px]" />
                 </div>
               )}
 
