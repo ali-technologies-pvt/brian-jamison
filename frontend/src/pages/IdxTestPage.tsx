@@ -123,7 +123,7 @@ export const IdxTestPage: React.FC<IdxTestPageProps> = ({
   return (
     <article className="w-full bg-[#FAF9F6] text-[#002D61] pt-28 sm:pt-32 pb-24 selection:bg-[#EA580C]/20 selection:text-[#002D61]">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
-        {/* Breadcrumb Navigation & Widget Switcher */}
+        {/* Breadcrumb Navigation & Switcher */}
         <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-[#6B7280] mb-6">
           <div className="flex items-center gap-2">
             <button
@@ -134,19 +134,18 @@ export const IdxTestPage: React.FC<IdxTestPageProps> = ({
               Home
             </button>
             <span>/</span>
-            <span className="text-[#002D61] font-semibold">Integrations</span>
+            <span className="text-[#002D61] font-semibold">Properties</span>
             <span>/</span>
-            <span className="text-[#EA580C] font-semibold">IDX Quick Search (#15844)</span>
+            <span className="text-[#EA580C] font-semibold">MLS Quick Search</span>
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-[11px] text-[#6B7280]">Switch Test Widget:</span>
             <button
               type="button"
-              onClick={() => onNavigate('/idx-widget')}
-              className="px-2.5 py-1 rounded-lg bg-white border border-[#E5E0D8] text-[#002D61] hover:text-[#EA580C] hover:border-[#EA580C]/40 transition-colors font-medium text-xs cursor-pointer"
+              onClick={() => onNavigate('/map-search')}
+              className="px-3 py-1.5 rounded-lg bg-white border border-[#E5E0D8] text-[#002D61] hover:text-[#EA580C] hover:border-[#EA580C]/40 transition-colors font-medium text-xs cursor-pointer shadow-2xs"
             >
-              Showcase Widget (#179291) →
+              Interactive Map Search →
             </button>
           </div>
         </div>

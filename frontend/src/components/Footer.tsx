@@ -361,22 +361,22 @@ export const Footer: React.FC<FooterProps> = ({
                 <button
                   type="button"
                   onClick={() => {
-                    if (onNavigate) onNavigate('/idx-widget');
+                    if (onNavigate) onNavigate('/map-search');
                   }}
                   className="hover:text-white hover:underline transition-colors block text-left cursor-pointer text-[#FB923C] font-semibold"
                 >
-                  ⚡ MLS Showcase Widget (#179291)
+                  Interactive Map Search
                 </button>
               </li>
               <li>
                 <button
                   type="button"
                   onClick={() => {
-                    if (onNavigate) onNavigate('/idx-test');
+                    if (onNavigate) onNavigate('/idx');
                   }}
                   className="hover:text-white hover:underline transition-colors block text-left cursor-pointer text-[#FB923C]/90 font-medium"
                 >
-                  MLS Quick Search (#15844)
+                  MLS Property Search
                 </button>
               </li>
               <li>

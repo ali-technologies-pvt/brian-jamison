@@ -154,7 +154,7 @@ export default function App() {
   // Resolve current active page
   const isAdminRoute = currentPath.startsWith('/admin');
   const isIdxRoute = currentPath === '/idx-test' || currentPath === '/idx-search-test' || currentPath === '/idx';
-  const isIdxWidgetRoute = currentPath === '/idx-widget' || currentPath === '/idx-widget-test' || currentPath === '/idx-179291' || currentPath === '/idx-showcase';
+  const isIdxWidgetRoute = currentPath === '/map-search' || currentPath === '/properties/map' || currentPath === '/idx-widget' || currentPath === '/idx-widget-test' || currentPath === '/idx-179291' || currentPath === '/idx-showcase';
   const isSitemapRoute = currentPath === '/sitemap' || currentPath === '/site-map' || currentPath === '/sitemap.html';
   const activeInteriorPage = currentPath !== '/' && !isAdminRoute && !isIdxRoute && !isIdxWidgetRoute && !isSitemapRoute ? getPageByPath(currentPath) : null;
 
