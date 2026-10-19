@@ -244,14 +244,9 @@ export default function App() {
         )}
       </main>
 
-      {/* Video Marquee: Rendered on Homepage and strategic pages; omitted on pages that already feature a dedicated video showcase or legal/directory pages */}
-      {!currentPath.startsWith('/areas') &&
-        !isIdxRoute &&
+      {/* Video Marquee: Rendered across pages right above Footer */}
+      {!isIdxRoute &&
         !isIdxWidgetRoute &&
-        !isSitemapRoute &&
-        !currentPath.includes('/home-selling') &&
-        !currentPath.includes('/home-buying') &&
-        !currentPath.includes('/land-') &&
         currentPath !== '/privacy-policy' &&
         currentPath !== '/terms-of-service' &&
         currentPath !== '/fair-housing-disclosure' && (

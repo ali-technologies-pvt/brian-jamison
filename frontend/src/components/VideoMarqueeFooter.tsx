@@ -169,19 +169,25 @@ export const VideoMarqueeFooter: React.FC<VideoMarqueeFooterProps> = ({
               onClick={() => setSelectedVideo(video)}
               className="group relative w-[280px] sm:w-[320px] h-[200px] sm:h-[220px] rounded-2xl overflow-hidden bg-[#0A192F] border border-white/15 hover:border-[#EA580C] shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer shrink-0 flex flex-col justify-between p-4"
             >
-              {/* Thumbnail Image */}
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-108"
-                style={{ backgroundImage: `url(${video.thumbnail})` }}
+              {/* Autoplay Video Loop */}
+              <video
+                src={video.videoUrl}
+                poster={video.thumbnail}
+                autoPlay
+                playsInline
+                muted
+                loop
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
 
-              {/* Dark Scrim Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/30 group-hover:from-black/90 transition-opacity" />
+              {/* Dark Scrim Gradient for text contrast */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/25 to-black/50 group-hover:from-black/85 transition-opacity pointer-events-none" />
 
               {/* Top Header Badge */}
-              <div className="relative z-10 flex items-center justify-between">
-                <span className="px-2 py-0.5 rounded bg-black/60 backdrop-blur-md text-[10px] font-mono font-bold text-white border border-white/20">
-                  {video.category}
+              <div className="relative z-10 flex items-center justify-between pointer-events-none">
+                <span className="px-2 py-0.5 rounded bg-black/65 backdrop-blur-md text-[10px] font-mono font-bold text-white border border-white/20 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C] animate-pulse" />
+                  <span>{video.category}</span>
                 </span>
                 <span className="px-2 py-0.5 rounded bg-[#EA580C] text-[10px] font-bold text-white tracking-wider flex items-center gap-1">
                   <Clock className="w-2.5 h-2.5" />
@@ -189,25 +195,18 @@ export const VideoMarqueeFooter: React.FC<VideoMarqueeFooterProps> = ({
                 </span>
               </div>
 
-              {/* Center Play Icon with Pulse on Hover */}
-              <div className="relative z-10 self-center my-auto">
-                <div className="w-11 h-11 rounded-full bg-white/25 backdrop-blur-md border border-white/50 flex items-center justify-center text-white group-hover:bg-[#EA580C] group-hover:scale-115 transition-all duration-300 shadow-xl">
-                  <Play className="w-4 h-4 fill-white text-white ml-0.5" />
-                </div>
-              </div>
-
               {/* Bottom Title & Views */}
-              <div className="relative z-10">
-                <h4 className="font-serif text-sm font-bold text-white leading-snug line-clamp-2 mb-1.5 group-hover:text-[#FDBA74] transition-colors drop-shadow">
+              <div className="relative z-10 pointer-events-none">
+                <h4 className="font-serif text-sm font-bold text-white leading-snug line-clamp-2 mb-1.5 group-hover:text-[#FDBA74] transition-colors drop-shadow-md">
                   {video.title}
                 </h4>
-                <div className="flex items-center justify-between text-[11px] text-white/70">
+                <div className="flex items-center justify-between text-[11px] text-white/80">
                   <span className="flex items-center gap-1">
                     <Eye className="w-3 h-3 text-[#FB923C]" />
                     <span>{video.views}</span>
                   </span>
                   <span className="text-[#FB923C] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                    <span>Watch Now</span>
+                    <span>Watch Clip</span>
                     <ArrowRight className="w-3 h-3" />
                   </span>
                 </div>

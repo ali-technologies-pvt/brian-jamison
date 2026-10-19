@@ -240,46 +240,46 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
       */}
       <div
         ref={statsRef}
-        className="relative z-10 w-full bg-[#001D40]/95 border-t border-b border-white/20 backdrop-blur-md py-6 sm:py-8 shadow-lg text-white"
+        className="relative z-10 w-full bg-[#001D40]/95 border-t border-b border-white/20 backdrop-blur-md py-4 sm:py-6 shadow-lg text-white"
       >
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-white/20">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center divide-y sm:divide-y-0 sm:divide-x divide-white/20">
             {/* Stat 1: Volume */}
-            <div className="flex flex-col items-center justify-center px-3 pt-3 sm:pt-0 group cursor-default">
-              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold !text-white tracking-tight tabular-nums group-hover:text-[#FB923C] transition-colors duration-300 drop-shadow-xs">
+            <div className="flex flex-col items-center justify-center px-2 sm:px-4 py-2 sm:py-0 group cursor-default">
+              <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold !text-white tracking-tight tabular-nums group-hover:text-[#FB923C] transition-colors duration-300 drop-shadow-xs whitespace-nowrap">
                 $<EditableText contentKey="stat_volume_num" initialContent={String(counts.volume)} as="span" />M+
               </span>
-              <span className="text-[11px] sm:text-xs tracking-[0.2em] uppercase font-sans font-bold !text-stone-100 mt-1.5">
+              <span className="text-[10px] sm:text-xs tracking-[0.16em] uppercase font-sans font-semibold !text-stone-100 mt-1 sm:mt-1.5 whitespace-nowrap">
                 <EditableText contentKey="stat_volume_label" initialContent="Volume Sold" as="span" />
               </span>
             </div>
 
             {/* Stat 2: Closings */}
-            <div className="flex flex-col items-center justify-center px-3 pt-3 sm:pt-0 group cursor-default">
-              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold !text-white tracking-tight tabular-nums group-hover:text-[#FB923C] transition-colors duration-300 drop-shadow-xs">
+            <div className="flex flex-col items-center justify-center px-2 sm:px-4 py-2 sm:py-0 group cursor-default">
+              <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold !text-white tracking-tight tabular-nums group-hover:text-[#FB923C] transition-colors duration-300 drop-shadow-xs whitespace-nowrap">
                 <EditableText contentKey="stat_closings_num" initialContent={String(counts.closings)} as="span" />+
               </span>
-              <span className="text-[11px] sm:text-xs tracking-[0.2em] uppercase font-sans font-bold !text-stone-100 mt-1.5">
+              <span className="text-[10px] sm:text-xs tracking-[0.16em] uppercase font-sans font-semibold !text-stone-100 mt-1 sm:mt-1.5 whitespace-nowrap">
                 <EditableText contentKey="stat_closings_label" initialContent="Career Closings" as="span" />
               </span>
             </div>
 
             {/* Stat 3: Rank */}
-            <div className="flex flex-col items-center justify-center px-3 pt-3 sm:pt-0 group cursor-default">
-              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold !text-white tracking-tight tabular-nums group-hover:text-[#FB923C] transition-colors duration-300 drop-shadow-xs">
+            <div className="flex flex-col items-center justify-center px-2 sm:px-4 py-2 sm:py-0 group cursor-default">
+              <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold !text-white tracking-tight tabular-nums group-hover:text-[#FB923C] transition-colors duration-300 drop-shadow-xs whitespace-nowrap">
                 Top <EditableText contentKey="stat_rank_num" initialContent={String(counts.percent)} as="span" />%
               </span>
-              <span className="text-[11px] sm:text-xs tracking-[0.2em] uppercase font-sans font-bold !text-stone-100 mt-1.5">
+              <span className="text-[10px] sm:text-xs tracking-[0.16em] uppercase font-sans font-semibold !text-stone-100 mt-1 sm:mt-1.5 whitespace-nowrap">
                 <EditableText contentKey="stat_rank_label" initialContent="OKC Producer" as="span" />
               </span>
             </div>
 
             {/* Stat 4: Guarantee */}
-            <div className="flex flex-col items-center justify-center px-3 pt-3 sm:pt-0 group cursor-default">
-              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold !text-white tracking-tight tabular-nums group-hover:text-[#FB923C] transition-colors duration-300 drop-shadow-xs">
+            <div className="flex flex-col items-center justify-center px-2 sm:px-4 py-2 sm:py-0 group cursor-default">
+              <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold !text-white tracking-tight tabular-nums group-hover:text-[#FB923C] transition-colors duration-300 drop-shadow-xs whitespace-nowrap">
                 <EditableText contentKey="stat_pledge_num" initialContent={String(counts.pledge)} as="span" />%
               </span>
-              <span className="text-[11px] sm:text-xs tracking-[0.2em] uppercase font-sans font-bold !text-stone-100 mt-1.5">
+              <span className="text-[10px] sm:text-xs tracking-[0.16em] uppercase font-sans font-semibold !text-stone-100 mt-1 sm:mt-1.5 whitespace-nowrap">
                 <EditableText contentKey="stat_pledge_label" initialContent="Cancel-Anytime Pledge" as="span" />
               </span>
             </div>

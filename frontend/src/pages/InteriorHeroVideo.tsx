@@ -22,14 +22,17 @@ export interface InteriorHeroVideoProps {
   onSecondaryCtaClick?: () => void;
 }
 
+export const DRONE_HERO_VIDEO = 'https://www.pexels.com/download/video/29383137/';
+export const DRONE_HERO_POSTER = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80';
+
 export const InteriorHeroVideo: React.FC<InteriorHeroVideoProps> = ({
   kicker = 'Oklahoma City Metro',
   title,
   subtitle,
   categoryLabel,
   categorySlug,
-  heroVideoUrl = '/media/videos/vid1.mp4',
-  heroFallbackImage = '/media/gallery/modern-estate-pool-lawn.jpeg',
+  heroVideoUrl = DRONE_HERO_VIDEO,
+  heroFallbackImage = DRONE_HERO_POSTER,
   metrics,
   onNavigate,
   onOpenConsultation,
@@ -48,8 +51,9 @@ export const InteriorHeroVideo: React.FC<InteriorHeroVideoProps> = ({
   const elementKey = `hero_interior_${slugKey}`;
   const savedStyle = getElementStyle(elementKey);
 
-  const videoSrc = savedStyle.backgroundVideo || heroVideoUrl;
-  const videoPoster = savedStyle.videoPoster || heroFallbackImage;
+  // User instruction: use the drone video for all page hero sections
+  const videoSrc = savedStyle.backgroundVideo || DRONE_HERO_VIDEO;
+  const videoPoster = savedStyle.videoPoster || DRONE_HERO_POSTER;
   const overlayColor = savedStyle.overlayColor || '#001D40';
   const overlayOpacity = savedStyle.overlayOpacity !== undefined ? savedStyle.overlayOpacity : 50;
   const heroBgColor = savedStyle.backgroundColor || '#FAF9F6';
@@ -210,20 +214,26 @@ export const InteriorHeroVideo: React.FC<InteriorHeroVideoProps> = ({
         </div>
       </div>
 
-      {/* Live Stats Strip Banner (Identical Full-Width 4-Column Layout) */}
-      <div className="relative z-10 w-full bg-[#001D40]/95 border-t border-b border-white/20 backdrop-blur-md py-6 sm:py-8 shadow-lg text-white">
+      {/* Live Stats Strip Banner */}
+      <div className="relative z-10 w-full bg-[#001D40]/95 border-t border-b border-white/20 backdrop-blur-md py-4 sm:py-6 shadow-lg text-white">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-white/20">
+          <div className={`grid gap-4 sm:gap-6 text-center divide-y sm:divide-y-0 sm:divide-x divide-white/20 ${
+            statsToRender.length === 3 
+              ? 'grid-cols-1 sm:grid-cols-3' 
+              : statsToRender.length === 2 
+              ? 'grid-cols-1 sm:grid-cols-2' 
+              : 'grid-cols-2 md:grid-cols-4'
+          }`}>
             {statsToRender.map((s, idx) => (
-              <div key={idx} className="flex flex-col items-center justify-center px-3 pt-3 sm:pt-0 group cursor-default">
-                <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold !text-white tracking-tight tabular-nums group-hover:text-[#FB923C] transition-colors duration-300 drop-shadow-xs">
+              <div key={idx} className="flex flex-col items-center justify-center px-2 sm:px-4 py-2 sm:py-0 group cursor-default">
+                <span className="font-serif text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold !text-white tracking-tight tabular-nums group-hover:text-[#FB923C] transition-colors duration-300 drop-shadow-xs whitespace-nowrap">
                   <EditableText
                     contentKey={`hero_stat_num_${slugKey}_${idx}`}
                     initialContent={s.value}
                     as="span"
                   />
                 </span>
-                <span className="text-[11px] sm:text-xs tracking-[0.2em] uppercase font-sans font-bold !text-stone-100 mt-1.5">
+                <span className="text-[10px] sm:text-xs tracking-[0.16em] uppercase font-sans font-semibold !text-stone-200 mt-1 sm:mt-1.5 whitespace-nowrap">
                   <EditableText
                     contentKey={`hero_stat_label_${slugKey}_${idx}`}
                     initialContent={s.label}
