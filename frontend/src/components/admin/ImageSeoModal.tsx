@@ -24,12 +24,12 @@ interface ImageSeoModalProps {
 }
 
 const PRESET_STOCK_IMAGES = [
-  { name: 'Nichols Hills Luxury Estate', url: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80' },
-  { name: 'Gaillardia Modern Architecture', url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80' },
-  { name: 'Grand Interior Great Room', url: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80' },
-  { name: 'Architectural Kitchen & Dining', url: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1600&q=80' },
-  { name: 'Twilight Pool & Outdoor Living', url: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80' },
-  { name: 'Oklahoma Acreage & Grounds', url: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80' },
+  { name: 'Heritage Hills Historic Estate', url: '/media/properties/136-nw-18th-heritage-hills.jpeg' },
+  { name: 'Gaillardia Modern Architecture', url: '/media/properties/11500-gateshead.jpg' },
+  { name: 'Grand Interior Great Room', url: '/media/gallery/modern-staircase-dining.jpeg' },
+  { name: 'Architectural Kitchen & Dining', url: '/media/gallery/modern-kitchen.jpeg' },
+  { name: 'Twilight Pool & Outdoor Living', url: '/media/gallery/modern-estate-pool-lawn.jpeg' },
+  { name: 'Oklahoma Acreage & Grounds', url: '/media/properties/11616-estrella-arcadia.jpeg' },
 ];
 
 const PRESET_BORDER_COLORS = [

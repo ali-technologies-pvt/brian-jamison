@@ -48,7 +48,7 @@ export const MegaMenuServices: React.FC<MegaMenuServicesProps> = ({
       desc: 'Curated off-market inventory access, structural & inspection defense, and veteran negotiation protecting your equity across Edmond & Greater OKC.',
       stats: '$24.5K Avg Below Asking',
       icon: Home,
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+      image: '/media/properties/136-nw-18th-heritage-hills.jpeg',
       highlights: ['Off-Market Pocket Listings', 'Physical Inspection Defense', 'Winning Offer Escalation']
     },
     {
@@ -60,7 +60,7 @@ export const MegaMenuServices: React.FC<MegaMenuServicesProps> = ({
       desc: 'Institutional listing campaign: cinema-grade 4K films, 350+ portal syndication, and disciplined negotiation engineered for record-setting bidding wars.',
       stats: '98.6% List-to-Sale Ratio',
       icon: TrendingUp,
-      image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80',
+      image: '/media/gallery/modern-estate-pool-lawn.jpeg',
       highlights: ['Cinema 4K Video & Drone', '350+ Global Luxury Feeds', '100% Cancel-Anytime Pledge']
     },
     {
@@ -72,7 +72,7 @@ export const MegaMenuServices: React.FC<MegaMenuServicesProps> = ({
       desc: 'Topographical drone boundary mapping, soil perk & septic audits, utility easements, and strategic marketing for custom home lots and Oklahoma acreage.',
       stats: '1,450+ Oklahoma Acres Closed',
       icon: MapPin,
-      image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80',
+      image: '/media/properties/11616-estrella-arcadia.jpeg',
       highlights: ['Drone Boundary Overlays', 'Soil & Well Due Diligence', '24+ Custom Builder Network']
     }
   ];

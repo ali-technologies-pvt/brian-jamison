@@ -28,6 +28,7 @@ interface VideoItem {
   duration: string;
   views: string;
   thumbnail: string;
+  videoUrl: string;
   description: string;
   keyLesson: string;
 }
@@ -35,11 +36,12 @@ interface VideoItem {
 const MARQUEE_VIDEOS: VideoItem[] = [
   {
     id: 1,
-    title: "Nichols Hills Sunset Estate Drone Sweep",
+    title: "Nichols Hills & OKC Luxury Estate Drone Tour",
     category: "4K Aerial Drone",
     duration: "1:12",
     views: "28.4K",
-    thumbnail: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "/media/gallery/modern-estate-pool-lawn.jpeg",
+    videoUrl: "/media/videos/vid1.mp4",
     description: "4K golden-hour aerial sweep capturing boundary tree canopies, architectural limestone masonry, and resort pool grounds.",
     keyLesson: "High-altitude boundary mapping stops out-of-state buyers scrolling and validates lot privacy."
   },
@@ -49,7 +51,8 @@ const MARQUEE_VIDEOS: VideoItem[] = [
     category: "Interior Transformation",
     duration: "0:58",
     views: "34.1K",
-    thumbnail: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "/media/gallery/modern-kitchen.jpeg",
+    videoUrl: "/media/videos/vid2.mp4",
     description: "Watch how our dedicated staging crew transformed cold empty spaces into an emotional showpiece that produced 4 offers in 72 hours.",
     keyLesson: "Neutral soft furnishings, 3000K daylight lighting, and 80% countertop clearing yield 3x opening showings."
   },
@@ -59,7 +62,8 @@ const MARQUEE_VIDEOS: VideoItem[] = [
     category: "Acreage & Soil",
     duration: "1:05",
     views: "19.7K",
-    thumbnail: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "/media/properties/11616-estrella-arcadia.jpeg",
+    videoUrl: "/media/videos/vid3.mp4",
     description: "FAA Part-107 flight plotting natural drainage contours, Garber-Wellington well depth, and custom homesite building envelopes.",
     keyLesson: "Validating soil perk tests and utility corridors before listing prevents escrow cancellations."
   },
@@ -69,7 +73,8 @@ const MARQUEE_VIDEOS: VideoItem[] = [
     category: "Golf Community",
     duration: "1:18",
     views: "42.8K",
-    thumbnail: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "/media/properties/11500-gateshead.jpg",
+    videoUrl: "/media/videos/vid4.mp4",
     description: "Touring the Arthur Hills championship golf greens and 55,000 sq ft French Normandy clubhouse at Gaillardia.",
     keyLesson: "Highlighting 24/7 guarded security gates commands a proven 15% resale premium."
   },
@@ -79,19 +84,21 @@ const MARQUEE_VIDEOS: VideoItem[] = [
     category: "Preservation",
     duration: "0:52",
     views: "23.5K",
-    thumbnail: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "/media/properties/136-nw-18th-heritage-hills.jpeg",
+    videoUrl: "/media/videos/vid5.mp4",
     description: "Early 20th-century craftsmanship meets modern scullery kitchen updates in Oklahoma City's crown historic district.",
     keyLesson: "Honoring historic preservation guidelines while showcasing turnkey mechanicals attracts affluent buyers."
   },
   {
     id: 6,
-    title: "Tornado Shelter & Safe Room Verification Guide",
-    category: "Oklahoma Reality",
+    title: "Edmond Custom Build & Architectural Walkthrough",
+    category: "New Construction",
     duration: "1:04",
     views: "39.2K",
-    thumbnail: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
-    description: "Checking FEMA 320/361 tags, in-ground garage hydraulic seals, and municipal first-responder GPS registration.",
-    keyLesson: "A certified shelter is an essential peace-of-mind hook for out-of-state families relocating to OKC."
+    thumbnail: "/media/properties/22801-n-briarwood-edmond.jpeg",
+    videoUrl: "/media/videos/vid6.mp4",
+    description: "Checking custom woodwork, high-efficiency foam envelopes, and smart-home zoning across premier Edmond enclaves.",
+    keyLesson: "Highlighting structural build quality and energy ratings builds massive buyer confidence."
   },
   {
     id: 7,
@@ -99,7 +106,8 @@ const MARQUEE_VIDEOS: VideoItem[] = [
     category: "Seller Results",
     duration: "1:10",
     views: "31.9K",
-    thumbnail: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "/media/properties/22402-emily-way-edmond.jpeg",
+    videoUrl: "/media/videos/vid7.mp4",
     description: "How our 3-tier pricing strategy generated 3 competing bids and closed at $35,000 above asking price.",
     keyLesson: "Strategic search-bracket pricing just beneath major round numbers triggers opening-weekend frenzy."
   },
@@ -109,7 +117,8 @@ const MARQUEE_VIDEOS: VideoItem[] = [
     category: "Renovation ROI",
     duration: "0:55",
     views: "21.3K",
-    thumbnail: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "/media/properties/3233-n-harvey-crown-heights.jpeg",
+    videoUrl: "/media/videos/vid8.mp4",
     description: "Cathedral great rooms, hand-hewn oak timbers, and seamless pocket sliding glass doors to outdoor entertaining.",
     keyLesson: "Indoor-outdoor living transitions rank as the #1 requested feature among executive buyers in OKC."
   }
@@ -223,17 +232,19 @@ export const VideoMarqueeFooter: React.FC<VideoMarqueeFooterProps> = ({
 
             {/* Video Player Display */}
             <div className="relative aspect-[16/10] w-full bg-black">
-              <img
-                src={selectedVideo.thumbnail}
-                alt={selectedVideo.title}
+              <video
+                src={selectedVideo.videoUrl}
+                controls
+                autoPlay
+                playsInline
+                poster={selectedVideo.thumbnail}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/60" />
 
               {/* Top Details */}
-              <div className="absolute top-4 left-4 right-14 z-10 flex items-center gap-2.5">
+              <div className="absolute top-4 left-4 right-14 z-10 flex items-center gap-2.5 pointer-events-none">
                 <BrianAvatar size="sm" />
-                <div>
+                <div className="bg-black/60 px-2 py-1 rounded-md backdrop-blur-xs">
                   <span className="block text-xs font-bold text-white leading-tight">
                     Brian Jamison, Realtor
                   </span>
@@ -242,43 +253,27 @@ export const VideoMarqueeFooter: React.FC<VideoMarqueeFooterProps> = ({
                   </span>
                 </div>
               </div>
+            </div>
 
-              {/* Play / Pause Toggle Center */}
-              <button
-                type="button"
-                onClick={() => setIsPlaying(!isPlaying)}
-                className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer"
-              >
-                {!isPlaying && (
-                  <div className="w-16 h-16 rounded-full bg-black/70 border border-white/40 flex items-center justify-center text-white">
-                    <Play className="w-8 h-8 fill-white ml-1" />
-                  </div>
-                )}
-              </button>
+            {/* Video Details & Actions */}
+            <div className="p-5 bg-[#001D40]">
+              <div className="flex items-center justify-between text-[11px] font-mono text-[#FB923C] mb-1">
+                <span>{selectedVideo.category}</span>
+                <span>{selectedVideo.duration}</span>
+              </div>
+              <h3 className="font-serif text-base sm:text-lg font-bold text-white mb-2 leading-snug">
+                {selectedVideo.title}
+              </h3>
+              <p className="text-xs text-white/80 leading-relaxed mb-4">
+                {selectedVideo.description}
+              </p>
 
-              {/* Bottom Controls Bar */}
-              <div className="absolute bottom-0 inset-x-0 p-5 z-10 bg-gradient-to-t from-black via-black/90 to-transparent">
-                <div className="w-full h-1 bg-white/30 rounded-full mb-3 overflow-hidden">
-                  <div className="h-full bg-[#EA580C] w-3/4 animate-pulse" />
-                </div>
-
-                <div className="flex items-center justify-between text-[11px] font-mono text-[#FB923C] mb-1">
-                  <span>{selectedVideo.category}</span>
-                  <span>{selectedVideo.duration}</span>
-                </div>
-                <h3 className="font-serif text-base sm:text-lg font-bold text-white mb-2 leading-snug">
-                  {selectedVideo.title}
-                </h3>
-                <p className="text-xs text-white/80 leading-relaxed mb-4">
-                  {selectedVideo.description}
-                </p>
-
-                <div className="p-3 rounded-xl bg-white/10 border border-white/15 text-xs text-white/90 mb-4 flex items-start gap-2">
-                  <Sparkles className="w-4 h-4 text-[#FB923C] shrink-0 mt-0.5" />
-                  <span>
-                    <strong>Key Strategic Insight:</strong> {selectedVideo.keyLesson}
-                  </span>
-                </div>
+              <div className="p-3 rounded-xl bg-white/10 border border-white/15 text-xs text-white/90 mb-4 flex items-start gap-2">
+                <Sparkles className="w-4 h-4 text-[#FB923C] shrink-0 mt-0.5" />
+                <span>
+                  <strong>Key Strategic Insight:</strong> {selectedVideo.keyLesson}
+                </span>
+              </div>
 
                 <div className="flex items-center justify-between gap-3">
                   {onOpenConsultation && (
@@ -304,8 +299,7 @@ export const VideoMarqueeFooter: React.FC<VideoMarqueeFooterProps> = ({
               </div>
             </div>
           </div>
-        </div>
-      )}
-    </section>
-  );
-};
+        )}
+      </section>
+    );
+  };

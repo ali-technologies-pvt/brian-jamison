@@ -58,8 +58,8 @@ export const CommunityHubPage: React.FC<CommunityHubPageProps> = ({
         kicker="Comprehensive 21-Area Regional Guide"
         title="21 Oklahoma City Metropolitan Communities & Micro-Markets."
         subtitle="From the historic brick mansions of Nichols Hills and Heritage Hills to the top-rated academic districts of Edmond and the private wooded acreages of Arcadia and Piedmont, explore dedicated intelligence reports on every major enclave in central Oklahoma."
-        heroVideoUrl="https://www.pexels.com/download/video/29383137/"
-        heroFallbackImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80"
+        heroVideoUrl="/media/videos/vid1.mp4"
+        heroFallbackImage="/media/gallery/modern-estate-pool-lawn.jpeg"
         metrics={[
           { value: '21', label: 'Dedicated Metro Hubs' },
           { value: '$62M+', label: 'Closed Track Record' },

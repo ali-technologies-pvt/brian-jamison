@@ -35,7 +35,7 @@ export const ServicesHubPage: React.FC<ServicesHubPageProps> = ({
       kicker: "PRIVATE CLIENT CONCIERGE",
       slug: "/services/home-buying",
       desc: "Comprehensive buyer representation under new fiduciary regulations. From off-market pocket listings in Nichols Hills and Gaillardia to meticulous architectural inspection audits and fierce purchase contract negotiation.",
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+      image: "/media/properties/136-nw-18th-heritage-hills.jpeg",
       highlights: ["Off-Market Pocket Listings", "Structural & Foundation Audits", "Fiduciary Purchase Negotiation"]
     },
     {
@@ -44,7 +44,7 @@ export const ServicesHubPage: React.FC<ServicesHubPageProps> = ({
       kicker: "PROPRIETARY 6-STEP BLUEPRINT",
       slug: "/services/home-selling",
       desc: "Transforming standard listings into high-demand bidding wars. Powered by 4K cinematic video, FAA drone mapping, Matterport 3D, reverse prospecting, and our 100% Risk-Free Cancel-Anytime guarantee.",
-      image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80",
+      image: "/media/gallery/modern-estate-pool-lawn.jpeg",
       highlights: ["4K Cinema & Drone Flyovers", "Mandatory 2-Hr Showing Feedback", "Cancel-Anytime Listing Pledge"]
     },
     {
@@ -53,7 +53,7 @@ export const ServicesHubPage: React.FC<ServicesHubPageProps> = ({
       kicker: "ACREAGE & DEVELOPMENT ADVISORY",
       slug: "/services/land-buying-and-selling",
       desc: "Specialized acreage and parcel representation across Edmond, Arcadia, Guthrie, Piedmont, and Logan County. Topography analysis, mineral rights verification, percolation tests, and utility infrastructure feasibility.",
-      image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
+      image: "/media/properties/11616-estrella-arcadia.jpeg",
       highlights: ["Soil & Percolation Feasibility", "Mineral & Water Rights Audits", "Adjacent Lot Valuation Adders"]
     }
   ];
@@ -69,8 +69,8 @@ export const ServicesHubPage: React.FC<ServicesHubPageProps> = ({
         kicker="Full-Spectrum Advisory & Execution"
         title="Our Core Real Estate Services & Selling Machine."
         subtitle="Whether you are acquiring a private trophy estate, liquidating land acreage, or deploying our 6-Phase Selling Machine to maximize net proceeds, Brian Jamison delivers fiduciary excellence without compromise."
-        heroVideoUrl="https://www.pexels.com/download/video/29383137/"
-        heroFallbackImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80"
+        heroVideoUrl="/media/videos/vid1.mp4"
+        heroFallbackImage="/media/gallery/modern-estate-pool-lawn.jpeg"
         metrics={[
           { value: '3 Pillars', label: 'Buying, Selling & Land' },
           { value: '$62M+', label: 'Career Volume Sold' },

@@ -149,7 +149,7 @@ export const MegaMenuCommunities: React.FC<MegaMenuCommunitiesProps> = ({
             <div>
               <div className="relative rounded-lg overflow-hidden h-32 mb-3 shadow-md">
                 <img
-                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80"
+                  src="/media/gallery/modern-estate-pool-lawn.jpeg"
                   alt="Edmond / Nichols Hills estate"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />

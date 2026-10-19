@@ -25,27 +25,27 @@ interface TheMethodSectionProps {
 const VIRTUAL_ROOMS = [
   {
     name: "Great Room",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/gallery/modern-staircase-dining.jpeg",
     detail: "24-ft beamed ceilings, European limestone fireplace, ambient golden hour lighting."
   },
   {
     name: "Chef's Scullery Kitchen",
-    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/gallery/modern-kitchen.jpeg",
     detail: "Calacatta marble island, dual Wolf ranges, bespoke white oak joinery."
   },
   {
     name: "Primary Retreat",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/gallery/sunset-window-terrace.jpeg",
     detail: "Private sunset terrace, dual spa baths, heated marble floors."
   },
   {
     name: "Pool Pavilion & Loggia",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/gallery/modern-estate-pool-lawn.jpeg",
     detail: "Zero-edge pool, outdoor living kitchen, mature private oak perimeter."
   },
   {
     name: "HD Aerial Drone View",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/properties/11500-gateshead.jpg",
     detail: "FAA-certified lot boundary mapping and golf course fairway proximity."
   }
 ];
@@ -58,7 +58,7 @@ const PHASE_VISUAL_CARDS = [
     metric: "350+ Portals",
     metricLabel: "Global Reach",
     insight: "Bespoke 4K architectural films & targeted Meta retargeting capture qualified buyers.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80"
+    image: "/media/gallery/modern-estate-pool-lawn.jpeg"
   },
   {
     phaseNum: "02",
@@ -66,7 +66,7 @@ const PHASE_VISUAL_CARDS = [
     metric: "<2 Hours",
     metricLabel: "Mandatory Agent Feedback",
     insight: "Direct telephone debrief with every showing broker within 120 minutes of leaving.",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80"
+    image: "/media/gallery/brian-jamison-skyline.jpeg"
   },
   {
     phaseNum: "03",
@@ -82,7 +82,7 @@ const PHASE_VISUAL_CARDS = [
     metric: "7 Specialists",
     metricLabel: "Dedicated Division",
     insight: "Escrow coordinator, staging pro, FAA drone pilot, and media designers manage logistics.",
-    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80"
+    image: "/media/gallery/brian-closing-clients.jpeg"
   },
   {
     phaseNum: "05",
@@ -90,7 +90,7 @@ const PHASE_VISUAL_CARDS = [
     metric: "3-Tier CMA",
     metricLabel: "Bidding War Architecture",
     insight: "Calibrated conservative, target, and aspirational pricing beneath search brackets.",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=900&q=80"
+    image: "/media/properties/22801-n-briarwood-edmond.jpeg"
   },
   {
     phaseNum: "06",
@@ -98,7 +98,7 @@ const PHASE_VISUAL_CARDS = [
     metric: "100% Risk-Free",
     metricLabel: "Cancel-Anytime Pledge",
     insight: "Full performance accountability. If commitments are not met, cancel with zero penalty.",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=80"
+    image: "/media/properties/136-nw-18th-heritage-hills.jpeg"
   }
 ];
 

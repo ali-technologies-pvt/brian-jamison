@@ -266,10 +266,10 @@ export const PROPERTIES: Property[] = [
     daysOnMarket: 8,
     description: "Successfully prepared, marketed, and closed not just once, but TWICE for an out-of-state homeowner. Full remote listing preparation, coordinate trades, and seamless closing without the sellers having to travel back to Oklahoma.",
     features: ["Remote Seller Concierge", "Trade Fix-Up Prep", "Norman West Corridor", "Multi-Offer Realization", "Rapid Escrow Closing"],
-    exteriorImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+    exteriorImage: "/media/properties/1817-sun-valley-edmond.jpeg",
     interiorImages: [
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
+      "/media/gallery/modern-kitchen.jpeg",
+      "/media/gallery/midcentury-entry.jpeg"
     ],
     matterportAvailable: true
   },
@@ -288,9 +288,9 @@ export const PROPERTIES: Property[] = [
     daysOnMarket: 12,
     description: "Proof that Brian Jamison works as hard for a $160K listing as agents do for $500K estates. Rapid response, relentless contract management, and constant client communication from listing day to final signature.",
     features: ["Full Marketing Campaign", "Relentless Communication", "Zero Lead Lag", "Quick Buyer Sourcing", "Smooth Title Closing"],
-    exteriorImage: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80",
+    exteriorImage: "/media/properties/13701-s-independence-okc.jpeg",
     interiorImages: [
-      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80"
+      "/media/gallery/modern-kitchen.jpeg"
     ],
     matterportAvailable: false
   },
@@ -309,10 +309,10 @@ export const PROPERTIES: Property[] = [
     daysOnMarket: 5,
     description: "Pre-listing preparation executed to perfection with Brian's vetted contact list of trades. From minor repairs and refresh to pricing strategy and multi-channel buyer reach, achieving a solid, top-dollar sale.",
     features: ["Pre-Listing Trade Coordination", "Edmond School District", "HDR Architectural Photography", "Competitive Price Bracket", "100% Showing Feedback"],
-    exteriorImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
+    exteriorImage: "/media/properties/22801-n-briarwood-edmond.jpeg",
     interiorImages: [
-      "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1200&q=80"
+      "/media/properties/3911-creek-bank-edmond.jpeg",
+      "/media/gallery/modern-staircase-dining.jpeg"
     ],
     matterportAvailable: true
   },
@@ -331,9 +331,9 @@ export const PROPERTIES: Property[] = [
     daysOnMarket: 7,
     description: "Turnaround investment property where Brian handled the entire renovation from start to finish — coordinating contractors, managing detail work, and executing smart updates that maximized investor net profit.",
     features: ["Turnkey Remodel Management", "Contractor Coordination", "High-ROI Material Selection", "Fast Escrow Turnaround", "Maximum Net Return"],
-    exteriorImage: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=80",
+    exteriorImage: "/media/properties/22402-emily-way-edmond.jpeg",
     interiorImages: [
-      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=80"
+      "/media/gallery/modern-kitchen.jpeg"
     ],
     matterportAvailable: false
   },
@@ -352,9 +352,9 @@ export const PROPERTIES: Property[] = [
     daysOnMarket: 9,
     description: "Swooped in to save the day when a prior contingency deal fell apart with another agent. Brian immediately restructured the marketing campaign, sourced qualified back-up buyers, and closed without a hitch.",
     features: ["Contingency Recovery Strategy", "Aggressive Buyer Retargeting", "Firm Negotiation", "Zero Delay Escrow", "Protected Equity"],
-    exteriorImage: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80",
+    exteriorImage: "/media/properties/3233-n-harvey-crown-heights.jpeg",
     interiorImages: [
-      "https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&w=1200&q=80"
+      "/media/properties/136-nw-18th-heritage-hills.jpeg"
     ],
     matterportAvailable: true
   },
@@ -373,9 +373,9 @@ export const PROPERTIES: Property[] = [
     daysOnMarket: 14,
     description: "Helped a first-time homebuyer family navigate anxiety, find their dream property in under 2 weeks, and negotiated favorable purchase terms that protected their family budget.",
     features: ["First-Time Buyer Advocacy", "Under Contract in 14 Days", "Inspection Repair Credits", "Low Stress Navigation", "Edmond Schools"],
-    exteriorImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+    exteriorImage: "/media/properties/715-s-friendly-okc.jpeg",
     interiorImages: [
-      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80"
+      "/media/gallery/midcentury-entry.jpeg"
     ],
     matterportAvailable: false
   },
@@ -394,10 +394,10 @@ export const PROPERTIES: Property[] = [
     daysOnMarket: 11,
     description: "An architectural tour-de-force nestled in the heart of Nichols Hills. French limestone facades, 24-foot cathedral ceilings, chef's scullery kitchen, wine cellar, and resort-caliber pool pavilion.",
     features: ["Limestone Masonry", "Resort Pool & Spa", "4-Car Motor Court", "Sub-Zero & Wolf Suite", "Private Gated Grounds"],
-    exteriorImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    exteriorImage: "/media/gallery/modern-estate-pool-lawn.jpeg",
     interiorImages: [
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
+      "/media/gallery/modern-staircase-dining.jpeg",
+      "/media/gallery/sunset-window-terrace.jpeg"
     ],
     matterportAvailable: true
   },
@@ -416,9 +416,9 @@ export const PROPERTIES: Property[] = [
     daysOnMarket: 14,
     description: "Fairway living inside OKC's preeminent 24/7 guard-gated golf country club. Panoramic 16th green views, iron-railed balconies, primary retreat with dual luxury dressing suites, and smart home automation.",
     features: ["Golf Course Frontage", "24/7 Guard Gated", "Smart Home Automation", "Commercial Scullery", "Covered Loggia"],
-    exteriorImage: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80",
+    exteriorImage: "/media/properties/11500-gateshead.jpg",
     interiorImages: [
-      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=80"
+      "/media/gallery/infinity-pool-hills.jpeg"
     ],
     matterportAvailable: true
   }
@@ -629,7 +629,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "The crown jewel of central Oklahoma luxury estates, mature tree canopy, and prestigious country club traditions.",
     keySubdivisions: ["Grandview", "Doran", "Nichols Hills Suburban", "Avondale"],
     overview: "Nichols Hills represents Oklahoma City's premier historic wealth enclave. Characterized by wide winding boulevards, 24/7 dedicated municipal police, and distinctive architectural pedigrees spanning classic English Tudor to modern limestone masterpieces.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+    image: "/media/gallery/modern-estate-pool-lawn.jpeg",
     highlightBadge: "Crown Jewel Enclave",
     idxWidgetId: "179291"
   },
@@ -643,7 +643,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "Grand early 20th-century mansions, historic preservation standards, and immediate proximity to Midtown.",
     keySubdivisions: ["Heritage Hills East", "Overholser District", "Harndale"],
     overview: "Oklahoma City's premier historic preservation district, showcasing magnificent turn-of-the-century architecture, sprawling carriage houses, and walking access to Midtown dining.",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+    image: "/media/properties/136-nw-18th-heritage-hills.jpeg",
     highlightBadge: "Historic Preservation",
     idxWidgetId: "179292"
   },
@@ -657,7 +657,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "24-hour guarded gate, Arthur Hills championship 18-hole golf, 55,000 sq ft French Normandy clubhouse.",
     keySubdivisions: ["The Reserve at Gaillardia", "Fairway Villas", "Enclave at Gaillardia"],
     overview: "Uncompromising security and resort living in northwest OKC. Featuring premier luxury estates along pristine fairways, lakes, and high-end privacy amenities.",
-    image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80",
+    image: "/media/properties/11500-gateshead.jpg",
     highlightBadge: "24/7 Guard-Gated Golf",
     idxWidgetId: "179294"
   },
@@ -671,7 +671,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "Charming stone cottages, Mediterranean revivals, and vibrant park culture along Western Avenue.",
     keySubdivisions: ["Crown Heights Historic", "Edgemere Park Adjacent"],
     overview: "Beloved urban enclave known for architectural diversity, deep front porches, annual neighborhood gatherings, and steps from gourmet dining on Western Ave.",
-    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80",
+    image: "/media/properties/3233-n-harvey-crown-heights.jpeg",
     highlightBadge: "Tudor & Mission Revivals",
     idxWidgetId: "179296"
   },
@@ -685,7 +685,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "High-velocity mid-century homes, rapid luxury renovations, and immediate Lake Hefner access.",
     keySubdivisions: ["Village Central", "Lakeside Enclave", "Penn Square North"],
     overview: "Surrounded by Nichols Hills and Lake Hefner, The Village is one of OKC's fastest appreciating residential hubs with active buyer competition.",
-    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80",
+    image: "/media/gallery/midcentury-entry.jpeg",
     highlightBadge: "High-Velocity Escrow",
     idxWidgetId: "179297"
   },
@@ -699,7 +699,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "High-rise luxury penthouses, historic brick townhomes, modern loft spaces, and Michelin-rated dining.",
     keySubdivisions: ["Automobile Alley Lofts", "Deep Deuce Condos", "Midtown Row"],
     overview: "The epicenter of Oklahoma City's cultural renaissance, streetcars, rooftop lounges, and prime executive live-work lifestyle.",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
+    image: "/media/properties/616-nw-6th-downtown.jpeg",
     highlightBadge: "Skyline Lofts & Penthouse",
     idxWidgetId: "179307"
   },
@@ -713,7 +713,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "Sprawling golf course lots, classic mid-century modern lines, and active tennis & swim club.",
     keySubdivisions: ["Quail Creek Estates", "The Fairways at Quail Creek"],
     overview: "Established prestigious northwest OKC golf community offering generous lot sizes, mature oaks, and family country club amenities.",
-    image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=800&q=80",
+    image: "/media/gallery/sunset-deck-pool.jpeg",
     highlightBadge: "Classic Golf Living",
     idxWidgetId: "179807"
   },
@@ -729,7 +729,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "Nationally acclaimed public schools, rolling wooded topography, luxury acreage estates, and vibrant downtown rail district.",
     keySubdivisions: ["Coffee Creek", "Fairfax Golf", "Thornhill", "Woodlands"],
     overview: "Consistently ranked among the top suburbs in the nation. Edmond delivers exceptional safety, top tier schools, and thriving downtown retail culture.",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+    image: "/media/properties/22801-n-briarwood-edmond.jpeg",
     highlightBadge: "10/10 Schools Corridor",
     idxWidgetId: "179808"
   },
@@ -743,7 +743,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "Premier destination for luxury new construction, young families, and high academic athletics.",
     keySubdivisions: ["Valencia", "Lone Oak", "Ironstone", "Belmont"],
     overview: "Northwest Edmond's premier high-growth school district, drawing high-income transferees seeking master-planned luxury communities.",
-    image: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=800&q=80",
+    image: "/media/properties/22402-emily-way-edmond.jpeg",
     highlightBadge: "Modern Custom Builds",
     idxWidgetId: "179809"
   },
@@ -757,7 +757,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "Two Pete Dye championship 36-hole golf courses, PGA tour pedigree, 24-hr gated luxury living.",
     keySubdivisions: ["Oak Tree National", "Oak Tree Country Club Estates"],
     overview: "A legendary golf sanctuary hosting major championships, with sprawling custom stone estates, private tennis complex, and world-class dining.",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+    image: "/media/properties/3911-creek-bank-edmond.jpeg",
     highlightBadge: "PGA Championship Greens",
     idxWidgetId: "179810"
   },
@@ -771,7 +771,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "Equestrian acreage estates, Route 66 charm, water sports, and tranquil forested retreats.",
     keySubdivisions: ["Hiwassee Lake Estates", "Round Barn Acreages", "Arcadia Woods"],
     overview: "Where scenic country expanse meets luxury modern architecture. Expansive multi-acre estates just 15 minutes east of I-35.",
-    image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80",
+    image: "/media/properties/11616-estrella-arcadia.jpeg",
     highlightBadge: "Lake & Equestrian Acreages",
     idxWidgetId: "179811"
   },
@@ -785,7 +785,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "Territorial capital architecture, antique stores, sprawling country ranches, and equestrian tracts.",
     keySubdivisions: ["Guthrie Historic Townsite", "Cimarron River Ranches"],
     overview: "Historic charm, red-brick Victorian streets, film-production backdrops, and expansive private acreage properties.",
-    image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80",
+    image: "/media/properties/9687-bear-creek-guthrie.jpeg",
     highlightBadge: "Victorian & Wooded Tracts",
     idxWidgetId: "179812"
   },
@@ -799,7 +799,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "Master-planned amenity pools, walking trails, clubhouse, and minutes from Covell retail centers.",
     keySubdivisions: ["Twin Bridges", "Covell Valley", "Montmartre"],
     overview: "A sought-after Edmond community combining neighborhood walkability, modern transitional architecture, and top school feeder routes.",
-    image: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&w=800&q=80",
+    image: "/media/properties/1817-sun-valley-edmond.jpeg",
     highlightBadge: "Resort Pool & Trails",
     idxWidgetId: "179813"
   },
@@ -813,7 +813,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "Guard-gated Arthur Hills 18-hole golf, aquatic park, clubhouse dining, and contemporary luxury design.",
     keySubdivisions: ["The Greens at Rose Creek", "The Island at Rose Creek"],
     overview: "Elite guard-gated golf haven with dynamic custom architecture, resort fitness facilities, and vibrant family amenities.",
-    image: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=800&q=80",
+    image: "/media/gallery/infinity-pool-hills.jpeg",
     highlightBadge: "Guard-Gated Clubhouse",
     idxWidgetId: "179815"
   },
@@ -829,7 +829,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "Czech heritage, Czech Hall corridor growth, family sports complexes, and fast commute along I-40 and Kilpatrick Turnpike.",
     keySubdivisions: ["Surrey Hills", "Stone Mill", "River Mesa"],
     overview: "A thriving family-oriented city on OKC's west side, renowned for community pride, top athletics, and accessible luxury neighborhoods.",
-    image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80",
+    image: "/media/properties/715-s-friendly-okc.jpeg",
     highlightBadge: "Turnpike Transit & Schools",
     idxWidgetId: "179817"
   },
@@ -843,7 +843,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "Close-knit small town feel, rapid retail corridor expansion, and spacious half-acre lots.",
     keySubdivisions: ["Spitler Lake", "Hyde Park", "Wildwood"],
     overview: "Southwest metro favorite featuring exceptional school sports facilities, low taxes, and rapid new home development.",
-    image: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=800&q=80",
+    image: "/media/properties/534-w-chickasaw.jpg",
     highlightBadge: "Half-Acre Homesites",
     idxWidgetId: "179818"
   },
@@ -857,7 +857,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "Home to the University of Oklahoma, historic Chautauqua avenues, Lake Thunderbird, and SEC college game days.",
     keySubdivisions: ["Chautauqua Historic", "Brookhaven", "Hallbrooke"],
     overview: "A vibrant cultural and university center offering diverse housing from historic estates near campus to tranquil golf communities like Brookhaven.",
-    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80",
+    image: "/media/properties/435-nw-21st-heritage-hills.jpeg",
     highlightBadge: "OU Campus & Brookhaven",
     idxWidgetId: "179819"
   },
@@ -871,7 +871,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "Family-first parks, central I-35 corridor access to Tinker AFB and Downtown, affordable quality builds.",
     keySubdivisions: ["Apple Valley", "Sendera Ranch", "Highland Village"],
     overview: "Conveniently located between OKC and Norman with premier municipal parks, state-of-the-art community recreation, and strong home equity growth.",
-    image: "https://images.unsplash.com/photo-1598228723793-52759bba239c?auto=format&fit=crop&w=800&q=80",
+    image: "/media/properties/13701-s-independence-okc.jpeg",
     highlightBadge: "High-Equity Parks Hub",
     idxWidgetId: "179821"
   },
@@ -885,7 +885,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "Proximity to Tinker Air Force Base aerospace hubs, rolling oak acreage, and quiet eastern country living.",
     keySubdivisions: ["Timber Ridge", "Woodland Hills Choctaw", "Forest Glen"],
     overview: "A mix of aerospace career convenience and scenic wooded acreages with lower density and spacious property envelopes.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+    image: "/media/properties/85006-n-2520-watonga.jpeg",
     highlightBadge: "Aerospace & Wooded Acreages",
     idxWidgetId: "179822"
   },
@@ -899,7 +899,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "Acreage properties with workshops, horses, scenic hill country vistas, and rapid bridge access to OKC.",
     keySubdivisions: ["Winter Creek Golf Ranches", "Newcastle Ridge", "Fox Lane Estates"],
     overview: "Fastest-growing rural-suburban corridors south of the Canadian River, celebrated for custom acreage homes and golf communities like Winter Creek.",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+    image: "/media/properties/2950-nw-37th-newcastle.jpeg",
     highlightBadge: "Hill Country Ranches",
     idxWidgetId: "179827"
   },
@@ -913,7 +913,7 @@ export const MICRO_MARKETS: MicroMarket[] = [
     lifestyle: "Panoramic prairie sunsets, custom 1-to-5 acre homesites, top-rated school district, and serene quiet.",
     keySubdivisions: ["Buffalo Creek", "Manning Estates", "Olde Towne"],
     overview: "The preferred destination for families seeking spacious acreage living with modern custom estates while staying within easy reach of the Kilpatrick Turnpike.",
-    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80",
+    image: "/media/gallery/hill-country-driveway.jpeg",
     highlightBadge: "1-5 Acre Prairie Estates",
     idxWidgetId: "179836"
   }

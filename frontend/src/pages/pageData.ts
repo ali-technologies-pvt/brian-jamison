@@ -4,64 +4,64 @@ import { InteriorPageData } from './types';
 // Curated 12-image high-resolution architectural gallery
 const DEFAULT_ARCHITECTURAL_GALLERY = [
   {
-    url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
-    caption: "Grand limestone façade with custom slate roofing and golden hour illumination.",
+    url: "/media/gallery/modern-estate-pool-lawn.jpeg",
+    caption: "Grand limestone estate with manicured grounds and golden hour illumination.",
     tag: "Architecture"
   },
   {
-    url: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
-    caption: "Chef's gourmet kitchen with dual waterfall quartzite islands and Sub-Zero refrigeration.",
+    url: "/media/gallery/modern-kitchen.jpeg",
+    caption: "Chef's gourmet kitchen with dual waterfall quartzite islands and bespoke cabinetry.",
     tag: "Interiors"
   },
   {
-    url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
-    caption: "Cathedral great room with hand-hewn oak timbers and 24-foot fireplace.",
+    url: "/media/gallery/modern-staircase-dining.jpeg",
+    caption: "Cathedral great room with floating staircase, limestone accents, and high ceilings.",
     tag: "Interiors"
   },
   {
-    url: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
+    url: "/media/gallery/sunset-deck-pool.jpeg",
     caption: "Zero-edge heated swimming pool, travertine sundeck, and outdoor pavilion.",
     tag: "Grounds"
   },
   {
-    url: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80",
-    caption: "Primary spa bath featuring freestanding soaking tub and dual rainfall showers.",
+    url: "/media/gallery/sunset-window-terrace.jpeg",
+    caption: "Primary retreat featuring panoramic window walls and private sunset terrace.",
     tag: "Details"
   },
   {
-    url: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1200&q=80",
-    caption: "Custom temperature-controlled wine cellar with glass display enclosure.",
+    url: "/media/gallery/midcentury-entry.jpeg",
+    caption: "Bespoke architectural entry with natural wood cladding and ambient illumination.",
     tag: "Details"
   },
   {
-    url: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80",
-    caption: "Executive study with floor-to-ceiling walnut wainscoting and hidden storage.",
-    tag: "Interiors"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80",
-    caption: "Twilight rear elevation showcasing seamless sliding pocket glass wall transitions.",
-    tag: "Architecture"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=80",
-    caption: "Private guest casita with dedicated kitchenette and courtyard veranda.",
-    tag: "Architecture"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1200&q=80",
-    caption: "Open concept dining salon framed by designer bronze chandeliers and garden views.",
-    tag: "Interiors"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
-    caption: "Multi-acre gated entry perimeter lined with mature native Oklahoma oaks.",
+    url: "/media/gallery/infinity-pool-hills.jpeg",
+    caption: "Resort-style pool overlook framed by scenic Oklahoma hill country expanse.",
     tag: "Grounds"
   },
   {
-    url: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&w=1200&q=80",
-    caption: "Covered outdoor kitchen with built-in gas rotisserie, pizza oven, and bar seating.",
+    url: "/media/gallery/hill-country-driveway.jpeg",
+    caption: "Private tree-lined estate entry drive offering premier security and seclusion.",
     tag: "Grounds"
+  },
+  {
+    url: "/media/properties/136-nw-18th-heritage-hills.jpeg",
+    caption: "Historic Heritage Hills grand estate with preserved architectural craftsmanship.",
+    tag: "Architecture"
+  },
+  {
+    url: "/media/properties/11500-gateshead.jpg",
+    caption: "Gaillardia guard-gated golf fairway estate with custom stone masonry.",
+    tag: "Architecture"
+  },
+  {
+    url: "/media/properties/3233-n-harvey-crown-heights.jpeg",
+    caption: "Historic stone cottage and Mediterranean revival styling in Crown Heights.",
+    tag: "Architecture"
+  },
+  {
+    url: "/media/properties/22801-n-briarwood-edmond.jpeg",
+    caption: "Custom modern luxury build in northwest Edmond with high-efficiency envelope.",
+    tag: "Interiors"
   }
 ];
 
@@ -73,7 +73,7 @@ export const TEN_LISTING_STANDARDS_DELIVERABLES = [
     desc: "First-impression architectural review, decluttering roadmap, and ROI-driven refresh suggestions.",
     executionDetail: "Brian conducts a room-by-room architectural walkthrough, identifying high-ROI cosmetic paint, lighting, and depersonalization adjustments so buyers fall in love on arrival.",
     sellerImpact: "Transforms homes from 'lived in' to an emotional showpiece, generating 3x more opening-weekend private showings and eliminating lowball concessions.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/gallery/modern-kitchen.jpeg",
     badge: "Step 01 · Curb Appeal"
   },
   {
@@ -83,7 +83,7 @@ export const TEN_LISTING_STANDARDS_DELIVERABLES = [
     desc: "Interior and exterior golden-hour captures using architectural wide-angle glass.",
     executionDetail: "Captured with natural ambient light and golden-hour multi-bracket HDR lighting, preserving structural depth, true window exposure, and natural interior warmth.",
     sellerImpact: "Over 95% of buyers first see your home online; magazine-grade photography stops buyer scrolling instantly.",
-    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/properties/136-nw-18th-heritage-hills.jpeg",
     badge: "Step 02 · 4K HDR"
   },
   {
@@ -93,7 +93,7 @@ export const TEN_LISTING_STANDARDS_DELIVERABLES = [
     desc: "4K high-bitrate video capturing light, scale, and living flow with custom sound design.",
     executionDetail: "Filmed on cinema-grade gimbal stabilizers with professional color grading, custom sound design, and lifestyle pacing that highlights the architectural flow.",
     sellerImpact: "Videos average 14.2k+ views across platforms and create strong emotional attachment before buyers ever set foot inside.",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/gallery/modern-estate-pool-lawn.jpeg",
     badge: "Step 03 · 60fps Cinema"
   },
   {
@@ -103,7 +103,7 @@ export const TEN_LISTING_STANDARDS_DELIVERABLES = [
     desc: "Drone flyovers capturing lot lines, roof condition, and scenic surroundings.",
     executionDetail: "FAA-certified drone pilots film high-altitude 4K aerial sweeps, plotting dynamic parcel boundary lines, tree canopies, and proximity to golf courses and schools.",
     sellerImpact: "Shows buyers the exact land scale, privacy buffers, and lot value that ground-level photography cannot convey.",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/properties/11500-gateshead.jpg",
     badge: "Step 04 · FAA Drone"
   },
   {
@@ -113,7 +113,7 @@ export const TEN_LISTING_STANDARDS_DELIVERABLES = [
     desc: "Millimeter-accurate virtual dollhouse allowing 360-degree room exploration.",
     executionDetail: "Laser-guided spatial cameras scan every square foot of your home, compiling an interactive 3D dollhouse model and digital floor plan.",
     sellerImpact: "Enables pre-approved corporate transferees moving to OKC from California, Texas, and New York to make confident sight-unseen cash offers.",
-    image: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/gallery/modern-staircase-dining.jpeg",
     badge: "Step 05 · 3D Dollhouse"
   },
   {
@@ -123,7 +123,7 @@ export const TEN_LISTING_STANDARDS_DELIVERABLES = [
     desc: "Syndicated instantly to Zillow, Realtor.com, Trulia, Redfin, MLS, and luxury networks.",
     executionDetail: "Direct API feeds syndicate your listing to every major national and international portal, including Zillow Showcase, Realtor.com Featured, Redfin, and global luxury networks.",
     sellerImpact: "Ensures your property reaches 100% of active qualified homebuyers worldwide, preventing your home from getting lost in local MLS silos.",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/gallery/brian-jamison-skyline.jpeg",
     badge: "Step 06 · 350+ Portals"
   },
   {
@@ -133,7 +133,7 @@ export const TEN_LISTING_STANDARDS_DELIVERABLES = [
     desc: "Custom vanity domain created solely to showcase your home without competing ads.",
     executionDetail: "We purchase and launch a custom domain (e.g. 1234GrandviewBlvd.com) featuring full-screen 4K video, complete photo albums, floor plans, and seller disclosures.",
     sellerImpact: "Zero competing ads or distraction listings; prospective buyers and their agents are locked into your property's exclusive narrative.",
-    image: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/properties/3233-n-harvey-crown-heights.jpeg",
     badge: "Step 07 · Custom URL"
   },
   {
@@ -143,7 +143,7 @@ export const TEN_LISTING_STANDARDS_DELIVERABLES = [
     desc: "Targeted digital campaigns reaching active buyers and relocating families across the OKC metro.",
     executionDetail: "Paid targeted advertising campaigns deployed across Instagram & Facebook, targeting high-net-worth professionals, executives, physicians, and transferees searching OKC real estate.",
     sellerImpact: "Proactively places your home in front of qualified buyers who aren't actively searching MLS feeds daily.",
-    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/gallery/brian-jamison-sunset.jpeg",
     badge: "Step 08 · Meta Ads"
   },
   {
@@ -153,7 +153,7 @@ export const TEN_LISTING_STANDARDS_DELIVERABLES = [
     desc: "Daily algorithmic tuning to prevent listing stagnation in broker search queries.",
     executionDetail: "Unlike passive agents who enter a listing and wait, Brian monitors daily search impressions, rotating the primary hero photo and updating search tags to keep the listing at the top of buyer auto-searches.",
     sellerImpact: "Maintains high urgency and prevents the dreaded 'Days on Market' fatigue that leads to price reductions.",
-    image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/properties/22801-n-briarwood-edmond.jpeg",
     badge: "Step 09 · MLS Algorithm"
   },
   {
@@ -163,7 +163,7 @@ export const TEN_LISTING_STANDARDS_DELIVERABLES = [
     desc: "Direct outreach to buyer agents with clients searching within your exact price bracket.",
     executionDetail: "Brian pulls MLS database backend analytics to pinpoint every broker who has an active buyer searching in your exact square footage and price bracket, placing direct telephone calls to pitch your property.",
     sellerImpact: "Creates private showings with pre-qualified buyers before other listings even get noticed.",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/gallery/brian-closing-clients.jpeg",
     badge: "Step 10 · Matchmaking"
   }
 ];
@@ -178,8 +178,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "METROPOLITAN SERVICE AREAS",
     title: "21 Oklahoma City Metropolitan Service Areas & Communities",
     subtitle: "Explore our primary service areas across Greater Oklahoma City, Edmond, Nichols Hills, Norman, and surrounding acreage enclaves.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid2.mp4",
+    heroFallbackImage: "/media/gallery/brian-jamison-skyline.jpeg",
     heroMetrics: [
       { label: "Metro Communities", value: "21 Areas" },
       { label: "Volume Sold", value: "$70M+" },
@@ -201,8 +201,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "METROPOLITAN CORE",
     title: "Oklahoma City Luxury Real Estate & Historic Enclaves",
     subtitle: "The cultural, economic, and architectural heartbeat of Oklahoma, featuring historic mansions, modern penthouse lofts, and premier golf estates.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid3.mp4",
+    heroFallbackImage: "/media/gallery/modern-estate-pool-lawn.jpeg",
     heroMetrics: [
       { label: "Median Home Price", value: "$345,000" },
       { label: "Avg Days on Market", value: "14 Days" },
@@ -236,8 +236,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "PREMIER NORTH SUBURB",
     title: "Edmond Luxury Real Estate & Custom Acreage Living",
     subtitle: "Consistently ranked among America's best suburbs, Edmond delivers nationally acclaimed schools, championship golf, and sprawling private wooded estates.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid4.mp4",
+    heroFallbackImage: "/media/properties/22801-n-briarwood-edmond.jpeg",
     heroMetrics: [
       { label: "Median Luxury Price", value: "$685,000" },
       { label: "School Feeder Rating", value: "10/10" },
@@ -271,8 +271,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "OKC'S MOST PRESTIGIOUS ZIP CODE",
     title: "Nichols Hills Premier Estates & Grand Enclaves",
     subtitle: "Oklahoma's most exclusive residential enclave, featuring multi-million dollar architectural masterpieces, 24/7 dedicated city police, and private country clubs.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid5.mp4",
+    heroFallbackImage: "/media/gallery/modern-estate-pool-lawn.jpeg",
     heroMetrics: [
       { label: "Median Estate Price", value: "$1,380,000" },
       { label: "Police Response", value: "< 2 Mins" },
@@ -303,8 +303,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "UNIVERSITY & CULTURAL ENCLAVE",
     title: "Norman Real Estate, Golf Estates & University Living",
     subtitle: "Home to the University of Oklahoma, Norman merges college-town energy with affluent neighborhoods like Brookhaven, Hallbrooke, and Lake Thunderbird acreages.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid6.mp4",
+    heroFallbackImage: "/media/properties/435-nw-21st-heritage-hills.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$395,000" },
       { label: "Avg Days on Market", value: "17 Days" },
@@ -335,8 +335,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "WEST METRO EXPANSION",
     title: "Yukon Homes for Sale & Family Neighborhoods",
     subtitle: "A fast-growing west metro hub celebrated for Czech heritage, top-ranking school athletics, and swift access along I-40 and Kilpatrick Turnpike.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid7.mp4",
+    heroFallbackImage: "/media/properties/715-s-friendly-okc.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$335,000" },
       { label: "Avg Days on Market", value: "10 Days" },
@@ -366,8 +366,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "NORTHWEST ACREAGES",
     title: "Piedmont Rural Acreages & Custom Estate Communities",
     subtitle: "Scenic country skies, 1-to-5 acre homesites with outbuildings, and an academic powerhouse school district in northwest Canadian County.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid8.mp4",
+    heroFallbackImage: "/media/gallery/hill-country-driveway.jpeg",
     heroMetrics: [
       { label: "Median Acreage Price", value: "$415,000" },
       { label: "Parcel Sizes", value: "1 - 5 Acres" },
@@ -397,8 +397,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "SOUTHWEST METRO FAVORITE",
     title: "Mustang Real Estate & Community-First Neighborhoods",
     subtitle: "A close-knit southwest suburb known for outstanding school athletics, low municipal taxes, and rapidly appreciating family communities.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid9.mp4",
+    heroFallbackImage: "/media/properties/534-w-chickasaw.jpg",
     heroMetrics: [
       { label: "Median Price", value: "$320,000" },
       { label: "Avg Days on Market", value: "12 Days" },
@@ -428,8 +428,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "HISTORIC ROUTE 66 & LAKE ENCLAVE",
     title: "Arcadia Equestrian Acreages & Lakefront Estates",
     subtitle: "Sprawling multi-acre forested tracts, equestrian compounds, and Lake Hiwassee retreats situated along historic Route 66 east of Edmond.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid10.mp4",
+    heroFallbackImage: "/media/properties/11616-estrella-arcadia.jpeg",
     heroMetrics: [
       { label: "Median Estate Price", value: "$790,000" },
       { label: "Parcel Acreages", value: "2 - 20+ Ac" },
@@ -459,8 +459,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "TERRITORIAL CAPITAL",
     title: "Guthrie Historic Architecture & Country Ranches",
     subtitle: "Victorian brick downtown storefronts, Hollywood film backdrops, and expansive private acreage ranches in Logan County.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid11.mp4",
+    heroFallbackImage: "/media/properties/9687-bear-creek-guthrie.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$380,000" },
       { label: "Historic District Size", value: "Largest in US" },
@@ -489,8 +489,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "I-35 CORRIDOR HUB",
     title: "Moore Homes for Sale & Vibrant Parks System",
     subtitle: "Centrally positioned between OKC and Norman with premier municipal parks, state-of-the-art recreation centers, and steady equity growth.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid12.mp4",
+    heroFallbackImage: "/media/properties/13701-s-independence-okc.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$285,000" },
       { label: "Commute to OKC", value: "14 Mins" },
@@ -521,8 +521,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "AEROSPACE GATEWAY",
     title: "Midwest City Real Estate Near Tinker AFB",
     subtitle: "The aerospace capital of Oklahoma, offering established residential neighborhoods, mature oak shade, and immediate base proximity.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid13.mp4",
+    heroFallbackImage: "/media/gallery/modern-estate-pool-lawn.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$265,000" },
       { label: "Tinker Commute", value: "5 Mins" },
@@ -552,8 +552,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "EAST METRO WOODED ACREAGES",
     title: "Choctaw Acreages & Quiet Country Living",
     subtitle: "Rolling oak hills, spacious 1-to-5 acre homesites, and top-tier eastern schools with low traffic congestion.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid14.mp4",
+    heroFallbackImage: "/media/gallery/modern-kitchen.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$355,000" },
       { label: "Avg Lot Size", value: "2.1 Acres" },
@@ -582,8 +582,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "EAST METRO RURAL CORRIDOR",
     title: "Harrah Land & Custom Builds",
     subtitle: "Affordable country living, spacious acreage parcels, and expanding Kickapoo Turnpike connectivity.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid15.mp4",
+    heroFallbackImage: "/media/gallery/modern-staircase-dining.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$295,000" },
       { label: "Turnpike Access", value: "Direct" },
@@ -612,8 +612,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "TRI-CITY HILL COUNTRY",
     title: "Blanchard Ranches & Winter Creek Golf Estates",
     subtitle: "Rolling topography south of the Canadian River, custom acreage homes, and championship golf at Winter Creek.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid16.mp4",
+    heroFallbackImage: "/media/gallery/brian-closing-clients.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$360,000" },
       { label: "Winter Creek Golf", value: "18-Hole Championship" },
@@ -642,8 +642,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "SOUTH METRO BOOM CORRIDOR",
     title: "Newcastle Luxury Acreage Real Estate",
     subtitle: "One of Oklahoma's fastest growing cities, featuring modern custom estates on 1-to-3 acres just across the river from OKC.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid17.mp4",
+    heroFallbackImage: "/media/gallery/brian-jamison-skyline.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$375,000" },
       { label: "Population Growth", value: "+32%" },
@@ -672,8 +672,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "WEST TRI-CITY ACREAGES",
     title: "Tuttle Country Estates & Agricultural Heritage",
     subtitle: "Sprawling family estates, Braum's Family Farm heritage, and championship high school athletics in Grady County.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid18.mp4",
+    heroFallbackImage: "/media/gallery/brian-jamison-sunset.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$390,000" },
       { label: "State Athletics", value: "Powerhouse" },
@@ -702,8 +702,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "COLLEGIATE & ROUTE 66 ENCLAVE",
     title: "Bethany Homes for Sale Near Southern Nazarene",
     subtitle: "A walkable university enclave featuring Route 66 culture, tree-lined quiet avenues, and excellent proximity to Lake Overholser.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid19.mp4",
+    heroFallbackImage: "/media/gallery/sunset-deck-pool.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$250,000" },
       { label: "Walkability", value: "Very High" },
@@ -732,8 +732,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "EAST METRO ENCLAVE",
     title: "Nicoma Park Residential Real Estate",
     subtitle: "A peaceful eastern suburb offering spacious residential lots, mature trees, and direct feeder access to Choctaw schools.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid20.mp4",
+    heroFallbackImage: "/media/gallery/sunset-window-terrace.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$280,000" },
       { label: "Lot Sizes", value: "0.5 - 2 Ac" },
@@ -763,8 +763,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "NORTHWEST CENTRAL OKC",
     title: "Warr Acres Homes & Lake Hefner Proximity",
     subtitle: "Centrally located northwest metro enclave with mid-century architecture, diverse dining, and rapid Lake Hefner access.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid21.mp4",
+    heroFallbackImage: "/media/gallery/midcentury-entry.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$260,000" },
       { label: "Lake Hefner", value: "7 Mins" },
@@ -793,8 +793,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "HIGH-DEMAND MID-CENTURY",
     title: "The Village Homes for Sale & Modern Renovations",
     subtitle: "Surrounded by Nichols Hills and Lake Hefner, The Village is OKC's fastest appreciating mid-century renovation hot spot.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid22.mp4",
+    heroFallbackImage: "/media/gallery/midcentury-entry.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$345,000" },
       { label: "Avg Days on Market", value: "9 Days" },
@@ -824,8 +824,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "NORTHEAST ACREAGE SANCTUARY",
     title: "Jones Country Acreages & Private Wooded Parcels",
     subtitle: "Serene country estates, equestrian land, and dark night skies just northeast of Edmond and Oklahoma City.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid23.mp4",
+    heroFallbackImage: "/media/gallery/infinity-pool-hills.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$325,000" },
       { label: "Lot Sizes", value: "2 - 20+ Ac" },
@@ -854,8 +854,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "HISTORIC PRESERVATION ENCLAVE",
     title: "Heritage Hills Historic Estates & Mansions",
     subtitle: "Oklahoma City's premier historic preservation district, showcasing grand 1920s architecture, tree-canopied boulevards, and century-old brick mansions.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid24.mp4",
+    heroFallbackImage: "/media/properties/136-nw-18th-heritage-hills.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$895,000" },
       { label: "Historic Designation", value: "National Register" },
@@ -887,8 +887,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "24/7 GUARD-GATED LUXURY GOLF",
     title: "Gaillardia Golf Community & Country Club Estates",
     subtitle: "Oklahoma City's premier guard-gated golf country club sanctuary, featuring Arthur Hills championship golf, 55,000 sq ft French Normandy clubhouse, and private gated villas.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid25.mp4",
+    heroFallbackImage: "/media/properties/11500-gateshead.jpg",
     heroMetrics: [
       { label: "Median Estate Price", value: "$1,650,000" },
       { label: "Security", value: "24/7 Guard-Gated" },
@@ -920,8 +920,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "HISTORIC URBAN SANCTUARY",
     title: "Crown Heights Historic District Real Estate",
     subtitle: "Charming stone cottages, Spanish and Tudor revivals, and deep-porch living along OKC's Western Avenue gourmet corridor.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid26.mp4",
+    heroFallbackImage: "/media/properties/3233-n-harvey-crown-heights.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$575,000" },
       { label: "Avg Days on Market", value: "12 Days" },
@@ -953,8 +953,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "URBAN SKYLINE & PENTHOUSES",
     title: "Downtown & Midtown OKC Luxury Condos & Lofts",
     subtitle: "High-rise luxury penthouses, historic brick townhomes, modern loft spaces, and Michelin-rated dining in the urban epicenter.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid27.mp4",
+    heroFallbackImage: "/media/properties/616-nw-6th-downtown.jpeg",
     heroMetrics: [
       { label: "Median Penthouse", value: "$620,000" },
       { label: "Walk Score", value: "92 Walkers Paradise" },
@@ -985,8 +985,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "FAIRWAY GOLF SANCTUARY",
     title: "Quail Creek Golf Club Real Estate & Homes",
     subtitle: "Sprawling golf course homes, classic mid-century transitional architecture, mature shade trees, and active country club living in northwest OKC.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid28.mp4",
+    heroFallbackImage: "/media/gallery/sunset-deck-pool.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$540,000" },
       { label: "Avg Days on Market", value: "16 Days" },
@@ -1017,8 +1017,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "10/10 ACADEMIC GOLD STANDARD",
     title: "Edmond & Oakdale Corridor Luxury Real Estate",
     subtitle: "Nationally acclaimed 10/10 schools, rolling wooded topography, luxury acreage estates, and vibrant downtown Edmond rail district living.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid29.mp4",
+    heroFallbackImage: "/media/properties/22801-n-briarwood-edmond.jpeg",
     heroMetrics: [
       { label: "Median Luxury Price", value: "$685,000" },
       { label: "Oakdale Feeder", value: "10/10 Gold Standard" },
@@ -1049,8 +1049,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "MASTER-PLANNED CUSTOM LUXURY",
     title: "Deer Creek School District Real Estate & Custom Builds",
     subtitle: "Premier destination for luxury new construction, young professional families, and state champion academic and athletic programs in northwest Edmond.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid30.mp4",
+    heroFallbackImage: "/media/properties/22402-emily-way-edmond.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$520,000" },
       { label: "Feeder Rating", value: "10/10 Academic Leader" },
@@ -1081,8 +1081,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "PGA CHAMPIONSHIP PETE DYE GREENS",
     title: "Oak Tree Golf & Country Club Luxury Estates",
     subtitle: "Two Pete Dye championship 36-hole golf courses, PGA Tour pedigree, 24-hr guarded gate, and sprawling custom stone architecture in North Edmond.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid31.mp4",
+    heroFallbackImage: "/media/properties/3911-creek-bank-edmond.jpeg",
     heroMetrics: [
       { label: "Median Luxury Price", value: "$1,150,000" },
       { label: "Pete Dye Championship", value: "36 Holes" },
@@ -1113,8 +1113,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "LAKE & EQUESTRIAN ACREAGES",
     title: "Arcadia & Lake Hiwassee Waterfront & Acreage Estates",
     subtitle: "Equestrian acreage estates, Route 66 historic charm, water sports, and tranquil forested retreats just 15 minutes east of I-35.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid1.mp4",
+    heroFallbackImage: "/media/properties/11616-estrella-arcadia.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$790,000" },
       { label: "Lot Sizes", value: "2 - 40+ Ac" },
@@ -1145,8 +1145,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "VICTORIAN ARCHITECTURE & RANCHES",
     title: "Guthrie Historic Enclave & Country Acreage Ranches",
     subtitle: "Territorial capital architecture, antique stores, sprawling country ranches, and equestrian tracts along the scenic Cimarron River.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid2.mp4",
+    heroFallbackImage: "/media/properties/9687-bear-creek-guthrie.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$380,000" },
       { label: "Historic Landmark", value: "Largest in US" },
@@ -1176,8 +1176,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "COVELL CORRIDOR RESORT COMMUNITY",
     title: "Twin Bridges & Covell Corridor Luxury Real Estate",
     subtitle: "Master-planned amenity pools, walking trails, clubhouse, and modern transitional architecture in Edmond's high-demand north corridor.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid3.mp4",
+    heroFallbackImage: "/media/properties/1817-sun-valley-edmond.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$625,000" },
       { label: "Avg Days on Market", value: "14 Days" },
@@ -1208,8 +1208,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "GUARD-GATED ARTHUR HILLS GOLF",
     title: "Rose Creek Golf Community & Country Club Living",
     subtitle: "Guard-gated Arthur Hills 18-hole golf, aquatic park, modern clubhouse dining, and contemporary luxury design in Edmond/Deer Creek.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid4.mp4",
+    heroFallbackImage: "/media/gallery/infinity-pool-hills.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$920,000" },
       { label: "Security", value: "24/7 Guard-Gated" },
@@ -1240,8 +1240,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "OU CAMPUS & BROOKHAVEN ENCLAVE",
     title: "Norman & University Enclave Luxury Real Estate",
     subtitle: "Historic Chautauqua avenues, prestigious Brookhaven golf living, Lake Thunderbird retreats, and SEC game-day energy in Norman.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid5.mp4",
+    heroFallbackImage: "/media/properties/435-nw-21st-heritage-hills.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$395,000" },
       { label: "Avg Days on Market", value: "17 Days" },
@@ -1272,8 +1272,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "AEROSPACE & WOODED ACREAGES",
     title: "Midwest City & Choctaw Acreage Real Estate",
     subtitle: "Tinker Air Force Base aerospace career convenience combined with scenic wooded acreages, private shops, and quiet eastern country living.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid6.mp4",
+    heroFallbackImage: "/media/properties/85006-n-2520-watonga.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$310,000" },
       { label: "Lot Dimensions", value: "1 - 10+ Ac" },
@@ -1304,8 +1304,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     kicker: "HILL COUNTRY RANCHES & GOLF",
     title: "Blanchard & Newcastle Luxury Acreages & Winter Creek",
     subtitle: "Custom acreage properties with workshops, championship golf at Winter Creek, scenic hill country vistas, and rapid bridge access to OKC.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid7.mp4",
+    heroFallbackImage: "/media/properties/2950-nw-37th-newcastle.jpeg",
     heroMetrics: [
       { label: "Median Price", value: "$360,000" },
       { label: "Lot Sizes", value: "1 - 15+ Ac" },
@@ -1339,8 +1339,8 @@ export const AUDIENCE_PAGES: Record<string, InteriorPageData> = {
     kicker: "SELLER BLUEPRINT ROADMAP",
     title: "Sell for Top Dollar: The Brian Jamison Roadmap",
     subtitle: "A proven, systematic selling machine designed to eliminate seller stress, attract qualified buyers, and command top market value.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid8.mp4",
+    heroFallbackImage: "/media/gallery/hill-country-driveway.jpeg",
     heroMetrics: [
       { label: "Volume Sold", value: "$70M+" },
       { label: "List-to-Sale Ratio", value: "98.4%" },
@@ -1368,8 +1368,8 @@ export const AUDIENCE_PAGES: Record<string, InteriorPageData> = {
     kicker: "TURNAROUND PROTOCOL",
     title: "Expired Listing Turnaround Protocol",
     subtitle: "Did your home sit on the market without selling? Brian Jamison diagnoses MLS stagnation and relaunches with uncompromised momentum.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid9.mp4",
+    heroFallbackImage: "/media/properties/136-nw-18th-heritage-hills.jpeg",
     heroMetrics: [
       { label: "Turnaround Escrow", value: "21 Days Avg" },
       { label: "Failure Diagnosis", value: "48 Hours" },
@@ -1397,8 +1397,8 @@ export const AUDIENCE_PAGES: Record<string, InteriorPageData> = {
     kicker: "BUYER EMPOWERMENT",
     title: "First-Time Homebuyer Blueprint",
     subtitle: "Navigate mortgage options, inspection pitfalls, and closing costs with patience, transparency, and expert guidance.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid10.mp4",
+    heroFallbackImage: "/media/properties/11500-gateshead.jpg",
     heroMetrics: [
       { label: "Buyer Agent Fee", value: "Zero to Buyer" },
       { label: "Inspection Defended", value: "100%" },
@@ -1426,8 +1426,8 @@ export const AUDIENCE_PAGES: Record<string, InteriorPageData> = {
     kicker: "PRIVATE CONCIERGE",
     title: "Luxury & Experienced Buyer Concierge",
     subtitle: "Discreet acquisitions, off-market private pocket listings, and white-glove advisory for prominent families and executives.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid11.mp4",
+    heroFallbackImage: "/media/properties/3233-n-harvey-crown-heights.jpeg",
     heroMetrics: [
       { label: "Off-Market Access", value: "Exclusive" },
       { label: "NDA Privacy", value: "Guaranteed" },
@@ -1455,8 +1455,8 @@ export const AUDIENCE_PAGES: Record<string, InteriorPageData> = {
     kicker: "NEW CONSTRUCTION ADVISORY",
     title: "Custom Builds & New Construction Advisory",
     subtitle: "From homesite acquisition and builder vetting to floor plan reviews and construction milestone inspections.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid12.mp4",
+    heroFallbackImage: "/media/properties/616-nw-6th-downtown.jpeg",
     heroMetrics: [
       { label: "Builder Partners", value: "18+ Premier" },
       { label: "Build Milestones", value: "Inspected" },
@@ -1484,8 +1484,8 @@ export const AUDIENCE_PAGES: Record<string, InteriorPageData> = {
     kicker: "PARTNERSHIP PROTOCOL",
     title: "For Sale By Owner (FSBO) Partnership",
     subtitle: "Thinking of selling on your own? Access professional contracts, MLS exposure, and legal paperwork with zero pressure.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid13.mp4",
+    heroFallbackImage: "/media/properties/22801-n-briarwood-edmond.jpeg",
     heroMetrics: [
       { label: "FSBO Price Lift", value: "+16% Avg" },
       { label: "Legal Compliance", value: "100%" },
@@ -1516,8 +1516,8 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
     kicker: "LEADERSHIP & ETHOS",
     title: "About Brian Jamison & Salt Real Estate",
     subtitle: "A former collegiate athlete bringing uncompromising work ethic, data-driven pricing, and seven-day accessibility to Oklahoma City luxury real estate.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid14.mp4",
+    heroFallbackImage: "/media/properties/22402-emily-way-edmond.jpeg",
     heroMetrics: [
       { label: "Career Volume", value: "$70M+" },
       { label: "Career Closings", value: "370+" },
@@ -1544,8 +1544,8 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
     kicker: "PROPRIETARY 6-STEP MACHINE",
     title: "The 6-Step Seller Blueprint Machine",
     subtitle: "Every service, deliverable, and guarantee engineered into a single repeatable system that sells your home for top dollar.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid15.mp4",
+    heroFallbackImage: "/media/properties/3911-creek-bank-edmond.jpeg",
     heroMetrics: [
       { label: "Blueprint Phases", value: "6 Steps" },
       { label: "Key Deliverables", value: "30+ Actions" },
@@ -1570,8 +1570,8 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
     kicker: "ACTIVE PORTFOLIO",
     title: "Active & Featured Luxury Listings",
     subtitle: "Explore current properties exclusively represented by Brian Jamison across Nichols Hills, Edmond, Gaillardia, and Lake Arcadia.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid16.mp4",
+    heroFallbackImage: "/media/properties/11616-estrella-arcadia.jpeg",
     heroMetrics: [
       { label: "Active Volume", value: "$8.4M" },
       { label: "Matterport 3D", value: "Included" },
@@ -1592,8 +1592,8 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
     kicker: "VERIFIED TRACK RECORD",
     title: "$70M+ Past Sales Track Record",
     subtitle: "Over 370+ career closings across central Oklahoma. Explore our history of record-setting prices and rapid days-on-market.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid17.mp4",
+    heroFallbackImage: "/media/properties/9687-bear-creek-guthrie.jpeg",
     heroMetrics: [
       { label: "Career Volume", value: "$70M+" },
       { label: "Total Closings", value: "370+" },
@@ -1614,8 +1614,8 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
     kicker: "CLIENT EXPERIENCES",
     title: "Verified Client Reviews & Testimonials",
     subtitle: "Read authentic experiences from homeowners and buyers who trusted Brian Jamison with their real estate transactions.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid18.mp4",
+    heroFallbackImage: "/media/properties/1817-sun-valley-edmond.jpeg",
     heroMetrics: [
       { label: "Google Rating", value: "5.0 ★" },
       { label: "Repeat & Referral", value: "84%" },
@@ -1636,8 +1636,8 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
     kicker: "CONFIDENTIAL APPRAISAL",
     title: "Confidential Market Valuation & CMA Dossier",
     subtitle: "Request an accurate 3-tier valuation report calibrated against hyper-local pending comps, absorption velocity, and land value.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid19.mp4",
+    heroFallbackImage: "/media/properties/715-s-friendly-okc.jpeg",
     heroMetrics: [
       { label: "Valuation Tiers", value: "3 Levels" },
       { label: "Turnaround", value: "< 24 Hours" },
@@ -1658,8 +1658,8 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
     kicker: "JAMISON REAL ESTATE",
     title: "Contact Brian Jamison | Jamison Real Estate",
     subtitle: "Direct access: Call, text, or schedule an in-person advisory meeting at Jamison Real Estate in Edmond, Oklahoma.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid20.mp4",
+    heroFallbackImage: "/media/properties/534-w-chickasaw.jpg",
     heroMetrics: [
       { label: "Direct Phone", value: "(405) 513-3039" },
       { label: "Physical Office", value: "Edmond, OK" },
@@ -1681,8 +1681,8 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
     kicker: "PLATFORM DIRECTORY",
     title: "Complete Sitemap & Platform Architecture (58+ Pages)",
     subtitle: "Explore all 58+ indexed portals, community guides, seller blueprint phases, and advisory resources for Jamison Real Estate in the Oklahoma City metropolitan area.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid21.mp4",
+    heroFallbackImage: "/media/properties/435-nw-21st-heritage-hills.jpeg",
     heroMetrics: [
       { label: "Indexed Pages", value: "58+ Pages" },
       { label: "Metro Enclaves", value: "21 Areas" },
@@ -1706,8 +1706,8 @@ export const RESOURCE_PAGES: Record<string, InteriorPageData> = {
     kicker: "FULL-SPECTRUM ADVISORY",
     title: "Comprehensive Real Estate Services & 6-Phase Selling Machine",
     subtitle: "From private home buying concierge and land development to the proprietary 6-step selling machine with 100% cancel-anytime guarantee.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid22.mp4",
+    heroFallbackImage: "/media/properties/13701-s-independence-okc.jpeg",
     heroMetrics: [
       { label: "Core Practices", value: "3 Pillars" },
       { label: "Blueprint Phases", value: "6 Steps" },
@@ -1729,8 +1729,8 @@ export const RESOURCE_PAGES: Record<string, InteriorPageData> = {
     kicker: "SELLER PREPARATION DOSSIER",
     title: "The 2026 Home Seller's Readiness Checklist",
     subtitle: "A comprehensive room-by-room preparation guide designed to eliminate buyer inspection renegotiations and spark multiple-offer bidding wars.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid23.mp4",
+    heroFallbackImage: "/media/properties/85006-n-2520-watonga.jpeg",
     heroMetrics: [
       { label: "Action Items", value: "15 Key Tasks" },
       { label: "Inspection Risk", value: "Minimized" },
@@ -1751,8 +1751,8 @@ export const RESOURCE_PAGES: Record<string, InteriorPageData> = {
     kicker: "FINANCIAL ENGINE",
     title: "Oklahoma City Mortgage & Payment Calculator",
     subtitle: "Calculate exact monthly obligations including principal, interest, Oklahoma County ad valorem taxes, and hazard homeowners insurance.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid24.mp4",
+    heroFallbackImage: "/media/properties/2950-nw-37th-newcastle.jpeg",
     heroMetrics: [
       { label: "Oklahoma Tax", value: "1.15% Avg" },
       { label: "Amortization", value: "15/30 Yr" },
@@ -1773,8 +1773,8 @@ export const RESOURCE_PAGES: Record<string, InteriorPageData> = {
     kicker: "EXECUTIVE RELOCATION",
     title: "Relocating to the Oklahoma City Metropolitan Area",
     subtitle: "Everything you need to know when moving from California, Texas, New York, or Colorado to Oklahoma's thriving luxury enclaves.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid25.mp4",
+    heroFallbackImage: "/media/gallery/modern-estate-pool-lawn.jpeg",
     heroMetrics: [
       { label: "Cost Index", value: "84.2 vs US" },
       { label: "Top Schools", value: "10/10 Gold" },
@@ -1795,8 +1795,8 @@ export const RESOURCE_PAGES: Record<string, InteriorPageData> = {
     kicker: "FIDUCIARY PROTECTION",
     title: "What to Watch Out For: The Most Costly Real Estate Traps in Oklahoma",
     subtitle: "Protect your equity from expansive red clay soil settling, hail insurance ACV schedules, and restrictive non-cancellable listing agreements.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid26.mp4",
+    heroFallbackImage: "/media/gallery/modern-kitchen.jpeg",
     heroMetrics: [
       { label: "Red Clay Soil", value: "Foundation Trap" },
       { label: "Roof Deductible", value: "ACV vs RCV" },
@@ -1817,8 +1817,8 @@ export const RESOURCE_PAGES: Record<string, InteriorPageData> = {
     kicker: "CLEAR ANSWERS",
     title: "Frequently Asked Questions",
     subtitle: "Everything you need to know about our 6-Phase Selling Machine, cancel-anytime guarantee, pricing philosophy, and fiduciary duties.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid27.mp4",
+    heroFallbackImage: "/media/gallery/modern-staircase-dining.jpeg",
     heroMetrics: [
       { label: "Transparency", value: "100%" },
       { label: "Reachability", value: "7 Days" },
@@ -1839,8 +1839,8 @@ export const RESOURCE_PAGES: Record<string, InteriorPageData> = {
     kicker: "LEGAL COMPLIANCE",
     title: "Privacy Policy",
     subtitle: "Our commitment to client confidentiality, data protection, and federal communication compliance.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid28.mp4",
+    heroFallbackImage: "/media/gallery/brian-closing-clients.jpeg",
     heroMetrics: [
       { label: "Data Sharing", value: "Zero" },
       { label: "Security", value: "Protected" },
@@ -1861,8 +1861,8 @@ export const RESOURCE_PAGES: Record<string, InteriorPageData> = {
     kicker: "LEGAL TERMS",
     title: "Terms of Service",
     subtitle: "Official platform terms, copyright disclosures, and licensing information.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid29.mp4",
+    heroFallbackImage: "/media/gallery/brian-jamison-skyline.jpeg",
     heroMetrics: [
       { label: "License", value: "#184931" },
       { label: "Brokerage", value: "Salt Real Estate" },
@@ -1883,8 +1883,8 @@ export const RESOURCE_PAGES: Record<string, InteriorPageData> = {
     kicker: "EQUAL HOUSING OPPORTUNITY",
     title: "Fair Housing & Equal Opportunity",
     subtitle: "Uncompromising commitment to federal, state, and municipal fair housing laws.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid30.mp4",
+    heroFallbackImage: "/media/gallery/brian-jamison-sunset.jpeg",
     heroMetrics: [
       { label: "Equal Housing", value: "100%" },
       { label: "Federal Law", value: "Title VIII" },

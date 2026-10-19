@@ -153,7 +153,8 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
       title: "3 Small Cosmetic Mistakes That Kill Home Value in OKC",
       duration: "0:58",
       views: "18.4K",
-      thumbnail: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+      thumbnail: "/media/gallery/modern-kitchen.jpeg",
+      videoUrl: "/media/videos/vid2.mp4",
       description: "Why mismatched paint sheens, 2700K yellow bulbs, and crowded kitchen islands cost Oklahoma sellers an average of $15,000+ during first showings.",
       takeaway: "Swap bulbs to 3000K daylight white and clear 80% of counter surfaces."
     },
@@ -162,7 +163,8 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
       title: "Before & After: How Professional Staging Added $24,000 to an Edmond Home",
       duration: "1:02",
       views: "24.1K",
-      thumbnail: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80",
+      thumbnail: "/media/gallery/modern-staircase-dining.jpeg",
+      videoUrl: "/media/videos/vid1.mp4",
       description: "Step inside this vacant custom build in Edmond where our specialized staging crew transformed cold empty rooms into an emotional sanctuary.",
       takeaway: "Received 4 competitive offers in 72 hours, closing at $24k above list."
     },
@@ -171,7 +173,8 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
       title: "Why Your Listing Expired With Your Previous Agent (And How We Fix It in 48 Hours)",
       duration: "1:15",
       views: "31.9K",
-      thumbnail: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+      thumbnail: "/media/properties/22801-n-briarwood-edmond.jpeg",
+      videoUrl: "/media/videos/vid6.mp4",
       description: "The brutal reality of passive MLS listings: cell phone photos, zero video marketing, and no showing feedback loop. Here's our 48-hour resuscitation.",
       takeaway: "We reshot 4K media and launched reverse prospecting in 48 hours."
     },
@@ -180,7 +183,8 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
       title: "Behind the Lens: 4K Drone & 3D Matterport Shoot in Nichols Hills",
       duration: "0:49",
       views: "15.7K",
-      thumbnail: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+      thumbnail: "/media/properties/11500-gateshead.jpg",
+      videoUrl: "/media/videos/vid4.mp4",
       description: "Follow our FAA-certified aerial team and 3D Matterport pro as we capture an architectural masterpiece with golden hour and natural interior light.",
       takeaway: "Out-of-state buyers from California & Texas submitted sight-unseen bids."
     },
@@ -189,7 +193,8 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
       title: "How Our Cancel-Anytime Listing Guarantee Actually Protects You",
       duration: "0:52",
       views: "22.3K",
-      thumbnail: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+      thumbnail: "/media/gallery/brian-closing-clients.jpeg",
+      videoUrl: "/media/videos/vid5.mp4",
       description: "Most traditional real estate agents trap you in a binding 6-month contract with zero accountability. Brian Jamison puts his neck on the line.",
       takeaway: "If we don't deliver on our commitments, you can fire us anytime. $0 penalty."
     }
@@ -506,8 +511,8 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
         kicker="The 6-Step Seller Blueprint"
         title="How We Sell Oklahoma City Homes for Maximum Net Proceeds."
         subtitle="From pre-listing architectural media and 350+ portal syndication to data-backed pricing and 24/7 negotiation—here is the exact 6-phase playbook we execute for your property."
-        heroVideoUrl="https://www.pexels.com/download/video/29383137/"
-        heroFallbackImage="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80"
+        heroVideoUrl="/media/videos/vid1.mp4"
+        heroFallbackImage="/media/gallery/modern-estate-pool-lawn.jpeg"
         metrics={[
           { value: '$70M+', label: 'Volume Sold' },
           { value: '370+', label: 'Career Closings' },
@@ -1250,7 +1255,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
               <div>
                 <div className="relative h-64 w-full bg-[#002D61] overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+                    src="/media/properties/22801-n-briarwood-edmond.jpeg"
                     alt="Edmond Expired Listing Turnaround"
                     className="w-full h-full object-cover"
                   />
@@ -1319,7 +1324,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
               <div>
                 <div className="relative h-64 w-full bg-[#002D61] overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80"
+                    src="/media/gallery/modern-estate-pool-lawn.jpeg"
                     alt="Nichols Hills Luxury Estate"
                     className="w-full h-full object-cover"
                   />

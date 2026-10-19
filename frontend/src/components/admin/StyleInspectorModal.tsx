@@ -31,15 +31,15 @@ const LUXURY_BG_PRESETS = [
 ];
 
 const STOCK_BG_IMAGES = [
-  { name: 'Nichols Hills Estate', url: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80' },
-  { name: 'Gaillardia Modern', url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80' },
-  { name: 'Interior Great Room', url: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1920&q=80' },
-  { name: 'Twilight Pool', url: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80' },
+  { name: 'Heritage Hills Historic', url: '/media/properties/136-nw-18th-heritage-hills.jpeg' },
+  { name: 'Gaillardia Modern', url: '/media/properties/11500-gateshead.jpg' },
+  { name: 'Interior Great Room', url: '/media/gallery/modern-staircase-dining.jpeg' },
+  { name: 'Twilight Pool', url: '/media/gallery/modern-estate-pool-lawn.jpeg' },
 ];
 
 const STOCK_BG_VIDEOS = [
-  { name: 'OKC Metro Luxury Estate (4K)', url: 'https://www.pexels.com/download/video/29383137/' },
-  { name: 'Architectural Aerial Estate Tour', url: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-luxurious-neighborhood-with-houses-and-gardens-41662-large.mp4' },
+  { name: 'OKC Metro Luxury Estate (4K)', url: '/media/videos/vid1.mp4' },
+  { name: 'Architectural Aerial Estate Tour', url: '/media/videos/vid2.mp4' },
 ];
 
 export const StyleInspectorModal: React.FC<StyleInspectorModalProps> = ({

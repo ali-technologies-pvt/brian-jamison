@@ -87,8 +87,8 @@ export const HomeSellersChecklistPage: React.FC<ResourcePageProps> = ({
         kicker="Interactive Seller Preparation Dossier"
         title="The 2026 Home Seller's Readiness Checklist."
         subtitle="A comprehensive room-by-room preparation guide designed to eliminate buyer inspection renegotiations and spark multi-offer bidding wars."
-        heroVideoUrl="https://www.pexels.com/download/video/29383137/"
-        heroFallbackImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80"
+        heroVideoUrl="/media/videos/vid1.mp4"
+        heroFallbackImage="/media/gallery/modern-estate-pool-lawn.jpeg"
         metrics={[
           { value: '15 Points', label: 'Curb & Interior Audit' },
           { value: '+$18K', label: 'Avg Equity Recouped' },
@@ -219,8 +219,8 @@ export const MortgageCalculatorPage: React.FC<ResourcePageProps> = ({
         kicker="Accurate Oklahoma Financing Engine"
         title="Oklahoma City Mortgage & Payment Calculator."
         subtitle="Calculate exact monthly obligations including principal, interest, Oklahoma county ad valorem property taxes, and hazard homeowners insurance."
-        heroVideoUrl="https://www.pexels.com/download/video/29383137/"
-        heroFallbackImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80"
+        heroVideoUrl="/media/videos/vid1.mp4"
+        heroFallbackImage="/media/gallery/modern-estate-pool-lawn.jpeg"
         metrics={[
           { value: 'PITI', label: 'Full Monthly Breakdown' },
           { value: '1.15%', label: 'OK Ad Valorem Rate' },
@@ -410,8 +410,8 @@ export const RelocationGuidePage: React.FC<ResourcePageProps> = ({
         kicker="Executive Concierge Relocation"
         title="Relocating to the Oklahoma City Metropolitan Area."
         subtitle="Everything you need to know when moving from California, Texas, New York, or Colorado to Oklahoma's thriving luxury corridors."
-        heroVideoUrl="https://www.pexels.com/download/video/29383137/"
-        heroFallbackImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80"
+        heroVideoUrl="/media/videos/vid1.mp4"
+        heroFallbackImage="/media/gallery/modern-estate-pool-lawn.jpeg"
         metrics={[
           { value: '3x Value', label: 'Purchasing Power Lift' },
           { value: 'Top 10%', label: 'Academic Feeder Zones' },
@@ -511,8 +511,8 @@ export const WhatToWatchOutForPage: React.FC<ResourcePageProps> = ({
         kicker="Fiduciary Protection Dossier"
         title="What to Watch Out For: Costly Real Estate Traps in Oklahoma."
         subtitle="Don’t let hidden foundation movement, roof deductible shocks, or inflexible listing contracts derail your financial future."
-        heroVideoUrl="https://www.pexels.com/download/video/29383137/"
-        heroFallbackImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80"
+        heroVideoUrl="/media/videos/vid1.mp4"
+        heroFallbackImage="/media/gallery/modern-estate-pool-lawn.jpeg"
         metrics={[
           { value: '5 Traps', label: 'Critical OKC Pitfalls' },
           { value: '$25K+', label: 'Avg Avoided Cost' },
@@ -606,8 +606,8 @@ export const FaqPage: React.FC<ResourcePageProps> = ({
         kicker="Complete Transparency"
         title="Frequently Asked Questions & Advisory Standards."
         subtitle="Clear answers regarding our 6-Phase Selling Machine, cancel-anytime guarantee, pricing philosophy, and fiduciary duties."
-        heroVideoUrl="https://www.pexels.com/download/video/29383137/"
-        heroFallbackImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80"
+        heroVideoUrl="/media/videos/vid1.mp4"
+        heroFallbackImage="/media/gallery/modern-estate-pool-lawn.jpeg"
         metrics={[
           { value: '6 Phases', label: 'Proprietary Machine' },
           { value: '100%', label: 'Cancel-Anytime Pledge' },
@@ -737,8 +737,8 @@ export const LegalCompliancePage: React.FC<LegalPageProps> = ({
         kicker={details.badge}
         title={details.title}
         subtitle={details.intro}
-        heroVideoUrl="https://www.pexels.com/download/video/29383137/"
-        heroFallbackImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80"
+        heroVideoUrl="/media/videos/vid1.mp4"
+        heroFallbackImage="/media/gallery/modern-estate-pool-lawn.jpeg"
         metrics={[
           { value: '100%', label: 'Legal Compliance' },
           { value: 'Fiduciary', label: 'Client Protection' },

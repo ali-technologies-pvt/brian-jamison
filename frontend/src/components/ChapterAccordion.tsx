@@ -10,11 +10,11 @@ interface ChapterAccordionProps {
 // Curated high-fidelity architectural imagery for our 3 major services
 const CHAPTER_IMAGES = [
   // 01 Home Buying: Warm luxury estate exterior & welcoming front porch
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+  "/media/properties/136-nw-18th-heritage-hills.jpeg",
   // 02 Home Selling: Grand architectural luxury great room & fireplace showcase
-  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+  "/media/gallery/modern-estate-pool-lawn.jpeg",
   // 03 Land Buying and Selling: Panoramic Oklahoma estate acreage & development grounds
-  "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80"
+  "/media/properties/11616-estrella-arcadia.jpeg"
 ];
 
 export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChapter }) => {

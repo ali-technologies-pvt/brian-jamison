@@ -84,8 +84,8 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
         kicker="Salt Real Estate Corporate Office · Edmond, Oklahoma"
         title="The Agent Who Works Like Every Deal Is Personal."
         subtitle="Brian Jamison is a Top 2% Real Estate Producer in Oklahoma with over $62M+ volume sold and 370+ career closings. A former collegiate athlete, Brian combines championship preparation, transparent communication, and a 100% Risk-Free Cancel-Anytime Listing Guarantee."
-        heroVideoUrl="https://www.pexels.com/download/video/29383137/"
-        heroFallbackImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80"
+        heroVideoUrl="/media/videos/vid1.mp4"
+        heroFallbackImage="/media/gallery/brian-jamison-skyline.jpeg"
         metrics={[
           { value: '$62M+', label: 'Career Volume Sold' },
           { value: '370+', label: 'Career Closings' },
@@ -104,16 +104,38 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
       {/* 2. THE ATHLETIC PEDIGREE & CORE VALUES */}
       <section className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#E6E2DA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[#EA580C] block mb-2">
-              The Athlete’s Mindset
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-4">
-              Why an Athletic Background Changes Real Estate Representation
-            </h2>
-            <p className="font-sans text-base text-[#4B5563] leading-relaxed">
-              In college athletics, success is earned in off-season preparation, tape analysis, and relentless conditioning. Brian brings that exact championship work ethic to your real estate transaction.
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-16">
+            <div className="lg:col-span-6">
+              <span className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[#EA580C] block mb-2">
+                The Athlete’s Mindset
+              </span>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-4">
+                Why an Athletic Background Changes Real Estate Representation
+              </h2>
+              <p className="font-sans text-base text-[#4B5563] leading-relaxed mb-4">
+                In college athletics, success is earned in off-season preparation, tape analysis, and relentless conditioning. Brian brings that exact championship work ethic to your real estate transaction.
+              </p>
+              <p className="font-sans text-sm text-[#4B5563] leading-relaxed">
+                Whether structuring multi-offer negotiations in Nichols Hills or marketing premier acreage in Edmond, Brian approaches every escrow with relentless discipline and zero delegation.
+              </p>
+            </div>
+            <div className="lg:col-span-6">
+              <div className="relative rounded-3xl overflow-hidden border border-[#E6E2DA] shadow-xl group">
+                <img
+                  src="/media/gallery/brian-jamison-sunset.jpeg"
+                  alt="Brian Jamison Collegiate Athlete Discipline"
+                  className="w-full h-[420px] object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#001D40]/80 via-transparent to-transparent flex items-end p-6">
+                  <div className="text-white">
+                    <span className="text-xs uppercase tracking-widest text-[#FB923C] font-bold block mb-1">
+                      Championship Preparation
+                    </span>
+                    <h3 className="font-serif text-xl font-bold">Relentless Conditioning & Fiduciary Execution</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -156,7 +178,7 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-6">
               <span className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[#EA580C] block mb-2">
-                Brokerage Strength
+                Brokerage Strength & Proven Results
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#002D61] leading-tight mb-6">
                 Backed by Salt Real Estate Corporate Headquarters
@@ -197,19 +219,19 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
             </div>
 
             <div className="lg:col-span-6">
-              <div className="relative rounded-3xl overflow-hidden border border-[#E6E2DA] shadow-xl">
+              <div className="relative rounded-3xl overflow-hidden border border-[#E6E2DA] shadow-xl group">
                 <img
-                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
-                  alt="Salt Real Estate Corporate Headquarters Edmond OK"
-                  className="w-full h-[420px] object-cover"
+                  src="/media/gallery/brian-closing-clients.jpeg"
+                  alt="Brian Jamison celebrating closing with clients at Oklahoma Family Title"
+                  className="w-full h-[440px] object-cover object-top group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#001D40]/80 via-transparent to-transparent flex items-end p-8">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#001D40]/85 via-transparent to-transparent flex items-end p-8">
                   <div className="text-white">
                     <span className="text-xs uppercase tracking-widest text-[#FB923C] font-bold block mb-1">
-                      Corporate Office · Edmond OK
+                      Successful Closings · Edmond & OKC
                     </span>
-                    <h3 className="font-serif text-2xl font-bold">1508 W. Edmond Rd., Edmond, OK 73003</h3>
-                    <p className="text-xs text-stone-200 mt-1">Direct: (405) 513-3039 · BJamison@Salt.RealEstate</p>
+                    <h3 className="font-serif text-2xl font-bold">Personalized Fiduciary Representation</h3>
+                    <p className="text-xs text-stone-200 mt-1">1508 W. Edmond Rd., Edmond, OK · Direct: (405) 513-3039</p>
                   </div>
                 </div>
               </div>

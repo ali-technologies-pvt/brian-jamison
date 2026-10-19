@@ -191,7 +191,8 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
       title: "Aerial Drone Tour: 20-Acre Luxury Estate Parcel in Guthrie, OK",
       duration: "1:10",
       views: "22.4K",
-      thumbnail: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
+      thumbnail: "/media/properties/9687-bear-creek-guthrie.jpeg",
+      videoUrl: "/media/videos/vid3.mp4",
       takeaway: "Notice how rolling elevation contours, mature native hardwoods, and a private spring-fed pond create a $100k+ building envelope premium."
     },
     {
@@ -199,7 +200,8 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
       title: "What is a Perc Test & Why Can It Kill Your Land Deal?",
       duration: "0:58",
       views: "36.8K",
-      thumbnail: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+      thumbnail: "/media/properties/11616-estrella-arcadia.jpeg",
+      videoUrl: "/media/videos/vid2.mp4",
       takeaway: "Oklahoma Department of Environmental Quality (ODEQ) soil absorption tests dictate whether you need a $6k lateral line or a $16k aerobic system."
     },
     {
@@ -207,7 +209,8 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
       title: "Mineral Rights vs. Surface Rights in Oklahoma: What You Must Know",
       duration: "1:15",
       views: "44.9K",
-      thumbnail: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+      thumbnail: "/media/properties/85006-n-2520-watonga.jpeg",
+      videoUrl: "/media/videos/vid1.mp4",
       takeaway: "In Oklahoma, surface rights do not automatically include oil and gas mineral rights. We audit title chains so there are zero subsurface surprises."
     },
     {
@@ -215,7 +218,8 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
       title: "Can You Build a Barndominium on This Lot? County Zoning 101",
       duration: "1:02",
       views: "29.7K",
-      thumbnail: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+      thumbnail: "/media/gallery/hill-country-driveway.jpeg",
+      videoUrl: "/media/videos/vid6.mp4",
       takeaway: "How to read county restrictive covenants, minimum square footage mandates, and outbuilding allowances before purchasing acreage."
     },
     {
@@ -223,7 +227,8 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
       title: "How to Split an Adjacent Parcel to Double Your Land's Value",
       duration: "1:12",
       views: "31.2K",
-      thumbnail: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80",
+      thumbnail: "/media/properties/2950-nw-37th-newcastle.jpeg",
+      videoUrl: "/media/videos/vid7.mp4",
       takeaway: "Subdividing a 20-acre tract into four 5-acre executive estate lots unlocked $280,000 in additional net profit for an Edmond landowner."
     }
   ];
@@ -328,8 +333,8 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
         kicker="Oklahoma Land & Development Division"
         title="Land, Acreage & Development Advisory Across Oklahoma."
         subtitle="From 1-acre luxury custom home lots to 100+ acre rural tracts—leveraging 4K aerial mapping, zoning forensics, and targeted investor syndication."
-        heroVideoUrl="https://www.pexels.com/download/video/29383137/"
-        heroFallbackImage="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=80"
+        heroVideoUrl="/media/videos/vid3.mp4"
+        heroFallbackImage="/media/properties/11616-estrella-arcadia.jpeg"
         metrics={[
           { value: '1,450+', label: 'Oklahoma Acres Closed' },
           { value: '85+', label: 'Land Parcels Transacted' },

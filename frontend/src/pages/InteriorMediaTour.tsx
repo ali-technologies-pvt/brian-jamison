@@ -9,7 +9,7 @@ interface InteriorMediaTourProps {
 
 export const InteriorMediaTour: React.FC<InteriorMediaTourProps> = ({
   title = "Embedded Media & Interactive Walkthrough Suite",
-  droneVideoUrl = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+  droneVideoUrl = "/media/properties/11500-gateshead.jpg",
   matterportTitle = "Matterport Pro3 3D Spatial Model & Floorplan Inspection"
 }) => {
   const [activeTab, setActiveTab] = useState<'3d' | 'drone' | 'briefing'>('3d');
@@ -83,10 +83,10 @@ export const InteriorMediaTour: React.FC<InteriorMediaTourProps> = ({
                 <img
                   src={
                     activeFloor === 1
-                      ? "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80"
+                      ? "/media/gallery/modern-staircase-dining.jpeg"
                       : activeFloor === 2
-                      ? "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80"
-                      : "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80"
+                      ? "/media/gallery/modern-kitchen.jpeg"
+                      : "/media/gallery/midcentury-entry.jpeg"
                   }
                   alt="3D Walkthrough Viewport"
                   className="w-full h-full object-cover opacity-90 transition-all duration-700"
@@ -168,8 +168,8 @@ export const InteriorMediaTour: React.FC<InteriorMediaTourProps> = ({
           {activeTab === 'drone' && (
             <div className="relative w-full h-[450px] sm:h-[580px] bg-stone-900 rounded-xl overflow-hidden flex items-center justify-center">
               <video
-                src="https://www.pexels.com/download/video/29383137/"
-                poster="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80"
+                src="/media/videos/vid2.mp4"
+                poster="/media/properties/11500-gateshead.jpg"
                 autoPlay
                 muted
                 loop
@@ -191,8 +191,8 @@ export const InteriorMediaTour: React.FC<InteriorMediaTourProps> = ({
           {activeTab === 'briefing' && (
             <div className="relative w-full h-[450px] sm:h-[580px] bg-stone-900 rounded-xl overflow-hidden flex flex-col justify-end p-8 text-white">
               <img
-                src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80"
-                alt="Agent Walkthrough Briefing"
+                src="/media/gallery/brian-jamison-skyline.jpeg"
+                alt="Agent Walkthrough Briefing with Brian Jamison"
                 className="absolute inset-0 w-full h-full object-cover opacity-80"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />

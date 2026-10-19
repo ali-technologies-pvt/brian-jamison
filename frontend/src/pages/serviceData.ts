@@ -3,33 +3,33 @@ import { InteriorPageData } from './types';
 // Curated architectural gallery
 const DEFAULT_ARCHITECTURAL_GALLERY = [
   {
-    url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
-    caption: "Grand limestone façade with custom slate roofing and golden hour illumination.",
+    url: "/media/gallery/modern-estate-pool-lawn.jpeg",
+    caption: "Grand limestone façade with custom grounds and golden hour illumination.",
     tag: "Architecture"
   },
   {
-    url: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
+    url: "/media/gallery/modern-kitchen.jpeg",
     caption: "Chef's gourmet kitchen with dual waterfall quartzite islands and Sub-Zero refrigeration.",
     tag: "Interiors"
   },
   {
-    url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
-    caption: "Cathedral great room with hand-hewn oak timbers and 24-foot fireplace.",
+    url: "/media/gallery/modern-staircase-dining.jpeg",
+    caption: "Cathedral great room with floating staircase and limestone finishes.",
     tag: "Interiors"
   },
   {
-    url: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
+    url: "/media/gallery/sunset-deck-pool.jpeg",
     caption: "Zero-edge heated swimming pool, travertine sundeck, and outdoor pavilion.",
     tag: "Grounds"
   },
   {
-    url: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80",
-    caption: "Primary spa bath featuring freestanding soaking tub and dual rainfall showers.",
+    url: "/media/gallery/sunset-window-terrace.jpeg",
+    caption: "Primary retreat featuring panoramic window walls and private sunset terrace.",
     tag: "Details"
   },
   {
-    url: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1200&q=80",
-    caption: "Custom temperature-controlled wine cellar with glass display enclosure.",
+    url: "/media/gallery/midcentury-entry.jpeg",
+    caption: "Bespoke architectural entry with natural wood cladding and ambient illumination.",
     tag: "Details"
   }
 ];
@@ -93,7 +93,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     desc: "Our architectural staging and advisory team conducts a comprehensive first-impression audit, identifying high-ROI refresh recommendations to maximize curb appeal before listing.",
     executionDetail: "Our team conducts a room-by-room review, pinpointing strategic cosmetic paint, designer lighting, and depersonalization updates so buyers fall in love on arrival.",
     sellerImpact: "Eliminates buyer hesitation and prevents lowball repair concessions, generating 3x more opening-weekend private showings.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/gallery/modern-estate-pool-lawn.jpeg"
   },
   {
     id: "professional-photography",
@@ -103,7 +103,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     desc: "Captured with natural ambient light and golden-hour lighting using specialized architectural wide-angle glass and multi-exposure HDR.",
     executionDetail: "Our architectural photographers balance interior ambient lighting with natural exterior light, preserving crystal-clear window views and natural architectural depth.",
     sellerImpact: "Over 95% of prospective buyers discover homes online; magazine-grade photography stops buyer scrolling instantly.",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/gallery/modern-kitchen.jpeg"
   },
   {
     id: "cinematic-video",
@@ -113,7 +113,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     desc: "Cinema-quality 4K walkthrough film featuring custom color grading, lifestyle pacing, and high-fidelity sound design highlighting room flow.",
     executionDetail: "Filmed on cinema-grade stabilizers by our dedicated videography crew, capturing the living cadence from entry foyer to outdoor entertaining loggias.",
     sellerImpact: "Creates deep emotional attachment before out-of-state or local buyers set foot inside, averaging 14,000+ targeted views.",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/gallery/modern-staircase-dining.jpeg"
   },
   {
     id: "aerial-drone",
@@ -123,7 +123,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     desc: "FAA Part-107 certified aerial cinematography capturing estate parcel boundaries, acreage, topography, and neighborhood amenities.",
     executionDetail: "High-altitude 4K drone sweeps showcase full property lines, outdoor living pavilions, mature tree canopies, and proximity to golf clubs or top schools.",
     sellerImpact: "Proves lot value and privacy buffers for high-net-worth buyers evaluating Oklahoma estates.",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/gallery/brian-closing-clients.jpeg"
   },
   {
     id: "global-portals",
@@ -133,7 +133,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     desc: "Automated distribution across 350+ digital portals including MLS feeds, Zillow Showcase, Realtor.com, Trulia, Redfin, and global luxury networks.",
     executionDetail: "Direct API feeds syndicate your listing to every major domestic and international portal with premium featured placement that prevents listing burial.",
     sellerImpact: "Guarantees 100% reach across every qualified homebuyer searching across Oklahoma or relocating nationally.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/gallery/brian-jamison-skyline.jpeg"
   },
   {
     id: "single-property-website",
@@ -143,7 +143,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     desc: "A custom vanity address domain built exclusively for your property, showcasing uncompressed media, floor plans, and interactive tours.",
     executionDetail: "We secure a vanity URL (e.g., 1234GrandviewBlvd.com) configured solely to highlight your home free of third-party ads or competitor agent popups.",
     sellerImpact: "Prospective buyers and their brokers are locked into your home's exclusive narrative without distraction.",
-    image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/gallery/brian-jamison-sunset.jpeg"
   },
   {
     id: "social-advertising",
@@ -153,7 +153,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     desc: "Paid hyper-targeted social advertising campaigns deployed across Instagram and Facebook reaching active local and relocating buyers across the OKC metro.",
     executionDetail: "Precision demographic targeting focusing on high-net-worth professionals, corporate relocations, and active real estate investors.",
     sellerImpact: "Proactively places your home in front of qualified buyers who are not actively searching MLS feeds daily.",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/gallery/sunset-deck-pool.jpeg"
   },
   {
     id: "listing-refreshes",
@@ -163,7 +163,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     desc: "Algorithmic updates, photo reshuffles, and strategic headline adjustments that keep your property trending at the top of buyer searches.",
     executionDetail: "Our team audits daily search impression velocity, rotating showcase photography and refreshing metadata to prevent algorithmic decay.",
     sellerImpact: "Prevents the dreaded 'Days on Market' fatigue that causes buyers to assume a home is stale or overpriced.",
-    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/gallery/sunset-window-terrace.jpeg"
   },
   {
     id: "reverse-prospecting",
@@ -173,7 +173,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     desc: "Direct outreach to buyer agents who have qualified clients with saved searches matching your home's exact criteria across the MLS database.",
     executionDetail: "Our team pulls backend MLS analytics to pinpoint every broker with an active buyer searching in your price bracket, initiating direct phone pitches.",
     sellerImpact: "Creates private showings with pre-qualified buyers before competing properties even get noticed.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/gallery/midcentury-entry.jpeg"
   },
   {
     id: "agent-networking",
@@ -183,7 +183,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     desc: "Proactive telephone pitching and direct broker previews with top-producing real estate agents across the downtown and OKC metro markets.",
     executionDetail: "We host private broker open-house previews and maintain direct communication lines with the top 10% luxury producers across the region.",
     sellerImpact: "Mobilizes the brokerage community to champion your property to their pre-approved private clients.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/gallery/infinity-pool-hills.jpeg"
   },
   {
     id: "full-time-engagement",
@@ -193,7 +193,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     desc: "Daily active oversight by our team managing showings, tracking traffic analytics, and following up on every lead—never passive placement.",
     executionDetail: "Continuous campaign management, prompt lead qualification, and constant monitoring of competitor pricing adjustments in your micro-market.",
     sellerImpact: "Ensures every single lead is followed up with urgency to maintain high deal momentum.",
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/gallery/hill-country-driveway.jpeg"
   },
   {
     id: "print-and-digital-marketing",
@@ -203,7 +203,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     desc: "High-gloss direct mail postcards sent to neighborhood homeowner spheres, luxury print collateral, and regional lifestyle publications.",
     executionDetail: "Bespoke print collateral designed by our in-house media team, paired with targeted saturation mailings to surrounding affluent zip codes.",
     sellerImpact: "Activates neighborhood word-of-mouth and alerts affluent locals who have family looking to move nearby.",
-    image: "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/properties/136-nw-18th-heritage-hills.jpeg"
   },
   {
     id: "matterport-tour",
@@ -213,7 +213,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     desc: "3D interactive dollhouse scan providing remote relocation buyers a 24/7 virtual walkthrough experience with spatial dimensions.",
     executionDetail: "Pro3 LiDAR camera capturing exact interior spatial measurements, interactive 3D dollhouse perspectives, and schematic floor plans.",
     sellerImpact: "Allows out-of-state corporate transferees and medical fellows to make confident offers sight-unseen.",
-    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/properties/11500-gateshead.jpg"
   }
 ];
 
@@ -230,7 +230,7 @@ export const PROCESS_TWO_DELIVERABLES = [
     desc: "Our mandatory policy requires a telephone call to every showing agent within 2 hours of access to extract candid buyer feedback.",
     executionDetail: "We conduct direct phone debriefs to discover buyer sentiment on pricing, architectural flow, and competitive alternatives.",
     sellerImpact: "Eliminates seller anxiety and provides real-time data to counter buyer objections before they stall a sale.",
-    image: "https://images.unsplash.com/photo-1534536281715-e28d76689b4d?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/properties/3233-n-harvey-crown-heights.jpeg"
   },
   {
     id: "downtown-agent-collaboration",
@@ -240,7 +240,7 @@ export const PROCESS_TWO_DELIVERABLES = [
     desc: "Active intelligence sharing with downtown and metro market makers to gauge incoming buyer volume, off-market demand, and competitor pricing.",
     executionDetail: "Continuous synergy with active broker networks across Midtown, Downtown, Nichols Hills, and Edmond.",
     sellerImpact: "Positions your home as the top recommendation when fellow brokers have qualified buyers entering the market.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/properties/616-nw-6th-downtown.jpeg"
   },
   {
     id: "contract-and-market-clarity",
@@ -250,7 +250,7 @@ export const PROCESS_TWO_DELIVERABLES = [
     desc: "Clear, plain-English breakdowns of inspection reports, title disclosures, financing contingencies, and legal clauses so you make decisions with clarity.",
     executionDetail: "Every purchase agreement, counter-offer, and escrow addendum is explained in clear financial terms without confusing jargon.",
     sellerImpact: "Total confidence and legal protection at every milestone of the escrow closing process.",
-    image: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/properties/22801-n-briarwood-edmond.jpeg"
   },
   {
     id: "milestone-updates",
@@ -260,7 +260,7 @@ export const PROCESS_TWO_DELIVERABLES = [
     desc: "Comprehensive weekly reporting dashboards detailing digital traffic, showing notes, buyer objections, and verified contract milestone timelines.",
     executionDetail: "We compile real-time MLS impression stats, Zillow saves, and pending sales within your exact micro-market every Monday.",
     sellerImpact: "You never have to wonder what is happening; you have clear transparency and data at your fingertips.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/properties/22402-emily-way-edmond.jpeg"
   },
   {
     id: "strategic-negotiation",
@@ -270,7 +270,7 @@ export const PROCESS_TWO_DELIVERABLES = [
     desc: "Hard-nosed fiduciary advocacy protecting your bottom-line equity, pushing for non-refundable earnest deposits and minimal repair concessions.",
     executionDetail: "Strategic counter-offer calibration designed to achieve seller-favorable escrow timelines and maximum net proceeds.",
     sellerImpact: "Consistently nets our clients top-of-bracket financial outcomes with airtight contractual terms.",
-    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/properties/3911-creek-bank-edmond.jpeg"
   }
 ];
 
@@ -287,7 +287,7 @@ export const PROCESS_THREE_DELIVERABLES = [
     desc: "Uninterrupted accessibility via phone, SMS, and email. High-intent luxury buyers tour during evenings and weekends—our team is always available.",
     executionDetail: "Our team operates 7 days a week, providing rapid response times on all incoming inquiries, showing bookings, and offer submissions.",
     sellerImpact: "Captures high-net-worth buyers who cannot tour during standard weekday business hours.",
-    image: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/properties/11616-estrella-arcadia.jpeg"
   },
   {
     id: "redundant-backup-coverage",
@@ -297,7 +297,7 @@ export const PROCESS_THREE_DELIVERABLES = [
     desc: "A licensed listing backup associate is always assigned to your property to escort VIP showings, accept urgent offers, and ensure zero lead lag.",
     executionDetail: "If our lead director is actively in a contract negotiation, our licensed team partner ensures zero incoming calls or tour requests go unanswered.",
     sellerImpact: "Zero missed opportunities. 100% listing coverage 365 days a year.",
-    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/properties/9687-bear-creek-guthrie.jpeg"
   }
 ];
 
@@ -314,7 +314,7 @@ export const PROCESS_FOUR_DELIVERABLES = [
     desc: "Dedicated client concierge managing showing appointments, calendar approvals, and immediate dispatch of listing documentation.",
     executionDetail: "Coordinates calendar bookings, lockbox codes, and private showing notifications so you never experience family disruption.",
     sellerImpact: "Ensures seamless communication and protects your family's schedule during peak showing windows.",
-    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/properties/1817-sun-valley-edmond.jpeg"
   },
   {
     id: "transaction-coordinator",
@@ -324,7 +324,7 @@ export const PROCESS_FOUR_DELIVERABLES = [
     desc: "Certified escrow coordinator supervising earnest deposits, title compliance, lender conditions, appraisal tracking, and closing paperwork.",
     executionDetail: "Audits contract timelines, title commitments, and mandatory Oklahoma Real Estate Commission disclosure paperwork.",
     sellerImpact: "Guarantees 100% legal compliance and eliminates closing day surprises.",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/properties/715-s-friendly-okc.jpeg"
   },
   {
     id: "staging-team",
@@ -334,7 +334,7 @@ export const PROCESS_FOUR_DELIVERABLES = [
     desc: "Hands-on staging specialists advising on furniture layout, spatial flow, artwork placement, and lighting optimization for maximum perceived value.",
     executionDetail: "In-person staging consultation ensuring light angles, furniture spacing, and luxury accents photograph impeccably.",
     sellerImpact: "Maximizes perceived square footage and creates emotional resonance for luxury buyers.",
-    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/properties/534-w-chickasaw.jpg"
   },
   {
     id: "listing-operations-team",
@@ -344,7 +344,7 @@ export const PROCESS_FOUR_DELIVERABLES = [
     desc: "Operations team managing MLS data accuracy, property domains, digital marketing pipelines, and syndication feeds.",
     executionDetail: "Coordinates MLS data feeds, single-property vanity websites, lockboxes, and syndication channels.",
     sellerImpact: "Guarantees data accuracy and rapid multi-platform launch speed.",
-    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/properties/435-nw-21st-heritage-hills.jpeg"
   },
   {
     id: "design-team",
@@ -354,7 +354,7 @@ export const PROCESS_FOUR_DELIVERABLES = [
     desc: "Professional graphic design studio crafting bespoke glossy mailers, print brochures, and digital buyer presentation packages.",
     executionDetail: "Creates tailored print collateral, embossed property brochures, and high-impact digital social assets.",
     sellerImpact: "Elevates your home's brand prestige above competing area listings.",
-    image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/properties/13701-s-independence-okc.jpeg"
   },
   {
     id: "property-photographer",
@@ -364,7 +364,7 @@ export const PROCESS_FOUR_DELIVERABLES = [
     desc: "FAA-certified drone pilots and architectural photographers equipped with specialized tilt-shift lenses and HDR lighting.",
     executionDetail: "Dedicated aerial pilots and photographers shooting sunset golden hours to produce pristine listing media.",
     sellerImpact: "Delivers magazine-cover caliber visual marketing without relying on generic subcontractors.",
-    image: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/properties/85006-n-2520-watonga.jpeg"
   },
   {
     id: "marketing-team",
@@ -374,7 +374,7 @@ export const PROCESS_FOUR_DELIVERABLES = [
     desc: "Strategic growth division orchestrating listing launch campaigns, private broker previews, and post-close tax and moving transitions.",
     executionDetail: "Manages digital retargeting campaigns, broker open-house events, and final escrow coordination.",
     sellerImpact: "Maintains high buyer urgency from listing launch through successful closing.",
-    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/properties/2950-nw-37th-newcastle.jpeg"
   }
 ];
 
@@ -391,7 +391,7 @@ export const PROCESS_FIVE_DELIVERABLES = [
     desc: "Real-time econometric analysis tracking inventory absorption, average days on market (DOM), and sale-to-list price ratios across downtown and metro OKC.",
     executionDetail: "Continuous tracking of active supply, pending escrows, and interest rate impacts in your immediate neighborhood enclave.",
     sellerImpact: "Provides clarity on market timing to launch your property when buyer demand is peaking.",
-    image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/gallery/modern-estate-pool-lawn.jpeg"
   },
   {
     id: "subject-property-valuation",
@@ -401,7 +401,7 @@ export const PROCESS_FIVE_DELIVERABLES = [
     desc: "Comprehensive comparative valuation including parcel boundaries, zoning potential, and added market appraisal value of adjacent land or lots.",
     executionDetail: "Forensic adjustment for premium lot views, acreage buffers, custom joinery, pool pavilions, and building potential.",
     sellerImpact: "Uncovers hidden equity and ensures unique land assets are never given away for free.",
-    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/gallery/modern-kitchen.jpeg"
   },
   {
     id: "comparable-sales-analysis",
@@ -411,7 +411,7 @@ export const PROCESS_FIVE_DELIVERABLES = [
     desc: "Forensic comp analysis comparing recent closed transactions, pending escrows, and active competing inventory in your immediate micro-market.",
     executionDetail: "Detailed comp review analyzing sold price per square foot, concessions, and condition differences within the past 90 days.",
     sellerImpact: "Guarantees an airtight appraisal defense so buyers cannot negotiate price cuts during escrow.",
-    image: "https://images.unsplash.com/photo-1460472178825-e5240623afd5?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/gallery/modern-staircase-dining.jpeg"
   },
   {
     id: "tiered-pricing-recommendation",
@@ -421,7 +421,7 @@ export const PROCESS_FIVE_DELIVERABLES = [
     desc: "A 3-tier valuation model presenting Conservative (rapid liquidity), Target (peak comp appraisal), and Aspirational (surge premium testing).",
     executionDetail: "Outlines Conservative (swift cash exit), Target (accurate peak market value), and Aspirational (testing surge demand).",
     sellerImpact: "Gives you complete strategic clarity to choose the listing approach matching your financial timeline.",
-    image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/gallery/brian-closing-clients.jpeg"
   },
   {
     id: "buyer-minded-pricing",
@@ -431,7 +431,7 @@ export const PROCESS_FIVE_DELIVERABLES = [
     desc: "Psychological price positioning calibrated directly beneath search brackets to generate higher showing velocity and spark multiple competing bids.",
     executionDetail: "Positions list price just beneath major online search filters (e.g. $749,000 instead of $755,000) to trigger auto-email alerts to double the buyer pool.",
     sellerImpact: "Doubles buyer search notifications and triggers multi-offer tension during the critical opening 14 days.",
-    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/gallery/brian-jamison-skyline.jpeg"
   }
 ];
 
@@ -448,7 +448,7 @@ export const PROCESS_SIX_DELIVERABLES = [
     desc: "Our compensation and advisory incentives are directly aligned with maximizing your net proceeds—not rushing a quick below-market sale.",
     executionDetail: "Our fiduciary incentives match your net return, ensuring firm negotiation that defends your equity at every turn.",
     sellerImpact: "We negotiate every dollar with the same vigilance as if it were our own equity.",
-    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/gallery/brian-jamison-sunset.jpeg"
   },
   {
     id: "cancel-anytime-listing-agreement",
@@ -458,7 +458,7 @@ export const PROCESS_SIX_DELIVERABLES = [
     desc: "If Brian Jamison fails to meet any contractual commitment, you hold the unconditional right to cancel the agreement immediately. Zero penalty, no fees, no hassle.",
     executionDetail: "A binding addendum explicitly stating that if you are not 100% satisfied with our marketing or communication, you may terminate immediately with $0.00 fee.",
     sellerImpact: "Zero risk, zero penalty, and total peace of mind throughout the listing experience.",
-    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80"
+    image: "/media/gallery/sunset-deck-pool.jpeg"
   }
 ];
 
@@ -474,8 +474,8 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "PROCESS 01 OF 06 · EXPOSURE ENGINE",
     title: "Marketing plan and process",
     subtitle: "Every listing gets a full marketing campaign built to put your home in front of every qualified buyer and trigger competitive bidding.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid2.mp4",
+    heroFallbackImage: "/media/gallery/sunset-window-terrace.jpeg",
     heroMetrics: [
       { label: "Global Portals", value: "350+" },
       { label: "Video View Velocity", value: "14.2k Avg" },
@@ -504,8 +504,8 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "PROCESS 02 OF 06 · ZERO GUESSWORK",
     title: "Communication",
     subtitle: "Jamison Real Estate enforces transparent, timely, and disciplined communication so you retain total control throughout the transaction.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid3.mp4",
+    heroFallbackImage: "/media/gallery/midcentury-entry.jpeg",
     heroMetrics: [
       { label: "Showing Feedback", value: "< 2 Hours" },
       { label: "Weekly Intelligence", value: "Every Monday" },
@@ -530,8 +530,8 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "PROCESS 03 OF 06 · ZERO LEAD LAG",
     title: "Accessibility",
     subtitle: "Our agency maintains uninterrupted seven-day reachability with dedicated backup coverage so opportunities are never missed.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid4.mp4",
+    heroFallbackImage: "/media/gallery/infinity-pool-hills.jpeg",
     heroMetrics: [
       { label: "Days Reachable", value: "7 Days/Wk" },
       { label: "Lead Response Time", value: "< 15 Mins" },
@@ -555,8 +555,8 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "PROCESS 04 OF 06 · SPECIALIZED FORCE",
     title: "Team support",
     subtitle: "Our firm operates a full specialized organizational matrix so every operational, legal, and creative detail is handled by an expert.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid5.mp4",
+    heroFallbackImage: "/media/gallery/hill-country-driveway.jpeg",
     heroMetrics: [
       { label: "Specialists Deployed", value: "7 Pros" },
       { label: "Contract Accuracy", value: "100%" },
@@ -583,8 +583,8 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "PROCESS 05 OF 06 · DATA ARCHITECTURE",
     title: "Pricing strategy",
     subtitle: "Our pricing methodology is data-driven and buyer-minded, calculated to trigger multiple competing offers and maximize your net proceeds.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid6.mp4",
+    heroFallbackImage: "/media/properties/136-nw-18th-heritage-hills.jpeg",
     heroMetrics: [
       { label: "Avg Escrow Velocity", value: "11 Days" },
       { label: "Pricing Strategy", value: "3-Tier CMA" },
@@ -609,8 +609,8 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "PROCESS 06 OF 06 · ZERO RISK",
     title: "Fair pricing and contract flexibility",
     subtitle: "Our partnership model guarantees 100% mutual alignment with our unconditional Cancel-Anytime Pledge: if promises aren't met, fire us with zero penalty.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid7.mp4",
+    heroFallbackImage: "/media/properties/11500-gateshead.jpg",
     heroMetrics: [
       { label: "Cancellation Fee", value: "$0.00" },
       { label: "Seller Risk", value: "Zero" },
@@ -641,8 +641,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 1.1 · MARKETING PLAN AND PROCESS",
     title: "Home-prep guidance: first-impression review, refresh recommendations, and ROI-based update suggestions",
     subtitle: "Room-by-room architectural review and decluttering roadmap to ensure your property captivates luxury buyers on arrival.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid8.mp4",
+    heroFallbackImage: "/media/properties/3233-n-harvey-crown-heights.jpeg",
     heroMetrics: [
       { label: "Prep ROI Avg", value: "385%" },
       { label: "Private Showings", value: "+300%" },
@@ -670,8 +670,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 1.2 · MARKETING PLAN AND PROCESS",
     title: "Professional photography",
     subtitle: "Magazine-grade golden-hour and natural-light architectural photography that captures emotional warmth and structural depth.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid9.mp4",
+    heroFallbackImage: "/media/properties/616-nw-6th-downtown.jpeg",
     heroMetrics: [
       { label: "Buyer First Look", value: "Online 95%" },
       { label: "Camera Resolution", value: "61MP HDR" },
@@ -699,8 +699,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 1.3 · MARKETING PLAN AND PROCESS",
     title: "Professional video with professional editing",
     subtitle: "4K cinematic motion walkthrough capturing light, spatial scale, and living flow with custom sound design.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid10.mp4",
+    heroFallbackImage: "/media/properties/22801-n-briarwood-edmond.jpeg",
     heroMetrics: [
       { label: "View Velocity", value: "14.2k Avg" },
       { label: "Resolution", value: "4K 60fps" },
@@ -728,8 +728,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 1.4 · MARKETING PLAN AND PROCESS",
     title: "HD aerial/drone video",
     subtitle: "High-altitude 4K drone sweeps capturing property lot lines, roof condition, golf course proximity, and mature oak canopy.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid11.mp4",
+    heroFallbackImage: "/media/properties/22402-emily-way-edmond.jpeg",
     heroMetrics: [
       { label: "FAA Certified", value: "Part 107" },
       { label: "Elevation Sweep", value: "Up to 400ft" },
@@ -757,8 +757,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 1.5 · MARKETING PLAN AND PROCESS",
     title: "Syndication to 350+ websites (Zillow, Facebook, Instagram, etc.)",
     subtitle: "Instant API syndication to Zillow Showcase, Realtor.com Featured, Redfin, MLSOK, and international luxury real estate feeds.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid12.mp4",
+    heroFallbackImage: "/media/properties/3911-creek-bank-edmond.jpeg",
     heroMetrics: [
       { label: "Syndicated Portals", value: "350+" },
       { label: "Global Reach", value: "48 Countries" },
@@ -786,8 +786,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 1.6 · MARKETING PLAN AND PROCESS",
     title: "Dedicated single-property website",
     subtitle: "Custom address domain created exclusively for your listing—free of third-party ads or competitor agent popups.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid13.mp4",
+    heroFallbackImage: "/media/properties/11616-estrella-arcadia.jpeg",
     heroMetrics: [
       { label: "Dedicated URL", value: "100% Custom" },
       { label: "Competitor Ads", value: "Zero" },
@@ -815,8 +815,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 1.7 · MARKETING PLAN AND PROCESS",
     title: "Consistent social media exposure",
     subtitle: "Targeted paid campaigns reaching active pre-approved buyers, relocating families, and high-intent home shoppers across the OKC metropolitan area.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid14.mp4",
+    heroFallbackImage: "/media/properties/9687-bear-creek-guthrie.jpeg",
     heroMetrics: [
       { label: "Impressions Targeted", value: "25k-50k+" },
       { label: "Target Coverage", value: "OKC Metro" },
@@ -844,8 +844,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 1.8 · MARKETING PLAN AND PROCESS",
     title: "Listing refreshes to keep it current",
     subtitle: "Daily algorithmic adjustments to prevent listing stagnation in broker saved-searches and buyer portals.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid15.mp4",
+    heroFallbackImage: "/media/properties/1817-sun-valley-edmond.jpeg",
     heroMetrics: [
       { label: "Audit Frequency", value: "Daily" },
       { label: "Search Ranking", value: "Top Bracket" },
@@ -873,8 +873,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 1.9 · MARKETING PLAN AND PROCESS",
     title: "Reverse prospecting",
     subtitle: "Proactive outreach to buyer agents with clients actively searching within your property's exact price and criteria.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid16.mp4",
+    heroFallbackImage: "/media/properties/715-s-friendly-okc.jpeg",
     heroMetrics: [
       { label: "Direct Phone Calls", value: "100% Proactive" },
       { label: "Broker Network", value: "Top 250 OKC" },
@@ -902,8 +902,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 1.10 · MARKETING PLAN AND PROCESS",
     title: "Agent networking",
     subtitle: "Direct telephone pitches and private broker preview gatherings with top luxury producers across Oklahoma.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid17.mp4",
+    heroFallbackImage: "/media/properties/534-w-chickasaw.jpg",
     heroMetrics: [
       { label: "Broker Reach", value: "Top 10% OKC" },
       { label: "Private Previews", value: "Exclusive" },
@@ -930,8 +930,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 1.11 · MARKETING PLAN AND PROCESS",
     title: "Full-time engagement on the listing",
     subtitle: "Continuous daily management monitoring inquiry velocity, buyer feedback, and competitive pricing adjustments.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid18.mp4",
+    heroFallbackImage: "/media/properties/435-nw-21st-heritage-hills.jpeg",
     heroMetrics: [
       { label: "Daily Oversight", value: "365 Days" },
       { label: "Inquiry Velocity", value: "Continuous" },
@@ -958,8 +958,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 1.12 · MARKETING PLAN AND PROCESS",
     title: "Postcards, online and print flyers, print ads",
     subtitle: "High-gloss oversized direct mail postcards, bespoke architectural print brochures, and regional lifestyle placement.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid19.mp4",
+    heroFallbackImage: "/media/properties/13701-s-independence-okc.jpeg",
     heroMetrics: [
       { label: "Print Postcards", value: "Oversized Gloss" },
       { label: "Mailing Radius", value: "Top Affluent" },
@@ -986,8 +986,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 1.13 · MARKETING PLAN AND PROCESS",
     title: "Matterport Tour",
     subtitle: "Millimeter-accurate virtual dollhouse allowing 360-degree exploration for corporate transferees and out-of-state buyers.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid20.mp4",
+    heroFallbackImage: "/media/properties/85006-n-2520-watonga.jpeg",
     heroMetrics: [
       { label: "Spatial Accuracy", value: "99.8%" },
       { label: "Available Hours", value: "24/7 Global" },
@@ -1016,8 +1016,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 2.1 · COMMUNICATION",
     title: "Call every showing agent for feedback after every showing",
     subtitle: "Direct telephone debrief with every showing broker within 120 minutes of home access to extract candid buyer feedback.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1534536281715-e28d76689b4d?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid21.mp4",
+    heroFallbackImage: "/media/properties/2950-nw-37th-newcastle.jpeg",
     heroMetrics: [
       { label: "Debrief Speed", value: "< 2 Hours" },
       { label: "Compliance Rate", value: "100%" },
@@ -1044,8 +1044,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 2.2 · COMMUNICATION",
     title: "Collaborate with other agents in the downtown market",
     subtitle: "Active intelligence sharing with downtown and metro market makers to evaluate incoming buyer migration and competitor pricing.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid22.mp4",
+    heroFallbackImage: "/media/gallery/modern-estate-pool-lawn.jpeg",
     heroMetrics: [
       { label: "Market Synergy", value: "Daily" },
       { label: "Off-Market Intel", value: "Real-Time" },
@@ -1072,8 +1072,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 2.3 · COMMUNICATION",
     title: "Explain market conditions, opportunities, contracts, terms, and disclosures",
     subtitle: "Clear, plain-English translations of complex purchase contracts, title disclosures, and inspection reports.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid23.mp4",
+    heroFallbackImage: "/media/gallery/modern-kitchen.jpeg",
     heroMetrics: [
       { label: "Contract Clarity", value: "100%" },
       { label: "Jargon Free", value: "Guaranteed" },
@@ -1100,8 +1100,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 2.4 · COMMUNICATION",
     title: "Detailed updates on showings, feedback, offers, inspections, and key documents",
     subtitle: "Structured Monday morning intelligence dashboards tracking online traffic, buyer sentiment, and escrow milestones.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid24.mp4",
+    heroFallbackImage: "/media/gallery/modern-staircase-dining.jpeg",
     heroMetrics: [
       { label: "Reporting Schedule", value: "Every Monday" },
       { label: "Analytics Depth", value: "Comprehensive" },
@@ -1128,8 +1128,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 2.5 · COMMUNICATION",
     title: "Negotiation aimed at common ground and your desired outcome",
     subtitle: "Hard-nosed fiduciary advocacy protecting your bottom-line equity while steering buyers toward common ground.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid25.mp4",
+    heroFallbackImage: "/media/gallery/brian-closing-clients.jpeg",
     heroMetrics: [
       { label: "Equity Defended", value: "100%" },
       { label: "Closing Ratio", value: "99.1%" },
@@ -1157,8 +1157,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 3.1 · ACCESSIBILITY",
     title: "Reachable mornings, days, evenings, and weekends",
     subtitle: "Seven-day direct phone, text, and email access so urgent buyer opportunities are acted upon immediately.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid26.mp4",
+    heroFallbackImage: "/media/gallery/brian-jamison-skyline.jpeg",
     heroMetrics: [
       { label: "Reachability", value: "7 Days/Wk" },
       { label: "Response Speed", value: "< 15 Mins" },
@@ -1185,8 +1185,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 3.2 · ACCESSIBILITY",
     title: "Backup coverage when your schedule is full",
     subtitle: "A licensed listing backup associate is assigned to your property to ensure zero lead lag and complete continuity.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid27.mp4",
+    heroFallbackImage: "/media/gallery/brian-jamison-sunset.jpeg",
     heroMetrics: [
       { label: "Backup Coverage", value: "Licensed Associate" },
       { label: "Lead Lag", value: "Zero" },
@@ -1214,8 +1214,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 4.1 · TEAM SUPPORT",
     title: "Personal assistant for scheduling, communication, and documentation",
     subtitle: "Dedicated client concierge managing showing approvals, lockbox access, and prompt paperwork dispatch.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid28.mp4",
+    heroFallbackImage: "/media/gallery/sunset-deck-pool.jpeg",
     heroMetrics: [
       { label: "Showing Approvals", value: "Instant" },
       { label: "Family Privacy", value: "Protected" },
@@ -1242,8 +1242,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 4.2 · TEAM SUPPORT",
     title: "Transaction coordinator for documentation and compliance",
     subtitle: "Certified escrow specialist supervising earnest deposits, title searches, lender verifications, and regulatory disclosures.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid29.mp4",
+    heroFallbackImage: "/media/gallery/sunset-window-terrace.jpeg",
     heroMetrics: [
       { label: "Compliance Rate", value: "100%" },
       { label: "Audit Milestones", value: "140+ Points" },
@@ -1270,8 +1270,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 4.3 · TEAM SUPPORT",
     title: "Staging team for decluttering and market prep",
     subtitle: "Hands-on spatial designers optimizing sightlines, furniture spacing, lighting, and architectural flow.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid30.mp4",
+    heroFallbackImage: "/media/gallery/midcentury-entry.jpeg",
     heroMetrics: [
       { label: "Perceived Value", value: "Maximized" },
       { label: "Flow Optimization", value: "Room-by-Room" },
@@ -1298,8 +1298,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 4.4 · TEAM SUPPORT",
     title: "Listing team for flyers, websites, print ads, and social marketing",
     subtitle: "Operations crew managing MLS data feeds, single-property domains, and digital syndication pipelines.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid31.mp4",
+    heroFallbackImage: "/media/gallery/infinity-pool-hills.jpeg",
     heroMetrics: [
       { label: "Data Accuracy", value: "100%" },
       { label: "Platform Feeds", value: "350+" },
@@ -1326,8 +1326,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 4.5 · TEAM SUPPORT",
     title: "Design team for postcards and print/online flyers",
     subtitle: "In-house graphic studio crafting bespoke print collateral, embossed brochures, and digital buyer packages.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid1.mp4",
+    heroFallbackImage: "/media/gallery/hill-country-driveway.jpeg",
     heroMetrics: [
       { label: "Design Quality", value: "Bespoke" },
       { label: "Typography", value: "Editorial" },
@@ -1354,8 +1354,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 4.6 · TEAM SUPPORT",
     title: "Property photographer (photos and aerial)",
     subtitle: "FAA-certified drone pilots and architectural photographers equipped with specialized tilt-shift lenses and HDR lighting.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid2.mp4",
+    heroFallbackImage: "/media/properties/136-nw-18th-heritage-hills.jpeg",
     heroMetrics: [
       { label: "Equipment", value: "Cinema & Tilt-Shift" },
       { label: "Drone License", value: "FAA Part 107" },
@@ -1382,8 +1382,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 4.7 · TEAM SUPPORT",
     title: "Marketing team for listing and post-close marketing",
     subtitle: "Strategic growth division managing listing launch campaigns, broker preview events, and post-close transitions.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid3.mp4",
+    heroFallbackImage: "/media/properties/11500-gateshead.jpg",
     heroMetrics: [
       { label: "Launch Blast", value: "Opening 72h" },
       { label: "Digital Synergy", value: "Multi-Platform" },
@@ -1411,8 +1411,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 5.1 · PRICING STRATEGY",
     title: "Local market update (downtown OKC trends, DOM, sale-to-list, inventory)",
     subtitle: "Real-time econometric analysis tracking inventory absorption, average days on market (DOM), and sale-to-list price ratios.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid4.mp4",
+    heroFallbackImage: "/media/properties/3233-n-harvey-crown-heights.jpeg",
     heroMetrics: [
       { label: "Data Freshness", value: "Real-Time" },
       { label: "DOM Tracking", value: "Hyper-Local" },
@@ -1439,8 +1439,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 5.2 · PRICING STRATEGY",
     title: "Subject property valuation, including added value of an adjacent lot",
     subtitle: "Detailed valuation auditing parcel boundaries, zoning potential, and appraisal premiums for adjacent lots or acreage.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid5.mp4",
+    heroFallbackImage: "/media/properties/616-nw-6th-downtown.jpeg",
     heroMetrics: [
       { label: "Land Appraisal", value: "Comprehensive" },
       { label: "Zoning Audit", value: "Complete" },
@@ -1467,8 +1467,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 5.3 · PRICING STRATEGY",
     title: "Comparable sales analysis",
     subtitle: "Forensic comp review analyzing closed transactions, pending escrows, and active neighborhood competitors within 90 days.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1460472178825-e5240623afd5?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid6.mp4",
+    heroFallbackImage: "/media/properties/22801-n-briarwood-edmond.jpeg",
     heroMetrics: [
       { label: "Comps Evaluated", value: "Closed & Pending" },
       { label: "Timeframe", value: "Past 90 Days" },
@@ -1495,8 +1495,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 5.4 · PRICING STRATEGY",
     title: "Tiered pricing recommendation (conservative / target / aspirational)",
     subtitle: "A 3-tier valuation model presenting Conservative (rapid liquidity), Target (peak comp appraisal), and Aspirational (surge premium testing).",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid7.mp4",
+    heroFallbackImage: "/media/properties/22402-emily-way-edmond.jpeg",
     heroMetrics: [
       { label: "Pricing Tiers", value: "3 Levels" },
       { label: "Strategic Choice", value: "Seller Decides" },
@@ -1523,8 +1523,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 5.5 · PRICING STRATEGY",
     title: "Buyer-minded pricing to drive competitive bidding",
     subtitle: "Psychological price positioning calibrated directly beneath search brackets to generate higher showing velocity and spark multiple competing bids.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid8.mp4",
+    heroFallbackImage: "/media/properties/3911-creek-bank-edmond.jpeg",
     heroMetrics: [
       { label: "Search Bracket", value: "Optimized" },
       { label: "Buyer Eyeballs", value: "Doubled" },
@@ -1552,8 +1552,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 6.1 · FAIR PRICING & CONTRACT FLEXIBILITY",
     title: "Partnership approach focused on your most profitable outcome",
     subtitle: "Fiduciary alignment where our firm's success is directly tied to maximizing your net proceeds.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid9.mp4",
+    heroFallbackImage: "/media/properties/11616-estrella-arcadia.jpeg",
     heroMetrics: [
       { label: "Fiduciary Duty", value: "100%" },
       { label: "Net Alignment", value: "Direct" },
@@ -1580,8 +1580,8 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     kicker: "SUB-PROCESS 6.2 · FAIR PRICING & CONTRACT FLEXIBILITY",
     title: "Cancel-anytime listing agreement: if promises aren't met, fire us, no strings attached",
     subtitle: "An unconditional written guarantee embedded into your listing contract giving you the right to terminate immediately if any promise is unfulfilled.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid10.mp4",
+    heroFallbackImage: "/media/properties/9687-bear-creek-guthrie.jpeg",
     heroMetrics: [
       { label: "Cancellation Fee", value: "$0.00" },
       { label: "Contract Penalties", value: "Zero" },
@@ -1614,8 +1614,8 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
     kicker: "01 / BUYER CONCIERGE & EQUITY ADVISORY",
     title: "Home Buying: Private Advisory & Fiduciary Representation",
     subtitle: "From exclusive off-market pocket listings to rigorous structural inspections and winning contract negotiation, our firm defends your equity across Edmond & Greater Oklahoma City.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid11.mp4",
+    heroFallbackImage: "/media/properties/1817-sun-valley-edmond.jpeg",
     heroMetrics: [
       { label: "Client Price Advantage", value: "$24,500 Avg" },
       { label: "Off-Market Access", value: "Priority" },
@@ -1636,7 +1636,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
         executionDetail: "We cross-reference private broker feeds, title data, and neighborhood databases to find homes matching your exact parameters before other buyers know they are available.",
         sellerImpact: "Eliminates public bidding frenzy and secures priority negotiation positioning for our buyers.",
         badge: "Step 01 · Priority Sourcing",
-        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+        image: "/media/properties/715-s-friendly-okc.jpeg"
       },
       {
         id: "hb-valuation-audit",
@@ -1645,7 +1645,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
         executionDetail: "We conduct an institutional audit of adjacent subdivision pricing, historical appreciation, and recent appraisal trends to pinpoint the exact fair market value.",
         sellerImpact: "Guarantees you never overpay or fall into appraisal shortage traps.",
         badge: "Step 02 · Valuation Audit",
-        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80"
+        image: "/media/properties/534-w-chickasaw.jpg"
       },
       {
         id: "hb-inspection-defense",
@@ -1654,7 +1654,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
         executionDetail: "Brian personally accompanies every inspector on-site, testing drainage grading, slab movement, panel capacity, and sewer lines to uncover latent defects.",
         sellerImpact: "Saves our buyer clients tens of thousands in post-closing repair disputes or renegotiates credits before escrow closes.",
         badge: "Step 03 · Inspection Defense",
-        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
+        image: "/media/properties/435-nw-21st-heritage-hills.jpeg"
       },
       {
         id: "hb-contract-terms",
@@ -1663,7 +1663,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
         executionDetail: "We calibrate earnest money buffers, inspection timeframes, and targeted escalation caps that make your offer stand out to sellers without sacrificing legal safeguards.",
         sellerImpact: "Highest win rate in competitive multiple-bid scenarios across Nichols Hills, Edmond, and Gaillardia.",
         badge: "Step 04 · Winning Terms",
-        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
+        image: "/media/properties/13701-s-independence-okc.jpeg"
       },
       {
         id: "hb-escrow-oversight",
@@ -1672,7 +1672,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
         executionDetail: "Daily timeline tracking ensures clear title commitment, survey approval, appraisal resolution, and seamless wire transfer execution.",
         sellerImpact: "Zero last-minute closing delays or surprise escrow charges.",
         badge: "Step 05 · Title & Escrow",
-        image: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80"
+        image: "/media/properties/85006-n-2520-watonga.jpeg"
       },
       {
         id: "hb-concierge-transition",
@@ -1681,7 +1681,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
         executionDetail: "Our client relationship does not end at closing. We dispatch our vetted vendor directory and provide key exchange coordination.",
         sellerImpact: "Effortless move-in experience and peace of mind from day one.",
         badge: "Step 06 · Concierge Service",
-        image: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1200&q=80"
+        image: "/media/properties/2950-nw-37th-newcastle.jpeg"
       }
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
@@ -1693,8 +1693,8 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
     kicker: "02 / MAXIMUM-NET LISTING MACHINE",
     title: "Home Selling: The Proprietary 6-Step Selling Machine",
     subtitle: "We do not passively place a sign in the yard. Jamison Real Estate executes an institutional 6-step selling blueprint backed by cinema-grade 4K media, 350+ portal syndication, and our 100% Risk-Free Cancel-Anytime Pledge.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid12.mp4",
+    heroFallbackImage: "/media/gallery/modern-estate-pool-lawn.jpeg",
     heroMetrics: [
       { label: "List-to-Sale Ratio", value: "98.6%" },
       { label: "Volume Sold", value: "$70M+" },
@@ -1715,7 +1715,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
         executionDetail: "We audit curb appeal, paint tones, decluttering flow, and fixture upgrades, focusing strictly on high-ROI improvements that generate multiple competitive offers.",
         sellerImpact: "Every $1 invested in targeted prep returns $3 to $5 at the closing table.",
         badge: "Step 01 · Staging & Prep",
-        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+        image: "/media/gallery/modern-kitchen.jpeg"
       },
       {
         id: "hs-hdr-photo",
@@ -1724,7 +1724,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
         executionDetail: "We schedule golden-hour exterior shoots and HDR interior bracket exposures that make your listing shine on mobile feeds.",
         sellerImpact: "Stops buyers scrolling on Zillow and Realtor.com, resulting in 4x more saved listings.",
         badge: "Step 02 · 4K HDR Photography",
-        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
+        image: "/media/gallery/modern-staircase-dining.jpeg"
       },
       {
         id: "hs-cinema-film",
@@ -1733,7 +1733,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
         executionDetail: "We film an evocative lifestyle motion picture that takes buyers on an emotional walkthrough of your home's architectural rhythm and natural light.",
         sellerImpact: "Generates over 14,000+ views across Instagram, YouTube, and Facebook targeted ad campaigns.",
         badge: "Step 03 · Cinema Walkthrough",
-        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
+        image: "/media/gallery/brian-closing-clients.jpeg"
       },
       {
         id: "hs-drone-mapping",
@@ -1742,7 +1742,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
         executionDetail: "FAA-licensed drone pilots plot custom animated boundary overlays, roof inspections, and neighborhood panoramas.",
         sellerImpact: "Allows out-of-state buyers to understand the exact acreage, privacy, and outdoor amenities instantly.",
         badge: "Step 04 · FAA Drone Mapping",
-        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80"
+        image: "/media/gallery/brian-jamison-skyline.jpeg"
       },
       {
         id: "hs-global-syndication",
@@ -1751,7 +1751,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
         executionDetail: "We secure priority placement so your home appears at the very top of search results in Edmond, Nichols Hills, and Oklahoma City.",
         sellerImpact: "Puts your listing directly in front of 100% of active qualified homebuyers worldwide.",
         badge: "Step 05 · Global Syndication",
-        image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80"
+        image: "/media/gallery/brian-jamison-sunset.jpeg"
       },
       {
         id: "hs-bidding-wars",
@@ -1760,7 +1760,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
         executionDetail: "We model buyer search behavior in $25k and $50k increments to capture the largest pool of qualified pre-approved shoppers on day one.",
         sellerImpact: "Triggers competitive buyer tension, often producing offers substantially over list price.",
         badge: "Step 06 · Bidding War Engine",
-        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80"
+        image: "/media/gallery/sunset-deck-pool.jpeg"
       }
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
@@ -1772,8 +1772,8 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
     kicker: "03 / ACREAGE & DEVELOPMENT ENCLAVES",
     title: "Land Buying and Selling: Acreage & Parcel Advisory",
     subtitle: "Navigating topography, soil percolation, utility easements, and zoning requires specialized land expertise. Our firm represents landowners, developers, and estate buyers across Oklahoma.",
-    heroVideoUrl: "https://www.pexels.com/download/video/29383137/",
-    heroFallbackImage: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80",
+    heroVideoUrl: "/media/videos/vid13.mp4",
+    heroFallbackImage: "/media/gallery/sunset-window-terrace.jpeg",
     heroMetrics: [
       { label: "Acreage Transacted", value: "1,450+ Acres" },
       { label: "Land Parcels Closed", value: "85+ Parcels" },
@@ -1794,7 +1794,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
         executionDetail: "We produce interactive drone maps and boundary graphics illustrating exact property lines, gate entrances, and building envelopes.",
         sellerImpact: "Prospective buyers and builders can visualize the layout, driveway placement, and homesite orientation immediately.",
         badge: "Step 01 · Drone Boundary",
-        image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80"
+        image: "/media/gallery/midcentury-entry.jpeg"
       },
       {
         id: "land-soil-perk",
@@ -1803,7 +1803,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
         executionDetail: "We coordinate with certified soil scientists and environmental inspectors to verify suitability for conventional or aerobic septic systems and water tables.",
         sellerImpact: "Eliminates deal-killing surprises during buyer inspection periods and validates property value.",
         badge: "Step 02 · Soil & Perk Audit",
-        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80"
+        image: "/media/gallery/infinity-pool-hills.jpeg"
       },
       {
         id: "land-utility-corridor",
@@ -1812,7 +1812,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
         executionDetail: "We review county recorded surveys, utility tap fees, line extension estimates, and deeded ingress/egress easements.",
         sellerImpact: "Provides clear cost projections for buyers and protects sellers against misrepresentation claims.",
         badge: "Step 03 · Utility Due Diligence",
-        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+        image: "/media/gallery/hill-country-driveway.jpeg"
       },
       {
         id: "land-zoning-analysis",
@@ -1821,7 +1821,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
         executionDetail: "We consult with county commissioners and planning departments to determine parcel split potential and deed restrictions.",
         sellerImpact: "Unlocks hidden land equity by marketing acreage for its highest economic use.",
         badge: "Step 04 · Zoning Analysis",
-        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80"
+        image: "/media/properties/136-nw-18th-heritage-hills.jpeg"
       },
       {
         id: "land-builder-network",
@@ -1830,7 +1830,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
         executionDetail: "We pitch your parcel directly to builders searching for custom homesite envelopes in Edmond, Piedmont, Arcadia, and Deer Creek.",
         sellerImpact: "Generates pre-qualified cash buyer inquiries without waiting for random internet shoppers.",
         badge: "Step 05 · Builder Network",
-        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
+        image: "/media/properties/11500-gateshead.jpg"
       },
       {
         id: "land-mineral-title",
@@ -1839,7 +1839,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
         executionDetail: "We partner with experienced Oklahoma title attorneys to ensure seamless title insurance and ironclad closing documentation.",
         sellerImpact: "Guarantees an airtight transaction with zero lingering boundary or mineral title disputes.",
         badge: "Step 06 · Mineral & Title",
-        image: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1200&q=80"
+        image: "/media/properties/3233-n-harvey-crown-heights.jpeg"
       }
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY

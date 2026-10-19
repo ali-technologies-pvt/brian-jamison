@@ -447,8 +447,8 @@ export const SitemapPage: React.FC<SitemapPageProps> = ({
         kicker="Complete Platform Directory & Search Index"
         title="Sitemap & Platform Architecture."
         subtitle={`Explore all ${ALL_SITEMAP_ENTRIES.length} dedicated pages covering our 6-Phase Seller Blueprint, 21 Oklahoma City metropolitan community guides, proprietary marketing standards, and real estate resources.`}
-        heroVideoUrl="https://www.pexels.com/download/video/29383137/"
-        heroFallbackImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80"
+        heroVideoUrl="/media/videos/vid1.mp4"
+        heroFallbackImage="/media/gallery/modern-estate-pool-lawn.jpeg"
         metrics={[
           { value: `${ALL_SITEMAP_ENTRIES.length}+`, label: 'Indexed Pages' },
           { value: '21', label: 'OKC Metro Enclaves' },

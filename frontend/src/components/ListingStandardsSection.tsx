@@ -44,7 +44,7 @@ export const LISTING_STANDARDS_DATA: ListingStandardItem[] = [
     desc: "Room-by-room architectural audit and high-ROI refresh recommendations before taking photos.",
     executionDetail: "Brian conducts an in-depth room walkthrough, recommending paint touch-ups, lighting changes, decluttering, and furniture arrangements so buyers emotionally connect the moment they step in.",
     sellerImpact: "Generates 3x more opening-weekend private showings and prevents lowball buyer discount demands.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/gallery/modern-kitchen.jpeg",
     metric: "+300%",
     metricLabel: "Private Showings"
   },
@@ -59,7 +59,7 @@ export const LISTING_STANDARDS_DATA: ListingStandardItem[] = [
     desc: "Natural-light and golden-hour architectural captures using wide-angle tilt-shift professional glass.",
     executionDetail: "Captured with natural ambient light and golden-hour multi-bracket HDR lighting, preserving structural depth, true window exposure, and natural interior warmth.",
     sellerImpact: "Stops online buyers in their tracks. Over 95% of buyers first decide whether to visit based on photo quality.",
-    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/properties/136-nw-18th-heritage-hills.jpeg",
     metric: "61MP HDR",
     metricLabel: "Architectural Quality"
   },
@@ -74,7 +74,7 @@ export const LISTING_STANDARDS_DATA: ListingStandardItem[] = [
     desc: "Stabilized 4K cinematic film capturing light, spatial scale, and living flow with custom audio scoring.",
     executionDetail: "Filmed on cinema-grade gimbal stabilizers with custom color grading and lifestyle pacing that guides buyers seamlessly from the great room to the resort pool pavilion.",
     sellerImpact: "Videos average 14.2k+ views across platforms and build emotional attachment before buyers ever tour in person.",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/gallery/modern-estate-pool-lawn.jpeg",
     metric: "14.2k+",
     metricLabel: "Average Video Views"
   },
@@ -89,7 +89,7 @@ export const LISTING_STANDARDS_DATA: ListingStandardItem[] = [
     desc: "High-altitude 4K drone sweeps capturing property boundaries, roof condition, and neighborhood context.",
     executionDetail: "FAA-certified drone pilots fly sweeps plotting dynamic parcel boundary lines, mature oak canopies, pool loggias, and proximity to golf courses and top-tier schools.",
     sellerImpact: "Shows buyers the exact land scale and privacy buffers that ground-level photos cannot reveal.",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/properties/11500-gateshead.jpg",
     metric: "Part 107",
     metricLabel: "FAA Certified Pilots"
   },
@@ -104,7 +104,7 @@ export const LISTING_STANDARDS_DATA: ListingStandardItem[] = [
     desc: "Interactive 3D walkthroughs and digital floor plans deployed where strategically optimal for the property.",
     executionDetail: "Detailed spatial camera scans compile an interactive 3D dollhouse model and digital floor plan with measurement tools, tailored to capture out-of-area buyers.",
     sellerImpact: "Enables out-of-state transferees and busy families to explore the property and submit confident offers.",
-    image: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/gallery/modern-staircase-dining.jpeg",
     metric: "24/7 Global",
     metricLabel: "Tailored 3D Tours"
   },
@@ -119,7 +119,7 @@ export const LISTING_STANDARDS_DATA: ListingStandardItem[] = [
     desc: "Instant syndication to Zillow Showcase, Realtor.com Featured, Redfin, MLSOK, and international feeds.",
     executionDetail: "Direct API feeds syndicate your listing to every major national and global portal with enhanced featured status, ensuring your home is never buried by competing listings.",
     sellerImpact: "Guarantees 100% market exposure to all active local, national, and international pre-approved buyers.",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/gallery/brian-jamison-skyline.jpeg",
     metric: "350+ Portals",
     metricLabel: "48 Global Feeds"
   },
@@ -134,7 +134,7 @@ export const LISTING_STANDARDS_DATA: ListingStandardItem[] = [
     desc: "Custom address domain created solely to highlight your listing with zero competitor ads or popups.",
     executionDetail: "We purchase and launch a custom domain (e.g. 1234GrandviewBlvd.com) featuring full-screen 4K video, complete photo albums, floor plans, and seller disclosures.",
     sellerImpact: "Eliminates distracting competitor ads; prospective buyers and their agents are locked into your property's exclusive narrative.",
-    image: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/properties/3233-n-harvey-crown-heights.jpeg",
     metric: "100% Dedicated",
     metricLabel: "Zero Ad Distraction"
   },
@@ -149,7 +149,7 @@ export const LISTING_STANDARDS_DATA: ListingStandardItem[] = [
     desc: "Targeted paid campaigns reaching active pre-approved buyers, relocating families, and high-intent shoppers across the OKC metro.",
     executionDetail: "Paid targeted advertising campaigns deployed across Instagram & Facebook, targeting active buyers, relocating families, and local professionals searching OKC metro real estate.",
     sellerImpact: "Proactively places your home in front of qualified buyers who aren't browsing MLS feeds daily.",
-    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/gallery/brian-jamison-sunset.jpeg",
     metric: "Targeted Ads",
     metricLabel: "Active Buyer Reach"
   },
@@ -164,7 +164,7 @@ export const LISTING_STANDARDS_DATA: ListingStandardItem[] = [
     desc: "Daily algorithmic adjustments to prevent listing stagnation in broker saved-searches and buyer portals.",
     executionDetail: "Unlike passive agents who enter a listing and wait, Brian monitors daily search impressions, rotating the primary hero photo and updating search tags to keep the listing at the top of buyer auto-searches.",
     sellerImpact: "Maintains high urgency and prevents the dreaded 'Days on Market' fatigue that leads to price reductions.",
-    image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/properties/22801-n-briarwood-edmond.jpeg",
     metric: "Daily Audit",
     metricLabel: "Zero MLS Stagnation"
   },
@@ -179,7 +179,7 @@ export const LISTING_STANDARDS_DATA: ListingStandardItem[] = [
     desc: "Proactive outreach to buyer agents with clients actively searching within your property's exact price and criteria.",
     executionDetail: "Brian pulls MLS database backend analytics to pinpoint every broker who has an active buyer searching in your exact square footage and price bracket, placing direct telephone calls to pitch your property.",
     sellerImpact: "Creates private showings with pre-qualified buyers before other listings even get noticed.",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
+    image: "/media/gallery/brian-closing-clients.jpeg",
     metric: "Direct Calls",
     metricLabel: "Pre-Listing Competition"
   }

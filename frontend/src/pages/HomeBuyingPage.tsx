@@ -263,7 +263,8 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
       title: "Tornado Shelter Inspection: What to Check Before You Buy in OKC",
       duration: "1:04",
       views: "28.9K",
-      thumbnail: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+      thumbnail: "/media/gallery/modern-kitchen.jpeg",
+      videoUrl: "/media/videos/vid1.mp4",
       takeaway: "In-ground garage vs. above-ground safe room: verify FEMA 320 compliance, hydraulic seal integrity, and city registration."
     },
     {
@@ -271,7 +272,8 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
       title: "What is the TRRA Period & How Do We Get Sellers to Pay for Repairs?",
       duration: "0:56",
       views: "34.2K",
-      thumbnail: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80",
+      thumbnail: "/media/properties/136-nw-18th-heritage-hills.jpeg",
+      videoUrl: "/media/videos/vid2.mp4",
       takeaway: "How our 10-day investigation strategy uses licensed contractor bids to force seller credits instead of sloppy patch jobs."
     },
     {
@@ -279,7 +281,8 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
       title: "Nichols Hills vs. Edmond vs. Deer Creek: Neighborhood Breakdown",
       duration: "1:18",
       views: "42.1K",
-      thumbnail: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+      thumbnail: "/media/properties/11500-gateshead.jpg",
+      videoUrl: "/media/videos/vid3.mp4",
       takeaway: "Taxes, lot sizes, HOA guidelines, and commute corridors compared across OKC's top 3 executive enclaves."
     },
     {
@@ -287,7 +290,8 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
       title: "How to Win a Bidding War Without Blowing Your Budget",
       duration: "0:51",
       views: "21.7K",
-      thumbnail: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+      thumbnail: "/media/properties/22801-n-briarwood-edmond.jpeg",
+      videoUrl: "/media/videos/vid4.mp4",
       takeaway: "Strategic escalation clauses, short inspection turnarounds, and lender direct-call endorsements that beat higher cash bids."
     },
     {
@@ -295,7 +299,8 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
       title: "Hidden Closing Costs in Oklahoma That Every First-Time Buyer Misses",
       duration: "1:08",
       views: "19.5K",
-      thumbnail: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+      thumbnail: "/media/properties/3233-n-harvey-crown-heights.jpeg",
+      videoUrl: "/media/videos/vid5.mp4",
       takeaway: "Title insurance binders, mortgage tax stamps, pre-paid property tax escrows, and HOA transfer fees exposed."
     }
   ];
@@ -347,8 +352,8 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
         kicker="Buyer Concierge & Equity Advisory"
         title="Gain an Unfair Advantage in the Oklahoma City Housing Market."
         subtitle="Why hiring an active Top 2% listing agent gives buyers early access to off-market properties, ruthless contract negotiation, and zero-stress closings."
-        heroVideoUrl="https://www.pexels.com/download/video/29383137/"
-        heroFallbackImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80"
+        heroVideoUrl="/media/videos/vid1.mp4"
+        heroFallbackImage="/media/properties/136-nw-18th-heritage-hills.jpeg"
         metrics={[
           { value: '$24,500', label: 'Avg Client Price Advantage' },
           { value: 'Priority', label: 'Off-Market Pocket Access' },

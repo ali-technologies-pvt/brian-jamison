@@ -354,17 +354,17 @@ export const NeighborhoodDetailView: React.FC<NeighborhoodDetailViewProps> = ({
   // Specific Area Video Selection
   const getAreaVideoUrl = () => {
     if (page.heroVideoUrl) return page.heroVideoUrl;
-    if (isHistoric) return "https://www.pexels.com/download/video/29383137/";
-    if (isGolf) return "https://www.pexels.com/download/video/29383137/";
-    if (isAcreage) return "https://www.pexels.com/download/video/29383137/";
-    return "https://www.pexels.com/download/video/29383137/";
+    if (isHistoric) return "/media/videos/vid5.mp4";
+    if (isGolf) return "/media/videos/vid4.mp4";
+    if (isAcreage) return "/media/videos/vid3.mp4";
+    return "/media/videos/vid1.mp4";
   };
 
   // Specific Area Fallback Image
   const getAreaHeroImage = () => {
     if (page.heroFallbackImage) return page.heroFallbackImage;
     if (marketData?.image) return marketData.image;
-    return "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80";
+    return "/media/gallery/modern-estate-pool-lawn.jpeg";
   };
 
   // 9:16 Vertical Reels for this Neighborhood
@@ -375,7 +375,8 @@ export const NeighborhoodDetailView: React.FC<NeighborhoodDetailViewProps> = ({
       tag: "Property Tour",
       duration: "0:58",
       views: "18.4K",
-      thumbnail: marketData?.image || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
+      thumbnail: marketData?.image || "/media/gallery/modern-estate-pool-lawn.jpeg",
+      videoUrl: "/media/videos/vid1.mp4",
       description: `Hop inside as Brian takes you through ${areaName}'s top streets, architectural finishes, and lot sizes at the million-dollar benchmark.`,
       keyTakeaway: "Price per square foot varies drastically by subdivision pocket and whether the home sits on an estate lot or zero-lot-line."
     },
@@ -385,7 +386,8 @@ export const NeighborhoodDetailView: React.FC<NeighborhoodDetailViewProps> = ({
       tag: "Education",
       duration: "1:08",
       views: "24.1K",
-      thumbnail: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80",
+      thumbnail: "/media/properties/22801-n-briarwood-edmond.jpeg",
+      videoUrl: "/media/videos/vid6.mp4",
       description: "A candid review of feeder schools, bus routes, private academy alternatives, and parent sentiment in this specific zone.",
       keyTakeaway: "Homes within top-tier elementary attendance zones command a 7% to 12% equity premium upon resale."
     },
@@ -395,7 +397,8 @@ export const NeighborhoodDetailView: React.FC<NeighborhoodDetailViewProps> = ({
       tag: "OK Reality",
       duration: "0:52",
       views: "31.9K",
-      thumbnail: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80",
+      thumbnail: "/media/gallery/modern-kitchen.jpeg",
+      videoUrl: "/media/videos/vid7.mp4",
       description: "Checking foundation types, red clay soil moisture barriers, and garage in-ground storm shelters built to FEMA standards.",
       keyTakeaway: "Class 4 impact-resistant shingles and registered storm shelters save up to 20% on annual Oklahoma homeowners insurance."
     },
@@ -405,7 +408,8 @@ export const NeighborhoodDetailView: React.FC<NeighborhoodDetailViewProps> = ({
       tag: "Lifestyle",
       duration: "1:15",
       views: "15.7K",
-      thumbnail: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=600&q=80",
+      thumbnail: "/media/properties/3233-n-harvey-crown-heights.jpeg",
+      videoUrl: "/media/videos/vid8.mp4",
       description: `Where the locals actually eat, grab coffee, and spend weekend mornings in and around ${areaName}.`,
       keyTakeaway: "Proximity to walkable boutique retail corridors is one of the highest leading indicators for future appreciation."
     }
@@ -1357,16 +1361,29 @@ export const NeighborhoodDetailView: React.FC<NeighborhoodDetailViewProps> = ({
               </button>
 
               <div className="relative rounded-2xl overflow-hidden aspect-[16/9] mb-5 bg-black">
-                <img
-                  src={selectedReel.thumbnail}
-                  alt={selectedReel.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-[#EA580C] text-white flex items-center justify-center shadow-xl">
-                    <Play className="w-7 h-7 fill-white translate-x-0.5" />
-                  </div>
-                </div>
+                {selectedReel.videoUrl ? (
+                  <video
+                    src={selectedReel.videoUrl}
+                    controls
+                    autoPlay
+                    playsInline
+                    poster={selectedReel.thumbnail}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <>
+                    <img
+                      src={selectedReel.thumbnail}
+                      alt={selectedReel.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-full bg-[#EA580C] text-white flex items-center justify-center shadow-xl">
+                        <Play className="w-7 h-7 fill-white translate-x-0.5" />
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
 
               <span className="text-[10px] uppercase font-sans font-bold tracking-widest text-[#FB923C] block mb-1">
