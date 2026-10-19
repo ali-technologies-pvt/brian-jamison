@@ -331,27 +331,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               About Brian Jamison
             </a>
-
-            {/* Link 6: IDX Search Test */}
-            <a
-              href="/idx-test"
-              onClick={(e) => {
-                e.preventDefault();
-                if (onNavigate) {
-                  onNavigate('/idx-test');
-                } else {
-                  window.location.href = '/idx-test';
-                }
-              }}
-              onMouseEnter={() => {
-                handleCancelClose();
-                setActiveMenu(null);
-              }}
-              className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide text-[#FB923C] hover:text-white hover:bg-white/15 transition-all cursor-pointer flex items-center gap-1.5"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>IDX Search</span>
-            </a>
           </nav>
 
           {/* ZONE 3 (Right - Call & "Get in touch" CTA pill) */}

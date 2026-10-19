@@ -228,22 +228,6 @@ export const Footer: React.FC<FooterProps> = ({
                   Mortgage & Affordability Calc
                 </button>
               </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (onNavigate) {
-                      onNavigate('/idx-test');
-                    } else {
-                      window.location.href = '/idx-test';
-                    }
-                  }}
-                  className="hover:text-white hover:underline transition-colors text-left cursor-pointer text-[#FB923C] font-semibold flex items-center gap-1.5"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>IDX Broker MLS Search Test</span>
-                </button>
-              </li>
             </ul>
           </div>
 
@@ -361,31 +345,9 @@ export const Footer: React.FC<FooterProps> = ({
                 <button
                   type="button"
                   onClick={() => {
-                    if (onNavigate) onNavigate('/map-search');
-                  }}
-                  className="hover:text-white hover:underline transition-colors block text-left cursor-pointer text-[#FB923C] font-semibold"
-                >
-                  Interactive Map Search
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (onNavigate) onNavigate('/idx');
-                  }}
-                  className="hover:text-white hover:underline transition-colors block text-left cursor-pointer text-[#FB923C]/90 font-medium"
-                >
-                  MLS Property Search
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
                     if (onNavigate) onNavigate('/faq');
                   }}
-                  className="hover:text-white hover:underline transition-colors block text-left cursor-pointer text-stone-200"
+                  className="hover:text-white hover:underline transition-colors block text-left cursor-pointer text-[#FB923C] font-semibold"
                 >
                   Frequently Asked Questions
                 </button>
