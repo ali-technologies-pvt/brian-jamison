@@ -220,7 +220,7 @@ export const VideoMarqueeFooter: React.FC<VideoMarqueeFooterProps> = ({
       {/* Video Popup Modal Player */}
       {selectedVideo && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in">
-          <div className="relative w-full max-w-lg bg-[#001D40] rounded-3xl overflow-hidden border border-white/30 shadow-2xl">
+          <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-[#001D40] rounded-3xl overflow-hidden border border-white/30 shadow-2xl">
             {/* Close Button */}
             <button
               type="button"
@@ -236,6 +236,7 @@ export const VideoMarqueeFooter: React.FC<VideoMarqueeFooterProps> = ({
                 src={selectedVideo.videoUrl}
                 controls
                 autoPlay
+                muted
                 playsInline
                 poster={selectedVideo.thumbnail}
                 className="w-full h-full object-cover"

@@ -45,6 +45,14 @@ export interface BrianAvatarProps {
   title?: string;
 }
 
+const PRESET_SIZES: Record<string, number> = {
+  xs: 24,
+  sm: 36,
+  md: 48,
+  lg: 64,
+  xl: 96,
+};
+
 export const BrianAvatar: React.FC<BrianAvatarProps> = ({
   size = 36,
   className = '',
@@ -59,16 +67,26 @@ export const BrianAvatar: React.FC<BrianAvatarProps> = ({
 }) => {
   // Compute style dimensions if size is provided and className does not define explicit width
   const hasCustomDimensionInClass = /\b(w-\d+|w-\[.+\])\b/.test(className);
-  const dimensionStyle: React.CSSProperties =
-    !hasCustomDimensionInClass && typeof size === 'number'
-      ? { width: `${size}px`, height: `${size}px`, minWidth: `${size}px`, minHeight: `${size}px` }
-      : !hasCustomDimensionInClass && size && !isNaN(Number(size))
-      ? { width: `${size}px`, height: `${size}px`, minWidth: `${size}px`, minHeight: `${size}px` }
-      : {};
+  const resolvedNumericSize: number =
+    typeof size === 'number'
+      ? size
+    : typeof size === 'string' && PRESET_SIZES[size.toLowerCase()]
+    ? PRESET_SIZES[size.toLowerCase()]
+    : !isNaN(Number(size)) && Number(size) > 0
+    ? Number(size)
+    : 36;
+
+  const dimensionStyle: React.CSSProperties = !hasCustomDimensionInClass
+    ? {
+        width: `${resolvedNumericSize}px`,
+        height: `${resolvedNumericSize}px`,
+        minWidth: `${resolvedNumericSize}px`,
+        minHeight: `${resolvedNumericSize}px`
+      }
+    : {};
 
   // Status dot sizing based on avatar size
-  const numericSize = typeof size === 'number' ? size : Number(size) || 36;
-  const dotSizeClass = numericSize <= 28 ? 'w-2 h-2' : numericSize <= 48 ? 'w-2.5 h-2.5' : 'w-3.5 h-3.5';
+  const dotSizeClass = resolvedNumericSize <= 28 ? 'w-2 h-2' : resolvedNumericSize <= 48 ? 'w-2.5 h-2.5' : 'w-3.5 h-3.5';
 
   return (
     <div

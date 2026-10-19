@@ -1350,7 +1350,7 @@ export const NeighborhoodDetailView: React.FC<NeighborhoodDetailViewProps> = ({
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="relative w-full max-w-lg bg-[#001D40] text-white rounded-3xl overflow-hidden shadow-2xl border border-white/20 p-6 sm:p-7"
+              className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-[#001D40] text-white rounded-3xl overflow-hidden shadow-2xl border border-white/20 p-5 sm:p-7"
             >
               <button
                 type="button"
@@ -1360,12 +1360,13 @@ export const NeighborhoodDetailView: React.FC<NeighborhoodDetailViewProps> = ({
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="relative rounded-2xl overflow-hidden aspect-[16/9] mb-5 bg-black">
+              <div className="relative rounded-2xl overflow-hidden aspect-[16/9] mb-4 bg-black">
                 {selectedReel.videoUrl ? (
                   <video
                     src={selectedReel.videoUrl}
                     controls
                     autoPlay
+                    muted
                     playsInline
                     poster={selectedReel.thumbnail}
                     className="w-full h-full object-cover"

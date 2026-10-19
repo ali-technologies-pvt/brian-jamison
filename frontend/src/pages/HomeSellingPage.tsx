@@ -65,6 +65,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
   // Video Reels State & Modal
   const [selectedReelIndex, setSelectedReelIndex] = useState<number | null>(null);
   const [reelPlaying, setReelPlaying] = useState<boolean>(true);
+  const [isMuted, setIsMuted] = useState<boolean>(true);
 
   // Interactive Checklist State
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({
@@ -756,84 +757,93 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
 
       {/* Reel Modal Player */}
       {selectedReelIndex !== null && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-          <div className="relative w-full max-w-sm sm:max-w-md bg-[#001D40] rounded-3xl overflow-hidden border border-white/30 shadow-2xl">
-            {/* Close Button */}
-            <button
-              type="button"
-              onClick={() => setSelectedReelIndex(null)}
-              className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center border border-white/30 cursor-pointer"
-            >
-              <X className="w-5 h-5" />
-            </button>
+        <div
+          onClick={() => setSelectedReelIndex(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/85 backdrop-blur-md animate-fade-in"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative flex flex-col justify-between w-full max-w-[360px] sm:max-w-[400px] h-[86vh] max-h-[720px] aspect-[9/16] bg-[#001D40] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/20 shadow-2xl"
+          >
+            {/* Real Video Element */}
+            <video
+              key={REELS_DATA[selectedReelIndex].videoUrl}
+              src={REELS_DATA[selectedReelIndex].videoUrl}
+              poster={REELS_DATA[selectedReelIndex].thumbnail}
+              autoPlay
+              playsInline
+              loop
+              muted={isMuted}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
 
-            {/* Simulated 9:16 Video Player View */}
-            <div className="relative aspect-[9/16] w-full bg-black">
-              <img
-                src={REELS_DATA[selectedReelIndex].thumbnail}
-                alt={REELS_DATA[selectedReelIndex].title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/60" />
+            {/* Gradient Overlays */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-black/60 pointer-events-none" />
 
-              {/* Reel Header */}
-              <div className="absolute top-4 left-4 right-14 z-10 flex items-center gap-2.5">
-                <BrianAvatar size="sm" />
+            {/* Reel Header */}
+            <div className="relative z-20 flex items-center justify-between p-3 sm:p-4">
+              <div className="flex items-center gap-2 bg-black/60 backdrop-blur-md px-2.5 py-1.5 rounded-full border border-white/20">
+                <BrianAvatar size={28} showStatusDot={true} />
                 <div>
-                  <span className="block text-xs font-bold text-white leading-tight">Brian Jamison, Realtor</span>
-                  <span className="text-[10px] text-white/70">Top 2% Producer · Salt Real Estate</span>
+                  <span className="block text-xs font-bold text-white leading-tight">Brian Jamison</span>
+                  <span className="text-[10px] text-[#FB923C] font-medium leading-none">Top 2% Producer</span>
                 </div>
               </div>
 
-              {/* Play / Pause Toggle Center */}
-              <button
-                type="button"
-                onClick={() => setReelPlaying(!reelPlaying)}
-                className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer"
-              >
-                {!reelPlaying && (
-                  <div className="w-16 h-16 rounded-full bg-black/70 border border-white/40 flex items-center justify-center text-white">
-                    <Play className="w-8 h-8 fill-white ml-1" />
-                  </div>
-                )}
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIsMuted(!isMuted)}
+                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center border border-white/25 transition-colors cursor-pointer"
+                  title={isMuted ? "Unmute Audio" : "Mute Audio"}
+                >
+                  {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-[#FB923C]" />}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSelectedReelIndex(null)}
+                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center border border-white/25 transition-colors cursor-pointer"
+                  title="Close"
+                >
+                  <X className="w-4 h-4 sm:w-5 sm:h-5" />
+                </button>
+              </div>
+            </div>
 
-              {/* Bottom Scrubber & Masterclass Takeaway */}
-              <div className="absolute bottom-0 inset-x-0 p-5 z-10 bg-gradient-to-t from-black via-black/90 to-transparent">
-                {/* Progress bar simulation */}
-                <div className="w-full h-1 bg-white/30 rounded-full mb-3 overflow-hidden">
-                  <div className="h-full bg-[#EA580C] w-2/3 animate-pulse" />
-                </div>
+            {/* Bottom Scrubber, Info & Actions */}
+            <div className="relative z-20 p-4 sm:p-5">
+              <div className="w-full h-1 bg-white/25 rounded-full mb-2.5 overflow-hidden">
+                <div className="h-full bg-[#EA580C] w-2/3 animate-pulse" />
+              </div>
 
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#FB923C] block mb-1">
-                  Masterclass Takeaway
-                </span>
-                <h4 className="font-serif text-base font-bold text-white mb-2 leading-snug">
-                  {REELS_DATA[selectedReelIndex].title}
-                </h4>
-                <p className="text-xs text-white/80 leading-relaxed mb-4">
-                  {REELS_DATA[selectedReelIndex].takeaway}
-                </p>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#FB923C] block mb-1">
+                Masterclass Takeaway
+              </span>
+              <h4 className="font-serif text-sm sm:text-base font-bold text-white mb-1.5 leading-snug line-clamp-2">
+                {REELS_DATA[selectedReelIndex].title}
+              </h4>
+              <p className="text-[11px] sm:text-xs text-white/80 leading-relaxed mb-3 line-clamp-3">
+                {REELS_DATA[selectedReelIndex].takeaway}
+              </p>
 
-                <div className="flex items-center justify-between gap-3">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSelectedReelIndex(null);
-                      onOpenConsultation();
-                    }}
-                    className="flex-1 py-2.5 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-md text-center"
-                  >
-                    Consult With Brian
-                  </button>
-                  <a
-                    href="tel:4055133039"
-                    className="px-4 py-2.5 bg-white/20 hover:bg-white/30 text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors flex items-center gap-1.5"
-                  >
-                    <Phone className="w-3.5 h-3.5" />
-                    <span>Call Direct</span>
-                  </a>
-                </div>
+              <div className="flex items-center justify-between gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedReelIndex(null);
+                    onOpenConsultation();
+                  }}
+                  className="flex-1 py-2 sm:py-2.5 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors shadow-md text-center cursor-pointer"
+                >
+                  Consult With Brian
+                </button>
+                <a
+                  href="tel:4055133039"
+                  className="px-3 sm:px-4 py-2 sm:py-2.5 bg-white/20 hover:bg-white/30 text-white rounded-full text-xs font-bold tracking-wider uppercase transition-colors flex items-center gap-1.5 shrink-0"
+                >
+                  <Phone className="w-3.5 h-3.5" />
+                  <span>Call</span>
+                </a>
               </div>
             </div>
           </div>
