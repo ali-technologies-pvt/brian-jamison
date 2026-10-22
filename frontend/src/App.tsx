@@ -14,6 +14,7 @@ import { getPageByPath } from './pages/pageData';
 import { AdminProvider } from './context/AdminContext';
 import { AdminToolbar } from './components/AdminToolbar';
 import { GlobalInlineEditor } from './components/admin/GlobalInlineEditor';
+import { PremiumPreloader } from './components/PremiumPreloader';
 
 // Ultra-Fast Async Code Splitting
 const InteriorPageView = React.lazy(() => import('./pages/InteriorPageView').then(m => ({ default: m.InteriorPageView })));
@@ -57,6 +58,9 @@ export default function App() {
     return '/';
   });
 
+  // 1-Second Bespoke Luxury Preloader
+  const [showPreloader, setShowPreloader] = useState(true);
+
   // Modal & Interactive Flow States
   const [valuationOpen, setValuationOpen] = useState(false);
   const [initialValuationAddress, setInitialValuationAddress] = useState('');
@@ -73,23 +77,29 @@ export default function App() {
   const [checklistOpen, setChecklistOpen] = useState(false);
   const [legalType, setLegalType] = useState<'privacy' | 'terms' | 'fairhousing' | null>(null);
 
-  // Sync with browser back/forward history
+  // Sync with browser back/forward history & trigger preloader
   useEffect(() => {
     const handlePopState = () => {
+      setShowPreloader(true);
       setCurrentPath(window.location.pathname || '/');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'auto' });
     };
 
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // Navigation Handler
+  // Navigation Handler with 1-Second Luxury Preloader Transition
   const navigate = (path: string) => {
+    if (path === currentPath) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    setShowPreloader(true);
     setCurrentPath(path);
     if (typeof window !== 'undefined') {
       window.history.pushState(null, '', path);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'auto' });
     }
   };
 
@@ -177,6 +187,15 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#FAF9F6] text-[#002D61] flex flex-col font-sans selection:bg-[#EA580C]/20 selection:text-[#002D61]">
+      {/* 1-Second Bespoke Luxury Preloader on Initial Load & Page Transitions */}
+      {showPreloader && (
+        <PremiumPreloader
+          key={currentPath}
+          durationMs={1000}
+          onFinish={() => setShowPreloader(false)}
+        />
+      )}
+
       {/* Top Bar Navigation */}
       <Navbar
         onOpenValuation={handleOpenValuation}

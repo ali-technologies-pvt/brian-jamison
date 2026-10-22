@@ -345,25 +345,12 @@ export const CompanyServicesProcessSection: React.FC<CompanyServicesProcessSecti
                 <div>
                   {/* Photo Header with 100% Crisp White Title & Dark Scrim */}
                   <div className="relative h-52 w-full overflow-hidden bg-[#0A2540]">
-                    {item.title?.toLowerCase().includes('drone') || item.title?.toLowerCase().includes('aerial') || item.desc?.toLowerCase().includes('drone') ? (
-                      <video
-                        src="/media/videos/vid2.mp4"
-                        poster={item.image}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        preload="metadata"
-                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-106"
-                      />
-                    ) : (
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-106"
-                        loading="lazy"
-                      />
-                    )}
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-106"
+                      loading="lazy"
+                    />
                     {/* Deep Scrim Overlay for maximum text contrast */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/92 via-black/45 to-transparent" />
 

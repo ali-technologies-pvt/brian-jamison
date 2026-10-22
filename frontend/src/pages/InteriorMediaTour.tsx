@@ -167,13 +167,9 @@ export const InteriorMediaTour: React.FC<InteriorMediaTourProps> = ({
 
           {activeTab === 'drone' && (
             <div className="relative w-full h-[450px] sm:h-[580px] bg-stone-900 rounded-xl overflow-hidden flex items-center justify-center">
-              <video
-                src="/media/videos/vid2.mp4"
-                poster="/media/properties/11500-gateshead.jpg"
-                autoPlay
-                muted
-                loop
-                playsInline
+              <img
+                src="/media/properties/11500-gateshead.jpg"
+                alt="FAA Part-107 Certified 4K Drone Boundary Mapping"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40 pointer-events-none" />

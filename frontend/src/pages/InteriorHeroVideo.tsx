@@ -102,28 +102,13 @@ export const InteriorHeroVideo: React.FC<InteriorHeroVideoProps> = ({
         </div>
       )}
 
-      {/* Hero Video Background Engine (Identical to Homepage) */}
+      {/* Luxury Architectural Client Image Background Engine */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-        <video
-          ref={videoRef}
-          key={videoSrc}
-          autoPlay
-          muted
-          loop
-          playsInline
-          disablePictureInPicture
-          onLoadedData={() => setVideoLoaded(true)}
-          poster={videoPoster}
-          className={`w-full h-full object-cover object-center scale-105 transform motion-safe:transition-opacity motion-safe:duration-1000 ${
-            videoLoaded ? 'opacity-95' : 'opacity-80'
-          }`}
-        >
-          <source src={videoSrc} type="video/mp4" />
-          <source
-            src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-luxurious-neighborhood-with-houses-and-gardens-41662-large.mp4"
-            type="video/mp4"
-          />
-        </video>
+        <img
+          src={heroFallbackImage || videoPoster || "/media/properties/11500-gateshead.jpg"}
+          alt={title}
+          className="w-full h-full object-cover object-center scale-105 transform motion-safe:transition-transform motion-safe:duration-1000"
+        />
 
         {/* Ultra-Premium Cinematic Color Engine: Identical to Homepage */}
         <div

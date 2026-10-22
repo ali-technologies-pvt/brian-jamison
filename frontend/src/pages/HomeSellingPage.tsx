@@ -722,24 +722,11 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                 }}
                 className="group relative rounded-2xl overflow-hidden aspect-[9/16] bg-[#0A192F] border border-white/20 hover:border-[#EA580C] shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between p-4"
               >
-                {/* Background image or drone video preview */}
-                {reel.title?.toLowerCase().includes('drone') || reel.title?.toLowerCase().includes('aerial') ? (
-                  <video
-                    src={reel.videoUrl}
-                    poster={reel.thumbnail}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                ) : (
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                    style={{ backgroundImage: `url(${reel.thumbnail})` }}
-                  />
-                )}
+                {/* Background image */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                  style={{ backgroundImage: `url(${reel.thumbnail})` }}
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/30 group-hover:from-black/90 transition-opacity" />
 
                 {/* Top Badge Strip */}

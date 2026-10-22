@@ -833,25 +833,12 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                     {/* Visual Graphic Header with High-Resolution Photography */}
                     <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-[#002D61]">
                       {item.image ? (
-                        item.title?.toLowerCase().includes('drone') || item.badge?.toLowerCase().includes('drone') || item.desc?.toLowerCase().includes('drone') || item.title?.toLowerCase().includes('aerial') ? (
-                          <video
-                            src="/media/videos/vid2.mp4"
-                            poster={item.image}
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            preload="metadata"
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                          />
-                        ) : (
-                          <img
-                            src={item.image}
-                            alt={item.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                            loading="lazy"
-                          />
-                        )
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                          loading="lazy"
+                        />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-[#002D61] to-[#001D40] flex items-center justify-center text-white">
                           <Sparkles className="w-10 h-10 text-[#FB923C]" />
