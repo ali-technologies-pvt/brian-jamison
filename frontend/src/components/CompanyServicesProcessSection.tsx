@@ -5,7 +5,12 @@ import {
   ArrowRight,
   ShieldCheck,
   CheckCircle2,
-  ExternalLink
+  ExternalLink,
+  Megaphone,
+  MessageSquare,
+  Clock,
+  Users,
+  TrendingUp
 } from 'lucide-react';
 import {
   PROCESS_ONE_DELIVERABLES,
@@ -42,6 +47,15 @@ export interface ProcessCategory {
   items: SubProcessItem[];
 }
 
+const PROCESS_ICONS = [
+  Megaphone,
+  MessageSquare,
+  Clock,
+  Users,
+  TrendingUp,
+  ShieldCheck
+];
+
 export const PROCESS_CATEGORIES: ProcessCategory[] = [
   {
     id: 'marketing-plan-and-process',
@@ -49,7 +63,7 @@ export const PROCESS_CATEGORIES: ProcessCategory[] = [
     name: 'Marketing plan and process',
     slug: '/services/marketing-plan-and-process',
     subheading:
-      'Every listing gets a full marketing campaign built to put your home in front of every qualified buyer.',
+      'A plan to prepare, present, and promote your property, so it gets noticed by buyers and their agents.',
     items: PROCESS_ONE_DELIVERABLES.map((d) => ({
       id: d.id,
       number: d.badge.replace('Step ', ''),
@@ -67,7 +81,7 @@ export const PROCESS_CATEGORIES: ProcessCategory[] = [
     name: 'Communication',
     slug: '/services/communication',
     subheading:
-      'Jamison Real Estate enforces transparent, timely, and disciplined communication so you retain total control throughout the transaction.',
+      'Clear, timely updates keep you informed, so decisions feel manageable from the first conversation to the final signature.',
     items: PROCESS_TWO_DELIVERABLES.map((d) => ({
       id: d.id,
       number: d.badge.replace('Step ', ''),
@@ -85,7 +99,7 @@ export const PROCESS_CATEGORIES: ProcessCategory[] = [
     name: 'Accessibility',
     slug: '/services/accessibility',
     subheading:
-      'Our agency maintains uninterrupted seven-day reachability with dedicated backup coverage so opportunities are never missed.',
+      'Brian makes it easy to reach him, so questions get answered, and time-sensitive decisions are not left waiting.',
     items: PROCESS_THREE_DELIVERABLES.map((d) => ({
       id: d.id,
       number: d.badge.replace('Step ', ''),
@@ -103,7 +117,7 @@ export const PROCESS_CATEGORIES: ProcessCategory[] = [
     name: 'Team support',
     slug: '/services/team-support',
     subheading:
-      'Jamison Real Estate operates a dedicated specialized support network so every operational, legal, and creative detail is handled by an expert.',
+      'Brian’s team handles scheduling, paperwork, preparation, and marketing, so daily details stay covered while he focuses on you.',
     items: PROCESS_FOUR_DELIVERABLES.map((d) => ({
       id: d.id,
       number: d.badge.replace('Step ', ''),
@@ -121,7 +135,7 @@ export const PROCESS_CATEGORIES: ProcessCategory[] = [
     name: 'Pricing strategy',
     slug: '/services/pricing-strategy',
     subheading:
-      'Our pricing methodology is data-driven and buyer-minded, calculated to trigger multiple competing offers.',
+      'Pricing starts with local data and ends with a clear plan that attracts buyers without leaving value behind.',
     items: PROCESS_FIVE_DELIVERABLES.map((d) => ({
       id: d.id,
       number: d.badge.replace('Step ', ''),
@@ -139,7 +153,7 @@ export const PROCESS_CATEGORIES: ProcessCategory[] = [
     name: 'Fair pricing and contract flexibility',
     slug: '/services/fair-pricing-and-contract-flexibility',
     subheading:
-      'Our partnership model guarantees 100% mutual alignment with our unconditional cancel-anytime pledge.',
+      'Fair pricing and a flexible agreement keep the focus on results and give you room to change course.',
     items: PROCESS_SIX_DELIVERABLES.map((d) => ({
       id: d.id,
       number: d.badge.replace('Step ', ''),
@@ -180,55 +194,80 @@ export const CompanyServicesProcessSection: React.FC<CompanyServicesProcessSecti
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E5E0D8] text-[11px] font-bold tracking-[0.2em] uppercase text-[#E07A28] mb-3 shadow-2xs">
             <Sparkles className="w-3.5 h-3.5 text-[#E07A28]" />
-            <span>Services We Provide</span>
+            <span>Our 6 Core Selling Processes</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A2540] font-bold tracking-tight">
-            Our 6 Core Selling Processes
+            Six Processes That Keep Sellers Informed
           </h2>
 
           <p className="font-sans text-xs sm:text-sm text-[#6B7280] mt-3 leading-relaxed">
-            Jamison Real Estate executes a structured, 6-phase corporate selling methodology. Select any process to examine its sub-processes, or click to open its dedicated single page.
+            Every listing follows the same six-part approach, from marketing and communication to pricing and contract flexibility, so you know what Brian is doing and why.
           </p>
         </div>
 
         {/* 
-          100% CONSISTENT PROCESS TABS (Processes 1 to 6 in exact user sequence)
-          Styled in a luxury dark container with 100% crisp white text
+          ULTRA-PREMIUM PROCESS NAVIGATION (Processes 1 to 6)
+          Designed with luxury glassmorphism, gold accents, and architectural depth
         */}
-        <div className="bg-[#0A2540] p-2.5 sm:p-3.5 rounded-2xl mb-10 border border-white/10 shadow-lg">
+        <div className="relative bg-gradient-to-b from-[#002D61] via-[#00234B] to-[#001D40] p-2 sm:p-2.5 rounded-2xl mb-8 border border-white/15 shadow-2xl shadow-[#002D61]/25 overflow-hidden">
+          {/* Subtle Golden Ambient Horizon Glow */}
+          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#EA580C]/60 to-transparent pointer-events-none" />
+
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-2.5">
             {PROCESS_CATEGORIES.map((process, idx) => {
               const isSelected = activeProcessIndex === idx;
+              const Icon = PROCESS_ICONS[idx % PROCESS_ICONS.length];
+
               return (
                 <button
                   key={process.id}
                   type="button"
                   onClick={() => setActiveProcessIndex(idx)}
-                  className={`group p-3 sm:p-3.5 rounded-xl text-left transition-all duration-300 cursor-pointer flex flex-col justify-between ${
+                  className={`group relative p-3 sm:p-3.5 rounded-xl text-left transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden min-h-[92px] sm:min-h-[102px] ${
                     isSelected
-                      ? 'bg-[#E07A28] !text-white font-bold shadow-md scale-102 ring-2 ring-white/50 -translate-y-0.5'
-                      : 'bg-white/10 hover:bg-white/20 !text-white border border-white/10'
+                      ? 'bg-gradient-to-br from-[#EA580C] via-[#C2410C] to-[#9A3412] !text-white font-bold shadow-xl shadow-orange-950/60 border border-amber-300/40 ring-1 ring-amber-300/30 -translate-y-0.5'
+                      : 'bg-white/[0.06] hover:bg-white/[0.14] !text-white border border-white/10 hover:border-white/25 hover:-translate-y-0.5'
                   }`}
                 >
-                  <div className="flex items-center justify-between w-full mb-1.5">
-                    <span className="font-serif text-xs font-bold !text-white">
-                      {process.number}.
-                    </span>
+                  {/* Subtle Shimmer for active button */}
+                  {isSelected && (
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-white/10 pointer-events-none" />
+                  )}
+
+                  <div className="flex items-center justify-between w-full mb-2 relative z-10">
+                    <div className="flex items-center gap-1.5">
+                      <span className={`font-serif text-xs font-bold tracking-wider ${
+                        isSelected ? 'text-amber-100' : 'text-[#F59E0B] group-hover:text-amber-300'
+                      }`}>
+                        0{process.number}
+                      </span>
+                      <Icon className={`w-3.5 h-3.5 ${
+                        isSelected ? 'text-white' : 'text-stone-300 group-hover:text-white transition-colors'
+                      }`} />
+                    </div>
+
                     <span
-                      className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                      className={`text-[10px] font-sans font-semibold px-2 py-0.5 rounded-full transition-colors ${
                         isSelected
-                          ? 'bg-black/30 !text-white'
-                          : 'bg-black/25 !text-white'
+                          ? 'bg-black/30 text-amber-100 border border-white/20'
+                          : 'bg-black/25 text-stone-300 border border-white/10 group-hover:text-white'
                       }`}
                     >
                       {process.items.length} Steps
                     </span>
                   </div>
 
-                  <div className="font-serif text-xs sm:text-sm font-bold !text-white line-clamp-2 leading-snug">
+                  <div className={`font-serif text-xs sm:text-[13px] font-bold leading-snug relative z-10 transition-colors ${
+                    isSelected ? '!text-white drop-shadow-xs' : 'text-stone-100 group-hover:text-white'
+                  }`}>
                     {process.name}
                   </div>
+
+                  {/* Active bottom accent bar */}
+                  {isSelected && (
+                    <div className="h-0.5 w-8 bg-gradient-to-r from-amber-200 to-amber-400 rounded-full mt-2.5 mx-auto relative z-10 shadow-xs" />
+                  )}
                 </button>
               );
             })}
@@ -239,20 +278,20 @@ export const CompanyServicesProcessSection: React.FC<CompanyServicesProcessSecti
           ACTIVE PROCESS HEADER BANNER
           Provides clean, instant context for the active process + LINK TO DEDICATED SINGLE PAGE
         */}
-        <div className="bg-white border border-[#E5E0D8] rounded-2xl p-6 sm:p-7 mb-8 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-2 mb-1.5">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#E07A28] bg-[#FAF8F5] px-2.5 py-0.5 rounded-full border border-[#E5E0D8]">
-                Process {activeProcess.number} of 6
-              </span>
-              <span className="text-xs text-[#6B7280] font-medium">
-                {activeProcess.items.length} Dedicated Sub-Processes
+        <div className="bg-white/95 backdrop-blur-md border border-[#EA580C]/25 rounded-2xl p-6 sm:p-7 mb-8 shadow-md shadow-stone-900/5 flex flex-col md:flex-row md:items-center justify-between gap-5 relative overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#002D61] via-[#EA580C] to-[#002D61] pointer-events-none" />
+
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#EA580C] bg-[#FAF8F5] px-3 py-1 rounded-full border border-[#EA580C]/20 flex items-center gap-1.5">
+                <Sparkles className="w-3 h-3 text-[#EA580C]" />
+                <span>Process 0{activeProcess.number} of 06 · {activeProcess.items.length} Strategic Protocols</span>
               </span>
             </div>
-            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#0A2540]">
+            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#002D61] tracking-tight">
               {activeProcess.number}. {activeProcess.name}
             </h3>
-            <p className="text-xs sm:text-sm text-[#6B7280] mt-1.5 font-sans leading-relaxed max-w-3xl">
+            <p className="text-xs sm:text-sm text-[#4B5563] mt-2 font-sans leading-relaxed max-w-3xl">
               {activeProcess.subheading}
             </p>
           </div>
@@ -262,16 +301,16 @@ export const CompanyServicesProcessSection: React.FC<CompanyServicesProcessSecti
             <button
               type="button"
               onClick={() => handleGoToSinglePage(activeProcess.slug)}
-              className="px-5 py-2.5 rounded-full bg-[#0A2540] hover:bg-[#E07A28] text-white text-xs font-bold tracking-wide uppercase transition-all shadow-sm cursor-pointer flex items-center gap-2"
+              className="px-5 py-2.5 rounded-full bg-[#002D61] hover:bg-[#001D40] text-white text-xs font-bold tracking-wide uppercase transition-all shadow-sm hover:shadow-md cursor-pointer flex items-center gap-2 border border-white/10"
             >
               <span>View Dedicated Process Page</span>
-              <ExternalLink className="w-3.5 h-3.5" />
+              <ExternalLink className="w-3.5 h-3.5 text-amber-300" />
             </button>
 
             <button
               type="button"
               onClick={onOpenConsultation}
-              className="hidden sm:inline-flex px-5 py-2.5 rounded-full bg-[#E07A28] hover:bg-[#C86518] text-white text-xs font-bold tracking-wide uppercase transition-all shadow-sm cursor-pointer items-center gap-2"
+              className="hidden sm:inline-flex px-5 py-2.5 rounded-full bg-[#EA580C] hover:bg-[#C2410C] text-white text-xs font-bold tracking-wide uppercase transition-all shadow-md shadow-orange-600/30 hover:shadow-orange-600/50 cursor-pointer items-center gap-2"
             >
               <span>Schedule Consultation</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -306,12 +345,25 @@ export const CompanyServicesProcessSection: React.FC<CompanyServicesProcessSecti
                 <div>
                   {/* Photo Header with 100% Crisp White Title & Dark Scrim */}
                   <div className="relative h-52 w-full overflow-hidden bg-[#0A2540]">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-106"
-                      loading="lazy"
-                    />
+                    {item.title?.toLowerCase().includes('drone') || item.title?.toLowerCase().includes('aerial') || item.desc?.toLowerCase().includes('drone') ? (
+                      <video
+                        src="/media/videos/vid2.mp4"
+                        poster={item.image}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-106"
+                      />
+                    ) : (
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-106"
+                        loading="lazy"
+                      />
+                    )}
                     {/* Deep Scrim Overlay for maximum text contrast */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/92 via-black/45 to-transparent" />
 
@@ -374,10 +426,10 @@ export const CompanyServicesProcessSection: React.FC<CompanyServicesProcessSecti
               <span>100% Risk-Free Seller Protection</span>
             </div>
             <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white">
-              Ready to sell with a Top 2% OKC agent?
+              Sell With Confidence, Knowing You Can Walk Away Anytime
             </h3>
             <p className="text-xs sm:text-sm text-stone-300 mt-2 leading-relaxed">
-              Every listing agreement includes our unconditional Cancel-Anytime Pledge: if Brian Jamison fails to meet our contractual marketing, communication, and fiduciary commitments, fire us with zero penalty.
+              This listing agreement has no long-term lock-in. If promises are not met, you can cancel and move forward without penalty, so the choice stays yours.
             </p>
           </div>
 

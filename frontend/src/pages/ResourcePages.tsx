@@ -47,11 +47,11 @@ export const HomeSellersChecklistPage: React.FC<ResourcePageProps> = ({
     {
       title: "Exterior & Curb Appeal (First Impressions)",
       items: [
-        { id: "ext-1", label: "Power-wash driveway, front walkway, and front porch stone" },
+        { id: "ext-1", label: "Power-wash the driveway, front walkway, and front porch stone" },
         { id: "ext-2", label: "Apply fresh dark hardwood mulch to all front planting beds" },
-        { id: "ext-3", label: "Inspect outdoor lighting fixtures and install matching warm-white LED bulbs" },
-        { id: "ext-4", label: "Repaint or polish front entry door and oil door hinges" },
-        { id: "ext-5", label: "Trim all native tree branches touching the roofline or siding" }
+        { id: "ext-3", label: "Inspect outdoor lighting and install matching warm-white LED bulbs" },
+        { id: "ext-4", label: "Repaint or polish the front entry door and oil its hinges" },
+        { id: "ext-5", label: "Trim tree branches touching the roofline or siding" }
       ]
     },
     {
@@ -60,18 +60,18 @@ export const HomeSellersChecklistPage: React.FC<ResourcePageProps> = ({
         { id: "int-1", label: "Reduce bedroom closet contents by 40% to showcase storage capacity" },
         { id: "int-2", label: "Clear 95% of items from kitchen waterfall islands and countertops" },
         { id: "int-3", label: "Store personalized family portraits and university certificates" },
-        { id: "int-4", label: "Professionally clean hardwood flooring and steam-clean carpets" },
-        { id: "int-5", label: "Neutralize ambient scents—avoid strong plug-ins; use fresh linen air" }
+        { id: "int-4", label: "Professionally clean hardwood floors and steam-clean carpets" },
+        { id: "int-5", label: "Keep indoor scents neutral and avoid strong plug-in fragrances" }
       ]
     },
     {
       title: "Pre-Listing Mechanical & Oklahoma Inspection Prep",
       items: [
-        { id: "mech-1", label: "Replace all HVAC return filters and service AC condenser units" },
-        { id: "mech-2", label: "Test GFCI outlets in bathrooms, kitchen, and exterior circuits" },
-        { id: "mech-3", label: "Inspect roof shingles and flashings following Oklahoma storm seasons" },
-        { id: "mech-4", label: "Check hot water tanks for active TPR valve relief and sediment flush" },
-        { id: "mech-5", label: "Schedule Brian Jamison's pre-listing walk-through to prioritize high-ROI fixes" }
+        { id: "mech-1", label: "Replace HVAC return filters and service AC condenser units." },
+        { id: "mech-2", label: "Test GFCI outlets in bathrooms, the kitchen, and exterior areas" },
+        { id: "mech-3", label: "Inspect roof shingles and flashing after Oklahoma storm seasons." },
+        { id: "mech-4", label: "Check the water heater's TPR valve and arrange sediment flushing as needed" },
+        { id: "mech-5", label: "Schedule Brian Jamison's pre-listing walkthrough to prioritize repairs" }
       ]
     }
   ];
@@ -85,8 +85,8 @@ export const HomeSellersChecklistPage: React.FC<ResourcePageProps> = ({
       {/* SECTION 1: FLAGSHIP LUXURY VIDEO HERO (Identical to Homepage) */}
       <InteriorHeroVideo
         kicker="Interactive Seller Preparation Dossier"
-        title="The 2026 Home Seller's Readiness Checklist."
-        subtitle="A comprehensive room-by-room preparation guide designed to eliminate buyer inspection renegotiations and spark multi-offer bidding wars."
+        title="The 2026 Edmond, OK Home Selling Checklist"
+        subtitle="A practical home selling guide for Edmond, OK, with room-by-room preparation steps to help reduce inspection concerns and present your property to buyers."
         heroVideoUrl="/media/videos/vid1.mp4"
         heroFallbackImage="/media/gallery/modern-estate-pool-lawn.jpeg"
         metrics={[
@@ -165,7 +165,7 @@ export const HomeSellersChecklistPage: React.FC<ResourcePageProps> = ({
           <div className="mt-12 text-center p-8 rounded-3xl bg-[#002D61] text-white">
             <h3 className="font-serif text-2xl font-bold mb-3">Want Brian to Walk Your Property Personally?</h3>
             <p className="text-xs sm:text-sm text-stone-300 max-w-lg mx-auto mb-6">
-              Brian Jamison conducts zero-obligation pre-listing walkthroughs to pinpoint which updates yield 3x returns and which updates waste your hard-earned money.
+              Brian Jamison offers no-obligation pre-listing walkthroughs to help identify worthwhile updates and avoid unnecessary spending. Get practical guidance on the steps to selling a house in Edmond, OK, and what to expect when selling a home in Edmond, OK.
             </p>
             <button
               onClick={onOpenConsultation}
@@ -217,8 +217,8 @@ export const MortgageCalculatorPage: React.FC<ResourcePageProps> = ({
       {/* SECTION 1: FLAGSHIP LUXURY VIDEO HERO (Identical to Homepage) */}
       <InteriorHeroVideo
         kicker="Accurate Oklahoma Financing Engine"
-        title="Oklahoma City Mortgage & Payment Calculator."
-        subtitle="Calculate exact monthly obligations including principal, interest, Oklahoma county ad valorem property taxes, and hazard homeowners insurance."
+        title="Calculate Your Edmond Mortgage and Plan With Confidence"
+        subtitle="Calculate exact monthly obligations, including principal, interest, Oklahoma county ad valorem property taxes, and hazard homeowners insurance."
         heroVideoUrl="/media/videos/vid1.mp4"
         heroFallbackImage="/media/gallery/modern-estate-pool-lawn.jpeg"
         metrics={[
@@ -570,33 +570,185 @@ export const FaqPage: React.FC<ResourcePageProps> = ({
   onOpenConsultation,
   onOpenValuation
 }) => {
+  const [activeCategory, setActiveCategory] = useState<'all' | 'selling' | 'buying' | 'land' | 'brokerage'>('all');
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
-  const faqs = [
+  const allFaqs = [
+    // Brokerage & Standards
     {
+      category: 'brokerage',
+      categoryLabel: 'Brokerage & Guarantee',
       q: "How does Brian Jamison's 100% Cancel-Anytime Listing Guarantee work?",
-      a: "Unlike traditional real estate agreements that lock sellers into 6-month ironclad contracts, Brian provides a 100% risk-free pledge. If Brian fails to execute on any aspect of his marketing blueprint, showing feedback policy, or communication standards, you can terminate the listing agreement at any time with zero penalty and no cancellation fees."
+      a: "Our cancel-anytime listing agreement in Edmond, OK puts Brian’s cancellation commitment in writing, with the applicable conditions defined in your contract. If agreed-upon marketing standards, showing feedback protocols, or communication promises are not met, you have the contractual right to terminate with zero penalty."
     },
     {
+      category: 'brokerage',
+      categoryLabel: 'Brokerage & Guarantee',
       q: "What is included in the 6-Phase Seller Blueprint?",
       a: "The blueprint encompasses 30+ specific deliverables including: 4K cinema walkthrough video, FAA-certified aerial drone mapping, Matterport 3D virtual tour, syndication to 350+ global portals, targeted social advertising, reverse prospecting to active buyer agents, mandatory 2-hour showing feedback calls, and a dedicated 7-person specialized transaction support team."
     },
     {
+      category: 'brokerage',
+      categoryLabel: 'Brokerage & Guarantee',
       q: "Where is your physical office located?",
       a: "Brian Jamison is affiliated with the Salt Real Estate Corporate Office located at 1508 W. Edmond Rd., Edmond, Oklahoma 73003. Brian serves clients across the entire Greater Oklahoma City metropolitan area."
     },
     {
+      category: 'brokerage',
+      categoryLabel: 'Brokerage & Guarantee',
       q: "How does Brian price homes to trigger bidding wars?",
       a: "Rather than arbitrary guessing, Brian utilizes a 3-Tier Strategic Pricing Architecture (Conservative, Target, and Aspirational). By positioning the list price right below key buyer search brackets, we spark psychological urgency and competitive multiple-offer scenarios."
     },
     {
-      q: "How does the recent NAR settlement change buyer representation?",
-      a: "Under the new rules, buyers must execute a written representation agreement with their agent before touring homes. Brian provides completely transparent fiduciary buyer advisory, ensuring you know exactly what services are provided with zero hidden fees."
-    },
-    {
+      category: 'brokerage',
+      categoryLabel: 'Brokerage & Guarantee',
       q: "How fast can I get a confidential home valuation?",
       a: "You can submit your property address through our website's Confidential Valuation tool for an immediate automated appraisal, followed by Brian's personalized CMA dossier within 24 hours."
+    },
+
+    // Home Selling (lines 515–528)
+    {
+      category: 'selling',
+      categoryLabel: 'Home Selling',
+      q: "What steps should I take before listing my home in Edmond, OK?",
+      a: "Start with a walkthrough to identify high-ROI repairs, declutter living spaces, and gather key property records. Brian provides a room-by-room preparation checklist and a detailed market valuation before any public marketing begins."
+    },
+    {
+      category: 'selling',
+      categoryLabel: 'Home Selling',
+      q: "How does professional photography and video affect home marketing?",
+      a: "Over 95% of buyers begin their home search online. Brian coordinates professional HDR interior/exterior photography, cinema-grade 4K walkthrough video, FAA-certified aerial drone mapping, and interactive Matterport 3D tours to showcase your property."
+    },
+    {
+      category: 'selling',
+      categoryLabel: 'Home Selling',
+      q: "What is a cancel-anytime listing agreement?",
+      a: "Our cancel-anytime listing agreement puts Brian's service commitments in writing. If agreed-upon marketing standards or communication promises are not met, you have the contractual right to terminate the listing agreement with zero penalty."
+    },
+    {
+      category: 'selling',
+      categoryLabel: 'Home Selling',
+      q: "How is a home's listing price determined?",
+      a: "Brian conducts a thorough comparative market analysis (CMA) evaluating active, pending, and recently sold properties, micro-market absorption rates, and unique property attributes to recommend a 3-tier pricing strategy."
+    },
+    {
+      category: 'selling',
+      categoryLabel: 'Home Selling',
+      q: "How do showing appointments and feedback work?",
+      a: "Showings are scheduled through a secure digital showing platform with your advance approval. Brian requires mandatory feedback from every showing agent within 2 hours, summarized for you in a weekly activity report."
+    },
+    {
+      category: 'selling',
+      categoryLabel: 'Home Selling',
+      q: "What happens after an offer is accepted?",
+      a: "Once under contract, Brian coordinates earnest money escrow, guides you through buyer home inspections and repair negotiations, monitors lender underwriting milestones, and oversees title work through closing."
+    },
+    {
+      category: 'selling',
+      categoryLabel: 'Home Selling',
+      q: "How are real estate commissions handled?",
+      a: "All professional fees are discussed openly and defined in your written listing agreement before you commit. You review the scope of services, marketing investments, and representation duties with complete transparency."
+    },
+
+    // Home Buying (lines 348–361)
+    {
+      category: 'buying',
+      categoryLabel: 'Home Buying',
+      q: "What is the first step in the Edmond home buying process?",
+      a: "The first step is a private buyer strategy session and mortgage pre-approval review to clarify your purchasing power, target neighborhoods, and preferred timeline before touring properties."
+    },
+    {
+      category: 'buying',
+      categoryLabel: 'Home Buying',
+      q: "How does buyer representation work, and who pays the commission?",
+      a: "Under current industry rules, buyers execute a written representation agreement outlining the agent's fiduciary duties and agreed compensation. Brian negotiates seller concessions or broker-to-broker compensation whenever possible."
+    },
+    {
+      category: 'buying',
+      categoryLabel: 'Home Buying',
+      q: "How do I verify school boundaries before buying?",
+      a: "School boundaries can shift across streets and subdivisions. Brian helps buyers verify exact school attendance boundaries directly with Edmond Public Schools, Deer Creek, or Oakdale administration before submitting an offer."
+    },
+    {
+      category: 'buying',
+      categoryLabel: 'Home Buying',
+      q: "What inspections should I order on an Oklahoma home?",
+      a: "In addition to a standard whole-house physical inspection, we strongly advise specialized roof/hail assessments, foundation elevation surveys, sewer lateral camera scopes, and HVAC certifications given Oklahoma's soil and weather dynamics."
+    },
+    {
+      category: 'buying',
+      categoryLabel: 'Home Buying',
+      q: "How long does it take to close on a home in Oklahoma?",
+      a: "Typical financed purchases take 30 to 45 days from contract acceptance to closing. Cash purchases can close in as few as 10 to 14 days once title examination is complete."
+    },
+    {
+      category: 'buying',
+      categoryLabel: 'Home Buying',
+      q: "What happens if a home does not appraise for the contract price?",
+      a: "If an appraisal shortfall occurs, Brian helps you explore options: challenging the appraisal with additional comparable sales, negotiating a price adjustment with the seller, or exercising contractual appraisal contingencies to protect your earnest deposit."
+    },
+    {
+      category: 'buying',
+      categoryLabel: 'Home Buying',
+      q: "Can I cancel a contract if major inspection issues are discovered?",
+      a: "Yes. During the standard Oklahoma contract 10-day Treatment, Repair, and Replacement (TR&R) inspection period, you have the right to request repairs or terminate the contract with full refund of your earnest money deposit if terms cannot be agreed upon."
+    },
+
+    // Land Buying & Selling (lines 635–651)
+    {
+      category: 'land',
+      categoryLabel: 'Land & Acreage',
+      q: "What should I investigate before buying vacant land in Oklahoma?",
+      a: "Key due diligence includes soil perc testing for septic suitability, FEMA flood zone mapping, county zoning and deed restrictions, boundary surveys, and access to municipal or rural water and electric utilities."
+    },
+    {
+      category: 'land',
+      categoryLabel: 'Land & Acreage',
+      q: "How do utility connections affect land value?",
+      a: "Bringing electrical three-phase lines or extending water mains hundreds of feet can cost tens of thousands of dollars. Land with utilities already at the road or parcel boundary commands a substantial premium."
+    },
+    {
+      category: 'land',
+      categoryLabel: 'Land & Acreage',
+      q: "Can I divide a larger parcel into smaller residential lots?",
+      a: "Parcel splits depend on county planning commission requirements, minimum lot sizes, road frontage minimums, and subdivision regulations. Brian provides parcel split feasibility advisory before purchase."
+    },
+    {
+      category: 'land',
+      categoryLabel: 'Land & Acreage',
+      q: "What financing options exist for vacant land in Oklahoma?",
+      a: "Land purchases can be financed through local agricultural credit associations (such as Farm Credit), local community banks, or seller financing. Raw unimproved land typically requires 20% to 35% down payment."
+    },
+    {
+      category: 'land',
+      categoryLabel: 'Land & Acreage',
+      q: "How does zoning affect what I can build on my land?",
+      a: "Zoning ordinances and county comprehensive plans govern permissible uses, outbuilding construction, workshops, livestock allowances, and secondary dwelling units. Always verify zoning before finalizing an acquisition."
+    },
+    {
+      category: 'land',
+      categoryLabel: 'Land & Acreage',
+      q: "What is a percolation (perc) test, and why is it needed?",
+      a: "A perc test measures the soil's water absorption rate to determine whether a standard aerobic or conventional septic system can be installed. It is mandatory for building permits on rural tracts lacking municipal sewer."
+    },
+    {
+      category: 'land',
+      categoryLabel: 'Land & Acreage',
+      q: "How is vacant land valued differently than residential property?",
+      a: "Vacant land valuation is determined by usable topography, road frontage, tree canopy vs pasture ratio, mineral rights ownership, drainage, and utility accessibility, rather than square foot formulas."
     }
+  ];
+
+  const filteredFaqs = activeCategory === 'all'
+    ? allFaqs
+    : allFaqs.filter((f) => f.category === activeCategory);
+
+  const categories = [
+    { id: 'all', label: 'All Questions' },
+    { id: 'selling', label: 'Home Selling' },
+    { id: 'buying', label: 'Home Buying' },
+    { id: 'land', label: 'Land & Acreage' },
+    { id: 'brokerage', label: 'Brokerage & Guarantee' }
   ];
 
   return (
@@ -624,37 +776,64 @@ export const FaqPage: React.FC<ResourcePageProps> = ({
       />
 
       <section className="w-full py-16 sm:py-24 bg-[#FAF9F6]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-12 space-y-4">
-          {faqs.map((faq, idx) => {
-            const isOpen = openIdx === idx;
-            return (
-              <div
-                key={idx}
-                className="rounded-2xl bg-white border border-[#E6E2DA] overflow-hidden transition-colors"
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-12 space-y-8">
+          {/* Category Filter Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2 pb-4 border-b border-[#E6E2DA]">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => {
+                  setActiveCategory(cat.id as any);
+                  setOpenIdx(0);
+                }}
+                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                  activeCategory === cat.id
+                    ? 'bg-[#002D61] text-white shadow-sm'
+                    : 'bg-white text-[#4B5563] border border-[#E6E2DA] hover:border-[#EA580C]/60 hover:text-[#002D61]'
+                }`}
               >
-                <button
-                  type="button"
-                  onClick={() => setOpenIdx(isOpen ? null : idx)}
-                  className="w-full p-6 text-left flex items-center justify-between gap-4 cursor-pointer"
+                {cat.label}
+              </button>
+            ))}
+          </div>
+
+          <div className="space-y-4">
+            {filteredFaqs.map((faq, idx) => {
+              const isOpen = openIdx === idx;
+              return (
+                <div
+                  key={idx}
+                  className="rounded-2xl bg-white border border-[#E6E2DA] overflow-hidden transition-colors"
                 >
-                  <span className="font-serif text-lg font-bold text-[#002D61]">{faq.q}</span>
-                  <ChevronDown className={`w-5 h-5 text-[#EA580C] shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-                </button>
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="px-6 pb-6 text-sm text-[#4B5563] leading-relaxed border-t border-stone-100 pt-4"
-                    >
-                      {faq.a}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
+                  <button
+                    type="button"
+                    onClick={() => setOpenIdx(isOpen ? null : idx)}
+                    className="w-full p-6 text-left flex items-center justify-between gap-4 cursor-pointer"
+                  >
+                    <div>
+                      <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-stone-100 text-[#002D61] mb-2">
+                        {faq.categoryLabel}
+                      </span>
+                      <h3 className="font-serif text-lg font-bold text-[#002D61]">{faq.q}</h3>
+                    </div>
+                    <ChevronDown className={`w-5 h-5 text-[#EA580C] shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="px-6 pb-6 text-sm text-[#4B5563] leading-relaxed border-t border-stone-100 pt-4"
+                      >
+                        {faq.a}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
 
           <div className="mt-12 text-center p-8 rounded-3xl bg-[#F4F1EB] border border-[#E6E2DA]">
             <h3 className="font-serif text-xl font-bold text-[#002D61] mb-2">Have a Question Not Listed Here?</h3>

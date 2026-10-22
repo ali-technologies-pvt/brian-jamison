@@ -65,7 +65,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
             const easeOut = 1 - Math.pow(1 - progress, 3);
 
             setCounts({
-              volume: Math.floor(easeOut * 70),
+              volume: Math.floor(easeOut * 62),
               closings: Math.floor(easeOut * 370),
               percent: Math.floor(easeOut * 2),
               pledge: Math.floor(easeOut * 100),
@@ -75,7 +75,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
               requestAnimationFrame(animateCounts);
             } else {
               setCounts({
-                volume: 70,
+                volume: 62,
                 closings: 370,
                 percent: 2,
                 pledge: 100,
@@ -175,28 +175,40 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
               <span className="text-white/40">·</span>
               <span className="text-stone-200">Oklahoma City Metro</span>
               <span className="text-white/40 hidden sm:inline">·</span>
-              <span className="text-stone-300 font-medium hidden sm:inline">$70M+ Volume Sold</span>
+              <span className="text-stone-300 font-medium hidden sm:inline">$62M+ Volume Sold</span>
             </div>
           </div>
 
           {/* Display Headline: Bold luxury serif with inline editing support */}
           <div className="mb-6 sm:mb-7">
-            <EditableText
-              contentKey="home_hero_title"
-              initialContent="The Agent Who Works Like Every Deal Is Personal."
-              as="h1"
-              className="animate-fade-in-delayed font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-bold leading-[1.08] tracking-tight !text-white text-balance drop-shadow-[0_2px_16px_rgba(0,0,0,0.9)]"
-            />
+            {isAdmin && isEditMode ? (
+              <EditableText
+                contentKey="home_hero_title"
+                initialContent="Turn Your Edmond Home Search Into A Winning Move"
+                as="h1"
+                className="animate-fade-in-delayed font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-bold leading-[1.08] tracking-tight !text-white text-balance drop-shadow-[0_2px_16px_rgba(0,0,0,0.9)]"
+              />
+            ) : (
+              <h1 className="animate-fade-in-delayed font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-bold leading-[1.08] tracking-tight !text-white text-balance drop-shadow-[0_2px_16px_rgba(0,0,0,0.9)]">
+                Turn Your Edmond Home Search Into A Winning Move
+              </h1>
+            )}
           </div>
 
           {/* Subtitle: High-contrast white font with inline editing support */}
           <div className="mb-8 sm:mb-9">
-            <EditableText
-              contentKey="home_hero_subtitle"
-              initialContent="I help Oklahoma City, Edmond and Nichols Hills homeowners sell for top dollar with professional video, real marketing, and a listing you can cancel anytime."
-              as="p"
-              className="animate-fade-in-delayed-2 font-sans text-base sm:text-lg md:text-xl !text-white leading-relaxed max-w-2xl font-normal drop-shadow-[0_1px_8px_rgba(0,0,0,0.95)]"
-            />
+            {isAdmin && isEditMode ? (
+              <EditableText
+                contentKey="home_hero_subtitle"
+                initialContent="Every real estate move is personal. Brian Jamison of SALT Real Estate offers direct advice, local market insight, and hands-on support to help you make informed decisions across Edmond and Greater Oklahoma City."
+                as="p"
+                className="animate-fade-in-delayed-2 font-sans text-base sm:text-lg md:text-xl !text-white leading-relaxed max-w-2xl font-normal drop-shadow-[0_1px_8px_rgba(0,0,0,0.95)]"
+              />
+            ) : (
+              <p className="animate-fade-in-delayed-2 font-sans text-base sm:text-lg md:text-xl !text-white leading-relaxed max-w-2xl font-normal drop-shadow-[0_1px_8px_rgba(0,0,0,0.95)]">
+                Every real estate move is personal. Brian Jamison of SALT Real Estate offers direct advice, local market insight, and hands-on support to help you make informed decisions across Edmond and Greater Oklahoma City.
+              </p>
+            )}
           </div>
 
           {/* Action CTAs: Bespoke Luxury Styling with Warm Gold Shimmer & Frosted Glass */}
@@ -247,40 +259,40 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
             {/* Stat 1: Volume */}
             <div className="flex flex-col items-center justify-center px-2 sm:px-4 py-2 sm:py-0 group cursor-default">
               <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold !text-white tracking-tight tabular-nums group-hover:text-[#FB923C] transition-colors duration-300 drop-shadow-xs whitespace-nowrap">
-                $<EditableText contentKey="stat_volume_num" initialContent={String(counts.volume)} as="span" />M+
+                ${counts.volume}M+
               </span>
               <span className="text-[10px] sm:text-xs tracking-[0.16em] uppercase font-sans font-semibold !text-stone-100 mt-1 sm:mt-1.5 whitespace-nowrap">
-                <EditableText contentKey="stat_volume_label" initialContent="Volume Sold" as="span" />
+                Volume Sold
               </span>
             </div>
 
             {/* Stat 2: Closings */}
             <div className="flex flex-col items-center justify-center px-2 sm:px-4 py-2 sm:py-0 group cursor-default">
               <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold !text-white tracking-tight tabular-nums group-hover:text-[#FB923C] transition-colors duration-300 drop-shadow-xs whitespace-nowrap">
-                <EditableText contentKey="stat_closings_num" initialContent={String(counts.closings)} as="span" />+
+                {counts.closings}+
               </span>
               <span className="text-[10px] sm:text-xs tracking-[0.16em] uppercase font-sans font-semibold !text-stone-100 mt-1 sm:mt-1.5 whitespace-nowrap">
-                <EditableText contentKey="stat_closings_label" initialContent="Career Closings" as="span" />
+                Career Closings
               </span>
             </div>
 
             {/* Stat 3: Rank */}
             <div className="flex flex-col items-center justify-center px-2 sm:px-4 py-2 sm:py-0 group cursor-default">
               <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold !text-white tracking-tight tabular-nums group-hover:text-[#FB923C] transition-colors duration-300 drop-shadow-xs whitespace-nowrap">
-                Top <EditableText contentKey="stat_rank_num" initialContent={String(counts.percent)} as="span" />%
+                Top {counts.percent}%
               </span>
               <span className="text-[10px] sm:text-xs tracking-[0.16em] uppercase font-sans font-semibold !text-stone-100 mt-1 sm:mt-1.5 whitespace-nowrap">
-                <EditableText contentKey="stat_rank_label" initialContent="OKC Producer" as="span" />
+                OKC Producer
               </span>
             </div>
 
             {/* Stat 4: Guarantee */}
             <div className="flex flex-col items-center justify-center px-2 sm:px-4 py-2 sm:py-0 group cursor-default">
               <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold !text-white tracking-tight tabular-nums group-hover:text-[#FB923C] transition-colors duration-300 drop-shadow-xs whitespace-nowrap">
-                <EditableText contentKey="stat_pledge_num" initialContent={String(counts.pledge)} as="span" />%
+                {counts.pledge}%
               </span>
               <span className="text-[10px] sm:text-xs tracking-[0.16em] uppercase font-sans font-semibold !text-stone-100 mt-1 sm:mt-1.5 whitespace-nowrap">
-                <EditableText contentKey="stat_pledge_label" initialContent="Cancel-Anytime Pledge" as="span" />
+                Cancel-Anytime Pledge
               </span>
             </div>
           </div>

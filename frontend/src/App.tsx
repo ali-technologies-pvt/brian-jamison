@@ -10,15 +10,24 @@ import { MicroMarketsSection } from './components/MicroMarketsSection';
 import { ClosingCta } from './components/ClosingCta';
 import { VideoMarqueeFooter } from './components/VideoMarqueeFooter';
 import { Footer } from './components/Footer';
-import { InteriorPageView } from './pages/InteriorPageView';
 import { getPageByPath } from './pages/pageData';
-import { AdminLoginView } from './components/admin/AdminLoginView';
 import { AdminProvider } from './context/AdminContext';
 import { AdminToolbar } from './components/AdminToolbar';
 import { GlobalInlineEditor } from './components/admin/GlobalInlineEditor';
-import { IdxTestPage } from './pages/IdxTestPage';
-import { MapSearchPage } from './pages/MapSearchPage';
-import { SitemapPage } from './pages/SitemapPage';
+
+// Ultra-Fast Async Code Splitting
+const InteriorPageView = React.lazy(() => import('./pages/InteriorPageView').then(m => ({ default: m.InteriorPageView })));
+const AdminLoginView = React.lazy(() => import('./components/admin/AdminLoginView').then(m => ({ default: m.AdminLoginView })));
+const IdxTestPage = React.lazy(() => import('./pages/IdxTestPage').then(m => ({ default: m.IdxTestPage })));
+const MapSearchPage = React.lazy(() => import('./pages/MapSearchPage').then(m => ({ default: m.MapSearchPage })));
+const SitemapPage = React.lazy(() => import('./pages/SitemapPage').then(m => ({ default: m.SitemapPage })));
+
+const AppFallback = () => (
+  <div className="w-full min-h-[70vh] bg-[#FAF9F6] flex flex-col items-center justify-center p-8">
+    <div className="w-10 h-10 border-3 border-[#002D61] border-t-[#EA580C] rounded-full animate-spin mb-4" />
+    <span className="text-xs uppercase tracking-widest text-[#002D61] font-bold">Loading Page...</span>
+  </div>
+);
 import {
   ValuationModal,
   ConsultationModal,
@@ -159,7 +168,11 @@ export default function App() {
   const activeInteriorPage = currentPath !== '/' && !isAdminRoute && !isIdxRoute && !isIdxWidgetRoute && !isSitemapRoute ? getPageByPath(currentPath) : null;
 
   if (isAdminRoute) {
-    return <AdminLoginView onNavigate={navigate} />;
+    return (
+      <React.Suspense fallback={<AppFallback />}>
+        <AdminLoginView onNavigate={navigate} />
+      </React.Suspense>
+    );
   }
 
   return (
@@ -180,33 +193,41 @@ export default function App() {
       <main className="flex-1">
         {isIdxWidgetRoute ? (
           /* Interactive Oklahoma City MLS Map Search */
-          <MapSearchPage
-            onNavigate={navigate}
-            onOpenConsultation={handleOpenConsultation}
-            onOpenValuation={() => handleOpenValuation()}
-          />
+          <React.Suspense fallback={<AppFallback />}>
+            <MapSearchPage
+              onNavigate={navigate}
+              onOpenConsultation={handleOpenConsultation}
+              onOpenValuation={() => handleOpenValuation()}
+            />
+          </React.Suspense>
         ) : isIdxRoute ? (
           /* Dedicated IDX Broker Quick Search Test Page */
-          <IdxTestPage
-            onNavigate={navigate}
-            onOpenConsultation={handleOpenConsultation}
-            onOpenValuation={() => handleOpenValuation()}
-          />
+          <React.Suspense fallback={<AppFallback />}>
+            <IdxTestPage
+              onNavigate={navigate}
+              onOpenConsultation={handleOpenConsultation}
+              onOpenValuation={() => handleOpenValuation()}
+            />
+          </React.Suspense>
         ) : isSitemapRoute ? (
           /* Dedicated Platform Sitemap & Architecture Directory */
-          <SitemapPage
-            onNavigate={navigate}
-            onOpenConsultation={handleOpenConsultation}
-            onOpenValuation={() => handleOpenValuation()}
-          />
+          <React.Suspense fallback={<AppFallback />}>
+            <SitemapPage
+              onNavigate={navigate}
+              onOpenConsultation={handleOpenConsultation}
+              onOpenValuation={() => handleOpenValuation()}
+            />
+          </React.Suspense>
         ) : activeInteriorPage ? (
           /* Dedicated Interior Page Architecture */
-          <InteriorPageView
-            page={activeInteriorPage}
-            onNavigate={navigate}
-            onOpenConsultation={handleOpenConsultation}
-            onOpenValuation={() => handleOpenValuation()}
-          />
+          <React.Suspense fallback={<AppFallback />}>
+            <InteriorPageView
+              page={activeInteriorPage}
+              onNavigate={navigate}
+              onOpenConsultation={handleOpenConsultation}
+              onOpenValuation={() => handleOpenValuation()}
+            />
+          </React.Suspense>
         ) : (
           /* Flagship Animated Luxury Homepage */
           <>

@@ -33,10 +33,10 @@ export const FeaturedClosings: React.FC<FeaturedClosingsProps> = ({ onSelectProp
               Verified Track Record
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] font-bold tracking-tight">
-              Actual Closings & Results
+              Experience You Can Verify
             </h2>
             <p className="font-sans text-sm text-[#6B7280] mt-2 max-w-lg">
-              From $160K starter homes to $2.7M+ luxury estates — every client receives the exact same high-level dedication, marketing, and communication.
+              Brian Jamison, a real estate agent in Edmond, OK, backs his work with verified sales history and client reviews.
             </p>
           </div>
 

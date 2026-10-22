@@ -94,8 +94,8 @@ export const BROKER_INFO = {
   phoneRaw: "+14055133039",
   email: "BJamison@Salt.RealEstate",
   stats: {
-    volumeSold: "$70M+",
-    volumeNumber: 70,
+    volumeSold: "$62M+",
+    volumeNumber: 62,
     closings: "370+",
     closingsNumber: 370,
     producerRank: "Top 2%",
@@ -118,7 +118,7 @@ export const CHAPTERS: Chapter[] = [
     index: "01",
     tag: "01 / BUYER CONCIERGE & EQUITY ADVISORY",
     title: "Home Buying",
-    summary: "Curated off-market inventory access, structural & inspection defense, and veteran negotiation protecting your equity across Edmond and Greater OKC.",
+    summary: "Work with a Realtor in Edmond, OK, who explains each offer, inspection, and closing step in plain language.",
     bulletPoints: [
       "Exclusive access to coming-soon and unlisted pocket luxury inventory",
       "Rigorous architectural, foundation, and mechanical due diligence",
@@ -133,7 +133,7 @@ export const CHAPTERS: Chapter[] = [
     index: "02",
     tag: "02 / 6-STEP SELLING BLUEPRINT",
     title: "Home Selling",
-    summary: "Our proprietary 6-step selling machine: cinema-grade 4K media, 350+ portal syndication, and disciplined negotiation engineered for record-setting bidding wars.",
+    summary: "Strategic pricing, polished marketing, and Brian’s steady communication help you reach qualified buyers and pursue the best offers.",
     bulletPoints: [
       "Cinema-grade 4K video, FAA drone mapping, and Matterport 3D tours",
       "High-ROI pre-listing refresh and architectural staging guidance",
@@ -147,8 +147,8 @@ export const CHAPTERS: Chapter[] = [
     id: "land-buying-and-selling",
     index: "03",
     tag: "03 / ACREAGE & DEVELOPMENT ENCLAVES",
-    title: "Land Buying and selling",
-    summary: "Comprehensive parcel boundary mapping, utility & soil feasibility audits, and strategic marketing for custom home lots, residential developments, and Oklahoma acreage.",
+    title: "Land Buying and Selling",
+    summary: "Zoning, access, utilities, and value shape every land deal. Brian helps you weigh them before buying or selling.",
     bulletPoints: [
       "Topographical drone surveys, aerial boundary overlays, and soil tests",
       "Zoning, utility easement, and municipal permitting feasibility audits",

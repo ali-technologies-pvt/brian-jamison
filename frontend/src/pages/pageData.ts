@@ -227,6 +227,24 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Paycom Center (NBA Oklahoma City Thunder)",
       "Oklahoma City Museum of Art & Civic Center Music Hall"
     ],
+    faqs: [
+          {
+                "q": "What makes Heritage Hills homes distinctive?",
+                "a": "Many properties feature period architecture, original design details, mature landscaping, and traditional layouts. Renovation quality and historic features differ by home, making individual property reviews important."
+          },
+          {
+                "q": "What should buyers review before purchasing a historic property?",
+                "a": "Check the roof, foundation, electrical and plumbing systems, renovation records, and applicable preservation rules. A professional inspection can help identify repairs and likely maintenance costs."
+          },
+          {
+                "q": "Where can buyers find neighborhood homes for sale in Oklahoma City?",
+                "a": "Buyers can review current real estate listings, compare property features, and work with a local agent to identify suitable options. Availability and asking prices change as homes enter or leave the market."
+          },
+          {
+                "q": "How can sellers assess current property values in Heritage Hills?",
+                "a": "Review recent comparable sales, home condition, renovations, lot features, and current buyer demand. A comparative market analysis can help establish a reasonable asking price based on available market evidence."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "edmond": {
@@ -262,6 +280,24 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Arcadia Lake recreation, camping, and boat launch access",
       "Mitch Park & YMCA 280-acre athletic complex"
     ],
+    faqs: [
+          {
+                "q": "What types of homes can buyers find in Edmond and Oakdale?",
+                "a": "Buyers can explore modern family homes, traditional brick houses, luxury estates, and properties with larger lots. Features, prices, and available options vary by neighborhood and property."
+          },
+          {
+                "q": "Are there homes with acreage for sale in Edmond, OK?",
+                "a": "Yes, buyers may find properties with larger lots and private outdoor space. Compare acreage, access, utilities, maintenance needs, and zoning requirements before making a purchase."
+          },
+          {
+                "q": "How can buyers verify school boundaries before purchasing a home?",
+                "a": "Contact the relevant school district to confirm school assignments and enrollment requirements for the exact property address before submitting an offer."
+          },
+          {
+                "q": "What should sellers consider when valuing a home in Edmond, OK?",
+                "a": "Sellers should review recent comparable sales, property condition, renovations, lot size, and current market activity. A local comparative market analysis can help establish a realistic asking price."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "nichols-hills": {
@@ -269,8 +305,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/nichols-hills",
     category: "community",
     kicker: "OKC'S MOST PRESTIGIOUS ZIP CODE",
-    title: "Nichols Hills Premier Estates & Grand Enclaves",
-    subtitle: "Oklahoma's most exclusive residential enclave, featuring multi-million dollar architectural masterpieces, 24/7 dedicated city police, and private country clubs.",
+    title: "Nichols Hills Luxury Real Estate & Community Guide",
+    subtitle: "Find luxury homes for sale in Nichols Hills, OK, with distinctive architecture, established residential streets, and access to private country clubs.",
     heroVideoUrl: "/media/videos/vid5.mp4",
     heroFallbackImage: "/media/gallery/modern-estate-pool-lawn.jpeg",
     heroMetrics: [
@@ -278,7 +314,7 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       { label: "Police Response", value: "< 2 Mins" },
       { label: "Private Acreages", value: "Up to 3+ Ac" }
     ],
-    overview: "Conceived by visionary developer G.A. Nichols in 1929, Nichols Hills was designed with wide curvilinear streets, expansive park medians, and strict architectural standards. It remains the preferred residence of Oklahoma's leading executives, doctors, and civic founders.",
+    overview: "Nichols Hills features winding streets, landscaped park medians, and established architectural character. Its residential appeal attracts executives, professionals, and families seeking distinctive homes near Oklahoma City.\n\nProperties across the area reflect a range of architectural styles. From English Tudor homes with limestone details to Colonial Revival residences with detached carriage houses, the community blends historic character with modern interior updates. Buyers exploring houses for sale in Nichols Hill, OK, can compare architectural details, lot sizes, and property features.",
     keyTakeaways: [
       "Independent municipality with its own dedicated police and fire departments",
       "Home to the prestigious Oklahoma City Golf & Country Club",
@@ -291,8 +327,26 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     ],
     lifestyleHighlights: [
       "Oklahoma City Golf & Country Club",
-      "Nichols Hills Plaza upscale shopping and dining",
-      "Grand Boulevard walking trails and shaded park sanctuaries"
+      "Nichols Hills Plaza shopping and dining",
+      "Grand Boulevard walking routes and landscaped green spaces"
+    ],
+    faqs: [
+          {
+                "q": "What types of homes are available?",
+                "a": "Buyers can find luxury estates, single-family homes, historic residences, and properties with modern interior updates. Options vary by architectural style, lot size, features, and price."
+          },
+          {
+                "q": "What should buyers consider when purchasing a home?",
+                "a": "Consider your budget, property condition, lot features, school boundaries, and commute needs. Review applicable municipal rules before planning exterior changes or renovations."
+          },
+          {
+                "q": "Are luxury homes available in Nichols Hills, OK?",
+                "a": "Yes, the market includes upscale residences with distinctive architecture, spacious lots, and high-end features. Availability, pricing, and property details vary as listings change."
+          },
+          {
+                "q": "How can buyers verify school assignments before purchasing a home?",
+                "a": "Contact the relevant school district to confirm the property's assigned schools and enrollment requirements. Verify the information for the exact address before submitting an offer."
+          }
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
@@ -301,8 +355,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/norman",
     category: "community",
     kicker: "UNIVERSITY & CULTURAL ENCLAVE",
-    title: "Norman Real Estate, Golf Estates & University Living",
-    subtitle: "Home to the University of Oklahoma, Norman merges college-town energy with affluent neighborhoods like Brookhaven, Hallbrooke, and Lake Thunderbird acreages.",
+    title: "Norman Real Estate & Community Guide",
+    subtitle: "Explore homes for sale in Norman OK with your daily needs in mind. Compare home styles, neighborhood details, and outdoor space before planning your next tour.",
     heroVideoUrl: "/media/videos/vid6.mp4",
     heroFallbackImage: "/media/properties/435-nw-21st-heritage-hills.jpeg",
     heroMetrics: [
@@ -310,7 +364,7 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       { label: "Avg Days on Market", value: "17 Days" },
       { label: "Rental & Equity Yield", value: "High" }
     ],
-    overview: "Norman is Oklahoma's third-largest city and intellectual core. Residents enjoy SEC football Saturdays, world-class research institutions, historic tree-lined avenues in Chautauqua, and serene waterfront living at Lake Thunderbird.",
+    overview: "Norman is Oklahoma's third-largest city and intellectual core, home to the University of Oklahoma. The city blends vibrant cultural energy with diverse residential neighborhoods, historic districts, and lakefront living at Lake Thunderbird.\n\nHomes vary from historic bungalows near campus to expansive custom estates in gated golf enclaves and peaceful rural tracts. Buyers exploring houses for sale in Norman, OK, can compare neighborhood character, school zones, and community amenities.",
     keyTakeaways: [
       "Vibrant cultural atmosphere with museums, music venues, and college athletics",
       "Top-rated Norman Public Schools and University of Oklahoma faculty communities",
@@ -326,6 +380,32 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Fred Jones Jr. Museum of Art",
       "Lake Thunderbird State Park boating and equestrian trails"
     ],
+    faqs: [
+          {
+                "q": "How should I start my Norman home search?",
+                "a": "Set your budget and choose your essential features first. Then, compare location, layout, condition, and upkeep needs."
+          },
+          {
+                "q": "How do I compare golf course properties?",
+                "a": "Confirm actual course frontage, views, and lot boundaries. Also, check membership terms separately from the home purchase."
+          },
+          {
+                "q": "How can I verify a school assignment?",
+                "a": "Confirm the serving district first. Then, use its address tools and contact district staff for any unclear details."
+          },
+          {
+                "q": "What should I check before buying a historic home?",
+                "a": "Review repair records, past updates, and preservation requirements. Also, discuss planned exterior changes with the appropriate city staff."
+          },
+          {
+                "q": "Do neighborhood amenities come with every home?",
+                "a": "Check the property’s association documents and access rights. Then, confirm dues, rules, and any separate charges."
+          },
+          {
+                "q": "Can I request a tour of a specific Norman home?",
+                "a": "Share the property address and your preferred time with Brian Jamison. Include any questions you want to explore during the visit."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "yukon": {
@@ -333,8 +413,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/yukon",
     category: "community",
     kicker: "WEST METRO EXPANSION",
-    title: "Yukon Homes for Sale & Family Neighborhoods",
-    subtitle: "A fast-growing west metro hub celebrated for Czech heritage, top-ranking school athletics, and swift access along I-40 and Kilpatrick Turnpike.",
+    title: "Homes for Sale in Yukon OK",
+    subtitle: "Find the Right Home for Your Daily Life",
     heroVideoUrl: "/media/videos/vid7.mp4",
     heroFallbackImage: "/media/properties/715-s-friendly-okc.jpeg",
     heroMetrics: [
@@ -342,7 +422,7 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       { label: "Avg Days on Market", value: "10 Days" },
       { label: "Feeder Rating", value: "9/10" }
     ],
-    overview: "Known as the hometown of country music legend Garth Brooks, Yukon combines classic Oklahoma warmth with modern retail corridors and master-planned subdivisions like Surrey Hills and Stone Mill.",
+    overview: "Yukon offers a thriving suburban community west of Oklahoma City, known for strong school athletics, family festivals, and swift highway access along I-40 and the Kilpatrick Turnpike.\n\nHomes feature versatile single-family layouts, energy-efficient modern construction, and comfortable suburban yards. When reviewing houses for sale in Yukon, OK, buyers can compare neighborhood amenities, school attendance zones, and proximity to shopping corridors.",
     keyTakeaways: [
       "Rapid connection to Downtown OKC and Will Rogers Airport",
       "State-of-the-art high school athletic facilities and robotics programs",
@@ -357,6 +437,24 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Chisholm Trail Park & Christmas in the Park light display",
       "Express Clydesdales Barn & Welcome Center"
     ],
+    faqs: [
+          {
+                "q": "How should I narrow my search?",
+                "a": "Start with price, bedrooms, and property type. Then, compare location, upkeep needs, and the features you use daily."
+          },
+          {
+                "q": "Does every Yukon address receive Yukon city services?",
+                "a": "No. First, confirm the municipal boundary. Then, verify service providers for the exact address."
+          },
+          {
+                "q": "Do all subdivisions have an HOA?",
+                "a": "Check each property’s documents. Ask about membership, dues, restrictions, and any planned fees before committing."
+          },
+          {
+                "q": "What should I bring to a showing?",
+                "a": "Bring your shortlist, room measurements, and questions. Also, note any repairs or missing records you want to discuss."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "piedmont": {
@@ -364,8 +462,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/piedmont",
     category: "community",
     kicker: "NORTHWEST ACREAGES",
-    title: "Piedmont Rural Acreages & Custom Estate Communities",
-    subtitle: "Scenic country skies, 1-to-5 acre homesites with outbuildings, and an academic powerhouse school district in northwest Canadian County.",
+    title: "Piedmont Homes, Acreage & Community Guide",
+    subtitle: "More room inside. More usable space outside. Start with what you need from your next property.",
     heroVideoUrl: "/media/videos/vid8.mp4",
     heroFallbackImage: "/media/gallery/hill-country-driveway.jpeg",
     heroMetrics: [
@@ -373,7 +471,7 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       { label: "Parcel Sizes", value: "1 - 5 Acres" },
       { label: "School Feeder", value: "10/10" }
     ],
-    overview: "Piedmont is the premier choice for families who desire wide open spaces, shops, workshops, and custom home construction without sacrificing quick turnpike access to OKC and Edmond.",
+    overview: "Piedmont offers top-rated public schools, rolling prairie landscapes, and custom acreage homes just northwest of Oklahoma City.\n\nHomes range from master-planned neighborhood residences to custom estates on 1-to-10+ acre tracts with workshops and horses permitted. Buyers exploring houses for sale in Piedmont, OK, can compare acreage features, school ratings, and rural living benefits.",
     keyTakeaways: [
       "High academic standards across Piedmont Public Schools",
       "Zoning allows for workshops, equestrian barns, and detached garages",
@@ -388,6 +486,32 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Piedmont Founders Day parade and community sports",
       "Expansive sunset views and tranquil starry nights"
     ],
+    faqs: [
+          {
+                "q": "How do I find a house with acreage?",
+                "a": "Select residential properties with an existing home, then review lot size. Check the property details rather than acreage alone."
+          },
+          {
+                "q": "How does a home with acreage differ from vacant land?",
+                "a": "A home with acreage includes a residence and land. A vacant parcel may lack a house, connected utilities, or other improvements."
+          },
+          {
+                "q": "Can I build a workshop or keep livestock?",
+                "a": "Confirm zoning, recorded restrictions, and any HOA rules for the exact parcel. Then, check requirements for your intended use."
+          },
+          {
+                "q": "What should I inspect beyond the house?",
+                "a": "Review outbuildings, fencing, access, drainage, and utility systems. Also, confirm boundaries and request relevant property records."
+          },
+          {
+                "q": "Does every property use city water and sewer?",
+                "a": "Verify each connection directly. Do not assume service arrangements from a mailing address or nearby property."
+          },
+          {
+                "q": "How do I confirm school assignments?",
+                "a": "Contact the serving district with the full address. Check the grade and enrollment year, especially where boundaries have changed."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "mustang": {
@@ -395,8 +519,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/mustang",
     category: "community",
     kicker: "SOUTHWEST METRO FAVORITE",
-    title: "Mustang Real Estate & Community-First Neighborhoods",
-    subtitle: "A close-knit southwest suburb known for outstanding school athletics, low municipal taxes, and rapidly appreciating family communities.",
+    title: "Mustang Homes & Community Guide",
+    subtitle: "Find a home that fits your plans, from the floor plan to the outdoor space. Explore homes for sale in Mustang OK, then compare the details that matter most.",
     heroVideoUrl: "/media/videos/vid9.mp4",
     heroFallbackImage: "/media/properties/534-w-chickasaw.jpg",
     heroMetrics: [
@@ -404,7 +528,7 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       { label: "Avg Days on Market", value: "12 Days" },
       { label: "School Feeder", value: "9/10" }
     ],
-    overview: "Mustang offers a blend of small-town safety with immediate proximity to Oklahoma City's employment corridors. Master-planned communities with community pools and half-acre lots make it a favorite for growing families.",
+    overview: "Mustang provides a welcoming small-town atmosphere with modern suburban conveniences, top-rated school programs, and easy commuting along Highway 152 and the Kilpatrick Turnpike.\n\nHomes include contemporary single-family residences, brick ranch designs, and select acreage properties. Buyers exploring houses for sale in Mustang, OK, can evaluate floor plan flow, storage options, and neighborhood park access.",
     keyTakeaways: [
       "Renowned Mustang High School athletics and fine arts",
       "Convenient access to Will Rogers World Airport and Tinker Air Force Base",
@@ -419,6 +543,28 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Annual Western Days festival",
       "Local dining along Highway 152"
     ],
+    faqs: [
+          {
+                "q": "How do I narrow my Mustang home search?",
+                "a": "Start with your budget, bedroom needs, and preferred home type. Then, compare location, upkeep, and the features you use daily."
+          },
+          {
+                "q": "What should I check when comparing two homes?",
+                "a": "Compare layout, condition, lot size, and known repair needs. Also, review neighborhood rules and any recurring HOA costs."
+          },
+          {
+                "q": "Does every Mustang home have an HOA?",
+                "a": "Check each property’s documents rather than assuming membership. If an HOA applies, review its dues, rules, and approval process."
+          },
+          {
+                "q": "How do I confirm a home’s school assignment?",
+                "a": "Use the district’s address tool first. Then, contact the district if you need help confirming the correct attendance boundary."
+          },
+          {
+                "q": "Can I request a tour of a specific home?",
+                "a": "Share the property address and your preferred time with Brian Jamison. Include any questions you want to explore during the visit. Take the Next Step Toward Your Mustang Home"
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "arcadia": {
@@ -426,8 +572,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/arcadia",
     category: "community",
     kicker: "HISTORIC ROUTE 66 & LAKE ENCLAVE",
-    title: "Arcadia Equestrian Acreages & Lakefront Estates",
-    subtitle: "Sprawling multi-acre forested tracts, equestrian compounds, and Lake Hiwassee retreats situated along historic Route 66 east of Edmond.",
+    title: "Arcadia & Lake Hiwassee Real Estate & Community Guide",
+    subtitle: "Find homes for sale in Arcadia, OK, where open spaces, varied home styles, and a relaxed residential setting appeal to buyers seeking room to settle in. From established properties to homes with larger lots, Arcadia and Lake Hiwassee offer options for different lifestyles and housing goals.",
     heroVideoUrl: "/media/videos/vid10.mp4",
     heroFallbackImage: "/media/properties/11616-estrella-arcadia.jpeg",
     heroMetrics: [
@@ -435,7 +581,7 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       { label: "Parcel Acreages", value: "2 - 20+ Ac" },
       { label: "School Rating", value: "9/10 Oakdale" }
     ],
-    overview: "Where dramatic wooded topography meets luxury modern ranches. Arcadia provides privacy and nature while being just 12 minutes from Edmond's I-35 corridor.",
+    overview: "Arcadia offers private acreage living along the scenic wooded hills of east Edmond and Lake Arcadia. Residents enjoy peaceful natural surroundings, equestrian trails, and spacious custom homes.\n\nHomes across Arcadia range from modern rustic estate ranches to luxury custom builds situated on 2-to-20+ acre parcels. Buyers exploring houses for sale in Arcadia, OK, can compare acreage topography, water well and septic feasibility, and outdoor recreation access.",
     keyTakeaways: [
       "Acclaimed Oakdale School District feeder",
       "Lake Hiwassee water recreation and private docks",
@@ -450,6 +596,28 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "POPS 66 landmark dining & soda pavilion",
       "Lake Arcadia hiking, mountain biking, and watercraft"
     ],
+    faqs: [
+          {
+                "q": "What types of homes can buyers find in Arcadia and Lake Hiwassee?",
+                "a": "Options may include traditional single-family homes, properties near the lake, and homes with larger lots. Availability changes over time, so review current listings for the features and location you want."
+          },
+          {
+                "q": "What should buyers review before purchasing acreage or an equestrian property?",
+                "a": "Check zoning, permitted animal use, fencing, barns, water access, drainage, easements, and maintenance needs. Confirm local requirements before assuming the land can support a planned use."
+          },
+          {
+                "q": "Where can buyers compare houses for sale in Arcadia OK?",
+                "a": "Review current listings and compare price, location, property condition, lot size, and features. Looking at Arcadia OK residential listings alongside nearby options can help buyers understand the choices available."
+          },
+          {
+                "q": "Are single-family homes available in both Arcadia and Lake Hiwassee?",
+                "a": "Buyers can search single family homes for sale in Arcadia & Lake Hiwassee and compare each property’s layout, lot, location, and condition. Inventory and home features vary, so check active listings for current options."
+          },
+          {
+                "q": "How can buyers find equestrian properties in this area?",
+                "a": "Search for equestrian homes for sale in Arcadia & Lake Hiwassee and review each property’s acreage, fencing, barns, and land-use rules. Confirm that the property supports your intended needs before submitting an offer."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "guthrie": {
@@ -457,8 +625,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/guthrie",
     category: "community",
     kicker: "TERRITORIAL CAPITAL",
-    title: "Guthrie Historic Architecture & Country Ranches",
-    subtitle: "Victorian brick downtown storefronts, Hollywood film backdrops, and expansive private acreage ranches in Logan County.",
+    title: "Guthrie Historic Real Estate & Homes for Sale Guide",
+    subtitle: "Explore homes for sale in Guthrie Historic, OK, where period architecture, established blocks, and a strong sense of local history shape the residential experience. Find properties that offer character, varied layouts, and access to Guthrie's historic downtown.",
     heroVideoUrl: "/media/videos/vid11.mp4",
     heroFallbackImage: "/media/properties/9687-bear-creek-guthrie.jpeg",
     heroMetrics: [
@@ -466,7 +634,7 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       { label: "Historic District Size", value: "Largest in US" },
       { label: "Acreage Ranches", value: "5 - 80+ Ac" }
     ],
-    overview: "As Oklahoma's first state capital, Guthrie features red-brick Victorian streets, historic boutique shopping, and sprawling country estates along the Cimarron River.",
+    overview: "Guthrie features the nation's largest historic preservation district alongside expansive rural residential acreage. Buyers appreciate the balance of historic Victorian charm and spacious country living just north of Edmond.\n\nProperties include restored Queen Anne Victorians, brick bungalows, and rural acreage homes with workshops and pasture. Buyers exploring houses for sale in Guthrie, OK, can compare historic character, acreage topography, and local community amenities.",
     keyTakeaways: [
       "Largest National Historic Landmark District in the United States",
       "Expansive acreage properties at attractive price points per acre",
@@ -480,6 +648,24 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "89er Days celebration",
       "Cimarron National Golf Club"
     ],
+    faqs: [
+          {
+                "q": "What types of properties can buyers find in Guthrie Historic?",
+                "a": "Buyers may find older homes with Victorian-era details, traditional architectural features, and updated living spaces. Available layouts, property conditions, and renovation needs vary, so review each listing individually."
+          },
+          {
+                "q": "What should buyers review when purchasing a historic home?",
+                "a": "Check the home's structure, roof, plumbing, electrical systems, and renovation history. A qualified inspector can help identify concerns, while additional specialist reviews may be useful for older materials or unique features."
+          },
+          {
+                "q": "Are renovations allowed on historic properties in Guthrie?",
+                "a": "Some changes may require approval under applicable local preservation rules. Requirements depend on the property's location and the planned work. Contact the relevant city office before beginning exterior changes or additions."
+          },
+          {
+                "q": "How can sellers price historic homes in Guthrie?",
+                "a": "Consider recent comparable sales, property condition, architectural features, completed updates, and current buyer demand. A local comparative market analysis can help sellers develop a pricing strategy based on available market evidence."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "moore": {
@@ -487,8 +673,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/moore",
     category: "community",
     kicker: "I-35 CORRIDOR HUB",
-    title: "Moore Homes for Sale & Vibrant Parks System",
-    subtitle: "Centrally positioned between OKC and Norman with premier municipal parks, state-of-the-art recreation centers, and steady equity growth.",
+    title: "Moore Real Estate & Community Guide",
+    subtitle: "Find a home that gives your daily routine room to work. Explore homes for sale in Moore OK by layout, location, and the features you need most.",
     heroVideoUrl: "/media/videos/vid12.mp4",
     heroFallbackImage: "/media/properties/13701-s-independence-okc.jpeg",
     heroMetrics: [
@@ -496,7 +682,7 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       { label: "Commute to OKC", value: "14 Mins" },
       { label: "Days on Market", value: "13 Days" }
     ],
-    overview: "Moore is renowned for community pride, expansive park facilities like Buck Thomas Park, and effortless commuting to Tinker AFB and downtown OKC.",
+    overview: "Moore offers convenient south metro living with excellent municipal parks, robust shopping and dining corridors along I-35, and strong public school programs.\n\nHomes include modern single-family construction, established neighborhood properties, and custom homes with storm shelters and spacious garages. Buyers reviewing houses for sale in Moore, OK, can compare floor plans, commute routes, and local park access.",
     keyTakeaways: [
       "High affordability paired with strong appreciation fundamentals",
       "Comprehensive municipal services and parks infrastructure",
@@ -512,6 +698,32 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Buck Thomas Park walking trails and skatepark",
       "Warren Theatres luxury cinema complex"
     ],
+    faqs: [
+          {
+                "q": "How should I start my Moore home search?",
+                "a": "Set your budget and list your essential features first. Then, compare location, floor plan, condition, and upkeep needs."
+          },
+          {
+                "q": "What should I check during a showing?",
+                "a": "Review room sizes, storage, natural light, and outdoor space. Also, note any repairs or missing records you want to discuss."
+          },
+          {
+                "q": "Do all Moore homes have an HOA?",
+                "a": "Check each property’s documents. If an HOA applies, review its dues, rules, shared costs, and approval process."
+          },
+          {
+                "q": "How do I verify a school assignment?",
+                "a": "Confirm the serving district first. Then, use its address tools and contact district staff about any unclear details."
+          },
+          {
+                "q": "What does “new listing” mean?",
+                "a": "It describes a property’s recent entry onto the market. It does not necessarily mean the home offers new construction."
+          },
+          {
+                "q": "Can I request a tour of a specific home?",
+                "a": "Share the address and your preferred showing time with Brian Jamison. Include any features or questions you want to explore."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "midwest-city": {
@@ -519,8 +731,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/midwest-city",
     category: "community",
     kicker: "AEROSPACE GATEWAY",
-    title: "Midwest City Real Estate Near Tinker AFB",
-    subtitle: "The aerospace capital of Oklahoma, offering established residential neighborhoods, mature oak shade, and immediate base proximity.",
+    title: "Midwest City Real Estate & Community Guide",
+    subtitle: "Explore homes for sale in Midwest City OK with your space needs and daily plans in mind. Compare layouts, lot sizes, and property details before choosing which homes to tour.",
     heroVideoUrl: "/media/videos/vid13.mp4",
     heroFallbackImage: "/media/gallery/modern-estate-pool-lawn.jpeg",
     heroMetrics: [
@@ -528,7 +740,7 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       { label: "Tinker Commute", value: "5 Mins" },
       { label: "Rental Demand", value: "Very High" }
     ],
-    overview: "Midwest City is directly adjacent to Tinker Air Force Base—the state's largest single-site employer. It offers solid mid-century homes and new construction pockets.",
+    overview: "Midwest City is directly adjacent to Tinker Air Force Base and downtown Oklahoma City, offering convenient access for aerospace professionals, military personnel, and families.\n\nHomes feature established brick ranches, newly renovated properties, and modern suburban developments near regional parks and golf courses. Buyers exploring houses for sale in Midwest City, OK, can compare commute times, lot sizes, and neighborhood features.",
     keyTakeaways: [
       "Recession-resistant aerospace employment foundation",
       "Short drive to Downtown OKC via I-40",
@@ -542,6 +754,32 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "John Conrad Regional Golf Course",
       "Reed Conference Center",
       "Joe B. Barnes Regional Park"
+    ],
+    faqs: [
+          {
+                "q": "How should I start my home search?",
+                "a": "Set your budget and list your essential features first. Then, compare location, layout, condition, and ongoing upkeep."
+          },
+          {
+                "q": "What should I check in an older home?",
+                "a": "Review major systems, past repairs, and additions. Also, request available permits and discuss condition concerns during the inspection process."
+          },
+          {
+                "q": "Can I add a workshop or store an RV?",
+                "a": "Check zoning, recorded restrictions, and any HOA rules for the exact property. Confirm your intended use before buying."
+          },
+          {
+                "q": "How do I verify a school assignment?",
+                "a": "Confirm the serving district first. Then, contact district staff with the full property address and relevant grade."
+          },
+          {
+                "q": "How should I compare travel times?",
+                "a": "Use the exact home address and destination. Then, test the route during your normal travel hours."
+          },
+          {
+                "q": "Can I tour a specific Midwest City home?",
+                "a": "Share the address and your preferred showing time with Brian Jamison. Include any property details you want to explore."
+          }
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
@@ -610,8 +848,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/blanchard",
     category: "community",
     kicker: "TRI-CITY HILL COUNTRY",
-    title: "Blanchard Ranches & Winter Creek Golf Estates",
-    subtitle: "Rolling topography south of the Canadian River, custom acreage homes, and championship golf at Winter Creek.",
+    title: "Blanchard Real Estate & Community Guide",
+    subtitle: "More outdoor space, a useful workshop, or a view across the fairway. What matters most in your next home?",
     heroVideoUrl: "/media/videos/vid16.mp4",
     heroFallbackImage: "/media/gallery/brian-closing-clients.jpeg",
     heroMetrics: [
@@ -619,7 +857,7 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       { label: "Winter Creek Golf", value: "18-Hole Championship" },
       { label: "Lot Sizes", value: "1 - 10+ Ac" }
     ],
-    overview: "Blanchard delivers rolling hills and sweeping horizons. Highly desired for private ranches and luxury homes inside Winter Creek Golf Club.",
+    overview: "Blanchard offers scenic rural living and custom homes south of the Canadian River, with quick connectivity to Newcastle, Norman, and Oklahoma City.\n\nProperties feature spacious acreage parcels, custom estate homes, and quiet neighborhood subdivisions with scenic sunset views. Buyers exploring houses for sale in Blanchard, OK, can compare land topography, outbuilding allowances, and country lifestyle amenities.",
     keyTakeaways: [
       "Winter Creek Golf & Country Club luxury enclave",
       "Rapidly developing Tri-City commercial amenities",
@@ -632,6 +870,32 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Winter Creek Golf Club",
       "Annual May Days festival",
       "Country sunsets and privacy"
+    ],
+    faqs: [
+          {
+                "q": "How should I start my home search?",
+                "a": "Set your budget and list your essential features first. Then, compare layout, location, condition, and upkeep needs."
+          },
+          {
+                "q": "Does every Winter Creek home have golf course frontage?",
+                "a": "Check the exact lot and listing details. A home’s community location alone does not establish frontage or views."
+          },
+          {
+                "q": "Does buying a golf-community home include membership?",
+                "a": "Confirm membership terms directly with the club. Review fees, benefits, eligibility, and any transfer arrangements separately from the home purchase."
+          },
+          {
+                "q": "Can I build a workshop or keep an RV?",
+                "a": "Check zoning, recorded restrictions, and any HOA rules. Confirm your plans before relying on the available land."
+          },
+          {
+                "q": "What should I check when buying a home with acreage?",
+                "a": "Review boundaries, access, drainage, utilities, and existing structures. Also, estimate the time and cost of maintaining the property."
+          },
+          {
+                "q": "How do I confirm school assignments?",
+                "a": "Contact the serving district with the full address. Then, verify the school for the relevant grade and enrollment year."
+          }
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
@@ -791,8 +1055,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/the-village",
     category: "community",
     kicker: "HIGH-DEMAND MID-CENTURY",
-    title: "The Village Homes for Sale & Modern Renovations",
-    subtitle: "Surrounded by Nichols Hills and Lake Hefner, The Village is OKC's fastest appreciating mid-century renovation hot spot.",
+    title: "The Village Real Estate & Community Guide",
+    subtitle: "Explore homes for sale in The Village, OK, from established family residences to mid-century properties near local parks, shopping areas, and everyday services.",
     heroVideoUrl: "/media/videos/vid22.mp4",
     heroFallbackImage: "/media/gallery/midcentury-entry.jpeg",
     heroMetrics: [
@@ -800,7 +1064,7 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       { label: "Avg Days on Market", value: "9 Days" },
       { label: "Appreciation 3-Yr", value: "+29.2%" }
     ],
-    overview: "The Village has become the preferred neighborhood for young professionals and design enthusiasts seeking high-end renovated mid-century ranch homes.",
+    overview: "The Village offers high-velocity residential living surrounded by Nichols Hills and Lake Hefner. Buyers enjoy walkable neighborhoods, local parks, and quick access to shopping and dining along Western Avenue.\n\nHomes include classic mid-century ranches, modernized contemporary renovations, and newly updated properties. When evaluating houses for sale in The Village, OK, buyers can compare interior updates, yard sizes, and proximity to Lake Hefner recreation.",
     keyTakeaways: [
       "Immediate proximity to Nichols Hills Plaza and Classen Curve",
       "Walking access to Lake Hefner trails and parks",
@@ -814,6 +1078,24 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Lake Hefner sunset dining and marina",
       "Trader Joe's and Whole Foods minutes away at Classen Curve",
       "Community parks and dog park"
+    ],
+    faqs: [
+          {
+                "q": "What types of properties can buyers find in Village?",
+                "a": "Buyers can explore single-family houses, ranch-style homes, updated traditional residences, and mid-century properties. Features, lot sizes, and prices vary based on condition and location."
+          },
+          {
+                "q": "Are mid-century homes available in The Village, OK?",
+                "a": "Yes, buyers may find mid-century properties with distinctive rooflines, original design details, and updated interiors. Review the home's systems, renovation history, and maintenance needs before making an offer."
+          },
+          {
+                "q": "How can buyers compare homes before making a decision?",
+                "a": "Compare asking prices, recent sales, property condition, lot size, renovation costs, and access to local amenities. A qualified real estate professional can help assess comparable properties."
+          },
+          {
+                "q": "What affects the market value of a home in The Village?",
+                "a": "Property condition, recent upgrades, lot features, location, and comparable sales can influence value. A comparative market analysis provides a more property-specific estimate than an automated online valuation."
+          }
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
@@ -852,8 +1134,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/heritage-hills",
     category: "community",
     kicker: "HISTORIC PRESERVATION ENCLAVE",
-    title: "Heritage Hills Historic Estates & Mansions",
-    subtitle: "Oklahoma City's premier historic preservation district, showcasing grand 1920s architecture, tree-canopied boulevards, and century-old brick mansions.",
+    title: "Heritage Hills Historic Real Estate & Community Guide",
+    subtitle: "Explore Heritage Hills historic homes for sale in Oklahoma City, OK, featuring period architecture, established streets, and a central location near the city's cultural attractions and business districts.",
     heroVideoUrl: "/media/videos/vid24.mp4",
     heroFallbackImage: "/media/properties/136-nw-18th-heritage-hills.jpeg",
     heroMetrics: [
@@ -861,7 +1143,7 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       { label: "Historic Designation", value: "National Register" },
       { label: "Downtown Commute", value: "4 Mins" }
     ],
-    overview: "Heritage Hills was the original home of Oklahoma City's founding families, oil barons, and civic leaders. Today, it remains an architectural sanctuary protected by strict historical preservation covenants with restored Italianate, Georgian, and Tudor mansions.",
+    overview: "Heritage Hills features historic homes with architectural character dating to the early 20th century. Established trees, sidewalk-lined streets, and proximity to central Oklahoma City attract buyers seeking period residences near urban amenities.\n\nHomes across the neighborhood include architectural styles such as Prairie School, Craftsman, Colonial Revival, and Tudor Revival. When exploring houses for sale in Heritage Hills, OK, buyers can review property condition, historic details, and neighborhood guidelines.",
     keyTakeaways: [
       "Protected architectural district ensuring permanent character preservation",
       "Walking distance to Midtown rooftop dining, streetcars, and Scissortail Park",
@@ -878,6 +1160,24 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Overholser Mansion landmark and museum",
       "Midtown streetcar dining and cultural venues"
     ],
+    faqs: [
+          {
+                "q": "What makes Heritage Hills homes distinctive?",
+                "a": "Many properties feature period architecture, original design details, mature landscaping, and traditional layouts. Renovation quality and historic features differ by home, making individual property reviews important."
+          },
+          {
+                "q": "What should buyers review before purchasing a historic property?",
+                "a": "Check the roof, foundation, electrical and plumbing systems, renovation records, and applicable preservation rules. A professional inspection can help identify repairs and likely maintenance costs."
+          },
+          {
+                "q": "Where can buyers find neighborhood homes for sale in Oklahoma City?",
+                "a": "Buyers can review current real estate listings, compare property features, and work with a local agent to identify suitable options. Availability and asking prices change as homes enter or leave the market."
+          },
+          {
+                "q": "How can sellers assess current property values in Heritage Hills?",
+                "a": "Review recent comparable sales, home condition, renovations, lot features, and current buyer demand. A comparative market analysis can help establish a reasonable asking price based on available market evidence."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "gaillardia": {
@@ -885,8 +1185,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/gaillardia",
     category: "community",
     kicker: "24/7 GUARD-GATED LUXURY GOLF",
-    title: "Gaillardia Golf Community & Country Club Estates",
-    subtitle: "Oklahoma City's premier guard-gated golf country club sanctuary, featuring Arthur Hills championship golf, 55,000 sq ft French Normandy clubhouse, and private gated villas.",
+    title: "Gaillardia Golf Community Real Estate & Lifestyle Guide",
+    subtitle: "Explore Gaillardia Golf Homes for Sale, Oklahoma City, OK, with upscale residences, golf course views, private community amenities, and convenient access to shopping, dining, and major business districts.",
     heroVideoUrl: "/media/videos/vid25.mp4",
     heroFallbackImage: "/media/properties/11500-gateshead.jpg",
     heroMetrics: [
@@ -894,7 +1194,7 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       { label: "Security", value: "24/7 Guard-Gated" },
       { label: "Championship Golf", value: "Arthur Hills 18" }
     ],
-    overview: "Gaillardia offers unmatched security and resort-level privacy in northwest Oklahoma City. Set across 600 lush acres, the community features private lakes, manicured fairways, and multi-million dollar custom stone estates.",
+    overview: "Gaillardia offers a private residential setting with 24-hour guarded gate access, Arthur Hills championship golf course views, and custom estate architecture.\n\nHomes across Gaillardia feature custom luxury designs, including French Normandy, Mediterranean, European Traditional, and Modern Transitional estates. Buyers exploring houses for sale in Gaillardia, OK, can evaluate fairway frontage, resort-style pools, outdoor living pavilions, and private club amenities.",
     keyTakeaways: [
       "24-hour guarded security gate with electronic perimeter monitoring",
       "Arthur Hills-designed championship 18-hole golf course and private training facility",
@@ -911,6 +1211,24 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Resort-style infinity pool, cabanas, and fitness pavilion",
       "Wine tasting dinners and executive networking events"
     ],
+    faqs: [
+          {
+                "q": "What features distinguish homes in Gaillardia Golf Community?",
+                "a": "Properties may offer spacious layouts, custom finishes, landscaped grounds, outdoor living spaces, and golf course views. Features vary by home, so buyers should assess each property's location, design, and condition."
+          },
+          {
+                "q": "What should buyers consider before purchasing a Gaillardia golf home?",
+                "a": "Review the home's structure, roof, major systems, renovation history, HOA fees, and applicable community rules. Buyers should also confirm golf access, membership costs, and any restrictions relevant to their plans."
+          },
+          {
+                "q": "Where can buyers find luxury homes for sale in Gaillardia Golf?",
+                "a": "Buyers can review current listings, compare property details, and consult a local real estate agent about available options. Inventory, asking prices, and property features change with market conditions."
+          },
+          {
+                "q": "How can sellers estimate their Gaillardia property's market value?",
+                "a": "Consider recent comparable sales, lot placement, home condition, upgrades, and current buyer demand. A comparative market analysis can help establish a pricing range based on available local market evidence."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "crown-heights": {
@@ -918,8 +1236,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/crown-heights",
     category: "community",
     kicker: "HISTORIC URBAN SANCTUARY",
-    title: "Crown Heights Historic District Real Estate",
-    subtitle: "Charming stone cottages, Spanish and Tudor revivals, and deep-porch living along OKC's Western Avenue gourmet corridor.",
+    title: "Crown Heights Real Estate & Historic Neighborhood Guide",
+    subtitle: "Explore homes for sale in Crown Heights, OK, where distinctive period homes, tree-lined blocks, and a central Oklahoma City location shape an established residential community. Discover properties with architectural character and convenient access to nearby city destinations.",
     heroVideoUrl: "/media/videos/vid26.mp4",
     heroFallbackImage: "/media/properties/3233-n-harvey-crown-heights.jpeg",
     heroMetrics: [
@@ -927,7 +1245,7 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       { label: "Avg Days on Market", value: "12 Days" },
       { label: "Western Ave Proximity", value: "Walking Distance" }
     ],
-    overview: "Built predominantly in the 1930s, Crown Heights is celebrated for architectural variety, mature tree canopies, and vibrant community spirit. Steps from Western Avenue's celebrated culinary strip.",
+    overview: "Crown Heights features curved residential streets, mature trees, and established architectural character. Buyers can explore homes with varied floor plans, outdoor spaces, and access to nearby retail and dining corridors.\n\nArchitectural styles across the community include Tudor Revival, Spanish Colonial, Colonial Revival, and period cottages. When reviewing houses for sale in Crown Heights, OK, buyers can compare architectural details, interior updates, and neighborhood guidelines.",
     keyTakeaways: [
       "Enchanting mix of Tudor Revival, Spanish Colonial, and French Eclectic architecture",
       "Crown Heights Park hosting annual Fourth of July parades and music festivals",
@@ -943,6 +1261,24 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Western Avenue antique shops, bakeries, and gourmet bistros",
       "Crown Heights Park tennis courts and central green space",
       "Short 8-minute commute to downtown OKC financial district"
+    ],
+    faqs: [
+          {
+                "q": "What types of homes are available in Crown Heights, OK?",
+                "a": "The neighborhood features single-family residences in styles such as Tudor Revival, Colonial Revival, and Minimal Traditional. Buyers will find differences in size, layout, condition, and renovation history across available properties."
+          },
+          {
+                "q": "What should buyers inspect before purchasing a Crown Heights home?",
+                "a": "Review the roof, foundation, plumbing, electrical systems, and previous renovations. A qualified home inspector can identify potential concerns and help buyers understand repairs or maintenance that may be needed."
+          },
+          {
+                "q": "Do historic district rules affect home renovations?",
+                "a": "Certain exterior changes and new construction may require review or approval under local historic preservation rules. Confirm the property's status and applicable requirements with Oklahoma City before starting work."
+          },
+          {
+                "q": "How can sellers price a Crown Heights property?",
+                "a": "Consider comparable sales, property condition, architectural details, completed upgrades, and current market activity. A local comparative market analysis can help establish a pricing strategy supported by available real estate data."
+          }
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
@@ -983,8 +1319,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/quail-creek",
     category: "community",
     kicker: "FAIRWAY GOLF SANCTUARY",
-    title: "Quail Creek Golf Club Real Estate & Homes",
-    subtitle: "Sprawling golf course homes, classic mid-century transitional architecture, mature shade trees, and active country club living in northwest OKC.",
+    title: "Quail Creek Golf Club Real Estate & Community Guide",
+    subtitle: "Explore houses for sale in Quail Creek Golf Club, Oklahoma City, OK, with established residential streets, golf course surroundings, and convenient access to shopping, dining, and local business centers.",
     heroVideoUrl: "/media/videos/vid28.mp4",
     heroFallbackImage: "/media/gallery/sunset-deck-pool.jpeg",
     heroMetrics: [
@@ -1008,6 +1344,24 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Lake Hefner sailing and cycling trails 5 minutes south",
       "Chisholm Creek outdoor dining, Topgolf, and shopping hub"
     ],
+    faqs: [
+          {
+                "q": "What types of homes are available in Quail Creek Golf Club?",
+                "a": "Properties may include traditional single-family houses, updated residences, spacious layouts, landscaped yards, and homes near golf course fairways. Features and conditions vary, so buyers should review each listing individually."
+          },
+          {
+                "q": "What should buyers check before purchasing a home in Quail Creek Golf Club?",
+                "a": "Review the roof, foundation, major systems, renovation records, HOA fees, and applicable property rules. A professional inspection can help identify repairs and provide a clearer view of future maintenance needs."
+          },
+          {
+                "q": "Where can buyers find houses for sale in Quail Creek Golf Club?",
+                "a": "Buyers can explore current real estate listings, compare home features, and consult a local agent about available properties. Inventory, asking prices, and listing details change as homes enter or leave the market."
+          },
+          {
+                "q": "How can sellers estimate their Quail Creek Golf Club home's value?",
+                "a": "Review recent comparable sales, property condition, renovations, lot characteristics, and current buyer demand. A comparative market analysis can help sellers establish a reasonable asking price using available local market data."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "edmond-oakdale": {
@@ -1015,8 +1369,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/edmond-oakdale",
     category: "community",
     kicker: "10/10 ACADEMIC GOLD STANDARD",
-    title: "Edmond & Oakdale Corridor Luxury Real Estate",
-    subtitle: "Nationally acclaimed 10/10 schools, rolling wooded topography, luxury acreage estates, and vibrant downtown Edmond rail district living.",
+    title: "Edmond / Oakdale Luxury Real Estate & Community Guide",
+    subtitle: "Explore homes for sale in Edmond, OK, from luxury acreage estates to modern family homes near parks, schools, and local amenities.",
     heroVideoUrl: "/media/videos/vid29.mp4",
     heroFallbackImage: "/media/properties/22801-n-briarwood-edmond.jpeg",
     heroMetrics: [
@@ -1024,7 +1378,7 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       { label: "Oakdale Feeder", value: "10/10 Gold Standard" },
       { label: "Avg Days on Market", value: "15 Days" }
     ],
-    overview: "The prestigious corridor uniting East Edmond and Oakdale represents central Oklahoma's most desired family address. Offering private wooded acreages and elite public and private schooling.",
+    overview: "The Edmond and Oakdale corridor offers a mix of established neighborhoods, wooded lots, and spacious residential properties. Buyers can explore homes with varied layouts, outdoor spaces, and access to local schools and community amenities.\n\nDesigned for a range of lifestyles, these neighborhoods feature community parks, walking trails, and homes with modern layouts. When comparing houses for sale in Edmond, OK, buyers can review property features, lot sizes, and neighborhood guidelines to find a suitable fit.",
     keyTakeaways: [
       "Celebrated Oakdale and Edmond school districts with unmatched academic honors",
       "Private 1-to-5 acre wooded estate parcels with low Logan/Oklahoma County tax burdens",
@@ -1040,6 +1394,24 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Downtown Edmond historic rail district boutique dining",
       "Mitch Park & YMCA 280-acre multi-sport complex"
     ],
+    faqs: [
+          {
+                "q": "What types of homes can buyers find in Edmond and Oakdale?",
+                "a": "Buyers can explore modern family homes, traditional brick houses, luxury estates, and properties with larger lots. Features, prices, and available options vary by neighborhood and property."
+          },
+          {
+                "q": "Are there homes with acreage for sale in Edmond, OK?",
+                "a": "Yes, buyers may find properties with larger lots and private outdoor space. Compare acreage, access, utilities, maintenance needs, and zoning requirements before making a purchase."
+          },
+          {
+                "q": "How can buyers verify school boundaries before purchasing a home?",
+                "a": "Contact the relevant school district to confirm school assignments and enrollment requirements for the exact property address before submitting an offer."
+          },
+          {
+                "q": "What should sellers consider when valuing a home in Edmond, OK?",
+                "a": "Sellers should review recent comparable sales, property condition, renovations, lot size, and current market activity. A local comparative market analysis can help establish a realistic asking price."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "deer-creek": {
@@ -1047,8 +1419,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/deer-creek",
     category: "community",
     kicker: "MASTER-PLANNED CUSTOM LUXURY",
-    title: "Deer Creek School District Real Estate & Custom Builds",
-    subtitle: "Premier destination for luxury new construction, young professional families, and state champion academic and athletic programs in northwest Edmond.",
+    title: "Deer Creek Real Estate & Community Guide",
+    subtitle: "Search homes for sale in Deer Creek, OK, where spacious properties, residential streets, and suburban surroundings offer buyers a range of options near the Oklahoma City metro area.",
     heroVideoUrl: "/media/videos/vid30.mp4",
     heroFallbackImage: "/media/properties/22402-emily-way-edmond.jpeg",
     heroMetrics: [
@@ -1056,7 +1428,7 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       { label: "Feeder Rating", value: "10/10 Academic Leader" },
       { label: "Avg Days on Market", value: "11 Days" }
     ],
-    overview: "Deer Creek represents the primary high-growth luxury corridor for Northwest Edmond. Drawing executive families seeking master-planned communities, resort amenities, and modern transitional floorplans.",
+    overview: "Deer Creek in northwest Edmond is one of central Oklahoma's fastest-growing residential hubs, known for academic excellence, master-planned neighborhoods, and modern construction.\n\nHomes feature contemporary open layouts, multi-car garages, in-ground storm shelters, and private yards. Buyers exploring houses for sale in Deer Creek, Edmond, OK, can compare builder craftsmanship, HOA amenities, and elementary school feeder zones.",
     keyTakeaways: [
       "Acclaimed Deer Creek Public Schools with top athletic championships and STEM scores",
       "Master-planned neighborhoods featuring community pools, walking trails, and lakes",
@@ -1072,6 +1444,24 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Fast access to Rose Creek and Gaillardia private golf clubs",
       "Covell Corridor shopping and family medical centers"
     ],
+    faqs: [
+          {
+                "q": "What should buyers compare when searching for homes?",
+                "a": "Compare asking prices, property condition, floor plans, lot sizes, commute routes, and nearby services. Buyers should also review inspection findings and expected maintenance costs before making an offer."
+          },
+          {
+                "q": "How can I find homes in the school district?",
+                "a": "Review current residential listings and verify each property's school assignment directly with the district. Attendance boundaries and enrollment requirements can vary, so confirm eligibility before choosing a home."
+          },
+          {
+                "q": "How can homeowners estimate their Deer Creek property's value?",
+                "a": "Review comparable sales, home condition, square footage, lot features, recent improvements, and local buyer demand. A comparative market analysis can help establish a supported listing price."
+          },
+          {
+                "q": "What types of homes are available in Deer Creek, OK?",
+                "a": "Deer Creek offers a range of properties, including single-family homes, newer construction, and established residences. Home sizes, lot layouts, features, and prices vary by neighborhood and property condition."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "oak-tree": {
@@ -1079,8 +1469,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/oak-tree",
     category: "community",
     kicker: "PGA CHAMPIONSHIP PETE DYE GREENS",
-    title: "Oak Tree Golf & Country Club Luxury Estates",
-    subtitle: "Two Pete Dye championship 36-hole golf courses, PGA Tour pedigree, 24-hr guarded gate, and sprawling custom stone architecture in North Edmond.",
+    title: "Oak Tree Golf Real Estate & Country Club Community Guide",
+    subtitle: "Explore homes for sale in Oak Tree Golf, OK, where golf course views, private residential surroundings, and country club amenities appeal to buyers seeking a distinctive lifestyle near Oklahoma City.",
     heroVideoUrl: "/media/videos/vid31.mp4",
     heroFallbackImage: "/media/properties/3911-creek-bank-edmond.jpeg",
     heroMetrics: [
@@ -1088,7 +1478,7 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       { label: "Pete Dye Championship", value: "36 Holes" },
       { label: "Guarded Security", value: "24/7 Gated" }
     ],
-    overview: "A legendary golf enclave that has hosted major PGA championships and Senior PGA tours. Oak Tree provides multi-million dollar custom residences set against mature wooded fairways and water hazards.",
+    overview: "Oak Tree in Edmond is renowned for its 36 holes of Pete Dye championship golf, guarded private enclaves, and expansive estate residences.\n\nProperties feature architectural designs ranging from traditional brick estates to modern transitional golf course villas with panoramic fairway views. Buyers exploring houses for sale in Oak Tree, Edmond, OK, can evaluate golf course frontage, private swimming pools, and community club amenities.",
     keyTakeaways: [
       "Two Pete Dye championship 18-hole courses: Oak Tree National & Oak Tree Country Club",
       "24-hour guarded security entrance with dedicated perimeter patrols",
@@ -1104,6 +1494,24 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Country club social events, wine dinners, and junior golf academies",
       "Scenic walking paths and golf-cart friendly streets"
     ],
+    faqs: [
+          {
+                "q": "What types of homes are available in Oak Tree Golf, OK?",
+                "a": "The area includes residential properties with varying layouts, outdoor spaces, and proximity to golf course features. Available styles, property conditions, and prices depend on individual listings and locations."
+          },
+          {
+                "q": "What should buyers review before purchasing a golf course home?",
+                "a": "Compare the property's condition, lot location, views, maintenance needs, and any applicable community fees. Review club access terms and neighborhood restrictions before committing to a purchase."
+          },
+          {
+                "q": "Are gated community homes available in Oak Tree Golf, OK?",
+                "a": "Buyers can investigate gated community homes for sale in Oak Tree Golf, OK, by reviewing current listings and confirming access arrangements, community rules, and any related fees for each property."
+          },
+          {
+                "q": "How can sellers estimate an property's value?",
+                "a": "Review recent comparable sales, property condition, lot placement, upgrades, and buyer demand. A local comparative market analysis can help sellers determine a reasonable asking price."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "arcadia-hiwassee": {
@@ -1111,8 +1519,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/arcadia-hiwassee",
     category: "community",
     kicker: "LAKE & EQUESTRIAN ACREAGES",
-    title: "Arcadia & Lake Hiwassee Waterfront & Acreage Estates",
-    subtitle: "Equestrian acreage estates, Route 66 historic charm, water sports, and tranquil forested retreats just 15 minutes east of I-35.",
+    title: "Arcadia & Lake Hiwassee Real Estate & Community Guide",
+    subtitle: "Find homes for sale in Arcadia, OK, where open spaces, varied home styles, and a relaxed residential setting appeal to buyers seeking room to settle in. From established properties to homes with larger lots, Arcadia and Lake Hiwassee offer options for different lifestyles and housing goals.",
     heroVideoUrl: "/media/videos/vid1.mp4",
     heroFallbackImage: "/media/properties/11616-estrella-arcadia.jpeg",
     heroMetrics: [
@@ -1136,6 +1544,28 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Spring Creek and Arcadia Lake equestrian trail networks",
       "Tranquil starry skies without urban light pollution"
     ],
+    faqs: [
+          {
+                "q": "What types of homes can buyers find in Arcadia and Lake Hiwassee?",
+                "a": "Options may include traditional single-family homes, properties near the lake, and homes with larger lots. Availability changes over time, so review current listings for the features and location you want."
+          },
+          {
+                "q": "What should buyers review before purchasing acreage or an equestrian property?",
+                "a": "Check zoning, permitted animal use, fencing, barns, water access, drainage, easements, and maintenance needs. Confirm local requirements before assuming the land can support a planned use."
+          },
+          {
+                "q": "Where can buyers compare houses for sale in Arcadia OK?",
+                "a": "Review current listings and compare price, location, property condition, lot size, and features. Looking at Arcadia OK residential listings alongside nearby options can help buyers understand the choices available."
+          },
+          {
+                "q": "Are single-family homes available in both Arcadia and Lake Hiwassee?",
+                "a": "Buyers can search single family homes for sale in Arcadia & Lake Hiwassee and compare each property’s layout, lot, location, and condition. Inventory and home features vary, so check active listings for current options."
+          },
+          {
+                "q": "How can buyers find equestrian properties in this area?",
+                "a": "Search for equestrian homes for sale in Arcadia & Lake Hiwassee and review each property’s acreage, fencing, barns, and land-use rules. Confirm that the property supports your intended needs before submitting an offer."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "guthrie-historic": {
@@ -1143,8 +1573,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/guthrie-historic",
     category: "community",
     kicker: "VICTORIAN ARCHITECTURE & RANCHES",
-    title: "Guthrie Historic Enclave & Country Acreage Ranches",
-    subtitle: "Territorial capital architecture, antique stores, sprawling country ranches, and equestrian tracts along the scenic Cimarron River.",
+    title: "Guthrie Historic Real Estate & Homes for Sale Guide",
+    subtitle: "Explore homes for sale in Guthrie Historic, OK, where period architecture, established blocks, and a strong sense of local history shape the residential experience. Find properties that offer character, varied layouts, and access to Guthrie's historic downtown.",
     heroVideoUrl: "/media/videos/vid2.mp4",
     heroFallbackImage: "/media/properties/9687-bear-creek-guthrie.jpeg",
     heroMetrics: [
@@ -1167,6 +1597,24 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Cimarron National Golf Club and country recreation",
       "89er Days celebration and frontier parades"
     ],
+    faqs: [
+          {
+                "q": "What types of properties can buyers find in Guthrie Historic?",
+                "a": "Buyers may find older homes with Victorian-era details, traditional architectural features, and updated living spaces. Available layouts, property conditions, and renovation needs vary, so review each listing individually."
+          },
+          {
+                "q": "What should buyers review when purchasing a historic home?",
+                "a": "Check the home's structure, roof, plumbing, electrical systems, and renovation history. A qualified inspector can help identify concerns, while additional specialist reviews may be useful for older materials or unique features."
+          },
+          {
+                "q": "Are renovations allowed on historic properties in Guthrie?",
+                "a": "Some changes may require approval under applicable local preservation rules. Requirements depend on the property's location and the planned work. Contact the relevant city office before beginning exterior changes or additions."
+          },
+          {
+                "q": "How can sellers price historic homes in Guthrie?",
+                "a": "Consider recent comparable sales, property condition, architectural features, completed updates, and current buyer demand. A local comparative market analysis can help sellers develop a pricing strategy based on available market evidence."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "twin-bridges": {
@@ -1174,8 +1622,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/twin-bridges",
     category: "community",
     kicker: "COVELL CORRIDOR RESORT COMMUNITY",
-    title: "Twin Bridges & Covell Corridor Luxury Real Estate",
-    subtitle: "Master-planned amenity pools, walking trails, clubhouse, and modern transitional architecture in Edmond's high-demand north corridor.",
+    title: "Twin Bridges Real Estate & Neighborhood Guide",
+    subtitle: "Explore homes for sale in Twin Bridges & Covell Corridor, OK with your daily needs in mind. Then, look beyond the photos to understand each property’s setting.",
     heroVideoUrl: "/media/videos/vid3.mp4",
     heroFallbackImage: "/media/properties/1817-sun-valley-edmond.jpeg",
     heroMetrics: [
@@ -1199,6 +1647,32 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Mitch Park sports complex and ice rink 5 minutes west",
       "Covell Village shopping and artisan cafes"
     ],
+    faqs: [
+          {
+                "q": "How do I confirm a home belongs to Twin Bridges?",
+                "a": "Check the legal subdivision name and recorded plat. Match the addition, section, block, and lot with the property address."
+          },
+          {
+                "q": "Does every section include the same amenities?",
+                "a": "Confirm access through the documents and association for the exact property. Do not assume identical benefits across related additions."
+          },
+          {
+                "q": "What home styles can I research here?",
+                "a": "Property descriptions include traditional and modern designs. Compare each home’s architecture, materials, floor plan, and documented updates."
+          },
+          {
+                "q": "How do I verify school assignments?",
+                "a": "Contact public schools with the full property address. Confirm the appropriate grade and enrollment year before relying on listing details."
+          },
+          {
+                "q": "Does a pond view include water access?",
+                "a": "Check the recorded boundaries and association rules. A view alone does not establish ownership, access, or fishing rights."
+          },
+          {
+                "q": "Can I tour a specific Twin Bridges property?",
+                "a": "Share the address and your preferred showing time with Brian Jamison. Include the features and questions you want to explore."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "rose-creek": {
@@ -1206,8 +1680,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/rose-creek",
     category: "community",
     kicker: "GUARD-GATED ARTHUR HILLS GOLF",
-    title: "Rose Creek Golf Community & Country Club Living",
-    subtitle: "Guard-gated Arthur Hills 18-hole golf, aquatic park, modern clubhouse dining, and contemporary luxury design in Edmond/Deer Creek.",
+    title: "Rose Creek Real Estate & Golf Community Guide",
+    subtitle: "Explore homes for sale in Rose Creek Golf, OK by layout, lot setting, and property features. Then, compare community access, ownership costs, and school information for each address.",
     heroVideoUrl: "/media/videos/vid4.mp4",
     heroFallbackImage: "/media/gallery/infinity-pool-hills.jpeg",
     heroMetrics: [
@@ -1231,6 +1705,32 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Resort-style aquatic center with children's splash pad",
       "Fitness center with personal training and group classes"
     ],
+    faqs: [
+          {
+                "q": "Is Rose Creek a guard-gated community?",
+                "a": "Property information documents guarded entry. Confirm current visitor procedures and permitted entrances before arranging a showing."
+          },
+          {
+                "q": "Does buying a home include golf membership?",
+                "a": "Confirm membership separately with Rose Creek Country Club. Ask about applications, fees, access rights, and transfer terms."
+          },
+          {
+                "q": "Do all Rose Creek homes belong to one school district?",
+                "a": "No. Property information identifies both Edmond and Deer Creek districts. Verify the exact address directly with district staff."
+          },
+          {
+                "q": "Do all homes have golf-course views?",
+                "a": "Check each property’s location and listing details. Neighborhood membership alone does not establish course frontage or a particular view."
+          },
+          {
+                "q": "How should I compare different phases?",
+                "a": "Review the legal addition, plat, home size, lot dimensions, and governing documents. Then, compare maintenance duties and ownership costs."
+          },
+          {
+                "q": "Can I request a private showing?",
+                "a": "Share the address and your preferred time with Brian Jamison. Include any questions and confirm entry arrangements before your visit."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "norman-university": {
@@ -1238,8 +1738,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/norman-university",
     category: "community",
     kicker: "OU CAMPUS & BROOKHAVEN ENCLAVE",
-    title: "Norman & University Enclave Luxury Real Estate",
-    subtitle: "Historic Chautauqua avenues, prestigious Brookhaven golf living, Lake Thunderbird retreats, and SEC game-day energy in Norman.",
+    title: "Norman Real Estate & Community Guide",
+    subtitle: "Explore homes for sale in Norman OK with your daily needs in mind. Compare home styles, neighborhood details, and outdoor space before planning your next tour.",
     heroVideoUrl: "/media/videos/vid5.mp4",
     heroFallbackImage: "/media/properties/435-nw-21st-heritage-hills.jpeg",
     heroMetrics: [
@@ -1263,6 +1763,32 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Sam Noble Oklahoma Museum of Natural History",
       "Brookhaven Square upscale dining and boutiques"
     ],
+    faqs: [
+          {
+                "q": "How should I start my Norman home search?",
+                "a": "Set your budget and choose your essential features first. Then, compare location, layout, condition, and upkeep needs."
+          },
+          {
+                "q": "How do I compare golf course properties?",
+                "a": "Confirm actual course frontage, views, and lot boundaries. Also, check membership terms separately from the home purchase."
+          },
+          {
+                "q": "How can I verify a school assignment?",
+                "a": "Confirm the serving district first. Then, use its address tools and contact district staff for any unclear details."
+          },
+          {
+                "q": "What should I check before buying a historic home?",
+                "a": "Review repair records, past updates, and preservation requirements. Also, discuss planned exterior changes with the appropriate city staff."
+          },
+          {
+                "q": "Do neighborhood amenities come with every home?",
+                "a": "Check the property’s association documents and access rights. Then, confirm dues, rules, and any separate charges."
+          },
+          {
+                "q": "Can I request a tour of a specific Norman home?",
+                "a": "Share the property address and your preferred time with Brian Jamison. Include any questions you want to explore during the visit."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "midwest-city-choctaw": {
@@ -1270,8 +1796,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/midwest-city-choctaw",
     category: "community",
     kicker: "AEROSPACE & WOODED ACREAGES",
-    title: "Midwest City & Choctaw Acreage Real Estate",
-    subtitle: "Tinker Air Force Base aerospace career convenience combined with scenic wooded acreages, private shops, and quiet eastern country living.",
+    title: "Midwest City Real Estate & Community Guide",
+    subtitle: "Explore homes for sale in Midwest City OK with your space needs and daily plans in mind. Compare layouts, lot sizes, and property details before choosing which homes to tour.",
     heroVideoUrl: "/media/videos/vid6.mp4",
     heroFallbackImage: "/media/properties/85006-n-2520-watonga.jpeg",
     heroMetrics: [
@@ -1295,6 +1821,32 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Annual Oktoberfest festival in Choctaw",
       "Spacious wooded acreage with dark night skies"
     ],
+    faqs: [
+          {
+                "q": "How should I start my home search?",
+                "a": "Set your budget and list your essential features first. Then, compare location, layout, condition, and ongoing upkeep."
+          },
+          {
+                "q": "What should I check in an older home?",
+                "a": "Review major systems, past repairs, and additions. Also, request available permits and discuss condition concerns during the inspection process."
+          },
+          {
+                "q": "Can I add a workshop or store an RV?",
+                "a": "Check zoning, recorded restrictions, and any HOA rules for the exact property. Confirm your intended use before buying."
+          },
+          {
+                "q": "How do I verify a school assignment?",
+                "a": "Confirm the serving district first. Then, contact district staff with the full property address and relevant grade."
+          },
+          {
+                "q": "How should I compare travel times?",
+                "a": "Use the exact home address and destination. Then, test the route during your normal travel hours."
+          },
+          {
+                "q": "Can I tour a specific Midwest City home?",
+                "a": "Share the address and your preferred showing time with Brian Jamison. Include any property details you want to explore."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "blanchard-newcastle": {
@@ -1302,8 +1854,8 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
     slug: "/areas/blanchard-newcastle",
     category: "community",
     kicker: "HILL COUNTRY RANCHES & GOLF",
-    title: "Blanchard & Newcastle Luxury Acreages & Winter Creek",
-    subtitle: "Custom acreage properties with workshops, championship golf at Winter Creek, scenic hill country vistas, and rapid bridge access to OKC.",
+    title: "Blanchard Real Estate & Community Guide",
+    subtitle: "More outdoor space, a useful workshop, or a view across the fairway. What matters most in your next home?",
     heroVideoUrl: "/media/videos/vid7.mp4",
     heroFallbackImage: "/media/properties/2950-nw-37th-newcastle.jpeg",
     heroMetrics: [
@@ -1327,6 +1879,32 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       "Tri-City retail amenities and regional parks",
       "Breathtaking Oklahoma country sunsets"
     ],
+    faqs: [
+          {
+                "q": "How should I start my home search?",
+                "a": "Set your budget and list your essential features first. Then, compare layout, location, condition, and upkeep needs."
+          },
+          {
+                "q": "Does every Winter Creek home have golf course frontage?",
+                "a": "Check the exact lot and listing details. A home’s community location alone does not establish frontage or views."
+          },
+          {
+                "q": "Does buying a golf-community home include membership?",
+                "a": "Confirm membership terms directly with the club. Review fees, benefits, eligibility, and any transfer arrangements separately from the home purchase."
+          },
+          {
+                "q": "Can I build a workshop or keep an RV?",
+                "a": "Check zoning, recorded restrictions, and any HOA rules. Confirm your plans before relying on the available land."
+          },
+          {
+                "q": "What should I check when buying a home with acreage?",
+                "a": "Review boundaries, access, drainage, utilities, and existing structures. Also, estimate the time and cost of maintaining the property."
+          },
+          {
+                "q": "How do I confirm school assignments?",
+                "a": "Contact the serving district with the full address. Then, verify the school for the relevant grade and enrollment year."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   }
 };
@@ -1336,28 +1914,56 @@ export const AUDIENCE_PAGES: Record<string, InteriorPageData> = {
     id: "sellers",
     slug: "/sellers",
     category: "audience",
-    kicker: "SELLER BLUEPRINT ROADMAP",
-    title: "Sell for Top Dollar: The Brian Jamison Roadmap",
-    subtitle: "A proven, systematic selling machine designed to eliminate seller stress, attract qualified buyers, and command top market value.",
+    kicker: "PARTNERSHIP APPROACH",
+    title: "Partnership Approach Focused on Your Most Profitable Outcome",
+    subtitle: "Understanding listing agent responsibilities to sellers in Edmond, OK starts with your goals. Brian Jamison explains options and trade-offs, helping you evaluate offers by potential net proceeds, timing, and terms.",
     heroVideoUrl: "/media/videos/vid8.mp4",
     heroFallbackImage: "/media/gallery/hill-country-driveway.jpeg",
     heroMetrics: [
-      { label: "Volume Sold", value: "$70M+" },
+      { label: "Volume Sold", value: "$62M+" },
       { label: "List-to-Sale Ratio", value: "98.4%" },
       { label: "Career Closings", value: "370+" }
     ],
-    overview: "Selling your home should never be a gamble. Brian Jamison deploys a 6-phase marketing machine, cinema-grade video, 3D tours, and hard-nosed negotiation to ensure you walk away with maximum net proceeds.",
+    overview: "How a Listing Agent Protects Seller Interests in Edmond: We discuss offer terms, explain their potential effect on your proceeds, and seek your instructions before responding. You decide which terms support your priorities. Our cancel-anytime listing agreement in Edmond, OK puts Brian’s cancellation commitment in writing, with the applicable conditions defined in your contract.",
     keyTakeaways: [
-      "Complete home prep and high-ROI pre-listing staging recommendations",
-      "Bespoke 4K cinematic video, drone flyovers, and Matterport 3D tours",
-      "Paid hyper-targeted social ad campaigns retargeting pre-approved buyers",
-      "100% Risk-Free Cancel-Anytime Listing Guarantee"
+      "Clear explanations of Realtor duties to home sellers in Edmond",
+      "Defined seller representation responsibilities in Edmond, OK",
+      "Your approval guides important transaction decisions",
+      "Flexible listing cancellation terms in Edmond, OK, explained before signing",
+      "Any cancellation charges or marketing repayment obligations identified in writing",
+      "Clear home seller exit terms in a listing agreement in Edmond, OK"
     ],
     deliverables: [
-      { title: "Pre-Listing Home Audit", desc: "Inspection preview to address deal-killer objections before buyers arrive." },
-      { title: "Targeted Search Calibration", desc: "Pricing strategically beneath active buyer search thresholds." },
-      { title: "Global Syndication", desc: "Listing syndicated to 350+ portals worldwide within 24 hours." },
-      { title: "Firm Escrow Defense", desc: "Vigorous negotiation during inspections, appraisal review, and closing." }
+      { title: "Clear Cancellation Terms", desc: "The Brian Jamison listing cancellation policy in Edmond, OK is our firm’s service offer. Your written agreement defines when it applies, how to request cancellation, and any continuing obligations." },
+      { title: "Seller Advocacy & Proceeds Defense", desc: "We discuss offer terms, explain their potential effect on your proceeds, and seek your instructions before responding. You decide which terms support your priorities." },
+      { title: "Private Strategy Session", desc: "Discuss home seller advocacy and informed decisions in Edmond, OK, with guidance focused on your financial priorities and preferred selling timeline." },
+      { title: "6-Phase Selling Machine", desc: "Cinema-grade 4K media, drone flyovers, Matterport 3D, and proactive marketing to trigger competitive bidding." }
+    ],
+    faqs: [
+          {
+                "q": "What steps should I take before listing my home in Edmond, OK?",
+                "a": "Start with a walkthrough to identify high-ROI repairs, declutter living spaces, and gather key property records. Brian provides a room-by-room preparation checklist and a detailed market valuation before any public marketing begins."
+          },
+          {
+                "q": "What is a cancel-anytime listing agreement?",
+                "a": "Our cancel-anytime listing agreement in Edmond, OK puts Brian’s cancellation commitment in writing, with the applicable conditions defined in your contract. If agreed-upon marketing standards or communication promises are not met, you have the contractual right to terminate the listing agreement with zero penalty."
+          },
+          {
+                "q": "How does professional photography and video affect home marketing?",
+                "a": "Over 95% of buyers begin their home search online. Brian coordinates professional HDR interior/exterior photography, cinema-grade 4K walkthrough video, FAA-certified aerial drone mapping, and interactive Matterport 3D tours to showcase your property."
+          },
+          {
+                "q": "How is a home's listing price determined?",
+                "a": "Brian conducts a thorough comparative market analysis (CMA) evaluating active, pending, and recently sold properties, micro-market absorption rates, and unique property attributes to recommend a 3-tier pricing strategy."
+          },
+          {
+                "q": "How do showing appointments and feedback work?",
+                "a": "Showings are scheduled through a secure digital showing platform with your advance approval. Brian requires mandatory feedback from every showing agent within 2 hours, summarized for you in a weekly activity report."
+          },
+          {
+                "q": "How are real estate commissions handled?",
+                "a": "All professional fees are discussed openly and defined in your written listing agreement before you commit. You review the scope of services, marketing investments, and representation duties with complete transparency."
+          }
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
@@ -1366,8 +1972,8 @@ export const AUDIENCE_PAGES: Record<string, InteriorPageData> = {
     slug: "/expired-listings",
     category: "audience",
     kicker: "TURNAROUND PROTOCOL",
-    title: "Expired Listing Turnaround Protocol",
-    subtitle: "Did your home sit on the market without selling? Brian Jamison diagnoses MLS stagnation and relaunches with uncompromised momentum.",
+    title: "Expired Listing Agent in Edmond, OK",
+    subtitle: "Did your house sit on the market without selling? Brian Jamison reviews what went wrong and builds a focused relaunch strategy to help attract qualified buyers.",
     heroVideoUrl: "/media/videos/vid9.mp4",
     heroFallbackImage: "/media/properties/136-nw-18th-heritage-hills.jpeg",
     heroMetrics: [
@@ -1375,18 +1981,36 @@ export const AUDIENCE_PAGES: Record<string, InteriorPageData> = {
       { label: "Failure Diagnosis", value: "48 Hours" },
       { label: "Media Overhaul", value: "100%" }
     ],
-    overview: "When a home expires, 90% of the time the issue is not the property itself—it is poor photography, passive MLS placement, and zero proactive outreach. Brian identifies the friction points and engineers a rapid sale.",
+    overview: "When a listing expires, pricing, presentation, marketing, or buyer feedback may reveal areas for improvement. Brian reviews the previous listing, identifies potential barriers, and develops a clear plan for selling after an expired listing in Edmond, OK.",
     keyTakeaways: [
-      "Rigorous 48-hour diagnostic of why your previous agent failed to produce offers",
-      "Total visual overhaul: complete retake with 4K drone, HDR lighting, and staging adjustments",
-      "Strategic pricing recalibration beneath active buyer search brackets",
-      "Direct outreach to every agent who showed the home previously with updated terms"
+      "A detailed review of previous listing activity, showing feedback, and buyer response",
+      "Updated listing visuals, including photography, drone images, and staging adjustments as appropriate",
+      "Strategic pricing review based on current market conditions and buyer search ranges",
+      "Direct follow-up with agents who previously showed the property, where appropriate"
     ],
     deliverables: [
-      { title: "Listing Autopsy", desc: "Detailed breakdown of previous showing agent feedback and traffic bottlenecks." },
-      { title: "Fresh MLS Reset", desc: "Full relaunch as an active new listing rather than a stale property." },
-      { title: "Direct Broker Blitz", desc: "Phone calls to top 50 active luxury agents in your micro-market." },
-      { title: "No Upfront Cost", desc: "Brian covers 100% of the new media production costs upfront." }
+      { title: "Step 01: Listing Review", desc: "Assess prior agent feedback, showing activity, pricing, and potential reasons the home did not sell in Edmond, OK." },
+      { title: "Step 02: Fresh MLS Relaunch", desc: "Prepare an updated listing with revised presentation, accurate details, and a clear marketing plan." },
+      { title: "Step 03: Targeted Agent Outreach", desc: "Reconnect with agents who showed the property and contact relevant agents active in the local market." },
+      { title: "Step 04: Upfront Cost Discussion", desc: "Review photography, marketing costs, and proposed listing terms before moving forward." }
+    ],
+    faqs: [
+          {
+                "q": "Why do properties in Edmond and Greater OKC expire without selling?",
+                "a": "When a listing expires, pricing, presentation, marketing syndication, or lack of showing feedback usually reveal the underlying issues. Brian diagnoses the exact points of failure across digital media, buyer search brackets, and agent outreach."
+          },
+          {
+                "q": "How does Brian's relaunch strategy differ from our previous listing agent?",
+                "a": "We conduct a complete media overhaul with new 4K cinema video, aerial drone mapping, Matterport 3D, and direct outreach to every agent who previously showed the home, paired with strategic pricing calibration."
+          },
+          {
+                "q": "Do we have to pay any upfront marketing or photography costs?",
+                "a": "No. Brian finances all professional photography, video production, aerial drone mapping, and advertising upfront. All terms and conditions are clearly defined in your agreement before you sign."
+          },
+          {
+                "q": "How does the Cancel-Anytime Guarantee apply to an expired relaunch?",
+                "a": "Our cancel-anytime listing agreement puts Brian's performance commitments in writing. If we fail to deliver on any agreed-upon marketing deliverable or communication standard, you may cancel the agreement with zero penalty."
+          }
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
@@ -1417,6 +2041,24 @@ export const AUDIENCE_PAGES: Record<string, InteriorPageData> = {
       { title: "Private Showings", desc: "Accompanied tours where Brian checks roof age, plumbing, and structural integrity." },
       { title: "Offer Strategy", desc: "Crafting offers designed to win in multiple-bid scenarios without overpaying." }
     ],
+    faqs: [
+          {
+                "q": "What is the first step in the Edmond home buying process?",
+                "a": "The first step is a private buyer strategy session and purchasing power review to clarify your budget, loan pre-approval options, and target neighborhoods before viewing homes."
+          },
+          {
+                "q": "How does buyer representation work under current guidelines?",
+                "a": "Under current industry rules, buyers execute a written representation agreement outlining the agent's fiduciary duties and agreed compensation. Brian negotiates seller concessions or broker-to-broker compensation whenever possible."
+          },
+          {
+                "q": "What inspections should I order on an Oklahoma home?",
+                "a": "In addition to a whole-house structural and mechanical inspection, we strongly recommend roof/hail assessments, foundation elevation surveys, and sewer camera scopes given Oklahoma's expansive red clay soil."
+          },
+          {
+                "q": "Can I cancel a contract if major repair issues are found?",
+                "a": "Yes. During the standard 10-day Oklahoma Treatment, Repair, and Replacement (TR&R) inspection period, you have the contractual right to request repairs or terminate the contract with full refund of your earnest deposit."
+          }
+    ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
   "luxury-buyers": {
@@ -1424,8 +2066,8 @@ export const AUDIENCE_PAGES: Record<string, InteriorPageData> = {
     slug: "/luxury-buyers",
     category: "audience",
     kicker: "PRIVATE CONCIERGE",
-    title: "Luxury & Experienced Buyer Concierge",
-    subtitle: "Discreet acquisitions, off-market private pocket listings, and white-glove advisory for prominent families and executives.",
+    title: "Luxury Home Buyer Agent in Edmond, OK",
+    subtitle: "Discreet property searches, private listing opportunities, and personalized buying guidance for executives, prominent families, and high-net-worth buyers.",
     heroVideoUrl: "/media/videos/vid11.mp4",
     heroFallbackImage: "/media/properties/3233-n-harvey-crown-heights.jpeg",
     heroMetrics: [
@@ -1433,18 +2075,36 @@ export const AUDIENCE_PAGES: Record<string, InteriorPageData> = {
       { label: "NDA Privacy", value: "Guaranteed" },
       { label: "Top 2% Producer", value: "Statewide" }
     ],
-    overview: "High-net-worth buyers require discretion, architectural discernment, and off-market broker access. Brian Jamison provides confidential executive search services across Nichols Hills, Gaillardia, Oak Tree, and Lake Arcadia.",
+    overview: "Luxury buyers often value privacy, architectural quality, and access to suitable properties. Brian Jamison provides tailored search support across Edmond and nearby luxury communities, helping buyers assess properties that fit their goals and preferences.",
     keyTakeaways: [
-      "Strict confidentiality and NDA execution for public figures and executives",
-      "Direct access to unlisted private pocket listings before they reach the public MLS",
-      "Architectural evaluation of custom millwork, smart home systems, and structural integrity",
-      "Coordination of private escrow, estate attorneys, and wealth advisory teams"
+      "Confidential communication and NDA arrangements when appropriate",
+      "Access to available listings and potential private opportunities through broker relationships",
+      "Property reviews covering custom finishes, smart home systems, and visible condition concerns",
+      "Coordination with escrow professionals, estate attorneys, and wealth advisors when requested"
     ],
     deliverables: [
-      { title: "Confidential Search", desc: "Curated portfolio of trophy properties matched strictly to your criteria." },
-      { title: "Private Broker Pitch", desc: "Reaching out directly to homeowners of target unlisted properties." },
-      { title: "Architectural Audit", desc: "Review of builder pedigree, mechanicals, and structural warranties." },
-      { title: "Discreet Escrow Closing", desc: "Structuring purchases through private trusts or LLC entities." }
+      { title: "Step 01: Confidential Property Search", desc: "Build a tailored selection of luxury homes based on your location, design preferences, budget, and lifestyle needs." },
+      { title: "Step 02: Private Listing Inquiries", desc: "Contact relevant brokers and property representatives to explore suitable opportunities that may not be publicly listed." },
+      { title: "Step 03: Property Due Diligence", desc: "Review architectural features, builder information, major systems, and available inspection or warranty records." },
+      { title: "Step 04: Discreet Closing Coordination", desc: "Work with qualified legal and escrow professionals to coordinate closing details and discuss ownership structures where appropriate." }
+    ],
+    faqs: [
+          {
+                "q": "How do private and off-market luxury home searches work?",
+                "a": "Brian leverages established relationships with top brokers, developers, and private property owners to identify off-market, pre-MLS, and pocket listings across Nichols Hills, Gaillardia, Oak Tree, and Lake Arcadia."
+          },
+          {
+                "q": "Can we execute a Non-Disclosure Agreement (NDA) before touring properties?",
+                "a": "Yes. For executives, high-profile individuals, and prominent families, Brian accommodates complete discretion, NDAs, and private showing coordination outside normal showing hours."
+          },
+          {
+                "q": "What due diligence is conducted on custom estates?",
+                "a": "We verify builder provenance, architectural blueprints, structural engineering warranties, private well and aerobic septic systems, pool mechanicals, and smart home automation systems before closing."
+          },
+          {
+                "q": "How do you coordinate with our wealth advisors and estate attorneys?",
+                "a": "Brian regularly interfaces with family offices, CPA firms, trust attorneys, and private bankers to coordinate titling (LLC, trust, family partnership) and discreet closing mechanics."
+          }
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
@@ -1481,9 +2141,9 @@ export const AUDIENCE_PAGES: Record<string, InteriorPageData> = {
     id: "fsbo",
     slug: "/fsbo",
     category: "audience",
-    kicker: "PARTNERSHIP PROTOCOL",
-    title: "For Sale By Owner (FSBO) Partnership",
-    subtitle: "Thinking of selling on your own? Access professional contracts, MLS exposure, and legal paperwork with zero pressure.",
+    kicker: "PARTNERSHIP APPROACH",
+    title: "Partnership Approach Focused on Your Most Profitable Outcome",
+    subtitle: "Understanding listing agent responsibilities to sellers in Edmond, OK starts with your goals. Brian Jamison explains options and trade-offs, helping you evaluate offers by potential net proceeds, timing, and terms.",
     heroVideoUrl: "/media/videos/vid13.mp4",
     heroFallbackImage: "/media/properties/22801-n-briarwood-edmond.jpeg",
     heroMetrics: [
@@ -1491,17 +2151,19 @@ export const AUDIENCE_PAGES: Record<string, InteriorPageData> = {
       { label: "Legal Compliance", value: "100%" },
       { label: "Pressure", value: "Zero" }
     ],
-    overview: "Selling on your own is tempting, but unrepresented sellers often fall victim to tire-kickers, lowball investors, and legal liability. Brian Jamison offers unbundled support or full representation with a cancel-anytime guarantee.",
+    overview: "We discuss offer terms, explain their potential effect on your proceeds, and seek your instructions before responding. You decide which terms support your priorities. Our cancel-anytime listing agreement in Edmond, OK puts Brian’s cancellation commitment in writing, with the applicable conditions defined in your contract.",
     keyTakeaways: [
-      "Complimentary Comparative Market Analysis (CMA) so you don't underprice your asset",
-      "Access to standard Oklahoma Real Estate Commission (OREC) legally compliant disclosure forms",
-      "Guidance on buyer pre-qualification so you don't invite unqualified strangers into your home",
-      "Option to partner on a 1-day showing agreement if Brian brings a qualified buyer"
+      "Clear explanations of Realtor duties to home sellers in Edmond",
+      "Defined seller representation responsibilities in Edmond, OK",
+      "Your approval guides important transaction decisions",
+      "Flexible listing cancellation terms in Edmond, OK, explained before signing",
+      "Any cancellation charges or marketing repayment obligations identified in writing",
+      "Clear home seller exit terms in a listing agreement in Edmond, OK"
     ],
     deliverables: [
-      { title: "Free Pricing Audit", desc: "Comprehensive review of recent comps and neighborhood absorption rates." },
-      { title: "OREC Disclosure Pack", desc: "Mandatory state disclosures covering lead paint, property condition, and title." },
-      { title: "Buyer Vetting Protocol", desc: "Checklist for verifying proof of funds or mortgage approval letters." },
+      { title: "Clear Cancellation Terms", desc: "The Brian Jamison listing cancellation policy in Edmond, OK is our firm’s service offer. Your written agreement defines when it applies, how to request cancellation, and any continuing obligations." },
+      { title: "Protecting Seller Interests", desc: "We discuss offer terms, explain their potential effect on your proceeds, and seek your instructions before responding. You decide which terms support your priorities." },
+      { title: "Schedule A Private Strategy Session", desc: "Discuss cancelling a listing agreement or home seller advocacy with Brian Jamison in Edmond, OK, and review the written conditions, notice requirements, and exclusions before committing." },
       { title: "Backup Representation", desc: "Option to transition to full representation with 100% risk-free cancel-anytime guarantee." }
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
@@ -1513,27 +2175,27 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
     id: "about",
     slug: "/about",
     category: "brand",
-    kicker: "LEADERSHIP & ETHOS",
-    title: "About Brian Jamison & Salt Real Estate",
-    subtitle: "A former collegiate athlete bringing uncompromising work ethic, data-driven pricing, and seven-day accessibility to Oklahoma City luxury real estate.",
+    kicker: "THE PROFESSIONAL APPROACH",
+    title: "The Agent Who Works Like Every Deal Is Personal.",
+    subtitle: "Brian Jamison brings a competitive mindset, direct communication, and a results-focused approach to real estate across Edmond and Greater Oklahoma City. His collegiate athletic background and reported career record of $62M+ in sales volume and 370+ closings shape how he prepares, negotiates, and guides clients through important property decisions.",
     heroVideoUrl: "/media/videos/vid14.mp4",
     heroFallbackImage: "/media/properties/22402-emily-way-edmond.jpeg",
     heroMetrics: [
-      { label: "Career Volume", value: "$70M+" },
+      { label: "Career Volume", value: "$62M+" },
       { label: "Career Closings", value: "370+" },
       { label: "Statewide Rank", value: "Top 2%" }
     ],
-    overview: "Brian Jamison operates with an athlete's discipline. License #184931. Operating as Jamison Real Estate in Edmond, Brian has built a reputation for relentless client advocacy, creative marketing, and transparent communication.",
+    overview: "Years of competitive athletics helped shape Brian’s approach to preparation, discipline, and performance. Today, those principles guide his real estate practice, from pricing and marketing to negotiations and transaction planning. His focus remains on clear advice, careful preparation, and the details that matter to each client.",
     keyTakeaways: [
-      "Top 2% Real Estate Producer statewide with over $70 Million in closed career volume",
-      "Collegiate athletic pedigree driving a relentless work ethic and meticulous preparation",
-      "Direct personal availability 7 days a week with zero corporate runaround",
-      "Located at 1508 W. Edmond Rd., Edmond, Oklahoma"
+      "Top 2% Real Estate Producer with over $62M+ in closed career volume and 370+ closings",
+      "Collegiate athletic background bringing preparation, consistency, and attention to detail",
+      "Direct fiduciary representation with personal involvement in every key decision",
+      "Backed by Salt Real Estate at 1508 W. Edmond Rd., Edmond, Oklahoma"
     ],
     deliverables: [
-      { title: "Athletic Discipline", desc: "Early mornings, daily prospect calls, and constant market studying." },
-      { title: "Data-Driven Decisions", desc: "No guesswork or emotional missteps—pricing backed by hard market stats." },
-      { title: "Total Alignment", desc: "Your financial interests always come ahead of commissions." }
+      { title: "Collegiate Athlete Discipline", desc: "Competitive athletics demands preparation, consistency, and attention to detail carried into market research and negotiation." },
+      { title: "Direct Representation", desc: "Clients work directly with their agent throughout the transaction with hands-on support." },
+      { title: "100% Cancel-Anytime Guarantee", desc: "Transparent communication with clear expectations and zero long-term lock-in." }
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
@@ -1590,20 +2252,20 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
     slug: "/past-sales",
     category: "brand",
     kicker: "VERIFIED TRACK RECORD",
-    title: "$70M+ Past Sales Track Record",
+    title: "$62M+ Past Sales Track Record",
     subtitle: "Over 370+ career closings across central Oklahoma. Explore our history of record-setting prices and rapid days-on-market.",
     heroVideoUrl: "/media/videos/vid17.mp4",
     heroFallbackImage: "/media/properties/9687-bear-creek-guthrie.jpeg",
     heroMetrics: [
-      { label: "Career Volume", value: "$70M+" },
+      { label: "Career Volume", value: "$62M+" },
       { label: "Total Closings", value: "370+" },
-      { label: "Avg Escrow", value: "11 Days" }
+      { label: "Top Producer", value: "Top 2%" }
     ],
-    overview: "Results matter. Brian Jamison's track record is backed by public MLS records, client testimonials, and continuous recognition as a Top 2% Producer in Oklahoma.",
+    overview: "Results matter. Brian Jamison, a real estate agent in Edmond, OK, backs his work with verified sales history and client reviews, with over $62M+ in closed career volume and 370+ closings across Greater Oklahoma City.",
     keyTakeaways: [
-      "Multiple record-setting neighborhood sales in Nichols Hills and Edmond",
+      "Verified sales history and public MLSOK track record across Oklahoma City and Edmond",
       "Average list-to-sale price ratio exceeding 98.4%",
-      "Consistent 5-star verified reviews from doctors, attorneys, and executives"
+      "Consistent 5-star verified reviews from doctors, attorneys, and corporate executives"
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
@@ -1633,9 +2295,9 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
     id: "home-valuation",
     slug: "/home-valuation",
     category: "brand",
-    kicker: "CONFIDENTIAL APPRAISAL",
-    title: "Confidential Market Valuation & CMA Dossier",
-    subtitle: "Request an accurate 3-tier valuation report calibrated against hyper-local pending comps, absorption velocity, and land value.",
+    kicker: "Clients Hubs",
+    title: "Edmond Home Valuation Services for Smarter Selling Decisions",
+    subtitle: "Request a detailed home valuation in Edmond, OK, based on local comparable sales, pending listings, market activity, and your property's unique features.",
     heroVideoUrl: "/media/videos/vid19.mp4",
     heroFallbackImage: "/media/properties/715-s-friendly-okc.jpeg",
     heroMetrics: [
@@ -1643,11 +2305,14 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
       { label: "Turnaround", value: "< 24 Hours" },
       { label: "Cost & Obligation", value: "Zero" }
     ],
-    overview: "Automated computer algorithms like Zillow Zestimates miss premium finishes, custom pools, and lot premiums. Brian personally audits your home's unique features.",
+    overview: "Online estimates may miss premium finishes, custom pools, and property-specific features. Brian reviews your home's details and local market conditions to provide a tailored estimate of its potential market value.",
     keyTakeaways: [
-      "Conservative, Target, and Aspirational pricing tiers",
-      "Detailed comp breakdown with photos and price-per-square-foot metrics",
-      "Actionable recommendations to boost net equity before listing"
+      "Three pricing perspectives: Conservative, Target, and Aspirational",
+      "Local market insights with comparable property details and price-per-square-foot metrics",
+      "Practical recommendations to help improve your potential net proceeds before listing"
+    ],
+    deliverables: [
+      { title: "Request a Home Valuation in Edmond, OK", desc: "Find out how much your house may be worth in Edmond. Request a home value estimate in Edmond, OK, and receive a personalized market opinion to help guide your next move." }
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },

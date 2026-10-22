@@ -30,13 +30,13 @@ export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChap
               Core Representation · Full-Spectrum Advisory
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] tracking-tight font-bold text-balance">
-              Our 3 Major Services
+              Guidance for Every Property Move
             </h2>
           </div>
 
           <div className="max-w-md">
             <p className="font-sans text-sm sm:text-base text-[#6B7280] leading-relaxed">
-              Every transaction demands a bespoke, disciplined strategy. Tap any service to see how it works.
+              Brian Jamison offers personal real estate services in Edmond, OK, for buyers, sellers, and landowners.
             </p>
           </div>
         </div>

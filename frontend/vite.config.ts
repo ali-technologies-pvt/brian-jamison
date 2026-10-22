@@ -11,6 +11,22 @@ export default defineConfig(() => {
         '@': path.resolve(__dirname, './src'),
       },
     },
+    build: {
+      target: 'esnext',
+      minify: 'esbuild',
+      cssCodeSplit: true,
+      sourcemap: false,
+      chunkSizeWarningLimit: 1200,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'vendor-react': ['react', 'react-dom'],
+            'vendor-motion': ['motion'],
+            'vendor-lucide': ['lucide-react'],
+          },
+        },
+      },
+    },
     server: {
       port: 3000,
       host: '0.0.0.0',

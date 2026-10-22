@@ -147,11 +147,11 @@ export const VideoMarqueeFooter: React.FC<VideoMarqueeFooterProps> = ({
               <span>Cinematic Media & Reels Vault</span>
             </div>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight">
-              Oklahoma Luxury In Motion: Watch Brian In Action
+              Watch Properties Before You Visit
             </h2>
           </div>
           <p className="text-xs sm:text-sm text-white/70 max-w-md font-sans leading-relaxed">
-            Hover to pause. Click any clip to stream our 4K aerial drone tours, property walkthroughs, and seller masterclasses.
+            Browse property videos, aerial footage, and short reels showing how homes and land are presented to buyers online.
           </p>
         </div>
       </div>
@@ -177,6 +177,7 @@ export const VideoMarqueeFooter: React.FC<VideoMarqueeFooterProps> = ({
                 playsInline
                 muted
                 loop
+                preload="metadata"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
 

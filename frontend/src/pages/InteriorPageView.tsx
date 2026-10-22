@@ -15,6 +15,7 @@ import {
   HelpCircle,
   FileCheck,
   ChevronRight,
+  ChevronDown,
   Layers,
   ArrowUpRight,
   Search,
@@ -25,25 +26,32 @@ import { BrianAvatar } from '../components/BrianAvatar';
 import { PhilosophySection } from '../components/PhilosophySection';
 import { LISTING_STANDARDS_DATA } from '../components/ListingStandardsSection';
 import { CORE_PROCESSES_NAV } from './serviceData';
-import { HomeSellingPage } from './HomeSellingPage';
-import { HomeBuyingPage } from './HomeBuyingPage';
-import { LandSalesPage } from './LandSalesPage';
-import { NeighborhoodDetailView } from './NeighborhoodDetailView';
 import { TestimonialsSection, GoogleLogoIcon } from '../components/TestimonialsSection';
-import { AboutJamisonPage } from './AboutJamisonPage';
-import { CommunityHubPage } from './CommunityHubPage';
-import { ServicesHubPage } from './ServicesHubPage';
-import {
-  HomeSellersChecklistPage,
-  MortgageCalculatorPage,
-  RelocationGuidePage,
-  WhatToWatchOutForPage,
-  FaqPage,
-  LegalCompliancePage
-} from './ResourcePages';
-import { ListingsPage } from './ListingsPage';
-import { PastSalesPage } from './PastSalesPage';
-import { MapSearchPage } from './MapSearchPage';
+
+// Ultra-Fast Async Code Splitting Chunks
+const HomeSellingPage = React.lazy(() => import('./HomeSellingPage').then(m => ({ default: m.HomeSellingPage })));
+const HomeBuyingPage = React.lazy(() => import('./HomeBuyingPage').then(m => ({ default: m.HomeBuyingPage })));
+const LandSalesPage = React.lazy(() => import('./LandSalesPage').then(m => ({ default: m.LandSalesPage })));
+const NeighborhoodDetailView = React.lazy(() => import('./NeighborhoodDetailView').then(m => ({ default: m.NeighborhoodDetailView })));
+const AboutJamisonPage = React.lazy(() => import('./AboutJamisonPage').then(m => ({ default: m.AboutJamisonPage })));
+const CommunityHubPage = React.lazy(() => import('./CommunityHubPage').then(m => ({ default: m.CommunityHubPage })));
+const ServicesHubPage = React.lazy(() => import('./ServicesHubPage').then(m => ({ default: m.ServicesHubPage })));
+const ListingsPage = React.lazy(() => import('./ListingsPage').then(m => ({ default: m.ListingsPage })));
+const PastSalesPage = React.lazy(() => import('./PastSalesPage').then(m => ({ default: m.PastSalesPage })));
+const MapSearchPage = React.lazy(() => import('./MapSearchPage').then(m => ({ default: m.MapSearchPage })));
+const HomeSellersChecklistPage = React.lazy(() => import('./ResourcePages').then(m => ({ default: m.HomeSellersChecklistPage })));
+const MortgageCalculatorPage = React.lazy(() => import('./ResourcePages').then(m => ({ default: m.MortgageCalculatorPage })));
+const RelocationGuidePage = React.lazy(() => import('./ResourcePages').then(m => ({ default: m.RelocationGuidePage })));
+const WhatToWatchOutForPage = React.lazy(() => import('./ResourcePages').then(m => ({ default: m.WhatToWatchOutForPage })));
+const FaqPage = React.lazy(() => import('./ResourcePages').then(m => ({ default: m.FaqPage })));
+const LegalCompliancePage = React.lazy(() => import('./ResourcePages').then(m => ({ default: m.LegalCompliancePage })));
+
+const PageLoadingFallback = () => (
+  <div className="w-full min-h-[60vh] bg-[#FAF9F6] flex flex-col items-center justify-center p-8">
+    <div className="w-10 h-10 border-3 border-[#002D61] border-t-[#EA580C] rounded-full animate-spin mb-4" />
+    <span className="text-xs uppercase tracking-widest text-[#002D61] font-bold">Loading Experience...</span>
+  </div>
+);
 
 interface InteriorPageViewProps {
   page: InteriorPageData;
@@ -60,6 +68,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
 }) => {
   const [areasCategoryFilter, setAreasCategoryFilter] = useState<'all' | 'luxury' | 'north' | 'west-south'>('all');
   const [areasSearchQuery, setAreasSearchQuery] = useState('');
+  const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(0);
   // 1. Dedicated Home Buying Service Page (/services/home-buying)
   if (
     page.id === 'home-buying' ||
@@ -68,11 +77,13 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
     page.slug === '/home-buying'
   ) {
     return (
-      <HomeBuyingPage
-        onNavigate={onNavigate}
-        onOpenConsultation={onOpenConsultation}
-        onOpenValuation={onOpenValuation}
-      />
+      <React.Suspense fallback={<PageLoadingFallback />}>
+        <HomeBuyingPage
+          onNavigate={onNavigate}
+          onOpenConsultation={onOpenConsultation}
+          onOpenValuation={onOpenValuation}
+        />
+      </React.Suspense>
     );
   }
 
@@ -84,11 +95,13 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
     page.slug === '/home-selling'
   ) {
     return (
-      <HomeSellingPage
-        onNavigate={onNavigate}
-        onOpenConsultation={onOpenConsultation}
-        onOpenValuation={onOpenValuation}
-      />
+      <React.Suspense fallback={<PageLoadingFallback />}>
+        <HomeSellingPage
+          onNavigate={onNavigate}
+          onOpenConsultation={onOpenConsultation}
+          onOpenValuation={onOpenValuation}
+        />
+      </React.Suspense>
     );
   }
 
@@ -104,11 +117,13 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
     page.slug === '/land-buying-and-selling'
   ) {
     return (
-      <LandSalesPage
-        onNavigate={onNavigate}
-        onOpenConsultation={onOpenConsultation}
-        onOpenValuation={onOpenValuation}
-      />
+      <React.Suspense fallback={<PageLoadingFallback />}>
+        <LandSalesPage
+          onNavigate={onNavigate}
+          onOpenConsultation={onOpenConsultation}
+          onOpenValuation={onOpenValuation}
+        />
+      </React.Suspense>
     );
   }
 
@@ -119,12 +134,14 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
     page.slug !== '/areas'
   ) {
     return (
-      <NeighborhoodDetailView
-        page={page}
-        onNavigate={onNavigate}
-        onOpenConsultation={onOpenConsultation}
-        onOpenValuation={onOpenValuation}
-      />
+      <React.Suspense fallback={<PageLoadingFallback />}>
+        <NeighborhoodDetailView
+          page={page}
+          onNavigate={onNavigate}
+          onOpenConsultation={onOpenConsultation}
+          onOpenValuation={onOpenValuation}
+        />
+      </React.Suspense>
     );
   }
 
@@ -136,11 +153,13 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
     page.slug === '/about-brian-jamison'
   ) {
     return (
-      <AboutJamisonPage
-        onNavigate={onNavigate}
-        onOpenConsultation={onOpenConsultation}
-        onOpenValuation={onOpenValuation}
-      />
+      <React.Suspense fallback={<PageLoadingFallback />}>
+        <AboutJamisonPage
+          onNavigate={onNavigate}
+          onOpenConsultation={onOpenConsultation}
+          onOpenValuation={onOpenValuation}
+        />
+      </React.Suspense>
     );
   }
 
@@ -152,22 +171,26 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
     page.slug === '/communities'
   ) {
     return (
-      <CommunityHubPage
-        onNavigate={onNavigate}
-        onOpenConsultation={onOpenConsultation}
-        onOpenValuation={onOpenValuation}
-      />
+      <React.Suspense fallback={<PageLoadingFallback />}>
+        <CommunityHubPage
+          onNavigate={onNavigate}
+          onOpenConsultation={onOpenConsultation}
+          onOpenValuation={onOpenValuation}
+        />
+      </React.Suspense>
     );
   }
 
   // 7. Dedicated Services Directory Hub Page (/services)
   if (page.id === 'services' || page.slug === '/services') {
     return (
-      <ServicesHubPage
-        onNavigate={onNavigate}
-        onOpenConsultation={onOpenConsultation}
-        onOpenValuation={onOpenValuation}
-      />
+      <React.Suspense fallback={<PageLoadingFallback />}>
+        <ServicesHubPage
+          onNavigate={onNavigate}
+          onOpenConsultation={onOpenConsultation}
+          onOpenValuation={onOpenValuation}
+        />
+      </React.Suspense>
     );
   }
 
@@ -178,11 +201,13 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
     page.slug === '/sellers-checklist'
   ) {
     return (
-      <HomeSellersChecklistPage
-        onNavigate={onNavigate}
-        onOpenConsultation={onOpenConsultation}
-        onOpenValuation={onOpenValuation}
-      />
+      <React.Suspense fallback={<PageLoadingFallback />}>
+        <HomeSellersChecklistPage
+          onNavigate={onNavigate}
+          onOpenConsultation={onOpenConsultation}
+          onOpenValuation={onOpenValuation}
+        />
+      </React.Suspense>
     );
   }
 
@@ -192,11 +217,13 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
     page.slug === '/resources/mortgage-calculator'
   ) {
     return (
-      <MortgageCalculatorPage
-        onNavigate={onNavigate}
-        onOpenConsultation={onOpenConsultation}
-        onOpenValuation={onOpenValuation}
-      />
+      <React.Suspense fallback={<PageLoadingFallback />}>
+        <MortgageCalculatorPage
+          onNavigate={onNavigate}
+          onOpenConsultation={onOpenConsultation}
+          onOpenValuation={onOpenValuation}
+        />
+      </React.Suspense>
     );
   }
 
@@ -206,11 +233,13 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
     page.slug === '/resources/okc-relocation-guide'
   ) {
     return (
-      <RelocationGuidePage
-        onNavigate={onNavigate}
-        onOpenConsultation={onOpenConsultation}
-        onOpenValuation={onOpenValuation}
-      />
+      <React.Suspense fallback={<PageLoadingFallback />}>
+        <RelocationGuidePage
+          onNavigate={onNavigate}
+          onOpenConsultation={onOpenConsultation}
+          onOpenValuation={onOpenValuation}
+        />
+      </React.Suspense>
     );
   }
 
@@ -220,56 +249,66 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
     page.slug === '/resources/what-to-watch-out-for'
   ) {
     return (
-      <WhatToWatchOutForPage
-        onNavigate={onNavigate}
-        onOpenConsultation={onOpenConsultation}
-        onOpenValuation={onOpenValuation}
-      />
+      <React.Suspense fallback={<PageLoadingFallback />}>
+        <WhatToWatchOutForPage
+          onNavigate={onNavigate}
+          onOpenConsultation={onOpenConsultation}
+          onOpenValuation={onOpenValuation}
+        />
+      </React.Suspense>
     );
   }
 
   // 12. Dedicated Frequently Asked Questions Page (/faq)
   if (page.id === 'faq' || page.slug === '/faq') {
     return (
-      <FaqPage
-        onNavigate={onNavigate}
-        onOpenConsultation={onOpenConsultation}
-        onOpenValuation={onOpenValuation}
-      />
+      <React.Suspense fallback={<PageLoadingFallback />}>
+        <FaqPage
+          onNavigate={onNavigate}
+          onOpenConsultation={onOpenConsultation}
+          onOpenValuation={onOpenValuation}
+        />
+      </React.Suspense>
     );
   }
 
   // 13. Dedicated Legal Compliance Pages (/privacy-policy, /terms-of-service, /fair-housing-disclosure)
   if (page.id === 'privacy-policy' || page.slug === '/privacy-policy') {
     return (
-      <LegalCompliancePage
-        type="privacy"
-        onNavigate={onNavigate}
-        onOpenConsultation={onOpenConsultation}
-        onOpenValuation={onOpenValuation}
-      />
+      <React.Suspense fallback={<PageLoadingFallback />}>
+        <LegalCompliancePage
+          type="privacy"
+          onNavigate={onNavigate}
+          onOpenConsultation={onOpenConsultation}
+          onOpenValuation={onOpenValuation}
+        />
+      </React.Suspense>
     );
   }
 
   if (page.id === 'terms-of-service' || page.slug === '/terms-of-service') {
     return (
-      <LegalCompliancePage
-        type="terms"
-        onNavigate={onNavigate}
-        onOpenConsultation={onOpenConsultation}
-        onOpenValuation={onOpenValuation}
-      />
+      <React.Suspense fallback={<PageLoadingFallback />}>
+        <LegalCompliancePage
+          type="terms"
+          onNavigate={onNavigate}
+          onOpenConsultation={onOpenConsultation}
+          onOpenValuation={onOpenValuation}
+        />
+      </React.Suspense>
     );
   }
 
   if (page.id === 'fair-housing-disclosure' || page.slug === '/fair-housing-disclosure') {
     return (
-      <LegalCompliancePage
-        type="fairhousing"
-        onNavigate={onNavigate}
-        onOpenConsultation={onOpenConsultation}
-        onOpenValuation={onOpenValuation}
-      />
+      <React.Suspense fallback={<PageLoadingFallback />}>
+        <LegalCompliancePage
+          type="fairhousing"
+          onNavigate={onNavigate}
+          onOpenConsultation={onOpenConsultation}
+          onOpenValuation={onOpenValuation}
+        />
+      </React.Suspense>
     );
   }
 
@@ -347,33 +386,39 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
   // 15. Dedicated Active MLS Listings & Featured Portfolio (/listings)
   if (page.id === 'listings' || page.slug === '/listings') {
     return (
-      <ListingsPage
-        onNavigate={onNavigate}
-        onOpenConsultation={onOpenConsultation}
-        onOpenValuation={onOpenValuation}
-      />
+      <React.Suspense fallback={<PageLoadingFallback />}>
+        <ListingsPage
+          onNavigate={onNavigate}
+          onOpenConsultation={onOpenConsultation}
+          onOpenValuation={onOpenValuation}
+        />
+      </React.Suspense>
     );
   }
 
   // 16. Dedicated $70M+ Past Sales & Track Record (/past-sales)
   if (page.id === 'past-sales' || page.slug === '/past-sales') {
     return (
-      <PastSalesPage
-        onNavigate={onNavigate}
-        onOpenConsultation={onOpenConsultation}
-        onOpenValuation={onOpenValuation}
-      />
+      <React.Suspense fallback={<PageLoadingFallback />}>
+        <PastSalesPage
+          onNavigate={onNavigate}
+          onOpenConsultation={onOpenConsultation}
+          onOpenValuation={onOpenValuation}
+        />
+      </React.Suspense>
     );
   }
 
   // 17. Dedicated Geospatial MLS Map Search (/map-search, /properties/map)
   if (page.id === 'map-search' || page.slug === '/map-search' || page.slug === '/properties/map') {
     return (
-      <MapSearchPage
-        onNavigate={onNavigate}
-        onOpenConsultation={onOpenConsultation}
-        onOpenValuation={onOpenValuation}
-      />
+      <React.Suspense fallback={<PageLoadingFallback />}>
+        <MapSearchPage
+          onNavigate={onNavigate}
+          onOpenConsultation={onOpenConsultation}
+          onOpenValuation={onOpenValuation}
+        />
+      </React.Suspense>
     );
   }
 
@@ -788,12 +833,25 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                     {/* Visual Graphic Header with High-Resolution Photography */}
                     <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-[#002D61]">
                       {item.image ? (
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                          loading="lazy"
-                        />
+                        item.title?.toLowerCase().includes('drone') || item.badge?.toLowerCase().includes('drone') || item.desc?.toLowerCase().includes('drone') || item.title?.toLowerCase().includes('aerial') ? (
+                          <video
+                            src="/media/videos/vid2.mp4"
+                            poster={item.image}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            preload="metadata"
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                          />
+                        ) : (
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                            loading="lazy"
+                          />
+                        )
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-[#002D61] to-[#001D40] flex items-center justify-center text-white">
                           <Sparkles className="w-10 h-10 text-[#FB923C]" />
@@ -1023,6 +1081,48 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
       {/* Philosophy & Athletic Ethos Section (Dedicated for About Page) */}
       {page.id === 'about' && (
         <PhilosophySection onOpenConsultation={onOpenConsultation} />
+      )}
+
+      {/* 6. Dynamic Frequently Asked Questions (for pages with page.faqs) */}
+      {page.faqs && page.faqs.length > 0 && (
+        <section id="page-faqs" className="w-full py-16 sm:py-24 bg-[#FAF9F6] border-b border-[#EA580C]/30 relative">
+          <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+            <div className="max-w-3xl mx-auto text-center mb-12">
+              <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-2">
+                Frequently Asked Questions
+              </span>
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#002D61]">
+                Clear Answers & Advisory Standards
+              </h2>
+            </div>
+
+            <div className="max-w-3xl mx-auto space-y-4">
+              {page.faqs.map((faq, idx) => {
+                const isOpen = openFaqIdx === idx;
+                return (
+                  <div
+                    key={idx}
+                    className="rounded-2xl bg-white border border-[#E6E2DA] overflow-hidden transition-colors shadow-2xs hover:border-[#EA580C]/40"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
+                      className="w-full p-6 text-left flex items-center justify-between gap-4 cursor-pointer"
+                    >
+                      <span className="font-serif text-base sm:text-lg font-bold text-[#002D61]">{faq.q}</span>
+                      <ChevronDown className={`w-5 h-5 text-[#EA580C] shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    {isOpen && (
+                      <div className="px-6 pb-6 text-sm text-[#4B5563] leading-relaxed border-t border-stone-100 pt-4">
+                        {faq.a}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
       )}
 
       {/* 7. Bottom Call to Action Banner */}

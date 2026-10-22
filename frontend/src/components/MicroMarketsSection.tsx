@@ -35,13 +35,13 @@ export const MicroMarketsSection: React.FC<MicroMarketsSectionProps> = ({
               Oklahoma Service Areas & Enclaves
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] font-bold tracking-tight">
-              Oklahoma City Metro Communities
+              Edmond Roots, Metro-Wide Reach
             </h2>
           </div>
 
           <div className="max-w-md flex flex-col sm:flex-row sm:items-center gap-3">
             <p className="font-sans text-xs sm:text-sm text-[#4B5563] leading-relaxed">
-              From historic grand estates to gated golf communities and rural custom acreage. Explore our active service areas.
+              Brian is a local real estate agent working from the Edmond office and serving Greater Oklahoma City.
             </p>
           </div>
         </div>

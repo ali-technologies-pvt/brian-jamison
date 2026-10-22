@@ -34,7 +34,7 @@ export const ClosingCta: React.FC<ClosingCtaProps> = ({ onOpenConsultation }) =>
           </h2>
 
           <p className="font-sans text-sm sm:text-base text-[#6B7280] leading-relaxed max-w-xl mx-auto mb-10 font-normal">
-            Schedule an initial conversation about your property's trajectory in the market and explore our bespoke marketing plans.
+            Schedule an initial conversation about your property's trajectory in the Edmond market and explore our bespoke marketing plans.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

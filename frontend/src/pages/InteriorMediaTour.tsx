@@ -9,7 +9,7 @@ interface InteriorMediaTourProps {
 
 export const InteriorMediaTour: React.FC<InteriorMediaTourProps> = ({
   title = "Embedded Media & Interactive Walkthrough Suite",
-  droneVideoUrl = "/media/properties/11500-gateshead.jpg",
+  droneVideoUrl = "/media/videos/vid2.mp4",
   matterportTitle = "Matterport Pro3 3D Spatial Model & Floorplan Inspection"
 }) => {
   const [activeTab, setActiveTab] = useState<'3d' | 'drone' | 'briefing'>('3d');

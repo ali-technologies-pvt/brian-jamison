@@ -60,10 +60,10 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
               </span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] font-bold tracking-tight">
-              Real Client Experiences
+              Clients Describe the Difference
             </h2>
             <p className="font-sans text-sm sm:text-base text-[#6B7280] mt-2 max-w-xl">
-              Authentic reviews from verified Oklahoma City, Edmond, and Norman homeowners, buyers, and investors who experienced Brian Jamison&apos;s process firsthand.
+              Buyers and sellers share what it was like to work with Brian, from the first call through closing, including how he communicated, solved problems, and guided decisions. Each review is from a real client.
             </p>
           </div>
 

@@ -151,63 +151,63 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
   const ROADMAP_STEPS = [
     {
       step: "01",
-      title: "Mortgage Pre-Approval & Purchasing Power Optimization",
-      desc: "Before looking at properties, we connect you with premier Oklahoma local lenders to audit debt-to-income (DTI), lock favorable rate caps, and verify verified pre-approval status. Sellers discard generic pre-qualification letters.",
-      deliverable: "Fully underwritten pre-approval letter ready to attach to purchase offers."
+      title: "Mortgage Pre-Approval and Purchasing Power Review",
+      desc: "Before viewing properties, we help you prepare for conversations with mortgage lenders and review your target budget. Your lender can assess your income, debts, credit profile, loan options, and pre-approval status. This helps you focus on homes that fit your finances before making an offer.",
+      deliverable: "A current lender pre-approval letter to support your purchase offers."
     },
     {
       step: "02",
-      title: "Defining Non-Negotiable Criteria",
-      desc: "We pinpoint your exact criteria: top-ranked school boundaries (Edmond, Deer Creek, Norman), commute corridors (Kilpatrick Turnpike, Broadway Extension), HOA restrictions, and long-term resale liquidity.",
-      deliverable: "Custom MLS search matrix filtered against unlisted HOA covenants."
+      title: "Defining Your Non-Negotiable Criteria",
+      desc: "We identify the features that matter most to you, from home size and layout to school attendance areas, commute routes, HOA rules, and future resale considerations. Whether you are comparing established Edmond neighborhoods or homes near major roads, we build a search around your priorities.",
+      deliverable: "A customized home search with clear criteria for property type, location, features, and budget."
     },
     {
       step: "03",
-      title: "Private VIP Showings & Off-Market Pocket Previews",
-      desc: "Gain priority access to private seller pocket listings, coming-soon network exclusives, and private showings scheduled seamlessly around your schedule—including evenings and weekends.",
-      deliverable: "First-look access before listings hit public Zillow and Redfin feeds."
+      title: "Private Showings and Property Search Coordination",
+      desc: "Explore available homes that match your needs, with showings arranged around your schedule and access permitted by the listing terms. We help you compare property condition, layout, location, and asking price rather than relying on photos alone. When suitable properties become available, we help you review them promptly.",
+      deliverable: "A focused showing plan and property shortlist based on your buying criteria."
     },
     {
       step: "04",
-      title: "Crafting a Winning OREC Purchase Contract",
-      desc: "We draft an ironclad Oklahoma Real Estate Commission (OREC) contract tailored with calibrated escalation clauses, earnest deposit buffers, and seller concession terms that win competitive bids without overpaying.",
-      deliverable: "Strategic offer designed to beat competing cash or conventional bids."
+      title: "Preparing an Oklahoma Purchase Contract",
+      desc: "When you find a home that fits, we help you understand the offer terms and prepare the appropriate Oklahoma purchase contract. We review price, deadlines, earnest money, inspection provisions, financing terms, and requested seller concessions. Each offer should reflect the property, your finances, and the current competition.",
+      deliverable: "A purchase offer structured around your priorities and the terms you are prepared to accept."
     },
     {
       step: "05",
-      title: "Earnest Money Deposit & Escrow Account Security",
-      desc: "Within 3 calendar days of mutual acceptance, we coordinate wire transfer of your earnest deposit to a bonded Oklahoma title escrow account, legally securing your right to purchase.",
-      deliverable: "Escrow verification receipt and binding contractual protection."
+      title: "Earnest Money Deposit and Escrow Coordination",
+      desc: "After the contract is accepted, we help you track the earnest money deadline and coordinate with the parties named in the contract. The amount, deposit instructions, and due date depend on the agreed terms. Always verify payment instructions directly with the appropriate title or escrow provider before sending funds.",
+      deliverable: "A clear earnest money deadline, verified payment instructions, and confirmation of receipt from the appropriate party."
     },
     {
       step: "06",
-      title: "The 10-Day Due Diligence & Physical Inspection Period",
-      desc: "Brian Jamison personally attends on-site inspections alongside certified structural engineers. We test foundation slab movement, HVAC efficiency, plumbing drain lines, and Oklahoma hail impact on roofs.",
-      deliverable: "Comprehensive 40+ page photographic inspection diagnostic report."
+      title: "The Inspection and Due Diligence Period",
+      desc: "We help coordinate inspections and review the findings with you during the contractual due diligence period. Depending on the home, areas of concern may include the foundation, roof, HVAC system, plumbing, electrical components, drainage, and signs of weather damage. We help you identify questions to raise with qualified inspectors and contractors.",
+      deliverable: "Inspection findings and a prioritized list of property concerns for further review."
     },
     {
       step: "07",
-      title: "Aggressive TRRA Repair & Monetary Credit Negotiations",
-      desc: "We issue formal Treatment, Repair, and Replacement (TRRA) demands, fighting for licensed contractor repairs or direct seller closing credits to protect your out-of-pocket cash.",
-      deliverable: "Signed TRRA amendment requiring seller repair receipts prior to closing."
+      title: "Repair Requests and Seller Credit Negotiations",
+      desc: "Once inspection findings are available, we help you assess which issues may warrant further discussion. Depending on the contract and negotiations, options may include repairs, seller credits, a price adjustment, or proceeding under the agreed terms. We help you communicate your requests clearly and track any written agreement.",
+      deliverable: "A written repair request or negotiated amendment, when agreed to by the parties."
     },
     {
       step: "08",
-      title: "Appraisal Contingency Protection",
-      desc: "If an independent bank appraiser values the property below the contract price, we provide comparable sales data to petition for a reconsideration or renegotiate the purchase price downward.",
-      deliverable: "Guarantees you never bring unexpected gap cash to closing."
+      title: "Appraisal Review and Financing Coordination",
+      desc: "If the lender's appraisal comes in below the contract price, we help you review the valuation and compare it with relevant property sales. Depending on your contract and loan terms, possible next steps may include requesting an appraisal review, negotiating with the seller, or considering other permitted options.",
+      deliverable: "A review of the appraisal and a clear discussion of available options under your contract."
     },
     {
       step: "09",
-      title: "Final Pre-Closing Walkthrough Verification",
-      desc: "24 hours before closing, Brian walks the property with you to verify all negotiated TRRA repairs were completed properly by licensed contractors and the home remains in pristine condition.",
-      deliverable: "Final walkthrough approval confirming property readiness."
+      title: "Final Pre-Closing Walkthrough",
+      desc: "Before closing, we accompany you on the final walkthrough to check the property's condition and review agreed repairs or other contractual requirements. We help identify visible concerns that need to be raised before closing. The walkthrough is an important final check, although it does not replace a professional inspection.",
+      deliverable: "A final walkthrough checklist documenting items that may require follow-up before closing."
     },
     {
       step: "10",
-      title: "Closing at Title Company & Keys Handover",
-      desc: "We review the closing disclosure settlement statement side-by-side, coordinate funds transfer at a reputable Oklahoma title company, and personally place the keys into your hands.",
-      deliverable: "Clear title deed, title insurance policy, and official keys delivery."
+      title: "Closing at the Title Company and Key Handover",
+      desc: "As closing approaches, we help you track outstanding requirements and communicate with your lender and title company. Review your closing documents, settlement figures, and payment instructions with the appropriate professionals. Once the transaction is completed and possession is authorized under the contract, you can collect your keys.",
+      deliverable: "A completed closing process, confirmation of the applicable transaction documents, and key handover when authorized."
     }
   ];
 
@@ -215,45 +215,45 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
   const BUYER_SHIELD_PROCESSES = [
     {
       number: "01",
-      title: "Market Intelligence & Off-Market Access",
-      subtitle: "Reverse-Prospecting & Pocket Inventory",
-      desc: "As an active Top 2% listing agent, Brian has direct real-time communication with the top listing brokers in Oklahoma City. We tap private broker networks, reverse-prospecting feeds, and pre-market corporate transfers so you view homes days before the general public.",
-      benefit: "Bypasses public open-house bidding frenzies and emotional bidding wars."
+      title: "Market Research and Property Search",
+      subtitle: "Local Market Insight and Home Search Guidance",
+      desc: "As your home buying agent in Edmond, OK, Brian helps you review available listings, compare property features, and assess asking prices against relevant market information. We discuss location, condition, and your preferred features to help narrow the search. Any access to coming-soon or off-market homes depends on actual availability and applicable listing rules.",
+      benefit: "A more focused search that helps you compare suitable homes without losing sight of your budget and priorities."
     },
     {
       number: "02",
-      title: "Ruthless Contract & Repair Negotiation",
-      subtitle: "Fiduciary Advocacy That Saves You Thousands",
-      desc: "We do not accept superficial seller excuses. During the 10-day TRRA period, Brian negotiates forcefully for major mechanical replacements, roof insurance claim transfers, or cash credits at the closing table.",
-      benefit: "Average client savings of $24,500 below initial asking price + repair credits."
+      title: "Buyer Advocacy Through Offer and Repair Negotiations",
+      subtitle: "Contract Terms and Inspection Negotiation",
+      desc: "We help you assess the terms of a proposed purchase and identify areas where negotiation may be appropriate. After inspections, we discuss documented concerns and help you prepare repair or credit requests that fit the contract. The seller decides whether to accept, reject, or counter those requests.",
+      benefit: "Clearer negotiations based on property condition, comparable sales, and the terms both parties are willing to accept."
     },
     {
       number: "03",
-      title: "24/7 Immediate Showing Access",
-      subtitle: "Zero Missed Opportunities · 7-Day Line",
-      desc: "In high-demand Oklahoma neighborhoods like Nichols Hills, Oak Tree, and Deer Creek, pristine properties go under contract in under 48 hours. Brian's 7-day availability and backup listing team guarantee you never miss a sudden viewing window.",
-      benefit: "Immediate same-day private walkthroughs on newly released listings."
+      title: "Responsive Communication and Showing Coordination",
+      subtitle: "Timely Access to Available Homes",
+      desc: "Desirable homes can attract attention quickly, so prompt communication matters. We coordinate showings around your availability, help you understand listing details, and discuss next steps when a suitable property appears. Access depends on seller approval, showing rules, and the listing's current status.",
+      benefit: "Organized showing coordination and timely guidance when you are ready to evaluate a property."
     },
     {
       number: "04",
-      title: "Dedicated Transaction Coordinator",
-      subtitle: "Flawless Escrow, Title & Timeline Compliance",
-      desc: "Behind Brian stands our dedicated corporate transaction team at Salt Real Estate. We track every earnest deadline, title commitment requirement, HOA document review, and survey compliance with zero room for error.",
-      benefit: "100% on-time closings without surprise escrow delays or legal pitfalls."
+      title: "Earnest Money, Title, and Timeline Coordination",
+      subtitle: "Transaction Deadline Management",
+      desc: "A home purchase includes several deadlines and documents. We help track contract dates, inspection periods, financing milestones, title requirements, and other items that need attention. We also communicate with the lender, title company, and other parties involved so you know what remains outstanding.",
+      benefit: "A clearer view of upcoming deadlines and fewer avoidable misunderstandings during the transaction."
     },
     {
       number: "05",
-      title: "Forensic Pricing & Comps Analysis",
-      subtitle: "Never Overpay Due to Market Hype",
-      desc: "Before submitting any offer, we run an exhaustive Comparative Market Analysis (CMA) cross-referencing recent sales, days on market, and cost-per-square-foot adjustments to ensure your bid reflects true fair market value.",
-      benefit: "Prevents emotional overpaying and protects your appraisal contingency."
+      title: "Make Offers Based on Market Evidence",
+      subtitle: "Comparable Sales and Pricing Analysis",
+      desc: "Before you submit an offer, we review relevant comparable sales, current competition, property condition, and asking price. A comparative market analysis can help you judge whether a home's price appears reasonable and decide how much you are comfortable offering. Market data informs the decision but cannot guarantee a particular value or outcome.",
+      benefit: "A more informed offer strategy that balances market conditions with your budget and the home's value to you."
     },
     {
       number: "06",
-      title: "Zero-Risk Buyer Agreement",
-      subtitle: "Cancel-Anytime Commitment · No Lock-In",
-      desc: "Most agents demand you sign a rigid 6-month exclusive buyer agreement that traps you even if they stop answering your calls. Brian Jamison offers an unconditional cancel-anytime buyer pledge: if you are ever dissatisfied, you can cancel immediately with zero penalty.",
-      benefit: "100% performance-driven fiduciary loyalty with zero handcuffs."
+      title: "Understand Your Buyer Representation Agreement",
+      subtitle: "Clear Terms and Expectations",
+      desc: "Before representation begins, we explain the proposed buyer agreement, including its duration, services, compensation, and termination provisions. You should understand what you are agreeing to before signing. We encourage clear questions about the terms so you can make an informed choice about working together.",
+      benefit: "A clearer understanding of your buyer representation, responsibilities, and available options before you commit."
     }
   ];
 
@@ -309,36 +309,32 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
   // Buyer FAQs Data
   const BUYER_FAQS = [
     {
-      q: "Do I pay any fees to hire Brian Jamison as my buyer agent?",
-      a: "In standard Oklahoma real estate transactions, the seller pays the brokerage commission at the closing table from their gross sales proceeds. That means you get Brian's championship-level negotiation, 7-day showing availability, and full support team with zero out-of-pocket agent retainer fees."
+      q: "What does a buyer agent do?",
+      a: "A buyer agent helps you search for homes, arrange showings, compare property values, prepare offers, negotiate terms, review inspection concerns, and track deadlines. Services depend on your buyer representation agreement."
     },
     {
-      q: "What is earnest money and how does it protect my purchase?",
-      a: "Earnest money is a good-faith deposit (typically 1% to 2% of the purchase price in Oklahoma) deposited into a bonded title company escrow account once an offer is accepted. If the seller breaches the contract or if you terminate during the 10-day TRRA inspection period, your earnest money is fully refunded to you under Oklahoma law."
+      q: "When should I hire a home buying agent?",
+      a: "It helps to speak with an agent before touring homes. Early guidance can help you define your search, understand representation terms, prepare for offers, and coordinate with a mortgage lender."
     },
     {
-      q: "How does the Oklahoma 10-day TRRA inspection period work?",
-      a: "Under the Oklahoma Real Estate Commission (OREC) contract, you have 10 calendar days from mutual acceptance to inspect the property. You can hire certified inspectors to examine the foundation, roof, plumbing, HVAC, electrical, and sewer lines. You then submit a TRRA notice demanding repairs or closing credits. If the seller refuses to address material defects, you can walk away with 100% of your earnest deposit."
+      q: "What does buyer representation include?",
+      a: "Buyer representation can include property searches, showing coordination, offer preparation, negotiation, due diligence guidance, and closing coordination. Review your written agreement to understand the services, compensation, duration, and termination terms."
     },
     {
-      q: "Can you help buyers relocating from out of state (California, Texas, etc.)?",
-      a: "Yes! A significant portion of our clientele consists of cross-country corporate and healthcare relocations to Oklahoma City. We provide 4K live FaceTime video walkthroughs, drone neighborhood tours, school district analysis, and coordination with out-of-state movers to ensure seamless relocations."
+      q: "How do I choose the right Realtor for buying a home?",
+      a: "Look for an agent who understands your priorities, communicates clearly, explains contract terms, and guides you through inspections and negotiations. Ask about their experience, availability, service process, and buyer representation agreement."
     },
     {
-      q: "What should I know about VA loans and military relocation near Tinker AFB?",
-      a: "Oklahoma City is home to Tinker Air Force Base. We frequently represent active-duty military personnel, veterans, and defense contractors utilizing 0% down VA loans. We guide you through VA appraisal requirements, Basic Allowance for Housing (BAH) budgeting, and closing fee caps to ensure you maximize your military benefits."
+      q: "Can a buyer agent help me negotiate the purchase price?",
+      a: "Yes. A buyer agent can review comparable sales, property condition, and market competition to help you develop an offer strategy. The seller may accept, reject, or counter your offer, so no specific price reduction is guaranteed."
     },
     {
-      q: "What is an appraisal gap guarantee and should I ever agree to one?",
-      a: "An appraisal gap occurs when a home appraises for less than your agreed contract price. We structure offers with protective appraisal contingency clauses so you are never forced to bring unbudgeted cash to closing unless you explicitly chose to do so with predetermined caps."
+      q: "Do I need mortgage pre-approval before viewing homes?",
+      a: "Pre-approval helps clarify your budget and may strengthen an offer. Speak with a lender early to understand your financing options, required documents, and potential loan terms before making a purchase offer."
     },
     {
-      q: "Why should I not just call the listing agent on the yard sign?",
-      a: "The listing agent has a legal and fiduciary duty to the seller to obtain the highest possible price and most favorable terms for their client. Calling the listing agent creates a direct conflict of interest ('dual agency' or unrepresented buyer status). Having your own independent fiduciary advocate ensures your financial interests, price discounts, and repair concessions are fiercely defended."
-    },
-    {
-      q: "How quickly can we view homes when a new listing hits the market?",
-      a: "Immediately. Through our 7-day mobile availability and dedicated listing team at Jamison Real Estate, we can book private showings within 1 to 2 hours of a listing becoming active. For urgent properties, we can often arrange same-day early morning or evening access."
+      q: "Who pays the buyer agent's compensation?",
+      a: "Compensation is negotiable and should be explained in your buyer representation agreement. A seller may agree to contribute toward the buyer agent's compensation, but payment depends on the agreements involved. Review the terms before signing."
     }
   ];
 
@@ -350,16 +346,16 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
         ========================================================================
       */}
       <InteriorHeroVideo
-        kicker="Buyer Concierge & Equity Advisory"
-        title="Gain an Unfair Advantage in the Oklahoma City Housing Market."
-        subtitle="Why hiring an active Top 2% listing agent gives buyers early access to off-market properties, ruthless contract negotiation, and zero-stress closings."
+        kicker="Home Buying"
+        title="Buy Smarter With a Home Buying Agent in Edmond, OK"
+        subtitle="Get clear guidance on home searches, property values, offer strategy, and contract negotiations across Edmond and the Greater Oklahoma City area."
         heroVideoUrl="/media/videos/vid1.mp4"
         heroFallbackImage="/media/properties/136-nw-18th-heritage-hills.jpeg"
         metrics={[
-          { value: '$24,500', label: 'Avg Client Price Advantage' },
-          { value: 'Priority', label: 'Off-Market Pocket Access' },
-          { value: '100%', label: '10-Day TRRA Protected' },
-          { value: '$0 Fee', label: 'Seller-Paid Commission' },
+          { value: '$62M+', label: 'Career Volume Closed' },
+          { value: '370+', label: 'Families & Buyers Advised' },
+          { value: '100%', label: 'Due Diligence Protected' },
+          { value: 'Top 2%', label: 'Greater OKC Production' },
         ]}
         primaryCtaText="Book Buyer Consultation"
         secondaryCtaText="Explore 10-Step Buyer Roadmap"
@@ -379,12 +375,12 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
           <div className="flex items-center justify-between overflow-x-auto no-scrollbar py-3.5 gap-2 sm:gap-4 text-xs font-semibold uppercase tracking-wider whitespace-nowrap">
             {[
               { id: 'section-roadmap', key: 'roadmap', label: '01 10-Step Roadmap' },
-              { id: 'section-shield', key: 'shield', label: "02 The Buyer's Shield" },
+              { id: 'section-shield', key: 'shield', label: "02 Buyer Protection" },
               { id: 'section-reels', key: 'reels', label: '03 Video Playbook' },
-              { id: 'section-due-diligence', key: 'diligence', label: '04 OKC Due Diligence' },
-              { id: 'section-calculator', key: 'calculator', label: '05 Mortgage PITI' },
-              { id: 'section-financing', key: 'financing', label: '06 Loan Options & Grants' },
-              { id: 'section-dual-agency', key: 'dual-agency', label: '07 Dual-Agency Warning' },
+              { id: 'section-due-diligence', key: 'diligence', label: '04 Due Diligence' },
+              { id: 'section-calculator', key: 'calculator', label: '05 Mortgage Calculator' },
+              { id: 'section-financing', key: 'financing', label: '06 Financing Options' },
+              { id: 'section-dual-agency', key: 'dual-agency', label: '07 Buyer Guidance' },
               { id: 'section-faqs', key: 'faqs', label: '08 FAQs & Guide' }
             ].map(item => (
               <button
@@ -415,7 +411,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
 
       {/* 
         ========================================================================
-        SECTION 2: THE 10-STEP OKLAHOMA HOME BUYER ROADMAP
+        SECTION 2: THE 10-STEP EDMOND HOME BUYER ROADMAP
         ========================================================================
       */}
       <section id="section-roadmap" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/25">
@@ -426,10 +422,10 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
               Strategic Step-by-Step Acquisition
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
-              The 10-Step Oklahoma Home Buyer Roadmap
+              The 10-Step Edmond Home Buyer Roadmap
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
-              Navigating an Oklahoma home purchase without a structured roadmap leaves tens of thousands of dollars on the table and risks costly inspection oversights. Here is the exact sequential timeline we execute on your behalf.
+              Navigating an Edmond home purchase with clear, structured steps helps you stay organized from mortgage pre-approval through closing day. Here is the process we follow to protect your interests.
             </p>
           </div>
 
@@ -531,7 +527,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
 
       {/* 
         ========================================================================
-        SECTION 3: THE 6 PROCESSES ADAPTED AS "THE BUYER'S SHIELD"
+        SECTION 3: SIX PROCESSES THAT SUPPORT THE BUYER'S INTERESTS
         ========================================================================
       */}
       <section id="section-shield" className="w-full py-20 sm:py-28 bg-[#001D40] text-white border-b border-white/10">
@@ -540,13 +536,13 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
           <div className="max-w-3xl mb-12 sm:mb-16">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EA580C]/20 border border-[#EA580C]/40 text-[#FB923C] text-xs font-bold uppercase tracking-widest mb-3">
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Institutional Fiduciary Representation</span>
+              <span>Buyer-Focused Representation</span>
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
-              The 6 Processes Adapted as "The Buyer's Shield"
+              Six Processes That Support the Buyer's Interests
             </h2>
             <p className="font-sans text-base sm:text-lg text-white/80 leading-relaxed">
-              Our 6 corporate listing processes are not just for sellers. Here is how that same institutional firepower converts into an impenetrable defensive shield protecting your earnest deposit, inspection rights, and purchase equity.
+              Brian Jamison's representation processes are designed to protect your interests through every phase of the purchase—from market research and private showings to contract negotiations and closing.
             </p>
           </div>
 
@@ -598,14 +594,14 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EA580C]/10 border border-[#EA580C]/30 text-[#EA580C] text-xs font-bold uppercase tracking-widest mb-3">
                 <Video className="w-3.5 h-3.5" />
-                <span>60-Second Buyer Masterclass</span>
+                <span>Edmond Home Buying Video Guides</span>
               </div>
               <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#002D61] tracking-tight">
-                The Oklahoma City Buyer's Playbook: Watch Before You Tour
+                The Edmond Buyer's Playbook: Watch Before You Tour
               </h2>
             </div>
             <p className="font-sans text-sm sm:text-base text-[#4B5563] max-w-md leading-relaxed">
-              Avoid costly missteps before setting foot inside an Oklahoma home. Click any 9:16 reel to watch Brian dissect tornado shelters, TRRA repairs, and neighborhood comps.
+              Prepare for home tours with practical guidance on property condition, inspection questions, contract terms, and comparable sales. Short videos can help you understand what to look for and which questions to ask as you compare homes in Edmond. Use the available video resources to prepare for your next showing.
             </p>
           </div>
 
@@ -757,7 +753,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
 
       {/* 
         ========================================================================
-        SECTION 5: OKLAHOMA STRUCTURAL & WEATHER DUE DILIGENCE
+        SECTION 5: EDMOND HOME AND PROPERTY DUE DILIGENCE
         ========================================================================
       */}
       <section id="section-due-diligence" className="w-full py-20 sm:py-28 bg-[#F5EFE6] border-b border-[#EA580C]/25">
@@ -765,13 +761,13 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
           {/* Section Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
             <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
-              Regional Environmental Nuances
+              Local Property Considerations
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
-              Oklahoma Structural & Weather Due Diligence
+              Edmond Home and Property Due Diligence
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
-              Buying property in Oklahoma requires specialized regional knowledge. From tornado shelter ratings and Class 4 impact-resistant roofs to school boundary lines and Tinker AFB military allowances, we inspect every detail.
+              Buying a home in Edmond means looking beyond the listing photos and asking how the property fits your needs. Roof condition, drainage, storm protection, insurance costs, school attendance areas, commute routes, and HOA rules can all affect your decision. We help you identify the right questions and coordinate with qualified professionals when further review is needed.
             </p>
           </div>
 
@@ -784,25 +780,25 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                   <ShieldAlert className="w-6 h-6" />
                 </div>
                 <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#EA580C] block mb-1">
-                  Severe Weather Defense
+                  Severe Weather Preparedness
                 </span>
                 <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#002D61] mb-3">
-                  Tornado Shelters & Safe Rooms
+                  Storm Shelters and Safe Rooms
                 </h3>
                 <p className="font-sans text-xs sm:text-sm text-[#4B5563] leading-relaxed mb-4">
-                  Oklahoma is in Tornado Alley. We inspect whether the home features an in-ground garage flush shelter, an exterior underground storm cellar, or an above-ground reinforced concrete safe room meeting FEMA 320 / 361 standards.
+                  Severe weather is an important consideration for Oklahoma home buyers. During your property review, we help you identify whether a home has a storm shelter or safe room and what documentation may be available. A qualified professional should assess the shelter's condition, installation, and suitability for your household.
                 </p>
                 <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#EA580C]/20 text-xs text-[#374151] space-y-2 mb-4">
                   <div className="font-bold text-[#002D61]">Our Verification Checklist:</div>
                   <ul className="list-disc pl-4 space-y-1 text-xs text-[#4B5563]">
-                    <li>FEMA impact rating tag & emergency hatch seal verification.</li>
-                    <li>Sump pump & groundwater water-seepage inspection for garage units.</li>
-                    <li>City GPS registration to ensure first-responder rescue access after storms.</li>
+                    <li>Ask for available shelter installation records, labels, and product documentation.</li>
+                    <li>Check for visible water intrusion, drainage concerns, and access issues.</li>
+                    <li>Confirm any applicable shelter registration or emergency-location procedures with the relevant local authority.</li>
                   </ul>
                 </div>
               </div>
               <span className="text-[11px] font-mono font-bold text-[#16A34A] block">
-                Peace of mind for your family from day one.
+                Understand the home's storm-protection features before deciding whether they meet your needs.
               </span>
             </div>
 
@@ -813,25 +809,25 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                   <AlertCircle className="w-6 h-6" />
                 </div>
                 <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#EA580C] block mb-1">
-                  Insurance Premium Optimization
+                  Insurance and Roof Condition
                 </span>
                 <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#002D61] mb-3">
-                  Roof & Class 4 Hail Shingles
+                  Roof Materials and Hail Damage
                 </h3>
                 <p className="font-sans text-xs sm:text-sm text-[#4B5563] leading-relaxed mb-4">
-                  Hail storm damage can affect home insurance insurability. We check the shingle manufacture certificate to verify if the roof is a Class 4 Impact-Resistant (IR) system (UL 2218 certified).
+                  Roof age, material, prior storm damage, and repair history can affect maintenance planning and insurance discussions. We help you identify available roof records and questions to raise with a licensed roofer or insurance provider. Do not assume that a particular roof type guarantees a discount or makes a property eligible for coverage.
                 </p>
                 <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#EA580C]/20 text-xs text-[#374151] space-y-2 mb-4">
-                  <div className="font-bold text-[#002D61]">Financial Advantage:</div>
+                  <div className="font-bold text-[#002D61]">Financial Considerations:</div>
                   <ul className="list-disc pl-4 space-y-1 text-xs text-[#4B5563]">
-                    <li>Class 4 roofs qualify for a 15% to 25% annual homeowners insurance discount.</li>
-                    <li>We ensure any pre-existing hail claims are fully replaced before closing.</li>
-                    <li>Verification of transferable manufacturer and contractor warranties.</li>
+                    <li>Ask your insurer whether the roof material or impact-resistance rating affects your premium.</li>
+                    <li>Review available records of past roof repairs and insurance claims.</li>
+                    <li>Ask about transferable manufacturer or contractor warranties and confirm their terms.</li>
                   </ul>
                 </div>
               </div>
               <span className="text-[11px] font-mono font-bold text-[#16A34A] block">
-                Saves up to $800/year on homeowner insurance premiums.
+                Understanding the roof's condition can help you plan for future costs and make a more informed purchase.
               </span>
             </div>
 
@@ -842,25 +838,25 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                   <GraduationCap className="w-6 h-6" />
                 </div>
                 <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#EA580C] block mb-1">
-                  Educational Equity & Resale Value
+                  School Attendance Areas and Resale Considerations
                 </span>
                 <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#002D61] mb-3">
-                  Top School District Profiles
+                  Edmond School District Research
                 </h3>
                 <p className="font-sans text-xs sm:text-sm text-[#4B5563] leading-relaxed mb-4">
-                  Edmond Public Schools, Deer Creek, Norman, and Oak Tree golf enclaves command the highest long-term appreciation in Oklahoma. We verify exact attendance boundaries—neighborhood boundary lines can change across a single street.
+                  If school access matters to your household, verify the property's current attendance assignment directly with the school district. Boundaries, program availability, and enrollment requirements may change. We can help you identify the right questions and consider how location, property features, and nearby amenities fit your future plans.
                 </p>
                 <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#EA580C]/20 text-xs text-[#374151] space-y-2 mb-4">
                   <div className="font-bold text-[#002D61]">Attendance Verification:</div>
                   <ul className="list-disc pl-4 space-y-1 text-xs text-[#4B5563]">
-                    <li>Direct verification with district registrars before submitting purchase offers.</li>
-                    <li>STEM academies, AP course ratings, and high school athletic facilities.</li>
-                    <li>Guaranteed preservation of future resale liquidity and rental demand.</li>
+                    <li>Confirm the property's current school assignment with the district.</li>
+                    <li>Review available information about programs, enrollment rules, and transportation.</li>
+                    <li>Consider how location and property features align with your potential resale plans.</li>
                   </ul>
                 </div>
               </div>
               <span className="text-[11px] font-mono font-bold text-[#16A34A] block">
-                Protects the long-term appreciation of your home equity.
+                Make location decisions using current information rather than assumptions about future appreciation or resale demand.
               </span>
             </div>
 
@@ -871,25 +867,25 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                   <Award className="w-6 h-6" />
                 </div>
                 <span className="text-xs uppercase font-sans font-bold tracking-widest text-[#EA580C] block mb-1">
-                  Military Concierge
+                  Military Relocation Support
                 </span>
                 <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#002D61] mb-3">
-                  Military Relocation & Tinker AFB
+                  Home Buying Near Tinker Air Force Base
                 </h3>
                 <p className="font-sans text-xs sm:text-sm text-[#4B5563] leading-relaxed mb-4">
-                  Tinker Air Force Base is the largest single-site employer in Oklahoma. We specialize in PCS (Permanent Change of Station) transitions, VA home loans, and BAH budgeting.
+                  If you are relocating for military service or a new assignment, we help organize your home search around your reporting date, budget, and preferred commute. Buyers using VA financing should confirm their eligibility, loan terms, and closing requirements with an approved lender. Virtual tours may help when an in-person visit is not practical.
                 </p>
                 <div className="p-4 rounded-xl bg-[#FAF9F6] border border-[#EA580C]/20 text-xs text-[#374151] space-y-2 mb-4">
-                  <div className="font-bold text-[#002D61]">Military Advantage:</div>
+                  <div className="font-bold text-[#002D61]">Military Buying Considerations:</div>
                   <ul className="list-disc pl-4 space-y-1 text-xs text-[#4B5563]">
-                    <li>0% down payment VA home loan structuring with VA certified lenders.</li>
-                    <li>BAH housing allowance optimization for Midwest City, Moore, and Choctaw.</li>
-                    <li>Virtual showings for service members stationed abroad or out-of-state.</li>
+                    <li>Discuss VA loan eligibility and financing terms with a qualified lender.</li>
+                    <li>Compare commute options from Edmond and other areas that fit your needs.</li>
+                    <li>Arrange remote property tours and document reviews when available.</li>
                   </ul>
                 </div>
               </div>
               <span className="text-[11px] font-mono font-bold text-[#16A34A] block">
-                Proudly serving active military and veterans across Oklahoma.
+                We help military buyers coordinate the property search with their relocation timeline and household priorities.
               </span>
             </div>
           </div>
@@ -906,13 +902,13 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
           {/* Section Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
             <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
-              Transparent Financial Engineering
+              Transparent Home Buying Costs
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
-              Interactive Mortgage & Affordability Calculator
+              Mortgage and Affordability Calculator
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
-              Calculate your estimated monthly payment including Oklahoma property taxes, homeowner's insurance, and private mortgage insurance (PITI). Adjust the sliders in real time.
+              Estimate potential monthly housing costs before choosing a home. Depending on the calculator, you may be able to enter the purchase price, down payment, interest rate, loan term, property taxes, homeowners insurance, and mortgage insurance. Actual costs depend on the property, lender, loan terms, and insurance provider. Use the calculator as an initial planning tool, then ask your lender to review the numbers and explain the costs that apply to your situation.
             </p>
           </div>
 
@@ -1083,7 +1079,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
 
       {/* 
         ========================================================================
-        SECTION 7: DOWN PAYMENT ASSISTANCE & FINANCING OPTIONS IN OKLAHOMA
+        SECTION 7: FINANCING OPTIONS AND DOWN PAYMENT ASSISTANCE
         ========================================================================
       */}
       <section id="section-financing" className="w-full py-20 sm:py-28 bg-[#F5EFE6] border-b border-[#EA580C]/25">
@@ -1091,13 +1087,13 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
           {/* Section Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
             <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
-              Government Grants & Lending Programs
+              Financing Options and Down Payment Assistance
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
-              Down Payment Assistance & Financing in Oklahoma
+              Explore Home Financing in Oklahoma
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
-              You do not need a 20% cash down payment to buy a home in Oklahoma. We partner with Oklahoma's premier lenders to connect qualified buyers with competitive grants and flexible financing programs.
+              You may not need a 20% down payment to purchase a home. Loan options and assistance programs vary by buyer, property, lender, and current program rules. We can help you identify questions to discuss with lenders and explore whether available financing options fit your plans.
             </p>
           </div>
 
@@ -1106,17 +1102,17 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
             <div className="bg-white rounded-2xl p-6 border border-[#E5E0D8] shadow-xs flex flex-col justify-between">
               <div>
                 <span className="px-2.5 py-1 rounded bg-[#EA580C]/10 text-[#EA580C] text-[10px] font-mono font-bold uppercase tracking-wider block w-fit mb-3">
-                  State Grant Program
+                  State Assistance Programs
                 </span>
                 <h3 className="font-serif text-lg font-bold text-[#002D61] mb-2">
                   OHFA Down Payment Assistance
                 </h3>
                 <p className="text-xs text-[#4B5563] leading-relaxed mb-4">
-                  The Oklahoma Housing Finance Agency (OHFA) offers grants up to <strong>3.5% of the total loan amount</strong> to assist qualified buyers with down payment and closing costs.
+                  The Oklahoma Housing Finance Agency offers homebuyer programs subject to current eligibility and program requirements. Depending on the program, qualified buyers may be able to receive help with down payments or closing costs. Ask a participating lender to confirm current benefits, limits, and repayment conditions.
                 </p>
               </div>
               <span className="text-[11px] font-mono text-[#16A34A] font-bold">
-                ✓ Non-repayable grant options available
+                ✓ What to Check: Current income and purchase-price limits, eligibility rules, participating lenders, and available assistance.
               </span>
             </div>
 
@@ -1124,17 +1120,17 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
             <div className="bg-white rounded-2xl p-6 border border-[#E5E0D8] shadow-xs flex flex-col justify-between">
               <div>
                 <span className="px-2.5 py-1 rounded bg-[#002D61]/10 text-[#002D61] text-[10px] font-mono font-bold uppercase tracking-wider block w-fit mb-3">
-                  Military & Veterans
+                  Military and Veterans
                 </span>
                 <h3 className="font-serif text-lg font-bold text-[#002D61] mb-2">
-                  0% Down VA Home Loans
+                  VA Home Loans
                 </h3>
                 <p className="text-xs text-[#4B5563] leading-relaxed mb-4">
-                  Available to active-duty service members, veterans, and military surviving spouses. Features <strong>0% down payment</strong>, no monthly PMI, and competitive interest rates.
+                  Eligible service members, veterans, and certain surviving spouses may qualify for VA-backed home financing. Some eligible borrowers can purchase with no down payment, and VA loans generally do not require monthly private mortgage insurance. Approval and loan terms depend on eligibility, lender requirements, and the transaction.
                 </p>
               </div>
               <span className="text-[11px] font-mono text-[#16A34A] font-bold">
-                ✓ $0 down payment required
+                ✓ What to Check: VA eligibility, lender approval, funding fee rules, and the full amount needed at closing.
               </span>
             </div>
 
@@ -1142,17 +1138,17 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
             <div className="bg-white rounded-2xl p-6 border border-[#E5E0D8] shadow-xs flex flex-col justify-between">
               <div>
                 <span className="px-2.5 py-1 rounded bg-[#EA580C]/10 text-[#EA580C] text-[10px] font-mono font-bold uppercase tracking-wider block w-fit mb-3">
-                  Flexible Credit
+                  Flexible Down Payment Options
                 </span>
                 <h3 className="font-serif text-lg font-bold text-[#002D61] mb-2">
-                  3.5% Down FHA Financing
+                  FHA Financing
                 </h3>
                 <p className="text-xs text-[#4B5563] leading-relaxed mb-4">
-                  Ideal for first-time buyers building credit. Requires just <strong>3.5% down payment</strong> with more forgiving debt-to-income and credit score thresholds.
+                  FHA-insured loans may offer down payments as low as 3.5% for borrowers who meet the applicable requirements. Credit, debt, property standards, mortgage insurance, and lender rules affect eligibility and total costs.
                 </p>
               </div>
               <span className="text-[11px] font-mono text-[#16A34A] font-bold">
-                ✓ 580+ minimum credit score
+                ✓ What to Check: Current credit and down payment requirements, mortgage insurance, and estimated monthly payments with your lender.
               </span>
             </div>
 
@@ -1160,17 +1156,17 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
             <div className="bg-white rounded-2xl p-6 border border-[#E5E0D8] shadow-xs flex flex-col justify-between">
               <div>
                 <span className="px-2.5 py-1 rounded bg-[#002D61]/10 text-[#002D61] text-[10px] font-mono font-bold uppercase tracking-wider block w-fit mb-3">
-                  Market Standard
+                  Conventional Financing
                 </span>
                 <h3 className="font-serif text-lg font-bold text-[#002D61] mb-2">
-                  3% to 20% Conventional
+                  Conventional Loans With Different Down Payment Options
                 </h3>
                 <p className="text-xs text-[#4B5563] leading-relaxed mb-4">
-                  First-time buyers can qualify for conventional financing with as little as <strong>3% down</strong>. At 20% down, monthly private mortgage insurance (PMI) is eliminated completely.
+                  Some conventional mortgage programs allow eligible buyers to put down as little as 3%. A 20% down payment generally avoids monthly private mortgage insurance on a standard conventional loan, although terms and exceptions vary by loan type.
                 </p>
               </div>
               <span className="text-[11px] font-mono text-[#16A34A] font-bold">
-                ✓ Lower monthly PMI options
+                ✓ What to Check: Down payment options, credit requirements, mortgage insurance, and the total cost over the life of the loan.
               </span>
             </div>
           </div>
@@ -1179,43 +1175,46 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
 
       {/* 
         ========================================================================
-        SECTION 8: THE DUAL-AGENCY WARNING (DIRECT AGENT VS. INDEPENDENT)
+        SECTION 8: IMPORTANT BUYER REPRESENTATION GUIDANCE
         ========================================================================
       */}
       <section id="section-dual-agency" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/25">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
           <div className="bg-[#002D61] text-white rounded-3xl p-8 sm:p-12 lg:p-14 border border-white/20 shadow-xl relative overflow-hidden">
             <div className="relative z-10 max-w-3xl">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EF4444]/20 border border-[#EF4444]/40 text-[#FCA5A5] text-xs font-bold uppercase tracking-widest mb-4">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EA580C]/20 border border-[#EA580C]/40 text-[#FB923C] text-xs font-bold uppercase tracking-widest mb-4">
                 <AlertCircle className="w-3.5 h-3.5" />
-                <span>Critical Consumer Advisory</span>
+                <span>Important Buyer Representation Guidance</span>
               </span>
               <h2 className="font-serif text-2xl sm:text-4xl font-bold text-white mb-4 leading-tight">
-                The Dual-Agency Trap: Why Calling the Listing Agent Costs Buyers Thousands
+                Why Work With Your Own Buyer's Agent?
               </h2>
               <p className="font-sans text-sm sm:text-base text-white/80 leading-relaxed mb-6">
-                When you see a for-sale yard sign and call the number on the sign, you are speaking directly with the <strong>seller's agent</strong>. That agent signed a fiduciary contract promising to get the seller the highest possible price and most favorable terms.
+                When you contact the agent listed on a property, that person may represent the seller. Their agency relationship and duties depend on the agreements and applicable rules. Before sharing sensitive financial details or negotiating terms: clarify whom the agent represents and how agency relationships work in the transaction.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm mb-8">
-                <div className="p-4 rounded-xl bg-white/10 border border-white/15">
-                  <strong className="text-[#FCA5A5] block mb-1">Calling the Listing Agent:</strong>
-                  <p className="text-white/70">
-                    The agent cannot tell you true neighborhood comps, cannot aggressively demand TRRA repairs, and must disclose your financial motivation to the seller.
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm mb-6">
+                <div className="p-5 rounded-xl bg-white/10 border border-white/15">
+                  <strong className="text-white font-serif text-base block mb-2">Working With the Listing Agent</strong>
+                  <p className="text-white/75 leading-relaxed">
+                    A listing agent's role is generally to represent the seller according to the applicable agency agreement. That agent may not provide the same representation or negotiation priorities as an agent working for you. Ask about agency disclosure and representation options before proceeding.
                   </p>
                 </div>
-                <div className="p-4 rounded-xl bg-[#EA580C]/20 border border-[#EA580C]/40">
-                  <strong className="text-[#FB923C] block mb-1">Hiring Brian Jamison As Your Buyer Advocate:</strong>
-                  <p className="text-white/90">
-                    100% undivided fiduciary loyalty to you. We fight for price reductions, repair credits, and escrow protection—and our fee is paid by the seller.
+                <div className="p-5 rounded-xl bg-[#EA580C]/20 border border-[#EA580C]/40">
+                  <strong className="text-[#FB923C] font-serif text-base block mb-2">Hiring a Buyer Agent in Edmond, OK</strong>
+                  <p className="text-white/90 leading-relaxed">
+                    A buyer agent can help you assess comparable sales, prepare and negotiate offers, review inspection findings, track deadlines, and coordinate with the professionals involved in closing. The representation agreement should clearly explain the services, compensation, and termination terms. Whether the seller offers to pay some or all of the buyer agent's compensation depends on the agreement and transaction.
                   </p>
                 </div>
+              </div>
+              <div className="p-3.5 rounded-xl bg-white/10 border border-white/15 text-xs text-[#86EFAC] font-mono font-semibold mb-8">
+                Your Advantage: Clear representation, informed decisions, and practical guidance through the purchase process.
               </div>
               <button
                 type="button"
                 onClick={onOpenConsultation}
                 className="px-8 py-4 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer"
               >
-                Hire Brian As Your Exclusive Buyer Advocate
+                Schedule a Buyer Consultation With Brian Jamison
               </button>
             </div>
           </div>
@@ -1232,13 +1231,13 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
           {/* Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
             <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-3">
-              Forensic Buyer Clarifications
+              Frequently Asked Buyer Questions
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-5">
-              Frequently Asked Buyer Questions
+              Common Questions About Buying a Home in Edmond
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
-              Clear, transparent answers to the questions serious Oklahoma home buyers ask before writing an earnest deposit.
+              Buying a home involves financial decisions, contractual deadlines, and property details that deserve careful review. Here are answers to common questions buyers ask before choosing an agent or making an offer.
             </p>
           </div>
 
@@ -1281,19 +1280,19 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
             <div className="relative z-10 max-w-2xl">
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EA580C]/20 border border-[#EA580C]/40 text-[#FB923C] text-xs font-bold uppercase tracking-widest mb-3">
                 <FileText className="w-3.5 h-3.5" />
-                <span>Instant Digital PDF Resource</span>
+                <span>Instant Digital Home Buying Resource</span>
               </span>
               <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 leading-snug">
-                Download The 2026 Oklahoma City Relocation & Buyer Guide
+                Download the Edmond Home Buyer's Guide
               </h3>
               <p className="font-sans text-xs sm:text-sm text-white/80 leading-relaxed mb-6">
-                A 42-page relocation playbook covering neighborhood price indices, top school attendance maps, tornado shelter verification standards, and Oklahoma TRRA repair checklists.
+                Prepare for your purchase with a practical guide to planning your budget, comparing properties, understanding contract milestones, organizing inspections, and preparing for closing. Use it as a reference as you review homes and discuss questions with your agent, lender, inspector, and title company.
               </p>
 
               {downloadSuccess ? (
                 <div className="p-4 rounded-xl bg-[#16A34A]/20 border border-[#86EFAC]/40 text-xs sm:text-sm text-[#86EFAC] flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 shrink-0" />
-                  <span>Your 2026 Buyer & Relocation Guide download has commenced! Check your downloads folder.</span>
+                  <span>Your Edmond Home Buyer's Guide download has commenced! Check your downloads folder.</span>
                 </div>
               ) : (
                 <button
@@ -1305,7 +1304,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                   className="inline-flex items-center justify-center gap-2.5 px-8 py-4 min-h-[52px] bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase transition-colors shadow-lg cursor-pointer leading-normal select-none"
                 >
                   <Download className="w-4 h-4 shrink-0" />
-                  <span className="leading-normal inline-block">Download The Free 2026 Relocation Guide (PDF)</span>
+                  <span className="leading-normal inline-block">Download The Free Edmond Home Buyer's Guide (PDF)</span>
                 </button>
               )}
             </div>
@@ -1317,13 +1316,13 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
               <BrianAvatar size="lg" />
             </div>
             <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-2">
-              Ready To Tour Homes In Edmond & OKC?
+              Ready to Start Your Edmond Home Search?
             </span>
             <h3 className="font-serif text-2xl sm:text-4xl font-bold text-[#002D61] mb-3">
-              Schedule Your Private Buyer Consultation
+              Work with Brian Jamison
             </h3>
             <p className="font-sans text-sm sm:text-base text-[#6B7280] max-w-xl mx-auto mb-8">
-              Reach Brian Jamison directly on his private cell or visit us at the Salt Real Estate Corporate Office in Edmond, Oklahoma.
+              Work with Brian Jamison to discuss your priorities, review the buying process, and plan your next steps.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -1332,7 +1331,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
                 onClick={onOpenConsultation}
                 className="w-full sm:w-auto px-8 py-4 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-md cursor-pointer flex items-center justify-center gap-2"
               >
-                <span>Book VIP Buyer Session</span>
+                <span>Schedule a Buyer Consultation</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 

@@ -90,7 +90,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     slug: "/services/home-prep-guidance",
     badge: "Step 1.1",
     title: "Home-prep guidance: first-impression review, refresh recommendations, and ROI-based update suggestions",
-    desc: "Our architectural staging and advisory team conducts a comprehensive first-impression audit, identifying high-ROI refresh recommendations to maximize curb appeal before listing.",
+    desc: "Brian reviews your home through a buyer’s eyes, then recommends affordable refreshes and updates worth the cost before listing photos begin.",
     executionDetail: "Our team conducts a room-by-room review, pinpointing strategic cosmetic paint, designer lighting, and depersonalization updates so buyers fall in love on arrival.",
     sellerImpact: "Eliminates buyer hesitation and prevents lowball repair concessions, generating 3x more opening-weekend private showings.",
     image: "/media/gallery/modern-estate-pool-lawn.jpeg"
@@ -100,7 +100,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     slug: "/services/professional-photography",
     badge: "Step 1.2",
     title: "Professional photography",
-    desc: "Captured with natural ambient light and golden-hour lighting using specialized architectural wide-angle glass and multi-exposure HDR.",
+    desc: "Bright, accurate photos show your home’s best features and give online shoppers a reason to click, save, and schedule a showing.",
     executionDetail: "Our architectural photographers balance interior ambient lighting with natural exterior light, preserving crystal-clear window views and natural architectural depth.",
     sellerImpact: "Over 95% of prospective buyers discover homes online; magazine-grade photography stops buyer scrolling instantly.",
     image: "/media/gallery/modern-kitchen.jpeg"
@@ -110,7 +110,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     slug: "/services/cinematic-video",
     badge: "Step 1.3",
     title: "Professional video with professional editing",
-    desc: "Cinema-quality 4K walkthrough film featuring custom color grading, lifestyle pacing, and high-fidelity sound design highlighting room flow.",
+    desc: "A polished walkthrough video highlights layout, flow, and finishes, helping buyers picture daily life in the home before they ever visit.",
     executionDetail: "Filmed on cinema-grade stabilizers by our dedicated videography crew, capturing the living cadence from entry foyer to outdoor entertaining loggias.",
     sellerImpact: "Creates deep emotional attachment before out-of-state or local buyers set foot inside, averaging 14,000+ targeted views.",
     image: "/media/gallery/modern-staircase-dining.jpeg"
@@ -120,7 +120,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     slug: "/services/aerial-drone",
     badge: "Step 1.4",
     title: "HD aerial/drone video",
-    desc: "FAA Part-107 certified aerial cinematography capturing estate parcel boundaries, acreage, topography, and neighborhood amenities.",
+    desc: "Drone footage shows the lot, the setting, and nearby surroundings from above, helping buyers understand size, privacy, and location right away.",
     executionDetail: "High-altitude 4K drone sweeps showcase full property lines, outdoor living pavilions, mature tree canopies, and proximity to golf clubs or top schools.",
     sellerImpact: "Proves lot value and privacy buffers for high-net-worth buyers evaluating Oklahoma estates.",
     image: "/media/gallery/brian-closing-clients.jpeg"
@@ -130,7 +130,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     slug: "/services/global-portals",
     badge: "Step 1.5",
     title: "Syndication to 350+ websites (Zillow, Facebook, Instagram, etc.)",
-    desc: "Automated distribution across 350+ digital portals including MLS feeds, Zillow Showcase, Realtor.com, Trulia, Redfin, and global luxury networks.",
+    desc: "Your listing is distributed to 350+ websites, including Zillow, Facebook, and Instagram, so more buyers and agents can find it online.",
     executionDetail: "Direct API feeds syndicate your listing to every major domestic and international portal with premium featured placement that prevents listing burial.",
     sellerImpact: "Guarantees 100% reach across every qualified homebuyer searching across Oklahoma or relocating nationally.",
     image: "/media/gallery/brian-jamison-skyline.jpeg"
@@ -140,7 +140,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     slug: "/services/single-property-website",
     badge: "Step 1.6",
     title: "Dedicated single-property website",
-    desc: "A custom vanity address domain built exclusively for your property, showcasing uncompressed media, floor plans, and interactive tours.",
+    desc: "A dedicated website gives your property its own online home, with photos, video, details, and an easy way to ask questions.",
     executionDetail: "We secure a vanity URL (e.g., 1234GrandviewBlvd.com) configured solely to highlight your home free of third-party ads or competitor agent popups.",
     sellerImpact: "Prospective buyers and their brokers are locked into your home's exclusive narrative without distraction.",
     image: "/media/gallery/brian-jamison-sunset.jpeg"
@@ -150,7 +150,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     slug: "/services/social-advertising",
     badge: "Step 1.7",
     title: "Consistent social media exposure",
-    desc: "Paid hyper-targeted social advertising campaigns deployed across Instagram and Facebook reaching active local and relocating buyers across the OKC metro.",
+    desc: "Regular posts and short clips keep your listing visible to local followers and make it simple for neighbors to share it.",
     executionDetail: "Precision demographic targeting focusing on high-net-worth professionals, corporate relocations, and active real estate investors.",
     sellerImpact: "Proactively places your home in front of qualified buyers who are not actively searching MLS feeds daily.",
     image: "/media/gallery/sunset-deck-pool.jpeg"
@@ -160,7 +160,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     slug: "/services/listing-refreshes",
     badge: "Step 1.8",
     title: "Listing refreshes to keep it current",
-    desc: "Algorithmic updates, photo reshuffles, and strategic headline adjustments that keep your property trending at the top of buyer searches.",
+    desc: "Your listing gets new photos, price adjustments, or updated details when needed, so it stays current and interesting for returning buyers.",
     executionDetail: "Our team audits daily search impression velocity, rotating showcase photography and refreshing metadata to prevent algorithmic decay.",
     sellerImpact: "Prevents the dreaded 'Days on Market' fatigue that causes buyers to assume a home is stale or overpriced.",
     image: "/media/gallery/sunset-window-terrace.jpeg"
@@ -170,7 +170,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     slug: "/services/reverse-prospecting",
     badge: "Step 1.9",
     title: "Reverse prospecting",
-    desc: "Direct outreach to buyer agents who have qualified clients with saved searches matching your home's exact criteria across the MLS database.",
+    desc: "Brian looks for buyers already searching for homes like yours, then contacts matching buyers and agents directly about your property listing.",
     executionDetail: "Our team pulls backend MLS analytics to pinpoint every broker with an active buyer searching in your price bracket, initiating direct phone pitches.",
     sellerImpact: "Creates private showings with pre-qualified buyers before competing properties even get noticed.",
     image: "/media/gallery/midcentury-entry.jpeg"
@@ -180,7 +180,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     slug: "/services/agent-networking",
     badge: "Step 1.10",
     title: "Agent networking",
-    desc: "Proactive telephone pitching and direct broker previews with top-producing real estate agents across the downtown and OKC metro markets.",
+    desc: "Your listing is shared with other agents and brokerages because agents often know serious buyers before those buyers tour a home.",
     executionDetail: "We host private broker open-house previews and maintain direct communication lines with the top 10% luxury producers across the region.",
     sellerImpact: "Mobilizes the brokerage community to champion your property to their pre-approved private clients.",
     image: "/media/gallery/infinity-pool-hills.jpeg"
@@ -190,7 +190,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     slug: "/services/full-time-engagement",
     badge: "Step 1.11",
     title: "Full-time engagement on the listing",
-    desc: "Daily active oversight by our team managing showings, tracking traffic analytics, and following up on every lead—never passive placement.",
+    desc: "Brian stays involved from launch through closing, watching activity, following up on leads, and adjusting the plan as the market responds.",
     executionDetail: "Continuous campaign management, prompt lead qualification, and constant monitoring of competitor pricing adjustments in your micro-market.",
     sellerImpact: "Ensures every single lead is followed up with urgency to maintain high deal momentum.",
     image: "/media/gallery/hill-country-driveway.jpeg"
@@ -200,7 +200,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     slug: "/services/print-and-digital-marketing",
     badge: "Step 1.12",
     title: "Postcards, online and print flyers, print ads",
-    desc: "High-gloss direct mail postcards sent to neighborhood homeowner spheres, luxury print collateral, and regional lifestyle publications.",
+    desc: "Print and digital pieces reach neighbors and local buyers who may not be searching online, adding offline exposure to your marketing.",
     executionDetail: "Bespoke print collateral designed by our in-house media team, paired with targeted saturation mailings to surrounding affluent zip codes.",
     sellerImpact: "Activates neighborhood word-of-mouth and alerts affluent locals who have family looking to move nearby.",
     image: "/media/properties/136-nw-18th-heritage-hills.jpeg"
@@ -210,7 +210,7 @@ export const PROCESS_ONE_DELIVERABLES = [
     slug: "/services/matterport-tour",
     badge: "Step 1.13",
     title: "Matterport Tour",
-    desc: "3D interactive dollhouse scan providing remote relocation buyers a 24/7 virtual walkthrough experience with spatial dimensions.",
+    desc: "A 3D Matterport tour lets buyers explore each room at their own pace, which helps them decide which homes to visit.",
     executionDetail: "Pro3 LiDAR camera capturing exact interior spatial measurements, interactive 3D dollhouse perspectives, and schematic floor plans.",
     sellerImpact: "Allows out-of-state corporate transferees and medical fellows to make confident offers sight-unseen.",
     image: "/media/properties/11500-gateshead.jpg"
@@ -227,7 +227,7 @@ export const PROCESS_TWO_DELIVERABLES = [
     slug: "/services/showing-feedback",
     badge: "Step 2.1",
     title: "Call every showing agent for feedback after every showing",
-    desc: "Our mandatory policy requires a telephone call to every showing agent within 2 hours of access to extract candid buyer feedback.",
+    desc: "Every showing agent gets a follow-up call after the showing, and you hear their honest feedback on price, condition, and presentation.",
     executionDetail: "We conduct direct phone debriefs to discover buyer sentiment on pricing, architectural flow, and competitive alternatives.",
     sellerImpact: "Eliminates seller anxiety and provides real-time data to counter buyer objections before they stall a sale.",
     image: "/media/properties/3233-n-harvey-crown-heights.jpeg"
@@ -237,7 +237,7 @@ export const PROCESS_TWO_DELIVERABLES = [
     slug: "/services/downtown-agent-collaboration",
     badge: "Step 2.2",
     title: "Collaborate with other agents in the downtown market",
-    desc: "Active intelligence sharing with downtown and metro market makers to gauge incoming buyer volume, off-market demand, and competitor pricing.",
+    desc: "Working relationships with downtown agents help Brian share market insight, learn what buyers want, and keep conversations moving on your listing.",
     executionDetail: "Continuous synergy with active broker networks across Midtown, Downtown, Nichols Hills, and Edmond.",
     sellerImpact: "Positions your home as the top recommendation when fellow brokers have qualified buyers entering the market.",
     image: "/media/properties/616-nw-6th-downtown.jpeg"
@@ -247,7 +247,7 @@ export const PROCESS_TWO_DELIVERABLES = [
     slug: "/services/contract-and-market-clarity",
     badge: "Step 2.3",
     title: "Explain market conditions, opportunities, contracts, terms, and disclosures",
-    desc: "Clear, plain-English breakdowns of inspection reports, title disclosures, financing contingencies, and legal clauses so you make decisions with clarity.",
+    desc: "Market conditions, contracts, terms, and disclosures are explained in clear, everyday terms, so you understand opportunities and risks before signing anything.",
     executionDetail: "Every purchase agreement, counter-offer, and escrow addendum is explained in clear financial terms without confusing jargon.",
     sellerImpact: "Total confidence and legal protection at every milestone of the escrow closing process.",
     image: "/media/properties/22801-n-briarwood-edmond.jpeg"
@@ -257,7 +257,7 @@ export const PROCESS_TWO_DELIVERABLES = [
     slug: "/services/milestone-updates",
     badge: "Step 2.4",
     title: "Detailed updates on showings, feedback, offers, inspections, and key documents",
-    desc: "Comprehensive weekly reporting dashboards detailing digital traffic, showing notes, buyer objections, and verified contract milestone timelines.",
+    desc: "Regular, detailed updates cover showings, feedback, offers, inspections, and key documents, so you are never left guessing about where things stand.",
     executionDetail: "We compile real-time MLS impression stats, Zillow saves, and pending sales within your exact micro-market every Monday.",
     sellerImpact: "You never have to wonder what is happening; you have clear transparency and data at your fingertips.",
     image: "/media/properties/22402-emily-way-edmond.jpeg"
@@ -267,7 +267,7 @@ export const PROCESS_TWO_DELIVERABLES = [
     slug: "/services/strategic-negotiation",
     badge: "Step 2.5",
     title: "Negotiation aimed at common ground and your desired outcome",
-    desc: "Hard-nosed fiduciary advocacy protecting your bottom-line equity, pushing for non-refundable earnest deposits and minimal repair concessions.",
+    desc: "Brian negotiates to find common ground while keeping your desired outcome in focus, whether it involves price, repairs, timing, or contingencies.",
     executionDetail: "Strategic counter-offer calibration designed to achieve seller-favorable escrow timelines and maximum net proceeds.",
     sellerImpact: "Consistently nets our clients top-of-bracket financial outcomes with airtight contractual terms.",
     image: "/media/properties/3911-creek-bank-edmond.jpeg"
@@ -284,7 +284,7 @@ export const PROCESS_THREE_DELIVERABLES = [
     slug: "/services/weekend-and-evening-accessibility",
     badge: "Step 3.1",
     title: "Reachable mornings, days, evenings, and weekends",
-    desc: "Uninterrupted accessibility via phone, SMS, and email. High-intent luxury buyers tour during evenings and weekends—our team is always available.",
+    desc: "Support is available mornings, days, evenings, and weekends, because offers, showings, questions, and deadlines do not wait for standard business hours.",
     executionDetail: "Our team operates 7 days a week, providing rapid response times on all incoming inquiries, showing bookings, and offer submissions.",
     sellerImpact: "Captures high-net-worth buyers who cannot tour during standard weekday business hours.",
     image: "/media/properties/11616-estrella-arcadia.jpeg"
@@ -294,7 +294,7 @@ export const PROCESS_THREE_DELIVERABLES = [
     slug: "/services/redundant-backup-coverage",
     badge: "Step 3.2",
     title: "Backup coverage when your schedule is full",
-    desc: "A licensed listing backup associate is always assigned to your property to escort VIP showings, accept urgent offers, and ensure zero lead lag.",
+    desc: "When the schedule is full, backup coverage keeps your calls, showings, and paperwork moving, so important requests do not sit unanswered.",
     executionDetail: "If our lead director is actively in a contract negotiation, our licensed team partner ensures zero incoming calls or tour requests go unanswered.",
     sellerImpact: "Zero missed opportunities. 100% listing coverage 365 days a year.",
     image: "/media/properties/9687-bear-creek-guthrie.jpeg"
@@ -311,7 +311,7 @@ export const PROCESS_FOUR_DELIVERABLES = [
     slug: "/services/personal-assistant-support",
     badge: "Step 4.1",
     title: "Personal assistant for scheduling, communication, and documentation",
-    desc: "Dedicated client concierge managing showing appointments, calendar approvals, and immediate dispatch of listing documentation.",
+    desc: "A personal assistant coordinates scheduling, communication, and documentation, helping showings, calls, and paperwork stay organized from the listing date through closing.",
     executionDetail: "Coordinates calendar bookings, lockbox codes, and private showing notifications so you never experience family disruption.",
     sellerImpact: "Ensures seamless communication and protects your family's schedule during peak showing windows.",
     image: "/media/properties/1817-sun-valley-edmond.jpeg"
@@ -321,7 +321,7 @@ export const PROCESS_FOUR_DELIVERABLES = [
     slug: "/services/transaction-coordinator",
     badge: "Step 4.2",
     title: "Transaction coordinator for documentation and compliance",
-    desc: "Certified escrow coordinator supervising earnest deposits, title compliance, lender conditions, appraisal tracking, and closing paperwork.",
+    desc: "A transaction coordinator tracks deadlines, organizes documents, and checks compliance requirements, helping your contract stay on schedule between acceptance and closing.",
     executionDetail: "Audits contract timelines, title commitments, and mandatory Oklahoma Real Estate Commission disclosure paperwork.",
     sellerImpact: "Guarantees 100% legal compliance and eliminates closing day surprises.",
     image: "/media/properties/715-s-friendly-okc.jpeg"
@@ -331,7 +331,7 @@ export const PROCESS_FOUR_DELIVERABLES = [
     slug: "/services/staging-team",
     badge: "Step 4.3",
     title: "Staging team for decluttering and market prep",
-    desc: "Hands-on staging specialists advising on furniture layout, spatial flow, artwork placement, and lighting optimization for maximum perceived value.",
+    desc: "The staging team helps declutter, arrange, and prepare each space, so your home looks open, inviting, and ready for the market.",
     executionDetail: "In-person staging consultation ensuring light angles, furniture spacing, and luxury accents photograph impeccably.",
     sellerImpact: "Maximizes perceived square footage and creates emotional resonance for luxury buyers.",
     image: "/media/properties/534-w-chickasaw.jpg"
@@ -341,7 +341,7 @@ export const PROCESS_FOUR_DELIVERABLES = [
     slug: "/services/listing-operations-team",
     badge: "Step 4.4",
     title: "Listing team for flyers, websites, print ads, and social marketing",
-    desc: "Operations team managing MLS data accuracy, property domains, digital marketing pipelines, and syndication feeds.",
+    desc: "The listing team builds flyers, websites, print ads, and social media content, keeping your marketing consistent wherever buyers might see it.",
     executionDetail: "Coordinates MLS data feeds, single-property vanity websites, lockboxes, and syndication channels.",
     sellerImpact: "Guarantees data accuracy and rapid multi-platform launch speed.",
     image: "/media/properties/435-nw-21st-heritage-hills.jpeg"
@@ -351,7 +351,7 @@ export const PROCESS_FOUR_DELIVERABLES = [
     slug: "/services/design-team",
     badge: "Step 4.5",
     title: "Design team for postcards and print/online flyers",
-    desc: "Professional graphic design studio crafting bespoke glossy mailers, print brochures, and digital buyer presentation packages.",
+    desc: "The design team creates postcards and print and online flyers with clean layouts and accurate details that present your property clearly.",
     executionDetail: "Creates tailored print collateral, embossed property brochures, and high-impact digital social assets.",
     sellerImpact: "Elevates your home's brand prestige above competing area listings.",
     image: "/media/properties/13701-s-independence-okc.jpeg"
@@ -361,7 +361,7 @@ export const PROCESS_FOUR_DELIVERABLES = [
     slug: "/services/property-photographer",
     badge: "Step 4.6",
     title: "Property photographer (photos and aerial)",
-    desc: "FAA-certified drone pilots and architectural photographers equipped with specialized tilt-shift lenses and HDR lighting.",
+    desc: "A property photographer captures interior, exterior, and aerial images, giving your listing the visual quality that buyers expect to see online.",
     executionDetail: "Dedicated aerial pilots and photographers shooting sunset golden hours to produce pristine listing media.",
     sellerImpact: "Delivers magazine-cover caliber visual marketing without relying on generic subcontractors.",
     image: "/media/properties/85006-n-2520-watonga.jpeg"
@@ -371,7 +371,7 @@ export const PROCESS_FOUR_DELIVERABLES = [
     slug: "/services/marketing-team",
     badge: "Step 4.7",
     title: "Marketing team for listing and post-close marketing",
-    desc: "Strategic growth division orchestrating listing launch campaigns, private broker previews, and post-close tax and moving transitions.",
+    desc: "The marketing team promotes your listing during the sale and continues post-close marketing, so the relationship does not end at closing.",
     executionDetail: "Manages digital retargeting campaigns, broker open-house events, and final escrow coordination.",
     sellerImpact: "Maintains high buyer urgency from listing launch through successful closing.",
     image: "/media/properties/2950-nw-37th-newcastle.jpeg"
@@ -388,7 +388,7 @@ export const PROCESS_FIVE_DELIVERABLES = [
     slug: "/services/local-market-update",
     badge: "Step 5.1",
     title: "Local market update (downtown OKC trends, DOM, sale-to-list, inventory)",
-    desc: "Real-time econometric analysis tracking inventory absorption, average days on market (DOM), and sale-to-list price ratios across downtown and metro OKC.",
+    desc: "A review of downtown Oklahoma City trends, including days on market, sale-to-list ratios, and inventory, shows how the market affects pricing.",
     executionDetail: "Continuous tracking of active supply, pending escrows, and interest rate impacts in your immediate neighborhood enclave.",
     sellerImpact: "Provides clarity on market timing to launch your property when buyer demand is peaking.",
     image: "/media/gallery/modern-estate-pool-lawn.jpeg"
@@ -398,7 +398,7 @@ export const PROCESS_FIVE_DELIVERABLES = [
     slug: "/services/subject-property-valuation",
     badge: "Step 5.2",
     title: "Subject property valuation, including added value of an adjacent lot",
-    desc: "Comprehensive comparative valuation including parcel boundaries, zoning potential, and added market appraisal value of adjacent land or lots.",
+    desc: "Your property is valued on its own merits, and an adjacent lot’s added value is clearly shown when one is available.",
     executionDetail: "Forensic adjustment for premium lot views, acreage buffers, custom joinery, pool pavilions, and building potential.",
     sellerImpact: "Uncovers hidden equity and ensures unique land assets are never given away for free.",
     image: "/media/gallery/modern-kitchen.jpeg"
@@ -408,7 +408,7 @@ export const PROCESS_FIVE_DELIVERABLES = [
     slug: "/services/comparable-sales-analysis",
     badge: "Step 5.3",
     title: "Comparable sales analysis",
-    desc: "Forensic comp analysis comparing recent closed transactions, pending escrows, and active competing inventory in your immediate micro-market.",
+    desc: "Recent comparable sales show what similar homes actually sold for, giving your price a factual foundation instead of generic online estimates.",
     executionDetail: "Detailed comp review analyzing sold price per square foot, concessions, and condition differences within the past 90 days.",
     sellerImpact: "Guarantees an airtight appraisal defense so buyers cannot negotiate price cuts during escrow.",
     image: "/media/gallery/modern-staircase-dining.jpeg"
@@ -418,7 +418,7 @@ export const PROCESS_FIVE_DELIVERABLES = [
     slug: "/services/tiered-pricing-recommendation",
     badge: "Step 5.4",
     title: "Tiered pricing recommendation (conservative / target / aspirational)",
-    desc: "A 3-tier valuation model presenting Conservative (rapid liquidity), Target (peak comp appraisal), and Aspirational (surge premium testing).",
+    desc: "You see conservative, target, and aspirational price options, with the trade-offs of each so that you can choose a strategy with confidence.",
     executionDetail: "Outlines Conservative (swift cash exit), Target (accurate peak market value), and Aspirational (testing surge demand).",
     sellerImpact: "Gives you complete strategic clarity to choose the listing approach matching your financial timeline.",
     image: "/media/gallery/brian-closing-clients.jpeg"
@@ -428,7 +428,7 @@ export const PROCESS_FIVE_DELIVERABLES = [
     slug: "/services/buyer-minded-pricing",
     badge: "Step 5.5",
     title: "Buyer-minded pricing to drive competitive bidding",
-    desc: "Psychological price positioning calibrated directly beneath search brackets to generate higher showing velocity and spark multiple competing bids.",
+    desc: "Pricing with buyers in mind can create interest and encourage competing offers, though results depend on condition, location, and market timing.",
     executionDetail: "Positions list price just beneath major online search filters (e.g. $749,000 instead of $755,000) to trigger auto-email alerts to double the buyer pool.",
     sellerImpact: "Doubles buyer search notifications and triggers multi-offer tension during the critical opening 14 days.",
     image: "/media/gallery/brian-jamison-skyline.jpeg"
@@ -445,7 +445,7 @@ export const PROCESS_SIX_DELIVERABLES = [
     slug: "/services/partnership-approach",
     badge: "Step 6.1",
     title: "Partnership approach focused on your most profitable outcome",
-    desc: "Our compensation and advisory incentives are directly aligned with maximizing your net proceeds—not rushing a quick below-market sale.",
+    desc: "Each listing is a working partnership, with strategy, pricing, and negotiation handled together with you to pursue your most profitable outcome.",
     executionDetail: "Our fiduciary incentives match your net return, ensuring firm negotiation that defends your equity at every turn.",
     sellerImpact: "We negotiate every dollar with the same vigilance as if it were our own equity.",
     image: "/media/gallery/brian-jamison-sunset.jpeg"
@@ -455,7 +455,7 @@ export const PROCESS_SIX_DELIVERABLES = [
     slug: "/services/cancel-anytime-listing-agreement",
     badge: "Step 6.2",
     title: "Cancel-anytime listing agreement: if promises aren't met, fire us, no strings attached",
-    desc: "If Brian Jamison fails to meet any contractual commitment, you hold the unconditional right to cancel the agreement immediately. Zero penalty, no fees, no hassle.",
+    desc: "If we do not deliver what was promised, you can end the listing agreement at any time, with no strings attached.",
     executionDetail: "A binding addendum explicitly stating that if you are not 100% satisfied with our marketing or communication, you may terminate immediately with $0.00 fee.",
     sellerImpact: "Zero risk, zero penalty, and total peace of mind throughout the listing experience.",
     image: "/media/gallery/sunset-deck-pool.jpeg"
@@ -473,7 +473,7 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
     category: "service",
     kicker: "PROCESS 01 OF 06 · EXPOSURE ENGINE",
     title: "Marketing plan and process",
-    subtitle: "Every listing gets a full marketing campaign built to put your home in front of every qualified buyer and trigger competitive bidding.",
+    subtitle: "Our home-selling marketing plan in Edmond, OK combines preparation, promotion, and follow-through to help your property reach interested buyers.",
     heroVideoUrl: "/media/videos/vid2.mp4",
     heroFallbackImage: "/media/gallery/sunset-window-terrace.jpeg",
     heroMetrics: [
@@ -481,17 +481,17 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
       { label: "Video View Velocity", value: "14.2k Avg" },
       { label: "List-to-Sale Ratio", value: "98.4%" }
     ],
-    overview: "In modern luxury real estate, buyers make emotional decisions within the first 8 seconds of seeing a home online. Jamison Real Estate deploys a comprehensive media production engine for every listing—transforming standard properties into high-demand lifestyle assets through professional cinematography, 3D spatial mapping, and hyper-targeted advertising.",
+    overview: "Marketing a house for sale in Edmond, OK requires a coordinated approach. Jamison Real Estate connects property preparation, professional media, listing distribution, and buyer outreach into one campaign, with a clear launch sequence and ongoing reviews of inquiries, showings, and feedback.",
     keyTakeaways: [
-      "Home-prep guidance: first-impression review, refresh recommendations, and ROI-based suggestions",
-      "Architectural HDR photography captured with natural light and golden hour illumination",
-      "Cinema-grade 4K motion walkthrough video with professional editing and sound design",
-      "FAA Part-107 certified aerial drone video capturing grounds, acreage, and neighborhood amenities",
-      "Automated syndication across 350+ domestic and international real estate portals",
-      "Dedicated single-property website with custom vanity address domain",
-      "Consistent paid Meta (Instagram & Facebook) advertising retargeting qualified pre-approved buyers",
-      "Active MLS algorithmic refreshes and proactive reverse-prospecting direct to buyer brokers",
-      "Interactive 24/7 Matterport 3D Dollhouse virtual open house for out-of-state transferees"
+      "Home-prep guidance with practical presentation and refresh recommendations",
+      "Professional photography highlighting your home's layout and distinctive features",
+      "Edited property video showing connected rooms and outdoor spaces",
+      "Aerial imagery presenting the property's grounds and surrounding setting",
+      "Listing distribution through applicable real estate websites and portals",
+      "Dedicated property website bringing listing information and media together",
+      "Coordinated Facebook and Instagram promotion supporting the listing campaign",
+      "Listing updates and outreach to agents with potentially matching buyers",
+      "Interactive Matterport tours helping remote buyers explore the home"
     ],
     deliverables: PROCESS_ONE_DELIVERABLES,
     images: DEFAULT_ARCHITECTURAL_GALLERY
@@ -503,7 +503,7 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
     category: "service",
     kicker: "PROCESS 02 OF 06 · ZERO GUESSWORK",
     title: "Communication",
-    subtitle: "Jamison Real Estate enforces transparent, timely, and disciplined communication so you retain total control throughout the transaction.",
+    subtitle: "Our real estate agent communication standards in Edmond, OK keep you informed, clarify your options, and put important decisions in your hands.",
     heroVideoUrl: "/media/videos/vid3.mp4",
     heroFallbackImage: "/media/gallery/midcentury-entry.jpeg",
     heroMetrics: [
@@ -511,13 +511,13 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
       { label: "Weekly Intelligence", value: "Every Monday" },
       { label: "Contract Clarity", value: "100%" }
     ],
-    overview: "The primary complaint homeowners have about traditional realtors is silence after the listing agreement is signed. Jamison Real Estate operates on a strict corporate communication protocol: mandatory phone calls after every showing, weekly analytical traffic dashboards, and plain-English contract debriefs.",
+    overview: "Knowing what to expect from Realtor communication in Edmond, OK starts with clear commitments. Jamison Real Estate establishes preferred contact channels, scheduled updates, and approval responsibilities. We explain what happens next, communicate relevant developments, and discuss your options before asking you to make a decision.",
     keyTakeaways: [
-      "Call every showing agent for feedback after every showing within 2 hours of access",
-      "Collaborate with other agents in the downtown market to track incoming buyer volume",
-      "Explain market conditions, opportunities, contracts, terms, and disclosures in plain English",
-      "Detailed updates on showings, feedback, offers, inspections, and key documents every Monday",
-      "Negotiation aimed at common ground and your desired outcome with fiduciary equity defense"
+      "Request showing-agent feedback within two hours and share responses when received",
+      "Coordinate with local agents and communicate relevant buyer observations",
+      "Explain market conditions, opportunities, contracts, terms, and disclosures clearly",
+      "Check in every Monday and communicate urgent matters as they arise",
+      "Discuss negotiation options and obtain your instructions before responding"
     ],
     deliverables: PROCESS_TWO_DELIVERABLES,
     images: DEFAULT_ARCHITECTURAL_GALLERY
@@ -529,7 +529,7 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
     category: "service",
     kicker: "PROCESS 03 OF 06 · ZERO LEAD LAG",
     title: "Accessibility",
-    subtitle: "Our agency maintains uninterrupted seven-day reachability with dedicated backup coverage so opportunities are never missed.",
+    subtitle: "Learn how to reach Brian Jamison during a sale in Edmond, OK, through agreed contact channels and a clear path for urgent questions.",
     heroVideoUrl: "/media/videos/vid4.mp4",
     heroFallbackImage: "/media/gallery/infinity-pool-hills.jpeg",
     heroMetrics: [
@@ -537,12 +537,12 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
       { label: "Lead Response Time", value: "< 15 Mins" },
       { label: "Backup Coverage", value: "Dual Desk" }
     ],
-    overview: "High-value buyers, corporate transferees, and medical executives do not operate strictly during 9-to-5 banking hours. When a qualified family requests a private showing on a Sunday evening, every minute of delay increases the odds they purchase a competitor's listing. Our firm ensures continuous reachability and dedicated backup coverage.",
+    overview: "The Brian Jamison client access policy in Edmond, OK helps existing clients understand where to direct questions during their sale. At the start of your listing, we confirm your preferred channel, explain how to flag urgent matters, and establish the next step if your initial message remains unanswered.",
     keyTakeaways: [
-      "Reachable mornings, days, evenings, and weekends via phone, SMS, and email",
-      "Backup coverage when your schedule is full, ensuring VIP showings are never missed",
-      "Sub-15-minute response time on all digital portal inquiries and yard sign calls",
-      "Dedicated client concierge managing showing approvals without disrupting your schedule"
+      "Confirm the contact route for questions requiring Brian's attention",
+      "Choose phone, text, or email based on the situation",
+      "Identify urgent deadlines clearly when requesting assistance",
+      "Follow an agreed escalation path when further attention is needed"
     ],
     deliverables: PROCESS_THREE_DELIVERABLES,
     images: DEFAULT_ARCHITECTURAL_GALLERY
@@ -554,7 +554,7 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
     category: "service",
     kicker: "PROCESS 04 OF 06 · SPECIALIZED FORCE",
     title: "Team support",
-    subtitle: "Our firm operates a full specialized organizational matrix so every operational, legal, and creative detail is handled by an expert.",
+    subtitle: "The Brian Jamison real estate support team in Edmond, OK coordinates listing preparation, transaction support, and marketing so responsibilities stay clear throughout your sale.",
     heroVideoUrl: "/media/videos/vid5.mp4",
     heroFallbackImage: "/media/gallery/hill-country-driveway.jpeg",
     heroMetrics: [
@@ -562,15 +562,15 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
       { label: "Contract Accuracy", value: "100%" },
       { label: "Closing On-Time", value: "99.1%" }
     ],
-    overview: "Real estate transactions involve over 140 critical legal, financial, and marketing deadlines. Solo agents easily get overwhelmed by paperwork and phone tag. Jamison Real Estate backs your listing with dedicated specialists handling escrow compliance, staging advisory, graphic design, and media production.",
+    overview: "Understanding who supports Brian Jamison clients in Edmond, OK starts with knowing each person's role. Brian leads your representation while supporting specialists coordinate assigned work. Clear handoffs connect preparation, marketing, and transaction milestones, helping you understand who handles each part of your sale.",
     keyTakeaways: [
-      "Personal assistant for scheduling, communication, and documentation",
-      "Certified transaction coordinator for title, escrow, and state regulatory compliance",
-      "Staging team for decluttering, spatial sightlines, and market prep",
-      "Listing operations team managing flyers, websites, print ads, and social marketing",
-      "Design team for bespoke postcards, brochures, and print/online marketing collateral",
-      "Property photographer and FAA-certified aerial drone pilots",
-      "Marketing team for listing launch acceleration and post-close transitions"
+      "Personal assistant supporting scheduling, communication, and document organization",
+      "Transaction coordinator tracking paperwork and contractual milestones",
+      "Staging support guiding presentation and preparation",
+      "Listing operations coordinating property information and publication",
+      "Design support preparing consistent marketing materials",
+      "Photography professionals producing listing imagery",
+      "Marketing support coordinating campaign delivery and completion"
     ],
     deliverables: PROCESS_FOUR_DELIVERABLES,
     images: DEFAULT_ARCHITECTURAL_GALLERY
@@ -582,7 +582,7 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
     category: "service",
     kicker: "PROCESS 05 OF 06 · DATA ARCHITECTURE",
     title: "Pricing strategy",
-    subtitle: "Our pricing methodology is data-driven and buyer-minded, calculated to trigger multiple competing offers and maximize your net proceeds.",
+    subtitle: "Our home listing pricing strategy in Edmond, OK combines market evidence, your property's features, and your goals to guide the asking-price decision.",
     heroVideoUrl: "/media/videos/vid6.mp4",
     heroFallbackImage: "/media/properties/136-nw-18th-heritage-hills.jpeg",
     heroMetrics: [
@@ -590,13 +590,13 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
       { label: "Pricing Strategy", value: "3-Tier CMA" },
       { label: "List-to-Sale Ratio", value: "98.4%" }
     ],
-    overview: "Overpricing leads to stigmatized listings and painful price cuts. Underpricing leaves tens of thousands of hard-earned equity on the table. Jamison Real Estate utilizes an econometric pricing framework calibrated beneath active buyer search thresholds to drive urgency and multi-offer tension.",
+    overview: "Understanding how to price a house to sell in Edmond, OK starts with relevant evidence and realistic expectations. Jamison Real Estate reviews competing listings, recent sales, and your selling priorities, then explains the trade-offs so you can choose an asking price with confidence.",
     keyTakeaways: [
-      "Local market update covering downtown OKC trends, Days on Market (DOM), sale-to-list ratios, and inventory absorption",
-      "Subject property valuation including added value of an adjacent lot or acreage buffer",
-      "Forensic comparable sales analysis evaluating recent closed escrows within 90 days",
-      "Tiered pricing recommendation: Conservative, Target, and Aspirational tiers",
-      "Buyer-minded pricing calibrated beneath round search brackets to drive competitive bidding"
+      "Local market context covering inventory, selling times, and price trends",
+      "Review of property features, condition, and relevant land considerations",
+      "Comparable-sales evidence supporting the asking-price discussion",
+      "Pricing options aligned with your timing and financial priorities",
+      "Agreed review points based on buyer response and market changes"
     ],
     deliverables: PROCESS_FIVE_DELIVERABLES,
     images: DEFAULT_ARCHITECTURAL_GALLERY
@@ -608,7 +608,7 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
     category: "service",
     kicker: "PROCESS 06 OF 06 · ZERO RISK",
     title: "Fair pricing and contract flexibility",
-    subtitle: "Our partnership model guarantees 100% mutual alignment with our unconditional Cancel-Anytime Pledge: if promises aren't met, fire us with zero penalty.",
+    subtitle: "Understand realtor listing fees in Edmond, OK, including the services covered, agreed compensation, and payment terms before signing your listing agreement.",
     heroVideoUrl: "/media/videos/vid7.mp4",
     heroFallbackImage: "/media/properties/11500-gateshead.jpg",
     heroMetrics: [
@@ -616,12 +616,12 @@ export const MAIN_PROCESS_PAGES: Record<string, InteriorPageData> = {
       { label: "Seller Risk", value: "Zero" },
       { label: "Client Satisfaction", value: "100%" }
     ],
-    overview: "Traditional brokerages trap sellers in 6-to-12 month contracts even when their service is substandard. Jamison Real Estate believes that trust must be earned through daily execution. If Brian Jamison fails to meet every written marketing, communication, and fiduciary commitment, you can fire us immediately. No penalty, no fees, no strings attached.",
+    overview: "Discuss real estate commission options in Edmond, OK directly with Brian Jamison. Review the proposed compensation, what it covers, and when payment is due. Any available arrangement should be explained clearly and documented in your agreement so you can assess the services and costs together.",
     keyTakeaways: [
-      "Partnership approach focused strictly on your most profitable net outcome",
-      "Cancel-anytime listing agreement: if promises aren't met, fire us, no strings attached",
-      "Zero termination penalties, zero administrative fees, and no media repayment charges",
-      "Complete performance accountability backed by Jamison Real Estate"
+      "Discuss proposed compensation before committing to representation",
+      "Review which services are included in the agreed fee",
+      "Identify any separately charged services or expenses",
+      "Confirm payment obligations and agreement terms in writing"
     ],
     deliverables: PROCESS_SIX_DELIVERABLES,
     images: DEFAULT_ARCHITECTURAL_GALLERY

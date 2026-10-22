@@ -464,6 +464,14 @@ export const NeighborhoodDetailView: React.FC<NeighborhoodDetailViewProps> = ({
 
   // Dynamic Local Micro-Market FAQs (Section 9)
   const getNeighborhoodFaqs = () => {
+    if (page.faqs && page.faqs.length > 0) {
+      return page.faqs.map((f, idx) => ({
+        question: f.q,
+        answer: f.a,
+        tag: idx === 0 ? 'Home Selection' : idx === 1 ? 'Buyer Due Diligence' : idx === 2 ? 'Local Dynamics' : 'Market Intelligence'
+      }));
+    }
+
     const faqs: { question: string; answer: string; tag: string }[] = [];
 
     // 1. Enclave-specific questions
@@ -888,13 +896,26 @@ export const NeighborhoodDetailView: React.FC<NeighborhoodDetailViewProps> = ({
                 onClick={() => setSelectedReel(reel)}
                 className="group relative rounded-2xl overflow-hidden shadow-xl bg-black cursor-pointer aspect-[9/16] border border-white/15 hover:border-[#EA580C] transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between p-5"
               >
-                {/* Background Reel Thumbnail */}
-                <img
-                  src={reel.thumbnail}
-                  alt={reel.title}
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  loading="lazy"
-                />
+                {/* Background Reel Thumbnail or Drone Video preview */}
+                {reel.title?.toLowerCase().includes('drone') || reel.tag?.toLowerCase().includes('drone') || reel.title?.toLowerCase().includes('aerial') ? (
+                  <video
+                    src={reel.videoUrl}
+                    poster={reel.thumbnail}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  />
+                ) : (
+                  <img
+                    src={reel.thumbnail}
+                    alt={reel.title}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                )}
 
                 {/* Scrim Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/60 group-hover:via-black/20 transition-all" />

@@ -43,25 +43,25 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
       icon: Trophy,
       title: "Collegiate Athlete Discipline",
       badge: "Work Ethic",
-      desc: "Brian brings the rigor of collegiate competitive athletics to every real estate transaction. That means 5:30 AM market analysis, rigorous negotiation stamina, and an obsessive focus on detail. Real estate isn't a hobby—it's high-stakes fiduciary execution."
+      desc: "Competitive athletics demands preparation, consistency, and attention to detail. These habits carry into the real estate process through market research, negotiation planning, and clear communication. Each transaction receives a structured approach designed to help clients understand their options and make informed decisions."
     },
     {
       icon: Target,
       title: "Direct Fiduciary Representation",
-      badge: "Zero Delegation",
-      desc: "When you hire Brian Jamison, you work directly with Brian Jamison. Your property appraisal, contract negotiations, and buyer showings are never handed off to an inexperienced junior licensee. Brian personally attends every critical milestone."
+      badge: "Hands-On",
+      desc: "Clients work directly with their agent throughout the transaction. From pricing discussions and marketing plans to offer reviews and contract negotiations, he stays involved in key decisions. This hands-on approach helps clients understand their options and know who is guiding their next move."
     },
     {
       icon: TrendingUp,
       title: "Data-Driven Pricing Architecture",
       badge: "Top 2% Producer",
-      desc: "With over $62M+ in career volume and 370+ closed transactions, Brian doesn't guess. He utilizes 3-tier algorithmic pricing models calibrated beneath key MLS search brackets to spark multi-offer bidding environments."
+      desc: "With more than $62 million in reported career sales volume and over 370 closings, Brian brings transaction experience to his work. Market data, comparable sales, and property-specific factors help inform pricing discussions and negotiation strategies."
     },
     {
       icon: ShieldCheck,
       title: "100% Cancel-Anytime Guarantee",
       badge: "Zero Risk",
-      desc: "Brian stands behind every promise in writing. If he fails to deliver on any aspect of his marketing plan or transparent communication standards, you have the unilateral right to cancel the listing agreement with zero penalty."
+      desc: "Transparent communication and clear expectations guide the listing process. The written agreement should outline the marketing plan, service commitments, fees, and cancellation terms. Clients can review these details before signing to understand their rights and any conditions that apply."
     }
   ];
 
@@ -81,9 +81,9 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
         ========================================================================
       */}
       <InteriorHeroVideo
-        kicker="Salt Real Estate Corporate Office · Edmond, Oklahoma"
+        kicker="Salt Real Estate · Edmond, Oklahoma"
         title="The Agent Who Works Like Every Deal Is Personal."
-        subtitle="Brian Jamison is a Top 2% Real Estate Producer in Oklahoma with over $62M+ volume sold and 370+ career closings. A former collegiate athlete, Brian combines championship preparation, transparent communication, and a 100% Risk-Free Cancel-Anytime Listing Guarantee."
+        subtitle="Brian Jamison brings a competitive mindset, direct communication, and a results-focused approach to real estate across Edmond and Greater Oklahoma City. His collegiate athletic background and reported career record of $62M+ in sales volume and 370+ closings shape how he prepares, negotiates, and guides clients through important property decisions."
         heroVideoUrl="/media/videos/vid1.mp4"
         heroFallbackImage="/media/gallery/brian-jamison-skyline.jpeg"
         metrics={[
@@ -110,13 +110,10 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
                 The Athlete’s Mindset
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#002D61] leading-tight mb-4">
-                Why an Athletic Background Changes Real Estate Representation
+                Personal Representation With a Competitive Edge
               </h2>
               <p className="font-sans text-base text-[#4B5563] leading-relaxed mb-4">
-                In college athletics, success is earned in off-season preparation, tape analysis, and relentless conditioning. Brian brings that exact championship work ethic to your real estate transaction.
-              </p>
-              <p className="font-sans text-sm text-[#4B5563] leading-relaxed">
-                Whether structuring multi-offer negotiations in Nichols Hills or marketing premier acreage in Edmond, Brian approaches every escrow with relentless discipline and zero delegation.
+                Years of competitive athletics helped shape Brian’s approach to preparation, discipline, and performance. Today, those principles guide his real estate practice, from pricing and marketing to negotiations and transaction planning. His focus remains on clear advice, careful preparation, and the details that matter to each client.
               </p>
             </div>
             <div className="lg:col-span-6">
@@ -178,13 +175,13 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-6">
               <span className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[#EA580C] block mb-2">
-                Brokerage Strength & Proven Results
+                Brokerage Connection
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#002D61] leading-tight mb-6">
-                Backed by Salt Real Estate Corporate Headquarters
+                Backed by Salt Real Estate in Edmond
               </h2>
               <p className="font-sans text-base text-[#4B5563] leading-relaxed mb-6">
-                Based out of Salt Real Estate’s corporate office at <strong>1508 W. Edmond Rd., Edmond, Oklahoma</strong>, Brian operates with independent agile firepower. Salt Real Estate isn't weighed down by bloated national franchise royalties; every dollar is reinvested directly into high-impact client marketing.
+                Brian is associated with Salt Real Estate, with an office listed at <strong>1508 W. Edmond Rd., Edmond, Oklahoma</strong>. This local connection supports his work with clients across Edmond and Greater Oklahoma City. Current office and brokerage details should be confirmed before publication.
               </p>
               
               <ul className="space-y-4 mb-8">
@@ -248,7 +245,7 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
               Career Trajectory
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#002D61] leading-tight">
-              A History of Relentless Execution
+              A Background Shaped by Preparation and Progress
             </h2>
           </div>
 
@@ -283,13 +280,13 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
       <section className="w-full py-20 sm:py-24 bg-[#002D61] text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
           <span className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[#FB923C] block mb-3">
-            The Proprietary Machine
+            The Professional Approach
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
-            Ready to See the 6-Phase Selling Machine in Action?
+            Discover Brian Jamison’s Real Estate Background in Edmond, OK
           </h2>
           <p className="font-sans text-base sm:text-lg text-stone-200 leading-relaxed max-w-2xl mx-auto mb-10">
-            Explore all 30+ specific deliverables—from HDR drone imaging and reverse prospecting to mandatory 2-hour showing feedback and 100% risk-free cancel-anytime protection.
+            Explore how an athletic background, career milestones, brokerage connections, and hands-on service shape this approach to real estate. The goal is to make complex decisions easier to understand through preparation, direct communication, and a clear plan for each transaction.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -307,7 +304,7 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
               onClick={onOpenConsultation}
               className="px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-sans text-xs font-bold uppercase tracking-wider border border-white/20 transition-all cursor-pointer"
             >
-              Schedule Direct Call With Brian
+              Schedule Private Consultation
             </button>
           </div>
         </div>

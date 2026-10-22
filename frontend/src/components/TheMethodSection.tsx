@@ -335,11 +335,24 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
 
                   {/* Room Display Canvas */}
                   <div className="relative h-64 sm:h-80 w-full overflow-hidden group">
-                    <img
-                      src={VIRTUAL_ROOMS[activeRoomIndex].image}
-                      alt={VIRTUAL_ROOMS[activeRoomIndex].name}
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-103"
-                    />
+                    {viewMode === 'aerial' || VIRTUAL_ROOMS[activeRoomIndex].name.toLowerCase().includes('drone') || VIRTUAL_ROOMS[activeRoomIndex].name.toLowerCase().includes('aerial') ? (
+                      <video
+                        src="/media/videos/vid2.mp4"
+                        poster={VIRTUAL_ROOMS[activeRoomIndex].image}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-103"
+                      />
+                    ) : (
+                      <img
+                        src={VIRTUAL_ROOMS[activeRoomIndex].image}
+                        alt={VIRTUAL_ROOMS[activeRoomIndex].name}
+                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-103"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
 
                     {/* Room Overlay Details */}
@@ -460,11 +473,24 @@ export const TheMethodSection: React.FC<TheMethodSectionProps> = ({ onOpenMethod
                     </div>
 
                     <div className="md:col-span-5 relative h-48 md:h-auto min-h-[200px]">
-                      <img
-                        src={visualCard.image}
-                        alt={phase.title}
-                        className="w-full h-full object-cover"
-                      />
+                      {visualCard.insight?.toLowerCase().includes('drone') ? (
+                        <video
+                          src="/media/videos/vid2.mp4"
+                          poster={visualCard.image}
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          preload="metadata"
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <img
+                          src={visualCard.image}
+                          alt={phase.title}
+                          className="w-full h-full object-cover"
+                        />
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/40 to-transparent" />
                     </div>
                   </div>

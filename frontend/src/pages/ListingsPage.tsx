@@ -32,9 +32,9 @@ export const ListingsPage: React.FC<ListingsPageProps> = ({
     <article className="w-full bg-[#FAF9F6] text-[#002D61] selection:bg-[#EA580C]/20 selection:text-[#002D61]">
       {/* 1. Cinematic Hero Video */}
       <InteriorHeroVideo
-        kicker="ACTIVE PORTFOLIO"
-        title="Active & Featured Luxury Listings"
-        subtitle="Explore current residences exclusively represented by Brian Jamison across Nichols Hills, Edmond, Gaillardia, Lake Arcadia, and the Greater Oklahoma City metro."
+        kicker="Active Listings and Featured Properties"
+        title="Find Brian Jamison’s Current Property Listings"
+        subtitle="Explore current properties represented by Brian Jamison across Edmond and verified areas of the Greater Oklahoma City metro. Review available listing details, property features, and current status to find homes that fit your goals."
         categoryLabel="Active Portfolio"
         metrics={[
           { label: 'Active Volume', value: '$8.4M' },
@@ -45,6 +45,58 @@ export const ListingsPage: React.FC<ListingsPageProps> = ({
         onOpenValuation={onOpenValuation}
         onOpenConsultation={onOpenConsultation}
       />
+
+      {/* 2. Key Property Details Guidance Strip */}
+      <section className="w-full py-12 bg-white border-b border-[#E5E0D8]">
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="max-w-3xl mb-8">
+            <span className="text-[11px] font-sans font-bold uppercase tracking-widest text-[#EA580C] block mb-2">
+              Explore Featured Properties
+            </span>
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#002D61]">
+              Browse Brian Jamison’s Featured Properties
+            </h2>
+            <p className="text-xs sm:text-sm text-[#4B5563] mt-2 leading-relaxed">
+              Browse Brian Jamison’s featured properties in Edmond and review represented homes in other verified areas. Whether you are exploring Brian Jamison homes for sale in Oklahoma City or looking for Brian Jamison property listings in Nichols Hills, OK, use each property’s listing page to confirm its location, status, and details.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="p-5 rounded-2xl bg-[#FAF9F6] border border-[#E5E0D8]">
+              <span className="font-serif text-sm font-bold text-[#002D61] block mb-1">
+                Property Photos and Tours
+              </span>
+              <p className="text-xs text-[#6B7280] leading-relaxed">
+                View available photography, video tours, or interactive floor plans when provided.
+              </p>
+            </div>
+            <div className="p-5 rounded-2xl bg-[#FAF9F6] border border-[#E5E0D8]">
+              <span className="font-serif text-sm font-bold text-[#002D61] block mb-1">
+                Home Specifications
+              </span>
+              <p className="text-xs text-[#6B7280] leading-relaxed">
+                Review listed features, lot dimensions, and HOA details where available.
+              </p>
+            </div>
+            <div className="p-5 rounded-2xl bg-[#FAF9F6] border border-[#E5E0D8]">
+              <span className="font-serif text-sm font-bold text-[#002D61] block mb-1">
+                Location Information
+              </span>
+              <p className="text-xs text-[#6B7280] leading-relaxed">
+                Explore property details for Edmond and other verified service areas across the Greater Oklahoma City metro.
+              </p>
+            </div>
+            <div className="p-5 rounded-2xl bg-[#FAF9F6] border border-[#E5E0D8]">
+              <span className="font-serif text-sm font-bold text-[#002D61] block mb-1">
+                Showing Requests
+              </span>
+              <p className="text-xs text-[#6B7280] leading-relaxed">
+                Contact Brian to ask about availability and arrange a showing for a property that interests you.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* 2. Editorial Standards Banner */}
       <section className="w-full py-8 bg-[#001D40] text-white border-y border-white/10">
@@ -120,13 +172,13 @@ export const ListingsPage: React.FC<ListingsPageProps> = ({
           <div className="mt-14 p-8 sm:p-10 rounded-3xl bg-white border border-[#E5E0D8] shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="max-w-xl">
               <span className="text-[11px] font-sans font-bold uppercase tracking-wider text-[#EA580C] block mb-1">
-                Private Escorted Showings
+                Ready to Take the Next Step?
               </span>
               <h3 className="font-serif text-2xl font-bold text-[#002D61]">
-                Interested in Touring a Featured Listing?
+                Schedule a Private Property Consultation
               </h3>
               <p className="text-xs sm:text-sm text-[#4B5563] mt-2 leading-relaxed">
-                Brian Jamison personally coordinates private, discreet showings for qualified buyers. Contact Brian directly or request a confidential walkthrough appointment.
+                Have questions about a featured home or want to arrange a showing? Contact Brian to discuss your property interests, review available listing details, and understand the next steps. For pricing or market comparisons, ask about relevant property data available for your search.
               </p>
             </div>
 

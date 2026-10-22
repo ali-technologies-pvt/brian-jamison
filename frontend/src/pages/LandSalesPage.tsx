@@ -145,43 +145,43 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
       number: "01",
       title: "4K Drone Boundary Mapping & Land Syndication",
       subtitle: "Aerial Elevation Overlays & Specialized Feeds",
-      desc: "Raw land cannot be captured with standard ground photography. We deploy FAA Part-107 licensed drone pilots to capture 4K high-altitude sweeps, digital property line overlays, elevation contours, and timber-to-pasture ratios. We syndicate across LandWatch, Land and Farm, LoopNet, Zillow, and regional developer networks.",
+      desc: "Vacant land requires more than standard ground photography. Where suitable and permitted, drone imagery can help show property features, approximate boundaries, elevation changes, and timber-to-pasture ratios. We coordinate listing distribution through relevant land platforms, real estate sites, and regional developer networks.",
       deliverables: ["Interactive GPS boundary lines", "Elevation & runoff drainage contours", "Syndication to 350+ portals + specialized land feeds"]
     },
     {
       number: "02",
       title: "Transparent Technical Land Communication",
       subtitle: "Soil, Zoning & Environmental Due Diligence",
-      desc: "Land buyers are sophisticated investors and custom builders with rigorous technical requirements. We prepare comprehensive property binders answering soil perk test results, FEMA 100-year flood zone boundaries, and county zoning permissions before buyers ever ask.",
-      deliverables: ["ODEQ soil absorption verification", "FEMA flood map overlay audit", "County zoning certification letters"]
+      desc: "Land buyers and custom builders often need clear information before making an offer. As part of our vacant land brokerage in Edmond, OK, we coordinate due diligence on soil suitability, FEMA flood map information, county zoning rules, and potential site restrictions so buyers can investigate key issues before proceeding.",
+      deliverables: ["ODEQ-related soil absorption and septic suitability review", "FEMA flood map and property overlay review", "County zoning information and written confirmations were available."]
     },
     {
       number: "03",
       title: "On-Site Acreage Accessibility & 4x4 UTV Tours",
       subtitle: "Physically Walking Every Acre · No Drive-Bys",
-      desc: "Rural acreage cannot be appreciated from behind a steering wheel on a county road. Brian Jamison personally accompanies prospective buyers on-site with 4x4 UTV/ATVs to tour dense timber perimeters, creek lines, elevation vistas, and potential homesite pads.",
-      deliverables: ["Dedicated 4x4 UTV property access", "Marked corner stakes and flagging", "Guided tours of prime custom homesite pads"]
+      desc: "Rural acreage can be difficult to assess from a county road. Brian Jamison can accompany prospective buyers on property tours, where access and conditions permit, to review timbered areas, creek lines, elevation changes, and potential homesite locations.",
+      deliverables: ["Planned 4x4 UTV property access where available", "Review of visible corner markers and boundary flags", "Guided tours of potential custom homesite locations"]
     },
     {
       number: "04",
       title: "Specialized Land Advisory Crew",
       subtitle: "Civil Engineers, Surveyors & Soil Scientists",
-      desc: "Selling land requires coordination with licensed Oklahoma professionals. We work directly with certified boundary surveyors, environmental civil engineers, ODEQ-licensed septic designers, and county commissioners to streamline transaction compliance.",
-      deliverables: ["Boundary boundary survey coordination", "Percolation soil test oversight", "Utility line extension estimates"]
+      desc: "Land transactions may require input from qualified Oklahoma professionals. We help coordinate with licensed surveyors, civil and environmental engineers, septic professionals, and relevant county offices to clarify technical requirements and support an informed transaction.",
+      deliverables: ["Boundary survey coordination", "Percolation and soil test coordination", "Utility access and extension cost estimates where available"]
     },
     {
       number: "05",
       title: "Data-Driven Acreage & Adjacent Lot Pricing",
       subtitle: "Highest and Best Use (HBU) Modeling",
-      desc: "Selling an entire 40-acre parcel as a single tract often leaves massive profits on the table. We evaluate whether subdividing an adjacent lot or splitting road frontage into 5-acre luxury custom home estates doubles your gross proceeds.",
-      deliverables: ["Per-acre forensic comp analysis", "Parcel subdivision financial pro forma", "Road frontage premium optimization"]
+      desc: "Selling a 40-acre parcel as one tract may not suit every landowner's goals. We assess comparable sales, road frontage, access, utility availability, zoning, and potential subdivision requirements to help evaluate whether separate parcels could support a different sale strategy.",
+      deliverables: ["Per-acre comparable sales analysis", "Preliminary parcel subdivision financial projections", "Road frontage and access value assessment"]
     },
     {
       number: "06",
-      title: "Zero-Risk Land Listing Agreement",
-      subtitle: "Cancel-Anytime Commitment · No Lock-In",
-      desc: "If our marketing, drone cinematography, or buyer negotiation fails to meet your highest expectations, you can terminate your listing agreement at any time with zero penalty and zero out-of-pocket costs.",
-      deliverables: ["100% Risk-Free Cancel-Anytime Pledge", "$0 out-of-pocket drone media fees", "Direct access to Brian's private mobile line"]
+      title: "Clear Land Listing Agreement",
+      subtitle: "Flexible Listing Commitment · Review the Terms",
+      desc: "Your listing agreement should explain the services provided, marketing costs, cancellation terms, and any fees. Before listing, we review these details with you so you understand your options and any conditions that apply to ending the agreement.",
+      deliverables: ["Clear explanation of cancellation terms", "Drone media costs disclosed before work begins", "Direct communication with Brian Jamison, subject to agreed contact arrangements"]
     }
   ];
 
@@ -290,36 +290,32 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
   // Land FAQs Data
   const LAND_FAQS = [
     {
-      q: "How much does it cost to drill a water well in Edmond, Arcadia, or Guthrie?",
-      a: "In the Greater Oklahoma City area tapping the Garber-Wellington Aquifer, water wells typically range from 250 to 500 feet deep. Total turnkey installation—including drilling, casing, submersible pump, pressure tank, and wellhouse—generally costs between $9,500 and $16,000 depending on depth and geological strata."
+      q: "What does a land real estate agent do?",
+      a: "A land real estate agent helps owners market vacant parcels and guides buyers through property research, comparable sales, access concerns, zoning questions, and transaction coordination."
     },
     {
-      q: "What is an ODEQ perc test and who pays for it?",
-      a: "An ODEQ (Oklahoma Department of Environmental Quality) percolation and soil profile test determines how well the soil absorbs wastewater for a private septic system. In a standard land sale, this is typically ordered during the buyer's 10-day investigation period and costs approximately $400 to $650."
+      q: "How can I choose the right land buying and selling agent?",
+      a: "Look for an agent who understands acreage listings, land access, zoning research, utility considerations, comparable sales, and due diligence steps relevant to your intended purchase or sale."
     },
     {
-      q: "Can I clear trees or excavate a building pad before closing?",
-      a: "No. Buyers should never clear trees, dig ponds, or break ground on a property prior to final deed transfer and funding at the title company. Altering the land before closing creates severe legal liability and can jeopardize title insurance and lender financing."
+      q: "What does vacant land brokerage include?",
+      a: "Vacant land brokerage can include pricing guidance, listing preparation, land-focused marketing, buyer outreach, offer negotiation, and coordination of surveys or other property reviews as needed."
     },
     {
-      q: "What down payment is required for raw land loans in Oklahoma?",
-      a: "Unlike residential home loans that allow 3% to 5% down, unimproved raw land loans typically require a 15% to 25% down payment with shorter amortization terms (10 to 15 years). However, if purchasing a lot to immediately build with a construction-to-permanent loan, down payments can be as low as 5% to 10%."
+      q: "When should I contact an acreage real estate agent?",
+      a: "Contact an acreage agent before listing land or making an offer. Early guidance can help identify access questions, utility needs, zoning limits, soil concerns, and potential transaction risks."
     },
     {
-      q: "How do you determine the per-acre value of rural land vs. residential lots?",
-      a: "Land valuation is not a simple per-acre multiplier. We evaluate road frontage length, utility proximity (presence of electric transformer and water meter saves $15k–$25k), timber-to-pasture ratios, elevation topography, and subdivision potential into smaller parcels."
+      q: "Can an agent help assess whether acreage can be subdivided?",
+      a: "An agent can review potential parcel layouts and market factors, then coordinate questions with surveyors and local authorities. Approval depends on applicable rules and property conditions."
     },
     {
-      q: "What happens if a property has oil/gas wells or pipelines on site?",
-      a: "Many Oklahoma parcels feature active or plugged oil and gas wells, pump jacks, or pipeline easements. We obtain pipeline easement surveys and well status reports from the Oklahoma Corporation Commission (OCC) to verify required setback buffers from residential homesites."
+      q: "What should buyers check before purchasing vacant land?",
+      a: "Buyers should investigate legal access, zoning, utilities, drainage, flood exposure, septic suitability, survey boundaries, title matters, and any restrictions affecting their intended use."
     },
     {
-      q: "Can you help subdivide my 20 to 80-acre tract into smaller parcels?",
-      a: "Yes! Subdividing large acreage tracts into 2-acre, 5-acre, or 10-acre custom home parcels is one of our core specialties. We coordinate surveying, county plat approvals, and road frontage access to unlock maximum per-acre profitability."
-    },
-    {
-      q: "How does Brian Jamison market rural acreage differently than a traditional house?",
-      a: "We do not merely post a photo of a metal gate on the MLS. We produce 4K drone boundary mapping, publish on specialized land portals (LandWatch, Land and Farm), provide on-site 4x4 UTV tours for prospective buyers, and pitch parcels directly to our network of 24+ Oklahoma custom luxury home builders."
+      q: "What is included in land buyer and seller representation?",
+      a: "Representation may include pricing guidance, property marketing or search support, offer negotiation, due diligence coordination, and communication throughout the transaction, based on the agreed service scope."
     }
   ];
 
@@ -331,9 +327,9 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
         ========================================================================
       */}
       <InteriorHeroVideo
-        kicker="Oklahoma Land & Development Division"
-        title="Land, Acreage & Development Advisory Across Oklahoma."
-        subtitle="From 1-acre luxury custom home lots to 100+ acre rural tracts—leveraging 4K aerial mapping, zoning forensics, and targeted investor syndication."
+        kicker="Land Real Estate Agent in Edmond, OK"
+        title="Land Real Estate Agent in Edmond, OK"
+        subtitle="From 1-acre luxury custom home lots to 100+ acre rural tracts, our land advisory services combine aerial mapping, zoning research, access reviews, and targeted investor outreach to support informed land transactions."
         heroVideoUrl="/media/videos/vid3.mp4"
         heroFallbackImage="/media/properties/11616-estrella-arcadia.jpeg"
         metrics={[
@@ -409,7 +405,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
               The 6 Core Processes Adapted for Land
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
-              Standard residential marketing tactics do not work for acreage and parcels. We combine high-resolution aerial cinematography with environmental due diligence, on-site 4x4 UTV tours, and custom builder distribution.
+              Standard residential marketing tactics rarely address the complexities of vacant land. As a land buying and selling agent in Edmond, OK, we focus on aerial property mapping, environmental due diligence, on-site acreage tours, and distribution to relevant buyers and builders.
             </p>
           </div>
 
@@ -530,11 +526,24 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                 }}
                 className="group relative rounded-2xl overflow-hidden aspect-[9/16] bg-[#0A192F] border border-white/20 hover:border-[#EA580C] shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between p-4"
               >
-                {/* Background image */}
-                <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                  style={{ backgroundImage: `url(${reel.thumbnail})` }}
-                />
+                {/* Background image or drone video preview */}
+                {reel.title?.toLowerCase().includes('drone') || reel.title?.toLowerCase().includes('aerial') ? (
+                  <video
+                    src={reel.videoUrl}
+                    poster={reel.thumbnail}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                ) : (
+                  <div
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                    style={{ backgroundImage: `url(${reel.thumbnail})` }}
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/30 group-hover:from-black/90 transition-opacity" />
 
                 {/* Top Badge Strip */}
@@ -681,7 +690,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
               The 7-Point Land Due Diligence & Feasibility Checklist
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
-              Never buy or sell land on assumptions. We execute this exhaustive 7-point audit to eliminate deal-killing surprises, ensure ODEQ septic compliance, and protect your capital.
+              Never buy or sell vacant land based on assumptions alone. Our review framework helps identify important questions about access, zoning, utilities, drainage, septic suitability, flood exposure, and title matters before a transaction moves forward.
             </p>
           </div>
 
@@ -751,7 +760,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
               Land Valuation Architecture
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
-              Explore how infrastructure improvements, soil approvals, and road frontage dramatically alter the per-acre value of Oklahoma land. Use the dynamic estimator below.
+              Explore how infrastructure, soil suitability, legal access, road frontage, and parcel characteristics can affect the value of Oklahoma acreage. Use the estimator below as an initial guide, not as a formal appraisal or guaranteed sale price.
             </p>
           </div>
 
@@ -915,7 +924,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
               Rural Land Financing & Lender Network
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
-              Big national retail banks rarely write loans for unimproved rural acreage. We connect land buyers and investors directly with Oklahoma agricultural credit associations and local community banks specializing in land paper.
+              Financing vacant land can differ from financing an existing home. We help buyers explore relevant Oklahoma agricultural lenders, community banks, and other financing options for rural acreage, subject to lender requirements and individual eligibility.
             </p>
           </div>
 
@@ -928,10 +937,10 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                 Farm Credit of Western Oklahoma
               </h3>
               <p className="text-xs text-[#4B5563] leading-relaxed mb-4">
-                Specializes in rural residential tracts, pastureland, and recreational acreage. Offers 15% to 20% down payment structures with patronage dividend distributions back to borrowers.
+                Farm credit institutions may offer financing options for eligible rural properties, including agricultural land and rural residential tracts. Down payment requirements, interest terms, and patronage distributions depend on the specific program and borrower qualifications.
               </p>
               <span className="text-[11px] font-mono text-[#16A34A] font-bold">
-                ✓ Long-term fixed interest options available
+                ✓ Ask about available fixed-rate terms and applicable eligibility requirements.
               </span>
             </div>
 
@@ -943,10 +952,10 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                 Local Oklahoma Community Banks
               </h3>
               <p className="text-xs text-[#4B5563] leading-relaxed mb-4">
-                Local lenders in Edmond, Guthrie, and Piedmont know county dirt. They offer lot loans for buyers intending to hold land for 1 to 3 years before starting custom home construction.
+                Community banks serving Edmond, Guthrie, and Piedmont may offer land loans for buyers planning future construction. Loan terms and construction financing options vary by lender, property, and borrower.
               </p>
               <span className="text-[11px] font-mono text-[#16A34A] font-bold">
-                ✓ Converts seamlessly into construction loans
+                ✓ Ask whether a land loan can transition to a construction loan.
               </span>
             </div>
 
@@ -958,10 +967,10 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                 Seller-Financed Note Structures
               </h3>
               <p className="text-xs text-[#4B5563] leading-relaxed mb-4">
-                For landowners seeking monthly passive interest income without instant capital gains tax hits, we draft seller-financed deed of trust notes backed by title attorney escrow collection.
+                Seller financing may give landowners an alternative to a conventional sale while allowing eligible buyers another route to purchase. We coordinate with qualified legal and title professionals to review note terms, payment collection, and transaction documents.
               </p>
               <span className="text-[11px] font-mono text-[#16A34A] font-bold">
-                ✓ Maximizes seller net returns & expands buyer pool
+                ✓ Compare seller proceeds, buyer affordability, and legal and tax implications with qualified advisers.
               </span>
             </div>
           </div>
@@ -982,7 +991,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                 <span>Equity Multiplication Advisory</span>
               </span>
               <h2 className="font-serif text-2xl sm:text-4xl font-bold text-white mb-4 leading-tight">
-                Land Development & Parcel Split Advisory: How to Subdivide For Maximum Return
+                Land Development & Parcel Split Advisory: How to Subdivide for Potential Return
               </h2>
               <p className="font-sans text-sm sm:text-base text-white/80 leading-relaxed mb-6">
                 Selling a 40-acre tract as a single bulk parcel often nets $12,000 to $15,000 per acre. Subdividing that same tract into four 10-acre or eight 5-acre custom estate home parcels can command <strong>$35,000 to $45,000 per acre</strong>.
@@ -997,7 +1006,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                 <div className="p-4 rounded-xl bg-white/10 border border-white/15">
                   <strong className="text-[#FB923C] block mb-1">02. Road Frontage Geometry</strong>
                   <p className="text-white/70">
-                    We calculate minimum frontage widths (e.g. 150–300 ft) to ensure every newly created parcel has dedicated legal access.
+                    We calculate minimum frontage widths (e.g., 150–300 ft) to ensure every newly created parcel has dedicated legal access.
                   </p>
                 </div>
                 <div className="p-4 rounded-xl bg-white/10 border border-white/15">
@@ -1035,7 +1044,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
               Frequently Asked Land Questions
             </h2>
             <p className="font-sans text-base sm:text-lg text-[#4B5563] leading-relaxed">
-              Clear, definitive answers to the questions landowners and acreage buyers ask before writing an earnest deposit on Oklahoma dirt.
+              Explore common questions about land sales and purchases, acreage, vacant land brokerage, due diligence, subdivision, and buyer and seller representation.
             </p>
           </div>
 
@@ -1081,7 +1090,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
                 <span>Instant Digital PDF Resource</span>
               </span>
               <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3">
-                Download The 2026 Oklahoma Land Due Diligence & Feasibility Checklist
+                Download the 2026 Oklahoma Land Due Diligence & Feasibility Checklist.
               </h3>
               <p className="font-sans text-xs sm:text-sm text-white/80 leading-relaxed mb-6">
                 A 28-page technical guide covering ODEQ perc test parameters, Garber-Wellington water well depth tables, mineral rights title chains, and county road frontage split formulas.
@@ -1114,10 +1123,10 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
               <BrianAvatar size="lg" />
             </div>
             <span className="text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#EA580C] block mb-2">
-              Ready To Transact Land In Oklahoma?
+              Ready to Explore Land & Acreage Opportunities?
             </span>
             <h3 className="font-serif text-2xl sm:text-4xl font-bold text-[#002D61] mb-3">
-              Request a Land Feasibility Review
+              Speak with Brian Jamison
             </h3>
             <p className="font-sans text-sm sm:text-base text-[#6B7280] max-w-xl mx-auto mb-8">
               Reach Brian Jamison directly on his private cell or visit us at the Salt Real Estate Corporate Office in Edmond, Oklahoma.

@@ -22,8 +22,8 @@ export interface InteriorHeroVideoProps {
   onSecondaryCtaClick?: () => void;
 }
 
-export const DRONE_HERO_VIDEO = 'https://www.pexels.com/download/video/29383137/';
-export const DRONE_HERO_POSTER = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80';
+export const DRONE_HERO_VIDEO = '/media/videos/vid1.mp4';
+export const DRONE_HERO_POSTER = '/media/properties/11500-gateshead.jpg';
 
 export const InteriorHeroVideo: React.FC<InteriorHeroVideoProps> = ({
   kicker = 'Oklahoma City Metro',

@@ -282,12 +282,25 @@ export const ListingStandardsSection: React.FC<ListingStandardsSectionProps> = (
               <div>
                 {/* Visual Graphic Header with Photo & Scrim */}
                 <div className="relative h-52 w-full overflow-hidden bg-[#002D61]">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                    loading="lazy"
-                  />
+                  {item.id === 'aerial-drone' || item.title?.toLowerCase().includes('drone') || item.categoryLabel?.toLowerCase().includes('drone') ? (
+                    <video
+                      src="/media/videos/vid2.mp4"
+                      poster={item.image}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                  ) : (
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                      loading="lazy"
+                    />
+                  )}
                   {/* Primary Scrim Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#001D40]/90 via-[#002D61]/40 to-transparent" />
 
