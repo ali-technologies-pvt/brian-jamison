@@ -55,13 +55,13 @@ export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChap
                 key={chapter.id}
                 onMouseEnter={() => setActiveIndex(index)}
                 onClick={() => onSelectChapter(chapter.id)}
-                className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] flex flex-col justify-end will-change-[flex-grow] bg-[#002D61] border border-[#002D61]/30 ${
+                className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] flex flex-col justify-end bg-[#002D61] border border-[#002D61]/30 ${
                   isActive ? 'flex-[3.5] shadow-2xl' : 'flex-1 hover:flex-[1.15]'
                 }`}
               >
                 {/* Background Image with subtle zoom on active */}
                 <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out will-change-transform"
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out"
                   style={{
                     backgroundImage: `url(${bgImage})`,
                     transform: isActive ? 'scale(1.05)' : 'scale(1.0)',

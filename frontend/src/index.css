@@ -31,15 +31,16 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
   font-family: var(--font-sans);
   background-color: #FAF9F6;
   color: #1B1D21;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .font-serif {
@@ -177,6 +178,7 @@ body {
   display: flex;
   width: max-content;
   animation: marquee 38s linear infinite;
+  transform: translateZ(0);
 }
 
 .animate-marquee:hover {

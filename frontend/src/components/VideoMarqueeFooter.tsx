@@ -169,17 +169,20 @@ export const VideoMarqueeFooter: React.FC<VideoMarqueeFooterProps> = ({
               onClick={() => setSelectedVideo(video)}
               className="group relative w-[280px] sm:w-[320px] h-[200px] sm:h-[220px] rounded-2xl overflow-hidden bg-[#0A192F] border border-white/15 hover:border-[#EA580C] shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer shrink-0 flex flex-col justify-between p-4"
             >
-              {/* Autoplay Video Loop */}
-              <video
-                src={video.videoUrl}
-                poster={video.thumbnail}
-                autoPlay
-                playsInline
-                muted
-                loop
-                preload="metadata"
+              {/* High-Definition Video Thumbnail */}
+              <img
+                src={video.thumbnail}
+                alt={video.title}
+                loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
+
+              {/* Center Play Button Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="w-11 h-11 rounded-full bg-black/45 border border-white/50 flex items-center justify-center text-white group-hover:bg-[#EA580C] group-hover:scale-110 transition-all duration-300 shadow-xl">
+                  <Play className="w-5 h-5 fill-white text-white translate-x-0.5" />
+                </div>
+              </div>
 
               {/* Dark Scrim Gradient for text contrast */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/25 to-black/50 group-hover:from-black/85 transition-opacity pointer-events-none" />

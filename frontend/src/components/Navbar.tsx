@@ -38,10 +38,17 @@ export const Navbar: React.FC<NavbarProps> = ({
   const menuContainerRef = useRef<HTMLDivElement>(null);
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Scroll detection
+  // Scroll detection with requestAnimationFrame throttling
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 25);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 25);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -157,7 +164,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       <header
         className={`fixed top-0 inset-x-0 z-50 w-full transition-all duration-300 pointer-events-none ${
           isScrolled
-            ? 'bg-[#002D61]/90 backdrop-blur-2xl border-b border-white/15 shadow-xl py-2.5 sm:py-3'
+            ? 'bg-[#002D61]/98 backdrop-blur-sm border-b border-white/15 shadow-xl py-2.5 sm:py-3'
             : 'bg-transparent py-4 sm:py-5'
         }`}
       >
