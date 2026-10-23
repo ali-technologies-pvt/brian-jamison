@@ -16,6 +16,7 @@ import { AdminToolbar } from './components/AdminToolbar';
 import { GlobalInlineEditor } from './components/admin/GlobalInlineEditor';
 import { PremiumPreloader } from './components/PremiumPreloader';
 import { HomepageQuickSearch } from './components/HomepageQuickSearch';
+import { HomepageFeaturedListings } from './components/HomepageFeaturedListings';
 
 // Ultra-Fast Async Code Splitting
 const InteriorPageView = React.lazy(() => import('./pages/InteriorPageView').then(m => ({ default: m.InteriorPageView })));
@@ -270,7 +271,13 @@ export default function App() {
               onNavigate={navigate}
             />
 
-            {/* Section 4: Featured & Notable Closings (Asymmetrical Magazine Gallery) */}
+            {/* Section 4: Live MLSOK Featured Client Properties & Listings (Widget #176753) */}
+            <HomepageFeaturedListings
+              onNavigate={navigate}
+              onSelectProperty={(prop) => setSelectedProperty(prop)}
+            />
+
+            {/* Section 4b: Verified Track Record & Historical Closings */}
             <FeaturedClosings onSelectProperty={(prop) => setSelectedProperty(prop)} />
 
             {/* Section 6: Request A Confidential Market Appraisal (Valuation Funnel) */}

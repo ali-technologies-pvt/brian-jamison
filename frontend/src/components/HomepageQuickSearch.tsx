@@ -252,7 +252,7 @@ export const HomepageQuickSearch: React.FC<HomepageQuickSearchProps> = ({ onNavi
                   Direct MLSOK Verified Feed
                 </span>
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-[#FAF9F6] border border-[#E5E0D8] text-[#002D61]">
-                  IDX Widget #20754
+                 
                 </span>
               </div>
               <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#002D61] tracking-tight">
