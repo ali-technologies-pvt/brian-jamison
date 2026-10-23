@@ -15,6 +15,7 @@ import { AdminProvider } from './context/AdminContext';
 import { AdminToolbar } from './components/AdminToolbar';
 import { GlobalInlineEditor } from './components/admin/GlobalInlineEditor';
 import { PremiumPreloader } from './components/PremiumPreloader';
+import { HomepageQuickSearch } from './components/HomepageQuickSearch';
 
 // Ultra-Fast Async Code Splitting
 const InteriorPageView = React.lazy(() => import('./pages/InteriorPageView').then(m => ({ default: m.InteriorPageView })));
@@ -255,6 +256,9 @@ export default function App() {
               onOpenValuation={() => handleOpenValuation()}
               onExploreMethod={handleExploreMethod}
             />
+
+            {/* Live MLSOK Direct Property Quick Search Filter (Widget ID #20754) */}
+            <HomepageQuickSearch onNavigate={navigate} />
 
             {/* Section 2: "Which Chapter Are You Navigating?" (Interactive Hover Accordion) */}
             <ChapterAccordion onSelectChapter={handleOpenChapter} />
