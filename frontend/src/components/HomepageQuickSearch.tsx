@@ -15,9 +15,9 @@ interface HomepageQuickSearchProps {
 }
 
 export const HomepageQuickSearch: React.FC<HomepageQuickSearchProps> = ({ onNavigate }) => {
-  const [iframeHeight, setIframeHeight] = useState(130);
+  const [isWidgetLoaded, setIsWidgetLoaded] = useState(false);
   const [reloadKey, setReloadKey] = useState(0);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const mountRef = useRef<HTMLDivElement>(null);
 
   // Popular OKC & Edmond Luxury Enclaves
   const POPULAR_ENCLAVES = [
@@ -31,24 +31,74 @@ export const HomepageQuickSearch: React.FC<HomepageQuickSearchProps> = ({ onNavi
     { name: 'Guthrie Acreage', slug: '/areas/guthrie' }
   ];
 
-  // Auto-resize iframe when the real-time IDX widget finishes loading its DOM
   useEffect(() => {
-    const handleMessage = (event: MessageEvent) => {
-      if (event.data && event.data.type === 'IDX_WIDGET_RESIZE' && typeof event.data.height === 'number') {
-        setIframeHeight(Math.max(event.data.height + 16, 120));
+    let isMounted = true;
+    setIsWidgetLoaded(false);
+
+    const loadLiveIdxWidget = async () => {
+      // 1. Ensure IDX jQuery dependency is loaded explicitly via HTTPS
+      // (prevents HTTP 404 on local dev or unencrypted protocol-relative middleware URLs)
+      if (!(window as any).idx || !(window as any).idx.fn) {
+        await new Promise<void>((resolve) => {
+          const existingJq = document.getElementById('idx_jquery_include_tag');
+          if (existingJq) {
+            existingJq.remove();
+          }
+          const jqScript = document.createElement('script');
+          jqScript.id = 'idx_jquery_include_tag';
+          jqScript.type = 'text/javascript';
+          jqScript.src = 'https://middleware.idxbroker.com/graphical/javascript/jqwidx.js?commitCacheBreaker=75ff0d200bc0a6c120a98d0f8452c736a8e1447b';
+          jqScript.onload = () => resolve();
+          jqScript.onerror = () => resolve();
+          document.head.appendChild(jqScript);
+        });
       }
+
+      if (!isMounted) return;
+
+      const mountContainer = mountRef.current;
+      if (!mountContainer) return;
+
+      // 2. Clean up any previous widget instance
+      const existingWidget = document.getElementById('IDX-quicksearch-20754');
+      if (existingWidget) {
+        existingWidget.remove();
+      }
+      const existingScript = document.getElementById('idxwidgetsrc-20754');
+      if (existingScript) {
+        existingScript.remove();
+      }
+
+      // 3. Inject the exact script requested by the user:
+      // <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-20754" src="//jamisonrealestateokc.idxbroker.com/idx/quicksearchjs.php?widgetid=20754"></script>
+      const script = document.createElement('script');
+      script.charset = 'UTF-8';
+      script.type = 'text/javascript';
+      script.id = 'idxwidgetsrc-20754';
+      script.src = 'https://jamisonrealestateokc.idxbroker.com/idx/quicksearchjs.php?widgetid=20754';
+
+      mountContainer.appendChild(script);
+
+      // 4. Poll for widget injection into DOM
+      let attempts = 0;
+      const interval = setInterval(() => {
+        attempts++;
+        const widget = document.getElementById('IDX-quicksearch-20754');
+        if (widget) {
+          clearInterval(interval);
+          if (isMounted) setIsWidgetLoaded(true);
+        } else if (attempts > 50) {
+          clearInterval(interval);
+        }
+      }, 150);
     };
 
-    window.addEventListener('message', handleMessage);
-    return () => window.removeEventListener('message', handleMessage);
-  }, []);
+    loadLiveIdxWidget();
 
-  const handleReload = () => {
-    setReloadKey((prev) => prev + 1);
-    if (iframeRef.current) {
-      iframeRef.current.src = `/idx-search-widget.html?v=${Date.now()}`;
-    }
-  };
+    return () => {
+      isMounted = false;
+    };
+  }, [reloadKey]);
 
   return (
     <section
@@ -56,12 +106,142 @@ export const HomepageQuickSearch: React.FC<HomepageQuickSearchProps> = ({ onNavi
       aria-label="Direct MLS Realtime Property Search"
       className="relative z-20 w-full bg-[#FAF9F6] py-10 sm:py-14 border-b border-[#E5E0D8]"
     >
+      {/* 
+        Comprehensive Scoped Luxury Styling for Realtime IDX Broker Widget #20754:
+        Overwrites raw IDX Broker inline styles with the Brian Jamison Luxury Palette
+      */}
+      <style>{`
+        /* Reset default raw borders and box-shadows injected by IDX script */
+        #IDX-quicksearch-20754 {
+          width: 100% !important;
+          max-width: 100% !important;
+          border: none !important;
+          box-shadow: none !important;
+          background: transparent !important;
+          text-align: left !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          font-family: inherit !important;
+        }
+
+        #IDX-quicksearchForm-20754 {
+          width: 100% !important;
+          display: flex !important;
+          flex-wrap: wrap !important;
+          gap: 12px 14px !important;
+          align-items: flex-end !important;
+          justify-content: flex-start !important;
+          background: transparent !important;
+        }
+
+        /* Field wrappers */
+        #IDX-quicksearchForm-20754 > .IDX-qsFieldWrap {
+          flex: 1 1 140px !important;
+          min-width: 120px !important;
+          display: flex !important;
+          flex-direction: column !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          text-align: left !important;
+        }
+
+        /* Property Type wrap */
+        #IDX-qsPtWrap-20754 {
+          flex: 1.2 1 150px !important;
+        }
+
+        /* City List wrap */
+        #IDX-qsCityListWrap-20754 {
+          flex: 1.8 1 200px !important;
+        }
+
+        /* Submit Button wrap */
+        #IDX-qsSubmitWrap-20754 {
+          flex: 0 0 auto !important;
+          min-width: 140px !important;
+        }
+
+        /* Labels */
+        #IDX-quicksearchForm-20754 label,
+        #IDX-quicksearchForm-20754 .IDX-qsLabel {
+          font-family: inherit !important;
+          font-size: 11px !important;
+          font-weight: 700 !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.08em !important;
+          color: #002D61 !important;
+          margin-bottom: 6px !important;
+          display: block !important;
+          float: none !important;
+        }
+
+        /* Inputs & Selects */
+        #IDX-quicksearchForm-20754 select,
+        #IDX-quicksearchForm-20754 input[type="text"],
+        #IDX-quicksearchForm-20754 .IDX-qsSelectInput,
+        #IDX-quicksearchForm-20754 .IDX-qsTextInput,
+        #IDX-quicksearchForm-20754 .IDX-qsInput {
+          width: 100% !important;
+          height: 48px !important;
+          background-color: #FAF9F6 !important;
+          border: 1.5px solid #E5E0D8 !important;
+          border-radius: 12px !important;
+          padding: 0 14px !important;
+          font-size: 14px !important;
+          font-weight: 500 !important;
+          color: #002D61 !important;
+          outline: none !important;
+          box-sizing: border-box !important;
+          transition: all 0.2s ease !important;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
+        }
+
+        #IDX-quicksearchForm-20754 select:hover,
+        #IDX-quicksearchForm-20754 input[type="text"]:hover {
+          border-color: #EA580C !important;
+        }
+
+        #IDX-quicksearchForm-20754 select:focus,
+        #IDX-quicksearchForm-20754 input[type="text"]:focus {
+          border-color: #EA580C !important;
+          background-color: #FFFFFF !important;
+          box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15) !important;
+        }
+
+        /* Search Button */
+        #IDX-quicksearchForm-20754 input[type="submit"],
+        #IDX-quicksearchForm-20754 #IDX-qsSubmitBtn-20754 {
+          width: 100% !important;
+          height: 48px !important;
+          background: linear-gradient(135deg, #EA580C 0%, #C2410C 100%) !important;
+          color: #FFFFFF !important;
+          font-family: inherit !important;
+          font-weight: 700 !important;
+          font-size: 13px !important;
+          letter-spacing: 0.08em !important;
+          text-transform: uppercase !important;
+          border: none !important;
+          border-radius: 12px !important;
+          padding: 0 24px !important;
+          cursor: pointer !important;
+          transition: all 0.2s ease !important;
+          box-shadow: 0 6px 18px rgba(234, 88, 12, 0.35) !important;
+        }
+
+        #IDX-quicksearchForm-20754 input[type="submit"]:hover,
+        #IDX-quicksearchForm-20754 #IDX-qsSubmitBtn-20754:hover {
+          background: linear-gradient(135deg, #F97316 0%, #EA580C 100%) !important;
+          transform: translateY(-2px) !important;
+          box-shadow: 0 8px 24px rgba(234, 88, 12, 0.5) !important;
+        }
+      `}</style>
+
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Luxury Search Console Card */}
         <div className="relative rounded-3xl bg-white border border-[#E5E0D8] shadow-xl hover:shadow-2xl hover:border-[#EA580C]/40 transition-all duration-300 p-6 sm:p-8 lg:p-10">
           
           {/* Header Strip with Live Status & Controls */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 mb-6 border-b border-[#E5E0D8]/80">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 mb-7 border-b border-[#E5E0D8]/80">
             <div>
               <div className="inline-flex items-center gap-2 mb-2">
                 <span className="relative flex h-2.5 w-2.5">
@@ -87,7 +267,7 @@ export const HomepageQuickSearch: React.FC<HomepageQuickSearchProps> = ({ onNavi
             <div className="shrink-0 flex items-center gap-2.5">
               <button
                 type="button"
-                onClick={handleReload}
+                onClick={() => setReloadKey((prev) => prev + 1)}
                 title="Reload Live IDX Widget Script"
                 className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-[#FAF9F6] hover:bg-[#F5EFE6] text-[#002D61] text-xs font-semibold border border-[#E5E0D8] transition-all cursor-pointer shadow-2xs hover:-translate-y-0.5"
               >
@@ -109,23 +289,27 @@ export const HomepageQuickSearch: React.FC<HomepageQuickSearchProps> = ({ onNavi
 
           {/* 
             LIVE REALTIME IDX BROKER WIDGET #20754:
-            Executes the exact javascript include requested by the user:
-            <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-20754" src="//jamisonrealestateokc.idxbroker.com/idx/quicksearchjs.php?widgetid=20754"></script>
-            Embedded cleanly via an isolated HTML container so document.write executes natively without being blocked by SPA/React.
+            The exact script requested by the user mounts here and injects #IDX-quicksearch-20754 
+            with real MLSOK numeric city IDs and live listing filters!
           */}
-          <div className="w-full relative min-h-[110px] overflow-hidden">
-            <iframe
-              ref={iframeRef}
-              key={reloadKey}
-              src={`/idx-search-widget.html?v=${reloadKey}`}
-              title="Realtime MLSOK Quick Search Widget #20754"
-              className="w-full border-none transition-all duration-300"
-              style={{
-                height: `${iframeHeight}px`,
-                minHeight: '110px',
-                display: 'block'
-              }}
-              loading="eager"
+          <div className="w-full relative min-h-[70px]">
+            {/* Loading state indicator */}
+            {!isWidgetLoaded && (
+              <div className="py-6 flex flex-col items-center justify-center text-center">
+                <div className="w-7 h-7 rounded-full border-2 border-[#EA580C] border-t-transparent animate-spin mb-2.5" />
+                <p className="font-sans text-xs font-semibold text-[#002D61]">
+                  Loading Live MLSOK Search Engine (#20754)...
+                </p>
+              </div>
+            )}
+
+            {/* The exact mount point where script tag and widget live */}
+            <div
+              ref={mountRef}
+              id="idx-direct-widget-mount"
+              className={`w-full transition-opacity duration-300 ${
+                isWidgetLoaded ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'
+              }`}
             />
           </div>
 
