@@ -185,3 +185,64 @@ body {
   animation-play-state: paused;
 }
 
+/* ==========================================================================
+   Real-Time Accessibility (OneTap / WordPress Style A11y Engine)
+   ========================================================================== */
+
+body.a11y-readable-font,
+body.a11y-readable-font * {
+  font-family: Arial, Helvetica, -apple-system, sans-serif !important;
+}
+
+body.a11y-line-height-relaxed,
+body.a11y-line-height-relaxed p,
+body.a11y-line-height-relaxed span,
+body.a11y-line-height-relaxed li {
+  line-height: 2 !important;
+}
+
+body.a11y-letter-spacing,
+body.a11y-letter-spacing * {
+  letter-spacing: 0.12em !important;
+}
+
+body.a11y-align-left,
+body.a11y-align-left p,
+body.a11y-align-left h1,
+body.a11y-align-left h2,
+body.a11y-align-left h3,
+body.a11y-align-left h4,
+body.a11y-align-left span {
+  text-align: left !important;
+}
+
+body.a11y-font-bold,
+body.a11y-font-bold p,
+body.a11y-font-bold span,
+body.a11y-font-bold li,
+body.a11y-font-bold a {
+  font-weight: 700 !important;
+}
+
+body.a11y-big-cursor,
+body.a11y-big-cursor * {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 24 24' fill='%23000' stroke='%23fff' stroke-width='1.5'><polygon points='0 0 0 24 6.5 17.5 12 24 16 22 10.5 15.5 18 15.5 0 0'/></svg>"), auto !important;
+}
+
+body.a11y-high-contrast {
+  filter: contrast(135%) brightness(102%) !important;
+}
+
+body.a11y-highlight-links a {
+  text-decoration: underline 3px #EA580C !important;
+  background-color: rgba(234, 88, 12, 0.15) !important;
+  color: #002D61 !important;
+  font-weight: bold !important;
+}
+
+body.a11y-pause-animations,
+body.a11y-pause-animations * {
+  animation: none !important;
+  transition: none !important;
+}
+

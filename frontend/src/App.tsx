@@ -17,6 +17,8 @@ import { GlobalInlineEditor } from './components/admin/GlobalInlineEditor';
 import { PremiumPreloader } from './components/PremiumPreloader';
 import { HomepageQuickSearch } from './components/HomepageQuickSearch';
 import { HomepageFeaturedListings } from './components/HomepageFeaturedListings';
+import { AccessibilityWidget } from './components/AccessibilityWidget';
+import { StickyCallButton } from './components/StickyCallButton';
 
 // Ultra-Fast Async Code Splitting
 const InteriorPageView = React.lazy(() => import('./pages/InteriorPageView').then(m => ({ default: m.InteriorPageView })));
@@ -375,6 +377,12 @@ export default function App() {
 
       {/* Admin Floating Inline Toolbar (Only visible when admin is logged in) */}
       <AdminToolbar onNavigate={navigate} currentPath={currentPath} />
+
+      {/* Real-Time WordPress/OneTap Style Accessibility Widget (Bottom-Left) */}
+      <AccessibilityWidget />
+
+      {/* Sticky Real-Time Direct Call Concierge Button (Bottom-Right) */}
+      <StickyCallButton />
     </div>
   );
 }
