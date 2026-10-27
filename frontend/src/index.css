@@ -229,8 +229,39 @@ body.a11y-big-cursor * {
   cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 24 24' fill='%23000' stroke='%23fff' stroke-width='1.5'><polygon points='0 0 0 24 6.5 17.5 12 24 16 22 10.5 15.5 18 15.5 0 0'/></svg>"), auto !important;
 }
 
+body.a11y-light-contrast {
+  filter: brightness(115%) contrast(125%) !important;
+}
+
 body.a11y-high-contrast {
-  filter: contrast(135%) brightness(102%) !important;
+  filter: contrast(160%) !important;
+}
+
+body.a11y-monochrome {
+  filter: grayscale(100%) !important;
+}
+
+body.a11y-hide-images img:not(.a11y-keep),
+body.a11y-hide-images video:not(.a11y-keep) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+body.a11y-hide-images [style*="background-image"] {
+  background-image: none !important;
+  background-color: #e2e8f0 !important;
+}
+
+body.a11y-highlight-content p:hover,
+body.a11y-highlight-content h1:hover,
+body.a11y-highlight-content h2:hover,
+body.a11y-highlight-content h3:hover,
+body.a11y-highlight-content article:hover,
+body.a11y-highlight-content section:hover {
+  outline: 3px solid #0066FF !important;
+  outline-offset: 4px !important;
+  background-color: rgba(0, 102, 255, 0.04) !important;
+  border-radius: 8px !important;
 }
 
 body.a11y-highlight-links a {
