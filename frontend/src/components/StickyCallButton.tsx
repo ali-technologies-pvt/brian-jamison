@@ -7,7 +7,7 @@ export const StickyCallButton: React.FC = () => {
   const phoneRaw = BROKER_INFO.phoneRaw || "+14055133039";
 
   return (
-    <aside aria-label="Direct Call Concierge" className="fixed bottom-20 lg:bottom-6 right-4 lg:right-6 z-[88] print:hidden">
+    <aside aria-label="Direct Call Concierge" className="hidden lg:block fixed bottom-6 right-6 z-[88] print:hidden">
       <a
         href={`tel:${phoneRaw}`}
         title={`Call Brian Jamison directly at ${phoneFormatted}`}
