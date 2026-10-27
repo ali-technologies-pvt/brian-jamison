@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Search, Shield, CheckCircle } from 'lucide-react';
 import { BrianAvatar } from './BrianAvatar';
+import { GoogleAddressSearchInput } from './GoogleAddressSearchInput';
 
 interface ValuationBannerProps {
   onOpenValuation: (address?: string) => void;
@@ -55,13 +56,13 @@ export const ValuationBanner: React.FC<ValuationBannerProps> = ({ onOpenValuatio
           <div className="flex flex-col sm:flex-row items-stretch gap-2.5 bg-white p-2 rounded-2xl border border-[#EA580C]/30 shadow-sm focus-within:border-[#EA580C] transition-colors">
             <div className="flex-1 flex items-center px-3 gap-2.5">
               <Search className="w-4 h-4 text-[#6B7280] shrink-0" />
-              <input
-                type="text"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                placeholder="Enter your Oklahoma City or Edmond address..."
-                className="w-full py-2.5 text-xs sm:text-sm text-[#002D61] placeholder-[#6B7280] focus:outline-none bg-transparent"
-              />
+              <GoogleAddressSearchInput value={address} onChange={setAddress} onSelectAddress={(selected) => { setAddress(selected); onOpenValuation(selected); }} placeholder="Enter your Oklahoma City or Edmond address..." className="flex-1" inputClassName="w-full py-2.5 text-xs sm:text-sm text-[#002D61] placeholder-[#6B7280] focus:outline-none bg-transparent" />
+
+
+
+
+
+
             </div>
 
             <button

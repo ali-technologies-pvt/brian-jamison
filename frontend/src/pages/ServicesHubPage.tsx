@@ -73,7 +73,7 @@ export const ServicesHubPage: React.FC<ServicesHubPageProps> = ({
         heroFallbackImage="/media/gallery/modern-estate-pool-lawn.jpeg"
         metrics={[
           { value: '3 Pillars', label: 'Buying, Selling & Land' },
-          { value: '$62M+', label: 'Career Volume Sold' },
+          { value: '$70M+', label: 'Career Volume Sold' },
           { value: '99.4%', label: 'Sale-to-List Realization' },
           { value: '100%', label: 'Cancel-Anytime Pledge' },
         ]}

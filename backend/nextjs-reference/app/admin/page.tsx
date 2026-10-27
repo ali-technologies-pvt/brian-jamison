@@ -93,7 +93,7 @@ export default function AdminDashboardPage() {
               <span>Career Volume</span>
               <TrendingUp className="w-4 h-4 text-[#E07A28]" />
             </div>
-            <div className="font-serif text-2xl font-bold text-[#0A2540]">$62M+</div>
+            <div className="font-serif text-2xl font-bold text-[#0A2540]">$70M+</div>
             <div className="text-[11px] text-[#6B7280] mt-1">Verified MLS Track Record</div>
           </div>
 

@@ -28,11 +28,11 @@ export const PastSalesPage: React.FC<PastSalesPageProps> = ({
       {/* 1. Cinematic Hero Video */}
       <InteriorHeroVideo
         kicker="VERIFIED TRACK RECORD"
-        title="$62M+ Past Sales & Track Record"
+        title="$70M+ Past Sales & Track Record"
         subtitle="Over 370+ career closings across central Oklahoma. Explore our public MLS history of sold, pending, and record-setting neighborhood transactions."
         categoryLabel="Track Record"
         metrics={[
-          { label: 'Career Volume', value: '$62M+' },
+          { label: 'Career Volume', value: '$70M+' },
           { label: 'Total Closings', value: '370+' },
           { label: 'Statewide Rank', value: 'Top 2%' }
         ]}

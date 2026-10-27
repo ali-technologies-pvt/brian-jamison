@@ -65,7 +65,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
             const easeOut = 1 - Math.pow(1 - progress, 3);
 
             setCounts({
-              volume: Math.floor(easeOut * 62),
+              volume: Math.floor(easeOut * 70),
               closings: Math.floor(easeOut * 370),
               percent: Math.floor(easeOut * 2),
               pledge: Math.floor(easeOut * 100),
@@ -75,7 +75,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
               requestAnimationFrame(animateCounts);
             } else {
               setCounts({
-                volume: 62,
+                volume: 70,
                 closings: 370,
                 percent: 2,
                 pledge: 100,
@@ -175,7 +175,7 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
               <span className="text-white/40">·</span>
               <span className="text-stone-200">Oklahoma City Metro</span>
               <span className="text-white/40 hidden sm:inline">·</span>
-              <span className="text-stone-300 font-medium hidden sm:inline">$62M+ Volume Sold</span>
+              <span className="text-stone-300 font-medium hidden sm:inline">$70M+ Volume Sold</span>
             </div>
           </div>
 

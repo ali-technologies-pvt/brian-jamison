@@ -80,7 +80,7 @@ export interface MicroMarket {
   idxWidgetId?: string;
 }
 
-export const BRIAN_HEADSHOT_IMG = "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlcPhzgBsJAUqNniVDY3J_2aBktpM3n1qCn01xoXaqdAtfSXekbaT3K4-Ppg_hImsbuLLP3hgN0pDKze8jksH4z0qd_Mix4edrzihEGAwQqgChB2q2Iic9S3gm28B1zeP8D85ZPBBFD8E6o=s1360-w1360-h1020-rw";
+export const BRIAN_HEADSHOT_IMG = "/media/gallery/brian-jamison-sunset.jpeg";
 
 export const BROKER_INFO = {
   name: "Brian Jamison",
@@ -94,8 +94,8 @@ export const BROKER_INFO = {
   phoneRaw: "+14055133039",
   email: "BJamison@Salt.RealEstate",
   stats: {
-    volumeSold: "$62M+",
-    volumeNumber: 62,
+    volumeSold: "$70M+",
+    volumeNumber: 70,
     closings: "370+",
     closingsNumber: 370,
     producerRank: "Top 2%",

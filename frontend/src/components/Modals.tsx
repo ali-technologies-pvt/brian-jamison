@@ -10,6 +10,7 @@ import {
   BROKER_INFO
 } from '../data/realEstateData';
 import { BrianAvatar } from './BrianAvatar';
+import { GoogleAddressSearchInput } from './GoogleAddressSearchInput';
 import {
   X,
   Check,
@@ -145,12 +146,12 @@ export const ValuationModal: React.FC<ValuationModalProps> = ({
                   <label className="block text-xs uppercase tracking-wider font-semibold text-[#002D61] mb-1.5">
                     Property Address
                   </label>
-                  <input
-                    type="text"
+                  <GoogleAddressSearchInput
                     value={address}
-                    onChange={(e) => setAddress(e.target.value)}
+                    onChange={setAddress}
+                    onSelectAddress={setAddress}
                     placeholder="e.g. 1420 Grandview Blvd, Nichols Hills, OK"
-                    className="w-full px-4 py-3 bg-white border border-[#EA580C]/30 rounded-lg text-sm text-[#002D61] focus:outline-none focus:border-[#EA580C]"
+                    inputClassName="w-full px-4 py-3 bg-white border border-[#EA580C]/30 rounded-lg text-sm text-[#002D61] focus:outline-none focus:border-[#EA580C]"
                   />
                 </div>
 

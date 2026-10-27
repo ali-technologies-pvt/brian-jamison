@@ -522,7 +522,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
         heroVideoUrl="/media/videos/vid1.mp4"
         heroFallbackImage="/media/gallery/modern-estate-pool-lawn.jpeg"
         metrics={[
-          { value: '$62M+', label: 'Volume Closed' },
+          { value: '$70M+', label: 'Volume Closed' },
           { value: '370+', label: 'Families Advised' },
           { value: 'Top 2%', label: 'Greater OKC Production' },
           { value: '100%', label: 'Cancel-Anytime Pledge' },

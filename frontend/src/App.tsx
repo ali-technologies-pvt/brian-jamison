@@ -277,8 +277,6 @@ export default function App() {
               onSelectProperty={(prop) => setSelectedProperty(prop)}
             />
 
-            {/* Section 4b: Verified Track Record & Historical Closings */}
-            <FeaturedClosings onSelectProperty={(prop) => setSelectedProperty(prop)} />
 
             {/* Section 6: Request A Confidential Market Appraisal (Valuation Funnel) */}
             <ValuationBanner onOpenValuation={handleOpenValuation} />

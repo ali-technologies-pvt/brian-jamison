@@ -69,7 +69,7 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
     { year: "2018", title: "Collegiate Athletics to Real Estate", desc: "Transitioned athletic discipline and relentless competitive work ethic into Oklahoma residential representation, obtaining license #184931." },
     { year: "2020", title: "Top 5% Statewide Production", desc: "Surpassed 100+ closed transactions, specializing in Edmond custom builds, north OKC acreage, and historic renovations." },
     { year: "2022", title: "Salt Corporate Office Alliance", desc: "Partnered with Salt Real Estate Corporate Headquarters at 1508 W. Edmond Rd., gaining direct institutional media and drone syndication resources." },
-    { year: "2024", title: "Top 2% Statewide Producer", desc: "Crossed $62M+ career sales volume and 370+ career closings, consistently ranking among central Oklahoma's most trusted luxury negotiators." },
+    { year: "2024", title: "Top 2% Statewide Producer", desc: "Crossed $70M+ career sales volume and 370+ career closings, consistently ranking among central Oklahoma's most trusted luxury negotiators." },
     { year: "Present", title: "The 6-Phase Selling Machine", desc: "Deployed the proprietary 6-Step Seller Blueprint, ensuring Oklahoma homeowners sell for peak market value with zero anxiety." }
   ];
 
@@ -83,11 +83,11 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
       <InteriorHeroVideo
         kicker="Salt Real Estate · Edmond, Oklahoma"
         title="The Agent Who Works Like Every Deal Is Personal."
-        subtitle="Brian Jamison brings a competitive mindset, direct communication, and a results-focused approach to real estate across Edmond and Greater Oklahoma City. His collegiate athletic background and reported career record of $62M+ in sales volume and 370+ closings shape how he prepares, negotiates, and guides clients through important property decisions."
+        subtitle="Brian Jamison brings a competitive mindset, direct communication, and a results-focused approach to real estate across Edmond and Greater Oklahoma City. His collegiate athletic background and reported career record of $70M+ in sales volume and 370+ closings shape how he prepares, negotiates, and guides clients through important property decisions."
         heroVideoUrl="/media/videos/vid1.mp4"
         heroFallbackImage="/media/gallery/brian-jamison-skyline.jpeg"
         metrics={[
-          { value: '$62M+', label: 'Career Volume Sold' },
+          { value: '$70M+', label: 'Career Volume Sold' },
           { value: '370+', label: 'Career Closings' },
           { value: 'Top 2%', label: 'Statewide Producer' },
           { value: '100%', label: 'Cancel-Anytime Pledge' },

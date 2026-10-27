@@ -363,7 +363,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
         heroVideoUrl="/media/videos/vid1.mp4"
         heroFallbackImage="/media/properties/136-nw-18th-heritage-hills.jpeg"
         metrics={[
-          { value: '$62M+', label: 'Career Volume Closed' },
+          { value: '$70M+', label: 'Career Volume Closed' },
           { value: '370+', label: 'Families & Buyers Advised' },
           { value: '100%', label: 'Due Diligence Protected' },
           { value: 'Top 2%', label: 'Greater OKC Production' },

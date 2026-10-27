@@ -1920,7 +1920,7 @@ export const AUDIENCE_PAGES: Record<string, InteriorPageData> = {
     heroVideoUrl: "/media/videos/vid8.mp4",
     heroFallbackImage: "/media/gallery/hill-country-driveway.jpeg",
     heroMetrics: [
-      { label: "Volume Sold", value: "$62M+" },
+      { label: "Volume Sold", value: "$70M+" },
       { label: "List-to-Sale Ratio", value: "98.4%" },
       { label: "Career Closings", value: "370+" }
     ],
@@ -2177,17 +2177,17 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
     category: "brand",
     kicker: "THE PROFESSIONAL APPROACH",
     title: "The Agent Who Works Like Every Deal Is Personal.",
-    subtitle: "Brian Jamison brings a competitive mindset, direct communication, and a results-focused approach to real estate across Edmond and Greater Oklahoma City. His collegiate athletic background and reported career record of $62M+ in sales volume and 370+ closings shape how he prepares, negotiates, and guides clients through important property decisions.",
+    subtitle: "Brian Jamison brings a competitive mindset, direct communication, and a results-focused approach to real estate across Edmond and Greater Oklahoma City. His collegiate athletic background and reported career record of $70M+ in sales volume and 370+ closings shape how he prepares, negotiates, and guides clients through important property decisions.",
     heroVideoUrl: "/media/videos/vid14.mp4",
     heroFallbackImage: "/media/properties/22402-emily-way-edmond.jpeg",
     heroMetrics: [
-      { label: "Career Volume", value: "$62M+" },
+      { label: "Career Volume", value: "$70M+" },
       { label: "Career Closings", value: "370+" },
       { label: "Statewide Rank", value: "Top 2%" }
     ],
     overview: "Years of competitive athletics helped shape Brian’s approach to preparation, discipline, and performance. Today, those principles guide his real estate practice, from pricing and marketing to negotiations and transaction planning. His focus remains on clear advice, careful preparation, and the details that matter to each client.",
     keyTakeaways: [
-      "Top 2% Real Estate Producer with over $62M+ in closed career volume and 370+ closings",
+      "Top 2% Real Estate Producer with over $70M+ in closed career volume and 370+ closings",
       "Collegiate athletic background bringing preparation, consistency, and attention to detail",
       "Direct fiduciary representation with personal involvement in every key decision",
       "Backed by Salt Real Estate at 1508 W. Edmond Rd., Edmond, Oklahoma"
@@ -2252,16 +2252,16 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
     slug: "/past-sales",
     category: "brand",
     kicker: "VERIFIED TRACK RECORD",
-    title: "$62M+ Past Sales Track Record",
+    title: "$70M+ Past Sales Track Record",
     subtitle: "Over 370+ career closings across central Oklahoma. Explore our history of record-setting prices and rapid days-on-market.",
     heroVideoUrl: "/media/videos/vid17.mp4",
     heroFallbackImage: "/media/properties/9687-bear-creek-guthrie.jpeg",
     heroMetrics: [
-      { label: "Career Volume", value: "$62M+" },
+      { label: "Career Volume", value: "$70M+" },
       { label: "Total Closings", value: "370+" },
       { label: "Top Producer", value: "Top 2%" }
     ],
-    overview: "Results matter. Brian Jamison, a real estate agent in Edmond, OK, backs his work with verified sales history and client reviews, with over $62M+ in closed career volume and 370+ closings across Greater Oklahoma City.",
+    overview: "Results matter. Brian Jamison, a real estate agent in Edmond, OK, backs his work with verified sales history and client reviews, with over $70M+ in closed career volume and 370+ closings across Greater Oklahoma City.",
     keyTakeaways: [
       "Verified sales history and public MLSOK track record across Oklahoma City and Edmond",
       "Average list-to-sale price ratio exceeding 98.4%",

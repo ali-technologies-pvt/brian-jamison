@@ -56,18 +56,23 @@ const PROCESS_ICONS = [
   ShieldCheck
 ];
 
+export const toTitleCase = (str: string): string => {
+  if (!str) return '';
+  return str.replace(/\b([a-z])/g, (char) => char.toUpperCase());
+};
+
 export const PROCESS_CATEGORIES: ProcessCategory[] = [
   {
     id: 'marketing-plan-and-process',
     number: '1',
-    name: 'Marketing plan and process',
+    name: 'Marketing Plan And Process',
     slug: '/services/marketing-plan-and-process',
     subheading:
       'A plan to prepare, present, and promote your property, so it gets noticed by buyers and their agents.',
     items: PROCESS_ONE_DELIVERABLES.map((d) => ({
       id: d.id,
       number: d.badge.replace('Step ', ''),
-      title: d.title,
+      title: toTitleCase(d.title),
       image: d.image,
       description: d.desc,
       slug: d.slug,
@@ -85,7 +90,7 @@ export const PROCESS_CATEGORIES: ProcessCategory[] = [
     items: PROCESS_TWO_DELIVERABLES.map((d) => ({
       id: d.id,
       number: d.badge.replace('Step ', ''),
-      title: d.title,
+      title: toTitleCase(d.title),
       image: d.image,
       description: d.desc,
       slug: d.slug,
@@ -103,7 +108,7 @@ export const PROCESS_CATEGORIES: ProcessCategory[] = [
     items: PROCESS_THREE_DELIVERABLES.map((d) => ({
       id: d.id,
       number: d.badge.replace('Step ', ''),
-      title: d.title,
+      title: toTitleCase(d.title),
       image: d.image,
       description: d.desc,
       slug: d.slug,
@@ -114,14 +119,14 @@ export const PROCESS_CATEGORIES: ProcessCategory[] = [
   {
     id: 'team-support',
     number: '4',
-    name: 'Team support',
+    name: 'Team Support',
     slug: '/services/team-support',
     subheading:
       'Brian’s team handles scheduling, paperwork, preparation, and marketing, so daily details stay covered while he focuses on you.',
     items: PROCESS_FOUR_DELIVERABLES.map((d) => ({
       id: d.id,
       number: d.badge.replace('Step ', ''),
-      title: d.title,
+      title: toTitleCase(d.title),
       image: d.image,
       description: d.desc,
       slug: d.slug,
@@ -132,14 +137,14 @@ export const PROCESS_CATEGORIES: ProcessCategory[] = [
   {
     id: 'pricing-strategy',
     number: '5',
-    name: 'Pricing strategy',
+    name: 'Pricing Strategy',
     slug: '/services/pricing-strategy',
     subheading:
       'Pricing starts with local data and ends with a clear plan that attracts buyers without leaving value behind.',
     items: PROCESS_FIVE_DELIVERABLES.map((d) => ({
       id: d.id,
       number: d.badge.replace('Step ', ''),
-      title: d.title,
+      title: toTitleCase(d.title),
       image: d.image,
       description: d.desc,
       slug: d.slug,
@@ -150,14 +155,14 @@ export const PROCESS_CATEGORIES: ProcessCategory[] = [
   {
     id: 'fair-pricing-and-contract-flexibility',
     number: '6',
-    name: 'Fair pricing and contract flexibility',
+    name: 'Fair Pricing And Contract Flexibility',
     slug: '/services/fair-pricing-and-contract-flexibility',
     subheading:
       'Fair pricing and a flexible agreement keep the focus on results and give you room to change course.',
     items: PROCESS_SIX_DELIVERABLES.map((d) => ({
       id: d.id,
       number: d.badge.replace('Step ', ''),
-      title: d.title,
+      title: toTitleCase(d.title),
       image: d.image,
       description: d.desc,
       slug: d.slug,
@@ -371,7 +376,7 @@ export const CompanyServicesProcessSection: React.FC<CompanyServicesProcessSecti
                     {/* Title on Graphic bottom in Crisp 100% White */}
                     <div className="absolute bottom-3 left-3 right-3 z-10">
                       <h4 className="font-serif text-base sm:text-lg font-bold !text-white group-hover:!text-white leading-snug drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
-                        {item.title}
+                        {toTitleCase(item.title)}
                       </h4>
                     </div>
                   </div>

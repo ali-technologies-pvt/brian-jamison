@@ -62,7 +62,7 @@ export const CommunityHubPage: React.FC<CommunityHubPageProps> = ({
         heroFallbackImage="/media/gallery/modern-estate-pool-lawn.jpeg"
         metrics={[
           { value: '21', label: 'Dedicated Metro Hubs' },
-          { value: '$62M+', label: 'Closed Track Record' },
+          { value: '$70M+', label: 'Closed Track Record' },
           { value: '100%', label: 'Real-Time MLS Data' },
           { value: 'Top 2%', label: 'Fiduciary Advisory' },
         ]}
