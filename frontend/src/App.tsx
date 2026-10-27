@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroVideo } from './components/HeroVideo';
 import { ChapterAccordion } from './components/ChapterAccordion';
 import { CompanyServicesProcessSection } from './components/CompanyServicesProcessSection';
-import { FeaturedClosings } from './components/FeaturedClosings';
 import { ValuationBanner } from './components/ValuationBanner';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { MicroMarketsSection } from './components/MicroMarketsSection';
@@ -11,40 +10,40 @@ import { ClosingCta } from './components/ClosingCta';
 import { VideoMarqueeFooter } from './components/VideoMarqueeFooter';
 import { Footer } from './components/Footer';
 import { getPageByPath } from './pages/pageData';
-import { AdminProvider } from './context/AdminContext';
 import { AdminToolbar } from './components/AdminToolbar';
 import { GlobalInlineEditor } from './components/admin/GlobalInlineEditor';
-import { PremiumPreloader } from './components/PremiumPreloader';
 import { HomepageQuickSearch } from './components/HomepageQuickSearch';
 import { HomepageFeaturedListings } from './components/HomepageFeaturedListings';
-import { AccessibilityWidget } from './components/AccessibilityWidget';
-import { StickyCallButton } from './components/StickyCallButton';
+import { Property } from './data/realEstateData';
 
-// Ultra-Fast Async Code Splitting
+// Ultra-Fast Async Code Splitting for Non-Critical Components & Pages
 const InteriorPageView = React.lazy(() => import('./pages/InteriorPageView').then(m => ({ default: m.InteriorPageView })));
 const AdminLoginView = React.lazy(() => import('./components/admin/AdminLoginView').then(m => ({ default: m.AdminLoginView })));
 const IdxTestPage = React.lazy(() => import('./pages/IdxTestPage').then(m => ({ default: m.IdxTestPage })));
 const MapSearchPage = React.lazy(() => import('./pages/MapSearchPage').then(m => ({ default: m.MapSearchPage })));
 const SitemapPage = React.lazy(() => import('./pages/SitemapPage').then(m => ({ default: m.SitemapPage })));
 
+// Lazy-Loaded Modals (Zero impact on initial page paint)
+const ValuationModal = React.lazy(() => import('./components/Modals').then(m => ({ default: m.ValuationModal })));
+const ConsultationModal = React.lazy(() => import('./components/Modals').then(m => ({ default: m.ConsultationModal })));
+const PropertyModal = React.lazy(() => import('./components/Modals').then(m => ({ default: m.PropertyModal })));
+const MarketModal = React.lazy(() => import('./components/Modals').then(m => ({ default: m.MarketModal })));
+const PlaybookModal = React.lazy(() => import('./components/Modals').then(m => ({ default: m.PlaybookModal })));
+const MethodModal = React.lazy(() => import('./components/Modals').then(m => ({ default: m.MethodModal })));
+const CalculatorModal = React.lazy(() => import('./components/Modals').then(m => ({ default: m.CalculatorModal })));
+const ChecklistModal = React.lazy(() => import('./components/Modals').then(m => ({ default: m.ChecklistModal })));
+const LegalModal = React.lazy(() => import('./components/Modals').then(m => ({ default: m.LegalModal })));
+
+// Lazy-Loaded Floating Widgets
+const AccessibilityWidget = React.lazy(() => import('./components/AccessibilityWidget').then(m => ({ default: m.AccessibilityWidget })));
+const StickyCallButton = React.lazy(() => import('./components/StickyCallButton').then(m => ({ default: m.StickyCallButton })));
+
 const AppFallback = () => (
-  <div className="w-full min-h-[70vh] bg-[#FAF9F6] flex flex-col items-center justify-center p-8">
-    <div className="w-10 h-10 border-3 border-[#002D61] border-t-[#EA580C] rounded-full animate-spin mb-4" />
-    <span className="text-xs uppercase tracking-widest text-[#002D61] font-bold">Loading Page...</span>
+  <div className="w-full min-h-[50vh] bg-[#FAF9F6] flex flex-col items-center justify-center p-8">
+    <div className="w-8 h-8 border-2 border-[#002D61] border-t-[#EA580C] rounded-full animate-spin mb-3" />
+    <span className="text-xs uppercase tracking-widest text-[#002D61] font-semibold">Loading...</span>
   </div>
 );
-import {
-  ValuationModal,
-  ConsultationModal,
-  PropertyModal,
-  MarketModal,
-  PlaybookModal,
-  MethodModal,
-  CalculatorModal,
-  ChecklistModal,
-  LegalModal
-} from './components/Modals';
-import { Property } from './data/realEstateData';
 
 export default function App() {
   // Routing State
@@ -62,9 +61,6 @@ export default function App() {
     return '/';
   });
 
-  // 1-Second Bespoke Luxury Preloader
-  const [showPreloader, setShowPreloader] = useState(true);
-
   // Modal & Interactive Flow States
   const [valuationOpen, setValuationOpen] = useState(false);
   const [initialValuationAddress, setInitialValuationAddress] = useState('');
@@ -81,10 +77,9 @@ export default function App() {
   const [checklistOpen, setChecklistOpen] = useState(false);
   const [legalType, setLegalType] = useState<'privacy' | 'terms' | 'fairhousing' | null>(null);
 
-  // Sync with browser back/forward history & trigger preloader
+  // Sync with browser back/forward history without artificial delays
   useEffect(() => {
     const handlePopState = () => {
-      setShowPreloader(true);
       setCurrentPath(window.location.pathname || '/');
       window.scrollTo({ top: 0, behavior: 'auto' });
     };
@@ -93,13 +88,12 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // Navigation Handler with 1-Second Luxury Preloader Transition
+  // Instant Zero-Delay Navigation Handler
   const navigate = (path: string) => {
     if (path === currentPath) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
-    setShowPreloader(true);
     setCurrentPath(path);
     if (typeof window !== 'undefined') {
       window.history.pushState(null, '', path);
@@ -117,45 +111,21 @@ export default function App() {
     setConsultationOpen(true);
   };
 
+  const handleOpenProperty = (property: Property) => {
+    setSelectedProperty(property);
+  };
+
   const handleOpenMarket = (marketId: string) => {
-    // If dedicated page exists for this community, navigate directly!
-    const page = getPageByPath('/areas/' + marketId);
-    if (page) {
-      navigate('/areas/' + marketId);
-    } else {
-      setSelectedMarketId(marketId);
-    }
+    setSelectedMarketId(marketId);
   };
 
   const handleOpenChapter = (chapterId: string) => {
-    const servicePage = getPageByPath('/services/' + chapterId);
-    if (servicePage) {
-      navigate('/services/' + chapterId);
-      return;
-    }
-    const page = getPageByPath('/' + chapterId);
-    if (page) {
-      navigate('/' + chapterId);
-    } else {
-      setSelectedChapterId(chapterId);
-    }
+    setSelectedChapterId(chapterId);
   };
 
-  const handleOpenMethod = (phaseIndex: number = 0) => {
-    const phaseSlugs = [
-      '/services/marketing-plan-and-process',
-      '/services/communication',
-      '/services/accessibility',
-      '/services/team-support',
-      '/services/pricing-strategy',
-      '/services/fair-pricing-and-contract-flexibility'
-    ];
-    if (phaseSlugs[phaseIndex]) {
-      navigate(phaseSlugs[phaseIndex]);
-    } else {
-      setInitialMethodPhase(phaseIndex);
-      setMethodModalOpen(true);
-    }
+  const handleOpenMethod = (phaseIndex?: number) => {
+    setInitialMethodPhase(phaseIndex !== undefined ? phaseIndex : 0);
+    setMethodModalOpen(true);
   };
 
   const handleExploreMethod = () => {
@@ -183,26 +153,17 @@ export default function App() {
 
   if (isAdminRoute) {
     return (
-      <React.Suspense fallback={<AppFallback />}>
+      <Suspense fallback={<AppFallback />}>
         <AdminLoginView onNavigate={navigate} />
-      </React.Suspense>
+      </Suspense>
     );
   }
 
   return (
     <div className="min-h-screen bg-[#FAF9F6] text-[#002D61] flex flex-col font-sans selection:bg-[#EA580C]/20 selection:text-[#002D61]">
-      {/* 1-Second Bespoke Luxury Preloader on Initial Load & Page Transitions */}
-      {showPreloader && (
-        <PremiumPreloader
-          key={currentPath}
-          durationMs={1000}
-          onFinish={() => setShowPreloader(false)}
-        />
-      )}
-
-      {/* Top Bar Navigation */}
+      {/* Primary Sticky Header Navigation */}
       <Navbar
-        onOpenValuation={handleOpenValuation}
+        onOpenValuation={() => handleOpenValuation()}
         onOpenConsultation={handleOpenConsultation}
         onOpenMarket={handleOpenMarket}
         onOpenChapter={handleOpenChapter}
@@ -214,89 +175,100 @@ export default function App() {
       />
 
       <main className="flex-1">
-        {isIdxWidgetRoute ? (
-          /* Interactive Oklahoma City MLS Map Search */
-          <React.Suspense fallback={<AppFallback />}>
-            <MapSearchPage
-              onNavigate={navigate}
-              onOpenConsultation={handleOpenConsultation}
-              onOpenValuation={() => handleOpenValuation()}
-            />
-          </React.Suspense>
-        ) : isIdxRoute ? (
-          /* Dedicated IDX Broker Quick Search Test Page */
-          <React.Suspense fallback={<AppFallback />}>
+        {isIdxRoute ? (
+          <Suspense fallback={<AppFallback />}>
             <IdxTestPage
               onNavigate={navigate}
               onOpenConsultation={handleOpenConsultation}
               onOpenValuation={() => handleOpenValuation()}
             />
-          </React.Suspense>
-        ) : isSitemapRoute ? (
-          /* Dedicated Platform Sitemap & Architecture Directory */
-          <React.Suspense fallback={<AppFallback />}>
-            <SitemapPage
+          </Suspense>
+        ) : isIdxWidgetRoute ? (
+          <Suspense fallback={<AppFallback />}>
+            <MapSearchPage
               onNavigate={navigate}
               onOpenConsultation={handleOpenConsultation}
               onOpenValuation={() => handleOpenValuation()}
             />
-          </React.Suspense>
+          </Suspense>
+        ) : isSitemapRoute ? (
+          <Suspense fallback={<AppFallback />}>
+            <SitemapPage onNavigate={navigate} />
+          </Suspense>
         ) : activeInteriorPage ? (
-          /* Dedicated Interior Page Architecture */
-          <React.Suspense fallback={<AppFallback />}>
+          <Suspense fallback={<AppFallback />}>
             <InteriorPageView
               page={activeInteriorPage}
               onNavigate={navigate}
-              onOpenConsultation={handleOpenConsultation}
               onOpenValuation={() => handleOpenValuation()}
+              onOpenConsultation={handleOpenConsultation}
+              onOpenMethod={handleOpenMethod}
+              onOpenMarket={handleOpenMarket}
+              onOpenCalculator={() => setCalculatorOpen(true)}
+              onOpenChecklist={() => setChecklistOpen(true)}
+              onOpenProperty={handleOpenProperty}
             />
-          </React.Suspense>
+          </Suspense>
         ) : (
-          /* Flagship Animated Luxury Homepage */
           <>
-            {/* Hero Section with Edge-to-Edge Drone Video & Live Stat Counters */}
+            {/* 1. Cinematic Hero Section with Fast LCP Poster */}
             <HeroVideo
               onOpenValuation={() => handleOpenValuation()}
               onExploreMethod={handleExploreMethod}
             />
 
-            {/* Live MLSOK Direct Property Quick Search Filter (Widget ID #20754) */}
+            {/* 2. Direct MLSOK Verified Live Quick Search Console */}
             <HomepageQuickSearch onNavigate={navigate} />
 
-            {/* Section 2: "Which Chapter Are You Navigating?" (Interactive Hover Accordion) */}
-            <ChapterAccordion onSelectChapter={handleOpenChapter} />
-
-            {/* Section 3: Services We Provide · The 6 Core Corporate Selling Processes */}
-            <CompanyServicesProcessSection
-              onOpenConsultation={handleOpenConsultation}
-              onOpenValuation={() => handleOpenValuation()}
-              onNavigate={navigate}
-            />
-
-            {/* Section 4: Live MLSOK Featured Client Properties & Listings (Widget #176753) */}
+            {/* 3. Live MLS Listings Showcase */}
             <HomepageFeaturedListings
+              onOpenValuation={() => handleOpenValuation()}
+              onOpenConsultation={handleOpenConsultation}
               onNavigate={navigate}
-              onSelectProperty={(prop) => setSelectedProperty(prop)}
             />
 
+            {/* 4. 6-Phase Tactical Selling Blueprint */}
+            <div id="the-method">
+              <CompanyServicesProcessSection
+                onOpenValuation={() => handleOpenValuation()}
+                onOpenConsultation={handleOpenConsultation}
+                onOpenMethod={handleOpenMethod}
+                onNavigate={navigate}
+              />
+            </div>
 
-            {/* Section 6: Request A Confidential Market Appraisal (Valuation Funnel) */}
+            {/* 5. Chapter Accordion - Strategy Playbook */}
+            <ChapterAccordion
+              onOpenChapter={handleOpenChapter}
+              onOpenConsultation={handleOpenConsultation}
+            />
+
+            {/* 6. Confidential Market Appraisal Banner */}
             <ValuationBanner onOpenValuation={handleOpenValuation} />
 
-            {/* Section 7: Client Experiences (Verified Reviews) */}
-            <TestimonialsSection onOpenConsultation={handleOpenConsultation} />
+            {/* 7. Client Reviews Luxury Responsive Slider */}
+            <TestimonialsSection />
 
-            {/* Section 8: 21 Oklahoma City Micro-Markets */}
-            <MicroMarketsSection onSelectMarket={handleOpenMarket} onNavigate={navigate} />
+            {/* 8. Micro-Markets Geographic Showcase */}
+            <MicroMarketsSection
+              onOpenMarket={handleOpenMarket}
+              onOpenConsultation={handleOpenConsultation}
+              onNavigate={navigate}
+            />
 
-            {/* Section 9: Bespoke Representation CTA Banner */}
-            <ClosingCta onOpenConsultation={handleOpenConsultation} />
+            {/* 9. Final High-Conversion Closing Call to Action */}
+            <ClosingCta
+              onOpenValuation={() => handleOpenValuation()}
+              onOpenConsultation={handleOpenConsultation}
+              onOpenMethod={handleOpenMethod}
+            />
           </>
         )}
       </main>
 
-      {/* Video Marquee: Rendered across pages right above Footer */}
-      {!isIdxRoute &&
+      {/* Video Marquee Brand Banner */}
+      {!isAdminRoute &&
+        !isIdxRoute &&
         !isIdxWidgetRoute &&
         currentPath !== '/privacy-policy' &&
         currentPath !== '/terms-of-service' &&
@@ -320,69 +292,87 @@ export default function App() {
         onNavigate={navigate}
       />
 
-      {/* Interactive Modals */}
-      <ValuationModal
-        isOpen={valuationOpen}
-        initialAddress={initialValuationAddress}
-        onClose={() => setValuationOpen(false)}
-      />
+      {/* Suspended Modals (Loaded only when user triggers them) */}
+      <Suspense fallback={null}>
+        {valuationOpen && (
+          <ValuationModal
+            isOpen={valuationOpen}
+            initialAddress={initialValuationAddress}
+            onClose={() => setValuationOpen(false)}
+          />
+        )}
 
-      <ConsultationModal
-        isOpen={consultationOpen}
-        onClose={() => setConsultationOpen(false)}
-      />
+        {consultationOpen && (
+          <ConsultationModal
+            isOpen={consultationOpen}
+            onClose={() => setConsultationOpen(false)}
+          />
+        )}
 
-      <PropertyModal
-        property={selectedProperty}
-        onClose={() => setSelectedProperty(null)}
-        onOpenConsultation={handleOpenConsultation}
-      />
+        {selectedProperty && (
+          <PropertyModal
+            property={selectedProperty}
+            onClose={() => setSelectedProperty(null)}
+            onOpenConsultation={handleOpenConsultation}
+          />
+        )}
 
-      <MarketModal
-        marketId={selectedMarketId}
-        onClose={() => setSelectedMarketId(null)}
-        onOpenConsultation={handleOpenConsultation}
-      />
+        {selectedMarketId && (
+          <MarketModal
+            marketId={selectedMarketId}
+            onClose={() => setSelectedMarketId(null)}
+            onOpenConsultation={handleOpenConsultation}
+          />
+        )}
 
-      <PlaybookModal
-        chapterId={selectedChapterId}
-        onClose={() => setSelectedChapterId(null)}
-        onOpenConsultation={handleOpenConsultation}
-      />
+        {selectedChapterId && (
+          <PlaybookModal
+            chapterId={selectedChapterId}
+            onClose={() => setSelectedChapterId(null)}
+            onOpenConsultation={handleOpenConsultation}
+          />
+        )}
 
-      <MethodModal
-        isOpen={methodModalOpen}
-        initialPhaseIndex={initialMethodPhase}
-        onClose={() => setMethodModalOpen(false)}
-        onOpenConsultation={handleOpenConsultation}
-      />
+        {methodModalOpen && (
+          <MethodModal
+            isOpen={methodModalOpen}
+            initialPhaseIndex={initialMethodPhase}
+            onClose={() => setMethodModalOpen(false)}
+            onOpenConsultation={handleOpenConsultation}
+          />
+        )}
 
-      <CalculatorModal
-        isOpen={calculatorOpen}
-        onClose={() => setCalculatorOpen(false)}
-      />
+        {calculatorOpen && (
+          <CalculatorModal
+            isOpen={calculatorOpen}
+            onClose={() => setCalculatorOpen(false)}
+          />
+        )}
 
-      <ChecklistModal
-        isOpen={checklistOpen}
-        onClose={() => setChecklistOpen(false)}
-      />
+        {checklistOpen && (
+          <ChecklistModal
+            isOpen={checklistOpen}
+            onClose={() => setChecklistOpen(false)}
+          />
+        )}
 
-      <LegalModal
-        type={legalType}
-        onClose={() => setLegalType(null)}
-      />
+        {legalType && (
+          <LegalModal
+            type={legalType}
+            onClose={() => setLegalType(null)}
+          />
+        )}
+
+        {/* Global Floating Widgets (Loaded asynchronously after main paint) */}
+        <AccessibilityWidget />
+        <StickyCallButton />
+      </Suspense>
 
       {/* Universal Global In-Line CMS Editor (activates on every word, button, and image across whole site) */}
       <GlobalInlineEditor currentPath={currentPath} />
 
       {/* Admin Floating Inline Toolbar (Only visible when admin is logged in) */}
       <AdminToolbar onNavigate={navigate} currentPath={currentPath} />
-
-      {/* Real-Time WordPress/OneTap Style Accessibility Widget (Bottom-Left) */}
-      <AccessibilityWidget />
-
-      {/* Sticky Real-Time Direct Call Concierge Button (Bottom-Right) */}
-      <StickyCallButton />
     </div>
   );
 }
