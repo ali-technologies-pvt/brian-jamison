@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#001D40" />
+      <stop offset="100%" stop-color="#002D61" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FB923C" />
+      <stop offset="50%" stop-color="#EA580C" />
+      <stop offset="100%" stop-color="#C2410C" />
+    </linearGradient>
+    <linearGradient id="accentGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#EA580C" stop-opacity="0" />
+      <stop offset="50%" stop-color="#EA580C" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#EA580C" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Luxury Rounded Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
+  
+  <!-- Subtle Border Inset -->
+  <rect x="18" y="18" width="476" height="476" rx="96" fill="none" stroke="#EA580C" stroke-width="3" stroke-opacity="0.4" />
+
+  <!-- Architectural Diamond Motif (Luxury Real Estate) -->
+  <g transform="translate(256, 120)">
+    <polygon points="0,-28 24,0 0,28 -24,0" fill="url(#goldGrad)" />
+    <circle cx="0" cy="0" r="4" fill="#FFFFFF" />
+  </g>
+
+  <!-- Monogram: BJ (Brian Jamison) in bespoke luxury typography -->
+  <text x="256" y="325" 
+        font-family="'Playfair Display', Georgia, 'Times New Roman', serif" 
+        font-size="210" 
+        font-weight="700" 
+        letter-spacing="-6"
+        fill="#FFFFFF" 
+        text-anchor="middle"
+        dominant-baseline="alphabetic">
+    BJ
+  </text>
+
+  <!-- Accent Divider Line -->
+  <line x1="140" y1="365" x2="372" y2="365" stroke="url(#accentGlow)" stroke-width="3.5" stroke-linecap="round" />
+
+  <!-- Subtitle: OKC LUXURY -->
+  <text x="256" y="415" 
+        font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" 
+        font-size="34" 
+        font-weight="700" 
+        letter-spacing="9"
+        fill="url(#goldGrad)" 
+        text-anchor="middle">
+    OKC
+  </text>
+</svg>

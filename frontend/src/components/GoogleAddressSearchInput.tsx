@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MapPin, Search, Loader2, Check, Map, Compass, Crosshair, ArrowRight } from 'lucide-react';
+import { MapPin, Search, Loader2, Check, Compass, Navigation } from 'lucide-react';
 import { MapLocationPickerModal } from './MapLocationPickerModal';
 
 export interface FormattedAddressItem {
@@ -17,11 +17,42 @@ interface GoogleAddressSearchInputProps {
   className?: string;
   inputClassName?: string;
   autoFocus?: boolean;
-  showMapButton?: boolean;
 }
 
-// Authentic Oklahoma City & Edmond Luxury Enclaves, Estates, and Streets
+// Authentic Oklahoma City & Edmond Luxury Enclaves, Landmark Estates, and Residential Corridors
 const LOCAL_OKC_DATABASE: FormattedAddressItem[] = [
+  // Deer Creek & Northwest Edmond
+  {
+    mainText: "Deer Creek Road",
+    secondaryText: "Edmond, OK 73012, USA",
+    fullAddress: "Deer Creek Road, Edmond, OK 73012",
+    type: "enclave"
+  },
+  {
+    mainText: "NW 178th Street (Deer Creek Corridor)",
+    secondaryText: "Edmond, OK 73012, USA",
+    fullAddress: "NW 178th Street, Edmond, OK 73012",
+    type: "street"
+  },
+  {
+    mainText: "NW 206th Street (Covell & Deer Creek)",
+    secondaryText: "Edmond, OK 73012, USA",
+    fullAddress: "NW 206th Street, Edmond, OK 73012",
+    type: "street"
+  },
+  {
+    mainText: "Deer Creek Park",
+    secondaryText: "Edmond, OK 73012, USA",
+    fullAddress: "Deer Creek Park, Edmond, OK 73012",
+    type: "street"
+  },
+  {
+    mainText: "Deer Springs Lane",
+    secondaryText: "Edmond, OK 73012, USA",
+    fullAddress: "Deer Springs Lane, Edmond, OK 73012",
+    type: "street"
+  },
+
   // Gaillardia Enclaves & Streets
   {
     mainText: "Gaillardia Parkway",
@@ -166,32 +197,6 @@ const LOCAL_OKC_DATABASE: FormattedAddressItem[] = [
     type: "street"
   },
 
-  // Deer Creek & Northwest OKC
-  {
-    mainText: "Deer Creek Road",
-    secondaryText: "Edmond, OK 73012, USA",
-    fullAddress: "Deer Creek Road, Edmond, OK 73012",
-    type: "enclave"
-  },
-  {
-    mainText: "NW 178th Street",
-    secondaryText: "Edmond, OK 73012, USA",
-    fullAddress: "NW 178th Street, Edmond, OK 73012",
-    type: "street"
-  },
-  {
-    mainText: "NW 164th Street",
-    secondaryText: "Edmond, OK 73013, USA",
-    fullAddress: "NW 164th Street, Edmond, OK 73013",
-    type: "street"
-  },
-  {
-    mainText: "11500 Gateshead Drive",
-    secondaryText: "Oklahoma City, OK 73162, USA",
-    fullAddress: "11500 Gateshead Drive, Oklahoma City, OK 73162",
-    type: "estate"
-  },
-
   // Heritage Hills & Historic OKC
   {
     mainText: "NW 18th Street",
@@ -229,6 +234,12 @@ const LOCAL_OKC_DATABASE: FormattedAddressItem[] = [
     mainText: "3328 Willow Brook Road",
     secondaryText: "Quail Creek, Oklahoma City, OK 73120, USA",
     fullAddress: "3328 Willow Brook Road, Oklahoma City, OK 73120",
+    type: "estate"
+  },
+  {
+    mainText: "11500 Gateshead Drive",
+    secondaryText: "Oklahoma City, OK 73162, USA",
+    fullAddress: "11500 Gateshead Drive, Oklahoma City, OK 73162",
     type: "estate"
   },
   {
@@ -284,8 +295,7 @@ export const GoogleAddressSearchInput: React.FC<GoogleAddressSearchInputProps> =
   placeholder = "Enter your Oklahoma City or Edmond address...",
   className = "",
   inputClassName = "",
-  autoFocus = false,
-  showMapButton = true
+  autoFocus = false
 }) => {
   const [suggestions, setSuggestions] = useState<FormattedAddressItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -319,14 +329,18 @@ export const GoogleAddressSearchInput: React.FC<GoogleAddressSearchInputProps> =
       setIsLoading(true);
       const queryLower = query.toLowerCase();
       const matched: FormattedAddressItem[] = [];
+      const seenNames = new Set<string>();
 
-      // 1. Direct High-Precision Match from Authentic Local Database
+      // 1. Prioritize Direct High-Precision Match from Authentic Local Database
       LOCAL_OKC_DATABASE.forEach((item) => {
+        const itemKey = item.mainText.toLowerCase();
         if (
-          item.mainText.toLowerCase().includes(queryLower) ||
-          item.secondaryText.toLowerCase().includes(queryLower) ||
-          item.fullAddress.toLowerCase().includes(queryLower)
+          (item.mainText.toLowerCase().includes(queryLower) ||
+           item.secondaryText.toLowerCase().includes(queryLower) ||
+           item.fullAddress.toLowerCase().includes(queryLower)) &&
+          !seenNames.has(itemKey)
         ) {
+          seenNames.add(itemKey);
           matched.push(item);
         }
       });
@@ -336,7 +350,7 @@ export const GoogleAddressSearchInput: React.FC<GoogleAddressSearchInputProps> =
         const response = await fetch(
           `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
             query + ', Oklahoma City, OK'
-          )}&format=json&addressdetails=1&limit=5&countrycodes=us`,
+          )}&format=json&addressdetails=1&limit=6&countrycodes=us`,
           {
             headers: {
               'Accept': 'application/json'
@@ -357,11 +371,16 @@ export const GoogleAddressSearchInput: React.FC<GoogleAddressSearchInputProps> =
 
               if (road) {
                 const main = [houseNumber, road].filter(Boolean).join(' ');
-                const secondary = `${city}, ${state}${postcode}, USA`;
-                const full = `${main}, ${city}, ${state}${postcode}`.trim();
+                const mainNormalized = main.toLowerCase().trim();
 
-                // Avoid duplicate entries
-                if (!matched.some((m) => m.fullAddress.toLowerCase() === full.toLowerCase())) {
+                // Discard ugly census water districts, duplicates, or repeated generic names
+                const isGenericBoundary = /^(north|south|east|west)?\s*(deer creek|oklahoma city)$/i.test(mainNormalized);
+
+                if (!seenNames.has(mainNormalized) && (!isGenericBoundary || matched.length === 0)) {
+                  seenNames.add(mainNormalized);
+                  const secondary = `${city}, ${state}${postcode}, USA`;
+                  const full = `${main}, ${city}, ${state}${postcode}`.trim();
+
                   matched.push({
                     mainText: main,
                     secondaryText: secondary,
@@ -379,26 +398,32 @@ export const GoogleAddressSearchInput: React.FC<GoogleAddressSearchInputProps> =
 
       // 3. Fallback: If still few results, construct realistic Oklahoma addresses
       if (matched.length < 2 && query.length >= 3) {
-        matched.push({
-          mainText: `${query} Parkway`,
-          secondaryText: 'Edmond, OK 73034, USA',
-          fullAddress: `${query} Parkway, Edmond, OK 73034`,
-          type: 'street'
-        });
-        matched.push({
-          mainText: `${query} Blvd`,
-          secondaryText: 'Nichols Hills, OK 73116, USA',
-          fullAddress: `${query} Blvd, Nichols Hills, OK 73116`,
-          type: 'street'
-        });
+        const fallback1 = `${query} Parkway`;
+        if (!seenNames.has(fallback1.toLowerCase())) {
+          matched.push({
+            mainText: fallback1,
+            secondaryText: 'Edmond, OK 73034, USA',
+            fullAddress: `${fallback1}, Edmond, OK 73034`,
+            type: 'street'
+          });
+        }
+        const fallback2 = `${query} Blvd`;
+        if (!seenNames.has(fallback2.toLowerCase())) {
+          matched.push({
+            mainText: fallback2,
+            secondaryText: 'Nichols Hills, OK 73116, USA',
+            fullAddress: `${fallback2}, Nichols Hills, OK 73116`,
+            type: 'street'
+          });
+        }
       }
 
-      const deduplicated = matched.slice(0, 6);
+      const deduplicated = matched.slice(0, 5);
       setSuggestions(deduplicated);
       setIsOpen(deduplicated.length > 0);
       setIsLoading(false);
       setSelectedIndex(-1);
-    }, 180);
+    }, 150);
 
     return () => clearTimeout(timer);
   }, [value]);
@@ -449,7 +474,7 @@ export const GoogleAddressSearchInput: React.FC<GoogleAddressSearchInputProps> =
 
   return (
     <>
-      <div ref={containerRef} className={`relative w-full ${className}`}>
+      <div ref={containerRef} className={`relative w-full ${className} text-left`}>
         <div className="relative w-full flex items-center">
           <input
             type="text"
@@ -466,97 +491,56 @@ export const GoogleAddressSearchInput: React.FC<GoogleAddressSearchInputProps> =
             className={inputClassName}
           />
 
-          {/* Right Action Icons (Loading + Map Picker Button) */}
-          <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1.5">
-            {isLoading && (
-              <span className="p-1 text-[#EA580C]">
-                <Loader2 className="w-4 h-4 animate-spin" />
-              </span>
-            )}
-
-            {showMapButton && (
-              <button
-                type="button"
-                onClick={() => setIsMapModalOpen(true)}
-                title="Select location on interactive map"
-                className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#FAF9F6] hover:bg-[#F5EFE6] text-[#002D61] border border-[#E5E0D8] hover:border-[#EA580C]/40 text-[11px] font-semibold transition-all cursor-pointer shadow-2xs hover:-translate-y-0.5"
-              >
-                <Map className="w-3.5 h-3.5 text-[#EA580C]" />
-                <span>Select on Map</span>
-              </button>
-            )}
-          </div>
+          {/* Discreet Loading Spinner Only */}
+          {isLoading && (
+            <span className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-[#EA580C] pointer-events-none">
+              <Loader2 className="w-4 h-4 animate-spin" />
+            </span>
+          )}
         </div>
 
-        {/* Realistic Google Places Autocomplete Dropdown */}
+        {/* Bespoke Luxury Google Places Autocomplete Dropdown */}
         {isOpen && (
-          <div className="absolute left-0 top-full mt-2 w-full min-w-[340px] sm:min-w-[520px] md:min-w-[620px] max-w-[calc(100vw-32px)] bg-white rounded-2xl shadow-2xl border border-stone-200/90 overflow-hidden z-[70] animate-in fade-in slide-in-from-top-2 duration-150">
+          <div className="absolute left-0 top-full mt-2.5 w-full min-w-[340px] sm:min-w-[520px] md:min-w-[620px] max-w-[calc(100vw-32px)] bg-white rounded-2xl shadow-2xl shadow-stone-900/15 border border-stone-200/90 overflow-hidden z-[80] text-left animate-in fade-in slide-in-from-top-1 duration-150">
             
-            {/* Top Interactive Map Pinpoint Action */}
-            <div
-              onClick={() => {
-                setIsOpen(false);
-                setIsMapModalOpen(true);
-              }}
-              className="p-3 bg-gradient-to-r from-[#FAF9F6] via-white to-[#FAF9F6] border-b border-[#E5E0D8] flex items-center justify-between cursor-pointer hover:bg-[#F5EFE6] transition-colors group"
-            >
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-[#EA580C] text-white flex items-center justify-center shadow-md shadow-orange-600/20 group-hover:scale-105 transition-transform">
-                  <Compass className="w-4 h-4" />
-                </div>
-                <div>
-                  <p className="font-sans text-xs font-bold text-[#002D61] flex items-center gap-1.5">
-                    <span>Pinpoint Location on Interactive Map</span>
-                    <span className="px-1.5 py-0.2 rounded-full text-[9px] font-semibold bg-[#EA580C]/10 text-[#EA580C]">
-                      New
-                    </span>
-                  </p>
-                  <p className="font-sans text-[11px] text-[#6B7280]">
-                    Drag a pin across Oklahoma City or Edmond to auto-fill address
-                  </p>
-                </div>
-              </div>
-              <ArrowRight className="w-4 h-4 text-[#EA580C] group-hover:translate-x-1 transition-transform" />
-            </div>
-
-            {/* List of Verified Addresses */}
-            <ul className="max-h-72 overflow-y-auto divide-y divide-stone-100 py-1">
+            {/* List of Verified Addresses - Strictly Left Aligned */}
+            <ul className="max-h-72 overflow-y-auto divide-y divide-stone-100 py-1 text-left">
               {suggestions.map((item, idx) => (
                 <li
                   key={idx}
                   onClick={() => handleSelect(item)}
                   onMouseEnter={() => setSelectedIndex(idx)}
-                  className={`px-4 py-3 cursor-pointer flex items-center gap-3.5 transition-colors ${
+                  className={`px-4 py-3 cursor-pointer flex items-center gap-3.5 text-left transition-colors ${
                     selectedIndex === idx
-                      ? 'bg-[#F1F5F9] text-[#002D61]'
-                      : 'hover:bg-[#F8FAFC]'
+                      ? 'bg-[#F4F6F9] text-[#002D61]'
+                      : 'hover:bg-[#F9F9F8]'
                   }`}
                 >
                   {/* Google Maps Pin Icon */}
-                  <div className="w-7 h-7 rounded-full bg-stone-100 flex items-center justify-center shrink-0">
+                  <div className="w-8 h-8 rounded-full bg-stone-100/90 flex items-center justify-center shrink-0">
                     <svg className="w-4 h-4 text-[#EA4335]" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
                     </svg>
                   </div>
 
-                  {/* Two-Line Google Places Style Text */}
-                  <div className="flex-1 min-w-0">
-                    <p className="font-sans text-xs sm:text-sm text-[#1F2937] leading-snug truncate">
+                  {/* Two-Line Google Places Style Text - Strictly Left Aligned */}
+                  <div className="flex-1 min-w-0 text-left">
+                    <p className="font-sans text-xs sm:text-sm font-normal text-[#1F2937] leading-snug truncate text-left">
                       {renderHighlightedText(item.mainText, value.trim())}
                     </p>
-                    <p className="font-sans text-[11px] text-[#6B7280] leading-tight truncate">
+                    <p className="font-sans text-[11px] text-[#6B7280] leading-tight truncate text-left mt-0.5">
                       {item.secondaryText}
                     </p>
                   </div>
 
-                  {/* Badge */}
+                  {/* Enclave Badge */}
                   {item.type === 'enclave' && (
-                    <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#002D61]/5 text-[#002D61] border border-[#002D61]/10 shrink-0">
+                    <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-[#002D61]/5 text-[#002D61] border border-[#002D61]/10 shrink-0">
                       Luxury Enclave
                     </span>
                   )}
                   {item.type === 'landmark' && (
-                    <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-700 border border-emerald-500/20 shrink-0">
+                    <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-700 border border-emerald-500/20 shrink-0">
                       Country Club
                     </span>
                   )}
@@ -568,8 +552,8 @@ export const GoogleAddressSearchInput: React.FC<GoogleAddressSearchInputProps> =
               ))}
             </ul>
 
-            {/* Google Maps Official Attribution Footer */}
-            <div className="px-4 py-2 bg-[#F8FAFC] border-t border-stone-200/80 text-[11px] text-[#6B7280] flex items-center justify-between">
+            {/* Elegant Luxury Footer with Google Attribution & Discrete Map Action */}
+            <div className="px-4 py-2.5 bg-[#FAF9F6] border-t border-stone-200/80 text-[11px] text-[#6B7280] flex items-center justify-between text-left">
               <div className="flex items-center gap-1.5">
                 <span className="text-[10px] uppercase font-sans tracking-wider text-[#9CA3AF]">
                   Powered by
@@ -583,11 +567,22 @@ export const GoogleAddressSearchInput: React.FC<GoogleAddressSearchInputProps> =
                   <span className="text-[#EA4335]">e</span>
                   <span className="ml-1 text-[#4B5563] font-medium">Maps</span>
                 </span>
+                <span className="text-stone-300 mx-1">·</span>
+                <span className="text-[10px] text-[#9CA3AF]">MLSOK Verified</span>
               </div>
 
-              <span className="text-[10px] text-[#9CA3AF]">
-                MLSOK Verified
-              </span>
+              {/* Discrete Map Pinpoint Link */}
+              <button
+                type="button"
+                onClick={() => {
+                  setIsOpen(false);
+                  setIsMapModalOpen(true);
+                }}
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#EA580C] hover:text-[#C2410C] transition-colors cursor-pointer"
+              >
+                <Compass className="w-3.5 h-3.5 text-[#EA580C]" />
+                <span>Pinpoint on Map</span>
+              </button>
             </div>
 
           </div>
