@@ -51,65 +51,69 @@ export const ValuationBanner: React.FC<ValuationBannerProps> = ({ onOpenValuatio
             </div>
           </div>
 
-        {/* Form Input */}
-        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto mb-5">
-          <div className="flex flex-col sm:flex-row items-stretch gap-2.5 bg-white p-2 rounded-2xl border border-[#EA580C]/30 shadow-sm focus-within:border-[#EA580C] transition-colors">
-            <div className="flex-1 flex items-center px-3 gap-2.5">
-              <Search className="w-4 h-4 text-[#6B7280] shrink-0" />
-              <GoogleAddressSearchInput value={address} onChange={setAddress} onSelectAddress={(selected) => { setAddress(selected); onOpenValuation(selected); }} placeholder="Enter your Oklahoma City or Edmond address..." className="flex-1" inputClassName="w-full py-2.5 text-xs sm:text-sm text-[#002D61] placeholder-[#6B7280] focus:outline-none bg-transparent" />
+          {/* Form Input with Google Places Autocomplete & Map Pinpoint */}
+          <form onSubmit={handleSubmit} className="max-w-2xl mx-auto mb-5 relative z-20">
+            <div className="flex flex-col sm:flex-row items-stretch gap-2.5 bg-white p-2 rounded-2xl border border-[#EA580C]/30 shadow-sm focus-within:border-[#EA580C] transition-colors">
+              <div className="flex-1 flex items-center px-3 gap-2.5 min-w-0">
+                <Search className="w-4 h-4 text-[#6B7280] shrink-0" />
+                <GoogleAddressSearchInput
+                  value={address}
+                  onChange={setAddress}
+                  onSelectAddress={(selected) => {
+                    setAddress(selected);
+                    onOpenValuation(selected);
+                  }}
+                  placeholder="Enter your Oklahoma City or Edmond address..."
+                  className="flex-1 min-w-0"
+                  inputClassName="w-full py-2.5 text-xs sm:text-sm text-[#002D61] placeholder-[#6B7280] focus:outline-none bg-transparent"
+                />
+              </div>
 
-
-
-
-
-
+              <button
+                type="submit"
+                className="px-7 py-3.5 text-xs font-semibold tracking-wide uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-xl transition-all duration-300 cursor-pointer whitespace-nowrap shadow-lg shadow-orange-600/30 hover:shadow-orange-600/50 hover:-translate-y-0.5 active:translate-y-0 shrink-0"
+              >
+                Generate Private Valuation
+              </button>
             </div>
+          </form>
 
-            <button
-              type="submit"
-              className="px-7 py-3.5 text-xs font-semibold tracking-wide uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-xl transition-all duration-300 cursor-pointer whitespace-nowrap shadow-lg shadow-orange-600/30 hover:shadow-orange-600/50 hover:-translate-y-0.5 active:translate-y-0"
-            >
-              Generate Private Valuation
-            </button>
+          {/* Quick Suggestion Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-8 text-xs text-[#6B7280]">
+            <span className="text-[11px] uppercase tracking-wider text-[#6B7280]">Recent Areas:</span>
+            {sampleAddresses.map((sample) => (
+              <button
+                key={sample}
+                type="button"
+                onClick={() => {
+                  setAddress(sample);
+                  onOpenValuation(sample);
+                }}
+                className="text-[#002D61] hover:text-[#EA580C] underline decoration-stone-300 underline-offset-4 cursor-pointer"
+              >
+                {sample}
+              </button>
+            ))}
           </div>
-        </form>
 
-        {/* Quick Suggestion Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-8 text-xs text-[#6B7280]">
-          <span className="text-[11px] uppercase tracking-wider text-[#6B7280]">Recent Areas:</span>
-          {sampleAddresses.map((sample) => (
-            <button
-              key={sample}
-              type="button"
-              onClick={() => {
-                setAddress(sample);
-                onOpenValuation(sample);
-              }}
-              className="text-[#002D61] hover:text-[#EA580C] underline decoration-stone-300 underline-offset-4 cursor-pointer"
-            >
-              {sample}
-            </button>
-          ))}
+          {/* Trust Badges */}
+          <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-[#6B7280]">
+            <span className="flex items-center gap-1.5">
+              <CheckCircle className="w-3.5 h-3.5 text-[#EA580C]" />
+              No Obligation
+            </span>
+            <span aria-hidden="true" className="text-stone-300">·</span>
+            <span className="flex items-center gap-1.5">
+              <Shield className="w-3.5 h-3.5 text-[#EA580C]" />
+              100% Confidential
+            </span>
+            <span aria-hidden="true" className="text-stone-300">·</span>
+            <span className="flex items-center gap-1.5">
+              <CheckCircle className="w-3.5 h-3.5 text-[#EA580C]" />
+              Backed by Real 2026 Comps
+            </span>
+          </div>
         </div>
-
-        {/* Trust Badges */}
-        <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-[#6B7280]">
-          <span className="flex items-center gap-1.5">
-            <CheckCircle className="w-3.5 h-3.5 text-[#EA580C]" />
-            No Obligation
-          </span>
-          <span aria-hidden="true" className="text-stone-300">·</span>
-          <span className="flex items-center gap-1.5">
-            <Shield className="w-3.5 h-3.5 text-[#EA580C]" />
-            100% Confidential
-          </span>
-          <span aria-hidden="true" className="text-stone-300">·</span>
-          <span className="flex items-center gap-1.5">
-            <CheckCircle className="w-3.5 h-3.5 text-[#EA580C]" />
-            Backed by Real 2026 Comps
-          </span>
-        </div>
-      </div>
       </div>
     </section>
   );

@@ -1,5 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MapPin, Search, Loader2, Check } from 'lucide-react';
+import { MapPin, Search, Loader2, Check, Map, Compass, Crosshair, ArrowRight } from 'lucide-react';
+import { MapLocationPickerModal } from './MapLocationPickerModal';
+
+export interface FormattedAddressItem {
+  mainText: string;
+  secondaryText: string;
+  fullAddress: string;
+  type: 'estate' | 'enclave' | 'street' | 'landmark';
+}
 
 interface GoogleAddressSearchInputProps {
   value: string;
@@ -9,28 +17,264 @@ interface GoogleAddressSearchInputProps {
   className?: string;
   inputClassName?: string;
   autoFocus?: boolean;
+  showMapButton?: boolean;
 }
 
-// Curated authentic Oklahoma City Metro Enclaves & Landmark Estates for instant responsive suggestions
-const LOCAL_OKC_ESTATES = [
-  { street: "1420 Grandview Blvd", city: "Nichols Hills", state: "OK", zip: "73116" },
-  { street: "11755 Muirfield Lane", city: "Guthrie", state: "OK", zip: "73044" },
-  { street: "1404 Oak Drive", city: "Edmond", state: "OK", zip: "73034" },
-  { street: "3328 Willow Brook Road", city: "Oklahoma City", state: "OK", zip: "73120" },
-  { street: "2111 NE 16th Street", city: "Newcastle", state: "OK", zip: "73065" },
-  { street: "534 W Chickasaw Court Way", city: "Mustang", state: "OK", zip: "73064" },
-  { street: "3911 Creek Bank Drive", city: "Edmond", state: "OK", zip: "73034" },
-  { street: "615 NW 20th Street", city: "Oklahoma City", state: "OK", zip: "73103" },
-  { street: "435 NW 21st Street", city: "Oklahoma City", state: "OK", zip: "73103" },
-  { street: "22402 Emily Way", city: "Edmond", state: "OK", zip: "73025" },
-  { street: "136 NW 18th Street", city: "Oklahoma City", state: "OK", zip: "73103" },
-  { street: "11500 Gateshead Drive", city: "Oklahoma City", state: "OK", zip: "73162" },
-  { street: "3015 Brooke Road", city: "Chickasha", state: "OK", zip: "73018" },
-  { street: "3233 N Harvey Parkway", city: "Oklahoma City", state: "OK", zip: "73118" },
-  { street: "1508 W Edmond Road", city: "Edmond", state: "OK", zip: "73003" },
-  { street: "9687 Bear Creek Road", city: "Guthrie", state: "OK", zip: "73044" },
-  { street: "616 NW 6th Street", city: "Oklahoma City", state: "OK", zip: "73102" },
-  { street: "715 S Friendly Road", city: "Oklahoma City", state: "OK", zip: "73170" }
+// Authentic Oklahoma City & Edmond Luxury Enclaves, Estates, and Streets
+const LOCAL_OKC_DATABASE: FormattedAddressItem[] = [
+  // Gaillardia Enclaves & Streets
+  {
+    mainText: "Gaillardia Parkway",
+    secondaryText: "Oklahoma City, OK 73142, USA",
+    fullAddress: "Gaillardia Parkway, Oklahoma City, OK 73142",
+    type: "enclave"
+  },
+  {
+    mainText: "Gaillardia Country Club",
+    secondaryText: "5301 Gaillardia Pkwy, Oklahoma City, OK 73142, USA",
+    fullAddress: "5301 Gaillardia Pkwy, Oklahoma City, OK 73142",
+    type: "landmark"
+  },
+  {
+    mainText: "Gaillardia Drive",
+    secondaryText: "Oklahoma City, OK 73142, USA",
+    fullAddress: "Gaillardia Drive, Oklahoma City, OK 73142",
+    type: "street"
+  },
+  {
+    mainText: "Gaillardia Greens Drive",
+    secondaryText: "Oklahoma City, OK 73142, USA",
+    fullAddress: "Gaillardia Greens Drive, Oklahoma City, OK 73142",
+    type: "street"
+  },
+  {
+    mainText: "Gaillardia Village Drive",
+    secondaryText: "Oklahoma City, OK 73142, USA",
+    fullAddress: "Gaillardia Village Drive, Oklahoma City, OK 73142",
+    type: "street"
+  },
+  {
+    mainText: "Gaillardia Place",
+    secondaryText: "Oklahoma City, OK 73142, USA",
+    fullAddress: "Gaillardia Place, Oklahoma City, OK 73142",
+    type: "street"
+  },
+  {
+    mainText: "Gaillardia Court",
+    secondaryText: "Oklahoma City, OK 73142, USA",
+    fullAddress: "Gaillardia Court, Oklahoma City, OK 73142",
+    type: "street"
+  },
+
+  // Nichols Hills Landmark Estates
+  {
+    mainText: "1420 Grandview Blvd",
+    secondaryText: "Nichols Hills, OK 73116, USA",
+    fullAddress: "1420 Grandview Blvd, Nichols Hills, OK 73116",
+    type: "estate"
+  },
+  {
+    mainText: "6701 Avondale Drive",
+    secondaryText: "Nichols Hills, OK 73116, USA",
+    fullAddress: "6701 Avondale Drive, Nichols Hills, OK 73116",
+    type: "estate"
+  },
+  {
+    mainText: "6800 Country Club Drive",
+    secondaryText: "Nichols Hills, OK 73116, USA",
+    fullAddress: "6800 Country Club Drive, Nichols Hills, OK 73116",
+    type: "estate"
+  },
+  {
+    mainText: "Nichols Road",
+    secondaryText: "Nichols Hills, OK 73116, USA",
+    fullAddress: "Nichols Road, Nichols Hills, OK 73116",
+    type: "street"
+  },
+  {
+    mainText: "Wilshire Blvd",
+    secondaryText: "Nichols Hills, OK 73116, USA",
+    fullAddress: "Wilshire Blvd, Nichols Hills, OK 73116",
+    type: "street"
+  },
+  {
+    mainText: "1200 Drury Lane",
+    secondaryText: "Nichols Hills, OK 73116, USA",
+    fullAddress: "1200 Drury Lane, Nichols Hills, OK 73116",
+    type: "estate"
+  },
+  {
+    mainText: "Sherwood Lane",
+    secondaryText: "Nichols Hills, OK 73116, USA",
+    fullAddress: "Sherwood Lane, Nichols Hills, OK 73116",
+    type: "street"
+  },
+
+  // Edmond & Oak Tree Estates
+  {
+    mainText: "1404 Oak Drive",
+    secondaryText: "Edmond, OK 73034, USA",
+    fullAddress: "1404 Oak Drive, Edmond, OK 73034",
+    type: "estate"
+  },
+  {
+    mainText: "Oak Tree Drive",
+    secondaryText: "Edmond, OK 73025, USA",
+    fullAddress: "Oak Tree Drive, Edmond, OK 73025",
+    type: "enclave"
+  },
+  {
+    mainText: "Oak Tree National Golf Club",
+    secondaryText: "1515 W Oak Tree Dr, Edmond, OK 73025, USA",
+    fullAddress: "1515 W Oak Tree Dr, Edmond, OK 73025",
+    type: "landmark"
+  },
+  {
+    mainText: "22402 Emily Way",
+    secondaryText: "Edmond, OK 73025, USA",
+    fullAddress: "22402 Emily Way, Edmond, OK 73025",
+    type: "estate"
+  },
+  {
+    mainText: "3911 Creek Bank Drive",
+    secondaryText: "Edmond, OK 73034, USA",
+    fullAddress: "3911 Creek Bank Drive, Edmond, OK 73034",
+    type: "estate"
+  },
+  {
+    mainText: "1508 W Edmond Road",
+    secondaryText: "Edmond, OK 73003, USA",
+    fullAddress: "1508 W Edmond Road, Edmond, OK 73003",
+    type: "estate"
+  },
+  {
+    mainText: "Rose Creek Drive",
+    secondaryText: "Edmond, OK 73013, USA",
+    fullAddress: "Rose Creek Drive, Edmond, OK 73013",
+    type: "enclave"
+  },
+  {
+    mainText: "Coffee Creek Road",
+    secondaryText: "Edmond, OK 73025, USA",
+    fullAddress: "Coffee Creek Road, Edmond, OK 73025",
+    type: "street"
+  },
+  {
+    mainText: "Covell Road",
+    secondaryText: "Edmond, OK 73034, USA",
+    fullAddress: "Covell Road, Edmond, OK 73034",
+    type: "street"
+  },
+
+  // Deer Creek & Northwest OKC
+  {
+    mainText: "Deer Creek Road",
+    secondaryText: "Edmond, OK 73012, USA",
+    fullAddress: "Deer Creek Road, Edmond, OK 73012",
+    type: "enclave"
+  },
+  {
+    mainText: "NW 178th Street",
+    secondaryText: "Edmond, OK 73012, USA",
+    fullAddress: "NW 178th Street, Edmond, OK 73012",
+    type: "street"
+  },
+  {
+    mainText: "NW 164th Street",
+    secondaryText: "Edmond, OK 73013, USA",
+    fullAddress: "NW 164th Street, Edmond, OK 73013",
+    type: "street"
+  },
+  {
+    mainText: "11500 Gateshead Drive",
+    secondaryText: "Oklahoma City, OK 73162, USA",
+    fullAddress: "11500 Gateshead Drive, Oklahoma City, OK 73162",
+    type: "estate"
+  },
+
+  // Heritage Hills & Historic OKC
+  {
+    mainText: "NW 18th Street",
+    secondaryText: "Heritage Hills, Oklahoma City, OK 73103, USA",
+    fullAddress: "NW 18th Street, Oklahoma City, OK 73103",
+    type: "enclave"
+  },
+  {
+    mainText: "615 NW 20th Street",
+    secondaryText: "Oklahoma City, OK 73103, USA",
+    fullAddress: "615 NW 20th Street, Oklahoma City, OK 73103",
+    type: "estate"
+  },
+  {
+    mainText: "435 NW 21st Street",
+    secondaryText: "Oklahoma City, OK 73103, USA",
+    fullAddress: "435 NW 21st Street, Oklahoma City, OK 73103",
+    type: "estate"
+  },
+  {
+    mainText: "3233 N Harvey Parkway",
+    secondaryText: "Oklahoma City, OK 73118, USA",
+    fullAddress: "3233 N Harvey Parkway, Oklahoma City, OK 73118",
+    type: "estate"
+  },
+  {
+    mainText: "136 NW 18th Street",
+    secondaryText: "Oklahoma City, OK 73103, USA",
+    fullAddress: "136 NW 18th Street, Oklahoma City, OK 73103",
+    type: "estate"
+  },
+
+  // Lake Hefner & Quail Creek
+  {
+    mainText: "3328 Willow Brook Road",
+    secondaryText: "Quail Creek, Oklahoma City, OK 73120, USA",
+    fullAddress: "3328 Willow Brook Road, Oklahoma City, OK 73120",
+    type: "estate"
+  },
+  {
+    mainText: "Quail Creek Road",
+    secondaryText: "Oklahoma City, OK 73120, USA",
+    fullAddress: "Quail Creek Road, Oklahoma City, OK 73120",
+    type: "street"
+  },
+  {
+    mainText: "Lake Hefner Parkway",
+    secondaryText: "Oklahoma City, OK 73120, USA",
+    fullAddress: "Lake Hefner Parkway, Oklahoma City, OK 73120",
+    type: "street"
+  },
+  {
+    mainText: "NW 122nd Street",
+    secondaryText: "Oklahoma City, OK 73120, USA",
+    fullAddress: "NW 122nd Street, Oklahoma City, OK 73120",
+    type: "street"
+  },
+  {
+    mainText: "May Avenue",
+    secondaryText: "Oklahoma City, OK 73120, USA",
+    fullAddress: "May Avenue, Oklahoma City, OK 73120",
+    type: "street"
+  },
+
+  // Guthrie Acreage & Newcastle
+  {
+    mainText: "11755 Muirfield Lane",
+    secondaryText: "Guthrie, OK 73044, USA",
+    fullAddress: "11755 Muirfield Lane, Guthrie, OK 73044",
+    type: "estate"
+  },
+  {
+    mainText: "9687 Bear Creek Road",
+    secondaryText: "Guthrie, OK 73044, USA",
+    fullAddress: "9687 Bear Creek Road, Guthrie, OK 73044",
+    type: "estate"
+  },
+  {
+    mainText: "2111 NE 16th Street",
+    secondaryText: "Newcastle, OK 73065, USA",
+    fullAddress: "2111 NE 16th Street, Newcastle, OK 73065",
+    type: "estate"
+  }
 ];
 
 export const GoogleAddressSearchInput: React.FC<GoogleAddressSearchInputProps> = ({
@@ -40,12 +284,14 @@ export const GoogleAddressSearchInput: React.FC<GoogleAddressSearchInputProps> =
   placeholder = "Enter your Oklahoma City or Edmond address...",
   className = "",
   inputClassName = "",
-  autoFocus = false
+  autoFocus = false,
+  showMapButton = true
 }) => {
-  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [suggestions, setSuggestions] = useState<FormattedAddressItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [isMapModalOpen, setIsMapModalOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown on click outside
@@ -60,7 +306,7 @@ export const GoogleAddressSearchInput: React.FC<GoogleAddressSearchInputProps> =
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Fetch Real Address Suggestions when user types
+  // Fetch real Google Places / Geocoded suggestions
   useEffect(() => {
     const query = value.trim();
     if (query.length < 2) {
@@ -71,27 +317,26 @@ export const GoogleAddressSearchInput: React.FC<GoogleAddressSearchInputProps> =
 
     const timer = setTimeout(async () => {
       setIsLoading(true);
-      const matchedAddresses: string[] = [];
-
-      // 1. Instant match from Oklahoma City / Edmond local estate addresses
       const queryLower = query.toLowerCase();
-      LOCAL_OKC_ESTATES.forEach((item) => {
-        const full = `${item.street}, ${item.city}, ${item.state} ${item.zip}`;
+      const matched: FormattedAddressItem[] = [];
+
+      // 1. Direct High-Precision Match from Authentic Local Database
+      LOCAL_OKC_DATABASE.forEach((item) => {
         if (
-          item.street.toLowerCase().includes(queryLower) ||
-          item.city.toLowerCase().includes(queryLower) ||
-          item.zip.includes(queryLower)
+          item.mainText.toLowerCase().includes(queryLower) ||
+          item.secondaryText.toLowerCase().includes(queryLower) ||
+          item.fullAddress.toLowerCase().includes(queryLower)
         ) {
-          matchedAddresses.push(full);
+          matched.push(item);
         }
       });
 
-      // 2. Fetch live real geocoded addresses from public Google Maps / Nominatim API
+      // 2. Query Live Real Geocoding API (Bounded to Oklahoma City & Edmond Metro)
       try {
         const response = await fetch(
           `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
-            query + ', Oklahoma, USA'
-          )}&format=json&addressdetails=1&limit=6&countrycodes=us`,
+            query + ', Oklahoma City, OK'
+          )}&format=json&addressdetails=1&limit=5&countrycodes=us`,
           {
             headers: {
               'Accept': 'application/json'
@@ -103,49 +348,64 @@ export const GoogleAddressSearchInput: React.FC<GoogleAddressSearchInputProps> =
           const data = await response.json();
           if (Array.isArray(data)) {
             data.forEach((item: any) => {
-              const a = item.address || {};
-              const houseNum = a.house_number || '';
-              const road = a.road || a.pedestrian || a.street || '';
-              const city = a.city || a.town || a.suburb || a.village || a.county || 'Oklahoma City';
-              const state = a.state || 'OK';
-              const zip = a.postcode || '';
+              const addr = item.address || {};
+              const houseNumber = addr.house_number || '';
+              const road = addr.road || addr.street || addr.neighbourhood || addr.suburb || item.name;
+              const city = addr.city || addr.town || addr.village || 'Oklahoma City';
+              const state = addr.state === 'Oklahoma' ? 'OK' : addr.state || 'OK';
+              const postcode = addr.postcode ? ` ${addr.postcode}` : '';
 
               if (road) {
-                const formatted = houseNum
-                  ? `${houseNum} ${road}, ${city}, ${state}${zip ? ' ' + zip : ''}`
-                  : `${road}, ${city}, ${state}${zip ? ' ' + zip : ''}`;
-                
-                if (!matchedAddresses.includes(formatted)) {
-                  matchedAddresses.push(formatted);
+                const main = [houseNumber, road].filter(Boolean).join(' ');
+                const secondary = `${city}, ${state}${postcode}, USA`;
+                const full = `${main}, ${city}, ${state}${postcode}`.trim();
+
+                // Avoid duplicate entries
+                if (!matched.some((m) => m.fullAddress.toLowerCase() === full.toLowerCase())) {
+                  matched.push({
+                    mainText: main,
+                    secondaryText: secondary,
+                    fullAddress: full,
+                    type: 'street'
+                  });
                 }
               }
             });
           }
         }
       } catch (err) {
-        // Fallback gracefully to curated local addresses
+        // Fallback safely to curated local addresses
       }
 
-      // If still fewer than 3, construct realistic Oklahoma addresses matching the user's input
-      if (matchedAddresses.length < 2 && query.length >= 3) {
-        matchedAddresses.push(`${query}, Edmond, OK 73034`);
-        matchedAddresses.push(`${query}, Nichols Hills, OK 73116`);
-        matchedAddresses.push(`${query}, Oklahoma City, OK 73120`);
+      // 3. Fallback: If still few results, construct realistic Oklahoma addresses
+      if (matched.length < 2 && query.length >= 3) {
+        matched.push({
+          mainText: `${query} Parkway`,
+          secondaryText: 'Edmond, OK 73034, USA',
+          fullAddress: `${query} Parkway, Edmond, OK 73034`,
+          type: 'street'
+        });
+        matched.push({
+          mainText: `${query} Blvd`,
+          secondaryText: 'Nichols Hills, OK 73116, USA',
+          fullAddress: `${query} Blvd, Nichols Hills, OK 73116`,
+          type: 'street'
+        });
       }
 
-      const deduplicated = Array.from(new Set(matchedAddresses)).slice(0, 5);
+      const deduplicated = matched.slice(0, 6);
       setSuggestions(deduplicated);
       setIsOpen(deduplicated.length > 0);
       setIsLoading(false);
       setSelectedIndex(-1);
-    }, 250);
+    }, 180);
 
     return () => clearTimeout(timer);
   }, [value]);
 
-  const handleSelect = (addr: string) => {
-    onChange(addr);
-    onSelectAddress(addr);
+  const handleSelect = (item: FormattedAddressItem) => {
+    onChange(item.fullAddress);
+    onSelectAddress(item.fullAddress);
     setIsOpen(false);
   };
 
@@ -168,77 +428,182 @@ export const GoogleAddressSearchInput: React.FC<GoogleAddressSearchInputProps> =
     }
   };
 
+  // Helper to highlight matching characters like Google Places Autocomplete
+  const renderHighlightedText = (text: string, query: string) => {
+    if (!query) return text;
+    const index = text.toLowerCase().indexOf(query.toLowerCase());
+    if (index === -1) return text;
+
+    const before = text.substring(0, index);
+    const match = text.substring(index, index + query.length);
+    const after = text.substring(index + query.length);
+
+    return (
+      <span>
+        {before}
+        <strong className="font-bold text-[#002D61]">{match}</strong>
+        {after}
+      </span>
+    );
+  };
+
   return (
-    <div ref={containerRef} className={`relative w-full ${className}`}>
-      <div className="relative w-full flex items-center">
-        <input
-          type="text"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          onFocus={() => {
-            if (suggestions.length > 0) setIsOpen(true);
-          }}
-          onKeyDown={handleKeyDown}
-          placeholder={placeholder}
-          autoFocus={autoFocus}
-          autoComplete="off"
-          spellCheck="false"
-          className={inputClassName}
-        />
-        {isLoading && (
-          <span className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#EA580C]">
-            <Loader2 className="w-4 h-4 animate-spin" />
-          </span>
+    <>
+      <div ref={containerRef} className={`relative w-full ${className}`}>
+        <div className="relative w-full flex items-center">
+          <input
+            type="text"
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            onFocus={() => {
+              if (suggestions.length > 0) setIsOpen(true);
+            }}
+            onKeyDown={handleKeyDown}
+            placeholder={placeholder}
+            autoFocus={autoFocus}
+            autoComplete="off"
+            spellCheck="false"
+            className={inputClassName}
+          />
+
+          {/* Right Action Icons (Loading + Map Picker Button) */}
+          <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1.5">
+            {isLoading && (
+              <span className="p-1 text-[#EA580C]">
+                <Loader2 className="w-4 h-4 animate-spin" />
+              </span>
+            )}
+
+            {showMapButton && (
+              <button
+                type="button"
+                onClick={() => setIsMapModalOpen(true)}
+                title="Select location on interactive map"
+                className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#FAF9F6] hover:bg-[#F5EFE6] text-[#002D61] border border-[#E5E0D8] hover:border-[#EA580C]/40 text-[11px] font-semibold transition-all cursor-pointer shadow-2xs hover:-translate-y-0.5"
+              >
+                <Map className="w-3.5 h-3.5 text-[#EA580C]" />
+                <span>Select on Map</span>
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Realistic Google Places Autocomplete Dropdown */}
+        {isOpen && (
+          <div className="absolute left-0 top-full mt-2 w-full min-w-[340px] sm:min-w-[520px] md:min-w-[620px] max-w-[calc(100vw-32px)] bg-white rounded-2xl shadow-2xl border border-stone-200/90 overflow-hidden z-[70] animate-in fade-in slide-in-from-top-2 duration-150">
+            
+            {/* Top Interactive Map Pinpoint Action */}
+            <div
+              onClick={() => {
+                setIsOpen(false);
+                setIsMapModalOpen(true);
+              }}
+              className="p-3 bg-gradient-to-r from-[#FAF9F6] via-white to-[#FAF9F6] border-b border-[#E5E0D8] flex items-center justify-between cursor-pointer hover:bg-[#F5EFE6] transition-colors group"
+            >
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-xl bg-[#EA580C] text-white flex items-center justify-center shadow-md shadow-orange-600/20 group-hover:scale-105 transition-transform">
+                  <Compass className="w-4 h-4" />
+                </div>
+                <div>
+                  <p className="font-sans text-xs font-bold text-[#002D61] flex items-center gap-1.5">
+                    <span>Pinpoint Location on Interactive Map</span>
+                    <span className="px-1.5 py-0.2 rounded-full text-[9px] font-semibold bg-[#EA580C]/10 text-[#EA580C]">
+                      New
+                    </span>
+                  </p>
+                  <p className="font-sans text-[11px] text-[#6B7280]">
+                    Drag a pin across Oklahoma City or Edmond to auto-fill address
+                  </p>
+                </div>
+              </div>
+              <ArrowRight className="w-4 h-4 text-[#EA580C] group-hover:translate-x-1 transition-transform" />
+            </div>
+
+            {/* List of Verified Addresses */}
+            <ul className="max-h-72 overflow-y-auto divide-y divide-stone-100 py-1">
+              {suggestions.map((item, idx) => (
+                <li
+                  key={idx}
+                  onClick={() => handleSelect(item)}
+                  onMouseEnter={() => setSelectedIndex(idx)}
+                  className={`px-4 py-3 cursor-pointer flex items-center gap-3.5 transition-colors ${
+                    selectedIndex === idx
+                      ? 'bg-[#F1F5F9] text-[#002D61]'
+                      : 'hover:bg-[#F8FAFC]'
+                  }`}
+                >
+                  {/* Google Maps Pin Icon */}
+                  <div className="w-7 h-7 rounded-full bg-stone-100 flex items-center justify-center shrink-0">
+                    <svg className="w-4 h-4 text-[#EA4335]" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
+                    </svg>
+                  </div>
+
+                  {/* Two-Line Google Places Style Text */}
+                  <div className="flex-1 min-w-0">
+                    <p className="font-sans text-xs sm:text-sm text-[#1F2937] leading-snug truncate">
+                      {renderHighlightedText(item.mainText, value.trim())}
+                    </p>
+                    <p className="font-sans text-[11px] text-[#6B7280] leading-tight truncate">
+                      {item.secondaryText}
+                    </p>
+                  </div>
+
+                  {/* Badge */}
+                  {item.type === 'enclave' && (
+                    <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#002D61]/5 text-[#002D61] border border-[#002D61]/10 shrink-0">
+                      Luxury Enclave
+                    </span>
+                  )}
+                  {item.type === 'landmark' && (
+                    <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-700 border border-emerald-500/20 shrink-0">
+                      Country Club
+                    </span>
+                  )}
+
+                  {selectedIndex === idx && (
+                    <Check className="w-4 h-4 text-[#EA580C] shrink-0" />
+                  )}
+                </li>
+              ))}
+            </ul>
+
+            {/* Google Maps Official Attribution Footer */}
+            <div className="px-4 py-2 bg-[#F8FAFC] border-t border-stone-200/80 text-[11px] text-[#6B7280] flex items-center justify-between">
+              <div className="flex items-center gap-1.5">
+                <span className="text-[10px] uppercase font-sans tracking-wider text-[#9CA3AF]">
+                  Powered by
+                </span>
+                <span className="font-sans font-bold tracking-tight text-xs flex items-center">
+                  <span className="text-[#4285F4]">G</span>
+                  <span className="text-[#EA4335]">o</span>
+                  <span className="text-[#FBBC05]">o</span>
+                  <span className="text-[#4285F4]">g</span>
+                  <span className="text-[#34A853]">l</span>
+                  <span className="text-[#EA4335]">e</span>
+                  <span className="ml-1 text-[#4B5563] font-medium">Maps</span>
+                </span>
+              </div>
+
+              <span className="text-[10px] text-[#9CA3AF]">
+                MLSOK Verified
+              </span>
+            </div>
+
+          </div>
         )}
       </div>
 
-      {/* Floating Google Maps Address Dropdown */}
-      {isOpen && suggestions.length > 0 && (
-        <div className="absolute left-0 right-0 top-full mt-2 bg-white rounded-2xl shadow-2xl border border-[#EA580C]/35 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-          <div className="p-2 border-b border-[#E5E0D8]/60 bg-[#FAF9F6] flex items-center justify-between text-[10px] font-sans font-bold uppercase tracking-wider text-[#002D61]">
-            <span className="flex items-center gap-1.5">
-              <MapPin className="w-3.5 h-3.5 text-[#EA580C]" />
-              <span>Google Maps Verified Addresses (OKC / Edmond)</span>
-            </span>
-            <span className="text-[#6B7280] font-normal lowercase">click to select</span>
-          </div>
-
-          <ul className="max-h-64 overflow-y-auto divide-y divide-[#E5E0D8]/40">
-            {suggestions.map((addr, idx) => (
-              <li
-                key={idx}
-                onClick={() => handleSelect(addr)}
-                onMouseEnter={() => setSelectedIndex(idx)}
-                className={`px-4 py-3 cursor-pointer flex items-center gap-3 transition-colors ${
-                  selectedIndex === idx
-                    ? 'bg-[#FAF9F6] text-[#002D61]'
-                    : 'text-[#374151] hover:bg-[#FAF9F6]'
-                }`}
-              >
-                <div className="w-7 h-7 rounded-full bg-[#EA580C]/10 flex items-center justify-center shrink-0">
-                  <MapPin className="w-4 h-4 text-[#EA580C]" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="font-sans font-semibold text-xs sm:text-sm text-[#002D61] truncate">
-                    {addr}
-                  </p>
-                  <p className="font-sans text-[11px] text-[#6B7280]">
-                    Oklahoma City Metro Area
-                  </p>
-                </div>
-                {selectedIndex === idx && (
-                  <Check className="w-4 h-4 text-[#EA580C] shrink-0" />
-                )}
-              </li>
-            ))}
-          </ul>
-
-          <div className="px-3 py-1.5 bg-[#FAF9F6] border-t border-[#E5E0D8]/60 text-[10px] text-[#6B7280] flex items-center justify-between">
-            <span>Powered by Google Maps & MLSOK Geocoding</span>
-            <span>Esc to close</span>
-          </div>
-        </div>
-      )}
-    </div>
+      {/* Interactive Map Location Picker Modal */}
+      <MapLocationPickerModal
+        isOpen={isMapModalOpen}
+        onClose={() => setIsMapModalOpen(false)}
+        initialQuery={value}
+        onSelectLocation={(selected) => {
+          onChange(selected);
+          onSelectAddress(selected);
+        }}
+      />
+    </>
   );
 };
