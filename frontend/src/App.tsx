@@ -229,14 +229,14 @@ export default function App() {
             {/* 2. Direct MLSOK Verified Live Quick Search Console */}
             <HomepageQuickSearch onNavigate={navigate} />
 
-            {/* 3. Live MLS Listings Showcase */}
-            <HomepageFeaturedListings
-              onOpenValuation={() => handleOpenValuation()}
+            {/* Section 2: "Which Chapter Are You Navigating?" (Interactive Hover Accordion) */}
+            <ChapterAccordion
+              onOpenChapter={handleOpenChapter}
+              onSelectChapter={handleOpenChapter}
               onOpenConsultation={handleOpenConsultation}
-              onNavigate={navigate}
             />
 
-            {/* 4. 6-Phase Tactical Selling Blueprint */}
+            {/* Section 3: Services We Provide · The 6 Core Corporate Selling Processes */}
             <div id="the-method">
               <CompanyServicesProcessSection
                 onOpenValuation={() => handleOpenValuation()}
@@ -246,17 +246,18 @@ export default function App() {
               />
             </div>
 
-            {/* 5. Chapter Accordion - Strategy Playbook */}
-            <ChapterAccordion
-              onOpenChapter={handleOpenChapter}
+            {/* Section 4: Live MLSOK Featured Client Properties & Listings (Widget #176753) */}
+            <HomepageFeaturedListings
+              onOpenValuation={() => handleOpenValuation()}
               onOpenConsultation={handleOpenConsultation}
+              onNavigate={navigate}
             />
 
-            {/* 6. Confidential Market Appraisal Banner */}
+            {/* Section 6: Request A Confidential Market Appraisal (Valuation Funnel) */}
             <ValuationBanner onOpenValuation={handleOpenValuation} />
 
-            {/* 7. Client Reviews Luxury Responsive Slider */}
-            <TestimonialsSection />
+            {/* Section 7: Client Experiences (Verified Reviews) */}
+            <TestimonialsSection onOpenConsultation={handleOpenConsultation} />
 
             {/* 8. Micro-Markets Geographic Showcase */}
             <MicroMarketsSection
