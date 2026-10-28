@@ -2171,6 +2171,34 @@ export const AUDIENCE_PAGES: Record<string, InteriorPageData> = {
 };
 
 export const BRAND_PAGES: Record<string, InteriorPageData> = {
+  "property-videos": {
+    id: "property-videos",
+    slug: "/property-videos",
+    category: "brand",
+    kicker: "4K CINEMATOGRAPHY & DRONE PORTFOLIO",
+    title: "Oklahoma Luxury & Estate Property Videos",
+    subtitle: "Step inside Oklahoma's most exceptional homes and acreage. Every video produced with cinema-grade 4K optics, FAA Part 107 drone mapping, and architectural storytelling.",
+    heroVideoUrl: "/media/videos/vid1.mp4",
+    heroFallbackImage: "/media/gallery/modern-estate-pool-lawn.jpeg",
+    heroMetrics: [
+      { label: "Cinema Productions", value: "31+ Tours" },
+      { label: "Average Views", value: "14.2K+" },
+      { label: "FAA Certified", value: "Part 107" }
+    ],
+    overview: "In luxury and acreage transactions, buyer decisions begin online. High-bitrate 4K cinematography stops buyers from scrolling past and creates immediate emotional investment across local and out-of-state transferees.",
+    keyTakeaways: [
+      "Over 31 cinematic property tours filmed in 4K with gimbal stabilization",
+      "Licensed FAA Part 107 commercial drone flights showing lot boundaries and elevation",
+      "Over 14,000+ average views generated through hyper-targeted social ad campaigns",
+      "Zero repayment charges — 100% covered under full fiduciary representation"
+    ],
+    deliverables: [
+      { title: "4K Walkthrough Tours", desc: "Stabilized high-bitrate video capturing light, scale, and living flow." },
+      { title: "FAA Drone Mapping", desc: "Aerial boundaries, tree lines, and regional context mapped legally and safely." },
+      { title: "Hyper-Targeted Distribution", desc: "Targeting high-net-worth buyers locally and transferees from TX and CA." }
+    ],
+    images: DEFAULT_ARCHITECTURAL_GALLERY
+  },
   "about": {
     id: "about",
     slug: "/about",
@@ -2696,6 +2724,8 @@ const PATH_ALIASES: Record<string, string> = {
   "home-valuation": "home-valuation",
   "valuation": "home-valuation",
   "cma": "home-valuation",
+  "property-videos": "property-videos",
+  "videos": "property-videos",
   "contact": "contact"
 };
 

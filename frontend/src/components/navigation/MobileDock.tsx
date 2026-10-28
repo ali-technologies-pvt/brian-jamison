@@ -187,6 +187,17 @@ export const MobileDock: React.FC<MobileDockProps> = ({
                   >
                     21 Communities
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setDrawerOpen(false);
+                      if (onNavigate) onNavigate('/property-videos');
+                    }}
+                    className="col-span-2 p-2.5 rounded-xl bg-[#002D61] text-xs font-semibold text-white hover:bg-[#001D40] text-center cursor-pointer shadow-2xs flex items-center justify-center gap-2"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-[#EA580C]" />
+                    <span>🎬 Property Videos</span>
+                  </button>
                 </div>
 
                 {/* Accordion 0: Our 3 Major Services */}

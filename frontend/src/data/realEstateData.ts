@@ -118,7 +118,7 @@ export const CHAPTERS: Chapter[] = [
     index: "01",
     tag: "01 / BUYER CONCIERGE & EQUITY ADVISORY",
     title: "Home Buying",
-    summary: "Work with a Realtor in Edmond, OK, who explains each offer, inspection, and closing step in plain language.",
+    summary: "You could hire a friend, a relative, or your mother-in-law. But if you needed surgery, you’d call the best surgeon. Your home deserves the same. That’s who we are in real estate.",
     bulletPoints: [
       "Exclusive access to coming-soon and unlisted pocket luxury inventory",
       "Rigorous architectural, foundation, and mechanical due diligence",
@@ -133,7 +133,7 @@ export const CHAPTERS: Chapter[] = [
     index: "02",
     tag: "02 / 6-STEP SELLING BLUEPRINT",
     title: "Home Selling",
-    summary: "Strategic pricing, polished marketing, and Brian’s steady communication help you reach qualified buyers and pursue the best offers.",
+    summary: "A friend or relative with a license may mean well. But when you’re selling your biggest investment, you need proven pricing, elite marketing, and a team that negotiates to win. With $70M+ sold, that’s what we deliver.",
     bulletPoints: [
       "Cinema-grade 4K video, FAA drone mapping, and Matterport 3D tours",
       "High-ROI pre-listing refresh and architectural staging guidance",
@@ -148,13 +148,16 @@ export const CHAPTERS: Chapter[] = [
     index: "03",
     tag: "03 / ACREAGE & DEVELOPMENT ENCLAVES",
     title: "Land Buying and Selling",
-    summary: "Zoning, access, utilities, and value shape every land deal. Brian helps you weigh them before buying or selling.",
+    summary: "You can’t fix bad land after closing. Get it right the first time.\n\nFence lines, flood zones, and fine print. Miss one and it costs you. We don’t miss.\n\n1,450+ acres. Zero guesswork.\n\nLand doesn’t come with a listing photo that tells the truth. We do.",
     bulletPoints: [
-      "Topographical drone surveys, aerial boundary overlays, and soil tests",
-      "Zoning, utility easement, and municipal permitting feasibility audits",
-      "Targeted marketing reaching custom home builders, developers, and estate buyers"
+      "You can’t fix bad land after closing. Get it right the first time.",
+      "Fence lines, flood zones, and fine print. Miss one and it costs you. We don’t miss.",
+      "1,450+ acres. Zero guesswork.",
+      "Land doesn’t come with a listing photo that tells the truth. We do."
+
+
     ],
-    metrics: { label: "Acreage Transacted", value: "1,450+ Acres" },
+    metrics: { label: "Land Track Record", value: "1,450+ Acres · Zero Guesswork" },
     ctaText: "EXPLORE LAND ADVISORY →",
     bgGradient: "from-slate-900/90 via-stone-900/75 to-neutral-950/95"
   }
@@ -1022,6 +1025,7 @@ export const SITEMAP_PAGES = [
   { path: "/about", title: "About Brian Jamison & Salt", category: "Core" },
   { path: "/seller-blueprint", title: "6-Step Seller Blueprint", category: "Core" },
   { path: "/listings", title: "Active & Featured Listings", category: "Core" },
+  { path: "/property-videos", title: "Property Videos & 4K Cinematography", category: "Core" },
   { path: "/past-sales", title: "$70M+ Past Sales Track Record", category: "Core" },
   { path: "/reviews", title: "Client Experiences & Reviews", category: "Core" },
   { path: "/home-valuation", title: "Confidential Market Appraisal", category: "Core" },

@@ -334,9 +334,29 @@ export const Navbar: React.FC<NavbarProps> = ({
                 handleCancelClose();
                 setActiveMenu(null);
               }}
-              className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide text-white hover:text-[#FB923C] hover:bg-white/10 transition-all cursor-pointer"
+              className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide text-white hover:text-[#FB923C] hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap"
             >
               About Brian Jamison
+            </a>
+
+            {/* Link 6: Property Videos (Direct link to Property Videos) */}
+            <a
+              href="/property-videos"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigate) {
+                  onNavigate('/property-videos');
+                } else {
+                  window.location.href = '/property-videos';
+                }
+              }}
+              onMouseEnter={() => {
+                handleCancelClose();
+                setActiveMenu(null);
+              }}
+              className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide text-white hover:text-[#FB923C] hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap"
+            >
+              Property Videos
             </a>
           </nav>
 

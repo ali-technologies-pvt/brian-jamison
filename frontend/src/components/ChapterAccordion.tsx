@@ -4,7 +4,9 @@ import { BrianAvatar } from './BrianAvatar';
 import { ArrowUpRight, Sparkles } from 'lucide-react';
 
 interface ChapterAccordionProps {
-  onSelectChapter: (chapterId: string) => void;
+  onSelectChapter?: (chapterId: string) => void;
+  onOpenChapter?: (chapterId: string) => void;
+  onOpenConsultation?: () => void;
 }
 
 // Curated high-fidelity architectural imagery for our 3 major services
@@ -17,8 +19,20 @@ const CHAPTER_IMAGES = [
   "/media/properties/11616-estrella-arcadia.jpeg"
 ];
 
-export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChapter }) => {
+export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({
+  onSelectChapter,
+  onOpenChapter,
+  onOpenConsultation
+}) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+
+  const handleTrigger = (chapterId: string) => {
+    if (onOpenChapter) {
+      onOpenChapter(chapterId);
+    } else if (onSelectChapter) {
+      onSelectChapter(chapterId);
+    }
+  };
 
   return (
     <section id="major-services" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#EA580C]/30">
@@ -54,7 +68,7 @@ export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChap
               <div
                 key={chapter.id}
                 onMouseEnter={() => setActiveIndex(index)}
-                onClick={() => onSelectChapter(chapter.id)}
+                onClick={() => handleTrigger(chapter.id)}
                 className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] flex flex-col justify-end bg-[#002D61] border border-[#002D61]/30 ${
                   isActive ? 'flex-[3.5] shadow-2xl' : 'flex-1 hover:flex-[1.15]'
                 }`}
@@ -121,7 +135,7 @@ export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChap
                     {chapter.title}
                   </h3>
 
-                  <p className="font-sans text-sm lg:text-base !text-white leading-relaxed max-w-lg mb-6 font-medium drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)]">
+                  <p className="font-sans text-sm lg:text-base !text-white leading-relaxed max-w-lg mb-6 font-medium drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)] whitespace-pre-line">
                     {chapter.summary}
                   </p>
 
@@ -153,7 +167,7 @@ export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChap
                       type="button"
                       onClick={(e) => {
                         e.stopPropagation();
-                        onSelectChapter(chapter.id);
+                        handleTrigger(chapter.id);
                       }}
                       className="group inline-flex items-center gap-2.5 px-7 py-3.5 text-xs font-bold tracking-wide uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-xl transition-all duration-300 shadow-lg shadow-orange-600/40 hover:shadow-orange-600/60 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
                     >
@@ -207,14 +221,14 @@ export const ChapterAccordion: React.FC<ChapterAccordionProps> = ({ onSelectChap
 
                   {isActive ? (
                     <div className="mt-2 pt-3 border-t border-white/20 animate-in fade-in duration-200">
-                      <p className="font-sans text-xs !text-white leading-relaxed mb-4 font-medium drop-shadow-xs">
+                      <p className="font-sans text-xs !text-white leading-relaxed mb-4 font-medium drop-shadow-xs whitespace-pre-line">
                         {chapter.summary}
                       </p>
                       <button
                         type="button"
                         onClick={(e) => {
                           e.stopPropagation();
-                          onSelectChapter(chapter.id);
+                          handleTrigger(chapter.id);
                         }}
                         className="group w-full py-3.5 px-7 text-center text-xs font-bold tracking-wide uppercase text-white bg-[#EA580C] hover:bg-[#C2410C] rounded-xl shadow-lg shadow-orange-600/40 flex items-center justify-center gap-2 transition-all cursor-pointer"
                       >

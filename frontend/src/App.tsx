@@ -22,6 +22,7 @@ const AdminLoginView = React.lazy(() => import('./components/admin/AdminLoginVie
 const IdxTestPage = React.lazy(() => import('./pages/IdxTestPage').then(m => ({ default: m.IdxTestPage })));
 const MapSearchPage = React.lazy(() => import('./pages/MapSearchPage').then(m => ({ default: m.MapSearchPage })));
 const SitemapPage = React.lazy(() => import('./pages/SitemapPage').then(m => ({ default: m.SitemapPage })));
+const PropertyVideosPage = React.lazy(() => import('./pages/PropertyVideosPage').then(m => ({ default: m.PropertyVideosPage })));
 
 // Lazy-Loaded Modals (Zero impact on initial page paint)
 const ValuationModal = React.lazy(() => import('./components/Modals').then(m => ({ default: m.ValuationModal })));
@@ -194,6 +195,14 @@ export default function App() {
         ) : isSitemapRoute ? (
           <Suspense fallback={<AppFallback />}>
             <SitemapPage onNavigate={navigate} />
+          </Suspense>
+        ) : currentPath === '/property-videos' || currentPath === '/videos' ? (
+          <Suspense fallback={<AppFallback />}>
+            <PropertyVideosPage
+              onNavigate={navigate}
+              onOpenConsultation={handleOpenConsultation}
+              onOpenValuation={() => handleOpenValuation()}
+            />
           </Suspense>
         ) : activeInteriorPage ? (
           <Suspense fallback={<AppFallback />}>

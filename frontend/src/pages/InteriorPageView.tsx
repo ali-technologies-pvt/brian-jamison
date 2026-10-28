@@ -32,6 +32,7 @@ import { TestimonialsSection, GoogleLogoIcon } from '../components/TestimonialsS
 const HomeSellingPage = React.lazy(() => import('./HomeSellingPage').then(m => ({ default: m.HomeSellingPage })));
 const HomeBuyingPage = React.lazy(() => import('./HomeBuyingPage').then(m => ({ default: m.HomeBuyingPage })));
 const LandSalesPage = React.lazy(() => import('./LandSalesPage').then(m => ({ default: m.LandSalesPage })));
+const PropertyVideosPage = React.lazy(() => import('./PropertyVideosPage').then(m => ({ default: m.PropertyVideosPage })));
 const NeighborhoodDetailView = React.lazy(() => import('./NeighborhoodDetailView').then(m => ({ default: m.NeighborhoodDetailView })));
 const AboutJamisonPage = React.lazy(() => import('./AboutJamisonPage').then(m => ({ default: m.AboutJamisonPage })));
 const CommunityHubPage = React.lazy(() => import('./CommunityHubPage').then(m => ({ default: m.CommunityHubPage })));
@@ -49,7 +50,7 @@ const LegalCompliancePage = React.lazy(() => import('./ResourcePages').then(m =>
 const PageLoadingFallback = () => (
   <div className="w-full min-h-[60vh] bg-[#FAF9F6] flex flex-col items-center justify-center p-8">
     <div className="w-10 h-10 border-3 border-[#002D61] border-t-[#EA580C] rounded-full animate-spin mb-4" />
-    <span className="text-xs uppercase tracking-widest text-[#002D61] font-bold">Loading Experience...</span>
+    <span className="text-xs uppercase tracking-widest text-[#002D61] font-bold">Loading...</span>
   </div>
 );
 
@@ -119,6 +120,23 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
     return (
       <React.Suspense fallback={<PageLoadingFallback />}>
         <LandSalesPage
+          onNavigate={onNavigate}
+          onOpenConsultation={onOpenConsultation}
+          onOpenValuation={onOpenValuation}
+        />
+      </React.Suspense>
+    );
+  }
+
+  // 3.5. Dedicated Property Videos Page (/property-videos)
+  if (
+    page.id === 'property-videos' ||
+    page.slug === '/property-videos' ||
+    page.slug === '/videos'
+  ) {
+    return (
+      <React.Suspense fallback={<PageLoadingFallback />}>
+        <PropertyVideosPage
           onNavigate={onNavigate}
           onOpenConsultation={onOpenConsultation}
           onOpenValuation={onOpenValuation}
