@@ -148,11 +148,11 @@ export const CHAPTERS: Chapter[] = [
     index: "03",
     tag: "03 / ACREAGE & DEVELOPMENT ENCLAVES",
     title: "Land Buying and Selling",
-    summary: "You can’t fix bad land after closing. Get it right the first time.\n\nFence lines, flood zones, and fine print. Miss one and it costs you. We don’t miss.\n\n1,450+ acres. Zero guesswork.\n\nLand doesn’t come with a listing photo that tells the truth. We do.",
+    summary: "You can’t fix bad land after closing. Get it right the first time. Fence lines, flood zones, and fine print—miss one and it costs you. We don’t miss. Land doesn’t come with a listing photo that tells the truth. We do.",
     bulletPoints: [
       "You can’t fix bad land after closing. Get it right the first time.",
       "Fence lines, flood zones, and fine print. Miss one and it costs you. We don’t miss.",
-      "1,450+ acres. Zero guesswork.",
+      "1,450+ acres transacted with zero guesswork across Oklahoma.",
       "Land doesn’t come with a listing photo that tells the truth. We do."
 
 

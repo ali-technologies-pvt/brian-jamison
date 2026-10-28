@@ -807,12 +807,12 @@ export const PropertyVideosPage: React.FC<PropertyVideosPageProps> = ({
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
             {filteredVideos.map((video) => (
               <div
                 key={video.id}
                 onClick={() => setSelectedVideo(video)}
-                className="group relative bg-white rounded-2xl overflow-hidden border border-[#EA580C]/25 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between cursor-pointer hover:-translate-y-1"
+                className="group relative bg-white rounded-xl sm:rounded-2xl overflow-hidden border border-[#EA580C]/25 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between cursor-pointer hover:-translate-y-1"
               >
                 {/* Thumbnail Container */}
                 <div className="relative aspect-video w-full overflow-hidden bg-stone-900">
@@ -826,56 +826,56 @@ export const PropertyVideosPage: React.FC<PropertyVideosPageProps> = ({
 
                   {/* Play Overlay */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-90 group-hover:opacity-100 transition-opacity">
-                    <div className="w-12 h-12 rounded-full bg-[#EA580C] text-white flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-115">
-                      <Play className="w-5 h-5 fill-current ml-0.5" />
+                    <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-[#EA580C] text-white flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-115">
+                      <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-current ml-0.5" />
                     </div>
                   </div>
 
                   {/* Category Pill Top Left */}
-                  <div className="absolute top-3 left-3">
-                    <span className="px-2.5 py-1 rounded-full bg-[#002D61]/90 backdrop-blur-md text-white text-[10px] font-bold tracking-wide uppercase shadow-2xs">
+                  <div className="absolute top-2 left-2 sm:top-3 sm:left-3">
+                    <span className="px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-[#002D61]/90 backdrop-blur-md text-white text-[8px] sm:text-[10px] font-bold tracking-wide uppercase shadow-2xs">
                       {video.categoryLabel}
                     </span>
                   </div>
 
                   {/* Duration & Views Bottom Bar */}
-                  <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[11px] text-white font-medium drop-shadow-xs">
-                    <span className="flex items-center gap-1 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded-md">
-                      <Clock className="w-3 h-3 text-[#FB923C]" /> {video.duration}
+                  <div className="absolute bottom-1.5 left-2 right-2 sm:bottom-2.5 sm:left-3 sm:right-3 flex items-center justify-between text-[9px] sm:text-[11px] text-white font-medium drop-shadow-xs">
+                    <span className="flex items-center gap-1 bg-black/60 backdrop-blur-md px-1.5 py-0.5 sm:px-2 sm:py-0.5 rounded-md">
+                      <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#FB923C]" /> {video.duration}
                     </span>
-                    <span className="flex items-center gap-1 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded-md">
-                      <Eye className="w-3 h-3 text-[#FB923C]" /> {video.views}
+                    <span className="flex items-center gap-1 bg-black/60 backdrop-blur-md px-1.5 py-0.5 sm:px-2 sm:py-0.5 rounded-md">
+                      <Eye className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#FB923C]" /> {video.views}
                     </span>
                   </div>
                 </div>
 
                 {/* Card Content */}
-                <div className="p-5 flex-1 flex flex-col justify-between">
+                <div className="p-3 sm:p-5 flex-1 flex flex-col justify-between">
                   <div>
                     {/* Location Badge */}
-                    <div className="flex items-center gap-1 text-[11px] font-semibold text-[#EA580C] mb-2 uppercase tracking-wider">
-                      <MapPin className="w-3.5 h-3.5" />
-                      <span>{video.neighborhood} · {video.city}</span>
+                    <div className="flex items-center gap-1 text-[9px] sm:text-[11px] font-semibold text-[#EA580C] mb-1 sm:mb-2 uppercase tracking-wider truncate">
+                      <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
+                      <span className="truncate">{video.neighborhood} · {video.city}</span>
                     </div>
 
                     {/* Title */}
-                    <h4 className="font-serif text-lg font-bold text-[#002D61] group-hover:text-[#EA580C] transition-colors mb-2 leading-snug">
+                    <h4 className="font-serif text-xs sm:text-lg font-bold text-[#002D61] group-hover:text-[#EA580C] transition-colors mb-1 sm:mb-2 leading-snug line-clamp-2">
                       {video.title}
                     </h4>
 
-                    {/* Description */}
-                    <p className="font-sans text-xs text-[#6B7280] line-clamp-2 leading-relaxed mb-4">
+                    {/* Description - Hidden on small mobile to ensure clean 2-column alignment */}
+                    <p className="hidden sm:block font-sans text-xs text-[#6B7280] line-clamp-2 leading-relaxed mb-4">
                       {video.description}
                     </p>
                   </div>
 
                   {/* Specs & Watch CTA */}
-                  <div className="pt-3 border-t border-stone-100 flex items-center justify-between">
-                    <span className="text-[11px] font-medium text-stone-500 truncate max-w-[65%]">
+                  <div className="pt-2 sm:pt-3 border-t border-stone-100 flex items-center justify-between gap-1">
+                    <span className="text-[9px] sm:text-[11px] font-medium text-stone-500 truncate max-w-[60%]">
                       {video.specs}
                     </span>
-                    <span className="text-xs font-bold text-[#002D61] group-hover:text-[#EA580C] flex items-center gap-1 shrink-0">
-                      Watch Tour <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                    <span className="text-[10px] sm:text-xs font-bold text-[#002D61] group-hover:text-[#EA580C] flex items-center gap-0.5 sm:gap-1 shrink-0">
+                      <span>Watch</span> <ArrowRight className="w-2.5 h-2.5 sm:w-3 sm:h-3 transition-transform group-hover:translate-x-1" />
                     </span>
                   </div>
                 </div>

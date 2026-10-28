@@ -527,7 +527,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
           </div>
 
           {/* 9:16 Vertical Video Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-5">
             {LAND_REELS.map((reel, index) => (
               <div
                 key={reel.id}
