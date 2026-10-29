@@ -16,15 +16,30 @@ import {
 } from 'lucide-react';
 import { useAdmin, ElementStyleData } from '../../context/AdminContext';
 
-export function getCleanImageKey(src: string): string {
-  if (!src) return '';
+export function getCleanImageKeys(src: string): string[] {
+  if (!src) return [];
+  const keys: string[] = [];
   try {
     const pathOnly = src.split('?')[0].split('#')[0];
     const normalized = pathOnly.replace(/^https?:\/\/[^\/]+/, '');
-    return normalized.toLowerCase().replace(/[^a-z0-9_-]/g, '_').slice(-60);
-  } catch {
-    return src.slice(-40).replace(/[^a-zA-Z0-9_-]/g, '_');
-  }
+    const cleanPath = normalized.toLowerCase().replace(/[^a-z0-9_-]/g, '_').slice(-60);
+    keys.push(cleanPath);
+
+    const parts = normalized.split('/');
+    const filename = parts[parts.length - 1];
+    if (filename) {
+      const cleanFilename = filename.toLowerCase().replace(/[^a-z0-9_-]/g, '_');
+      if (cleanFilename !== cleanPath) {
+        keys.push(cleanFilename);
+      }
+    }
+  } catch {}
+  return keys;
+}
+
+export function getCleanImageKey(src: string): string {
+  const keys = getCleanImageKeys(src);
+  return keys[0] || '';
 }
 
 export interface UniversalEditTarget {
@@ -228,6 +243,11 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
         targetImg = target.elementRef.querySelector('img');
       }
 
+      // If not directly found inside elementRef (e.g. user clicked a title or text inside card), find in parent card/section
+      if (!targetImg && target.elementRef) {
+        targetImg = target.elementRef.closest('div[class*="rounded-2xl"], div[class*="rounded-3xl"], div[class*="rounded-xl"], div[class*="card"], section, article')?.querySelector('img') || null;
+      }
+
       const originalSrc =
         targetImg?.getAttribute('data-original-src') ||
         targetImg?.getAttribute('src') ||
@@ -245,26 +265,29 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
         if (imageAlt) targetImg.setAttribute('alt', imageAlt);
       }
 
-      // 1. Save directly to target key
-      if (target.key) {
-        const keyToSave = target.key.startsWith('img_') ? target.key : `img_replace_${target.key}`;
-        await updateContent(keyToSave, imageSrc, `Image: ${target.label}`);
+      // A. Save against target key if element is an image
+      if (target.type === 'image' && target.key) {
+        await updateContent(target.key, imageSrc, `Image: ${target.label}`);
       }
 
-      // 2. Save against clean image path key so it matches on any reload
+      // B. Save against all clean path & filename keys so it matches on any reload
       if (originalSrc) {
-        const cleanKey = getCleanImageKey(originalSrc);
-        await updateContent(`img_src_${cleanKey}`, imageSrc, `Photo: ${originalSrc.slice(-30)}`);
+        const cleanKeys = getCleanImageKeys(originalSrc);
+        for (const k of cleanKeys) {
+          await updateContent(`img_src_${k}`, imageSrc, `Photo: ${originalSrc.slice(-30)}`);
+        }
         await updateImageSeo(originalSrc, { newSrc: imageSrc, alt: imageAlt });
       }
 
-      // 3. Save against parent container key if target element resides inside a card
-      const parentContainer = targetImg?.closest<HTMLElement>('[data-container-key]');
+      // C. Save against parent container key if target element resides inside a card
+      const parentContainer = (targetImg?.closest<HTMLElement>('[data-container-key]')) || (target.elementRef?.closest<HTMLElement>('[data-container-key]'));
       if (parentContainer) {
         const cKey = parentContainer.getAttribute('data-container-key');
-        if (cKey && cKey !== target.key) {
+        if (cKey) {
           await updateContent(`img_replace_${cKey}`, imageSrc, `Card photo: ${cKey}`);
         }
+      } else if (target.type === 'card' && target.key) {
+        await updateContent(`img_replace_${target.key}`, imageSrc, `Card photo: ${target.key}`);
       }
     }
 
@@ -313,8 +336,10 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
       }
     }
 
-    // 4. Update Content in AdminContext
-    await updateContent(target.key, finalContent, target.label);
+    // 4. Update Content in AdminContext ONLY for non-image elements (never overwrite image with stale text)
+    if (target.type !== 'image' && target.type !== 'card') {
+      await updateContent(target.key, finalContent, target.label);
+    }
 
     // 5. Apply style changes
     const newStyle: ElementStyleData = {

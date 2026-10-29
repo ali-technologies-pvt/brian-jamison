@@ -3,7 +3,11 @@ import path from 'path';
 import { connectToDatabase } from './mongodb';
 import { SiteContent } from '../models/SiteContent';
 
-const FALLBACK_FILE_PATH = path.resolve(__dirname, '../../data/site-content.json');
+const isServerless = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.TMPDIR);
+const SEED_FILE_PATH = path.resolve(__dirname, '../../data/site-content.json');
+const FALLBACK_FILE_PATH = isServerless
+  ? path.resolve(process.env.TMPDIR || '/tmp', 'site-content.json')
+  : SEED_FILE_PATH;
 
 // In-memory cache for ultra-fast response
 const memoryContentStore: Record<string, string> = {
@@ -13,7 +17,7 @@ const memoryContentStore: Record<string, string> = {
   'seller_guarantee_badge': '100% Risk-Free · Cancel Anytime Pledge',
 };
 
-// Ensure data directory exists
+// Ensure data directory exists and seed initial data if in serverless /tmp
 function ensureFallbackFile() {
   try {
     const dir = path.dirname(FALLBACK_FILE_PATH);
@@ -21,7 +25,12 @@ function ensureFallbackFile() {
       fs.mkdirSync(dir, { recursive: true });
     }
     if (!fs.existsSync(FALLBACK_FILE_PATH)) {
-      fs.writeFileSync(FALLBACK_FILE_PATH, JSON.stringify(memoryContentStore, null, 2), 'utf-8');
+      if (fs.existsSync(SEED_FILE_PATH)) {
+        const seedData = fs.readFileSync(SEED_FILE_PATH, 'utf-8');
+        fs.writeFileSync(FALLBACK_FILE_PATH, seedData, 'utf-8');
+      } else {
+        fs.writeFileSync(FALLBACK_FILE_PATH, JSON.stringify(memoryContentStore, null, 2), 'utf-8');
+      }
     }
   } catch {
     // If filesystem is read-only or restricted, memory cache is maintained

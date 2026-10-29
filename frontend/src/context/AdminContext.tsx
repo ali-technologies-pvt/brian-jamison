@@ -158,7 +158,8 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         const data = await res.json();
         if (data.success && data.content) {
           setContentMap((prev) => {
-            const next = { ...prev, ...data.content };
+            // Local unsynced edits in prev take precedence over older server cache
+            const next = { ...data.content, ...prev };
             if (typeof window !== 'undefined') {
               safeLocalStorageSet(LOCAL_STORAGE_CONTENT_FALLBACK_KEY, JSON.stringify(next));
             }

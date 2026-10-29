@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useAdmin, ElementStyleData } from '../../context/AdminContext';
 import { ImageSeoModal } from './ImageSeoModal';
 import { StyleInspectorModal } from './StyleInspectorModal';
-import { UniversalElementEditModal, UniversalEditTarget, getCleanImageKey } from './UniversalElementEditModal';
+import { UniversalElementEditModal, UniversalEditTarget, getCleanImageKeys, getCleanImageKey } from './UniversalElementEditModal';
 import { Loader2, Check, Pencil } from 'lucide-react';
 
 interface GlobalInlineEditorProps {
@@ -263,12 +263,6 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
       const key = container.getAttribute('data-container-key') || generateContainerKey(container, currentPath);
       container.setAttribute('data-container-key', key);
 
-      if (contentMap[key]) {
-        if (container.innerHTML !== contentMap[key]) {
-          container.innerHTML = contentMap[key];
-        }
-      }
-
       const imgReplacement = contentMap[`img_replace_${key}`];
       if (imgReplacement) {
         const img = container.querySelector('img');
@@ -295,20 +289,37 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
           img.setAttribute('data-original-src', rawSrc);
         }
 
-        const cleanKey = getCleanImageKey(rawSrc);
+        const keys = getCleanImageKeys(rawSrc);
         const parentContainer = img.closest<HTMLElement>('[data-container-key]');
         const parentKey = parentContainer?.getAttribute('data-container-key');
 
-        const replacementFromMap =
-          (parentKey ? contentMap[`img_replace_${parentKey}`] : null) ||
-          contentMap[`img_src_${cleanKey}`] ||
-          contentMap[`img_replace_${cleanKey}`] ||
-          contentMap[`img_replace_${encodeURIComponent(rawSrc).slice(0, 40)}`];
+        let replacementFromMap: string | null = null;
+        if (parentKey && contentMap[`img_replace_${parentKey}`]) {
+          replacementFromMap = contentMap[`img_replace_${parentKey}`];
+        }
+        if (!replacementFromMap) {
+          for (const k of keys) {
+            if (contentMap[`img_src_${k}`]) {
+              replacementFromMap = contentMap[`img_src_${k}`];
+              break;
+            }
+            if (contentMap[`img_replace_${k}`]) {
+              replacementFromMap = contentMap[`img_replace_${k}`];
+              break;
+            }
+          }
+        }
+        if (!replacementFromMap) {
+          const directKey = `img_replace_${encodeURIComponent(rawSrc).slice(0, 40)}`;
+          if (contentMap[directKey]) {
+            replacementFromMap = contentMap[directKey];
+          }
+        }
 
         const seo = getImageSeo(rawSrc);
         const targetSrc = seo.newSrc || replacementFromMap;
 
-        if (targetSrc && img.src !== targetSrc) {
+        if (targetSrc && (img.src !== targetSrc || img.getAttribute('src') !== targetSrc)) {
           img.src = targetSrc;
           img.setAttribute('src', targetSrc);
         }
