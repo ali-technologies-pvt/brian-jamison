@@ -391,52 +391,93 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
     };
   }, [isAdmin, isEditMode, currentPath, contentMap]);
 
-  // 3. FLOATING PEN (PENCIL) BADGE ON HOVER:
+  // 3. FLOATING PEN (PENCIL) BADGE ON HOVER (Optimized for 60-120fps Smooth Scrolling):
   // Shows a clear, sleek "✏️ Edit [Element]" badge on every heading, button, card, section
+  const lastCandidateRef = useRef<HTMLElement | null>(null);
+
   useEffect(() => {
     if (!isAdmin || !isEditMode) {
       setHoveredPenBadge(null);
+      lastCandidateRef.current = null;
       return;
     }
 
+    let rafId: number | null = null;
+    let isScrolling = false;
+    let scrollTimer: ReturnType<typeof setTimeout> | null = null;
+
+    const handleScroll = () => {
+      isScrolling = true;
+      if (hoveredPenBadge) {
+        setHoveredPenBadge(null);
+      }
+      lastCandidateRef.current = null;
+      if (scrollTimer) clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        isScrolling = false;
+      }, 100);
+    };
+
     const handleMouseMove = (e: MouseEvent) => {
-      const target = e.target as HTMLElement | null;
-      if (!target) return;
+      if (isScrolling) return;
 
-      // STRICTLY IGNORE Admin Toolbar, Call Button, and all Admin UI
-      if (isAdminOrExcludedUI(target)) {
-        setHoveredPenBadge(null);
-        return;
-      }
+      if (rafId !== null) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = null;
+        const target = e.target as HTMLElement | null;
+        if (!target) return;
 
-      // Find nearest editable candidate
-      const candidate = target.closest(
-        'img, h1, h2, h3, h4, h5, h6, p, button, a, div[class*="rounded-2xl"], div[class*="rounded-3xl"], div[class*="rounded-xl"], div[class*="card"], section'
-      ) as HTMLElement | null;
+        // STRICTLY IGNORE Admin Toolbar, Call Button, and all Admin UI
+        if (isAdminOrExcludedUI(target)) {
+          if (lastCandidateRef.current) {
+            setHoveredPenBadge(null);
+            lastCandidateRef.current = null;
+          }
+          return;
+        }
 
-      if (!candidate || candidate.offsetHeight < 20 || isAdminOrExcludedUI(candidate)) {
-        setHoveredPenBadge(null);
-        return;
-      }
+        // Find nearest editable candidate
+        const candidate = target.closest(
+          'img, h1, h2, h3, h4, h5, h6, p, button, a, div[class*="rounded-2xl"], div[class*="rounded-3xl"], div[class*="rounded-xl"], div[class*="card"], section'
+        ) as HTMLElement | null;
 
-      const rect = candidate.getBoundingClientRect();
-      const editTarget = buildEditTarget(candidate, currentPath, contentMap);
+        if (!candidate || candidate.offsetHeight < 20 || isAdminOrExcludedUI(candidate)) {
+          if (lastCandidateRef.current) {
+            setHoveredPenBadge(null);
+            lastCandidateRef.current = null;
+          }
+          return;
+        }
 
-      // Position pen badge at top-right of candidate element
-      const badgeTop = rect.top < 40 ? rect.bottom + 6 : rect.top - 28;
-      const badgeLeft = Math.min(window.innerWidth - 180, Math.max(10, rect.right - 130));
+        // Avoid re-computing if candidate hasn't changed
+        if (candidate === lastCandidateRef.current) {
+          return;
+        }
 
-      setHoveredPenBadge({
-        top: badgeTop,
-        left: badgeLeft,
-        target: editTarget,
+        lastCandidateRef.current = candidate;
+        const rect = candidate.getBoundingClientRect();
+        const editTarget = buildEditTarget(candidate, currentPath, contentMap);
+
+        // Position pen badge at top-right of candidate element
+        const badgeTop = rect.top < 40 ? rect.bottom + 6 : rect.top - 28;
+        const badgeLeft = Math.min(window.innerWidth - 180, Math.max(10, rect.right - 130));
+
+        setHoveredPenBadge({
+          top: badgeTop,
+          left: badgeLeft,
+          target: editTarget,
+        });
       });
     };
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      if (scrollTimer) clearTimeout(scrollTimer);
     };
   }, [isAdmin, isEditMode, currentPath, contentMap]);
 

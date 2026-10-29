@@ -1613,7 +1613,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
     category: "service",
     kicker: "01 / BUYER CONCIERGE & EQUITY ADVISORY",
     title: "Home Buying: Private Advisory & Fiduciary Representation",
-    subtitle: "From exclusive off-market pocket listings to rigorous structural inspections and winning contract negotiation, our firm defends your equity across Edmond & Greater Oklahoma City.",
+    subtitle: "You could hire a friend, a relative, or your mother-in-law. But if you needed surgery, you’d call the best surgeon. Your home deserves the same. That’s who we are in real estate.",
     heroVideoUrl: "/media/videos/vid11.mp4",
     heroFallbackImage: "/media/properties/1817-sun-valley-edmond.jpeg",
     heroMetrics: [
@@ -1692,7 +1692,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
     category: "service",
     kicker: "02 / MAXIMUM-NET LISTING MACHINE",
     title: "Home Selling: The Proprietary 6-Step Selling Machine",
-    subtitle: "We do not passively place a sign in the yard. Jamison Real Estate executes an institutional 6-step selling blueprint backed by cinema-grade 4K media, 350+ portal syndication, and our 100% Risk-Free Cancel-Anytime Pledge.",
+    subtitle: "A friend or relative with a license may mean well. But when you’re selling your biggest investment, you need proven pricing, elite marketing, and a team that negotiates to win. With $70M+ sold, that’s what we deliver.",
     heroVideoUrl: "/media/videos/vid12.mp4",
     heroFallbackImage: "/media/gallery/modern-estate-pool-lawn.jpeg",
     heroMetrics: [
@@ -1771,7 +1771,7 @@ export const MAJOR_SERVICE_PAGES: Record<string, InteriorPageData> = {
     category: "service",
     kicker: "03 / ACREAGE & DEVELOPMENT ENCLAVES",
     title: "Land Buying and Selling: Acreage & Parcel Advisory",
-    subtitle: "Navigating topography, soil percolation, utility easements, and zoning requires specialized land expertise. Our firm represents landowners, developers, and estate buyers across Oklahoma.",
+    subtitle: "You can’t fix bad land after closing. Get it right the first time. Fence lines, flood zones, and fine print. Miss one and it costs you. We don’t miss. 1,450+ acres. Zero guesswork. Land doesn’t come with a listing photo that tells the truth. We do.",
     heroVideoUrl: "/media/videos/vid13.mp4",
     heroFallbackImage: "/media/gallery/sunset-window-terrace.jpeg",
     heroMetrics: [

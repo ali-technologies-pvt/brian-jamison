@@ -518,7 +518,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
       <InteriorHeroVideo
         kicker="Home Selling"
         title="Home Selling Agent in Edmond, OK, That Protects Your Home's Value"
-        subtitle="From professional property media and broad listing exposure to data-backed pricing and skilled negotiation, our selling process is designed to help you attract serious buyers and evaluate competitive offers. As the best realtor for selling a home in Edmond, Brian Jamison guides sellers through preparation, marketing, negotiations, and closing with a focus on clear communication and informed decisions."
+        subtitle="A friend or relative with a license may mean well. But when you’re selling your biggest investment, you need proven pricing, elite marketing, and a team that negotiates to win. With $70M+ sold, that’s what we deliver."
         heroVideoUrl="/media/videos/vid1.mp4"
         heroFallbackImage="/media/gallery/modern-estate-pool-lawn.jpeg"
         metrics={[

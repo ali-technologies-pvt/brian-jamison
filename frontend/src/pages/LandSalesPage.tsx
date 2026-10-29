@@ -338,9 +338,9 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
         ========================================================================
       */}
       <InteriorHeroVideo
-        kicker="Land Real Estate Agent in Edmond, OK"
+        kicker="Land Buying and Selling · 1,450+ Acres"
         title="Land Real Estate Agent in Edmond, OK"
-        subtitle="From 1-acre luxury custom home lots to 100+ acre rural tracts, our land advisory services combine aerial mapping, zoning research, access reviews, and targeted investor outreach to support informed land transactions."
+        subtitle="You can’t fix bad land after closing. Get it right the first time. Fence lines, flood zones, and fine print. Miss one and it costs you. We don’t miss. 1,450+ acres. Zero guesswork. Land doesn’t come with a listing photo that tells the truth. We do."
         heroVideoUrl="/media/videos/vid3.mp4"
         heroFallbackImage="/media/properties/11616-estrella-arcadia.jpeg"
         metrics={[

@@ -72,10 +72,10 @@ export const MegaMenuBlueprint: React.FC<MegaMenuBlueprintProps> = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: -10, scale: 0.98 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: -8, scale: 0.98 }}
-      transition={{ type: 'spring', damping: 25, stiffness: 350 }}
+      initial={{ opacity: 0, y: -4 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -4 }}
+      transition={{ duration: 0.08, ease: 'easeOut' }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       className="mega-menu-card absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 w-[940px] max-w-[95vw] z-50 pointer-events-auto"

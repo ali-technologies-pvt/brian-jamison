@@ -34,7 +34,7 @@ export const ServicesHubPage: React.FC<ServicesHubPageProps> = ({
       title: "Home Buying Advisory",
       kicker: "PRIVATE CLIENT CONCIERGE",
       slug: "/services/home-buying",
-      desc: "Comprehensive buyer representation under new fiduciary regulations. From off-market pocket listings in Nichols Hills and Gaillardia to meticulous architectural inspection audits and fierce purchase contract negotiation.",
+      desc: "You could hire a friend, a relative, or your mother-in-law. But if you needed surgery, you’d call the best surgeon. Your home deserves the same. That’s who we are in real estate.",
       image: "/media/properties/136-nw-18th-heritage-hills.jpeg",
       highlights: ["Off-Market Pocket Listings", "Structural & Foundation Audits", "Fiduciary Purchase Negotiation"]
     },
@@ -43,16 +43,16 @@ export const ServicesHubPage: React.FC<ServicesHubPageProps> = ({
       title: "Home Selling Machine",
       kicker: "PROPRIETARY 6-STEP BLUEPRINT",
       slug: "/services/home-selling",
-      desc: "Transforming standard listings into high-demand bidding wars. Powered by 4K cinematic video, FAA drone mapping, Matterport 3D, reverse prospecting, and our 100% Risk-Free Cancel-Anytime guarantee.",
+      desc: "A friend or relative with a license may mean well. But when you’re selling your biggest investment, you need proven pricing, elite marketing, and a team that negotiates to win. With $70M+ sold, that’s what we deliver.",
       image: "/media/gallery/modern-estate-pool-lawn.jpeg",
       highlights: ["4K Cinema & Drone Flyovers", "Mandatory 2-Hr Showing Feedback", "Cancel-Anytime Listing Pledge"]
     },
     {
       number: "03",
       title: "Land Buying & Selling",
-      kicker: "ACREAGE & DEVELOPMENT ADVISORY",
+      kicker: "1,450+ ACRES · ZERO GUESSWORK",
       slug: "/services/land-buying-and-selling",
-      desc: "Specialized acreage and parcel representation across Edmond, Arcadia, Guthrie, Piedmont, and Logan County. Topography analysis, mineral rights verification, percolation tests, and utility infrastructure feasibility.",
+      desc: "You can’t fix bad land after closing. Get it right the first time. Fence lines, flood zones, and fine print. Miss one and it costs you. We don’t miss. 1,450+ acres. Zero guesswork. Land doesn’t come with a listing photo that tells the truth. We do.",
       image: "/media/properties/11616-estrella-arcadia.jpeg",
       highlights: ["Soil & Percolation Feasibility", "Mineral & Water Rights Audits", "Adjacent Lot Valuation Adders"]
     }

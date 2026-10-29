@@ -45,7 +45,7 @@ export const MegaMenuServices: React.FC<MegaMenuServicesProps> = ({
       title: 'Home Buying',
       slug: '/services/home-buying',
       tag: 'Buyer Concierge & Equity Advisory',
-      desc: 'Curated off-market inventory access, structural & inspection defense, and veteran negotiation protecting your equity across Edmond & Greater OKC.',
+      desc: 'You could hire a friend, a relative, or your mother-in-law. But if you needed surgery, you’d call the best surgeon. Your home deserves the same. That’s who we are in real estate.',
       stats: '$24.5K Avg Below Asking',
       icon: Home,
       image: '/media/properties/136-nw-18th-heritage-hills.jpeg',
@@ -57,7 +57,7 @@ export const MegaMenuServices: React.FC<MegaMenuServicesProps> = ({
       title: 'Home Selling',
       slug: '/services/home-selling',
       tag: 'Proprietary 6-Step Selling Machine',
-      desc: 'Institutional listing campaign: cinema-grade 4K films, 350+ portal syndication, and disciplined negotiation engineered for record-setting bidding wars.',
+      desc: 'A friend or relative with a license may mean well. But when you’re selling your biggest investment, you need proven pricing, elite marketing, and a team that negotiates to win. With $70M+ sold, that’s what we deliver.',
       stats: '98.6% List-to-Sale Ratio',
       icon: TrendingUp,
       image: '/media/gallery/modern-estate-pool-lawn.jpeg',
@@ -69,8 +69,8 @@ export const MegaMenuServices: React.FC<MegaMenuServicesProps> = ({
       title: 'Land Buying and selling',
       slug: '/services/land-buying-and-selling',
       tag: 'Acreage & Development Enclaves',
-      desc: 'Topographical drone boundary mapping, soil perk & septic audits, utility easements, and strategic marketing for custom home lots and Oklahoma acreage.',
-      stats: '1,450+ Oklahoma Acres Closed',
+      desc: 'You can’t fix bad land after closing. Get it right the first time. Fence lines, flood zones, and fine print. Miss one and it costs you. We don’t miss. 1,450+ acres. Zero guesswork.',
+      stats: '1,450+ Acres · Zero Guesswork',
       icon: MapPin,
       image: '/media/properties/11616-estrella-arcadia.jpeg',
       highlights: ['Drone Boundary Overlays', 'Soil & Well Due Diligence', '24+ Custom Builder Network']
@@ -79,10 +79,10 @@ export const MegaMenuServices: React.FC<MegaMenuServicesProps> = ({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: -10, scale: 0.98 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: -8, scale: 0.98 }}
-      transition={{ type: 'spring', damping: 25, stiffness: 350 }}
+      initial={{ opacity: 0, y: -4 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -4 }}
+      transition={{ duration: 0.08, ease: 'easeOut' }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       className="mega-menu-card absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 w-[980px] max-w-[95vw] z-50 pointer-events-auto"

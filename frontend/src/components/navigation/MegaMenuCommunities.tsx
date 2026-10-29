@@ -24,10 +24,10 @@ export const MegaMenuCommunities: React.FC<MegaMenuCommunitiesProps> = ({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: -10, scale: 0.98 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: -8, scale: 0.98 }}
-      transition={{ type: 'spring', damping: 25, stiffness: 350 }}
+      initial={{ opacity: 0, y: -4 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -4 }}
+      transition={{ duration: 0.08, ease: 'easeOut' }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       className="mega-menu-card absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 w-[1060px] max-w-[96vw] z-50 pointer-events-auto"

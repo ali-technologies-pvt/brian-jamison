@@ -90,39 +90,13 @@ export const Navbar: React.FC<NavbarProps> = ({
     };
   }, []);
 
-  // Global Cursor Boundary Tracker: Closes mega menu reliably when mouse leaves the nav or dropdown
-  useEffect(() => {
-    if (!activeMenu) return;
-
-    const handleGlobalMouseMove = (e: MouseEvent) => {
-      const target = document.elementFromPoint(e.clientX, e.clientY) as HTMLElement | null;
-      if (!target) return;
-
-      const inNav = navRef.current?.contains(target);
-      const inMenu = target.closest('.mega-menu-card') !== null;
-      const inBridge = target.classList.contains('nav-menu-bridge');
-
-      if (!inNav && !inMenu && !inBridge) {
-        // Cursor has departed both the nav pill and the active mega menu card
-        handleScheduleClose(80);
-      } else {
-        handleCancelClose();
-      }
-    };
-
-    window.addEventListener('mousemove', handleGlobalMouseMove, { passive: true });
-    return () => {
-      window.removeEventListener('mousemove', handleGlobalMouseMove);
-    };
-  }, [activeMenu]);
-
-  // Hover Management with Responsive Quick Close
+  // Lightning-Fast Instant Hover Opening (Zero Delay)
   const handleOpenMenu = (menu: 'services' | 'blueprint' | 'communities' | 'hub') => {
     handleCancelClose();
     setActiveMenu(menu);
   };
 
-  const handleScheduleClose = (delay = 100) => {
+  const handleScheduleClose = (delay = 120) => {
     if (closeTimeoutRef.current) {
       clearTimeout(closeTimeoutRef.current);
     }
@@ -407,7 +381,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div
               className="nav-menu-bridge absolute -top-3 inset-x-0 h-4 pointer-events-auto"
               onMouseEnter={handleCancelClose}
-              onMouseLeave={() => handleScheduleClose(80)}
+              onMouseLeave={() => handleScheduleClose(140)}
             />
           )}
           <AnimatePresence>
@@ -415,7 +389,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <MegaMenuServices
                 onClose={() => setActiveMenu(null)}
                 onMouseEnter={handleCancelClose}
-                onMouseLeave={() => handleScheduleClose(80)}
+                onMouseLeave={() => handleScheduleClose(140)}
                 onNavigate={onNavigate}
                 onOpenConsultation={onOpenConsultation}
                 onOpenMethod={onOpenMethod}
@@ -427,7 +401,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onOpenConsultation={onOpenConsultation}
                 onClose={() => setActiveMenu(null)}
                 onMouseEnter={handleCancelClose}
-                onMouseLeave={() => handleScheduleClose(80)}
+                onMouseLeave={() => handleScheduleClose(140)}
                 onNavigate={onNavigate}
               />
             )}
@@ -436,7 +410,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onOpenMarket={onOpenMarket}
                 onClose={() => setActiveMenu(null)}
                 onMouseEnter={handleCancelClose}
-                onMouseLeave={() => handleScheduleClose(80)}
+                onMouseLeave={() => handleScheduleClose(140)}
                 onNavigate={onNavigate}
               />
             )}
@@ -449,7 +423,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onOpenChapter={onOpenChapter}
                 onClose={() => setActiveMenu(null)}
                 onMouseEnter={handleCancelClose}
-                onMouseLeave={() => handleScheduleClose(80)}
+                onMouseLeave={() => handleScheduleClose(140)}
                 onNavigate={onNavigate}
               />
             )}

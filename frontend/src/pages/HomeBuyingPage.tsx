@@ -359,7 +359,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
       <InteriorHeroVideo
         kicker="Home Buying"
         title="Buy Smarter With a Home Buying Agent in Edmond, OK"
-        subtitle="Get clear guidance on home searches, property values, offer strategy, and contract negotiations across Edmond and the Greater Oklahoma City area."
+        subtitle="You could hire a friend, a relative, or your mother-in-law. But if you needed surgery, you’d call the best surgeon. Your home deserves the same. That’s who we are in real estate."
         heroVideoUrl="/media/videos/vid1.mp4"
         heroFallbackImage="/media/properties/136-nw-18th-heritage-hills.jpeg"
         metrics={[

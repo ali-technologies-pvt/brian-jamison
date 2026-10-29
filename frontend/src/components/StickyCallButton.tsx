@@ -1,8 +1,10 @@
 import React from 'react';
 import { Phone } from 'lucide-react';
 import { BROKER_INFO } from '../data/realEstateData';
+import { useAdmin } from '../context/AdminContext';
 
 export const StickyCallButton: React.FC = () => {
+  const { isAdmin } = useAdmin();
   const phoneFormatted = BROKER_INFO.phone || "(405) 513-3039";
   const phoneRaw = BROKER_INFO.phoneRaw || "+14055133039";
 
@@ -12,7 +14,7 @@ export const StickyCallButton: React.FC = () => {
       data-admin-toolbar="true"
       id="sticky-call-btn"
       aria-label="Direct Call Concierge"
-      className="hidden lg:block fixed bottom-6 right-6 z-[88] print:hidden pointer-events-auto select-none"
+      className={`hidden lg:block fixed ${isAdmin ? 'bottom-24' : 'bottom-6'} right-6 z-[45] print:hidden pointer-events-auto select-none transition-all duration-300`}
     >
       <a
         href={`tel:${phoneRaw}`}
