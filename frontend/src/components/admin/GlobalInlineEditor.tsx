@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { useAdmin, ElementStyleData } from '../../context/AdminContext';
 import { TextSelectionToolbar } from './TextSelectionToolbar';
 import { ImageSeoModal } from './ImageSeoModal';
 import { StyleInspectorModal } from './StyleInspectorModal';
-import { Loader2, Check, Sparkles, Palette } from 'lucide-react';
+import { UniversalElementEditModal, UniversalEditTarget } from './UniversalElementEditModal';
+import { Loader2, Check, Pencil, Sparkles, Palette } from 'lucide-react';
 
 interface GlobalInlineEditorProps {
   currentPath: string;
@@ -59,14 +60,15 @@ function generateContainerKey(el: HTMLElement, pathname: string): string {
   return `container_${Math.abs(hash).toString(36)}`;
 }
 
-// Check if element contains editable text
+// Check if element is a valid candidate for inline text editing
 function isLeafTextElement(el: HTMLElement): boolean {
   if (
     el.closest('[data-admin-ui]') ||
     el.closest('[data-admin-toolbar]') ||
     el.closest('aside') ||
     el.closest('nav[data-admin]') ||
-    el.closest('#admin-portal')
+    el.closest('#admin-portal') ||
+    el.closest('.cms-popup-modal')
   ) {
     return false;
   }
@@ -76,12 +78,6 @@ function isLeafTextElement(el: HTMLElement): boolean {
     return false;
   }
 
-  // Already wrapped in manual EditableText
-  if (el.getAttribute('contenteditable') === 'true' && el.getAttribute('data-manual-editable')) {
-    return false;
-  }
-
-  // Target any text-bearing tag
   const validTags = [
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'button', 'a', 'li', 'label',
     'strong', 'em', 'b', 'i', 'blockquote', 'small', 'dt', 'dd', 'td', 'th'
@@ -91,7 +87,6 @@ function isLeafTextElement(el: HTMLElement): boolean {
     return false;
   }
 
-  // Don't make layout wrappers directly editable if they contain structural containers
   const hasStructuralChildren = Array.from(el.children).some((child) => {
     const childTag = child.tagName.toLowerCase();
     return ['section', 'article', 'main', 'header', 'footer', 'nav', 'ul', 'ol', 'table'].includes(childTag);
@@ -101,8 +96,76 @@ function isLeafTextElement(el: HTMLElement): boolean {
     return false;
   }
 
-  // Must contain some text
   return (el.innerText || '').trim().length > 0;
+}
+
+// Helper to construct UniversalEditTarget for any candidate element or card
+function buildEditTarget(el: HTMLElement, pathname: string, contentMap: Record<string, string>): UniversalEditTarget {
+  const tag = el.tagName.toLowerCase();
+
+  // Check if it is a card container or section
+  const isSection = tag === 'section';
+  const isCard =
+    isSection ||
+    el.matches('div[class*="rounded-2xl"], div[class*="rounded-3xl"], div[class*="rounded-xl"], div[class*="bg-white"], div[class*="bg-[#"], div[class*="card"]');
+
+  if (isCard && !['span', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'button', 'a'].includes(tag)) {
+    const key = el.getAttribute('data-container-key') || generateContainerKey(el, pathname);
+    el.setAttribute('data-container-key', key);
+
+    const titleEl = el.querySelector<HTMLElement>('h1, h2, h3, h4, h5, [class*="font-serif"], [class*="title"]');
+    const descEl = el.querySelector<HTMLElement>('p');
+    const btnEl = el.querySelector<HTMLElement>('a, button');
+
+    const label = isSection ? `Section (${el.id || 'Full Width'})` : 'Card Container';
+
+    return {
+      key,
+      type: isSection ? 'section' : 'card',
+      tagName: tag,
+      label,
+      initialContent: el.getAttribute('data-cms-initial') || el.innerHTML,
+      currentContent: contentMap[key] || el.innerHTML,
+      styleKey: key,
+      elementRef: el,
+      cardTitle: titleEl ? titleEl.innerText.trim() : undefined,
+      cardDescription: descEl ? descEl.innerText.trim() : undefined,
+      cardButtonText: btnEl ? btnEl.innerText.trim() : undefined,
+      cardButtonHref: btnEl && btnEl.tagName.toLowerCase() === 'a' ? (btnEl as HTMLAnchorElement).getAttribute('href') || undefined : undefined,
+    };
+  }
+
+  // It is a specific text/heading/button/link element
+  const key = el.getAttribute('data-cms-key') || generateElementKey(el, pathname);
+  el.setAttribute('data-cms-key', key);
+
+  let type: UniversalEditTarget['type'] = 'text';
+  let label = 'Text Element';
+
+  if (['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(tag)) {
+    type = 'heading';
+    label = `Heading (${tag.toUpperCase()})`;
+  } else if (tag === 'button') {
+    type = 'button';
+    label = 'Button';
+  } else if (tag === 'a') {
+    type = 'link';
+    label = 'Link / Button';
+  } else if (tag === 'p') {
+    type = 'text';
+    label = 'Paragraph';
+  }
+
+  return {
+    key,
+    type,
+    tagName: tag,
+    label,
+    initialContent: el.getAttribute('data-cms-initial') || el.innerHTML,
+    currentContent: contentMap[key] || el.innerHTML,
+    currentHref: tag === 'a' ? (el as HTMLAnchorElement).getAttribute('href') || '' : undefined,
+    elementRef: el,
+  };
 }
 
 export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentPath }) => {
@@ -124,6 +187,16 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
   const savedRangeRef = useRef<Range | null>(null);
   const activeEditingElementRef = useRef<HTMLElement | null>(null);
 
+  // Universal Element & Card Edit Modal State
+  const [editModalTarget, setEditModalTarget] = useState<UniversalEditTarget | null>(null);
+
+  // Floating Pen Icon Badge Position & Target
+  const [hoveredPenBadge, setHoveredPenBadge] = useState<{
+    top: number;
+    left: number;
+    target: UniversalEditTarget;
+  } | null>(null);
+
   // Image SEO & Styling modal state
   const [activeImageSrc, setActiveImageSrc] = useState<string | null>(null);
   const [activeImageAlt, setActiveImageAlt] = useState<string>('');
@@ -132,15 +205,6 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
   const [activeContainerKey, setActiveContainerKey] = useState<string | null>(null);
   const [activeContainerLabel, setActiveContainerLabel] = useState<string>('');
   const [activeContainerInitialStyle, setActiveContainerInitialStyle] = useState<ElementStyleData>({});
-
-  // Hovered container floating style button position
-  const [hoveredContainerPill, setHoveredContainerPill] = useState<{
-    key: string;
-    label: string;
-    top: number;
-    left: number;
-    initialStyle: ElementStyleData;
-  } | null>(null);
 
   // Saving indicator badge state
   const [savingBadge, setSavingBadge] = useState<{
@@ -186,17 +250,14 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
         const replacementFromMap = contentMap[`img_replace_${encodeURIComponent(src).slice(0, 40)}`];
         const targetSrc = seo.newSrc || replacementFromMap;
 
-        // Replacement source
         if (targetSrc && img.src !== targetSrc) {
           img.src = targetSrc;
           img.setAttribute('src', targetSrc);
         }
 
-        // SEO tags
         if (seo.alt) img.setAttribute('alt', seo.alt);
         if (seo.title) img.setAttribute('title', seo.title);
 
-        // Styling elements
         if (seo.opacity !== undefined) {
           img.style.opacity = String(seo.opacity / 100);
         }
@@ -215,7 +276,6 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
           img.style.objectFit = seo.objectFit;
         }
 
-        // Filters
         const filters: string[] = [];
         if (seo.brightness !== undefined && seo.brightness !== 100) filters.push(`brightness(${seo.brightness}%)`);
         if (seo.contrast !== undefined && seo.contrast !== 100) filters.push(`contrast(${seo.contrast}%)`);
@@ -259,301 +319,131 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
     });
   }, [currentPath, contentMap, getImageSeo]);
 
-  // 2. Attach Interactive Inline Editing Listeners
+  // 2. GLOBAL CLICK INTERCEPTOR IN EDIT MODE:
+  // Prevents navigation on cards and links when Edit Mode is ON!
+  // Instead, opens the Edit Tool Popup for that element or card!
   useEffect(() => {
-    if (!isAdmin) return;
+    if (!isAdmin || !isEditMode) return;
 
-    const cleanupFns: (() => void)[] = [];
+    const handleGlobalCaptureClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
 
-    // 2.1 Attach Text Element Editing
-    const allCandidateElements = document.querySelectorAll<HTMLElement>(
-      'h1, h2, h3, h4, h5, h6, p, span, button, a, li, label, strong, em, b, i, blockquote, small, dt, dd, td, th'
-    );
-
-    allCandidateElements.forEach((el) => {
-      if (!isLeafTextElement(el)) return;
-
-      if (isEditMode) {
-        el.contentEditable = 'true';
-        el.spellcheck = false;
-        el.classList.add('cms-global-editable');
-
-        const handleClick = (e: MouseEvent) => {
-          if (el.tagName.toLowerCase() === 'a' || el.tagName.toLowerCase() === 'button') {
-            e.preventDefault();
-            e.stopPropagation();
-            el.focus();
-          }
-        };
-
-        const handleFocus = () => {
-          activeEditingElementRef.current = el;
-        };
-
-        const handleBlur = async () => {
-          activeEditingElementRef.current = null;
-          const key = el.getAttribute('data-cms-key') || generateElementKey(el, currentPath);
-          const currentHTML = el.innerHTML;
-          const initialHTML = el.getAttribute('data-cms-initial') || '';
-
-          if (currentHTML !== initialHTML && currentHTML !== contentMap[key]) {
-            const rect = el.getBoundingClientRect();
-            setSavingBadge({
-              key,
-              status: 'saving',
-              top: Math.max(10, rect.top - 28),
-              left: rect.left,
-            });
-
-            await updateContent(key, currentHTML);
-
-            setSavingBadge({
-              key,
-              status: 'saved',
-              top: Math.max(10, rect.top - 28),
-              left: rect.left,
-            });
-
-            setTimeout(() => {
-              setSavingBadge(null);
-            }, 1800);
-          }
-        };
-
-        const handleMouseUp = () => {
-          const selection = window.getSelection();
-          if (selection && !selection.isCollapsed && selection.rangeCount > 0) {
-            const text = selection.toString().trim();
-            if (text.length > 0) {
-              const range = selection.getRangeAt(0);
-              savedRangeRef.current = range.cloneRange();
-              const rect = range.getBoundingClientRect();
-              setSelectedText(text);
-
-              let node: Node | null = range.commonAncestorContainer;
-              let isLinked = false;
-              while (node && node !== el) {
-                if (node.nodeName === 'A') {
-                  isLinked = true;
-                  break;
-                }
-                node = node.parentNode;
-              }
-              setHasLink(isLinked);
-
-              setSelectionPosition({
-                top: rect.top,
-                left: rect.left + rect.width / 2,
-              });
-              return;
-            }
-          }
-          setSelectionPosition(null);
-        };
-
-        el.addEventListener('click', handleClick);
-        el.addEventListener('focus', handleFocus);
-        el.addEventListener('blur', handleBlur);
-        el.addEventListener('mouseup', handleMouseUp);
-
-        cleanupFns.push(() => {
-          el.removeEventListener('click', handleClick);
-          el.removeEventListener('focus', handleFocus);
-          el.removeEventListener('blur', handleBlur);
-          el.removeEventListener('mouseup', handleMouseUp);
-          el.contentEditable = 'false';
-          el.classList.remove('cms-global-editable');
-        });
-      } else {
-        el.contentEditable = 'false';
-        el.classList.remove('cms-global-editable');
+      // Allow admin toolbar, modals, floating buttons, and form inputs to work normally
+      if (
+        target.closest('[data-admin-ui]') ||
+        target.closest('[data-admin-toolbar]') ||
+        target.closest('.cms-popup-modal') ||
+        target.closest('.cms-pen-badge') ||
+        target.closest('#admin-portal') ||
+        target.closest('input') ||
+        target.closest('textarea') ||
+        target.closest('select')
+      ) {
+        return;
       }
-    });
 
-    // 2.2 Attach Image Click Customizer
-    const allImages = document.querySelectorAll<HTMLImageElement>('img');
-    allImages.forEach((img) => {
-      if (img.closest('[data-admin-ui]') || img.closest('[data-admin-toolbar]')) return;
+      // Check if click was on or inside any interactive element, card, or section
+      const interactiveCandidate = target.closest(
+        'a, button, [onclick], [role="button"], h1, h2, h3, h4, h5, h6, p, span, li, div[class*="rounded-2xl"], div[class*="rounded-3xl"], div[class*="rounded-xl"], div[class*="card"], div[class*="cursor-pointer"], section'
+      ) as HTMLElement | null;
 
-      if (isEditMode) {
-        img.classList.add('cms-global-editable-img');
+      if (interactiveCandidate) {
+        // PREVENT REDIRECTION & NAVIGATION
+        e.preventDefault();
+        e.stopPropagation();
 
-        const handleImageClick = (e: MouseEvent) => {
-          e.preventDefault();
-          e.stopPropagation();
-          const originalSrc = img.getAttribute('data-original-src') || img.getAttribute('src') || '';
-          const alt = img.getAttribute('alt') || '';
+        // If clicked on an image, open image SEO modal
+        if (target.tagName.toLowerCase() === 'img') {
+          const originalSrc = target.getAttribute('data-original-src') || target.getAttribute('src') || '';
+          const alt = target.getAttribute('alt') || '';
           setActiveImageSrc(originalSrc);
           setActiveImageAlt(alt);
-        };
-
-        img.addEventListener('click', handleImageClick);
-        cleanupFns.push(() => {
-          img.removeEventListener('click', handleImageClick);
-          img.classList.remove('cms-global-editable-img');
-        });
-      } else {
-        img.classList.remove('cms-global-editable-img');
-      }
-    });
-
-    // 2.3 Attach Container & Card Hover Controls (for Sections, Cards, and Banners)
-    if (isEditMode) {
-      const containerElements = document.querySelectorAll<HTMLElement>(
-        'section, div[class*="rounded-2xl"], div[class*="rounded-3xl"], div[class*="rounded-xl"], div[class*="bg-[#"], div[class*="bg-white"], div[class*="bg-stone"]'
-      );
-
-      containerElements.forEach((container) => {
-        if (
-          container.closest('[data-admin-ui]') ||
-          container.closest('[data-admin-toolbar]') ||
-          container.tagName.toLowerCase() === 'nav' ||
-          container.offsetHeight < 60 ||
-          container.offsetWidth < 120
-        ) {
           return;
         }
 
-        const key = container.getAttribute('data-container-key') || generateContainerKey(container, currentPath);
-        container.setAttribute('data-container-key', key);
+        // Open the Universal Element / Card Edit Modal
+        const editTarget = buildEditTarget(interactiveCandidate, currentPath, contentMap);
+        setEditModalTarget(editTarget);
+      }
+    };
 
-        const handleMouseEnter = () => {
-          const rect = container.getBoundingClientRect();
-          const label = container.tagName.toLowerCase() === 'section'
-            ? `Section (${container.id || 'Full Width'})`
-            : 'Content Card / Container';
-
-          const currentStyle = getElementStyle(key);
-          setHoveredContainerPill({
-            key,
-            label,
-            top: Math.max(10, rect.top + 10),
-            left: Math.max(10, rect.right - 140),
-            initialStyle: {
-              backgroundColor: currentStyle.backgroundColor || window.getComputedStyle(container).backgroundColor,
-              textColor: currentStyle.textColor || window.getComputedStyle(container).color,
-              borderRadius: currentStyle.borderRadius,
-              borderWidth: currentStyle.borderWidth,
-              borderColor: currentStyle.borderColor,
-              boxShadow: currentStyle.boxShadow,
-              backgroundImage: currentStyle.backgroundImage,
-              backgroundVideo: currentStyle.backgroundVideo,
-              overlayColor: currentStyle.overlayColor,
-              overlayOpacity: currentStyle.overlayOpacity,
-            },
-          });
-        };
-
-        container.addEventListener('mouseenter', handleMouseEnter);
-        cleanupFns.push(() => {
-          container.removeEventListener('mouseenter', handleMouseEnter);
-        });
-      });
-    } else {
-      setHoveredContainerPill(null);
-    }
+    // Capture phase listener catches the click BEFORE React onClick or native link navigation!
+    window.addEventListener('click', handleGlobalCaptureClick, true);
 
     return () => {
-      cleanupFns.forEach((fn) => fn());
+      window.removeEventListener('click', handleGlobalCaptureClick, true);
     };
-  }, [isAdmin, isEditMode, currentPath, contentMap, updateContent, getElementStyle]);
+  }, [isAdmin, isEditMode, currentPath, contentMap]);
 
-  // Restore selection helper
-  const restoreSelection = () => {
-    if (savedRangeRef.current) {
-      const sel = window.getSelection();
-      if (sel) {
-        sel.removeAllRanges();
-        sel.addRange(savedRangeRef.current);
+  // 3. FLOATING PEN (PENCIL) BADGE ON HOVER:
+  // Shows a clear, sleek "✏️ Edit [Element]" badge on every heading, button, card, section
+  useEffect(() => {
+    if (!isAdmin || !isEditMode) {
+      setHoveredPenBadge(null);
+      return;
+    }
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+
+      // Ignore mouse moves over Admin UI and modals
+      if (
+        target.closest('[data-admin-ui]') ||
+        target.closest('[data-admin-toolbar]') ||
+        target.closest('.cms-popup-modal') ||
+        target.closest('.cms-pen-badge') ||
+        target.closest('#admin-portal')
+      ) {
+        return;
       }
-    }
-  };
 
-  // Text selection actions
-  const handleApplyLink = async (url: string, isInternal: boolean) => {
-    restoreSelection();
-    if (savedRangeRef.current) {
-      const link = document.createElement('a');
-      link.href = url;
-      link.className =
-        'underline decoration-[#EA580C] decoration-2 underline-offset-4 text-[#EA580C] hover:opacity-80 transition-opacity font-semibold';
-      if (!isInternal) {
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
+      // Find nearest editable candidate
+      const candidate = target.closest(
+        'h1, h2, h3, h4, h5, h6, p, button, a, div[class*="rounded-2xl"], div[class*="rounded-3xl"], div[class*="rounded-xl"], div[class*="card"], section'
+      ) as HTMLElement | null;
+
+      if (!candidate || candidate.offsetHeight < 24) {
+        setHoveredPenBadge(null);
+        return;
       }
-      try {
-        savedRangeRef.current.surroundContents(link);
-      } catch {
-        document.execCommand('createLink', false, url);
-      }
-      setSelectionPosition(null);
 
-      if (activeEditingElementRef.current) {
-        activeEditingElementRef.current.blur();
-      }
-    }
-  };
+      const rect = candidate.getBoundingClientRect();
+      const editTarget = buildEditTarget(candidate, currentPath, contentMap);
 
-  const handleApplyColor = async (color: string) => {
-    restoreSelection();
-    document.execCommand('styleWithCSS', false, 'true');
-    document.execCommand('foreColor', false, color);
-    setSelectionPosition(null);
+      // Position pen badge at top-right of candidate element
+      const badgeTop = rect.top < 40 ? rect.bottom + 6 : rect.top - 28;
+      const badgeLeft = Math.min(window.innerWidth - 180, Math.max(10, rect.right - 130));
 
-    if (activeEditingElementRef.current) {
-      activeEditingElementRef.current.blur();
-    }
-  };
+      setHoveredPenBadge({
+        top: badgeTop,
+        left: badgeLeft,
+        target: editTarget,
+      });
+    };
 
-  const handleApplyHighlight = async (color: string) => {
-    restoreSelection();
-    document.execCommand('styleWithCSS', false, 'true');
-    document.execCommand('hiliteColor', false, color);
-    setSelectionPosition(null);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
-    if (activeEditingElementRef.current) {
-      activeEditingElementRef.current.blur();
-    }
-  };
-
-  const handleApplyFormat = async (format: 'bold' | 'italic' | 'underline') => {
-    restoreSelection();
-    document.execCommand(format, false, undefined);
-    setSelectionPosition(null);
-
-    if (activeEditingElementRef.current) {
-      activeEditingElementRef.current.blur();
-    }
-  };
-
-  const handleRemoveLink = async () => {
-    restoreSelection();
-    document.execCommand('unlink', false, undefined);
-    setSelectionPosition(null);
-
-    if (activeEditingElementRef.current) {
-      activeEditingElementRef.current.blur();
-    }
-  };
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [isAdmin, isEditMode, currentPath, contentMap]);
 
   return (
     <>
-      {/* Styles for Visual Highlights */}
+      {/* Styles for Visual Highlights in Edit Mode */}
       <style>{`
         .cms-global-editable {
           outline: 1.5px dashed rgba(234, 88, 12, 0.5) !important;
           outline-offset: 3px !important;
           border-radius: 4px !important;
           transition: all 0.15s ease !important;
-          cursor: text !important;
+          cursor: pointer !important;
         }
         .cms-global-editable:hover {
           outline: 2px dashed #EA580C !important;
           background-color: rgba(234, 88, 12, 0.08) !important;
-        }
-        .cms-global-editable:focus {
-          outline: 2.5px solid #EA580C !important;
-          background-color: rgba(234, 88, 12, 0.12) !important;
         }
         .cms-global-editable-img {
           outline: 2px dashed #EA580C !important;
@@ -567,76 +457,49 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
         }
       `}</style>
 
-      {/* Floating Rich Formatting & Linking Toolbar */}
-      {selectionPosition && isEditMode && (
-        <TextSelectionToolbar
-          onApplyLink={handleApplyLink}
-          onApplyColor={handleApplyColor}
-          onApplyHighlight={handleApplyHighlight}
-          onApplyFormat={handleApplyFormat}
-          onRemoveLink={handleRemoveLink}
-          selectedText={selectedText}
-          hasLink={hasLink}
-          position={selectionPosition}
-          onClose={() => setSelectionPosition(null)}
-        />
-      )}
-
-      {/* Hovered Container / Card Style Quick Action Pill */}
-      {hoveredContainerPill && isEditMode && (
+      {/* FLOATING PEN (PENCIL) BADGE ON HOVER FOR EVERY ELEMENT / CARD */}
+      {hoveredPenBadge && isEditMode && (
         <div
           data-admin-ui="true"
+          className="cms-pen-badge fixed z-[9998] animate-in fade-in duration-100 pointer-events-auto"
           style={{
-            position: 'fixed',
-            top: `${hoveredContainerPill.top}px`,
-            left: `${hoveredContainerPill.left}px`,
-            zIndex: 9998,
+            top: `${hoveredPenBadge.top}px`,
+            left: `${hoveredPenBadge.left}px`,
           }}
-          className="animate-in fade-in duration-150"
         >
           <button
             type="button"
-            onClick={() => {
-              setActiveContainerKey(hoveredContainerPill.key);
-              setActiveContainerLabel(hoveredContainerPill.label);
-              setActiveContainerInitialStyle(hoveredContainerPill.initialStyle);
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setEditModalTarget(hoveredPenBadge.target);
+              setHoveredPenBadge(null);
             }}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#001D40] hover:bg-[#EA580C] text-white text-[11px] font-bold tracking-wide shadow-xl border border-white/40 cursor-pointer backdrop-blur-md transition-all hover:scale-105"
-            title="Customize card background, text color, overlay, or background image"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#EA580C] hover:bg-[#C2410C] text-white text-xs font-bold tracking-wide shadow-xl border border-white/60 cursor-pointer backdrop-blur-md transition-all hover:scale-105"
+            title={`Click to edit ${hoveredPenBadge.target.label}`}
           >
-            <Palette className="w-3.5 h-3.5 text-[#FB923C]" />
-            <span>🎨 Style & Colors</span>
+            <Pencil className="w-3.5 h-3.5 text-white" />
+            <span>Edit {hoveredPenBadge.target.label}</span>
           </button>
         </div>
       )}
 
-      {/* Saving / Saved Floating Pill Indicator */}
-      {savingBadge && (
-        <div
-          style={{
-            position: 'fixed',
-            top: `${savingBadge.top}px`,
-            left: `${Math.max(10, savingBadge.left)}px`,
-            zIndex: 99999,
+      {/* Universal Element & Card Edit Popup Modal */}
+      {editModalTarget && (
+        <UniversalElementEditModal
+          isOpen={Boolean(editModalTarget)}
+          target={editModalTarget}
+          onClose={() => setEditModalTarget(null)}
+          onSave={() => {
+            setSavingBadge({
+              key: editModalTarget.key,
+              status: 'saved',
+              top: 80,
+              left: window.innerWidth / 2 - 80,
+            });
+            setTimeout(() => setSavingBadge(null), 2000);
           }}
-          className={`animate-in fade-in slide-in-from-bottom-2 duration-150 px-2.5 py-1 rounded-full text-[11px] font-mono font-bold tracking-tight shadow-xl flex items-center gap-1.5 ${
-            savingBadge.status === 'saving'
-              ? 'bg-[#002D61] text-white animate-pulse'
-              : 'bg-emerald-600 text-white'
-          }`}
-        >
-          {savingBadge.status === 'saving' ? (
-            <>
-              <Loader2 className="w-3 h-3 animate-spin" />
-              <span>Saving Change...</span>
-            </>
-          ) : (
-            <>
-              <Check className="w-3 h-3" />
-              <span>Saved to Database ✓</span>
-            </>
-          )}
-        </div>
+        />
       )}
 
       {/* Universal Image Customizer & SEO Modal */}
@@ -698,6 +561,36 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
             }
           }}
         />
+      )}
+
+      {/* Saving / Saved Floating Pill Indicator */}
+      {savingBadge && (
+        <div
+          data-admin-ui="true"
+          style={{
+            position: 'fixed',
+            top: `${savingBadge.top}px`,
+            left: `${Math.max(10, savingBadge.left)}px`,
+            zIndex: 99999,
+          }}
+          className={`animate-in fade-in slide-in-from-bottom-2 duration-150 px-4 py-2 rounded-full text-xs font-mono font-bold tracking-tight shadow-2xl flex items-center gap-2 ${
+            savingBadge.status === 'saving'
+              ? 'bg-[#002D61] text-white animate-pulse'
+              : 'bg-emerald-600 text-white'
+          }`}
+        >
+          {savingBadge.status === 'saving' ? (
+            <>
+              <Loader2 className="w-4 h-4 animate-spin" />
+              <span>Saving Change...</span>
+            </>
+          ) : (
+            <>
+              <Check className="w-4 h-4" />
+              <span>Saved to Database ✓</span>
+            </>
+          )}
+        </div>
       )}
     </>
   );

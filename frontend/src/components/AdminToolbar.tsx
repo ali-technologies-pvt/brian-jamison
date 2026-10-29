@@ -13,7 +13,8 @@ import {
   Globe,
   Palette,
   Sparkles,
-  Check
+  Check,
+  RotateCcw
 } from 'lucide-react';
 
 interface AdminToolbarProps {
@@ -22,15 +23,25 @@ interface AdminToolbarProps {
 }
 
 export const AdminToolbar: React.FC<AdminToolbarProps> = ({ onNavigate, currentPath = '/' }) => {
-  const { isAdmin, isEditMode, setIsEditMode, logout } = useAdmin();
+  const { isAdmin, isEditMode, setIsEditMode, logout, canUndo, undoHistory, undoLastChange } = useAdmin();
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [pageSeoOpen, setPageSeoOpen] = useState(false);
   const [styleInspectorOpen, setStyleInspectorOpen] = useState(false);
+  const [undoToast, setUndoToast] = useState<string | null>(null);
 
   // Hidden completely for normal visitors
   if (!isAdmin) {
     return null;
   }
+
+  const handleUndoClick = async () => {
+    if (!canUndo) return;
+    const res = await undoLastChange();
+    if (res.success) {
+      setUndoToast(res.label ? `Reversed: ${res.label}` : 'Reversed last change!');
+      setTimeout(() => setUndoToast(null), 2500);
+    }
+  };
 
   const handleDashboardClick = () => {
     if (onNavigate) {
@@ -53,8 +64,16 @@ export const AdminToolbar: React.FC<AdminToolbarProps> = ({ onNavigate, currentP
     <>
       <aside
         aria-label="Admin Content Management Toolbar"
-        className="fixed bottom-5 right-5 z-50 font-sans select-none"
+        className="fixed bottom-5 right-5 z-50 font-sans select-none flex flex-col items-end gap-2"
       >
+        {/* Undo Toast Notification */}
+        {undoToast && (
+          <div className="px-4 py-2 rounded-xl bg-amber-500 text-stone-950 font-bold text-xs shadow-2xl border border-amber-300 flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2 duration-150">
+            <RotateCcw className="w-3.5 h-3.5 text-stone-950 animate-spin-once" />
+            <span>{undoToast}</span>
+          </div>
+        )}
+
         <div className="relative rounded-2xl bg-[#001D40]/95 text-white backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/50 p-3 sm:p-3.5 flex items-center gap-3 transition-all duration-300">
           <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-[#FB923C]/50 to-transparent pointer-events-none" />
 
@@ -118,6 +137,24 @@ export const AdminToolbar: React.FC<AdminToolbarProps> = ({ onNavigate, currentP
                   {isEditMode ? 'ON' : 'OFF'}
                 </span>
               </div>
+
+              {/* Undo / Reverse Button */}
+              {isEditMode && (
+                <button
+                  type="button"
+                  onClick={handleUndoClick}
+                  disabled={!canUndo}
+                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold tracking-wide transition-all cursor-pointer ${
+                    canUndo
+                      ? 'bg-amber-500/25 hover:bg-amber-500/40 text-amber-200 hover:text-white border border-amber-400/40 shadow-sm hover:scale-105'
+                      : 'bg-white/5 text-stone-500 cursor-not-allowed opacity-40 border border-transparent'
+                  }`}
+                  title={canUndo ? `Reverse / Undo Last Edit (${undoHistory.length} edits recorded)` : 'No recent edits to reverse'}
+                >
+                  <RotateCcw className={`w-3.5 h-3.5 ${canUndo ? 'text-amber-400 animate-spin-once' : 'text-stone-500'}`} />
+                  <span>Reverse{canUndo ? ` (${undoHistory.length})` : ''}</span>
+                </button>
+              )}
 
               <div className="h-5 w-px bg-white/15" />
 

@@ -43,16 +43,29 @@ export interface PageSeoData {
   canonicalUrl?: string;
 }
 
+export interface UndoRecord {
+  type: 'content' | 'style' | 'image';
+  key: string;
+  previousValue: string;
+  currentValue: string;
+  label?: string;
+  timestamp: number;
+}
+
 interface AdminContextType {
   isAdmin: boolean;
   isEditMode: boolean;
   setIsEditMode: (value: boolean) => void;
   contentMap: Record<string, string>;
-  updateContent: (key: string, content: string) => Promise<{ success: boolean; error?: string }>;
+  undoHistory: UndoRecord[];
+  canUndo: boolean;
+  updateContent: (key: string, content: string, label?: string) => Promise<{ success: boolean; error?: string }>;
+  undoLastChange: () => Promise<{ success: boolean; label?: string }>;
+  revertElement: (key: string, initialContent?: string) => Promise<{ success: boolean }>;
   getImageSeo: (imageSrc: string) => ImageSeoData;
   updateImageSeo: (imageSrc: string, seo: ImageSeoData) => Promise<{ success: boolean; error?: string }>;
   getElementStyle: (elementKey: string) => ElementStyleData;
-  updateElementStyle: (elementKey: string, style: ElementStyleData) => Promise<{ success: boolean; error?: string }>;
+  updateElementStyle: (elementKey: string, style: ElementStyleData, label?: string) => Promise<{ success: boolean; error?: string }>;
   getPageSeo: (path: string) => PageSeoData;
   updatePageSeo: (path: string, seo: PageSeoData) => Promise<{ success: boolean; error?: string }>;
   login: (username: string, password: string) => Promise<{ success: boolean; error?: string }>;
@@ -117,6 +130,8 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
     return {};
   });
+
+  const [undoHistory, setUndoHistory] = useState<UndoRecord[]>([]);
 
   const setIsEditMode = useCallback((val: boolean) => {
     setIsEditModeState(val);
@@ -243,10 +258,26 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   // Update text content handler
   const updateContent = async (
     key: string,
-    content: string
+    content: string,
+    label?: string
   ): Promise<{ success: boolean; error?: string }> => {
-    setContentMap((prev) => {
-      const next = { ...prev, [key]: content };
+    const prev = contentMap[key] ?? '';
+    if (prev !== content) {
+      setUndoHistory((h) => [
+        ...h,
+        {
+          type: 'content',
+          key,
+          previousValue: prev,
+          currentValue: content,
+          label: label || key,
+          timestamp: Date.now(),
+        },
+      ]);
+    }
+
+    setContentMap((prevMap) => {
+      const next = { ...prevMap, [key]: content };
       if (typeof window !== 'undefined') {
         localStorage.setItem(LOCAL_STORAGE_CONTENT_FALLBACK_KEY, JSON.stringify(next));
       }
@@ -263,6 +294,111 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     } catch {
       return { success: true };
     }
+  };
+
+  // Undo Last Change (Reverse)
+  const undoLastChange = async (): Promise<{ success: boolean; label?: string }> => {
+    if (undoHistory.length === 0) return { success: false };
+    const lastRecord = undoHistory[undoHistory.length - 1];
+    setUndoHistory((h) => h.slice(0, h.length - 1));
+
+    if (lastRecord.type === 'content') {
+      const restored = lastRecord.previousValue;
+      setContentMap((prev) => {
+        const next = { ...prev, [lastRecord.key]: restored };
+        if (typeof window !== 'undefined') {
+          localStorage.setItem(LOCAL_STORAGE_CONTENT_FALLBACK_KEY, JSON.stringify(next));
+        }
+        return next;
+      });
+
+      // Update DOM directly if element exists
+      if (typeof document !== 'undefined') {
+        const domEl = document.querySelector<HTMLElement>(`[data-cms-key="${lastRecord.key}"]`);
+        if (domEl) {
+          domEl.innerHTML = restored;
+        }
+      }
+
+      try {
+        await fetch('/api/content/update', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ key: lastRecord.key, content: restored }),
+        });
+      } catch {}
+      return { success: true, label: lastRecord.label };
+    } else if (lastRecord.type === 'style') {
+      try {
+        const restoredStyle: ElementStyleData = JSON.parse(lastRecord.previousValue || '{}');
+        setElementStyleMap((prev) => {
+          const next = { ...prev, [lastRecord.key]: restoredStyle };
+          if (typeof window !== 'undefined') {
+            localStorage.setItem(LOCAL_STORAGE_ELEMENT_STYLES_KEY, JSON.stringify(next));
+          }
+          return next;
+        });
+
+        const contentKey = `style_${lastRecord.key}`;
+        setContentMap((prev) => {
+          const next = { ...prev, [contentKey]: lastRecord.previousValue };
+          if (typeof window !== 'undefined') {
+            localStorage.setItem(LOCAL_STORAGE_CONTENT_FALLBACK_KEY, JSON.stringify(next));
+          }
+          return next;
+        });
+
+        if (typeof document !== 'undefined') {
+          const domEl = document.querySelector<HTMLElement>(`[data-container-key="${lastRecord.key}"]`);
+          if (domEl) {
+            if (restoredStyle.backgroundColor) domEl.style.backgroundColor = restoredStyle.backgroundColor;
+            if (restoredStyle.textColor) domEl.style.color = restoredStyle.textColor;
+            if (restoredStyle.borderRadius !== undefined) domEl.style.borderRadius = `${restoredStyle.borderRadius}px`;
+            if (restoredStyle.borderWidth !== undefined) domEl.style.borderWidth = `${restoredStyle.borderWidth}px`;
+            if (restoredStyle.borderColor) domEl.style.borderColor = restoredStyle.borderColor;
+            if (restoredStyle.boxShadow) domEl.style.boxShadow = restoredStyle.boxShadow;
+          }
+        }
+
+        try {
+          await fetch('/api/content/update', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ key: contentKey, content: lastRecord.previousValue }),
+          });
+        } catch {}
+        return { success: true, label: lastRecord.label };
+      } catch {}
+    }
+    return { success: true };
+  };
+
+  // Revert single element back to initial content
+  const revertElement = async (key: string, initialContent?: string): Promise<{ success: boolean }> => {
+    const val = initialContent ?? '';
+    setContentMap((prev) => {
+      const next = { ...prev, [key]: val };
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(LOCAL_STORAGE_CONTENT_FALLBACK_KEY, JSON.stringify(next));
+      }
+      return next;
+    });
+
+    if (typeof document !== 'undefined') {
+      const domEl = document.querySelector<HTMLElement>(`[data-cms-key="${key}"]`);
+      if (domEl && initialContent !== undefined) {
+        domEl.innerHTML = initialContent;
+      }
+    }
+
+    try {
+      await fetch('/api/content/update', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ key, content: val }),
+      });
+    } catch {}
+    return { success: true };
   };
 
   // Image SEO handler
@@ -292,8 +428,22 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const updateElementStyle = async (
     elementKey: string,
-    style: ElementStyleData
+    style: ElementStyleData,
+    label?: string
   ): Promise<{ success: boolean; error?: string }> => {
+    const prevStyle = elementStyleMap[elementKey] || {};
+    setUndoHistory((h) => [
+      ...h,
+      {
+        type: 'style',
+        key: elementKey,
+        previousValue: JSON.stringify(prevStyle),
+        currentValue: JSON.stringify(style),
+        label: label || `Style: ${elementKey}`,
+        timestamp: Date.now(),
+      },
+    ]);
+
     setElementStyleMap((prev) => {
       const next = { ...prev, [elementKey]: style };
       if (typeof window !== 'undefined') {
@@ -303,7 +453,23 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     });
 
     const contentKey = `style_${elementKey}`;
-    await updateContent(contentKey, JSON.stringify(style));
+    const serialized = JSON.stringify(style);
+    setContentMap((prev) => {
+      const next = { ...prev, [contentKey]: serialized };
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(LOCAL_STORAGE_CONTENT_FALLBACK_KEY, JSON.stringify(next));
+      }
+      return next;
+    });
+
+    try {
+      await fetch('/api/content/update', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ key: contentKey, content: serialized }),
+      });
+    } catch {}
+
     return { success: true };
   };
 
@@ -326,6 +492,8 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return { success: true };
   };
 
+  const canUndo = undoHistory.length > 0;
+
   return (
     <AdminContext.Provider
       value={{
@@ -333,7 +501,11 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         isEditMode,
         setIsEditMode,
         contentMap,
+        undoHistory,
+        canUndo,
         updateContent,
+        undoLastChange,
+        revertElement,
         getImageSeo,
         updateImageSeo,
         getElementStyle,
