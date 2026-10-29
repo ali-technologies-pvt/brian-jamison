@@ -176,19 +176,9 @@ export const PROCESS_ONE_DELIVERABLES = [
     image: "/media/gallery/midcentury-entry.jpeg"
   },
   {
-    id: "agent-networking",
-    slug: "/services/agent-networking",
-    badge: "Step 1.10",
-    title: "Agent networking",
-    desc: "Your listing is shared with other agents and brokerages because agents often know serious buyers before those buyers tour a home.",
-    executionDetail: "We host private broker open-house previews and maintain direct communication lines with the top 10% luxury producers across the region.",
-    sellerImpact: "Mobilizes the brokerage community to champion your property to their pre-approved private clients.",
-    image: "/media/gallery/infinity-pool-hills.jpeg"
-  },
-  {
     id: "full-time-engagement",
     slug: "/services/full-time-engagement",
-    badge: "Step 1.11",
+    badge: "Step 1.10",
     title: "Full-time engagement on the listing",
     desc: "Brian stays involved from launch through closing, watching activity, following up on leads, and adjusting the plan as the market responds.",
     executionDetail: "Continuous campaign management, prompt lead qualification, and constant monitoring of competitor pricing adjustments in your micro-market.",
@@ -198,7 +188,7 @@ export const PROCESS_ONE_DELIVERABLES = [
   {
     id: "print-and-digital-marketing",
     slug: "/services/print-and-digital-marketing",
-    badge: "Step 1.12",
+    badge: "Step 1.11",
     title: "Postcards, online and print flyers, print ads",
     desc: "Print and digital pieces reach neighbors and local buyers who may not be searching online, adding offline exposure to your marketing.",
     executionDetail: "Bespoke print collateral designed by our in-house media team, paired with targeted saturation mailings to surrounding affluent zip codes.",
@@ -208,7 +198,7 @@ export const PROCESS_ONE_DELIVERABLES = [
   {
     id: "matterport-tour",
     slug: "/services/matterport-tour",
-    badge: "Step 1.13",
+    badge: "Step 1.12",
     title: "Matterport Tour",
     desc: "A 3D Matterport tour lets buyers explore each room at their own pace, which helps them decide which homes to visit.",
     executionDetail: "Pro3 LiDAR camera capturing exact interior spatial measurements, interactive 3D dollhouse perspectives, and schematic floor plans.",
@@ -895,39 +885,11 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
 
-  "agent-networking": {
-    id: "agent-networking",
-    slug: "/services/agent-networking",
-    category: "service",
-    kicker: "SUB-PROCESS 1.10 · MARKETING PLAN AND PROCESS",
-    title: "Agent networking",
-    subtitle: "Direct telephone pitches and private broker preview gatherings with top luxury producers across Oklahoma.",
-    heroVideoUrl: "/media/videos/vid17.mp4",
-    heroFallbackImage: "/media/properties/534-w-chickasaw.jpg",
-    heroMetrics: [
-      { label: "Broker Reach", value: "Top 10% OKC" },
-      { label: "Private Previews", value: "Exclusive" },
-      { label: "Co-Broke Synergy", value: "Immediate" }
-    ],
-    overview: "Over 80% of luxury sales in Oklahoma involve cooperation between top-producing agents. Our firm maintains direct relationships with high-volume brokers, personally presenting your property to colleagues who represent active, qualified buyers.",
-    keyTakeaways: [
-      "Direct broker-to-broker phone presentations before public marketing launch",
-      "Catered twilight broker preview receptions for elite area specialists",
-      "Distribution to exclusive luxury agent networks and masterminds across the state"
-    ],
-    parentProcess: {
-      number: "1",
-      title: "Marketing plan and process",
-      slug: "/services/marketing-plan-and-process"
-    },
-    images: DEFAULT_ARCHITECTURAL_GALLERY
-  },
-
   "full-time-engagement": {
     id: "full-time-engagement",
     slug: "/services/full-time-engagement",
     category: "service",
-    kicker: "SUB-PROCESS 1.11 · MARKETING PLAN AND PROCESS",
+    kicker: "SUB-PROCESS 1.10 · MARKETING PLAN AND PROCESS",
     title: "Full-time engagement on the listing",
     subtitle: "Continuous daily management monitoring inquiry velocity, buyer feedback, and competitive pricing adjustments.",
     heroVideoUrl: "/media/videos/vid18.mp4",
@@ -955,7 +917,7 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     id: "print-and-digital-marketing",
     slug: "/services/print-and-digital-marketing",
     category: "service",
-    kicker: "SUB-PROCESS 1.12 · MARKETING PLAN AND PROCESS",
+    kicker: "SUB-PROCESS 1.11 · MARKETING PLAN AND PROCESS",
     title: "Postcards, online and print flyers, print ads",
     subtitle: "High-gloss oversized direct mail postcards, bespoke architectural print brochures, and regional lifestyle placement.",
     heroVideoUrl: "/media/videos/vid19.mp4",
@@ -983,7 +945,7 @@ export const SUB_PROCESS_PAGES: Record<string, InteriorPageData> = {
     id: "matterport-tour",
     slug: "/services/matterport-tour",
     category: "service",
-    kicker: "SUB-PROCESS 1.13 · MARKETING PLAN AND PROCESS",
+    kicker: "SUB-PROCESS 1.12 · MARKETING PLAN AND PROCESS",
     title: "Matterport Tour",
     subtitle: "Millimeter-accurate virtual dollhouse allowing 360-degree exploration for corporate transferees and out-of-state buyers.",
     heroVideoUrl: "/media/videos/vid20.mp4",

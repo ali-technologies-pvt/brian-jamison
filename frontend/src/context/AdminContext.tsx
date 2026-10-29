@@ -81,6 +81,16 @@ const LOCAL_STORAGE_IMAGE_SEO_KEY = 'jamison_image_seo_cache';
 const LOCAL_STORAGE_ELEMENT_STYLES_KEY = 'jamison_element_styles_cache';
 const LOCAL_STORAGE_PAGE_SEO_KEY = 'jamison_page_seo_cache';
 
+// Safe localStorage setter that never crashes the app on quota limits
+function safeLocalStorageSet(key: string, value: string) {
+  if (typeof window === 'undefined') return;
+  try {
+    safeLocalStorageSet(key, value);
+  } catch (err) {
+    console.warn('[CMS Storage] localStorage quota exceeded or unavailable for ' + key);
+  }
+}
+
 export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isEditMode, setIsEditModeState] = useState(() => {
@@ -136,7 +146,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const setIsEditMode = useCallback((val: boolean) => {
     setIsEditModeState(val);
     if (typeof window !== 'undefined') {
-      localStorage.setItem(LOCAL_STORAGE_EDIT_MODE_KEY, val ? 'true' : 'false');
+      safeLocalStorageSet(LOCAL_STORAGE_EDIT_MODE_KEY, val ? 'true' : 'false');
     }
   }, []);
 
@@ -150,7 +160,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
           setContentMap((prev) => {
             const next = { ...prev, ...data.content };
             if (typeof window !== 'undefined') {
-              localStorage.setItem(LOCAL_STORAGE_CONTENT_FALLBACK_KEY, JSON.stringify(next));
+              safeLocalStorageSet(LOCAL_STORAGE_CONTENT_FALLBACK_KEY, JSON.stringify(next));
             }
             return next;
           });
@@ -279,7 +289,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     setContentMap((prevMap) => {
       const next = { ...prevMap, [key]: content };
       if (typeof window !== 'undefined') {
-        localStorage.setItem(LOCAL_STORAGE_CONTENT_FALLBACK_KEY, JSON.stringify(next));
+        safeLocalStorageSet(LOCAL_STORAGE_CONTENT_FALLBACK_KEY, JSON.stringify(next));
       }
       return next;
     });
@@ -307,7 +317,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       setContentMap((prev) => {
         const next = { ...prev, [lastRecord.key]: restored };
         if (typeof window !== 'undefined') {
-          localStorage.setItem(LOCAL_STORAGE_CONTENT_FALLBACK_KEY, JSON.stringify(next));
+          safeLocalStorageSet(LOCAL_STORAGE_CONTENT_FALLBACK_KEY, JSON.stringify(next));
         }
         return next;
       });
@@ -334,7 +344,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         setElementStyleMap((prev) => {
           const next = { ...prev, [lastRecord.key]: restoredStyle };
           if (typeof window !== 'undefined') {
-            localStorage.setItem(LOCAL_STORAGE_ELEMENT_STYLES_KEY, JSON.stringify(next));
+            safeLocalStorageSet(LOCAL_STORAGE_ELEMENT_STYLES_KEY, JSON.stringify(next));
           }
           return next;
         });
@@ -343,7 +353,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         setContentMap((prev) => {
           const next = { ...prev, [contentKey]: lastRecord.previousValue };
           if (typeof window !== 'undefined') {
-            localStorage.setItem(LOCAL_STORAGE_CONTENT_FALLBACK_KEY, JSON.stringify(next));
+            safeLocalStorageSet(LOCAL_STORAGE_CONTENT_FALLBACK_KEY, JSON.stringify(next));
           }
           return next;
         });
@@ -379,7 +389,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     setContentMap((prev) => {
       const next = { ...prev, [key]: val };
       if (typeof window !== 'undefined') {
-        localStorage.setItem(LOCAL_STORAGE_CONTENT_FALLBACK_KEY, JSON.stringify(next));
+        safeLocalStorageSet(LOCAL_STORAGE_CONTENT_FALLBACK_KEY, JSON.stringify(next));
       }
       return next;
     });
@@ -410,7 +420,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     setImageSeoMap((prev) => {
       const next = { ...prev, [imageSrc]: seo };
       if (typeof window !== 'undefined') {
-        localStorage.setItem(LOCAL_STORAGE_IMAGE_SEO_KEY, JSON.stringify(next));
+        safeLocalStorageSet(LOCAL_STORAGE_IMAGE_SEO_KEY, JSON.stringify(next));
       }
       return next;
     });
@@ -447,7 +457,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     setElementStyleMap((prev) => {
       const next = { ...prev, [elementKey]: style };
       if (typeof window !== 'undefined') {
-        localStorage.setItem(LOCAL_STORAGE_ELEMENT_STYLES_KEY, JSON.stringify(next));
+        safeLocalStorageSet(LOCAL_STORAGE_ELEMENT_STYLES_KEY, JSON.stringify(next));
       }
       return next;
     });
@@ -457,7 +467,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     setContentMap((prev) => {
       const next = { ...prev, [contentKey]: serialized };
       if (typeof window !== 'undefined') {
-        localStorage.setItem(LOCAL_STORAGE_CONTENT_FALLBACK_KEY, JSON.stringify(next));
+        safeLocalStorageSet(LOCAL_STORAGE_CONTENT_FALLBACK_KEY, JSON.stringify(next));
       }
       return next;
     });
@@ -482,7 +492,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     setPageSeoMap((prev) => {
       const next = { ...prev, [path]: seo };
       if (typeof window !== 'undefined') {
-        localStorage.setItem(LOCAL_STORAGE_PAGE_SEO_KEY, JSON.stringify(next));
+        safeLocalStorageSet(LOCAL_STORAGE_PAGE_SEO_KEY, JSON.stringify(next));
       }
       return next;
     });

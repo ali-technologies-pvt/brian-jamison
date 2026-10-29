@@ -273,21 +273,16 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
         },
         {
           num: "1.11",
-          name: "Downtown & Metro Agent Networking",
-          detail: "Direct outreach to other agents can help introduce your property to professionals working with buyers who may be interested in its features, price, or location."
-        },
-        {
-          num: "1.12",
           name: "Full-Time Dedicated Engagement",
           detail: "We monitor listing activity, review inquiries, and coordinate follow-up during the agreed marketing period. Our goal is to keep communication organized and ensure buyer interest receives appropriate attention."
         },
         {
-          num: "1.13",
+          num: "1.12",
           name: "Direct-Mail Print Collateral",
           detail: "When suitable for the property and budget, printed postcards or neighborhood announcements can introduce the listing to nearby homeowners and potential referral sources."
         },
         {
-          num: "1.14",
+          num: "1.13",
           name: "Regional Print Ads",
           detail: "Selected print publications may provide an additional way to showcase suitable properties. Publication choice, placement, and timing depend on the home's audience and the agreed marketing plan."
         }

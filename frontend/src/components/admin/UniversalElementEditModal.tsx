@@ -16,6 +16,17 @@ import {
 } from 'lucide-react';
 import { useAdmin, ElementStyleData } from '../../context/AdminContext';
 
+export function getCleanImageKey(src: string): string {
+  if (!src) return '';
+  try {
+    const pathOnly = src.split('?')[0].split('#')[0];
+    const normalized = pathOnly.replace(/^https?:\/\/[^\/]+/, '');
+    return normalized.toLowerCase().replace(/[^a-z0-9_-]/g, '_').slice(-60);
+  } catch {
+    return src.slice(-40).replace(/[^a-zA-Z0-9_-]/g, '_');
+  }
+}
+
 export interface UniversalEditTarget {
   key: string;
   type: 'heading' | 'text' | 'button' | 'card' | 'section' | 'link' | 'image';
@@ -159,17 +170,45 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
 
   if (!isOpen || !target) return null;
 
-  // File upload reader
+  // Optimized File upload reader: Resizes & compresses high-res files to high-quality lightweight web format
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
     const reader = new FileReader();
     reader.onload = (uploadEvent) => {
-      const dataUrl = uploadEvent.target?.result as string;
-      if (dataUrl) {
-        setImageSrc(dataUrl);
-      }
+      const rawDataUrl = uploadEvent.target?.result as string;
+      if (!rawDataUrl) return;
+
+      const img = new Image();
+      img.onload = () => {
+        const maxWidth = 1600;
+        const maxHeight = 1200;
+        let width = img.width;
+        let height = img.height;
+
+        if (width > maxWidth || height > maxHeight) {
+          const ratio = Math.min(maxWidth / width, maxHeight / height);
+          width = Math.round(width * ratio);
+          height = Math.round(height * ratio);
+        }
+
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.drawImage(img, 0, 0, width, height);
+          const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.85);
+          setImageSrc(compressedDataUrl);
+        } else {
+          setImageSrc(rawDataUrl);
+        }
+      };
+      img.onerror = () => {
+        setImageSrc(rawDataUrl);
+      };
+      img.src = rawDataUrl;
     };
     reader.readAsDataURL(file);
   };
@@ -189,14 +228,44 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
         targetImg = target.elementRef.querySelector('img');
       }
 
+      const originalSrc =
+        targetImg?.getAttribute('data-original-src') ||
+        targetImg?.getAttribute('src') ||
+        targetImg?.src ||
+        target.currentImageSrc ||
+        target.cardImageSrc ||
+        '';
+
       if (targetImg) {
         targetImg.src = imageSrc;
         targetImg.setAttribute('src', imageSrc);
+        if (originalSrc && !targetImg.getAttribute('data-original-src')) {
+          targetImg.setAttribute('data-original-src', originalSrc);
+        }
         if (imageAlt) targetImg.setAttribute('alt', imageAlt);
       }
 
-      const imgKey = target.type === 'image' ? target.key : `img_replace_${target.key}`;
-      await updateContent(imgKey, imageSrc, `Image: ${target.label}`);
+      // 1. Save directly to target key
+      if (target.key) {
+        const keyToSave = target.key.startsWith('img_') ? target.key : `img_replace_${target.key}`;
+        await updateContent(keyToSave, imageSrc, `Image: ${target.label}`);
+      }
+
+      // 2. Save against clean image path key so it matches on any reload
+      if (originalSrc) {
+        const cleanKey = getCleanImageKey(originalSrc);
+        await updateContent(`img_src_${cleanKey}`, imageSrc, `Photo: ${originalSrc.slice(-30)}`);
+        await updateImageSeo(originalSrc, { newSrc: imageSrc, alt: imageAlt });
+      }
+
+      // 3. Save against parent container key if target element resides inside a card
+      const parentContainer = targetImg?.closest<HTMLElement>('[data-container-key]');
+      if (parentContainer) {
+        const cKey = parentContainer.getAttribute('data-container-key');
+        if (cKey && cKey !== target.key) {
+          await updateContent(`img_replace_${cKey}`, imageSrc, `Card photo: ${cKey}`);
+        }
+      }
     }
 
     // 2. If Card structured edits were made

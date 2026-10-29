@@ -21,9 +21,9 @@ app.use(
   })
 );
 
-// Standard body and cookie parsing
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// Standard body and cookie parsing with generous limit for CMS image uploads
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cookieParser());
 
 // Request logger in non-production

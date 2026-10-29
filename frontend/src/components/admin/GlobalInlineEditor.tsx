@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useAdmin, ElementStyleData } from '../../context/AdminContext';
 import { ImageSeoModal } from './ImageSeoModal';
 import { StyleInspectorModal } from './StyleInspectorModal';
-import { UniversalElementEditModal, UniversalEditTarget } from './UniversalElementEditModal';
+import { UniversalElementEditModal, UniversalEditTarget, getCleanImageKey } from './UniversalElementEditModal';
 import { Loader2, Check, Pencil } from 'lucide-react';
 
 interface GlobalInlineEditorProps {
@@ -61,13 +61,15 @@ function generateElementKey(el: HTMLElement, pathname: string): string {
   return `cms_auto_${Math.abs(hash).toString(36)}`;
 }
 
-// Generate container key for cards and sections
+// Generate container key for cards and sections (stable across reloads)
 function generateContainerKey(el: HTMLElement, pathname: string): string {
+  if (el.getAttribute('data-container-key')) return el.getAttribute('data-container-key')!;
   if (el.id) return `container_${el.id}`;
   const tag = el.tagName.toLowerCase();
-  const className = (el.className || '').toString().slice(0, 24).replace(/[^a-zA-Z0-9]/g, '_');
-  const initialText = (el.innerText || '').trim().slice(0, 20).replace(/[^a-zA-Z0-9]/g, '_');
-  const raw = `${pathname}__${tag}__${className}__${initialText}`;
+  const imgEl = el.querySelector('img');
+  const imgSrc = imgEl ? (imgEl.getAttribute('data-original-src') || imgEl.getAttribute('src') || '') : '';
+  const initialText = (el.getAttribute('data-cms-initial') || el.innerText || '').trim().slice(0, 30).replace(/[^a-zA-Z0-9]/g, '_');
+  const raw = `${pathname}__${tag}__${imgSrc}__${initialText}`;
   let hash = 0;
   for (let i = 0; i < raw.length; i++) {
     hash = (hash << 5) - hash + raw.charCodeAt(i);
@@ -252,35 +254,58 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
       }
     });
 
-    // 1.2 Restore Container & Card Content
-    const allContainers = document.querySelectorAll<HTMLElement>('[data-container-key]');
+    // 1.2 Restore Container & Card Content across all cards and sections in DOM
+    const allContainers = document.querySelectorAll<HTMLElement>(
+      'div[class*="rounded-2xl"], div[class*="rounded-3xl"], div[class*="rounded-xl"], div[class*="bg-white"], div[class*="card"], section'
+    );
     allContainers.forEach((container) => {
-      const key = container.getAttribute('data-container-key');
-      if (key && contentMap[key]) {
-        container.innerHTML = contentMap[key];
+      if (isAdminOrExcludedUI(container)) return;
+      const key = container.getAttribute('data-container-key') || generateContainerKey(container, currentPath);
+      container.setAttribute('data-container-key', key);
+
+      if (contentMap[key]) {
+        if (container.innerHTML !== contentMap[key]) {
+          container.innerHTML = contentMap[key];
+        }
       }
-      if (key && contentMap[`img_replace_${key}`]) {
+
+      const imgReplacement = contentMap[`img_replace_${key}`];
+      if (imgReplacement) {
         const img = container.querySelector('img');
         if (img) {
-          img.src = contentMap[`img_replace_${key}`];
-          img.setAttribute('src', contentMap[`img_replace_${key}`]);
+          if (!img.getAttribute('data-original-src')) {
+            img.setAttribute('data-original-src', img.getAttribute('src') || img.src);
+          }
+          if (img.src !== imgReplacement) {
+            img.src = imgReplacement;
+            img.setAttribute('src', imgReplacement);
+          }
         }
       }
     });
 
-    // 1.3 Restore Image Elements & SEO Attributes
+    // 1.3 Restore Image Elements & SEO Attributes with multi-key fallback
     const allImages = document.querySelectorAll<HTMLImageElement>('img');
     allImages.forEach((img) => {
       if (isAdminOrExcludedUI(img)) return;
 
-      const src = img.getAttribute('data-original-src') || img.getAttribute('src');
-      if (src) {
+      const rawSrc = img.getAttribute('data-original-src') || img.getAttribute('src') || img.src;
+      if (rawSrc) {
         if (!img.getAttribute('data-original-src')) {
-          img.setAttribute('data-original-src', src);
+          img.setAttribute('data-original-src', rawSrc);
         }
 
-        const seo = getImageSeo(src);
-        const replacementFromMap = contentMap[`img_replace_${encodeURIComponent(src).slice(0, 40)}`];
+        const cleanKey = getCleanImageKey(rawSrc);
+        const parentContainer = img.closest<HTMLElement>('[data-container-key]');
+        const parentKey = parentContainer?.getAttribute('data-container-key');
+
+        const replacementFromMap =
+          (parentKey ? contentMap[`img_replace_${parentKey}`] : null) ||
+          contentMap[`img_src_${cleanKey}`] ||
+          contentMap[`img_replace_${cleanKey}`] ||
+          contentMap[`img_replace_${encodeURIComponent(rawSrc).slice(0, 40)}`];
+
+        const seo = getImageSeo(rawSrc);
         const targetSrc = seo.newSrc || replacementFromMap;
 
         if (targetSrc && img.src !== targetSrc) {
