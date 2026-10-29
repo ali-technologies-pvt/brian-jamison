@@ -340,25 +340,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               handleCancelClose();
               setActiveMenu(null);
             }}
-            className="flex items-center gap-3 sm:gap-4"
+            className="flex items-center gap-3 sm:gap-4 shrink-0"
           >
-            {/* Direct Call: Orange Circular Badge + White Phone Number */}
-            <div className="flex items-center gap-2">
-              <a
-                href={`tel:${BROKER_INFO.phoneRaw}`}
-                className="w-10 h-10 rounded-full bg-[#EA580C] hover:bg-[#C2410C] text-white flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer shrink-0"
-                title={`Call ${BROKER_INFO.phone}`}
-              >
-                <Phone className="w-4 h-4" />
-              </a>
-              <a
-                href={`tel:${BROKER_INFO.phoneRaw}`}
-                className="hidden sm:inline font-bold text-sm tracking-wide text-white hover:text-[#FB923C] transition-colors tabular-nums"
-              >
-                {BROKER_INFO.phone}
-              </a>
-            </div>
-
             {/* High-Intent Pill Button: "Get in touch" with Pulse Dot */}
             <button
               type="button"
