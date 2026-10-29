@@ -85,7 +85,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
 
   // Sub-category filters
   const [googleFilter, setGoogleFilter] = useState<'all' | 'seller' | 'buyer' | 'guide'>('all');
-  const [zillowFilter, setZillowFilter] = useState<'all' | 'seller' | 'buyer' | 'acreage'>('all');
+  const [zillowFilter, setZillowFilter] = useState<'all' | 'seller' | 'buyer' | 'repeat'>('all');
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -126,8 +126,12 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
         if (zillowFilter === 'seller') {
           return item.verifiedCategory === 'Seller' || item.verifiedCategory === 'Repeat Client';
         }
-        if (zillowFilter === 'buyer') return item.verifiedCategory === 'Buyer';
-        if (zillowFilter === 'acreage') return item.verifiedCategory === 'Acreage';
+        if (zillowFilter === 'buyer') {
+          return item.verifiedCategory === 'Buyer' || item.verifiedCategory === 'Repeat Client';
+        }
+        if (zillowFilter === 'repeat') {
+          return item.verifiedCategory === 'Repeat Client';
+        }
         return true;
       }).map((z) => ({
         id: z.id,
@@ -451,14 +455,14 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                 </button>
                 <button
                   type="button"
-                  onClick={() => setZillowFilter('acreage')}
+                  onClick={() => setZillowFilter('repeat')}
                   className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold tracking-wide transition-all cursor-pointer ${
-                    zillowFilter === 'acreage'
+                    zillowFilter === 'repeat'
                       ? 'bg-[#006AFF] text-white shadow-md'
                       : 'bg-white text-[#4B5563] hover:text-[#006AFF] border border-[#E5E0D8]'
                   }`}
                 >
-                  Land & Acreage
+                  Repeat & Multi-Property
                 </button>
               </>
             )}
