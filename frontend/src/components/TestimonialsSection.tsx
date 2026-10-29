@@ -1,5 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { GOOGLE_REVIEWS, GOOGLE_REVIEWS_GMB_URL, BROKER_INFO, GoogleReview } from '../data/realEstateData';
+import {
+  GOOGLE_REVIEWS,
+  GOOGLE_REVIEWS_GMB_URL,
+  ZILLOW_REVIEWS,
+  ZILLOW_REVIEWS_URL,
+  BROKER_INFO,
+  GoogleReview,
+  ZillowReview
+} from '../data/realEstateData';
 import { BrianAvatar } from './BrianAvatar';
 import {
   Star,
@@ -8,13 +16,11 @@ import {
   CheckCircle2,
   Award,
   ChevronLeft,
-  ChevronRight,
-  Pause,
-  Play
+  ChevronRight
 } from 'lucide-react';
 
 interface TestimonialsSectionProps {
-  onOpenConsultation: () => void;
+  onOpenConsultation?: () => void;
   initialExpandAll?: boolean;
 }
 
@@ -40,10 +46,47 @@ export const GoogleLogoIcon: React.FC<{ className?: string }> = ({ className = "
   </svg>
 );
 
+// Zillow Official House & 'Z' Logo SVG
+export const ZillowLogoIcon: React.FC<{ className?: string }> = ({ className = "w-5 h-5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M12 2L2 10.2H5.2V20.5H18.8V10.2H22L12 2Z"
+      fill="#006AFF"
+    />
+    <path
+      d="M9 16.2H15V15H11.2L15 11.2V10H9V11.2H12.8L9 15V16.2Z"
+      fill="white"
+    />
+  </svg>
+);
+
+interface UnifiedReviewItem {
+  id: string;
+  author: string;
+  authorBadge?: string;
+  rating: number;
+  review: string;
+  date: string;
+  initials: string;
+  bgColor: string;
+  verifiedCategory: string;
+  highlight: string;
+  platform: 'google' | 'zillow';
+  isLocalGuide?: boolean;
+  serviceType?: string;
+  platformUrl: string;
+}
+
 export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   onOpenConsultation,
 }) => {
-  const [filter, setFilter] = useState<'all' | 'seller' | 'buyer' | 'guide'>('all');
+  // 2 Major Source Platform Tabs: 'google' vs 'zillow'
+  const [activePlatform, setActivePlatform] = useState<'google' | 'zillow'>('google');
+
+  // Sub-category filters
+  const [googleFilter, setGoogleFilter] = useState<'all' | 'seller' | 'buyer' | 'guide'>('all');
+  const [zillowFilter, setZillowFilter] = useState<'all' | 'seller' | 'buyer' | 'acreage'>('all');
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [itemsPerView, setItemsPerView] = useState(3);
@@ -51,15 +94,60 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   const touchStartXRef = useRef<number | null>(null);
   const touchEndXRef = useRef<number | null>(null);
 
-  const filteredReviews = GOOGLE_REVIEWS.filter((item) => {
-    if (filter === 'all') return true;
-    if (filter === 'seller') return item.verifiedCategory === 'Seller' || item.verifiedCategory === 'Repeat Client' || item.verifiedCategory === 'Investor';
-    if (filter === 'buyer') return item.verifiedCategory === 'Buyer';
-    if (filter === 'guide') return item.isLocalGuide;
-    return true;
-  });
+  // Normalized review lists for seamless UI rendering
+  const activeReviews: UnifiedReviewItem[] = React.useMemo(() => {
+    if (activePlatform === 'google') {
+      return GOOGLE_REVIEWS.filter((item) => {
+        if (googleFilter === 'all') return true;
+        if (googleFilter === 'seller') {
+          return item.verifiedCategory === 'Seller' || item.verifiedCategory === 'Repeat Client' || item.verifiedCategory === 'Investor';
+        }
+        if (googleFilter === 'buyer') return item.verifiedCategory === 'Buyer';
+        if (googleFilter === 'guide') return item.isLocalGuide;
+        return true;
+      }).map((g) => ({
+        id: g.id,
+        author: g.author,
+        authorBadge: g.authorBadge || g.reviewCountText,
+        rating: g.rating,
+        review: g.review,
+        date: "Verified Google Review",
+        initials: g.initials,
+        bgColor: g.bgColor,
+        verifiedCategory: g.verifiedCategory,
+        highlight: g.highlight,
+        platform: 'google',
+        isLocalGuide: g.isLocalGuide,
+        platformUrl: GOOGLE_REVIEWS_GMB_URL
+      }));
+    } else {
+      return ZILLOW_REVIEWS.filter((item) => {
+        if (zillowFilter === 'all') return true;
+        if (zillowFilter === 'seller') {
+          return item.verifiedCategory === 'Seller' || item.verifiedCategory === 'Repeat Client';
+        }
+        if (zillowFilter === 'buyer') return item.verifiedCategory === 'Buyer';
+        if (zillowFilter === 'acreage') return item.verifiedCategory === 'Acreage';
+        return true;
+      }).map((z) => ({
+        id: z.id,
+        author: z.author,
+        authorBadge: z.authorBadge || z.serviceType,
+        rating: z.rating,
+        review: z.review,
+        date: "Verified Zillow Premier Review",
+        initials: z.initials,
+        bgColor: z.bgColor,
+        verifiedCategory: z.verifiedCategory,
+        highlight: z.highlight,
+        platform: 'zillow',
+        serviceType: z.serviceType,
+        platformUrl: ZILLOW_REVIEWS_URL
+      }));
+    }
+  }, [activePlatform, googleFilter, zillowFilter]);
 
-  // Calculate items visible per view based on viewport width
+  // Viewport-based responsive items visible
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
@@ -76,12 +164,12 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Reset to first slide when filter changes
+  // Reset to first slide on platform or filter change
   useEffect(() => {
     setCurrentIndex(0);
-  }, [filter]);
+  }, [activePlatform, googleFilter, zillowFilter]);
 
-  const maxIndex = Math.max(0, filteredReviews.length - itemsPerView);
+  const maxIndex = Math.max(0, activeReviews.length - itemsPerView);
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
@@ -130,28 +218,105 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   return (
     <section id="testimonials" className="w-full py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#E5A93C]/30 relative overflow-hidden">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
-        {/* Header with Google Business Profile Verification Banner */}
+        {/* 1. PRIMARY PLATFORM TABS: GOOGLE REVIEWS VS ZILLOW REVIEWS */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-stone-200">
+          <div className="inline-flex items-center gap-2 p-1.5 bg-[#F5EFE6] rounded-2xl border border-[#E5A93C]/40 shadow-xs">
+            {/* Tab 1: Google Reviews */}
+            <button
+              type="button"
+              onClick={() => setActivePlatform('google')}
+              className={`flex items-center gap-2.5 px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all cursor-pointer ${
+                activePlatform === 'google'
+                  ? 'bg-[#002D61] text-white shadow-md'
+                  : 'text-[#002D61] hover:text-[#EA580C] hover:bg-white/60'
+              }`}
+            >
+              <GoogleLogoIcon className="w-4 h-4 shrink-0" />
+              <span>Google Reviews</span>
+              <span
+                className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                  activePlatform === 'google'
+                    ? 'bg-[#EA580C] text-white'
+                    : 'bg-stone-200 text-[#002D61]'
+                }`}
+              >
+                {GOOGLE_REVIEWS.length}
+              </span>
+            </button>
+
+            {/* Tab 2: Zillow Reviews */}
+            <button
+              type="button"
+              onClick={() => setActivePlatform('zillow')}
+              className={`flex items-center gap-2.5 px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all cursor-pointer ${
+                activePlatform === 'zillow'
+                  ? 'bg-[#006AFF] text-white shadow-md'
+                  : 'text-[#002D61] hover:text-[#006AFF] hover:bg-white/60'
+              }`}
+            >
+              <ZillowLogoIcon className="w-4 h-4 shrink-0" />
+              <span>Zillow Reviews</span>
+              <span
+                className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                  activePlatform === 'zillow'
+                    ? 'bg-white text-[#006AFF]'
+                    : 'bg-stone-200 text-[#002D61]'
+                }`}
+              >
+                {ZILLOW_REVIEWS.length}
+              </span>
+            </button>
+          </div>
+
+          <div className="text-xs text-[#6B7280] font-sans flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span>100% 5-Star Verified Client Record Across Platforms</span>
+          </div>
+        </div>
+
+        {/* 2. DYNAMIC HEADER BY ACTIVE PLATFORM */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-14">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E5A93C]/40 shadow-xs mb-3">
-              <GoogleLogoIcon className="w-4 h-4" />
-              <span className="text-[11px] font-bold tracking-wide uppercase font-sans text-[#002D61]">
-                Google Verified Reviews · 5.0 Rating
-              </span>
+              {activePlatform === 'google' ? (
+                <>
+                  <GoogleLogoIcon className="w-4 h-4" />
+                  <span className="text-[11px] font-bold tracking-wide uppercase font-sans text-[#002D61]">
+                    Google Verified Reviews · 5.0 Rating
+                  </span>
+                </>
+              ) : (
+                <>
+                  <ZillowLogoIcon className="w-4 h-4" />
+                  <span className="text-[11px] font-bold tracking-wide uppercase font-sans text-[#006AFF]">
+                    Zillow Premier Agent · 5.0 Star Client Rating
+                  </span>
+                </>
+              )}
             </div>
+
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#002D61] font-bold tracking-tight">
-              Clients Describe the Difference
+              {activePlatform === 'google'
+                ? 'Clients Describe the Difference'
+                : 'Verified Zillow Client Testimonials'}
             </h2>
+
             <p className="font-sans text-sm sm:text-base text-[#6B7280] mt-2 max-w-xl">
-              Buyers and sellers share what it was like to work with Brian, from the first call through closing, including how he communicated, solved problems, and guided decisions. Each review is from a verified client.
+              {activePlatform === 'google'
+                ? 'Buyers and sellers share what it was like to work with Brian, from the first call through closing, including how he communicated, solved problems, and guided decisions. Each review is from a verified Google client.'
+                : "Read verified feedback from Brian Jamison's official Zillow Premier Agent profile. Homeowners, luxury buyers, and land sellers rate his local knowledge, responsiveness, process expertise, and negotiation skills."}
             </p>
           </div>
 
-          {/* GMB Summary Badge & Write Review Direct Action */}
+          {/* Platform Summary Badge & Direct Action Button */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 p-4 bg-white rounded-2xl border border-[#E5A93C]/40 shadow-sm">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-xl bg-[#FAF9F6] border border-[#E5A93C]/30 flex items-center justify-center">
-                <GoogleLogoIcon className="w-6 h-6" />
+                {activePlatform === 'google' ? (
+                  <GoogleLogoIcon className="w-6 h-6" />
+                ) : (
+                  <ZillowLogoIcon className="w-6 h-6" />
+                )}
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
@@ -163,74 +328,140 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                   </div>
                 </div>
                 <span className="text-[11px] text-[#6B7280] block font-sans">
-                  Based on 11 Google Reviews
+                  {activePlatform === 'google'
+                    ? `Based on ${GOOGLE_REVIEWS.length} Google Reviews`
+                    : `Based on ${ZILLOW_REVIEWS.length} Zillow Reviews`}
                 </span>
               </div>
             </div>
 
             <div className="hidden sm:block w-px h-10 bg-[#E5E0D8] mx-1" />
 
-            <a
-              href={GOOGLE_REVIEWS_GMB_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#002D61] hover:bg-[#001D40] text-white text-xs font-bold tracking-wide transition-all shadow-md cursor-pointer hover:-translate-y-0.5"
-            >
-              <GoogleLogoIcon className="w-3.5 h-3.5" />
-              <span>Write a Review on Google</span>
-              <ExternalLink className="w-3.5 h-3.5 text-stone-300" />
-            </a>
+            {activePlatform === 'google' ? (
+              <a
+                href={GOOGLE_REVIEWS_GMB_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#002D61] hover:bg-[#001D40] text-white text-xs font-bold tracking-wide transition-all shadow-md cursor-pointer hover:-translate-y-0.5"
+              >
+                <GoogleLogoIcon className="w-3.5 h-3.5" />
+                <span>Write a Review on Google</span>
+                <ExternalLink className="w-3.5 h-3.5 text-stone-300" />
+              </a>
+            ) : (
+              <a
+                href={ZILLOW_REVIEWS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#006AFF] hover:bg-[#0051C4] text-white text-xs font-bold tracking-wide transition-all shadow-md cursor-pointer hover:-translate-y-0.5"
+              >
+                <ZillowLogoIcon className="w-3.5 h-3.5" />
+                <span>View Profile on Zillow</span>
+                <ExternalLink className="w-3.5 h-3.5 text-stone-200" />
+              </a>
+            )}
           </div>
         </div>
 
-        {/* Filter Bar & Slider Navigation Controls */}
+        {/* 3. SUB-FILTER BAR & SLIDER CONTROLS */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
           {/* Category Filter Pills */}
           <div className="flex flex-wrap items-center gap-2">
-            <button
-              type="button"
-              onClick={() => setFilter('all')}
-              className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold tracking-wide transition-all cursor-pointer ${
-                filter === 'all'
-                  ? 'bg-[#002D61] text-white shadow-md'
-                  : 'bg-white text-[#4B5563] hover:text-[#002D61] border border-[#E5E0D8]'
-              }`}
-            >
-              All Google Reviews ({GOOGLE_REVIEWS.length})
-            </button>
-            <button
-              type="button"
-              onClick={() => setFilter('seller')}
-              className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold tracking-wide transition-all cursor-pointer ${
-                filter === 'seller'
-                  ? 'bg-[#002D61] text-white shadow-md'
-                  : 'bg-white text-[#4B5563] hover:text-[#002D61] border border-[#E5E0D8]'
-              }`}
-            >
-              Sellers & Investors
-            </button>
-            <button
-              type="button"
-              onClick={() => setFilter('buyer')}
-              className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold tracking-wide transition-all cursor-pointer ${
-                filter === 'buyer'
-                  ? 'bg-[#002D61] text-white shadow-md'
-                  : 'bg-white text-[#4B5563] hover:text-[#002D61] border border-[#E5E0D8]'
-              }`}
-            >
-              Home Buyers
-            </button>
-            <button
-              type="button"
-              onClick={() => setFilter('guide')}
-              className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold tracking-wide transition-all cursor-pointer ${
-                filter === 'guide'
-                  ? 'bg-[#002D61] text-white shadow-md'
-                  : 'bg-white text-[#4B5563] hover:text-[#002D61] border border-[#E5E0D8]'
-              }`}
-            >
-              Local Guides
-            </button>
+            {activePlatform === 'google' ? (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setGoogleFilter('all')}
+                  className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold tracking-wide transition-all cursor-pointer ${
+                    googleFilter === 'all'
+                      ? 'bg-[#002D61] text-white shadow-md'
+                      : 'bg-white text-[#4B5563] hover:text-[#002D61] border border-[#E5E0D8]'
+                  }`}
+                >
+                  All Google Reviews ({GOOGLE_REVIEWS.length})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setGoogleFilter('seller')}
+                  className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold tracking-wide transition-all cursor-pointer ${
+                    googleFilter === 'seller'
+                      ? 'bg-[#002D61] text-white shadow-md'
+                      : 'bg-white text-[#4B5563] hover:text-[#002D61] border border-[#E5E0D8]'
+                  }`}
+                >
+                  Sellers & Investors
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setGoogleFilter('buyer')}
+                  className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold tracking-wide transition-all cursor-pointer ${
+                    googleFilter === 'buyer'
+                      ? 'bg-[#002D61] text-white shadow-md'
+                      : 'bg-white text-[#4B5563] hover:text-[#002D61] border border-[#E5E0D8]'
+                  }`}
+                >
+                  Home Buyers
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setGoogleFilter('guide')}
+                  className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold tracking-wide transition-all cursor-pointer ${
+                    googleFilter === 'guide'
+                      ? 'bg-[#002D61] text-white shadow-md'
+                      : 'bg-white text-[#4B5563] hover:text-[#002D61] border border-[#E5E0D8]'
+                  }`}
+                >
+                  Local Guides
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setZillowFilter('all')}
+                  className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold tracking-wide transition-all cursor-pointer ${
+                    zillowFilter === 'all'
+                      ? 'bg-[#006AFF] text-white shadow-md'
+                      : 'bg-white text-[#4B5563] hover:text-[#006AFF] border border-[#E5E0D8]'
+                  }`}
+                >
+                  All Zillow Reviews ({ZILLOW_REVIEWS.length})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setZillowFilter('seller')}
+                  className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold tracking-wide transition-all cursor-pointer ${
+                    zillowFilter === 'seller'
+                      ? 'bg-[#006AFF] text-white shadow-md'
+                      : 'bg-white text-[#4B5563] hover:text-[#006AFF] border border-[#E5E0D8]'
+                  }`}
+                >
+                  Home Sellers
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setZillowFilter('buyer')}
+                  className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold tracking-wide transition-all cursor-pointer ${
+                    zillowFilter === 'buyer'
+                      ? 'bg-[#006AFF] text-white shadow-md'
+                      : 'bg-white text-[#4B5563] hover:text-[#006AFF] border border-[#E5E0D8]'
+                  }`}
+                >
+                  Home Buyers
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setZillowFilter('acreage')}
+                  className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold tracking-wide transition-all cursor-pointer ${
+                    zillowFilter === 'acreage'
+                      ? 'bg-[#006AFF] text-white shadow-md'
+                      : 'bg-white text-[#4B5563] hover:text-[#006AFF] border border-[#E5E0D8]'
+                  }`}
+                >
+                  Land & Acreage
+                </button>
+              </>
+            )}
           </div>
 
           {/* Slider Prev / Next Arrows */}
@@ -259,11 +490,11 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
         </div>
 
         {/* 
-          PREMIUM RESPONSIVE SLIDER CONTAINER
-          - Desktop: 3 cards visible
-          - Tablet: 2 cards visible
-          - Mobile: 1 card visible
-          - Smooth CSS transform transitions
+          4. EXACT LUXURY RESPONSIVE SLIDER CONTAINER
+          - Desktop: 3 cards
+          - Tablet: 2 cards
+          - Mobile: 1 card
+          - Auto-play with pause on hover
           - Touch swipe & drag support
         */}
         <div
@@ -280,7 +511,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
               transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`
             }}
           >
-            {filteredReviews.map((item) => (
+            {activeReviews.map((item) => (
               <div
                 key={item.id}
                 className="shrink-0 px-3 py-2"
@@ -310,25 +541,29 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                               </span>
                             )}
                           </div>
-                          <span className="font-sans text-[11px] text-[#6B7280] block">
-                            {item.authorBadge || item.reviewCountText}
+                          <span className="font-sans text-[11px] text-[#6B7280] block truncate max-w-[210px] sm:max-w-[250px]">
+                            {item.authorBadge}
                           </span>
                         </div>
                       </div>
 
-                      {/* Google G Stamp */}
+                      {/* Official Platform Stamp on Card */}
                       <a
-                        href={GOOGLE_REVIEWS_GMB_URL}
+                        href={item.platformUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        title="View on Google"
-                        className="p-1.5 rounded-lg hover:bg-[#FAF9F6] transition-colors"
+                        title={item.platform === 'google' ? "View on Google" : "View on Zillow"}
+                        className="p-1.5 rounded-lg hover:bg-[#FAF9F6] transition-colors shrink-0"
                       >
-                        <GoogleLogoIcon className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity" />
+                        {item.platform === 'google' ? (
+                          <GoogleLogoIcon className="w-4 h-4 opacity-75 group-hover:opacity-100 transition-opacity" />
+                        ) : (
+                          <ZillowLogoIcon className="w-4 h-4 opacity-85 group-hover:opacity-100 transition-opacity" />
+                        )}
                       </a>
                     </div>
 
-                    {/* Stars & Verified */}
+                    {/* Stars & Verified Stamp */}
                     <div className="flex items-center justify-between mb-3.5">
                       <div className="flex items-center gap-1 text-[#FBBC04]">
                         {[...Array(item.rating)].map((_, i) => (
@@ -337,7 +572,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                       </div>
                       <span className="text-[11px] text-[#6B7280] font-sans flex items-center gap-1">
                         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                        Verified Google Review
+                        {item.date}
                       </span>
                     </div>
 
@@ -349,7 +584,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                     </div>
 
                     {/* Review Body */}
-                    <p className="font-serif text-sm sm:text-base text-[#1F2937] leading-relaxed italic mb-4">
+                    <p className="font-serif text-sm sm:text-base text-[#1F2937] leading-relaxed italic mb-4 line-clamp-6">
                       &ldquo;{item.review}&rdquo;
                     </p>
                   </div>
@@ -360,12 +595,12 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                       {item.verifiedCategory}
                     </span>
                     <a
-                      href={GOOGLE_REVIEWS_GMB_URL}
+                      href={item.platformUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-[#002D61] font-semibold inline-flex items-center gap-1 transition-colors"
                     >
-                      <span>Google Review</span>
+                      <span>{item.platform === 'google' ? 'Google Review' : 'Zillow Review'}</span>
                       <ExternalLink className="w-3 h-3" />
                     </a>
                   </div>
@@ -375,7 +610,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
           </div>
         </div>
 
-        {/* Slider Pagination Dots & Autoplay Indicator */}
+        {/* 5. SLIDER PAGINATION DOTS */}
         <div className="flex items-center justify-center gap-2 mt-8 mb-12">
           {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
             <button
@@ -385,14 +620,14 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
               aria-label={`Go to slide ${idx + 1}`}
               className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                 currentIndex === idx
-                  ? 'w-8 bg-[#EA580C]'
+                  ? activePlatform === 'google' ? 'w-8 bg-[#EA580C]' : 'w-8 bg-[#006AFF]'
                   : 'w-2 bg-[#E5E0D8] hover:bg-[#002D61]/50'
               }`}
             />
           ))}
         </div>
 
-        {/* Brian's Personal Trust Commitment with Cancel-Anytime Pledge */}
+        {/* 6. BRIAN'S PERSONAL TRUST COMMITMENT WITH CANCEL-ANYTIME PLEDGE */}
         <div className="max-w-4xl mx-auto p-6 sm:p-8 rounded-2xl bg-white border border-[#E5A93C]/40 shadow-xs flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left">
           <BrianAvatar size={56} showStatusDot={true} alt="Brian Jamison - Client Satisfaction Commitment" />
           <div className="flex-1">
@@ -412,13 +647,15 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
               <div>
                 <strong className="text-[#002D61] font-serif text-sm">Brian Jamison</strong> · Top 2% Producer · {BROKER_INFO.license} · {BROKER_INFO.firmName}
               </div>
-              <button
-                type="button"
-                onClick={onOpenConsultation}
-                className="text-xs font-bold text-[#EA580C] hover:text-[#C2410C] transition-colors cursor-pointer"
-              >
-                Schedule Confidential Review →
-              </button>
+              {onOpenConsultation && (
+                <button
+                  type="button"
+                  onClick={onOpenConsultation}
+                  className="text-xs font-bold text-[#EA580C] hover:text-[#C2410C] transition-colors cursor-pointer"
+                >
+                  Schedule Confidential Review →
+                </button>
+              )}
             </div>
           </div>
         </div>

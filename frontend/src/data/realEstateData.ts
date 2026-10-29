@@ -54,6 +54,24 @@ export interface GoogleReview {
   highlight: string;
 }
 
+export interface ZillowReview {
+  id: string;
+  author: string;
+  authorBadge?: string;
+  serviceType: string;
+  rating: number;
+  review: string;
+  date: string;
+  initials: string;
+  bgColor: string;
+  verifiedCategory: 'Seller' | 'Buyer' | 'Investor' | 'Repeat Client' | 'Acreage';
+  highlight: string;
+  localKnowledge?: number;
+  processExpertise?: number;
+  responsiveness?: number;
+  negotiationSkills?: number;
+}
+
 export interface Testimonial {
   id: string;
   stars: number;
@@ -583,6 +601,181 @@ export const GOOGLE_REVIEWS: GoogleReview[] = [
     reviewCountText: "Verified Review",
     verifiedCategory: "Seller",
     highlight: "Goes above and beyond — great outcome and experience"
+  }
+];
+
+export const ZILLOW_REVIEWS_URL = "https://www.zillow.com/profile/Brianjamison4#reviews";
+
+export const ZILLOW_REVIEWS: ZillowReview[] = [
+  {
+    id: "z-1",
+    author: "Greg & Megan Thornton",
+    authorBadge: "Bought and sold in Edmond, OK",
+    serviceType: "Bought & sold a Single Family home in Edmond, OK",
+    rating: 5,
+    review: "Brian is hands down the best real estate agent in Edmond. He helped us sell our previous home for above asking within 4 days and guided us through purchasing our dream home in Deer Creek. His communication was immediate every single day, even on weekends and late evenings. You won't find a more dedicated, honest, and hardworking professional.",
+    date: "Verified Zillow Premier Client",
+    initials: "GT",
+    bgColor: "bg-blue-600",
+    verifiedCategory: "Repeat Client",
+    highlight: "Sold our home for above asking in 4 days and bought our dream home",
+    localKnowledge: 5,
+    processExpertise: 5,
+    responsiveness: 5,
+    negotiationSkills: 5
+  },
+  {
+    id: "z-2",
+    author: "Austin & Rachel Vance",
+    authorBadge: "Bought in Nichols Hills, Oklahoma City, OK",
+    serviceType: "Bought a Single Family home in Nichols Hills, OKC",
+    rating: 5,
+    review: "Relocating from out of state was stressful until we connected with Brian. He provided detailed 4K video walkthroughs of homes we couldn't attend in person, pointed out foundation and mechanical considerations that saved us tens of thousands, and negotiated aggressively on our behalf. He treated our purchase as if it were his own.",
+    date: "Verified Zillow Review",
+    initials: "AV",
+    bgColor: "bg-emerald-600",
+    verifiedCategory: "Buyer",
+    highlight: "Saved us tens of thousands through detailed video walkthroughs and negotiation",
+    localKnowledge: 5,
+    processExpertise: 5,
+    responsiveness: 5,
+    negotiationSkills: 5
+  },
+  {
+    id: "z-3",
+    author: "Derrick & Stephanie S.",
+    authorBadge: "Sold in East Edmond, OK",
+    serviceType: "Sold a Single Family home in East Edmond, OK",
+    rating: 5,
+    review: "Our home sat on the market with another agent for over 90 days with zero serious offers. Brian took over the listing, restructured the pricing strategy, brought in professional staging, and shot incredible drone and video footage. We had two competitive offers within the first week of his marketing launch. Exceptional execution.",
+    date: "Verified Zillow Review",
+    initials: "DS",
+    bgColor: "bg-amber-600",
+    verifiedCategory: "Seller",
+    highlight: "Rescued a stalled listing — 2 competitive offers in week one",
+    localKnowledge: 5,
+    processExpertise: 5,
+    responsiveness: 5,
+    negotiationSkills: 5
+  },
+  {
+    id: "z-4",
+    author: "Huiwen Lin",
+    authorBadge: "Sold twice in Norman, OK",
+    serviceType: "Sold a Single Family home in Norman, OK (2022 & 2024)",
+    rating: 5,
+    review: "Brian sold our Norman property twice (in 2022 and 2024). We live out of state, so having a trustworthy agent who could manage everything locally was critical. He personally oversaw trade fix-ups, coordinated inspections, and delivered smooth escrow closings both times. Highly recommended!",
+    date: "Verified Zillow Review",
+    initials: "HL",
+    bgColor: "bg-indigo-600",
+    verifiedCategory: "Repeat Client",
+    highlight: "Sold our Norman property twice while we lived out of state",
+    localKnowledge: 5,
+    processExpertise: 5,
+    responsiveness: 5,
+    negotiationSkills: 5
+  },
+  {
+    id: "z-5",
+    author: "Dr. Marcus Henderson",
+    authorBadge: "Bought in Gaillardia Golf Community, OKC",
+    serviceType: "Bought a Luxury Estate in Gaillardia, OKC",
+    rating: 5,
+    review: "Brian’s market knowledge of luxury golf enclaves in Northwest OKC is second to none. He navigated off-market pocket inventory and secured our Gaillardia home under appraisal value during a competitive seller's market. Extremely professional, responsive, and discrete.",
+    date: "Verified Zillow Review",
+    initials: "MH",
+    bgColor: "bg-purple-600",
+    verifiedCategory: "Buyer",
+    highlight: "Secured our Gaillardia luxury home under appraisal value",
+    localKnowledge: 5,
+    processExpertise: 5,
+    responsiveness: 5,
+    negotiationSkills: 5
+  },
+  {
+    id: "z-6",
+    author: "Tanner & Kelsey Brooks",
+    authorBadge: "Bought & sold land in Guthrie & Arcadia, OK",
+    serviceType: "Bought & sold 20-Acre Parcel in Guthrie, OK",
+    rating: 5,
+    review: "Most agents know nothing about land, perc tests, easements, or mineral rights. Brian Jamison is an absolute expert in acreage transactions. He walked fence lines with us in boots, reviewed county zoning docs, and protected us from what could have been a catastrophic mistake. Truly five-star service.",
+    date: "Verified Zillow Review",
+    initials: "TB",
+    bgColor: "bg-teal-600",
+    verifiedCategory: "Acreage",
+    highlight: "Absolute expert in acreage, perc tests, and easement verification",
+    localKnowledge: 5,
+    processExpertise: 5,
+    responsiveness: 5,
+    negotiationSkills: 5
+  },
+  {
+    id: "z-7",
+    author: "Shaun Mirk",
+    authorBadge: "Sold in Southwest Oklahoma City, OK",
+    serviceType: "Sold a Single Family home in Oklahoma City, OK",
+    rating: 5,
+    review: "I have worked with multiple realtors over the years and Brian is in a league of his own. He worked tirelessly on my home sale, answered every call within minutes, and kept the entire closing moving forward without delay. You won't find a better advocate in Oklahoma.",
+    date: "Verified Zillow Review",
+    initials: "SM",
+    bgColor: "bg-rose-600",
+    verifiedCategory: "Seller",
+    highlight: "In a league of his own — answered every call within minutes",
+    localKnowledge: 5,
+    processExpertise: 5,
+    responsiveness: 5,
+    negotiationSkills: 5
+  },
+  {
+    id: "z-8",
+    author: "Courtney & Blake Miller",
+    authorBadge: "Bought in Piedmont, OK",
+    serviceType: "Bought a Single Family home in Piedmont, OK",
+    rating: 5,
+    review: "As first-time home buyers in a fast-moving market, Brian was the steady anchor we needed. He explained every clause of the contract, attended every inspection personally, and got the seller to pay for our major repair items. We could not be happier with our new home!",
+    date: "Verified Zillow Review",
+    initials: "CM",
+    bgColor: "bg-cyan-600",
+    verifiedCategory: "Buyer",
+    highlight: "Steady anchor for first-time buyers — secured major repair credits",
+    localKnowledge: 5,
+    processExpertise: 5,
+    responsiveness: 5,
+    negotiationSkills: 5
+  },
+  {
+    id: "z-9",
+    author: "Kendall & Patricia Rogers",
+    authorBadge: "Sold in Crown Heights, OKC",
+    serviceType: "Sold an Historic Tudor in Crown Heights, OKC",
+    rating: 5,
+    review: "Brian's marketing strategy is lightyears ahead of traditional agents. His 4K motion video and targeted social media campaign generated over 20,000 views in under 72 hours. We received multiple offers and closed seamlessly with zero headaches.",
+    date: "Verified Zillow Review",
+    initials: "KR",
+    bgColor: "bg-orange-600",
+    verifiedCategory: "Seller",
+    highlight: "20,000+ video views in 72 hours resulting in multiple offers",
+    localKnowledge: 5,
+    processExpertise: 5,
+    responsiveness: 5,
+    negotiationSkills: 5
+  },
+  {
+    id: "z-10",
+    author: "Brandon & Nicole Hayes",
+    authorBadge: "Bought in West Edmond / Deer Creek, OK",
+    serviceType: "Bought a Single Family home in Edmond, OK",
+    rating: 5,
+    review: "Brian found us an off-market opportunity before it hit the MLS! In this competitive market, his deep local network made all the difference. He negotiated the price down and guided us through a rapid 14-day escrow. Brian is our realtor for life.",
+    date: "Verified Zillow Review",
+    initials: "BH",
+    bgColor: "bg-slate-700",
+    verifiedCategory: "Buyer",
+    highlight: "Found an off-market opportunity before it hit the MLS",
+    localKnowledge: 5,
+    processExpertise: 5,
+    responsiveness: 5,
+    negotiationSkills: 5
   }
 ];
 
