@@ -133,10 +133,20 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
 
   const [isSaved, setIsSaved] = useState(false);
   const [isReverted, setIsReverted] = useState(false);
+  const lastTargetKeyRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (!isOpen) {
+      lastTargetKeyRef.current = null;
+      setIsSaved(false);
+      setIsReverted(false);
+    }
+  }, [isOpen]);
 
   // Initialize modal state on target change
   useEffect(() => {
-    if (target) {
+    if (target && lastTargetKeyRef.current !== target.key) {
+      lastTargetKeyRef.current = target.key;
       setContent(target.currentContent || target.initialContent || '');
       setHref(target.currentHref || '');
       setIsExternal(Boolean(target.currentHref?.startsWith('http')));
@@ -181,7 +191,7 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
     }
     setIsSaved(false);
     setIsReverted(false);
-  }, [target, getElementStyle, contentMap]);
+  }, [target]);
 
   if (!isOpen || !target) return null;
 
@@ -236,6 +246,8 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
 
     // 1. If Image was modified or provided
     if (imageSrc) {
+      target.currentImageSrc = imageSrc;
+      target.cardImageSrc = imageSrc;
       let targetImg: HTMLImageElement | null = null;
       if (target.type === 'image' && target.elementRef) {
         targetImg = target.elementRef as HTMLImageElement;

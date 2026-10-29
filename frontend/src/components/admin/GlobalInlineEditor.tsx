@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { useAdmin, ElementStyleData } from '../../context/AdminContext';
+import { useAdmin, ElementStyleData, ImageSeoData } from '../../context/AdminContext';
 import { ImageSeoModal } from './ImageSeoModal';
 import { StyleInspectorModal } from './StyleInspectorModal';
 import { UniversalElementEditModal, UniversalEditTarget, getCleanImageKeys, getCleanImageKey } from './UniversalElementEditModal';
@@ -104,24 +104,163 @@ function isLeafTextElement(el: HTMLElement): boolean {
   return (el.innerText || '').trim().length > 0;
 }
 
+// Helper to accurately resolve active image source with all contentMap keys
+function resolveActiveImageSrc(
+  imgEl: HTMLImageElement | null,
+  containerKey: string | undefined,
+  contentMap: Record<string, string>,
+  getImageSeo: (src: string) => ImageSeoData
+): string {
+  if (!imgEl) return '';
+  const rawSrc = imgEl.getAttribute('data-original-src') || imgEl.getAttribute('src') || imgEl.src || '';
+
+  // 1. Container key replacement
+  if (containerKey && contentMap[`img_replace_${containerKey}`]) {
+    return contentMap[`img_replace_${containerKey}`];
+  }
+
+  // 2. Clean path/filename keys
+  const keys = getCleanImageKeys(rawSrc);
+  for (const k of keys) {
+    if (contentMap[`img_src_${k}`]) return contentMap[`img_src_${k}`];
+    if (contentMap[`img_replace_${k}`]) return contentMap[`img_replace_${k}`];
+  }
+
+  // 3. Direct encoded key
+  const directKey = `img_replace_${encodeURIComponent(rawSrc).slice(0, 40)}`;
+  if (contentMap[directKey]) return contentMap[directKey];
+
+  // 4. SEO replacement
+  const seo = getImageSeo(rawSrc);
+  if (seo.newSrc) return seo.newSrc;
+
+  // 5. Fallback to active DOM src or rawSrc
+  return imgEl.src || rawSrc;
+}
+
+// Global Image Replacer: updates DOM and prevents React re-render wiping
+export function applyImageReplacements(
+  contentMap: Record<string, string>,
+  getImageSeo: (src: string) => ImageSeoData
+) {
+  if (typeof document === 'undefined') return;
+
+  const allImages = document.querySelectorAll<HTMLImageElement>('img');
+  allImages.forEach((img) => {
+    if (isAdminOrExcludedUI(img)) return;
+
+    let originalSrc = img.getAttribute('data-original-src');
+    if (!originalSrc) {
+      originalSrc = img.getAttribute('src') || img.src;
+      if (originalSrc) {
+        img.setAttribute('data-original-src', originalSrc);
+      }
+    }
+    if (!originalSrc) return;
+
+    const parentContainer = img.closest<HTMLElement>('[data-container-key]');
+    const parentKey = parentContainer?.getAttribute('data-container-key');
+
+    let replacement: string | null = null;
+    if (parentKey && contentMap[`img_replace_${parentKey}`]) {
+      replacement = contentMap[`img_replace_${parentKey}`];
+    }
+
+    if (!replacement) {
+      const keys = getCleanImageKeys(originalSrc);
+      for (const k of keys) {
+        if (contentMap[`img_src_${k}`]) {
+          replacement = contentMap[`img_src_${k}`];
+          break;
+        }
+        if (contentMap[`img_replace_${k}`]) {
+          replacement = contentMap[`img_replace_${k}`];
+          break;
+        }
+      }
+    }
+
+    if (!replacement) {
+      const directKey = `img_replace_${encodeURIComponent(originalSrc).slice(0, 40)}`;
+      if (contentMap[directKey]) {
+        replacement = contentMap[directKey];
+      }
+    }
+
+    const seo = getImageSeo(originalSrc);
+    const targetSrc = seo.newSrc || replacement;
+
+    if (targetSrc) {
+      if (img.src !== targetSrc || img.getAttribute('src') !== targetSrc) {
+        img.src = targetSrc;
+        img.setAttribute('src', targetSrc);
+      }
+    }
+
+    if (seo.alt && img.getAttribute('alt') !== seo.alt) {
+      img.setAttribute('alt', seo.alt);
+    }
+    if (seo.title && img.getAttribute('title') !== seo.title) {
+      img.setAttribute('title', seo.title);
+    }
+
+    if (seo.opacity !== undefined) {
+      img.style.opacity = String(seo.opacity / 100);
+    }
+    if (seo.borderRadius !== undefined) {
+      img.style.borderRadius = `${seo.borderRadius}px`;
+    }
+    if (seo.borderWidth !== undefined && seo.borderWidth > 0) {
+      img.style.borderWidth = `${seo.borderWidth}px`;
+      img.style.borderColor = seo.borderColor || '#FFFFFF';
+      img.style.borderStyle = 'solid';
+    }
+    if (seo.boxShadow && seo.boxShadow !== 'none') {
+      img.style.boxShadow = seo.boxShadow;
+    }
+    if (seo.objectFit) {
+      img.style.objectFit = seo.objectFit;
+    }
+
+    const filters: string[] = [];
+    if (seo.brightness !== undefined && seo.brightness !== 100) filters.push(`brightness(${seo.brightness}%)`);
+    if (seo.contrast !== undefined && seo.contrast !== 100) filters.push(`contrast(${seo.contrast}%)`);
+    if (seo.saturation !== undefined && seo.saturation !== 100) filters.push(`saturate(${seo.saturation}%)`);
+    if (seo.grayscale !== undefined && seo.grayscale > 0) filters.push(`grayscale(${seo.grayscale}%)`);
+    if (seo.blur !== undefined && seo.blur > 0) filters.push(`blur(${seo.blur}px)`);
+
+    if (filters.length > 0) {
+      img.style.filter = filters.join(' ');
+    }
+  });
+}
+
 // Build UniversalEditTarget for any clicked/hovered element
-function buildEditTarget(el: HTMLElement, pathname: string, contentMap: Record<string, string>): UniversalEditTarget {
+function buildEditTarget(
+  el: HTMLElement,
+  pathname: string,
+  contentMap: Record<string, string>,
+  getImageSeo: (src: string) => ImageSeoData
+): UniversalEditTarget {
   const tag = el.tagName.toLowerCase();
 
   // 1. Image Element
   if (tag === 'img') {
     const img = el as HTMLImageElement;
-    const src = img.getAttribute('data-original-src') || img.getAttribute('src') || img.src || '';
-    const key = `img_replace_${encodeURIComponent(src).slice(0, 40)}`;
-    const currentSrc = contentMap[key] || img.src || src;
+    const rawSrc = img.getAttribute('data-original-src') || img.getAttribute('src') || img.src || '';
+    const parentContainer = img.closest<HTMLElement>('[data-container-key]');
+    const parentKey = parentContainer?.getAttribute('data-container-key');
+    const key = `img_replace_${encodeURIComponent(rawSrc).slice(0, 40)}`;
+    const currentSrc = resolveActiveImageSrc(img, parentKey, contentMap, getImageSeo);
     return {
       key,
       type: 'image',
       tagName: 'img',
       label: 'Photo / Image',
-      initialContent: src,
+      initialContent: rawSrc,
       currentContent: currentSrc,
       currentImageSrc: currentSrc,
+      cardImageSrc: currentSrc,
       imageAlt: img.getAttribute('alt') || '',
       elementRef: el,
     };
@@ -143,7 +282,7 @@ function buildEditTarget(el: HTMLElement, pathname: string, contentMap: Record<s
     const imgEl = el.querySelector<HTMLImageElement>('img');
 
     const label = isSection ? `Section (${el.id || 'Full Width'})` : 'Card Container';
-    const cardImgSrc = imgEl ? (imgEl.getAttribute('data-original-src') || imgEl.getAttribute('src') || imgEl.src) : undefined;
+    const activeCardImg = imgEl ? resolveActiveImageSrc(imgEl, key, contentMap, getImageSeo) : undefined;
 
     return {
       key,
@@ -152,8 +291,8 @@ function buildEditTarget(el: HTMLElement, pathname: string, contentMap: Record<s
       label,
       initialContent: el.getAttribute('data-cms-initial') || el.innerHTML,
       currentContent: contentMap[key] || el.innerHTML,
-      currentImageSrc: cardImgSrc,
-      cardImageSrc: cardImgSrc,
+      currentImageSrc: activeCardImg,
+      cardImageSrc: activeCardImg,
       styleKey: key,
       elementRef: el,
       cardTitle: titleEl ? titleEl.innerText.trim() : undefined,
@@ -203,6 +342,65 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
     contentMap,
     getImageSeo,
   } = useAdmin();
+
+  const contentMapRef = useRef(contentMap);
+  contentMapRef.current = contentMap;
+  const getImageSeoRef = useRef(getImageSeo);
+  getImageSeoRef.current = getImageSeo;
+
+  // Continuous MutationObserver: protects all image replacements against React virtual DOM reconciliations
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    let isApplying = false;
+
+    const observer = new MutationObserver((mutations) => {
+      if (isApplying) return;
+
+      let shouldSync = false;
+      for (const m of mutations) {
+        if (m.type === 'attributes' && m.attributeName === 'src') {
+          const target = m.target as HTMLElement;
+          if (target && target.tagName?.toLowerCase() === 'img' && !isAdminOrExcludedUI(target)) {
+            shouldSync = true;
+            break;
+          }
+        } else if (m.type === 'childList') {
+          for (let i = 0; i < m.addedNodes.length; i++) {
+            const node = m.addedNodes[i];
+            if (node.nodeType === 1) {
+              const el = node as HTMLElement;
+              if (el.tagName?.toLowerCase() === 'img' || el.querySelector?.('img')) {
+                shouldSync = true;
+                break;
+              }
+            }
+          }
+          if (shouldSync) break;
+        }
+      }
+
+      if (shouldSync) {
+        isApplying = true;
+        try {
+          applyImageReplacements(contentMapRef.current, getImageSeoRef.current);
+        } finally {
+          isApplying = false;
+        }
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['src'],
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   // Universal Element & Card Edit Modal State
   const [editModalTarget, setEditModalTarget] = useState<UniversalEditTarget | null>(null);
@@ -278,85 +476,8 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
       }
     });
 
-    // 1.3 Restore Image Elements & SEO Attributes with multi-key fallback
-    const allImages = document.querySelectorAll<HTMLImageElement>('img');
-    allImages.forEach((img) => {
-      if (isAdminOrExcludedUI(img)) return;
-
-      const rawSrc = img.getAttribute('data-original-src') || img.getAttribute('src') || img.src;
-      if (rawSrc) {
-        if (!img.getAttribute('data-original-src')) {
-          img.setAttribute('data-original-src', rawSrc);
-        }
-
-        const keys = getCleanImageKeys(rawSrc);
-        const parentContainer = img.closest<HTMLElement>('[data-container-key]');
-        const parentKey = parentContainer?.getAttribute('data-container-key');
-
-        let replacementFromMap: string | null = null;
-        if (parentKey && contentMap[`img_replace_${parentKey}`]) {
-          replacementFromMap = contentMap[`img_replace_${parentKey}`];
-        }
-        if (!replacementFromMap) {
-          for (const k of keys) {
-            if (contentMap[`img_src_${k}`]) {
-              replacementFromMap = contentMap[`img_src_${k}`];
-              break;
-            }
-            if (contentMap[`img_replace_${k}`]) {
-              replacementFromMap = contentMap[`img_replace_${k}`];
-              break;
-            }
-          }
-        }
-        if (!replacementFromMap) {
-          const directKey = `img_replace_${encodeURIComponent(rawSrc).slice(0, 40)}`;
-          if (contentMap[directKey]) {
-            replacementFromMap = contentMap[directKey];
-          }
-        }
-
-        const seo = getImageSeo(rawSrc);
-        const targetSrc = seo.newSrc || replacementFromMap;
-
-        if (targetSrc && (img.src !== targetSrc || img.getAttribute('src') !== targetSrc)) {
-          img.src = targetSrc;
-          img.setAttribute('src', targetSrc);
-        }
-
-        if (seo.alt) img.setAttribute('alt', seo.alt);
-        if (seo.title) img.setAttribute('title', seo.title);
-
-        if (seo.opacity !== undefined) {
-          img.style.opacity = String(seo.opacity / 100);
-        }
-        if (seo.borderRadius !== undefined) {
-          img.style.borderRadius = `${seo.borderRadius}px`;
-        }
-        if (seo.borderWidth !== undefined && seo.borderWidth > 0) {
-          img.style.borderWidth = `${seo.borderWidth}px`;
-          img.style.borderColor = seo.borderColor || '#FFFFFF';
-          img.style.borderStyle = 'solid';
-        }
-        if (seo.boxShadow && seo.boxShadow !== 'none') {
-          img.style.boxShadow = seo.boxShadow;
-        }
-        if (seo.objectFit) {
-          img.style.objectFit = seo.objectFit;
-        }
-
-        const filters: string[] = [];
-        if (seo.brightness !== undefined && seo.brightness !== 100) filters.push(`brightness(${seo.brightness}%)`);
-        if (seo.contrast !== undefined && seo.contrast !== 100) filters.push(`contrast(${seo.contrast}%)`);
-        if (seo.saturation !== undefined && seo.saturation !== 100) filters.push(`saturate(${seo.saturation}%)`);
-        if (seo.grayscale !== undefined && seo.grayscale > 0) filters.push(`grayscale(${seo.grayscale}%)`);
-        if (seo.blur !== undefined && seo.blur > 0) filters.push(`blur(${seo.blur}px)`);
-
-        if (filters.length > 0) {
-          img.style.filter = filters.join(' ');
-        }
-      }
-    });
+    // 1.3 Restore Image Elements & SEO Attributes
+    applyImageReplacements(contentMap, getImageSeo);
 
     // 1.4 Restore Container & Section Styles from contentMap
     Object.keys(contentMap).forEach((key) => {
@@ -414,7 +535,7 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
         e.stopPropagation();
 
         // Open the Universal Element / Card Edit Modal
-        const editTarget = buildEditTarget(interactiveCandidate, currentPath, contentMap);
+        const editTarget = buildEditTarget(interactiveCandidate, currentPath, contentMap, getImageSeo);
         setEditModalTarget(editTarget);
       }
     };
@@ -492,7 +613,7 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
 
         lastCandidateRef.current = candidate;
         const rect = candidate.getBoundingClientRect();
-        const editTarget = buildEditTarget(candidate, currentPath, contentMap);
+        const editTarget = buildEditTarget(candidate, currentPath, contentMap, getImageSeo);
 
         // Position pen badge at top-right of candidate element
         const badgeTop = rect.top < 40 ? rect.bottom + 6 : rect.top - 28;

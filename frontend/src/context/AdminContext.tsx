@@ -85,7 +85,7 @@ const LOCAL_STORAGE_PAGE_SEO_KEY = 'jamison_page_seo_cache';
 function safeLocalStorageSet(key: string, value: string) {
   if (typeof window === 'undefined') return;
   try {
-    safeLocalStorageSet(key, value);
+    localStorage.setItem(key, value);
   } catch (err) {
     console.warn('[CMS Storage] localStorage quota exceeded or unavailable for ' + key);
   }
