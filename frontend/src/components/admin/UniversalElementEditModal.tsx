@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Pencil,
   X,
@@ -8,22 +8,24 @@ import {
   Check,
   Type,
   Palette,
-  ExternalLink,
+  Image as ImageIcon,
+  Upload,
   Sparkles,
   Link2,
-  Maximize2,
-  Sliders
+  ExternalLink
 } from 'lucide-react';
 import { useAdmin, ElementStyleData } from '../../context/AdminContext';
 
 export interface UniversalEditTarget {
   key: string;
-  type: 'heading' | 'text' | 'button' | 'card' | 'section' | 'link';
+  type: 'heading' | 'text' | 'button' | 'card' | 'section' | 'link' | 'image';
   tagName: string;
   label: string;
   initialContent: string;
   currentContent: string;
   currentHref?: string;
+  currentImageSrc?: string;
+  imageAlt?: string;
   styleKey?: string;
   elementRef?: HTMLElement | null;
   // Card detected fields:
@@ -31,6 +33,7 @@ export interface UniversalEditTarget {
   cardDescription?: string;
   cardButtonText?: string;
   cardButtonHref?: string;
+  cardImageSrc?: string;
 }
 
 interface UniversalElementEditModalProps {
@@ -54,15 +57,27 @@ const COLOR_PRESETS = [
   { label: 'Transparent', value: 'transparent' },
 ];
 
+const STOCK_REAL_ESTATE_IMAGES = [
+  { label: 'Gaillardia Fairway Estate', url: '/media/properties/11500-gateshead.jpg' },
+  { label: 'Heritage Hills Historic', url: '/media/properties/136-nw-18th-heritage-hills.jpeg' },
+  { label: 'Modern Estate Pool & Lawn', url: '/media/gallery/modern-estate-pool-lawn.jpeg' },
+  { label: 'Modern Staircase & Dining', url: '/media/gallery/modern-staircase-dining.jpeg' },
+  { label: 'Sunset Window Terrace', url: '/media/gallery/sunset-window-terrace.jpeg' },
+  { label: 'Infinity Pool Hills', url: '/media/gallery/infinity-pool-hills.jpeg' },
+  { label: 'Aerial Grounds', url: '/media/gallery/aerial-estate-grounds.jpeg' },
+  { label: 'Luxury Kitchen Marble', url: '/media/gallery/luxury-kitchen-marble.jpeg' },
+];
+
 export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps> = ({
   isOpen,
   target,
   onClose,
   onSave,
 }) => {
-  const { updateContent, revertElement, updateElementStyle, getElementStyle } = useAdmin();
+  const { updateContent, revertElement, updateElementStyle, getElementStyle, contentMap } = useAdmin();
 
-  const [activeTab, setActiveTab] = useState<'content' | 'design'>('content');
+  // Determine initial active tab based on target type
+  const [activeTab, setActiveTab] = useState<'content' | 'image' | 'design'>('content');
 
   // Content state
   const [content, setContent] = useState('');
@@ -74,6 +89,11 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
   const [cardDesc, setCardDesc] = useState('');
   const [cardBtnText, setCardBtnText] = useState('');
   const [cardBtnHref, setCardBtnHref] = useState('');
+
+  // Image state
+  const [imageSrc, setImageSrc] = useState('');
+  const [imageAlt, setImageAlt] = useState('');
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Style state
   const [textColor, setTextColor] = useState('#1F2937');
@@ -88,7 +108,7 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
   const [isSaved, setIsSaved] = useState(false);
   const [isReverted, setIsReverted] = useState(false);
 
-  // Initialize modal whenever target changes
+  // Initialize modal state on target change
   useEffect(() => {
     if (target) {
       setContent(target.currentContent || target.initialContent || '');
@@ -99,6 +119,22 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
       setCardDesc(target.cardDescription || '');
       setCardBtnText(target.cardButtonText || '');
       setCardBtnHref(target.cardButtonHref || '');
+
+      // Resolve current image
+      const resolvedImg =
+        target.currentImageSrc ||
+        target.cardImageSrc ||
+        contentMap[`img_replace_${target.key}`] ||
+        '';
+      setImageSrc(resolvedImg);
+      setImageAlt(target.imageAlt || target.label || '');
+
+      // Default to Image tab if element is an image
+      if (target.type === 'image') {
+        setActiveTab('image');
+      } else {
+        setActiveTab('content');
+      }
 
       // Load initial styles if styleKey exists or from element computed style
       if (target.styleKey) {
@@ -119,9 +155,24 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
     }
     setIsSaved(false);
     setIsReverted(false);
-  }, [target, getElementStyle]);
+  }, [target, getElementStyle, contentMap]);
 
   if (!isOpen || !target) return null;
+
+  // File upload reader
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (uploadEvent) => {
+      const dataUrl = uploadEvent.target?.result as string;
+      if (dataUrl) {
+        setImageSrc(dataUrl);
+      }
+    };
+    reader.readAsDataURL(file);
+  };
 
   // Save handler
   const handleSave = async (e: React.FormEvent) => {
@@ -129,47 +180,74 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
 
     let finalContent = content;
 
-    // If card structured edits were made
-    if (target.type === 'card' && (cardTitle || cardDesc || cardBtnText)) {
-      if (target.elementRef) {
-        const titleEl = target.elementRef.querySelector('h2, h3, h4, h5, [class*="font-serif"], [class*="title"]');
-        if (titleEl && cardTitle) {
+    // 1. If Image was modified or provided
+    if (imageSrc) {
+      let targetImg: HTMLImageElement | null = null;
+      if (target.type === 'image' && target.elementRef) {
+        targetImg = target.elementRef as HTMLImageElement;
+      } else if (target.elementRef) {
+        targetImg = target.elementRef.querySelector('img');
+      }
+
+      if (targetImg) {
+        targetImg.src = imageSrc;
+        targetImg.setAttribute('src', imageSrc);
+        if (imageAlt) targetImg.setAttribute('alt', imageAlt);
+      }
+
+      const imgKey = target.type === 'image' ? target.key : `img_replace_${target.key}`;
+      await updateContent(imgKey, imageSrc, `Image: ${target.label}`);
+    }
+
+    // 2. If Card structured edits were made
+    if (target.type === 'card' && target.elementRef) {
+      if (cardTitle) {
+        const titleEl = target.elementRef.querySelector<HTMLElement>('h1, h2, h3, h4, h5, [class*="font-serif"], [class*="title"]');
+        if (titleEl) {
           titleEl.innerHTML = cardTitle;
+          const childKey = titleEl.getAttribute('data-cms-key');
+          if (childKey) await updateContent(childKey, cardTitle);
         }
-        const descEl = target.elementRef.querySelector('p');
-        if (descEl && cardDesc) {
+      }
+      if (cardDesc) {
+        const descEl = target.elementRef.querySelector<HTMLElement>('p');
+        if (descEl) {
           descEl.innerHTML = cardDesc;
+          const childKey = descEl.getAttribute('data-cms-key');
+          if (childKey) await updateContent(childKey, cardDesc);
         }
-        const btnEl = target.elementRef.querySelector('a, button');
+      }
+      if (cardBtnText || cardBtnHref) {
+        const btnEl = target.elementRef.querySelector<HTMLElement>('a, button');
         if (btnEl) {
           if (cardBtnText) btnEl.innerHTML = cardBtnText;
           if (cardBtnHref && btnEl.tagName.toLowerCase() === 'a') {
             (btnEl as HTMLAnchorElement).href = cardBtnHref;
           }
         }
-        finalContent = target.elementRef.innerHTML;
       }
+      finalContent = target.elementRef.innerHTML;
+    } else if (target.elementRef && target.type !== 'image') {
+      target.elementRef.innerHTML = finalContent;
     }
 
-    // Apply link update if target is a link/button
+    // 3. Apply link update if target is a link/button
     if ((target.type === 'link' || target.type === 'button') && target.elementRef) {
-      if (href) {
-        if (target.elementRef.tagName.toLowerCase() === 'a') {
-          (target.elementRef as HTMLAnchorElement).href = href;
-          if (isExternal) {
-            (target.elementRef as HTMLAnchorElement).target = '_blank';
-            (target.elementRef as HTMLAnchorElement).rel = 'noopener noreferrer';
-          } else {
-            (target.elementRef as HTMLAnchorElement).removeAttribute('target');
-          }
+      if (href && target.elementRef.tagName.toLowerCase() === 'a') {
+        (target.elementRef as HTMLAnchorElement).href = href;
+        if (isExternal) {
+          (target.elementRef as HTMLAnchorElement).target = '_blank';
+          (target.elementRef as HTMLAnchorElement).rel = 'noopener noreferrer';
+        } else {
+          (target.elementRef as HTMLAnchorElement).removeAttribute('target');
         }
       }
     }
 
-    // Update Content in AdminContext
+    // 4. Update Content in AdminContext
     await updateContent(target.key, finalContent, target.label);
 
-    // Apply styles
+    // 5. Apply style changes
     const newStyle: ElementStyleData = {
       backgroundColor: backgroundColor !== 'transparent' ? backgroundColor : undefined,
       textColor: textColor,
@@ -183,11 +261,8 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
       await updateElementStyle(target.styleKey, newStyle, `Style: ${target.label}`);
     }
 
-    // Update DOM Element directly
+    // 6. Direct DOM styling update
     if (target.elementRef) {
-      if (target.type !== 'card') {
-        target.elementRef.innerHTML = finalContent;
-      }
       if (textColor) target.elementRef.style.color = textColor;
       if (backgroundColor && backgroundColor !== 'transparent') {
         target.elementRef.style.backgroundColor = backgroundColor;
@@ -213,7 +288,7 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
     setTimeout(() => {
       setIsSaved(false);
       onClose();
-    }, 800);
+    }, 700);
   };
 
   // Revert / Undo to original handler
@@ -237,12 +312,15 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
     setTimeout(() => {
       setIsReverted(false);
       onClose();
-    }, 1000);
+    }, 900);
   };
+
+  const hasImage = Boolean(imageSrc || target.type === 'image' || target.cardImageSrc || target.elementRef?.querySelector('img'));
 
   return (
     <div
       data-admin-ui="true"
+      data-admin-toolbar="true"
       className="fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-in fade-in duration-200"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
@@ -297,6 +375,21 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
             <Type className="w-4 h-4 text-[#FB923C]" />
             <span>Content & Text</span>
           </button>
+
+          {/* Always Available Image Tab */}
+          <button
+            type="button"
+            onClick={() => setActiveTab('image')}
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              activeTab === 'image'
+                ? 'bg-[#002D61] text-white shadow-md'
+                : 'text-[#4B5563] hover:text-[#002D61] hover:bg-stone-200/60'
+            }`}
+          >
+            <ImageIcon className="w-4 h-4 text-[#FB923C]" />
+            <span>Image / Photo {hasImage ? '✓' : ''}</span>
+          </button>
+
           <button
             type="button"
             onClick={() => setActiveTab('design')}
@@ -313,9 +406,10 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
 
         {/* Modal Form Body */}
         <form onSubmit={handleSave} className="flex-1 overflow-y-auto p-6 space-y-6">
+          {/* TAB 1: CONTENT & TEXT */}
           {activeTab === 'content' && (
             <div className="space-y-5">
-              {/* If it is a card container with sub-elements */}
+              {/* Card Structured Fields */}
               {target.type === 'card' && (
                 <div className="p-4 rounded-2xl bg-[#F5EFE6]/70 border border-[#E5A93C]/30 space-y-4">
                   <div className="flex items-center gap-2 text-xs font-bold text-[#002D61] uppercase tracking-wider">
@@ -325,7 +419,7 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
 
                   <div>
                     <label className="block text-xs font-bold text-[#1F2937] mb-1">
-                      Card Heading / Title:
+                      Card Title / Heading:
                     </label>
                     <input
                       type="text"
@@ -445,6 +539,115 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
             </div>
           )}
 
+          {/* TAB 2: IMAGE & PHOTO CHANGER */}
+          {activeTab === 'image' && (
+            <div className="space-y-6">
+              {/* Image Preview Box */}
+              <div>
+                <label className="block text-xs font-bold text-[#002D61] uppercase tracking-wider mb-2">
+                  Image Preview:
+                </label>
+                <div className="relative w-full h-56 rounded-2xl overflow-hidden bg-stone-100 border-2 border-dashed border-stone-300 flex items-center justify-center">
+                  {imageSrc ? (
+                    <img
+                      src={imageSrc}
+                      alt={imageAlt || 'Selected image'}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="text-center p-6 text-stone-400">
+                      <ImageIcon className="w-10 h-10 mx-auto mb-2 opacity-50" />
+                      <p className="text-xs">No image currently selected</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Direct Image URL input */}
+              <div>
+                <label className="block text-xs font-bold text-[#002D61] uppercase tracking-wider mb-1.5">
+                  Image URL / Path:
+                </label>
+                <input
+                  type="text"
+                  value={imageSrc}
+                  onChange={(e) => setImageSrc(e.target.value)}
+                  placeholder="e.g. /media/properties/11500-gateshead.jpg or https://..."
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-[#EA580C] bg-white"
+                />
+              </div>
+
+              {/* Upload Local Image from Computer */}
+              <div>
+                <label className="block text-xs font-bold text-[#002D61] uppercase tracking-wider mb-1.5">
+                  Upload from Device:
+                </label>
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  accept="image/*"
+                  onChange={handleFileUpload}
+                  className="hidden"
+                />
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-stone-300 bg-stone-50 hover:bg-stone-100 text-[#002D61] text-xs font-bold tracking-wide transition-all cursor-pointer shadow-xs"
+                >
+                  <Upload className="w-4 h-4 text-[#EA580C]" />
+                  <span>Choose Image File...</span>
+                </button>
+              </div>
+
+              {/* Real Estate Photography Library Presets */}
+              <div>
+                <label className="block text-xs font-bold text-[#002D61] uppercase tracking-wider mb-2">
+                  Choose from Project Photography Library:
+                </label>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                  {STOCK_REAL_ESTATE_IMAGES.map((img) => (
+                    <button
+                      key={img.url}
+                      type="button"
+                      onClick={() => setImageSrc(img.url)}
+                      className={`relative rounded-xl overflow-hidden border-2 transition-all p-1 text-left cursor-pointer group ${
+                        imageSrc === img.url
+                          ? 'border-[#EA580C] ring-2 ring-[#EA580C]/40 bg-orange-50'
+                          : 'border-stone-200 hover:border-stone-400 bg-white'
+                      }`}
+                    >
+                      <div className="h-16 w-full rounded-lg overflow-hidden bg-stone-100 mb-1">
+                        <img
+                          src={img.url}
+                          alt={img.label}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                        />
+                      </div>
+                      <span className="block text-[10px] font-bold text-stone-700 truncate">
+                        {img.label}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Alt Text input */}
+              <div>
+                <label className="block text-xs font-bold text-[#002D61] uppercase tracking-wider mb-1.5">
+                  Image Alt Description (SEO):
+                </label>
+                <input
+                  type="text"
+                  value={imageAlt}
+                  onChange={(e) => setImageAlt(e.target.value)}
+                  placeholder="e.g. Gaillardia Golf Community Luxury Estate"
+                  className="w-full px-3.5 py-2 rounded-xl border border-stone-300 text-xs focus:outline-none focus:ring-2 focus:ring-[#EA580C] bg-white"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* TAB 3: COLORS & STYLING */}
           {activeTab === 'design' && (
             <div className="space-y-6">
               {/* Text Color Section */}

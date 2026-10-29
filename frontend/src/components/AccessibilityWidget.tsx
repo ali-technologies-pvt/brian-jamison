@@ -202,7 +202,12 @@ export const AccessibilityWidget: React.FC = () => {
       )}
 
       {/* 3. Floating Universal Accessibility Trigger Button (WordPress OneTap) */}
-      <aside aria-label="Accessibility Assistance" className="fixed bottom-20 lg:bottom-6 left-4 lg:left-6 z-[89]">
+      <aside
+        data-admin-ui="true"
+        data-admin-toolbar="true"
+        aria-label="Accessibility Assistance"
+        className="fixed bottom-20 lg:bottom-6 left-4 lg:left-6 z-[89]"
+      >
         <button
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
@@ -228,7 +233,7 @@ export const AccessibilityWidget: React.FC = () => {
 
       {/* 4. Complete OneTap Accessibility Drawer (Matching uploaded screenshot 1:1) */}
       {isOpen && (
-        <div className="fixed inset-0 sm:inset-auto sm:bottom-36 lg:bottom-22 sm:left-4 lg:left-6 z-[95] flex items-end sm:items-start justify-center sm:justify-start">
+        <div data-admin-ui="true" className="fixed inset-0 sm:inset-auto sm:bottom-36 lg:bottom-22 sm:left-4 lg:left-6 z-[95] flex items-end sm:items-start justify-center sm:justify-start">
           {/* Mobile backdrop */}
           <div
             onClick={() => setIsOpen(false)}

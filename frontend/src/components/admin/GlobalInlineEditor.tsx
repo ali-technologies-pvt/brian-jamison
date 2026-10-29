@@ -1,15 +1,31 @@
 'use client';
 
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useAdmin, ElementStyleData } from '../../context/AdminContext';
-import { TextSelectionToolbar } from './TextSelectionToolbar';
 import { ImageSeoModal } from './ImageSeoModal';
 import { StyleInspectorModal } from './StyleInspectorModal';
 import { UniversalElementEditModal, UniversalEditTarget } from './UniversalElementEditModal';
-import { Loader2, Check, Pencil, Sparkles, Palette } from 'lucide-react';
+import { Loader2, Check, Pencil } from 'lucide-react';
 
 interface GlobalInlineEditorProps {
   currentPath: string;
+}
+
+// Strict check to ensure Admin UI, Toolbar, and floating widgets NEVER trigger edit mode or pen badges
+function isAdminOrExcludedUI(target: HTMLElement | null): boolean {
+  if (!target) return true;
+  return Boolean(
+    target.closest('[data-admin-ui]') ||
+    target.closest('[data-admin-toolbar]') ||
+    target.closest('aside') ||
+    target.closest('#sticky-call-btn') ||
+    target.closest('.cms-pen-badge') ||
+    target.closest('.cms-popup-modal') ||
+    target.closest('#admin-portal') ||
+    target.closest('nav[data-admin]') ||
+    target.closest('.fixed.bottom-5') ||
+    target.closest('.fixed.bottom-6')
+  );
 }
 
 // Generate stable deterministic key for any element based on position and initial content
@@ -60,18 +76,9 @@ function generateContainerKey(el: HTMLElement, pathname: string): string {
   return `container_${Math.abs(hash).toString(36)}`;
 }
 
-// Check if element is a valid candidate for inline text editing
+// Check if element contains leaf text
 function isLeafTextElement(el: HTMLElement): boolean {
-  if (
-    el.closest('[data-admin-ui]') ||
-    el.closest('[data-admin-toolbar]') ||
-    el.closest('aside') ||
-    el.closest('nav[data-admin]') ||
-    el.closest('#admin-portal') ||
-    el.closest('.cms-popup-modal')
-  ) {
-    return false;
-  }
+  if (isAdminOrExcludedUI(el)) return false;
 
   const tag = el.tagName.toLowerCase();
   if (['script', 'style', 'input', 'textarea', 'select', 'svg', 'path', 'video', 'source'].includes(tag)) {
@@ -83,27 +90,42 @@ function isLeafTextElement(el: HTMLElement): boolean {
     'strong', 'em', 'b', 'i', 'blockquote', 'small', 'dt', 'dd', 'td', 'th'
   ];
 
-  if (!validTags.includes(tag)) {
-    return false;
-  }
+  if (!validTags.includes(tag)) return false;
 
   const hasStructuralChildren = Array.from(el.children).some((child) => {
     const childTag = child.tagName.toLowerCase();
     return ['section', 'article', 'main', 'header', 'footer', 'nav', 'ul', 'ol', 'table'].includes(childTag);
   });
 
-  if (hasStructuralChildren) {
-    return false;
-  }
+  if (hasStructuralChildren) return false;
 
   return (el.innerText || '').trim().length > 0;
 }
 
-// Helper to construct UniversalEditTarget for any candidate element or card
+// Build UniversalEditTarget for any clicked/hovered element
 function buildEditTarget(el: HTMLElement, pathname: string, contentMap: Record<string, string>): UniversalEditTarget {
   const tag = el.tagName.toLowerCase();
 
-  // Check if it is a card container or section
+  // 1. Image Element
+  if (tag === 'img') {
+    const img = el as HTMLImageElement;
+    const src = img.getAttribute('data-original-src') || img.getAttribute('src') || img.src || '';
+    const key = `img_replace_${encodeURIComponent(src).slice(0, 40)}`;
+    const currentSrc = contentMap[key] || img.src || src;
+    return {
+      key,
+      type: 'image',
+      tagName: 'img',
+      label: 'Photo / Image',
+      initialContent: src,
+      currentContent: currentSrc,
+      currentImageSrc: currentSrc,
+      imageAlt: img.getAttribute('alt') || '',
+      elementRef: el,
+    };
+  }
+
+  // 2. Card Container or Section
   const isSection = tag === 'section';
   const isCard =
     isSection ||
@@ -116,8 +138,10 @@ function buildEditTarget(el: HTMLElement, pathname: string, contentMap: Record<s
     const titleEl = el.querySelector<HTMLElement>('h1, h2, h3, h4, h5, [class*="font-serif"], [class*="title"]');
     const descEl = el.querySelector<HTMLElement>('p');
     const btnEl = el.querySelector<HTMLElement>('a, button');
+    const imgEl = el.querySelector<HTMLImageElement>('img');
 
     const label = isSection ? `Section (${el.id || 'Full Width'})` : 'Card Container';
+    const cardImgSrc = imgEl ? (imgEl.getAttribute('data-original-src') || imgEl.getAttribute('src') || imgEl.src) : undefined;
 
     return {
       key,
@@ -126,6 +150,8 @@ function buildEditTarget(el: HTMLElement, pathname: string, contentMap: Record<s
       label,
       initialContent: el.getAttribute('data-cms-initial') || el.innerHTML,
       currentContent: contentMap[key] || el.innerHTML,
+      currentImageSrc: cardImgSrc,
+      cardImageSrc: cardImgSrc,
       styleKey: key,
       elementRef: el,
       cardTitle: titleEl ? titleEl.innerText.trim() : undefined,
@@ -135,7 +161,7 @@ function buildEditTarget(el: HTMLElement, pathname: string, contentMap: Record<s
     };
   }
 
-  // It is a specific text/heading/button/link element
+  // 3. Text / Heading / Button / Link Element
   const key = el.getAttribute('data-cms-key') || generateElementKey(el, pathname);
   el.setAttribute('data-cms-key', key);
 
@@ -173,19 +199,8 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
     isAdmin,
     isEditMode,
     contentMap,
-    updateContent,
     getImageSeo,
-    updateImageSeo,
-    getElementStyle,
-    updateElementStyle,
   } = useAdmin();
-
-  // Floating text selection toolbar state
-  const [selectionPosition, setSelectionPosition] = useState<{ top: number; left: number } | null>(null);
-  const [selectedText, setSelectedText] = useState('');
-  const [hasLink, setHasLink] = useState(false);
-  const savedRangeRef = useRef<Range | null>(null);
-  const activeEditingElementRef = useRef<HTMLElement | null>(null);
 
   // Universal Element & Card Edit Modal State
   const [editModalTarget, setEditModalTarget] = useState<UniversalEditTarget | null>(null);
@@ -237,9 +252,27 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
       }
     });
 
-    // 1.2 Restore Image Elements & SEO Attributes
+    // 1.2 Restore Container & Card Content
+    const allContainers = document.querySelectorAll<HTMLElement>('[data-container-key]');
+    allContainers.forEach((container) => {
+      const key = container.getAttribute('data-container-key');
+      if (key && contentMap[key]) {
+        container.innerHTML = contentMap[key];
+      }
+      if (key && contentMap[`img_replace_${key}`]) {
+        const img = container.querySelector('img');
+        if (img) {
+          img.src = contentMap[`img_replace_${key}`];
+          img.setAttribute('src', contentMap[`img_replace_${key}`]);
+        }
+      }
+    });
+
+    // 1.3 Restore Image Elements & SEO Attributes
     const allImages = document.querySelectorAll<HTMLImageElement>('img');
     allImages.forEach((img) => {
+      if (isAdminOrExcludedUI(img)) return;
+
       const src = img.getAttribute('data-original-src') || img.getAttribute('src');
       if (src) {
         if (!img.getAttribute('data-original-src')) {
@@ -289,7 +322,7 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
       }
     });
 
-    // 1.3 Restore Container & Section Styles from contentMap
+    // 1.4 Restore Container & Section Styles from contentMap
     Object.keys(contentMap).forEach((key) => {
       if (key.startsWith('style_')) {
         const targetKey = key.replace('style_', '');
@@ -330,37 +363,19 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
       if (!target) return;
 
       // Allow admin toolbar, modals, floating buttons, and form inputs to work normally
-      if (
-        target.closest('[data-admin-ui]') ||
-        target.closest('[data-admin-toolbar]') ||
-        target.closest('.cms-popup-modal') ||
-        target.closest('.cms-pen-badge') ||
-        target.closest('#admin-portal') ||
-        target.closest('input') ||
-        target.closest('textarea') ||
-        target.closest('select')
-      ) {
+      if (isAdminOrExcludedUI(target)) {
         return;
       }
 
-      // Check if click was on or inside any interactive element, card, or section
+      // Check if click was on or inside any interactive element, image, card, or section
       const interactiveCandidate = target.closest(
-        'a, button, [onclick], [role="button"], h1, h2, h3, h4, h5, h6, p, span, li, div[class*="rounded-2xl"], div[class*="rounded-3xl"], div[class*="rounded-xl"], div[class*="card"], div[class*="cursor-pointer"], section'
+        'img, a, button, [onclick], [role="button"], h1, h2, h3, h4, h5, h6, p, span, li, div[class*="rounded-2xl"], div[class*="rounded-3xl"], div[class*="rounded-xl"], div[class*="card"], div[class*="cursor-pointer"], section'
       ) as HTMLElement | null;
 
       if (interactiveCandidate) {
         // PREVENT REDIRECTION & NAVIGATION
         e.preventDefault();
         e.stopPropagation();
-
-        // If clicked on an image, open image SEO modal
-        if (target.tagName.toLowerCase() === 'img') {
-          const originalSrc = target.getAttribute('data-original-src') || target.getAttribute('src') || '';
-          const alt = target.getAttribute('alt') || '';
-          setActiveImageSrc(originalSrc);
-          setActiveImageAlt(alt);
-          return;
-        }
 
         // Open the Universal Element / Card Edit Modal
         const editTarget = buildEditTarget(interactiveCandidate, currentPath, contentMap);
@@ -388,23 +403,18 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
-      // Ignore mouse moves over Admin UI and modals
-      if (
-        target.closest('[data-admin-ui]') ||
-        target.closest('[data-admin-toolbar]') ||
-        target.closest('.cms-popup-modal') ||
-        target.closest('.cms-pen-badge') ||
-        target.closest('#admin-portal')
-      ) {
+      // STRICTLY IGNORE Admin Toolbar, Call Button, and all Admin UI
+      if (isAdminOrExcludedUI(target)) {
+        setHoveredPenBadge(null);
         return;
       }
 
       // Find nearest editable candidate
       const candidate = target.closest(
-        'h1, h2, h3, h4, h5, h6, p, button, a, div[class*="rounded-2xl"], div[class*="rounded-3xl"], div[class*="rounded-xl"], div[class*="card"], section'
+        'img, h1, h2, h3, h4, h5, h6, p, button, a, div[class*="rounded-2xl"], div[class*="rounded-3xl"], div[class*="rounded-xl"], div[class*="card"], section'
       ) as HTMLElement | null;
 
-      if (!candidate || candidate.offsetHeight < 24) {
+      if (!candidate || candidate.offsetHeight < 20 || isAdminOrExcludedUI(candidate)) {
         setHoveredPenBadge(null);
         return;
       }
@@ -432,35 +442,11 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
 
   return (
     <>
-      {/* Styles for Visual Highlights in Edit Mode */}
-      <style>{`
-        .cms-global-editable {
-          outline: 1.5px dashed rgba(234, 88, 12, 0.5) !important;
-          outline-offset: 3px !important;
-          border-radius: 4px !important;
-          transition: all 0.15s ease !important;
-          cursor: pointer !important;
-        }
-        .cms-global-editable:hover {
-          outline: 2px dashed #EA580C !important;
-          background-color: rgba(234, 88, 12, 0.08) !important;
-        }
-        .cms-global-editable-img {
-          outline: 2px dashed #EA580C !important;
-          outline-offset: 2px !important;
-          cursor: pointer !important;
-          transition: transform 0.2s ease, filter 0.2s ease !important;
-        }
-        .cms-global-editable-img:hover {
-          outline: 3px solid #EA580C !important;
-          filter: brightness(0.92) contrast(1.05) !important;
-        }
-      `}</style>
-
       {/* FLOATING PEN (PENCIL) BADGE ON HOVER FOR EVERY ELEMENT / CARD */}
       {hoveredPenBadge && isEditMode && (
         <div
           data-admin-ui="true"
+          data-admin-toolbar="true"
           className="cms-pen-badge fixed z-[9998] animate-in fade-in duration-100 pointer-events-auto"
           style={{
             top: `${hoveredPenBadge.top}px`,
@@ -509,25 +495,6 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
           imageSrc={activeImageSrc}
           initialAlt={activeImageAlt}
           onClose={() => setActiveImageSrc(null)}
-          onApplyChanges={(newSrc, styles) => {
-            const allImgs = document.querySelectorAll<HTMLImageElement>('img');
-            allImgs.forEach((img) => {
-              const orig = img.getAttribute('data-original-src') || img.getAttribute('src');
-              if (
-                orig === activeImageSrc ||
-                img.src === activeImageSrc ||
-                img.getAttribute('src') === activeImageSrc ||
-                (activeImageSrc && img.src.includes(activeImageSrc))
-              ) {
-                img.src = newSrc;
-                img.setAttribute('src', newSrc);
-                img.setAttribute('data-original-src', activeImageSrc);
-                if (styles.opacity !== undefined) img.style.opacity = String(styles.opacity);
-                if (styles.borderRadius !== undefined) img.style.borderRadius = `${styles.borderRadius}px`;
-                if (styles.filter) img.style.filter = styles.filter;
-              }
-            });
-          }}
         />
       )}
 
@@ -539,27 +506,6 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
           elementLabel={activeContainerLabel}
           initialStyle={activeContainerInitialStyle}
           onClose={() => setActiveContainerKey(null)}
-          onApplyStyle={(style) => {
-            const el = document.querySelector<HTMLElement>(`[data-container-key="${activeContainerKey}"]`);
-            if (el) {
-              if (style.backgroundColor) el.style.backgroundColor = style.backgroundColor;
-              if (style.textColor) el.style.color = style.textColor;
-              if (style.borderRadius !== undefined) el.style.borderRadius = `${style.borderRadius}px`;
-              if (style.borderWidth !== undefined && style.borderWidth > 0) {
-                el.style.borderWidth = `${style.borderWidth}px`;
-                el.style.borderColor = style.borderColor || '#EA580C';
-                el.style.borderStyle = 'solid';
-              }
-              if (style.boxShadow && style.boxShadow !== 'none') {
-                el.style.boxShadow = style.boxShadow;
-              }
-              if (style.backgroundImage) {
-                el.style.backgroundImage = `url("${style.backgroundImage}")`;
-                el.style.backgroundSize = style.backgroundSize || 'cover';
-                el.style.backgroundPosition = style.backgroundPosition || 'center';
-              }
-            }
-          }}
         />
       )}
 
@@ -567,6 +513,7 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
       {savingBadge && (
         <div
           data-admin-ui="true"
+          data-admin-toolbar="true"
           style={{
             position: 'fixed',
             top: `${savingBadge.top}px`,

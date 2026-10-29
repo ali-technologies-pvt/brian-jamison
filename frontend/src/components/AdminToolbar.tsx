@@ -63,6 +63,8 @@ export const AdminToolbar: React.FC<AdminToolbarProps> = ({ onNavigate, currentP
   return (
     <>
       <aside
+        data-admin-ui="true"
+        data-admin-toolbar="true"
         aria-label="Admin Content Management Toolbar"
         className="fixed bottom-5 right-5 z-50 font-sans select-none flex flex-col items-end gap-2"
       >
