@@ -191,9 +191,10 @@ export function applyImageReplacements(
     const targetSrc = seo.newSrc || replacement;
 
     if (targetSrc) {
-      if (img.src !== targetSrc || img.getAttribute('src') !== targetSrc) {
-        img.src = targetSrc;
+      const currentRaw = img.getAttribute('src');
+      if (currentRaw !== targetSrc) {
         img.setAttribute('src', targetSrc);
+        img.src = targetSrc;
       }
     }
 
@@ -348,60 +349,6 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
   const getImageSeoRef = useRef(getImageSeo);
   getImageSeoRef.current = getImageSeo;
 
-  // Continuous MutationObserver: protects all image replacements against React virtual DOM reconciliations
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    let isApplying = false;
-
-    const observer = new MutationObserver((mutations) => {
-      if (isApplying) return;
-
-      let shouldSync = false;
-      for (const m of mutations) {
-        if (m.type === 'attributes' && m.attributeName === 'src') {
-          const target = m.target as HTMLElement;
-          if (target && target.tagName?.toLowerCase() === 'img' && !isAdminOrExcludedUI(target)) {
-            shouldSync = true;
-            break;
-          }
-        } else if (m.type === 'childList') {
-          for (let i = 0; i < m.addedNodes.length; i++) {
-            const node = m.addedNodes[i];
-            if (node.nodeType === 1) {
-              const el = node as HTMLElement;
-              if (el.tagName?.toLowerCase() === 'img' || el.querySelector?.('img')) {
-                shouldSync = true;
-                break;
-              }
-            }
-          }
-          if (shouldSync) break;
-        }
-      }
-
-      if (shouldSync) {
-        isApplying = true;
-        try {
-          applyImageReplacements(contentMapRef.current, getImageSeoRef.current);
-        } finally {
-          isApplying = false;
-        }
-      }
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-      attributeFilter: ['src'],
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
   // Universal Element & Card Edit Modal State
   const [editModalTarget, setEditModalTarget] = useState<UniversalEditTarget | null>(null);
 
@@ -468,9 +415,9 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
           if (!img.getAttribute('data-original-src')) {
             img.setAttribute('data-original-src', img.getAttribute('src') || img.src);
           }
-          if (img.src !== imgReplacement) {
-            img.src = imgReplacement;
+          if (img.getAttribute('src') !== imgReplacement) {
             img.setAttribute('src', imgReplacement);
+            img.src = imgReplacement;
           }
         }
       }
