@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getSiteContent, updateSiteContent } from '../lib/contentStore';
+import { getSiteContent, updateSiteContent, batchUpdateSiteContent } from '../lib/contentStore';
 
 export class ContentController {
   /**
@@ -37,6 +37,32 @@ export class ContentController {
       return res.status(500).json({
         success: false,
         error: error?.message || 'Failed to update content in database',
+      });
+    }
+  }
+
+  /**
+   * POST /api/content/batch
+   * Batch update multiple content keys at once
+   */
+  static async batchUpdate(req: Request, res: Response) {
+    try {
+      const { items } = req.body;
+
+      if (!items || typeof items !== 'object') {
+        return res.status(400).json({
+          success: false,
+          error: '"items" object dictionary is required',
+        });
+      }
+
+      const result = await batchUpdateSiteContent(items);
+      return res.status(200).json(result);
+    } catch (error: any) {
+      console.error('Failed to batch update content:', error);
+      return res.status(500).json({
+        success: false,
+        error: error?.message || 'Failed to batch update content in database',
       });
     }
   }

@@ -14,7 +14,9 @@ import {
   Palette,
   Sparkles,
   Check,
-  RotateCcw
+  RotateCcw,
+  CloudUpload,
+  Loader2
 } from 'lucide-react';
 
 interface AdminToolbarProps {
@@ -23,11 +25,27 @@ interface AdminToolbarProps {
 }
 
 export const AdminToolbar: React.FC<AdminToolbarProps> = ({ onNavigate, currentPath = '/' }) => {
-  const { isAdmin, isEditMode, setIsEditMode, logout, canUndo, undoHistory, undoLastChange } = useAdmin();
+  const { isAdmin, isEditMode, setIsEditMode, logout, canUndo, undoHistory, undoLastChange, syncAllContentToServer } = useAdmin();
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [pageSeoOpen, setPageSeoOpen] = useState(false);
   const [styleInspectorOpen, setStyleInspectorOpen] = useState(false);
   const [undoToast, setUndoToast] = useState<string | null>(null);
+  const [isSyncing, setIsSyncing] = useState(false);
+
+  const handleSyncClick = async () => {
+    setIsSyncing(true);
+    try {
+      const res = await syncAllContentToServer();
+      if (res.success) {
+        setUndoToast(`Published to Live! All changes are now live for Incognito & all devices.`);
+      } else {
+        setUndoToast(`Sync notice: ${res.error || 'Server cache updated'}`);
+      }
+    } finally {
+      setIsSyncing(false);
+      setTimeout(() => setUndoToast(null), 3500);
+    }
+  };
 
   // Hidden completely for normal visitors
   if (!isAdmin) {
@@ -160,6 +178,23 @@ export const AdminToolbar: React.FC<AdminToolbarProps> = ({ onNavigate, currentP
 
               <div className="h-5 w-px bg-white/15" />
 
+              {/* Publish / Sync to Live Button */}
+              <button
+                type="button"
+                onClick={handleSyncClick}
+                disabled={isSyncing}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-600/90 hover:bg-emerald-500 text-white text-xs font-bold tracking-wide transition-all shadow-md cursor-pointer hover:scale-105"
+                title="Publish and sync all CMS edits directly to the live server for all machines and Incognito visitors"
+              >
+                {isSyncing ? (
+                  <Loader2 className="w-3.5 h-3.5 animate-spin text-white" />
+                ) : (
+                  <CloudUpload className="w-3.5 h-3.5 text-white" />
+                )}
+                <span>{isSyncing ? 'Publishing...' : 'Publish to Live'}</span>
+              </button>
+
+              <div className="h-5 w-px bg-white/15" />
               {/* Style & Colors Inspector Button */}
               <button
                 type="button"

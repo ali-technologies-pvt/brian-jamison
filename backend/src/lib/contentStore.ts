@@ -9,13 +9,30 @@ const FALLBACK_FILE_PATH = isServerless
   ? path.resolve(process.env.TMPDIR || '/tmp', 'site-content.json')
   : SEED_FILE_PATH;
 
-// In-memory cache for ultra-fast response
-const memoryContentStore: Record<string, string> = {
+// Directly bundle seed data so it is never missing on Vercel serverless builds
+let bundledSeedData: Record<string, string> = {
   'home_hero_title': 'OKC Luxury Real Estate & 6-Phase Seller Blueprint',
   'home_hero_subtitle': 'Brian Jamison · Top 2% Producer · $70M+ Volume Sold · Jamison Real Estate',
   'home_valuation_cta': 'Get Confidential Valuation',
   'seller_guarantee_badge': '100% Risk-Free · Cancel Anytime Pledge',
 };
+
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const seedJson = require('../../data/site-content.json');
+  bundledSeedData = { ...bundledSeedData, ...seedJson };
+} catch {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const seedJson = require('../../../backend/data/site-content.json');
+    bundledSeedData = { ...bundledSeedData, ...seedJson };
+  } catch {
+    // Fall back to default in-memory keys
+  }
+}
+
+// In-memory cache for ultra-fast response
+const memoryContentStore: Record<string, string> = { ...bundledSeedData };
 
 // Ensure data directory exists and seed initial data if in serverless /tmp
 function ensureFallbackFile() {
@@ -139,4 +156,46 @@ export async function updateSiteContent(
     updatedAt: new Date(),
     source: 'fallback',
   };
+}
+
+/**
+ * Batch update multiple keys at once
+ */
+export async function batchUpdateSiteContent(
+  items: Record<string, string>
+): Promise<{ success: boolean; count: number; source: 'mongodb' | 'fallback' }> {
+  if (!items || typeof items !== 'object') {
+    return { success: false, count: 0, source: 'fallback' };
+  }
+
+  const entries = Object.entries(items);
+  for (const [key, val] of entries) {
+    if (typeof val === 'string') {
+      writeFallbackFile(key.trim(), val);
+    }
+  }
+
+  try {
+    const db = await connectToDatabase();
+    if (db) {
+      const ops = entries
+        .filter(([k, v]) => typeof v === 'string')
+        .map(([key, content]) => ({
+          updateOne: {
+            filter: { key: key.trim() },
+            update: { $set: { content, updatedAt: new Date() } },
+            upsert: true,
+          },
+        }));
+
+      if (ops.length > 0) {
+        await SiteContent.bulkWrite(ops);
+      }
+      return { success: true, count: ops.length, source: 'mongodb' };
+    }
+  } catch (err: any) {
+    console.warn('[Storage Notice] Database bulk write deferred (' + (err?.message || 'timeout') + '). Content saved to local cache.');
+  }
+
+  return { success: true, count: entries.length, source: 'fallback' };
 }

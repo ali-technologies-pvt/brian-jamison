@@ -71,6 +71,7 @@ interface AdminContextType {
   login: (username: string, password: string) => Promise<{ success: boolean; error?: string }>;
   logout: () => Promise<void>;
   checkAuth: () => Promise<void>;
+  syncAllContentToServer: () => Promise<{ success: boolean; count?: number; error?: string }>;
 }
 
 const AdminContext = createContext<AdminContextType | undefined>(undefined);
@@ -503,6 +504,31 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return { success: true };
   };
 
+  // Sync all local edits to server so incognito and all other machines see them immediately
+  const syncAllContentToServer = async (): Promise<{ success: boolean; count?: number; error?: string }> => {
+    if (typeof window === 'undefined') return { success: false, error: 'No window available' };
+    try {
+      const saved = localStorage.getItem(LOCAL_STORAGE_CONTENT_FALLBACK_KEY);
+      const items = saved ? JSON.parse(saved) : contentMap;
+      if (!items || Object.keys(items).length === 0) {
+        return { success: false, error: 'No content to sync' };
+      }
+
+      const res = await fetch('/api/content/batch', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        return { success: true, count: data.count || Object.keys(items).length };
+      }
+      return { success: false, error: 'Server returned ' + res.status };
+    } catch (err) {
+      return { success: false, error: (err && err.message) || 'Sync failed' };
+    }
+  };
+
   const canUndo = undoHistory.length > 0;
 
   return (
@@ -526,6 +552,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         login,
         logout,
         checkAuth,
+        syncAllContentToServer,
       }}
     >
       {children}
