@@ -1,7 +1,6 @@
-import type { Request, Response } from 'express';
-import { app } from '../backend/src/app';
+const { app } = require('../backend/dist/app');
 
-export default function handler(req: Request, res: Response) {
+module.exports = function handler(req, res) {
   if (req.url) {
     try {
       const urlObj = new URL(req.url, 'http://localhost');
@@ -11,10 +10,7 @@ export default function handler(req: Request, res: Response) {
         const remainingSearch = urlObj.searchParams.toString();
         req.url = '/api/' + routeParam.replace(/^\/+/, '') + (remainingSearch ? '?' + remainingSearch : '');
       } else {
-        const originalUrl =
-          (req.headers['x-forwarded-url'] as string) ||
-          (req.headers['x-matched-path'] as string);
-
+        const originalUrl = req.headers['x-forwarded-url'] || req.headers['x-matched-path'];
         if (originalUrl && originalUrl.startsWith('/api') && req.url === '/api') {
           req.url = originalUrl;
         }
@@ -25,4 +21,4 @@ export default function handler(req: Request, res: Response) {
   }
 
   return app(req, res);
-}
+};
