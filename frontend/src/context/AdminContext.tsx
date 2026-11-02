@@ -159,8 +159,8 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         const data = await res.json();
         if (data.success && data.content) {
           setContentMap((prev) => {
-            // Local unsynced edits in prev take precedence over older server cache
-            const next = { ...data.content, ...prev };
+            // Fresh server content takes priority over cached local defaults
+            const next = { ...prev, ...data.content };
             if (typeof window !== 'undefined') {
               safeLocalStorageSet(LOCAL_STORAGE_CONTENT_FALLBACK_KEY, JSON.stringify(next));
             }
@@ -413,9 +413,18 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return { success: true };
   };
 
-  // Image SEO handler
+  // Image SEO handler (checks in-memory map first, then server-synced contentMap)
   const getImageSeo = (imageSrc: string): ImageSeoData => {
-    return imageSeoMap[imageSrc] || {};
+    if (imageSeoMap[imageSrc] && Object.keys(imageSeoMap[imageSrc]).length > 0) {
+      return imageSeoMap[imageSrc];
+    }
+    const contentKey = `seo_img_${encodeURIComponent(imageSrc).slice(0, 40)}`;
+    if (contentMap[contentKey]) {
+      try {
+        return JSON.parse(contentMap[contentKey]);
+      } catch {}
+    }
+    return {};
   };
 
   const updateImageSeo = async (imageSrc: string, seo: ImageSeoData): Promise<{ success: boolean; error?: string }> => {
@@ -433,9 +442,18 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return { success: true };
   };
 
-  // Element Style handler (Background, text colors, card bg, overlays, etc.)
+  // Element Style handler (checks in-memory map first, then server-synced contentMap)
   const getElementStyle = (elementKey: string): ElementStyleData => {
-    return elementStyleMap[elementKey] || {};
+    if (elementStyleMap[elementKey] && Object.keys(elementStyleMap[elementKey]).length > 0) {
+      return elementStyleMap[elementKey];
+    }
+    const contentKey = `style_${elementKey}`;
+    if (contentMap[contentKey]) {
+      try {
+        return JSON.parse(contentMap[contentKey]);
+      } catch {}
+    }
+    return {};
   };
 
   const updateElementStyle = async (

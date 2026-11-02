@@ -23,7 +23,9 @@ import {
   Tag,
   Clock,
   Check,
-  AlertCircle
+  AlertCircle,
+  Video,
+  Layers
 } from 'lucide-react';
 import { useAdmin } from '../../context/AdminContext';
 
@@ -103,8 +105,32 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
   onNavigate,
   onSignOut,
 }) => {
-  const { isEditMode, setIsEditMode } = useAdmin();
-  const [activeTab, setActiveTab] = useState<'submissions' | 'blogs' | 'users' | 'settings'>('submissions');
+  const { isEditMode, setIsEditMode, contentMap, updateContent } = useAdmin();
+  const [activeTab, setActiveTab] = useState<'submissions' | 'blogs' | 'users' | 'settings' | 'visibility'>('submissions');
+
+  // Feature Visibility State & Handlers
+  const isIdxHidden = contentMap['setting_hide_idx_listings'] === 'true';
+  const isVideoSlidersHidden = contentMap['setting_hide_video_sliders'] === 'true';
+  const isVideosPageHidden = contentMap['setting_hide_videos_page'] === 'true';
+
+  const [isUpdatingSetting, setIsUpdatingSetting] = useState<string | null>(null);
+  const [settingNotification, setSettingNotification] = useState<string | null>(null);
+
+  const handleToggleFeature = async (key: string, currentHidden: boolean, featureTitle: string) => {
+    setIsUpdatingSetting(key);
+    const nextVal = currentHidden ? 'false' : 'true';
+    try {
+      await updateContent(key, nextVal, `Toggle ${featureTitle}`);
+      setSettingNotification(
+        `${featureTitle} is now ${currentHidden ? 'LIVE & VISIBLE' : 'HIDDEN'} across the entire website.`
+      );
+      setTimeout(() => setSettingNotification(null), 4000);
+    } catch (err) {
+      console.error('Failed to update setting:', err);
+    } finally {
+      setIsUpdatingSetting(null);
+    }
+  };
 
   // Form submissions state
   const [submissions, setSubmissions] = useState<FormSubmissionItem[]>([]);
@@ -528,6 +554,27 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
           >
             <UsersIcon className="w-4 h-4" />
             <span>User Management ({users.length})</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab('visibility')}
+            className={`flex items-center gap-2 px-4 py-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer whitespace-nowrap ${
+              activeTab === 'visibility'
+                ? 'border-[#EA580C] text-[#EA580C] bg-orange-500/5'
+                : 'border-transparent text-stone-600 hover:text-[#002D61]'
+            }`}
+          >
+            <Eye className="w-4 h-4" />
+            <span>Feature Visibility ({[
+              isIdxHidden ? 'IDX: Hidden' : null,
+              isVideoSlidersHidden ? 'Marquee: Hidden' : null,
+              isVideosPageHidden ? 'Videos Page: Hidden' : null,
+            ].filter(Boolean).length > 0 ? `${[
+              isIdxHidden ? 'IDX' : null,
+              isVideoSlidersHidden ? 'Marquee' : null,
+              isVideosPageHidden ? 'Videos' : null,
+            ].filter(Boolean).length} Hidden` : 'All Visible'})</span>
           </button>
 
           <button
@@ -1309,10 +1356,302 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
         )}
 
         {/* =========================================================================
-            TAB 4: CMS OVERVIEW & SYSTEM ARCHITECTURE
+            TAB 4: SITE FEATURE VISIBILITY CONTROLS
+        ========================================================================= */}
+        {activeTab === 'visibility' && (
+          <div className="space-y-6">
+            {/* Toast Notification */}
+            {settingNotification && (
+              <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center justify-between shadow-xs">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>{settingNotification}</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSettingNotification(null)}
+                  className="text-emerald-600 hover:text-emerald-900 text-xs font-bold px-2 py-1 cursor-pointer"
+                >
+                  ✕
+                </button>
+              </div>
+            )}
+
+            {/* Main Visibility Panel */}
+            <div className="bg-white border border-[#E5E0D8] rounded-2xl p-6 sm:p-8 shadow-xs">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#E5E0D8]">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF8F5] border border-[#E5E0D8] text-[10px] font-bold tracking-widest uppercase text-[#002D61] mb-2">
+                    <Eye className="w-3.5 h-3.5 text-[#EA580C]" />
+                    <span>Live Display Architecture</span>
+                  </div>
+                  <h2 className="font-serif text-2xl font-bold text-[#002D61]">
+                    Website Feature Visibility & Display Controls
+                  </h2>
+                  <p className="text-xs text-stone-600 mt-1 max-w-2xl leading-relaxed">
+                    Instantly toggle major website modules and features on or off. Changes save automatically to MongoDB and take effect immediately across all desktop, mobile, and incognito sessions.
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-semibold text-stone-500">Live Status:</span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-[11px] font-bold text-emerald-700">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    Live Database Sync Active
+                  </span>
+                </div>
+              </div>
+
+              {/* 3 Toggle Cards */}
+              <div className="grid grid-cols-1 gap-5 mt-6">
+                {/* 1. MLSOK / IDX Listings & Search Toggle */}
+                <div className={`p-5 sm:p-6 rounded-2xl border transition-all ${
+                  isIdxHidden
+                    ? 'bg-stone-50/80 border-stone-300'
+                    : 'bg-white border-[#E5E0D8] hover:border-[#EA580C]/40 shadow-xs'
+                }`}>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="flex items-start gap-4">
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${
+                        isIdxHidden ? 'bg-stone-200 text-stone-500' : 'bg-orange-50 text-[#EA580C]'
+                      }`}>
+                        <Globe className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2.5 flex-wrap">
+                          <h3 className="text-base font-bold text-[#002D61]">
+                            MLSOK / IDX Property Listings & Search Engine
+                          </h3>
+                          <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                            isIdxHidden
+                              ? 'bg-rose-100 text-rose-700 border border-rose-200'
+                              : 'bg-emerald-100 text-emerald-800 border border-emerald-200'
+                          }`}>
+                            {isIdxHidden ? '● Hidden From Public Site' : '✓ Live & Visible On Site'}
+                          </span>
+                        </div>
+                        <p className="text-xs text-stone-600 mt-1 max-w-2xl leading-relaxed">
+                          Controls all IDX Broker integration points: Homepage Verified Quick Search bar, Featured Client Listings carousel (#176753), Interactive Map Search (/map-search), and header/mobile links.
+                        </p>
+                        <div className="flex items-center gap-2 mt-3 flex-wrap text-[10px] font-medium text-stone-500">
+                          <span className="px-2 py-0.5 rounded-md bg-stone-100 border border-stone-200">Homepage Quick Search</span>
+                          <span className="px-2 py-0.5 rounded-md bg-stone-100 border border-stone-200">Featured Listings Carousel</span>
+                          <span className="px-2 py-0.5 rounded-md bg-stone-100 border border-stone-200">Interactive Map Search (/map-search)</span>
+                          <span className="px-2 py-0.5 rounded-md bg-stone-100 border border-stone-200">Navbar 'Featured Closings'</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Action Toggle Switch */}
+                    <button
+                      type="button"
+                      disabled={isUpdatingSetting === 'setting_hide_idx_listings'}
+                      onClick={() => handleToggleFeature('setting_hide_idx_listings', isIdxHidden, 'MLSOK IDX Listings & Search')}
+                      className={`relative inline-flex h-8 w-16 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#EA580C] focus:ring-offset-2 ${
+                        isIdxHidden ? 'bg-stone-300' : 'bg-[#EA580C]'
+                      } ${isUpdatingSetting === 'setting_hide_idx_listings' ? 'opacity-50 cursor-wait' : ''}`}
+                      aria-label="Toggle MLSOK IDX Listings"
+                      title={isIdxHidden ? 'Click to Show IDX Listings' : 'Click to Hide IDX Listings'}
+                    >
+                      <span
+                        className={`pointer-events-none inline-block h-7 w-7 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out ${
+                          isIdxHidden ? 'translate-x-0' : 'translate-x-8'
+                        }`}
+                      />
+                    </button>
+                  </div>
+                </div>
+
+                {/* 2. Video Sliders / Marquee Toggle */}
+                <div className={`p-5 sm:p-6 rounded-2xl border transition-all ${
+                  isVideoSlidersHidden
+                    ? 'bg-stone-50/80 border-stone-300'
+                    : 'bg-white border-[#E5E0D8] hover:border-[#EA580C]/40 shadow-xs'
+                }`}>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="flex items-start gap-4">
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${
+                        isVideoSlidersHidden ? 'bg-stone-200 text-stone-500' : 'bg-orange-50 text-[#EA580C]'
+                      }`}>
+                        <Video className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2.5 flex-wrap">
+                          <h3 className="text-base font-bold text-[#002D61]">
+                            Property Video Sliders & Infinite Marquee
+                          </h3>
+                          <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                            isVideoSlidersHidden
+                              ? 'bg-rose-100 text-rose-700 border border-rose-200'
+                              : 'bg-emerald-100 text-emerald-800 border border-emerald-200'
+                          }`}>
+                            {isVideoSlidersHidden ? '● Hidden From Public Site' : '✓ Live & Visible On Site'}
+                          </span>
+                        </div>
+                        <p className="text-xs text-stone-600 mt-1 max-w-2xl leading-relaxed">
+                          Controls the continuous auto-scrolling 4K video marquee banner and interactive video player displayed across the bottom of pages on the website.
+                        </p>
+                        <div className="flex items-center gap-2 mt-3 flex-wrap text-[10px] font-medium text-stone-500">
+                          <span className="px-2 py-0.5 rounded-md bg-stone-100 border border-stone-200">Bottom Video Marquee</span>
+                          <span className="px-2 py-0.5 rounded-md bg-stone-100 border border-stone-200">Auto-Scrolling Video Track</span>
+                          <span className="px-2 py-0.5 rounded-md bg-stone-100 border border-stone-200">Modal Video Player</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Action Toggle Switch */}
+                    <button
+                      type="button"
+                      disabled={isUpdatingSetting === 'setting_hide_video_sliders'}
+                      onClick={() => handleToggleFeature('setting_hide_video_sliders', isVideoSlidersHidden, 'Video Sliders & Marquee')}
+                      className={`relative inline-flex h-8 w-16 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#EA580C] focus:ring-offset-2 ${
+                        isVideoSlidersHidden ? 'bg-stone-300' : 'bg-[#EA580C]'
+                      } ${isUpdatingSetting === 'setting_hide_video_sliders' ? 'opacity-50 cursor-wait' : ''}`}
+                      aria-label="Toggle Video Sliders"
+                      title={isVideoSlidersHidden ? 'Click to Show Video Sliders' : 'Click to Hide Video Sliders'}
+                    >
+                      <span
+                        className={`pointer-events-none inline-block h-7 w-7 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out ${
+                          isVideoSlidersHidden ? 'translate-x-0' : 'translate-x-8'
+                        }`}
+                      />
+                    </button>
+                  </div>
+                </div>
+
+                {/* 3. Property Videos Page Toggle */}
+                <div className={`p-5 sm:p-6 rounded-2xl border transition-all ${
+                  isVideosPageHidden
+                    ? 'bg-stone-50/80 border-stone-300'
+                    : 'bg-white border-[#E5E0D8] hover:border-[#EA580C]/40 shadow-xs'
+                }`}>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="flex items-start gap-4">
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${
+                        isVideosPageHidden ? 'bg-stone-200 text-stone-500' : 'bg-orange-50 text-[#EA580C]'
+                      }`}>
+                        <Layers className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2.5 flex-wrap">
+                          <h3 className="text-base font-bold text-[#002D61]">
+                            Property Videos Dedicated Showcase Page (/property-videos)
+                          </h3>
+                          <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                            isVideosPageHidden
+                              ? 'bg-rose-100 text-rose-700 border border-rose-200'
+                              : 'bg-emerald-100 text-emerald-800 border border-emerald-200'
+                          }`}>
+                            {isVideosPageHidden ? '● Hidden From Public Site' : '✓ Live & Visible On Site'}
+                          </span>
+                        </div>
+                        <p className="text-xs text-stone-600 mt-1 max-w-2xl leading-relaxed">
+                          Controls visibility of the dedicated Property Videos page (/property-videos & /videos) and automatically hides or restores the 'Property Videos' link in the top navigation header and mobile menu dock.
+                        </p>
+                        <div className="flex items-center gap-2 mt-3 flex-wrap text-[10px] font-medium text-stone-500">
+                          <span className="px-2 py-0.5 rounded-md bg-stone-100 border border-stone-200">/property-videos Route</span>
+                          <span className="px-2 py-0.5 rounded-md bg-stone-100 border border-stone-200">/videos Alias Route</span>
+                          <span className="px-2 py-0.5 rounded-md bg-stone-100 border border-stone-200">Top Header 'Property Videos' Pill</span>
+                          <span className="px-2 py-0.5 rounded-md bg-stone-100 border border-stone-200">Mobile Menu '🎬 Property Videos'</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Action Toggle Switch */}
+                    <button
+                      type="button"
+                      disabled={isUpdatingSetting === 'setting_hide_videos_page'}
+                      onClick={() => handleToggleFeature('setting_hide_videos_page', isVideosPageHidden, 'Property Videos Page')}
+                      className={`relative inline-flex h-8 w-16 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#EA580C] focus:ring-offset-2 ${
+                        isVideosPageHidden ? 'bg-stone-300' : 'bg-[#EA580C]'
+                      } ${isUpdatingSetting === 'setting_hide_videos_page' ? 'opacity-50 cursor-wait' : ''}`}
+                      aria-label="Toggle Property Videos Page"
+                      title={isVideosPageHidden ? 'Click to Show Property Videos Page' : 'Click to Hide Property Videos Page'}
+                    >
+                      <span
+                        className={`pointer-events-none inline-block h-7 w-7 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out ${
+                          isVideosPageHidden ? 'translate-x-0' : 'translate-x-8'
+                        }`}
+                      />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* =========================================================================
+            TAB 5: CMS OVERVIEW & SYSTEM ARCHITECTURE
         ========================================================================= */}
         {activeTab === 'settings' && (
           <div className="space-y-6">
+            {/* Quick Feature Visibility Card in Settings */}
+            <div className="bg-white border border-[#E5E0D8] rounded-2xl p-6 shadow-xs">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <Eye className="w-4 h-4 text-[#EA580C]" />
+                  <h3 className="font-serif text-lg font-bold text-[#002D61]">Quick Feature Visibility Controls</h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('visibility')}
+                  className="text-xs font-bold text-[#EA580C] hover:underline cursor-pointer"
+                >
+                  Open Full Controls →
+                </button>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="p-3.5 rounded-xl bg-[#FAF9F6] border border-[#E5E0D8] flex items-center justify-between">
+                  <div>
+                    <span className="text-xs font-bold text-[#002D61] block">MLSOK / IDX Listings</span>
+                    <span className="text-[10px] text-stone-500">{isIdxHidden ? 'Hidden from site' : 'Visible on site'}</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleToggleFeature('setting_hide_idx_listings', isIdxHidden, 'MLSOK IDX Listings')}
+                    className={`px-3 py-1 rounded-full text-[10px] font-bold cursor-pointer transition-colors ${
+                      isIdxHidden ? 'bg-stone-200 text-stone-700' : 'bg-emerald-100 text-emerald-800'
+                    }`}
+                  >
+                    {isIdxHidden ? 'Hidden (Turn On)' : 'Active (Turn Off)'}
+                  </button>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-[#FAF9F6] border border-[#E5E0D8] flex items-center justify-between">
+                  <div>
+                    <span className="text-xs font-bold text-[#002D61] block">Video Sliders & Marquee</span>
+                    <span className="text-[10px] text-stone-500">{isVideoSlidersHidden ? 'Hidden from site' : 'Visible on site'}</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleToggleFeature('setting_hide_video_sliders', isVideoSlidersHidden, 'Video Sliders')}
+                    className={`px-3 py-1 rounded-full text-[10px] font-bold cursor-pointer transition-colors ${
+                      isVideoSlidersHidden ? 'bg-stone-200 text-stone-700' : 'bg-emerald-100 text-emerald-800'
+                    }`}
+                  >
+                    {isVideoSlidersHidden ? 'Hidden (Turn On)' : 'Active (Turn Off)'}
+                  </button>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-[#FAF9F6] border border-[#E5E0D8] flex items-center justify-between">
+                  <div>
+                    <span className="text-xs font-bold text-[#002D61] block">Property Videos Page</span>
+                    <span className="text-[10px] text-stone-500">{isVideosPageHidden ? 'Hidden from site' : 'Visible on site'}</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleToggleFeature('setting_hide_videos_page', isVideosPageHidden, 'Videos Page')}
+                    className={`px-3 py-1 rounded-full text-[10px] font-bold cursor-pointer transition-colors ${
+                      isVideosPageHidden ? 'bg-stone-200 text-stone-700' : 'bg-emerald-100 text-emerald-800'
+                    }`}
+                  >
+                    {isVideosPageHidden ? 'Hidden (Turn On)' : 'Active (Turn Off)'}
+                  </button>
+                </div>
+              </div>
+            </div>
+
             <div className="bg-white border border-[#E5E0D8] rounded-2xl p-6 sm:p-8 shadow-xs">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF8F5] border border-[#E5E0D8] text-[10px] font-bold tracking-widest uppercase text-[#002D61] mb-3">
                 <Shield className="w-3.5 h-3.5 text-[#EA580C]" />

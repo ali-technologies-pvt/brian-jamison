@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BROKER_INFO, METHOD_PHASES, MICRO_MARKETS } from '../../data/realEstateData';
 import { BrianAvatar } from '../BrianAvatar';
+import { useAdmin } from '../../context/AdminContext';
 import {
   Phone,
   Home,
@@ -50,6 +51,10 @@ export const MobileDock: React.FC<MobileDockProps> = ({
   onOpenLegal,
   onNavigate
 }) => {
+  const { contentMap } = useAdmin();
+  const isIdxHidden = contentMap['setting_hide_idx_listings'] === 'true';
+  const isVideosPageHidden = contentMap['setting_hide_videos_page'] === 'true';
+
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [expandedSection, setExpandedSection] = useState<'services' | 'blueprint' | 'areas' | 'guides' | null>('services');
 

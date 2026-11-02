@@ -15,6 +15,8 @@ import { GlobalInlineEditor } from './components/admin/GlobalInlineEditor';
 import { HomepageQuickSearch } from './components/HomepageQuickSearch';
 import { HomepageFeaturedListings } from './components/HomepageFeaturedListings';
 import { Property } from './data/realEstateData';
+import { useAdmin } from './context/AdminContext';
+import { Search, Video as VideoIcon } from 'lucide-react';
 
 // Ultra-Fast Async Code Splitting for Non-Critical Components & Pages
 const InteriorPageView = React.lazy(() => import('./pages/InteriorPageView').then(m => ({ default: m.InteriorPageView })));
@@ -47,6 +49,11 @@ const AppFallback = () => (
 );
 
 export default function App() {
+  const { contentMap } = useAdmin();
+  const isIdxHidden = contentMap['setting_hide_idx_listings'] === 'true';
+  const isVideoSlidersHidden = contentMap['setting_hide_video_sliders'] === 'true';
+  const isVideosPageHidden = contentMap['setting_hide_videos_page'] === 'true';
+
   // Routing State
   const [currentPath, setCurrentPath] = useState<string>(() => {
     if (typeof window !== 'undefined') {
@@ -177,33 +184,90 @@ export default function App() {
 
       <main className="flex-1">
         {isIdxRoute ? (
-          <Suspense fallback={<AppFallback />}>
-            <IdxTestPage
-              onNavigate={navigate}
-              onOpenConsultation={handleOpenConsultation}
-              onOpenValuation={() => handleOpenValuation()}
-            />
-          </Suspense>
+          isIdxHidden ? (
+            <div className="min-h-[60vh] flex flex-col items-center justify-center p-8 text-center bg-white">
+              <div className="w-16 h-16 rounded-full bg-stone-100 flex items-center justify-center mb-4 text-[#EA580C]">
+                <Search className="w-8 h-8" />
+              </div>
+              <h1 className="font-serif text-3xl font-bold text-[#002D61] mb-2">MLS IDX Property Search Unavailable</h1>
+              <p className="text-stone-600 max-w-md mb-6 text-sm">
+                Property listings search is temporarily inactive. Please contact Brian Jamison directly for active off-market and MLS listings.
+              </p>
+              <button
+                type="button"
+                onClick={() => navigate('/')}
+                className="px-6 py-2.5 rounded-full bg-[#EA580C] hover:bg-[#c2410c] text-white text-xs font-bold uppercase tracking-wider cursor-pointer"
+              >
+                Return to Homepage
+              </button>
+            </div>
+          ) : (
+            <Suspense fallback={<AppFallback />}>
+              <IdxTestPage
+                onNavigate={navigate}
+                onOpenConsultation={handleOpenConsultation}
+                onOpenValuation={() => handleOpenValuation()}
+              />
+            </Suspense>
+          )
         ) : isIdxWidgetRoute ? (
-          <Suspense fallback={<AppFallback />}>
-            <MapSearchPage
-              onNavigate={navigate}
-              onOpenConsultation={handleOpenConsultation}
-              onOpenValuation={() => handleOpenValuation()}
-            />
-          </Suspense>
+          isIdxHidden ? (
+            <div className="min-h-[60vh] flex flex-col items-center justify-center p-8 text-center bg-white">
+              <div className="w-16 h-16 rounded-full bg-stone-100 flex items-center justify-center mb-4 text-[#EA580C]">
+                <Search className="w-8 h-8" />
+              </div>
+              <h1 className="font-serif text-3xl font-bold text-[#002D61] mb-2">MLS Map Search Unavailable</h1>
+              <p className="text-stone-600 max-w-md mb-6 text-sm">
+                Interactive property search is temporarily inactive. Please reach out for a custom MLS report.
+              </p>
+              <button
+                type="button"
+                onClick={() => navigate('/')}
+                className="px-6 py-2.5 rounded-full bg-[#EA580C] hover:bg-[#c2410c] text-white text-xs font-bold uppercase tracking-wider cursor-pointer"
+              >
+                Return to Homepage
+              </button>
+            </div>
+          ) : (
+            <Suspense fallback={<AppFallback />}>
+              <MapSearchPage
+                onNavigate={navigate}
+                onOpenConsultation={handleOpenConsultation}
+                onOpenValuation={() => handleOpenValuation()}
+              />
+            </Suspense>
+          )
         ) : isSitemapRoute ? (
           <Suspense fallback={<AppFallback />}>
             <SitemapPage onNavigate={navigate} />
           </Suspense>
         ) : currentPath === '/property-videos' || currentPath === '/videos' ? (
-          <Suspense fallback={<AppFallback />}>
-            <PropertyVideosPage
-              onNavigate={navigate}
-              onOpenConsultation={handleOpenConsultation}
-              onOpenValuation={() => handleOpenValuation()}
-            />
-          </Suspense>
+          isVideosPageHidden ? (
+            <div className="min-h-[60vh] flex flex-col items-center justify-center p-8 text-center bg-white">
+              <div className="w-16 h-16 rounded-full bg-stone-100 flex items-center justify-center mb-4 text-[#EA580C]">
+                <VideoIcon className="w-8 h-8" />
+              </div>
+              <h1 className="font-serif text-3xl font-bold text-[#002D61] mb-2">Property Videos Temporarily Offline</h1>
+              <p className="text-stone-600 max-w-md mb-6 text-sm">
+                Our property video showcase is currently undergoing updates. Please check back shortly or explore our featured marketing blueprints.
+              </p>
+              <button
+                type="button"
+                onClick={() => navigate('/')}
+                className="px-6 py-2.5 rounded-full bg-[#EA580C] hover:bg-[#c2410c] text-white text-xs font-bold uppercase tracking-wider cursor-pointer"
+              >
+                Return to Homepage
+              </button>
+            </div>
+          ) : (
+            <Suspense fallback={<AppFallback />}>
+              <PropertyVideosPage
+                onNavigate={navigate}
+                onOpenConsultation={handleOpenConsultation}
+                onOpenValuation={() => handleOpenValuation()}
+              />
+            </Suspense>
+          )
         ) : activeInteriorPage ? (
           <Suspense fallback={<AppFallback />}>
             <InteriorPageView
@@ -227,7 +291,7 @@ export default function App() {
             />
 
             {/* 2. Direct MLSOK Verified Live Quick Search Console */}
-            <HomepageQuickSearch onNavigate={navigate} />
+            {!isIdxHidden && <HomepageQuickSearch onNavigate={navigate} />}
 
             {/* Section 2: "Which Chapter Are You Navigating?" (Interactive Hover Accordion) */}
             <ChapterAccordion
@@ -247,11 +311,13 @@ export default function App() {
             </div>
 
             {/* Section 4: Live MLSOK Featured Client Properties & Listings (Widget #176753) */}
-            <HomepageFeaturedListings
-              onOpenValuation={() => handleOpenValuation()}
-              onOpenConsultation={handleOpenConsultation}
-              onNavigate={navigate}
-            />
+            {!isIdxHidden && (
+              <HomepageFeaturedListings
+                onOpenValuation={() => handleOpenValuation()}
+                onOpenConsultation={handleOpenConsultation}
+                onNavigate={navigate}
+              />
+            )}
 
             {/* Section 6: Request A Confidential Market Appraisal (Valuation Funnel) */}
             <ValuationBanner onOpenValuation={handleOpenValuation} />
@@ -278,6 +344,7 @@ export default function App() {
 
       {/* Video Marquee Brand Banner */}
       {!isAdminRoute &&
+        !isVideoSlidersHidden &&
         !isIdxRoute &&
         !isIdxWidgetRoute &&
         currentPath !== '/privacy-policy' &&

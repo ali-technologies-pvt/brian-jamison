@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { BrianAvatar } from '../BrianAvatar';
+import { useAdmin } from '../../context/AdminContext';
 import {
   FileText,
   Calculator,
@@ -25,6 +26,7 @@ interface MegaMenuHubProps {
 }
 
 export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
+
   onOpenCalculator,
   onOpenChecklist,
   onOpenValuation,
@@ -35,6 +37,9 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
   onMouseEnter,
   onMouseLeave
 }) => {
+  const { contentMap } = useAdmin();
+  const isIdxHidden = contentMap['setting_hide_idx_listings'] === 'true';
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -4 }}
@@ -69,6 +74,7 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                 Seller Intelligence & Playbooks
               </span>
             </div>
+          )}
 
             <div className="space-y-2.5">
               <button
@@ -86,6 +92,7 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                 <div className="p-2.5 rounded-lg bg-white/10 border border-white/15 text-[#FB923C] group-hover:bg-[#EA580C] group-hover:text-white group-hover:scale-110 transition-all duration-300 shrink-0">
                   <Calculator className="w-4 h-4" />
                 </div>
+          )}
                 <div>
                   <span className="font-serif text-sm font-bold text-white group-hover:text-[#FB923C] transition-colors block">
                     Instant CMA Valuation Tool
@@ -94,6 +101,7 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                     3-tier pricing breakdown calibrated for Oklahoma City homes.
                   </span>
                 </div>
+          )}
               </button>
 
               <button
@@ -111,6 +119,7 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                 <div className="p-2.5 rounded-lg bg-white/10 border border-white/15 text-[#FB923C] group-hover:bg-[#EA580C] group-hover:text-white group-hover:scale-110 transition-all duration-300 shrink-0">
                   <FileText className="w-4 h-4" />
                 </div>
+          )}
                 <div>
                   <span className="font-serif text-sm font-bold text-white group-hover:text-[#FB923C] transition-colors block">
                     28-Point Pre-Listing Checklist (PDF)
@@ -119,6 +128,7 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                     Highest ROI home preparation checklist before listing.
                   </span>
                 </div>
+          )}
               </button>
 
               <button
@@ -136,6 +146,7 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                 <div className="p-2.5 rounded-lg bg-white/10 border border-white/15 text-[#FB923C] group-hover:bg-[#EA580C] group-hover:text-white group-hover:scale-110 transition-all duration-300 shrink-0">
                   <Compass className="w-4 h-4" />
                 </div>
+          )}
                 <div>
                   <span className="font-serif text-sm font-bold text-white group-hover:text-[#FB923C] transition-colors block">
                     Expired Listing Turnaround Protocol
@@ -144,9 +155,12 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                     Why failed listings close in under 21 days with Brian Jamison.
                   </span>
                 </div>
+          )}
               </button>
             </div>
+          )}
           </div>
+          )}
 
           {/* Buyer & Advisory Tools */}
           <div>
@@ -156,6 +170,7 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                 Buyer Concierge & Relocation
               </span>
             </div>
+          )}
 
             <div className="space-y-2.5">
               <button
@@ -173,6 +188,7 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                 <div className="p-2.5 rounded-lg bg-white/10 border border-white/15 text-[#FB923C] group-hover:bg-[#EA580C] group-hover:text-white group-hover:scale-110 transition-all duration-300 shrink-0">
                   <Calculator className="w-4 h-4" />
                 </div>
+          )}
                 <div>
                   <span className="font-serif text-sm font-bold text-white group-hover:text-[#FB923C] transition-colors block">
                     OKC Mortgage & Affordability Calculator
@@ -181,6 +197,7 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                     Includes real Oklahoma county property tax rates & insurance.
                   </span>
                 </div>
+          )}
               </button>
 
               <button
@@ -198,6 +215,7 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                 <div className="p-2.5 rounded-lg bg-white/10 border border-white/15 text-[#FB923C] group-hover:bg-[#EA580C] group-hover:text-white group-hover:scale-110 transition-all duration-300 shrink-0">
                   <Shield className="w-4 h-4" />
                 </div>
+          )}
                 <div>
                   <span className="font-serif text-sm font-bold text-white group-hover:text-[#FB923C] transition-colors block">
                     Private & Discreet Estates
@@ -206,6 +224,7 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                     Off-market syndication for high-net-worth Oklahoma luxury estates.
                   </span>
                 </div>
+          )}
               </button>
 
               <button
@@ -223,6 +242,7 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                 <div className="shrink-0 mt-0.5">
                   <BrianAvatar size={38} showStatusDot={true} alt="Brian Jamison - Direct Consultation" />
                 </div>
+          )}
                 <div>
                   <span className="font-serif text-sm font-bold text-white group-hover:text-[#FB923C] transition-colors block">
                     Direct Consultation Booking
@@ -231,13 +251,17 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
                     Schedule a private strategy meeting with Brian Jamison in Edmond.
                   </span>
                 </div>
+          )}
               </button>
             </div>
+          )}
           </div>
+          )}
         </div>
 
         <div className="mt-6 pt-4 border-t border-white/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-stone-200">
-          <div className="flex items-center gap-4">
+          {!isIdxHidden && (
+          {!isIdxHidden && (<div className="flex items-center gap-4">
             <button
               type="button"
               onClick={() => {
@@ -261,7 +285,8 @@ export const MegaMenuHub: React.FC<MegaMenuHubProps> = ({
               <Building className="w-3.5 h-3.5 text-[#FB923C]" />
               <span>Active Listings</span>
             </button>
-          </div>
+          </div>)}
+          )}
 
           <button
             type="button"

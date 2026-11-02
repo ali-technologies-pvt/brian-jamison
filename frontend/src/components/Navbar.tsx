@@ -8,6 +8,7 @@ import { MegaMenuCommunities } from './navigation/MegaMenuCommunities';
 import { MegaMenuHub } from './navigation/MegaMenuHub';
 import { MobileDock } from './navigation/MobileDock';
 import { ChevronDown, Phone } from 'lucide-react';
+import { useAdmin } from '../context/AdminContext';
 
 interface NavbarProps {
   onOpenValuation: (initialAddress?: string) => void;
@@ -37,6 +38,10 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navRef = useRef<HTMLDivElement>(null);
   const menuContainerRef = useRef<HTMLDivElement>(null);
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const { contentMap } = useAdmin();
+  const isIdxHidden = contentMap['setting_hide_idx_listings'] === 'true';
+  const isVideosPageHidden = contentMap['setting_hide_videos_page'] === 'true';
 
   // Scroll detection with requestAnimationFrame throttling
   useEffect(() => {
@@ -228,24 +233,26 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             {/* Link 2: Featured Closings */}
-            <a
-              href="/listings"
-              onClick={(e) => {
-                e.preventDefault();
-                if (onNavigate) {
-                  onNavigate('/listings');
-                } else {
-                  window.location.href = '/listings';
-                }
-              }}
-              onMouseEnter={() => {
-                handleCancelClose();
-                setActiveMenu(null);
-              }}
-              className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide text-white hover:text-[#FB923C] hover:bg-white/10 transition-all cursor-pointer"
-            >
-              Featured Closings
-            </a>
+            {!isIdxHidden && (
+              <a
+                href="/listings"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (onNavigate) {
+                    onNavigate('/listings');
+                  } else {
+                    window.location.href = '/listings';
+                  }
+                }}
+                onMouseEnter={() => {
+                  handleCancelClose();
+                  setActiveMenu(null);
+                }}
+                className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide text-white hover:text-[#FB923C] hover:bg-white/10 transition-all cursor-pointer"
+              >
+                Featured Closings
+              </a>
+            )}
 
             {/* Link 3: Communities (Triggers MegaMenuCommunities) */}
             <div className="relative">
@@ -314,24 +321,26 @@ export const Navbar: React.FC<NavbarProps> = ({
             </a>
 
             {/* Link 6: Property Videos (Direct link to Property Videos) */}
-            <a
-              href="/property-videos"
-              onClick={(e) => {
-                e.preventDefault();
-                if (onNavigate) {
-                  onNavigate('/property-videos');
-                } else {
-                  window.location.href = '/property-videos';
-                }
-              }}
-              onMouseEnter={() => {
-                handleCancelClose();
-                setActiveMenu(null);
-              }}
-              className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide text-white hover:text-[#FB923C] hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap"
-            >
-              Property Videos
-            </a>
+            {!isVideosPageHidden && (
+              <a
+                href="/property-videos"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (onNavigate) {
+                    onNavigate('/property-videos');
+                  } else {
+                    window.location.href = '/property-videos';
+                  }
+                }}
+                onMouseEnter={() => {
+                  handleCancelClose();
+                  setActiveMenu(null);
+                }}
+                className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide text-white hover:text-[#FB923C] hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap"
+              >
+                Property Videos
+              </a>
+            )}
           </nav>
 
           {/* ZONE 3 (Right - Call & "Get in touch" CTA pill) */}
