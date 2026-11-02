@@ -160,8 +160,19 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
     canonicalUrl: '',
   });
 
-  // Users management state
-  const [users, setUsers] = useState<UserItem[]>([]);
+  // Users management state with offline & reload persistence
+  const [users, setUsers] = useState<UserItem[]>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem('jamison_admin_users_cache');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+      } catch {}
+    }
+    return [];
+  });
   const [isCreatingUser, setIsCreatingUser] = useState(false);
   const [newUserData, setNewUserData] = useState({
     username: '',
@@ -244,8 +255,16 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
       const res = await fetch('/api/users');
       if (res.ok) {
         const data = await res.json();
-        if (data.success && data.users) {
-          setUsers(data.users);
+        if (data.success && Array.isArray(data.users)) {
+          setUsers((prev) => {
+            const serverIds = new Set(data.users.map((u: any) => u.id || u._id || u.username));
+            const localOnly = prev.filter((p) => !serverIds.has(p.id || p._id || p.username));
+            const merged = [...data.users, ...localOnly];
+            if (typeof window !== 'undefined') {
+              localStorage.setItem('jamison_admin_users_cache', JSON.stringify(merged));
+            }
+            return merged;
+          });
         }
       }
     } catch (e) {
@@ -427,8 +446,17 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
         body: JSON.stringify(newUserData),
       });
       const data = await res.json();
-      if (res.ok && data.success) {
-        setUserSuccessMessage(`User "${data.user.username}" created successfully with role ${data.user.role}!`);
+      if (res.ok && data.success && data.user) {
+        // Immediately add to local state and localStorage so the count updates instantly!
+        setUsers((prev) => {
+          const updated = [data.user, ...prev.filter((u) => (u.id || u._id || u.username) !== (data.user.id || data.user._id || data.user.username))];
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('jamison_admin_users_cache', JSON.stringify(updated));
+          }
+          return updated;
+        });
+
+        setUserSuccessMessage(`User "${data.user.username}" created successfully with role ${data.user.role}! Total users: ${users.length + 1}`);
         setNewUserData({ username: '', email: '', password: '', name: '', role: 'Editor' });
         setIsCreatingUser(false);
         await fetchUsers();
@@ -447,6 +475,13 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
       const res = await fetch(`/api/users/${id}`, { method: 'DELETE' });
       const data = await res.json();
       if (data.success) {
+        setUsers((prev) => {
+          const updated = prev.filter((u) => (u.id || u._id) !== id);
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('jamison_admin_users_cache', JSON.stringify(updated));
+          }
+          return updated;
+        });
         await fetchUsers();
       } else {
         alert(data.error || 'Could not delete user');
@@ -594,6 +629,130 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
 
       {/* Main Content Body */}
       <main className="max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 flex-1">
+        {/* Executive Overview KPI Metrics Strip */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6">
+          {/* Card 1: Users & Accounts */}
+          <button
+            type="button"
+            onClick={() => setActiveTab('users')}
+            className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+              activeTab === 'users'
+                ? 'bg-orange-500/10 border-[#EA580C] shadow-xs'
+                : 'bg-white border-[#E5E0D8] hover:border-[#EA580C]/40 hover:shadow-xs'
+            }`}
+          >
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                Team & Users
+              </span>
+              <div className="w-7 h-7 rounded-lg bg-orange-100 text-[#EA580C] flex items-center justify-center">
+                <UsersIcon className="w-3.5 h-3.5" />
+              </div>
+            </div>
+            <div className="flex items-baseline gap-2">
+              <span className="font-serif text-2xl font-bold text-[#002D61]">
+                {users.length}
+              </span>
+              <span className="text-[11px] font-semibold text-emerald-600">Active Accounts</span>
+            </div>
+            <span className="text-[10px] text-stone-500 mt-1 block truncate">
+              {users.filter(u => u.role === 'Administrator').length} Admin · {users.filter(u => u.role === 'Editor').length} Editors · {users.filter(u => u.role === 'Author').length} Authors
+            </span>
+          </button>
+
+          {/* Card 2: Form Submissions */}
+          <button
+            type="button"
+            onClick={() => setActiveTab('submissions')}
+            className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+              activeTab === 'submissions'
+                ? 'bg-orange-500/10 border-[#EA580C] shadow-xs'
+                : 'bg-white border-[#E5E0D8] hover:border-[#EA580C]/40 hover:shadow-xs'
+            }`}
+          >
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                Client Inquiries
+              </span>
+              <div className="w-7 h-7 rounded-lg bg-blue-100 text-[#002D61] flex items-center justify-center">
+                <Inbox className="w-3.5 h-3.5" />
+              </div>
+            </div>
+            <div className="flex items-baseline gap-2">
+              <span className="font-serif text-2xl font-bold text-[#002D61]">
+                {submissions.length}
+              </span>
+              {unreadCount > 0 ? (
+                <span className="text-[11px] font-semibold text-[#EA580C]">
+                  {unreadCount} Unread
+                </span>
+              ) : (
+                <span className="text-[11px] font-semibold text-stone-400">All Read</span>
+              )}
+            </div>
+            <span className="text-[10px] text-stone-500 mt-1 block truncate">
+              Valuations & Private Briefings
+            </span>
+          </button>
+
+          {/* Card 3: Blog Posts */}
+          <button
+            type="button"
+            onClick={() => setActiveTab('blogs')}
+            className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+              activeTab === 'blogs'
+                ? 'bg-orange-500/10 border-[#EA580C] shadow-xs'
+                : 'bg-white border-[#E5E0D8] hover:border-[#EA580C]/40 hover:shadow-xs'
+            }`}
+          >
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                WordPress Posts
+              </span>
+              <div className="w-7 h-7 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center">
+                <FileText className="w-3.5 h-3.5" />
+              </div>
+            </div>
+            <div className="flex items-baseline gap-2">
+              <span className="font-serif text-2xl font-bold text-[#002D61]">
+                {blogs.length}
+              </span>
+              <span className="text-[11px] font-semibold text-stone-500">Articles</span>
+            </div>
+            <span className="text-[10px] text-stone-500 mt-1 block truncate">
+              Market Intelligence & Guides
+            </span>
+          </button>
+
+          {/* Card 4: Site Feature Modules */}
+          <button
+            type="button"
+            onClick={() => setActiveTab('visibility')}
+            className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+              activeTab === 'visibility'
+                ? 'bg-orange-500/10 border-[#EA580C] shadow-xs'
+                : 'bg-white border-[#E5E0D8] hover:border-[#EA580C]/40 hover:shadow-xs'
+            }`}
+          >
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                Feature Visibility
+              </span>
+              <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                <Eye className="w-3.5 h-3.5" />
+              </div>
+            </div>
+            <div className="flex items-baseline gap-2">
+              <span className="font-serif text-2xl font-bold text-[#002D61]">
+                {3 - [isIdxHidden, isVideoSlidersHidden, isVideosPageHidden].filter(Boolean).length} / 3
+              </span>
+              <span className="text-[11px] font-semibold text-emerald-600">Active</span>
+            </div>
+            <span className="text-[10px] text-stone-500 mt-1 block truncate">
+              IDX · Marquee · Videos Page
+            </span>
+          </button>
+        </div>
         {/* =========================================================================
             TAB 1: FORM SUBMISSIONS (Inbox with filters, search, unread badge)
         ========================================================================= */}
@@ -1183,6 +1342,30 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
                   <span>Add New User</span>
                 </button>
               )}
+            </div>
+
+            {/* User Statistics Strip */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+              <div className="p-4 rounded-xl bg-white border border-[#E5E0D8] shadow-2xs">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">Total CMS Accounts</span>
+                <span className="font-serif text-2xl font-bold text-[#002D61] mt-0.5 block">{users.length} Users</span>
+                <span className="text-[10px] text-stone-500">Active credentials</span>
+              </div>
+              <div className="p-4 rounded-xl bg-white border border-[#E5E0D8] shadow-2xs">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">Administrators</span>
+                <span className="font-serif text-2xl font-bold text-amber-700 mt-0.5 block">{users.filter(u => u.role === 'Administrator').length} Admin</span>
+                <span className="text-[10px] text-stone-500">Full system control</span>
+              </div>
+              <div className="p-4 rounded-xl bg-white border border-[#E5E0D8] shadow-2xs">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">Content Editors</span>
+                <span className="font-serif text-2xl font-bold text-blue-700 mt-0.5 block">{users.filter(u => u.role === 'Editor').length} Editors</span>
+                <span className="text-[10px] text-stone-500">Publish & edit access</span>
+              </div>
+              <div className="p-4 rounded-xl bg-white border border-[#E5E0D8] shadow-2xs">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">Authors & Writers</span>
+                <span className="font-serif text-2xl font-bold text-stone-700 mt-0.5 block">{users.filter(u => u.role === 'Author' || u.role === 'Contributor').length} Authors</span>
+                <span className="text-[10px] text-stone-500">Draft & content creators</span>
+              </div>
             </div>
 
             {userSuccessMessage && (

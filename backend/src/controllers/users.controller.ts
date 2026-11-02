@@ -4,54 +4,72 @@ import bcrypt from 'bcryptjs';
 import { connectToDatabase } from '../lib/mongodb';
 import { User } from '../models/User';
 
-const USERS_FILE = path.resolve(__dirname, '../../data/users.json');
+const isServerless = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.TMPDIR);
+const SEED_FILE = path.resolve(__dirname, '../../data/users.json');
+const USERS_FILE = isServerless
+  ? path.resolve(process.env.TMPDIR || '/tmp', 'users.json')
+  : SEED_FILE;
+
+let memoryUsersStore: any[] = [];
+
+const DEFAULT_USERS = [
+  {
+    id: 'usr_admin',
+    username: 'Admin',
+    email: 'admin@jamisonrealestate.com',
+    name: 'Brian Jamison',
+    role: 'Administrator',
+    isActive: true,
+    createdAt: new Date(Date.now() - 3600000 * 24 * 60).toISOString(),
+  },
+  {
+    id: 'usr_sarah',
+    username: 'sarah_marketing',
+    email: 'sarah@jamisonrealestate.com',
+    name: 'Sarah Montgomery',
+    role: 'Editor',
+    isActive: true,
+    createdAt: new Date(Date.now() - 3600000 * 24 * 14).toISOString(),
+  },
+  {
+    id: 'usr_david',
+    username: 'david_writer',
+    email: 'david.c@contentpartners.com',
+    name: 'David Chen',
+    role: 'Author',
+    isActive: true,
+    createdAt: new Date(Date.now() - 3600000 * 24 * 5).toISOString(),
+  },
+];
 
 function readFallbackUsers(): any[] {
+  if (memoryUsersStore.length > 0) {
+    return memoryUsersStore;
+  }
   try {
     if (fs.existsSync(USERS_FILE)) {
-      return JSON.parse(fs.readFileSync(USERS_FILE, 'utf-8'));
+      const parsed = JSON.parse(fs.readFileSync(USERS_FILE, 'utf-8'));
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        memoryUsersStore = parsed;
+        return memoryUsersStore;
+      }
     }
   } catch (e) {
     console.error('Failed reading fallback users', e);
   }
-  return [
-    {
-      id: 'usr_admin',
-      username: 'Admin',
-      email: 'admin@jamisonrealestate.com',
-      name: 'Brian Jamison',
-      role: 'Administrator',
-      isActive: true,
-      createdAt: new Date(Date.now() - 3600000 * 24 * 60).toISOString(),
-    },
-    {
-      id: 'usr_sarah',
-      username: 'sarah_marketing',
-      email: 'sarah@jamisonrealestate.com',
-      name: 'Sarah Montgomery',
-      role: 'Editor',
-      isActive: true,
-      createdAt: new Date(Date.now() - 3600000 * 24 * 14).toISOString(),
-    },
-    {
-      id: 'usr_david',
-      username: 'david_writer',
-      email: 'david.c@contentpartners.com',
-      name: 'David Chen',
-      role: 'Author',
-      isActive: true,
-      createdAt: new Date(Date.now() - 3600000 * 24 * 5).toISOString(),
-    },
-  ];
+  memoryUsersStore = [...DEFAULT_USERS];
+  writeFallbackUsers(memoryUsersStore);
+  return memoryUsersStore;
 }
 
 function writeFallbackUsers(users: any[]) {
+  memoryUsersStore = [...users];
   try {
     const dir = path.dirname(USERS_FILE);
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2), 'utf-8');
   } catch (e) {
-    console.error('Failed writing fallback users', e);
+    console.warn('Fallback users disk save skipped/read-only, cached in memory');
   }
 }
 
@@ -61,8 +79,26 @@ export class UsersController {
       try {
         const db = await connectToDatabase();
         if (db) {
+          // If User collection has 0 documents, seed initial default users into MongoDB
+          const count = await User.countDocuments();
+          if (count === 0) {
+            const defaults = readFallbackUsers();
+            for (const u of defaults) {
+              const hash = await bcrypt.hash('#Imthepassword@123#', 10);
+              await User.create({
+                username: u.username,
+                email: u.email,
+                name: u.name,
+                role: u.role,
+                passwordHash: hash,
+                isActive: true,
+                createdAt: u.createdAt || new Date(),
+              });
+            }
+          }
           const docs = await User.find({}, '-passwordHash').sort({ createdAt: -1 }).lean();
           if (docs && docs.length > 0) {
+            memoryUsersStore = docs;
             return res.status(200).json({ success: true, users: docs });
           }
         }
@@ -100,9 +136,22 @@ export class UsersController {
       try {
         const db = await connectToDatabase();
         if (db) {
+          // Check if username or email already exists in DB
+          const existing = await User.findOne({
+            $or: [{ username: newUser.username }, { email: newUser.email }]
+          });
+          if (existing) {
+            return res.status(400).json({ success: false, error: 'Username or email already exists in database' });
+          }
+
           const doc = await User.create(newUser);
           const safeDoc = doc.toObject();
           delete safeDoc.passwordHash;
+
+          const list = readFallbackUsers().filter((u: any) => u.username.toLowerCase() !== username.toLowerCase());
+          list.unshift(safeDoc);
+          writeFallbackUsers(list);
+
           return res.status(201).json({ success: true, user: safeDoc });
         }
       } catch (dbErr) {
@@ -110,7 +159,7 @@ export class UsersController {
       }
 
       const list = readFallbackUsers();
-      if (list.some((u) => u.username.toLowerCase() === username.toLowerCase() || u.email.toLowerCase() === email.toLowerCase())) {
+      if (list.some((u: any) => u.username.toLowerCase() === username.toLowerCase() || u.email.toLowerCase() === email.toLowerCase())) {
         return res.status(400).json({ success: false, error: 'Username or email already exists' });
       }
 
@@ -123,7 +172,7 @@ export class UsersController {
         isActive: true,
         createdAt: new Date().toISOString(),
       };
-      list.push(entry);
+      list.unshift(entry);
       writeFallbackUsers(list);
 
       return res.status(201).json({ success: true, user: entry });
@@ -150,7 +199,7 @@ export class UsersController {
       } catch (e) {}
 
       const list = readFallbackUsers();
-      const user = list.find((u) => u.id === id || u._id === id);
+      const user = list.find((u: any) => u.id === id || u._id === id);
       if (user) {
         if (role) user.role = role;
         if (typeof isActive === 'boolean') user.isActive = isActive;
@@ -178,7 +227,7 @@ export class UsersController {
         }
       } catch (e) {}
 
-      const list = readFallbackUsers().filter((u) => u.id !== id && u._id !== id);
+      const list = readFallbackUsers().filter((u: any) => u.id !== id && u._id !== id);
       writeFallbackUsers(list);
 
       return res.status(200).json({ success: true });
