@@ -256,15 +256,25 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
       if (res.ok) {
         const data = await res.json();
         if (data.success && Array.isArray(data.users)) {
-          setUsers((prev) => {
-            const serverIds = new Set(data.users.map((u: any) => u.id || u._id || u.username));
-            const localOnly = prev.filter((p) => !serverIds.has(p.id || p._id || p.username));
-            const merged = [...data.users, ...localOnly];
-            if (typeof window !== 'undefined') {
-              localStorage.setItem('jamison_admin_users_cache', JSON.stringify(merged));
-            }
-            return merged;
-          });
+          let delSet = new Set<string>();
+          if (typeof window !== 'undefined') {
+            try {
+              const delList = JSON.parse(localStorage.getItem('jamison_deleted_users_cache') || '[]');
+              delSet = new Set(delList.map((x: string) => x.toLowerCase()));
+            } catch {}
+          }
+
+          const activeUsers = data.users.filter(
+            (u: any) =>
+              !delSet.has(u.username?.toLowerCase()) &&
+              !delSet.has(String(u.id || '').toLowerCase()) &&
+              !delSet.has(String(u._id || '').toLowerCase())
+          );
+
+          setUsers(activeUsers);
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('jamison_admin_users_cache', JSON.stringify(activeUsers));
+          }
         }
       }
     } catch (e) {
@@ -469,25 +479,44 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
   };
 
   // Delete User
-  const handleDeleteUser = async (id?: string) => {
-    if (!id || !confirm('Are you sure you want to remove this user?')) return;
+  const handleDeleteUser = async (u: UserItem) => {
+    const identifier = u._id || u.id || u.username;
+    if (!identifier || !confirm(`Are you sure you want to remove user "${u.name || u.username}"?`)) return;
+
     try {
-      const res = await fetch(`/api/users/${id}`, { method: 'DELETE' });
+      const res = await fetch(`/api/users/${encodeURIComponent(identifier)}`, { method: 'DELETE' });
       const data = await res.json();
       if (data.success) {
+        // Record deleted username locally so it never resurrects
+        if (typeof window !== 'undefined') {
+          try {
+            const delList: string[] = JSON.parse(localStorage.getItem('jamison_deleted_users_cache') || '[]');
+            delList.push(u.username.toLowerCase());
+            localStorage.setItem('jamison_deleted_users_cache', JSON.stringify(Array.from(new Set(delList))));
+          } catch {}
+        }
+
         setUsers((prev) => {
-          const updated = prev.filter((u) => (u.id || u._id) !== id);
+          const updated = prev.filter(
+            (item) =>
+              item._id !== u._id &&
+              item.id !== u.id &&
+              item.username.toLowerCase() !== u.username.toLowerCase()
+          );
           if (typeof window !== 'undefined') {
             localStorage.setItem('jamison_admin_users_cache', JSON.stringify(updated));
           }
           return updated;
         });
+
+        setUserSuccessMessage(`User "${u.name || u.username}" was removed successfully.`);
+        setTimeout(() => setUserSuccessMessage(null), 3500);
         await fetchUsers();
       } else {
         alert(data.error || 'Could not delete user');
       }
-    } catch (e) {
-      console.error(e);
+    } catch (e: any) {
+      alert(e?.message || 'Error communicating with server');
     }
   };
 
@@ -526,14 +555,16 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
               <span>In-Line Edit Mode: <strong>{isEditMode ? 'ON' : 'OFF'}</strong></span>
             </button>
 
-            <button
-              type="button"
-              onClick={() => onNavigate('/')}
+            <a
+              href="/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#FAF8F5] hover:bg-[#E5E0D8]/50 border border-[#E5E0D8] text-xs font-semibold text-[#002D61] transition-colors cursor-pointer"
+              title="Open Live Public Website in a new tab"
             >
               <span>Live Website</span>
               <ExternalLink className="w-3.5 h-3.5 text-[#EA580C]" />
-            </button>
+            </a>
 
             <button
               type="button"
@@ -1522,7 +1553,7 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
                           {u.username !== 'Admin' && (
                             <button
                               type="button"
-                              onClick={() => handleDeleteUser(id)}
+                              onClick={() => handleDeleteUser(u)}
                               className="text-red-500 hover:text-red-700 text-xs font-semibold cursor-pointer"
                             >
                               Remove

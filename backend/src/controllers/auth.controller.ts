@@ -1,4 +1,8 @@
 import { Request, Response } from 'express';
+import bcrypt from 'bcryptjs';
+import { connectToDatabase } from '../lib/mongodb';
+import { User } from '../models/User';
+import { readFallbackUsers } from './users.controller';
 import { signAdminToken, verifyAdminToken, COOKIE_NAME } from '../lib/jwt';
 import { config } from '../config/env';
 
@@ -18,6 +22,8 @@ export class AuthController {
       }
 
       const trimmedUser = String(username).trim();
+
+      // 1. Root Hardcoded Super Admin Check
       const isDefaultAdmin =
         (trimmedUser.toLowerCase() === 'admin' || trimmedUser.toLowerCase() === 'brianjamison') &&
         (password === '#Imthepassword@123#' || password === 'Imthepassword@123');
@@ -26,28 +32,140 @@ export class AuthController {
         Boolean(config.ADMIN_USERNAME && trimmedUser === config.ADMIN_USERNAME) &&
         Boolean(config.ADMIN_PASSWORD && password === config.ADMIN_PASSWORD);
 
-      if (!isDefaultAdmin && !isEnvAdmin) {
-        return res.status(401).json({
-          success: false,
-          error: 'Invalid username or password',
+      if (isDefaultAdmin || isEnvAdmin) {
+        const token = await signAdminToken({ username: trimmedUser, role: 'Administrator' });
+
+        res.cookie(COOKIE_NAME, token, {
+          httpOnly: true,
+          secure: config.NODE_ENV === 'production',
+          sameSite: 'lax',
+          path: '/',
+          maxAge: 7 * 24 * 60 * 60 * 1000,
+        });
+
+        return res.status(200).json({
+          success: true,
+          user: { username: trimmedUser, name: 'Brian Jamison', role: 'Administrator' },
+          token,
         });
       }
 
-      const token = await signAdminToken({ username: trimmedUser, role: 'admin' });
+      // 2. Check MongoDB Database
+      try {
+        const db = await connectToDatabase();
+        if (db) {
+          const userDoc = await User.findOne({
+            $or: [
+              { username: new RegExp(`^${trimmedUser}$`, 'i') },
+              { email: new RegExp(`^${trimmedUser}$`, 'i') }
+            ]
+          });
 
-      // Set HTTP-only secure cookie
-      res.cookie(COOKIE_NAME, token, {
-        httpOnly: true,
-        secure: config.NODE_ENV === 'production',
-        sameSite: 'lax',
-        path: '/',
-        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-      });
+          if (userDoc) {
+            if (userDoc.isActive === false) {
+              return res.status(403).json({
+                success: false,
+                error: 'This account has been deactivated by the administrator',
+              });
+            }
 
-      return res.status(200).json({
-        success: true,
-        user: { username: trimmedUser, role: 'admin' },
-        token,
+            if (userDoc.passwordHash) {
+              const isMatch = await bcrypt.compare(password, userDoc.passwordHash);
+              if (isMatch) {
+                const token = await signAdminToken({
+                  username: userDoc.username,
+                  role: userDoc.role || 'Editor',
+                  id: userDoc._id.toString(),
+                });
+
+                res.cookie(COOKIE_NAME, token, {
+                  httpOnly: true,
+                  secure: config.NODE_ENV === 'production',
+                  sameSite: 'lax',
+                  path: '/',
+                  maxAge: 7 * 24 * 60 * 60 * 1000,
+                });
+
+                return res.status(200).json({
+                  success: true,
+                  user: {
+                    id: userDoc._id.toString(),
+                    username: userDoc.username,
+                    name: userDoc.name || userDoc.username,
+                    email: userDoc.email,
+                    role: userDoc.role || 'Editor',
+                  },
+                  token,
+                });
+              }
+            }
+          }
+        }
+      } catch (dbErr) {
+        console.warn('DB login query error, checking fallback store:', dbErr);
+      }
+
+      // 3. Check Fallback Users Store (Memory & /tmp)
+      try {
+        const fallbackUsers = readFallbackUsers();
+        const found = fallbackUsers.find(
+          (u: any) =>
+            (u.username && u.username.toLowerCase() === trimmedUser.toLowerCase()) ||
+            (u.email && u.email.toLowerCase() === trimmedUser.toLowerCase())
+        );
+
+        if (found) {
+          if (found.isActive === false) {
+            return res.status(403).json({
+              success: false,
+              error: 'This account has been deactivated by the administrator',
+            });
+          }
+
+          let isMatch = false;
+          if (found.passwordHash) {
+            isMatch = await bcrypt.compare(password, found.passwordHash);
+          } else if (found.password) {
+            isMatch = found.password === password;
+          } else if (found.username === 'Admin') {
+            isMatch = password === '#Imthepassword@123#';
+          }
+
+          if (isMatch) {
+            const token = await signAdminToken({
+              username: found.username,
+              role: found.role || 'Editor',
+              id: found.id || found._id || 'usr_fallback',
+            });
+
+            res.cookie(COOKIE_NAME, token, {
+              httpOnly: true,
+              secure: config.NODE_ENV === 'production',
+              sameSite: 'lax',
+              path: '/',
+              maxAge: 7 * 24 * 60 * 60 * 1000,
+            });
+
+            return res.status(200).json({
+              success: true,
+              user: {
+                id: found.id || found._id,
+                username: found.username,
+                name: found.name || found.username,
+                email: found.email,
+                role: found.role || 'Editor',
+              },
+              token,
+            });
+          }
+        }
+      } catch (fbErr) {
+        console.warn('Fallback store auth check error:', fbErr);
+      }
+
+      return res.status(401).json({
+        success: false,
+        error: 'Invalid username or password',
       });
     } catch (error: any) {
       console.error('Login error:', error);

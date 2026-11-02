@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import bcrypt from 'bcryptjs';
+import mongoose from 'mongoose';
 import { connectToDatabase } from '../lib/mongodb';
 import { User } from '../models/User';
 
@@ -10,7 +11,14 @@ const USERS_FILE = isServerless
   ? path.resolve(process.env.TMPDIR || '/tmp', 'users.json')
   : SEED_FILE;
 
+const DELETED_FILE = isServerless
+  ? path.resolve(process.env.TMPDIR || '/tmp', 'deleted-users.json')
+  : path.resolve(__dirname, '../../data/deleted-users.json');
+
 let memoryUsersStore: any[] = [];
+let deletedTombstones = new Set<string>();
+
+const DEFAULT_PASSWORD_HASH = bcrypt.hashSync('#Imthepassword@123#', 10);
 
 const DEFAULT_USERS = [
   {
@@ -19,6 +27,7 @@ const DEFAULT_USERS = [
     email: 'admin@jamisonrealestate.com',
     name: 'Brian Jamison',
     role: 'Administrator',
+    passwordHash: DEFAULT_PASSWORD_HASH,
     isActive: true,
     createdAt: new Date(Date.now() - 3600000 * 24 * 60).toISOString(),
   },
@@ -28,6 +37,7 @@ const DEFAULT_USERS = [
     email: 'sarah@jamisonrealestate.com',
     name: 'Sarah Montgomery',
     role: 'Editor',
+    passwordHash: DEFAULT_PASSWORD_HASH,
     isActive: true,
     createdAt: new Date(Date.now() - 3600000 * 24 * 14).toISOString(),
   },
@@ -37,21 +47,58 @@ const DEFAULT_USERS = [
     email: 'david.c@contentpartners.com',
     name: 'David Chen',
     role: 'Author',
+    passwordHash: DEFAULT_PASSWORD_HASH,
     isActive: true,
     createdAt: new Date(Date.now() - 3600000 * 24 * 5).toISOString(),
   },
 ];
 
-function readFallbackUsers(): any[] {
+export function getDeletedTombstones(): Set<string> {
+  if (deletedTombstones.size > 0) return deletedTombstones;
+  try {
+    if (fs.existsSync(DELETED_FILE)) {
+      const arr = JSON.parse(fs.readFileSync(DELETED_FILE, 'utf-8'));
+      if (Array.isArray(arr)) {
+        deletedTombstones = new Set(arr.map((s: string) => String(s).toLowerCase().trim()));
+      }
+    }
+  } catch {}
+  return deletedTombstones;
+}
+
+export function recordDeletedTombstone(identifier: string) {
+  const set = getDeletedTombstones();
+  set.add(String(identifier).toLowerCase().trim());
+  try {
+    const dir = path.dirname(DELETED_FILE);
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(DELETED_FILE, JSON.stringify(Array.from(set)), 'utf-8');
+  } catch {}
+}
+
+export function readFallbackUsers(): any[] {
+  const tombstones = getDeletedTombstones();
   if (memoryUsersStore.length > 0) {
-    return memoryUsersStore;
+    return memoryUsersStore.filter(
+      (u: any) =>
+        !tombstones.has(String(u.id || '').toLowerCase()) &&
+        !tombstones.has(String(u._id || '').toLowerCase()) &&
+        !tombstones.has(String(u.username || '').toLowerCase()) &&
+        !tombstones.has(String(u.email || '').toLowerCase())
+    );
   }
   try {
     if (fs.existsSync(USERS_FILE)) {
       const parsed = JSON.parse(fs.readFileSync(USERS_FILE, 'utf-8'));
       if (Array.isArray(parsed) && parsed.length > 0) {
         memoryUsersStore = parsed;
-        return memoryUsersStore;
+        return memoryUsersStore.filter(
+          (u: any) =>
+            !tombstones.has(String(u.id || '').toLowerCase()) &&
+            !tombstones.has(String(u._id || '').toLowerCase()) &&
+            !tombstones.has(String(u.username || '').toLowerCase()) &&
+            !tombstones.has(String(u.email || '').toLowerCase())
+        );
       }
     }
   } catch (e) {
@@ -59,10 +106,16 @@ function readFallbackUsers(): any[] {
   }
   memoryUsersStore = [...DEFAULT_USERS];
   writeFallbackUsers(memoryUsersStore);
-  return memoryUsersStore;
+  return memoryUsersStore.filter(
+    (u: any) =>
+      !tombstones.has(String(u.id || '').toLowerCase()) &&
+      !tombstones.has(String(u._id || '').toLowerCase()) &&
+      !tombstones.has(String(u.username || '').toLowerCase()) &&
+      !tombstones.has(String(u.email || '').toLowerCase())
+  );
 }
 
-function writeFallbackUsers(users: any[]) {
+export function writeFallbackUsers(users: any[]) {
   memoryUsersStore = [...users];
   try {
     const dir = path.dirname(USERS_FILE);
@@ -76,6 +129,8 @@ function writeFallbackUsers(users: any[]) {
 export class UsersController {
   static async getAll(req: any, res: any) {
     try {
+      const tombstones = getDeletedTombstones();
+
       try {
         const db = await connectToDatabase();
         if (db) {
@@ -84,7 +139,7 @@ export class UsersController {
           if (count === 0) {
             const defaults = readFallbackUsers();
             for (const u of defaults) {
-              const hash = await bcrypt.hash('#Imthepassword@123#', 10);
+              const hash = u.passwordHash || DEFAULT_PASSWORD_HASH;
               await User.create({
                 username: u.username,
                 email: u.email,
@@ -98,8 +153,14 @@ export class UsersController {
           }
           const docs = await User.find({}, '-passwordHash').sort({ createdAt: -1 }).lean();
           if (docs && docs.length > 0) {
-            memoryUsersStore = docs;
-            return res.status(200).json({ success: true, users: docs });
+            const filteredDocs = docs.filter(
+              (u: any) =>
+                !tombstones.has(String(u._id || '').toLowerCase()) &&
+                !tombstones.has(String(u.username || '').toLowerCase()) &&
+                !tombstones.has(String(u.email || '').toLowerCase())
+            );
+            memoryUsersStore = filteredDocs;
+            return res.status(200).json({ success: true, users: filteredDocs });
           }
         }
       } catch (dbErr) {
@@ -133,6 +194,11 @@ export class UsersController {
         updatedAt: new Date(),
       };
 
+      // Ensure not marked as tombstone
+      const tombstones = getDeletedTombstones();
+      tombstones.delete(newUser.username.toLowerCase());
+      tombstones.delete(newUser.email.toLowerCase());
+
       try {
         const db = await connectToDatabase();
         if (db) {
@@ -149,7 +215,7 @@ export class UsersController {
           delete safeDoc.passwordHash;
 
           const list = readFallbackUsers().filter((u: any) => u.username.toLowerCase() !== username.toLowerCase());
-          list.unshift(safeDoc);
+          list.unshift({ ...safeDoc, passwordHash });
           writeFallbackUsers(list);
 
           return res.status(201).json({ success: true, user: safeDoc });
@@ -167,6 +233,7 @@ export class UsersController {
         id: 'usr_' + Date.now(),
         username: newUser.username,
         email: newUser.email,
+        passwordHash, // Stored so newly created user can log in via fallback too
         name: newUser.name,
         role: newUser.role,
         isActive: true,
@@ -175,7 +242,10 @@ export class UsersController {
       list.unshift(entry);
       writeFallbackUsers(list);
 
-      return res.status(201).json({ success: true, user: entry });
+      const safeEntry = { ...entry };
+      delete (safeEntry as any).passwordHash;
+
+      return res.status(201).json({ success: true, user: safeEntry });
     } catch (err: any) {
       console.error('Error creating user:', err);
       return res.status(500).json({ success: false, error: err.message || 'Failed to create user' });
@@ -216,18 +286,42 @@ export class UsersController {
   static async delete(req: any, res: any) {
     try {
       const { id } = req.params;
-      if (id === 'usr_admin') {
+      const target = String(id).trim();
+
+      if (
+        target.toLowerCase() === 'usr_admin' ||
+        target.toLowerCase() === 'admin'
+      ) {
         return res.status(400).json({ success: false, error: 'Cannot delete primary root Administrator' });
       }
+
+      // Record tombstone so this user never re-appears
+      recordDeletedTombstone(target);
 
       try {
         const db = await connectToDatabase();
         if (db) {
-          await User.findByIdAndDelete(id);
+          const deleteConditions: any[] = [
+            { username: target },
+            { email: target }
+          ];
+          if (mongoose.isValidObjectId(target)) {
+            deleteConditions.push({ _id: target });
+          }
+          await User.deleteMany({ $or: deleteConditions });
         }
-      } catch (e) {}
+      } catch (e) {
+        console.warn('DB delete error, continuing with fallback cache:', e);
+      }
 
-      const list = readFallbackUsers().filter((u: any) => u.id !== id && u._id !== id);
+      const list = readFallbackUsers().filter(
+        (u: any) =>
+          u.id !== target &&
+          u._id !== target &&
+          String(u._id) !== target &&
+          u.username?.toLowerCase() !== target.toLowerCase() &&
+          u.email?.toLowerCase() !== target.toLowerCase()
+      );
       writeFallbackUsers(list);
 
       return res.status(200).json({ success: true });

@@ -4,6 +4,8 @@ import { config } from '../config/env';
 export const COOKIE_NAME = config.COOKIE_NAME;
 
 export interface TokenPayload {
+  id?: string;
+  userId?: string;
   username: string;
   role?: string;
   exp?: number;

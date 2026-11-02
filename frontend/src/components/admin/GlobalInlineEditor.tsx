@@ -50,7 +50,7 @@ function generateElementKey(el: HTMLElement, pathname: string): string {
     depth++;
   }
 
-  const initialText = (el.getAttribute('data-cms-initial') || el.innerText || '').trim().slice(0, 32);
+  const initialText = (el.getAttribute('data-cms-initial') || el.textContent || '').trim().slice(0, 32);
   const rawIdentifier = `${pathname}::${pathParts.join('/')}::${initialText}`;
 
   let hash = 0;
@@ -68,7 +68,7 @@ function generateContainerKey(el: HTMLElement, pathname: string): string {
   const tag = el.tagName.toLowerCase();
   const imgEl = el.querySelector('img');
   const imgSrc = imgEl ? (imgEl.getAttribute('data-original-src') || imgEl.getAttribute('src') || '') : '';
-  const initialText = (el.getAttribute('data-cms-initial') || el.innerText || '').trim().slice(0, 30).replace(/[^a-zA-Z0-9]/g, '_');
+  const initialText = (el.getAttribute('data-cms-initial') || el.textContent || '').trim().slice(0, 30).replace(/[^a-zA-Z0-9]/g, '_');
   const raw = `${pathname}__${tag}__${imgSrc}__${initialText}`;
   let hash = 0;
   for (let i = 0; i < raw.length; i++) {
@@ -101,7 +101,7 @@ function isLeafTextElement(el: HTMLElement): boolean {
 
   if (hasStructuralChildren) return false;
 
-  return (el.innerText || '').trim().length > 0;
+  return (el.textContent || '').trim().length > 0;
 }
 
 // Helper to accurately resolve active image source with all contentMap keys
@@ -296,9 +296,9 @@ function buildEditTarget(
       cardImageSrc: activeCardImg,
       styleKey: key,
       elementRef: el,
-      cardTitle: titleEl ? titleEl.innerText.trim() : undefined,
-      cardDescription: descEl ? descEl.innerText.trim() : undefined,
-      cardButtonText: btnEl ? btnEl.innerText.trim() : undefined,
+      cardTitle: titleEl ? titleEl.textContent?.trim() : undefined,
+      cardDescription: descEl ? descEl.textContent?.trim() : undefined,
+      cardButtonText: btnEl ? btnEl.textContent?.trim() : undefined,
       cardButtonHref: btnEl && btnEl.tagName.toLowerCase() === 'a' ? (btnEl as HTMLAnchorElement).getAttribute('href') || undefined : undefined,
     };
   }
@@ -378,50 +378,58 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
 
   // 1. Restore saved content, styles, and image attributes across DOM on mount or route change
   useEffect(() => {
-    // 1.1 Restore Text Content
-    const allCandidateElements = document.querySelectorAll<HTMLElement>(
-      'h1, h2, h3, h4, h5, h6, p, span, button, a, li, label, strong, em, b, i, blockquote, small, dt, dd, td, th'
+    // 1.1 Restore Text Content ONLY IF auto keys actually exist in contentMap
+    const hasAutoKeys = Object.keys(contentMap).some((k) => k.startsWith('cms_auto_'));
+    if (hasAutoKeys) {
+      const allCandidateElements = document.querySelectorAll<HTMLElement>(
+        'h1, h2, h3, h4, h5, h6, p, span, button, a, li, label, strong, em, b, i, blockquote, small, dt, dd, td, th'
+      );
+
+      allCandidateElements.forEach((el) => {
+        if (isLeafTextElement(el)) {
+          if (!el.getAttribute('data-cms-initial')) {
+            el.setAttribute('data-cms-initial', el.innerHTML);
+          }
+          const key = generateElementKey(el, currentPath);
+          el.setAttribute('data-cms-key', key);
+
+          if (contentMap[key]) {
+            if (el.innerHTML !== contentMap[key]) {
+              el.innerHTML = contentMap[key];
+            }
+          }
+        }
+      });
+    }
+
+    // 1.2 Restore Container & Card Content across all cards and sections in DOM ONLY IF container replacements exist
+    const hasContainerKeys = Object.keys(contentMap).some(
+      (k) => k.startsWith('img_replace_container_') || k.startsWith('container_')
     );
+    if (hasContainerKeys) {
+      const allContainers = document.querySelectorAll<HTMLElement>(
+        'div[class*="rounded-2xl"], div[class*="rounded-3xl"], div[class*="rounded-xl"], div[class*="bg-white"], div[class*="card"], section'
+      );
+      allContainers.forEach((container) => {
+        if (isAdminOrExcludedUI(container)) return;
+        const key = container.getAttribute('data-container-key') || generateContainerKey(container, currentPath);
+        container.setAttribute('data-container-key', key);
 
-    allCandidateElements.forEach((el) => {
-      if (isLeafTextElement(el)) {
-        if (!el.getAttribute('data-cms-initial')) {
-          el.setAttribute('data-cms-initial', el.innerHTML);
-        }
-        const key = generateElementKey(el, currentPath);
-        el.setAttribute('data-cms-key', key);
-
-        if (contentMap[key]) {
-          if (el.innerHTML !== contentMap[key]) {
-            el.innerHTML = contentMap[key];
+        const imgReplacement = contentMap[`img_replace_${key}`];
+        if (imgReplacement) {
+          const img = container.querySelector('img');
+          if (img) {
+            if (!img.getAttribute('data-original-src')) {
+              img.setAttribute('data-original-src', img.getAttribute('src') || img.src);
+            }
+            if (img.getAttribute('src') !== imgReplacement) {
+              img.setAttribute('src', imgReplacement);
+              img.src = imgReplacement;
+            }
           }
         }
-      }
-    });
-
-    // 1.2 Restore Container & Card Content across all cards and sections in DOM
-    const allContainers = document.querySelectorAll<HTMLElement>(
-      'div[class*="rounded-2xl"], div[class*="rounded-3xl"], div[class*="rounded-xl"], div[class*="bg-white"], div[class*="card"], section'
-    );
-    allContainers.forEach((container) => {
-      if (isAdminOrExcludedUI(container)) return;
-      const key = container.getAttribute('data-container-key') || generateContainerKey(container, currentPath);
-      container.setAttribute('data-container-key', key);
-
-      const imgReplacement = contentMap[`img_replace_${key}`];
-      if (imgReplacement) {
-        const img = container.querySelector('img');
-        if (img) {
-          if (!img.getAttribute('data-original-src')) {
-            img.setAttribute('data-original-src', img.getAttribute('src') || img.src);
-          }
-          if (img.getAttribute('src') !== imgReplacement) {
-            img.setAttribute('src', imgReplacement);
-            img.src = imgReplacement;
-          }
-        }
-      }
-    });
+      });
+    }
 
     // 1.3 Restore Image Elements & SEO Attributes
     applyImageReplacements(contentMap, getImageSeo);
@@ -432,7 +440,7 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
         const targetKey = key.replace('style_', '');
         try {
           const styleData: ElementStyleData = JSON.parse(contentMap[key]);
-          const targetEl = document.querySelector<HTMLElement>(`[data-container-key="${targetKey}"]`);
+          const targetEl = document.querySelector<HTMLElement>(`[data-container-key="${targetKey}"], #${targetKey}`);
           if (targetEl) {
             if (styleData.backgroundColor) targetEl.style.backgroundColor = styleData.backgroundColor;
             if (styleData.textColor) targetEl.style.color = styleData.textColor;
