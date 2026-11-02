@@ -176,7 +176,20 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   // Check authentication status via /api/auth/me
   const checkAuth = useCallback(async () => {
     try {
-      const res = await fetch('/api/auth/me');
+      const token = typeof window !== 'undefined'
+        ? (localStorage.getItem('admin_token_jwt') || sessionStorage.getItem('admin_token_jwt'))
+        : null;
+
+      const headers: Record<string, string> = {};
+      if (token && token !== 'client_verified_token') {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
+      const res = await fetch('/api/auth/me', {
+        headers,
+        credentials: 'include',
+      });
+
       if (res.ok) {
         const data = await res.json();
         if (data.authenticated) {
@@ -208,7 +221,8 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
+        credentials: 'include',
+        body: JSON.stringify({ username: username.trim(), password }),
       });
 
       const data = await res.json();
@@ -218,6 +232,13 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         setIsEditMode(true);
         if (typeof window !== 'undefined') {
           sessionStorage.setItem('admin_session_auth', 'true');
+          if (data.token) {
+            sessionStorage.setItem('admin_token_jwt', data.token);
+            localStorage.setItem('admin_token_jwt', data.token);
+          }
+          if (data.user) {
+            localStorage.setItem('jamison_current_user', JSON.stringify(data.user));
+          }
         }
         return { success: true };
       }
@@ -257,12 +278,15 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   // Logout handler
   const logout = async () => {
     try {
-      await fetch('/api/auth/logout', { method: 'POST' });
+      await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
     } catch {}
     setIsAdmin(false);
     setIsEditMode(false);
     if (typeof window !== 'undefined') {
       sessionStorage.removeItem('admin_session_auth');
+      sessionStorage.removeItem('admin_token_jwt');
+      localStorage.removeItem('admin_token_jwt');
+      localStorage.removeItem('jamison_current_user');
       document.cookie = `admin_token=; path=/; max-age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
     }
   };

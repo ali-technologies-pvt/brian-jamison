@@ -252,7 +252,15 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
   // Fetch Users
   const fetchUsers = async () => {
     try {
-      const res = await fetch('/api/users');
+      const token = typeof window !== 'undefined'
+        ? (localStorage.getItem('admin_token_jwt') || sessionStorage.getItem('admin_token_jwt'))
+        : null;
+      const headers: Record<string, string> = {};
+      if (token && token !== 'client_verified_token') {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
+      const res = await fetch('/api/users', { headers, credentials: 'include' });
       if (res.ok) {
         const data = await res.json();
         if (data.success && Array.isArray(data.users)) {
@@ -449,17 +457,60 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
     setUserSuccessMessage(null);
     setUserErrorMessage(null);
 
+    const trimmedUsername = (newUserData.username || '').trim();
+    const trimmedEmail = (newUserData.email || '').trim().toLowerCase();
+    const rawPassword = newUserData.password || '';
+
+    if (!trimmedUsername || !trimmedEmail || !rawPassword) {
+      setUserErrorMessage('Username, email, and password are required');
+      return;
+    }
+
     try {
+      const token = typeof window !== 'undefined'
+        ? (localStorage.getItem('admin_token_jwt') || sessionStorage.getItem('admin_token_jwt'))
+        : null;
+
+      const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+      if (token && token !== 'client_verified_token') {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
       const res = await fetch('/api/users/create', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newUserData),
+        headers,
+        credentials: 'include',
+        body: JSON.stringify({
+          ...newUserData,
+          username: trimmedUsername,
+          email: trimmedEmail,
+        }),
       });
       const data = await res.json();
       if (res.ok && data.success && data.user) {
+        // Un-tombstone newly created user from local cache
+        if (typeof window !== 'undefined') {
+          try {
+            const delList: string[] = JSON.parse(localStorage.getItem('jamison_deleted_users_cache') || '[]');
+            const cleanList = delList.filter(
+              (x) =>
+                x.toLowerCase() !== trimmedUsername.toLowerCase() &&
+                x.toLowerCase() !== trimmedEmail.toLowerCase()
+            );
+            localStorage.setItem('jamison_deleted_users_cache', JSON.stringify(cleanList));
+          } catch {}
+        }
+
         // Immediately add to local state and localStorage so the count updates instantly!
         setUsers((prev) => {
-          const updated = [data.user, ...prev.filter((u) => (u.id || u._id || u.username) !== (data.user.id || data.user._id || data.user.username))];
+          const updated = [
+            data.user,
+            ...prev.filter(
+              (u) =>
+                (u.id || u._id || u.username)?.toLowerCase() !==
+                (data.user.id || data.user._id || data.user.username)?.toLowerCase()
+            ),
+          ];
           if (typeof window !== 'undefined') {
             localStorage.setItem('jamison_admin_users_cache', JSON.stringify(updated));
           }

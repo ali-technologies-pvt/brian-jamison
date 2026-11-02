@@ -6,6 +6,10 @@ import { readFallbackUsers } from './users.controller';
 import { signAdminToken, verifyAdminToken, COOKIE_NAME } from '../lib/jwt';
 import { config } from '../config/env';
 
+function escapeRegex(text: string): string {
+  return String(text).replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+}
+
 export class AuthController {
   /**
    * POST /api/auth/login
@@ -54,10 +58,12 @@ export class AuthController {
       try {
         const db = await connectToDatabase();
         if (db) {
+          const escapedUser = escapeRegex(trimmedUser);
           const userDoc = await User.findOne({
             $or: [
-              { username: new RegExp(`^${trimmedUser}$`, 'i') },
-              { email: new RegExp(`^${trimmedUser}$`, 'i') }
+              { username: { $regex: `^${escapedUser}$`, $options: 'i' } },
+              { email: trimmedUser.toLowerCase() },
+              { email: { $regex: `^${escapedUser}$`, $options: 'i' } }
             ]
           });
 
@@ -78,9 +84,10 @@ export class AuthController {
                   id: userDoc._id.toString(),
                 });
 
+                const isHttps = req.secure || req.headers['x-forwarded-proto'] === 'https';
                 res.cookie(COOKIE_NAME, token, {
                   httpOnly: true,
-                  secure: config.NODE_ENV === 'production',
+                  secure: isHttps,
                   sameSite: 'lax',
                   path: '/',
                   maxAge: 7 * 24 * 60 * 60 * 1000,

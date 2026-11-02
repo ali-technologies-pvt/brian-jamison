@@ -76,6 +76,10 @@ export function recordDeletedTombstone(identifier: string) {
   } catch {}
 }
 
+function escapeRegex(text: string): string {
+  return String(text).replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+}
+
 export function readFallbackUsers(): any[] {
   const tombstones = getDeletedTombstones();
   if (memoryUsersStore.length > 0) {
@@ -196,15 +200,23 @@ export class UsersController {
 
       // Ensure not marked as tombstone
       const tombstones = getDeletedTombstones();
-      tombstones.delete(newUser.username.toLowerCase());
-      tombstones.delete(newUser.email.toLowerCase());
+      if (tombstones.has(newUser.username.toLowerCase()) || tombstones.has(newUser.email.toLowerCase())) {
+        tombstones.delete(newUser.username.toLowerCase());
+        tombstones.delete(newUser.email.toLowerCase());
+        try {
+          fs.writeFileSync(DELETED_FILE, JSON.stringify(Array.from(tombstones)), 'utf-8');
+        } catch {}
+      }
 
       try {
         const db = await connectToDatabase();
         if (db) {
-          // Check if username or email already exists in DB
+          // Check if username or email already exists in DB (case-insensitive)
           const existing = await User.findOne({
-            $or: [{ username: newUser.username }, { email: newUser.email }]
+            $or: [
+              { username: { $regex: `^${escapeRegex(newUser.username)}$`, $options: 'i' } },
+              { email: newUser.email }
+            ]
           });
           if (existing) {
             return res.status(400).json({ success: false, error: 'Username or email already exists in database' });
@@ -220,8 +232,11 @@ export class UsersController {
 
           return res.status(201).json({ success: true, user: safeDoc });
         }
-      } catch (dbErr) {
-        console.warn('DB write deferred for user, saving to fallback cache.');
+      } catch (dbErr: any) {
+        console.error('MongoDB user creation error:', dbErr);
+        if (dbErr?.code === 11000) {
+          return res.status(400).json({ success: false, error: 'Username or email already exists in database' });
+        }
       }
 
       const list = readFallbackUsers();
