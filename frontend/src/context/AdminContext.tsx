@@ -52,8 +52,21 @@ export interface UndoRecord {
   timestamp: number;
 }
 
+export type AdminRole = 'Administrator' | 'Editor' | 'Author' | 'Contributor';
+
+export interface AdminUser {
+  id?: string;
+  _id?: string;
+  username: string;
+  name?: string;
+  email?: string;
+  role: AdminRole;
+}
+
 interface AdminContextType {
   isAdmin: boolean;
+  currentUser: AdminUser | null;
+  userRole: AdminRole;
   isEditMode: boolean;
   setIsEditMode: (value: boolean) => void;
   contentMap: Record<string, string>;
@@ -94,6 +107,18 @@ function safeLocalStorageSet(key: string, value: string) {
 
 export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAdmin, setIsAdmin] = useState(false);
+  const [currentUser, setCurrentUser] = useState<AdminUser | null>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem('jamison_current_user');
+        if (saved) return JSON.parse(saved);
+      } catch {}
+    }
+    return null;
+  });
+
+  const userRole: AdminRole = currentUser?.role || 'Administrator';
+
   const [isEditMode, setIsEditModeState] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem(LOCAL_STORAGE_EDIT_MODE_KEY);
@@ -194,6 +219,20 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         const data = await res.json();
         if (data.authenticated) {
           setIsAdmin(true);
+          if (data.user) {
+            const role = (data.user.role || 'Administrator') as AdminRole;
+            const userObj: AdminUser = {
+              username: data.user.username,
+              name: data.user.name || data.user.username,
+              email: data.user.email,
+              role,
+              id: data.user.id || data.user._id,
+            };
+            setCurrentUser(userObj);
+            if (typeof window !== 'undefined') {
+              localStorage.setItem('jamison_current_user', JSON.stringify(userObj));
+            }
+          }
           return;
         }
       }
@@ -237,7 +276,16 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
             localStorage.setItem('admin_token_jwt', data.token);
           }
           if (data.user) {
-            localStorage.setItem('jamison_current_user', JSON.stringify(data.user));
+            const role = (data.user.role || 'Administrator') as AdminRole;
+            const userObj: AdminUser = {
+              username: data.user.username,
+              name: data.user.name || data.user.username,
+              email: data.user.email,
+              role,
+              id: data.user.id || data.user._id,
+            };
+            setCurrentUser(userObj);
+            localStorage.setItem('jamison_current_user', JSON.stringify(userObj));
           }
         }
         return { success: true };
@@ -282,6 +330,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     } catch {}
     setIsAdmin(false);
     setIsEditMode(false);
+    setCurrentUser(null);
     if (typeof window !== 'undefined') {
       sessionStorage.removeItem('admin_session_auth');
       sessionStorage.removeItem('admin_token_jwt');
@@ -577,6 +626,8 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     <AdminContext.Provider
       value={{
         isAdmin,
+        currentUser,
+        userRole,
         isEditMode,
         setIsEditMode,
         contentMap,

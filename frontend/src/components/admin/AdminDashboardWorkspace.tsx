@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   Inbox,
   FileText,
@@ -105,8 +105,30 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
   onNavigate,
   onSignOut,
 }) => {
-  const { isEditMode, setIsEditMode, contentMap, updateContent } = useAdmin();
-  const [activeTab, setActiveTab] = useState<'submissions' | 'blogs' | 'users' | 'settings' | 'visibility'>('submissions');
+  const { isEditMode, setIsEditMode, contentMap, updateContent, currentUser, userRole } = useAdmin();
+
+  // Role-Based Permitted Tabs
+  const permittedTabs = useMemo(() => {
+    if (userRole === 'Administrator') {
+      return ['submissions', 'blogs', 'users', 'visibility', 'settings'] as const;
+    }
+    if (userRole === 'Editor') {
+      return ['submissions', 'blogs'] as const;
+    }
+    // Author or Contributor
+    return ['blogs'] as const;
+  }, [userRole]);
+
+  const [activeTab, setActiveTab] = useState<'submissions' | 'blogs' | 'users' | 'settings' | 'visibility'>(() => {
+    if (userRole === 'Author' || userRole === 'Contributor') return 'blogs';
+    return 'submissions';
+  });
+
+  useEffect(() => {
+    if (!permittedTabs.includes(activeTab as any)) {
+      setActiveTab(permittedTabs[0]);
+    }
+  }, [permittedTabs, activeTab]);
 
   // Feature Visibility State & Handlers
   const isIdxHidden = contentMap['setting_hide_idx_listings'] === 'true';
@@ -591,20 +613,41 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
           </div>
 
           <div className="flex items-center gap-3">
-            {/* Inline Edit Mode Toggle Button */}
-            <button
-              type="button"
-              onClick={() => setIsEditMode(!isEditMode)}
-              className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-semibold tracking-wide transition-all cursor-pointer ${
-                isEditMode
-                  ? 'bg-[#EA580C] text-white border-[#EA580C] shadow-md shadow-orange-600/30'
-                  : 'bg-white border-[#E5E0D8] text-stone-700 hover:border-[#EA580C]'
-              }`}
-              title="Toggle Live Visual In-Line Editor Mode"
-            >
-              <span className={`w-2 h-2 rounded-full ${isEditMode ? 'bg-white animate-pulse' : 'bg-stone-300'}`} />
-              <span>In-Line Edit Mode: <strong>{isEditMode ? 'ON' : 'OFF'}</strong></span>
-            </button>
+            {/* User Profile & Role Pill */}
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FAF8F5] border border-[#E5E0D8]">
+              <div className="w-6 h-6 rounded-full bg-[#002D61] text-white flex items-center justify-center text-xs font-bold uppercase shadow-2xs">
+                {(currentUser?.name || currentUser?.username || 'A')[0]}
+              </div>
+              <div className="text-left leading-tight pr-1">
+                <span className="text-xs font-bold text-[#002D61] block max-w-[120px] truncate">
+                  {currentUser?.name || currentUser?.username || 'Admin'}
+                </span>
+                <span className={`text-[10px] font-bold uppercase tracking-wider block ${
+                  userRole === 'Administrator' ? 'text-amber-700' :
+                  userRole === 'Editor' ? 'text-blue-700' :
+                  userRole === 'Author' ? 'text-emerald-700' : 'text-stone-600'
+                }`}>
+                  {userRole}
+                </span>
+              </div>
+            </div>
+
+            {/* Inline Edit Mode Toggle Button (Admin & Editor only) */}
+            {(userRole === 'Administrator' || userRole === 'Editor') && (
+              <button
+                type="button"
+                onClick={() => setIsEditMode(!isEditMode)}
+                className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-semibold tracking-wide transition-all cursor-pointer ${
+                  isEditMode
+                    ? 'bg-[#EA580C] text-white border-[#EA580C] shadow-md shadow-orange-600/30'
+                    : 'bg-white border-[#E5E0D8] text-stone-700 hover:border-[#EA580C]'
+                }`}
+                title="Toggle Live Visual In-Line Editor Mode"
+              >
+                <span className={`w-2 h-2 rounded-full ${isEditMode ? 'bg-white animate-pulse' : 'bg-stone-300'}`} />
+                <span>In-Line Edit Mode: <strong>{isEditMode ? 'ON' : 'OFF'}</strong></span>
+              </button>
+            )}
 
             <a
               href="/"
@@ -627,218 +670,239 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
           </div>
         </div>
 
-        {/* Workspace Navigation Tabs */}
+        {/* Workspace Navigation Tabs (Filtered strictly by User Role) */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center gap-1 overflow-x-auto border-t border-[#E5E0D8]/60">
-          <button
-            type="button"
-            onClick={() => setActiveTab('submissions')}
-            className={`flex items-center gap-2 px-4 py-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer whitespace-nowrap ${
-              activeTab === 'submissions'
-                ? 'border-[#EA580C] text-[#EA580C] bg-orange-500/5'
-                : 'border-transparent text-stone-600 hover:text-[#002D61]'
-            }`}
-          >
-            <Inbox className="w-4 h-4" />
-            <span>Form Submissions</span>
-            {unreadCount > 0 && (
-              <span className="px-1.5 py-0.5 rounded-full bg-[#EA580C] text-white text-[10px] font-bold">
-                {unreadCount}
-              </span>
-            )}
-          </button>
+          {permittedTabs.includes('submissions') && (
+            <button
+              type="button"
+              onClick={() => setActiveTab('submissions')}
+              className={`flex items-center gap-2 px-4 py-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer whitespace-nowrap ${
+                activeTab === 'submissions'
+                  ? 'border-[#EA580C] text-[#EA580C] bg-orange-500/5'
+                  : 'border-transparent text-stone-600 hover:text-[#002D61]'
+              }`}
+            >
+              <Inbox className="w-4 h-4" />
+              <span>Form Submissions</span>
+              {unreadCount > 0 && (
+                <span className="px-1.5 py-0.5 rounded-full bg-[#EA580C] text-white text-[10px] font-bold">
+                  {unreadCount}
+                </span>
+              )}
+            </button>
+          )}
 
-          <button
-            type="button"
-            onClick={() => setActiveTab('blogs')}
-            className={`flex items-center gap-2 px-4 py-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer whitespace-nowrap ${
-              activeTab === 'blogs'
-                ? 'border-[#EA580C] text-[#EA580C] bg-orange-500/5'
-                : 'border-transparent text-stone-600 hover:text-[#002D61]'
-            }`}
-          >
-            <FileText className="w-4 h-4" />
-            <span>WordPress Blog Posts ({blogs.length})</span>
-          </button>
+          {permittedTabs.includes('blogs') && (
+            <button
+              type="button"
+              onClick={() => setActiveTab('blogs')}
+              className={`flex items-center gap-2 px-4 py-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer whitespace-nowrap ${
+                activeTab === 'blogs'
+                  ? 'border-[#EA580C] text-[#EA580C] bg-orange-500/5'
+                  : 'border-transparent text-stone-600 hover:text-[#002D61]'
+              }`}
+            >
+              <FileText className="w-4 h-4" />
+              <span>WordPress Blog Posts ({blogs.length})</span>
+            </button>
+          )}
 
-          <button
-            type="button"
-            onClick={() => setActiveTab('users')}
-            className={`flex items-center gap-2 px-4 py-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer whitespace-nowrap ${
-              activeTab === 'users'
-                ? 'border-[#EA580C] text-[#EA580C] bg-orange-500/5'
-                : 'border-transparent text-stone-600 hover:text-[#002D61]'
-            }`}
-          >
-            <UsersIcon className="w-4 h-4" />
-            <span>User Management ({users.length})</span>
-          </button>
+          {permittedTabs.includes('users') && (
+            <button
+              type="button"
+              onClick={() => setActiveTab('users')}
+              className={`flex items-center gap-2 px-4 py-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer whitespace-nowrap ${
+                activeTab === 'users'
+                  ? 'border-[#EA580C] text-[#EA580C] bg-orange-500/5'
+                  : 'border-transparent text-stone-600 hover:text-[#002D61]'
+              }`}
+            >
+              <UsersIcon className="w-4 h-4" />
+              <span>User Management ({users.length})</span>
+            </button>
+          )}
 
-          <button
-            type="button"
-            onClick={() => setActiveTab('visibility')}
-            className={`flex items-center gap-2 px-4 py-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer whitespace-nowrap ${
-              activeTab === 'visibility'
-                ? 'border-[#EA580C] text-[#EA580C] bg-orange-500/5'
-                : 'border-transparent text-stone-600 hover:text-[#002D61]'
-            }`}
-          >
-            <Eye className="w-4 h-4" />
-            <span>Feature Visibility ({[
-              isIdxHidden ? 'IDX: Hidden' : null,
-              isVideoSlidersHidden ? 'Marquee: Hidden' : null,
-              isVideosPageHidden ? 'Videos Page: Hidden' : null,
-            ].filter(Boolean).length > 0 ? `${[
-              isIdxHidden ? 'IDX' : null,
-              isVideoSlidersHidden ? 'Marquee' : null,
-              isVideosPageHidden ? 'Videos' : null,
-            ].filter(Boolean).length} Hidden` : 'All Visible'})</span>
-          </button>
+          {permittedTabs.includes('visibility') && (
+            <button
+              type="button"
+              onClick={() => setActiveTab('visibility')}
+              className={`flex items-center gap-2 px-4 py-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer whitespace-nowrap ${
+                activeTab === 'visibility'
+                  ? 'border-[#EA580C] text-[#EA580C] bg-orange-500/5'
+                  : 'border-transparent text-stone-600 hover:text-[#002D61]'
+              }`}
+            >
+              <Eye className="w-4 h-4" />
+              <span>Feature Visibility ({[
+                isIdxHidden ? 'IDX: Hidden' : null,
+                isVideoSlidersHidden ? 'Marquee: Hidden' : null,
+                isVideosPageHidden ? 'Videos Page: Hidden' : null,
+              ].filter(Boolean).length > 0 ? `${[
+                isIdxHidden ? 'IDX' : null,
+                isVideoSlidersHidden ? 'Marquee' : null,
+                isVideosPageHidden ? 'Videos' : null,
+              ].filter(Boolean).length} Hidden` : 'All Visible'})</span>
+            </button>
+          )}
 
-          <button
-            type="button"
-            onClick={() => setActiveTab('settings')}
-            className={`flex items-center gap-2 px-4 py-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer whitespace-nowrap ${
-              activeTab === 'settings'
-                ? 'border-[#EA580C] text-[#EA580C] bg-orange-500/5'
-                : 'border-transparent text-stone-600 hover:text-[#002D61]'
-            }`}
-          >
-            <Settings className="w-4 h-4" />
-            <span>CMS Overview & SEO</span>
-          </button>
+          {permittedTabs.includes('settings') && (
+            <button
+              type="button"
+              onClick={() => setActiveTab('settings')}
+              className={`flex items-center gap-2 px-4 py-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer whitespace-nowrap ${
+                activeTab === 'settings'
+                  ? 'border-[#EA580C] text-[#EA580C] bg-orange-500/5'
+                  : 'border-transparent text-stone-600 hover:text-[#002D61]'
+              }`}
+            >
+              <Settings className="w-4 h-4" />
+              <span>CMS Overview & SEO</span>
+            </button>
+          )}
         </div>
       </header>
 
       {/* Main Content Body */}
       <main className="max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 flex-1">
-        {/* Executive Overview KPI Metrics Strip */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6">
-          {/* Card 1: Users & Accounts */}
-          <button
-            type="button"
-            onClick={() => setActiveTab('users')}
-            className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
-              activeTab === 'users'
-                ? 'bg-orange-500/10 border-[#EA580C] shadow-xs'
-                : 'bg-white border-[#E5E0D8] hover:border-[#EA580C]/40 hover:shadow-xs'
-            }`}
-          >
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500">
-                Team & Users
-              </span>
-              <div className="w-7 h-7 rounded-lg bg-orange-100 text-[#EA580C] flex items-center justify-center">
-                <UsersIcon className="w-3.5 h-3.5" />
-              </div>
-            </div>
-            <div className="flex items-baseline gap-2">
-              <span className="font-serif text-2xl font-bold text-[#002D61]">
-                {users.length}
-              </span>
-              <span className="text-[11px] font-semibold text-emerald-600">Active Accounts</span>
-            </div>
-            <span className="text-[10px] text-stone-500 mt-1 block truncate">
-              {users.filter(u => u.role === 'Administrator').length} Admin · {users.filter(u => u.role === 'Editor').length} Editors · {users.filter(u => u.role === 'Author').length} Authors
-            </span>
-          </button>
-
-          {/* Card 2: Form Submissions */}
-          <button
-            type="button"
-            onClick={() => setActiveTab('submissions')}
-            className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
-              activeTab === 'submissions'
-                ? 'bg-orange-500/10 border-[#EA580C] shadow-xs'
-                : 'bg-white border-[#E5E0D8] hover:border-[#EA580C]/40 hover:shadow-xs'
-            }`}
-          >
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500">
-                Client Inquiries
-              </span>
-              <div className="w-7 h-7 rounded-lg bg-blue-100 text-[#002D61] flex items-center justify-center">
-                <Inbox className="w-3.5 h-3.5" />
-              </div>
-            </div>
-            <div className="flex items-baseline gap-2">
-              <span className="font-serif text-2xl font-bold text-[#002D61]">
-                {submissions.length}
-              </span>
-              {unreadCount > 0 ? (
-                <span className="text-[11px] font-semibold text-[#EA580C]">
-                  {unreadCount} Unread
+        {/* Executive Overview KPI Metrics Strip (Filtered by Role) */}
+        <div className={`grid gap-3 sm:gap-4 mb-6 ${
+          userRole === 'Administrator' ? 'grid-cols-2 lg:grid-cols-4' :
+          userRole === 'Editor' ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1'
+        }`}>
+          {/* Card 1: Users & Accounts (Administrator only) */}
+          {userRole === 'Administrator' && (
+            <button
+              type="button"
+              onClick={() => setActiveTab('users')}
+              className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+                activeTab === 'users'
+                  ? 'bg-orange-500/10 border-[#EA580C] shadow-xs'
+                  : 'bg-white border-[#E5E0D8] hover:border-[#EA580C]/40 hover:shadow-xs'
+              }`}
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                  Team & Users
                 </span>
-              ) : (
-                <span className="text-[11px] font-semibold text-stone-400">All Read</span>
-              )}
-            </div>
-            <span className="text-[10px] text-stone-500 mt-1 block truncate">
-              Valuations & Private Briefings
-            </span>
-          </button>
-
-          {/* Card 3: Blog Posts */}
-          <button
-            type="button"
-            onClick={() => setActiveTab('blogs')}
-            className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
-              activeTab === 'blogs'
-                ? 'bg-orange-500/10 border-[#EA580C] shadow-xs'
-                : 'bg-white border-[#E5E0D8] hover:border-[#EA580C]/40 hover:shadow-xs'
-            }`}
-          >
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500">
-                WordPress Posts
-              </span>
-              <div className="w-7 h-7 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center">
-                <FileText className="w-3.5 h-3.5" />
+                <div className="w-7 h-7 rounded-lg bg-orange-100 text-[#EA580C] flex items-center justify-center">
+                  <UsersIcon className="w-3.5 h-3.5" />
+                </div>
               </div>
-            </div>
-            <div className="flex items-baseline gap-2">
-              <span className="font-serif text-2xl font-bold text-[#002D61]">
-                {blogs.length}
-              </span>
-              <span className="text-[11px] font-semibold text-stone-500">Articles</span>
-            </div>
-            <span className="text-[10px] text-stone-500 mt-1 block truncate">
-              Market Intelligence & Guides
-            </span>
-          </button>
-
-          {/* Card 4: Site Feature Modules */}
-          <button
-            type="button"
-            onClick={() => setActiveTab('visibility')}
-            className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
-              activeTab === 'visibility'
-                ? 'bg-orange-500/10 border-[#EA580C] shadow-xs'
-                : 'bg-white border-[#E5E0D8] hover:border-[#EA580C]/40 hover:shadow-xs'
-            }`}
-          >
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500">
-                Feature Visibility
-              </span>
-              <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center">
-                <Eye className="w-3.5 h-3.5" />
+              <div className="flex items-baseline gap-2">
+                <span className="font-serif text-2xl font-bold text-[#002D61]">
+                  {users.length}
+                </span>
+                <span className="text-[11px] font-semibold text-emerald-600">Active Accounts</span>
               </div>
-            </div>
-            <div className="flex items-baseline gap-2">
-              <span className="font-serif text-2xl font-bold text-[#002D61]">
-                {3 - [isIdxHidden, isVideoSlidersHidden, isVideosPageHidden].filter(Boolean).length} / 3
+              <span className="text-[10px] text-stone-500 mt-1 block truncate">
+                {users.filter(u => u.role === 'Administrator').length} Admin · {users.filter(u => u.role === 'Editor').length} Editors · {users.filter(u => u.role === 'Author').length} Authors
               </span>
-              <span className="text-[11px] font-semibold text-emerald-600">Active</span>
-            </div>
-            <span className="text-[10px] text-stone-500 mt-1 block truncate">
-              IDX · Marquee · Videos Page
-            </span>
-          </button>
+            </button>
+          )}
+
+          {/* Card 2: Form Submissions (Administrator & Editor) */}
+          {permittedTabs.includes('submissions') && (
+            <button
+              type="button"
+              onClick={() => setActiveTab('submissions')}
+              className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+                activeTab === 'submissions'
+                  ? 'bg-orange-500/10 border-[#EA580C] shadow-xs'
+                  : 'bg-white border-[#E5E0D8] hover:border-[#EA580C]/40 hover:shadow-xs'
+              }`}
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                  Client Inquiries
+                </span>
+                <div className="w-7 h-7 rounded-lg bg-blue-100 text-[#002D61] flex items-center justify-center">
+                  <Inbox className="w-3.5 h-3.5" />
+                </div>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="font-serif text-2xl font-bold text-[#002D61]">
+                  {submissions.length}
+                </span>
+                {unreadCount > 0 ? (
+                  <span className="text-[11px] font-semibold text-[#EA580C]">
+                    {unreadCount} Unread
+                  </span>
+                ) : (
+                  <span className="text-[11px] font-semibold text-stone-400">All Read</span>
+                )}
+              </div>
+              <span className="text-[10px] text-stone-500 mt-1 block truncate">
+                Valuations & Private Briefings
+              </span>
+            </button>
+          )}
+
+          {/* Card 3: Blog Posts (All roles) */}
+          {permittedTabs.includes('blogs') && (
+            <button
+              type="button"
+              onClick={() => setActiveTab('blogs')}
+              className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+                activeTab === 'blogs'
+                  ? 'bg-orange-500/10 border-[#EA580C] shadow-xs'
+                  : 'bg-white border-[#E5E0D8] hover:border-[#EA580C]/40 hover:shadow-xs'
+              }`}
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                  WordPress Posts
+                </span>
+                <div className="w-7 h-7 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center">
+                  <FileText className="w-3.5 h-3.5" />
+                </div>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="font-serif text-2xl font-bold text-[#002D61]">
+                  {blogs.length}
+                </span>
+                <span className="text-[11px] font-semibold text-stone-500">Articles</span>
+              </div>
+              <span className="text-[10px] text-stone-500 mt-1 block truncate">
+                Market Intelligence & Guides
+              </span>
+            </button>
+          )}
+
+          {/* Card 4: Site Feature Modules (Administrator only) */}
+          {userRole === 'Administrator' && (
+            <button
+              type="button"
+              onClick={() => setActiveTab('visibility')}
+              className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+                activeTab === 'visibility'
+                  ? 'bg-orange-500/10 border-[#EA580C] shadow-xs'
+                  : 'bg-white border-[#E5E0D8] hover:border-[#EA580C]/40 hover:shadow-xs'
+              }`}
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                  Feature Visibility
+                </span>
+                <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                  <Eye className="w-3.5 h-3.5" />
+                </div>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="font-serif text-2xl font-bold text-[#002D61]">
+                  {3 - [isIdxHidden, isVideoSlidersHidden, isVideosPageHidden].filter(Boolean).length} / 3
+                </span>
+                <span className="text-[11px] font-semibold text-emerald-600">Active</span>
+              </div>
+              <span className="text-[10px] text-stone-500 mt-1 block truncate">
+                IDX · Marquee · Videos Page
+              </span>
+            </button>
+          )}
         </div>
         {/* =========================================================================
             TAB 1: FORM SUBMISSIONS (Inbox with filters, search, unread badge)
         ========================================================================= */}
-        {activeTab === 'submissions' && (
+        {permittedTabs.includes('submissions') && activeTab === 'submissions' && (
           <div className="space-y-6">
             {/* Filter Bar */}
             <div className="bg-white border border-[#E5E0D8] rounded-2xl p-4 sm:p-5 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -1404,7 +1468,7 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
         {/* =========================================================================
             TAB 3: USER MANAGEMENT (WordPress-style Roles: Administrator, Editor, Author)
         ========================================================================= */}
-        {activeTab === 'users' && (
+        {userRole === 'Administrator' && activeTab === 'users' && (
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white border border-[#E5E0D8] rounded-2xl p-5 shadow-xs">
               <div>
@@ -1623,7 +1687,7 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
         {/* =========================================================================
             TAB 4: SITE FEATURE VISIBILITY CONTROLS
         ========================================================================= */}
-        {activeTab === 'visibility' && (
+        {userRole === 'Administrator' && activeTab === 'visibility' && (
           <div className="space-y-6">
             {/* Toast Notification */}
             {settingNotification && (
@@ -1849,7 +1913,7 @@ export const AdminDashboardWorkspace: React.FC<AdminDashboardWorkspaceProps> = (
         {/* =========================================================================
             TAB 5: CMS OVERVIEW & SYSTEM ARCHITECTURE
         ========================================================================= */}
-        {activeTab === 'settings' && (
+        {userRole === 'Administrator' && activeTab === 'settings' && (
           <div className="space-y-6">
             {/* Quick Feature Visibility Card in Settings */}
             <div className="bg-white border border-[#E5E0D8] rounded-2xl p-6 shadow-xs">
