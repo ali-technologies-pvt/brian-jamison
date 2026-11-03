@@ -4,61 +4,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useAdmin, ElementStyleData, ImageSeoData } from '../../context/AdminContext';
 import { ImageSeoModal } from './ImageSeoModal';
 import { StyleInspectorModal } from './StyleInspectorModal';
-import { UniversalElementEditModal, UniversalEditTarget, getCleanImageKeys, getCleanImageKey } from './UniversalElementEditModal';
+import { UniversalElementEditModal, UniversalEditTarget, getCleanImageKeys, getCleanImageKey, isAdminOrExcludedUI, generateElementKey } from './UniversalElementEditModal';
 import { Loader2, Check, Pencil } from 'lucide-react';
 
 interface GlobalInlineEditorProps {
   currentPath: string;
-}
-
-// Strict check to ensure Admin UI, Toolbar, and floating widgets NEVER trigger edit mode or pen badges
-function isAdminOrExcludedUI(target: HTMLElement | null): boolean {
-  if (!target) return true;
-  return Boolean(
-    target.closest('[data-admin-ui]') ||
-    target.closest('[data-admin-toolbar]') ||
-    target.closest('aside') ||
-    target.closest('#sticky-call-btn') ||
-    target.closest('.cms-pen-badge') ||
-    target.closest('.cms-popup-modal') ||
-    target.closest('#admin-portal') ||
-    target.closest('nav[data-admin]') ||
-    target.closest('.fixed.bottom-5') ||
-    target.closest('.fixed.bottom-6')
-  );
-}
-
-// Generate stable deterministic key for any element based on position and initial content
-function generateElementKey(el: HTMLElement, pathname: string): string {
-  const explicitKey = el.getAttribute('data-cms-key');
-  if (explicitKey) return explicitKey;
-
-  const pathParts: string[] = [];
-  let curr: HTMLElement | null = el;
-  let depth = 0;
-  while (curr && curr !== document.body && depth < 6) {
-    const tag = curr.tagName.toLowerCase();
-    const id = curr.id ? `#${curr.id}` : '';
-    let siblingIndex = 0;
-    let prev = curr.previousElementSibling;
-    while (prev) {
-      if (prev.tagName === curr.tagName) siblingIndex++;
-      prev = prev.previousElementSibling;
-    }
-    pathParts.unshift(`${tag}${id}[${siblingIndex}]`);
-    curr = curr.parentElement;
-    depth++;
-  }
-
-  const initialText = (el.getAttribute('data-cms-initial') || el.textContent || '').trim().slice(0, 32);
-  const rawIdentifier = `${pathname}::${pathParts.join('/')}::${initialText}`;
-
-  let hash = 0;
-  for (let i = 0; i < rawIdentifier.length; i++) {
-    hash = (hash << 5) - hash + rawIdentifier.charCodeAt(i);
-    hash |= 0;
-  }
-  return `cms_auto_${Math.abs(hash).toString(36)}`;
 }
 
 // Generate container key for cards and sections (stable across reloads)
@@ -336,6 +286,107 @@ function buildEditTarget(
   };
 }
 
+
+
+// Universal DOM content restorer that applies text, cards, images, and styles
+export function restoreAllDOMContent(
+  contentMap: Record<string, string>,
+  pathname: string,
+  getImageSeo: (src: string) => ImageSeoData
+) {
+  if (typeof document === 'undefined') return;
+
+  // 1. Restore Text Content across all candidate elements
+  const hasAutoKeys = Object.keys(contentMap).some((k) => k.startsWith('cms_auto_'));
+  if (hasAutoKeys) {
+    const allCandidateElements = document.querySelectorAll<HTMLElement>(
+      'h1, h2, h3, h4, h5, h6, p, span, button, a, li, label, strong, em, b, i, blockquote, small, dt, dd, td, th'
+    );
+
+    allCandidateElements.forEach((el) => {
+      if (isLeafTextElement(el)) {
+        if (!el.getAttribute('data-cms-initial')) {
+          el.setAttribute('data-cms-initial', el.innerHTML);
+        }
+        const key = generateElementKey(el, pathname);
+        el.setAttribute('data-cms-key', key);
+
+        if (contentMap[key]) {
+          if (el.innerHTML !== contentMap[key]) {
+            el.innerHTML = contentMap[key];
+          }
+        }
+      }
+    });
+  }
+
+  // 2. Restore Container & Card Content across all cards and sections in DOM
+  const hasContainerKeys = Object.keys(contentMap).some(
+    (k) => k.startsWith('img_replace_container_') || k.startsWith('container_')
+  );
+  if (hasContainerKeys) {
+    const allContainers = document.querySelectorAll<HTMLElement>(
+      'div[class*="rounded-2xl"], div[class*="rounded-3xl"], div[class*="rounded-xl"], div[class*="bg-white"], div[class*="card"], section'
+    );
+    allContainers.forEach((container) => {
+      if (isAdminOrExcludedUI(container)) return;
+      const key = container.getAttribute('data-container-key') || generateContainerKey(container, pathname);
+      container.setAttribute('data-container-key', key);
+
+      // If entire container HTML was updated
+      if (contentMap[key] && container.innerHTML !== contentMap[key]) {
+        container.innerHTML = contentMap[key];
+      }
+
+      const imgReplacement = contentMap[`img_replace_${key}`];
+      if (imgReplacement) {
+        const img = container.querySelector('img');
+        if (img) {
+          if (!img.getAttribute('data-original-src')) {
+            img.setAttribute('data-original-src', img.getAttribute('src') || img.src);
+          }
+          if (img.getAttribute('src') !== imgReplacement) {
+            img.setAttribute('src', imgReplacement);
+            img.src = imgReplacement;
+          }
+        }
+      }
+    });
+  }
+
+  // 3. Restore Image Elements & SEO Attributes
+  applyImageReplacements(contentMap, getImageSeo);
+
+  // 4. Restore Container & Section Styles from contentMap
+  Object.keys(contentMap).forEach((key) => {
+    if (key.startsWith('style_')) {
+      const targetKey = key.replace('style_', '');
+      try {
+        const styleData: ElementStyleData = JSON.parse(contentMap[key]);
+        const targetEl = document.querySelector<HTMLElement>(`[data-container-key="${targetKey}"], #${targetKey}`);
+        if (targetEl) {
+          if (styleData.backgroundColor) targetEl.style.backgroundColor = styleData.backgroundColor;
+          if (styleData.textColor) targetEl.style.color = styleData.textColor;
+          if (styleData.borderRadius !== undefined) targetEl.style.borderRadius = `${styleData.borderRadius}px`;
+          if (styleData.borderWidth !== undefined && styleData.borderWidth > 0) {
+            targetEl.style.borderWidth = `${styleData.borderWidth}px`;
+            targetEl.style.borderColor = styleData.borderColor || '#EA580C';
+            targetEl.style.borderStyle = 'solid';
+          }
+          if (styleData.boxShadow && styleData.boxShadow !== 'none') {
+            targetEl.style.boxShadow = styleData.boxShadow;
+          }
+          if (styleData.backgroundImage) {
+            targetEl.style.backgroundImage = `url("${styleData.backgroundImage}")`;
+            targetEl.style.backgroundSize = styleData.backgroundSize || 'cover';
+            targetEl.style.backgroundPosition = styleData.backgroundPosition || 'center';
+          }
+        }
+      } catch {}
+    }
+  });
+}
+
 export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentPath }) => {
   const {
     isAdmin,
@@ -376,92 +427,46 @@ export const GlobalInlineEditor: React.FC<GlobalInlineEditorProps> = ({ currentP
     left: number;
   } | null>(null);
 
-  // 1. Restore saved content, styles, and image attributes across DOM on mount or route change
+
+
+  // 1. Restore saved content, styles, and image attributes across DOM on mount or route change + MutationObserver for lazy loads & re-renders
   useEffect(() => {
-    // 1.1 Restore Text Content ONLY IF auto keys actually exist in contentMap
-    const hasAutoKeys = Object.keys(contentMap).some((k) => k.startsWith('cms_auto_'));
-    if (hasAutoKeys) {
-      const allCandidateElements = document.querySelectorAll<HTMLElement>(
-        'h1, h2, h3, h4, h5, h6, p, span, button, a, li, label, strong, em, b, i, blockquote, small, dt, dd, td, th'
-      );
+    // 1.1 Immediate restoration
+    restoreAllDOMContent(contentMap, currentPath, getImageSeo);
 
-      allCandidateElements.forEach((el) => {
-        if (isLeafTextElement(el)) {
-          if (!el.getAttribute('data-cms-initial')) {
-            el.setAttribute('data-cms-initial', el.innerHTML);
-          }
-          const key = generateElementKey(el, currentPath);
-          el.setAttribute('data-cms-key', key);
+    // 1.2 Multi-stage restoration to catch lazy Suspense page loads and animations
+    const t1 = setTimeout(() => restoreAllDOMContent(contentMap, currentPath, getImageSeo), 80);
+    const t2 = setTimeout(() => restoreAllDOMContent(contentMap, currentPath, getImageSeo), 300);
+    const t3 = setTimeout(() => restoreAllDOMContent(contentMap, currentPath, getImageSeo), 800);
 
-          if (contentMap[key]) {
-            if (el.innerHTML !== contentMap[key]) {
-              el.innerHTML = contentMap[key];
-            }
-          }
-        }
+    // 1.3 Active MutationObserver: automatically restores content whenever React mounts or re-renders DOM nodes
+    let debounceTimer: any = null;
+    const observer = new MutationObserver((mutations) => {
+      // Don't re-run if mutations only happened inside admin toolbar, edit modals, or badges
+      const onlyAdminMutations = mutations.every((m) => {
+        const target = m.target as HTMLElement | null;
+        return isAdminOrExcludedUI(target);
       });
-    }
+      if (onlyAdminMutations) return;
 
-    // 1.2 Restore Container & Card Content across all cards and sections in DOM ONLY IF container replacements exist
-    const hasContainerKeys = Object.keys(contentMap).some(
-      (k) => k.startsWith('img_replace_container_') || k.startsWith('container_')
-    );
-    if (hasContainerKeys) {
-      const allContainers = document.querySelectorAll<HTMLElement>(
-        'div[class*="rounded-2xl"], div[class*="rounded-3xl"], div[class*="rounded-xl"], div[class*="bg-white"], div[class*="card"], section'
-      );
-      allContainers.forEach((container) => {
-        if (isAdminOrExcludedUI(container)) return;
-        const key = container.getAttribute('data-container-key') || generateContainerKey(container, currentPath);
-        container.setAttribute('data-container-key', key);
-
-        const imgReplacement = contentMap[`img_replace_${key}`];
-        if (imgReplacement) {
-          const img = container.querySelector('img');
-          if (img) {
-            if (!img.getAttribute('data-original-src')) {
-              img.setAttribute('data-original-src', img.getAttribute('src') || img.src);
-            }
-            if (img.getAttribute('src') !== imgReplacement) {
-              img.setAttribute('src', imgReplacement);
-              img.src = imgReplacement;
-            }
-          }
-        }
-      });
-    }
-
-    // 1.3 Restore Image Elements & SEO Attributes
-    applyImageReplacements(contentMap, getImageSeo);
-
-    // 1.4 Restore Container & Section Styles from contentMap
-    Object.keys(contentMap).forEach((key) => {
-      if (key.startsWith('style_')) {
-        const targetKey = key.replace('style_', '');
-        try {
-          const styleData: ElementStyleData = JSON.parse(contentMap[key]);
-          const targetEl = document.querySelector<HTMLElement>(`[data-container-key="${targetKey}"], #${targetKey}`);
-          if (targetEl) {
-            if (styleData.backgroundColor) targetEl.style.backgroundColor = styleData.backgroundColor;
-            if (styleData.textColor) targetEl.style.color = styleData.textColor;
-            if (styleData.borderRadius !== undefined) targetEl.style.borderRadius = `${styleData.borderRadius}px`;
-            if (styleData.borderWidth !== undefined && styleData.borderWidth > 0) {
-              targetEl.style.borderWidth = `${styleData.borderWidth}px`;
-              targetEl.style.borderColor = styleData.borderColor || '#EA580C';
-              targetEl.style.borderStyle = 'solid';
-            }
-            if (styleData.boxShadow && styleData.boxShadow !== 'none') {
-              targetEl.style.boxShadow = styleData.boxShadow;
-            }
-            if (styleData.backgroundImage) {
-              targetEl.style.backgroundImage = `url("${styleData.backgroundImage}")`;
-              targetEl.style.backgroundSize = styleData.backgroundSize || 'cover';
-              targetEl.style.backgroundPosition = styleData.backgroundPosition || 'center';
-            }
-          }
-        } catch {}
-      }
+      if (debounceTimer) clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        restoreAllDOMContent(contentMap, currentPath, getImageSeo);
+      }, 50);
     });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      if (debounceTimer) clearTimeout(debounceTimer);
+      observer.disconnect();
+    };
   }, [currentPath, contentMap, getImageSeo]);
 
   // 2. GLOBAL CLICK INTERCEPTOR IN EDIT MODE:

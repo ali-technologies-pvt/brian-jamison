@@ -18,20 +18,26 @@ if (!global.mongooseCache) {
 }
 
 export async function connectToDatabase(): Promise<typeof mongoose> {
-  if (cached.conn && mongoose.connection.readyState === 1) {
-    return cached.conn;
+  // 1. If active ready connection exists, return immediately
+  if (mongoose.connection.readyState === 1) {
+    return mongoose;
   }
 
-  if (!cached.promise) {
-    const opts: mongoose.ConnectOptions = {
-      bufferCommands: false,
-      dbName: 'jamison_real_estate',
-      serverSelectionTimeoutMS: 10000,
-      connectTimeoutMS: 10000,
-    };
-
-    cached.promise = mongoose.connect(config.MONGODB_URI, opts);
+  // 2. If actively connecting, await existing promise
+  if (mongoose.connection.readyState === 2 && cached.promise) {
+    await cached.promise;
+    return mongoose;
   }
+
+  // 3. Otherwise, establish fresh connection
+  const opts: mongoose.ConnectOptions = {
+    bufferCommands: true,
+    dbName: 'jamison_real_estate',
+    serverSelectionTimeoutMS: 8000,
+    connectTimeoutMS: 8000,
+  };
+
+  cached.promise = mongoose.connect(config.MONGODB_URI, opts);
 
   try {
     cached.conn = await cached.promise;

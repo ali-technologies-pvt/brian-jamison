@@ -42,6 +42,58 @@ export function getCleanImageKey(src: string): string {
   return keys[0] || '';
 }
 
+// Strict check to ensure Admin UI, Toolbar, and floating widgets NEVER trigger edit mode or pen badges
+export function isAdminOrExcludedUI(target: HTMLElement | null): boolean {
+  if (!target) return true;
+  return Boolean(
+    target.closest('[data-admin-ui]') ||
+    target.closest('[data-admin-toolbar]') ||
+    target.closest('aside') ||
+    target.closest('#sticky-call-btn') ||
+    target.closest('.cms-pen-badge') ||
+    target.closest('.cms-popup-modal') ||
+    target.closest('#admin-portal') ||
+    target.closest('nav[data-admin]') ||
+    target.closest('.fixed.bottom-5') ||
+    target.closest('.fixed.bottom-6')
+  );
+}
+
+// Generate stable deterministic key for any element based on position and initial content
+export function generateElementKey(el: HTMLElement, pathname: string): string {
+  const explicitKey = el.getAttribute('data-cms-key');
+  if (explicitKey) return explicitKey;
+
+  const pathParts: string[] = [];
+  let curr: HTMLElement | null = el;
+  let depth = 0;
+  while (curr && curr !== document.body && depth < 8) {
+    const tag = curr.tagName.toLowerCase();
+    const id = curr.id ? `#${curr.id}` : '';
+    let siblingIndex = 0;
+    let prev = curr.previousElementSibling;
+    while (prev) {
+      if (!isAdminOrExcludedUI(prev as HTMLElement) && prev.tagName === curr.tagName) {
+        siblingIndex++;
+      }
+      prev = prev.previousElementSibling;
+    }
+    pathParts.unshift(`${tag}${id}[${siblingIndex}]`);
+    curr = curr.parentElement;
+    depth++;
+  }
+
+  const initialText = (el.getAttribute('data-cms-initial') || el.textContent || '').trim().slice(0, 32);
+  const rawIdentifier = `${pathname}::${pathParts.join('/')}::${initialText}`;
+
+  let hash = 0;
+  for (let i = 0; i < rawIdentifier.length; i++) {
+    hash = (hash << 5) - hash + rawIdentifier.charCodeAt(i);
+    hash |= 0;
+  }
+  return `cms_auto_${Math.abs(hash).toString(36)}`;
+}
+
 export interface UniversalEditTarget {
   key: string;
   type: 'heading' | 'text' | 'button' | 'card' | 'section' | 'link' | 'image';
@@ -305,32 +357,43 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
 
     // 2. If Card structured edits were made
     if (target.type === 'card' && target.elementRef) {
+      const pathname = typeof window !== 'undefined' ? window.location.pathname : '/';
       if (cardTitle) {
         const titleEl = target.elementRef.querySelector<HTMLElement>('h1, h2, h3, h4, h5, [class*="font-serif"], [class*="title"]');
         if (titleEl) {
           titleEl.innerHTML = cardTitle;
-          const childKey = titleEl.getAttribute('data-cms-key');
-          if (childKey) await updateContent(childKey, cardTitle);
+          const childKey = titleEl.getAttribute('data-cms-key') || generateElementKey(titleEl, pathname);
+          titleEl.setAttribute('data-cms-key', childKey);
+          await updateContent(childKey, cardTitle, `Card Title: ${cardTitle.slice(0, 25)}`);
         }
       }
       if (cardDesc) {
         const descEl = target.elementRef.querySelector<HTMLElement>('p');
         if (descEl) {
           descEl.innerHTML = cardDesc;
-          const childKey = descEl.getAttribute('data-cms-key');
-          if (childKey) await updateContent(childKey, cardDesc);
+          const childKey = descEl.getAttribute('data-cms-key') || generateElementKey(descEl, pathname);
+          descEl.setAttribute('data-cms-key', childKey);
+          await updateContent(childKey, cardDesc, `Card Description: ${cardDesc.slice(0, 25)}`);
         }
       }
       if (cardBtnText || cardBtnHref) {
         const btnEl = target.elementRef.querySelector<HTMLElement>('a, button');
         if (btnEl) {
-          if (cardBtnText) btnEl.innerHTML = cardBtnText;
+          if (cardBtnText) {
+            btnEl.innerHTML = cardBtnText;
+            const childKey = btnEl.getAttribute('data-cms-key') || generateElementKey(btnEl, pathname);
+            btnEl.setAttribute('data-cms-key', childKey);
+            await updateContent(childKey, cardBtnText, `Card Button: ${cardBtnText.slice(0, 20)}`);
+          }
           if (cardBtnHref && btnEl.tagName.toLowerCase() === 'a') {
             (btnEl as HTMLAnchorElement).href = cardBtnHref;
           }
         }
       }
       finalContent = target.elementRef.innerHTML;
+      if (target.key) {
+        await updateContent(target.key, finalContent, target.label);
+      }
     } else if (target.elementRef && target.type !== 'image') {
       target.elementRef.innerHTML = finalContent;
     }
@@ -348,8 +411,8 @@ export const UniversalElementEditModal: React.FC<UniversalElementEditModalProps>
       }
     }
 
-    // 4. Update Content in AdminContext ONLY for non-image elements (never overwrite image with stale text)
-    if (target.type !== 'image' && target.type !== 'card') {
+    // 4. Update Content in AdminContext for text / heading / button / link elements
+    if (target.type !== 'image' && target.type !== 'card' && target.key) {
       await updateContent(target.key, finalContent, target.label);
     }
 

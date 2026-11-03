@@ -370,11 +370,30 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     });
 
     try {
+      const token = typeof window !== 'undefined'
+        ? (localStorage.getItem('admin_token_jwt') || sessionStorage.getItem('admin_token_jwt'))
+        : null;
+
+      const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+      if (token && token !== 'client_verified_token') {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
       await fetch('/api/content/update', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
+        credentials: 'include',
         body: JSON.stringify({ key, content }),
       });
+
+      // Auto-trigger background batch sync after 600ms to guarantee database persistence
+      if (typeof window !== 'undefined') {
+        if ((window as any).__cmsSyncTimer) clearTimeout((window as any).__cmsSyncTimer);
+        (window as any).__cmsSyncTimer = setTimeout(() => {
+          syncAllContentToServer();
+        }, 600);
+      }
+
       return { success: true };
     } catch {
       return { success: true };
@@ -605,9 +624,16 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         return { success: false, error: 'No content to sync' };
       }
 
+      const token = localStorage.getItem('admin_token_jwt') || sessionStorage.getItem('admin_token_jwt');
+      const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+      if (token && token !== 'client_verified_token') {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
       const res = await fetch('/api/content/batch', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
+        credentials: 'include',
         body: JSON.stringify({ items }),
       });
       if (res.ok) {
@@ -615,7 +641,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         return { success: true, count: data.count || Object.keys(items).length };
       }
       return { success: false, error: 'Server returned ' + res.status };
-    } catch (err) {
+    } catch (err: any) {
       return { success: false, error: (err && err.message) || 'Sync failed' };
     }
   };

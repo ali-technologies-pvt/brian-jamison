@@ -199,34 +199,22 @@ export const HeroVideo: React.FC<HeroVideoProps> = ({
 
           {/* Display Headline: Bold luxury serif with inline editing support */}
           <div className="mb-6 sm:mb-7">
-            {isAdmin && isEditMode ? (
-              <EditableText
-                contentKey="home_hero_title"
-                initialContent="Turn Your Edmond Home Search Into A Winning Move"
-                as="h1"
-                className="animate-fade-in-delayed font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-bold leading-[1.08] tracking-tight !text-white text-balance drop-shadow-[0_2px_16px_rgba(0,0,0,0.9)]"
-              />
-            ) : (
-              <h1 className="animate-fade-in-delayed font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-bold leading-[1.08] tracking-tight !text-white text-balance drop-shadow-[0_2px_16px_rgba(0,0,0,0.9)]">
-                Turn Your Edmond Home Search Into A Winning Move
-              </h1>
-            )}
+            <EditableText
+              contentKey="home_hero_title"
+              initialContent="Turn Your Edmond Home Search Into A Winning Move"
+              as="h1"
+              className="animate-fade-in-delayed font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-bold leading-[1.08] tracking-tight !text-white text-balance drop-shadow-[0_2px_16px_rgba(0,0,0,0.9)]"
+            />
           </div>
 
           {/* Subtitle: High-contrast white font with inline editing support */}
           <div className="mb-8 sm:mb-9">
-            {isAdmin && isEditMode ? (
-              <EditableText
-                contentKey="home_hero_subtitle"
-                initialContent="Every real estate move is personal. Brian Jamison of Jamison Real Estate offers direct advice, local market insight, and hands-on support to help you make informed decisions across Greater Oklahoma City."
-                as="p"
-                className="animate-fade-in-delayed-2 font-sans text-base sm:text-lg md:text-xl !text-white leading-relaxed max-w-2xl font-normal drop-shadow-[0_1px_8px_rgba(0,0,0,0.95)]"
-              />
-            ) : (
-              <p className="animate-fade-in-delayed-2 font-sans text-base sm:text-lg md:text-xl !text-white leading-relaxed max-w-2xl font-normal drop-shadow-[0_1px_8px_rgba(0,0,0,0.95)]">
-                Every real estate move is personal. Brian Jamison of Jamison Real Estate offers direct advice, local market insight, and hands-on support to help you make informed decisions across Greater Oklahoma City.
-              </p>
-            )}
+            <EditableText
+              contentKey="home_hero_subtitle"
+              initialContent="Every real estate move is personal. Brian Jamison of Jamison Real Estate offers direct advice, local market insight, and hands-on support to help you make informed decisions across Greater Oklahoma City."
+              as="p"
+              className="animate-fade-in-delayed-2 font-sans text-base sm:text-lg md:text-xl !text-white leading-relaxed max-w-2xl font-normal drop-shadow-[0_1px_8px_rgba(0,0,0,0.95)]"
+            />
           </div>
 
           {/* Action CTAs: Bespoke Luxury Styling with Warm Gold Shimmer & Frosted Glass */}
