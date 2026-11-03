@@ -68,7 +68,7 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
   const milestones = [
     { year: "2018", title: "Collegiate Athletics to Real Estate", desc: "Transitioned athletic discipline and relentless competitive work ethic into Oklahoma residential representation, obtaining license #184931." },
     { year: "2020", title: "Top 5% Statewide Production", desc: "Surpassed 100+ closed transactions, specializing in Edmond custom builds, north OKC acreage, and historic renovations." },
-    { year: "2022", title: "Salt Corporate Office Alliance", desc: "Partnered with Salt Real Estate Corporate Headquarters at 1508 W. Edmond Rd., gaining direct institutional media and drone syndication resources." },
+    { year: "2022", title: "Institutional Media Alliance", desc: "Formed strategic media partnerships gaining direct institutional media and drone syndication resources across Oklahoma City." },
     { year: "2024", title: "Top 2% Statewide Producer", desc: "Crossed $70M+ career sales volume and 370+ career closings, consistently ranking among central Oklahoma's most trusted luxury negotiators." },
     { year: "Present", title: "The 6-Phase Selling Machine", desc: "Deployed the proprietary 6-Step Seller Blueprint, ensuring Oklahoma homeowners sell for peak market value with zero anxiety." }
   ];
@@ -81,7 +81,7 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
         ========================================================================
       */}
       <InteriorHeroVideo
-        kicker="Salt Real Estate · Edmond, Oklahoma"
+        kicker="Jamison Real Estate · Oklahoma City, OK"
         title="The Agent Who Works Like Every Deal Is Personal."
         subtitle="Brian Jamison brings a competitive mindset, direct communication, and a results-focused approach to real estate across Edmond and Greater Oklahoma City. His collegiate athletic background and reported career record of $70M+ in sales volume and 370+ closings shape how he prepares, negotiates, and guides clients through important property decisions."
         heroVideoUrl="/media/videos/vid1.mp4"
@@ -169,7 +169,7 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
         </div>
       </section>
 
-      {/* 3. SALT REAL ESTATE CORPORATE HEADQUARTERS ADVANTAGE */}
+      {/* 3. JAMISON REAL ESTATE ADVANTAGE */}
       <section className="w-full py-20 sm:py-28 bg-[#F4F1EB] border-b border-[#E6E2DA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -178,10 +178,10 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
                 Brokerage Connection
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#002D61] leading-tight mb-6">
-                Backed by Salt Real Estate in Edmond
+                The Jamison Real Estate Advantage
               </h2>
               <p className="font-sans text-base text-[#4B5563] leading-relaxed mb-6">
-                Brian is associated with Salt Real Estate, with an office listed at <strong>1508 W. Edmond Rd., Edmond, Oklahoma</strong>. This local connection supports his work with clients across Edmond and Greater Oklahoma City. Current office and brokerage details should be confirmed before publication.
+                Brian leads Jamison Real Estate, delivering premier advisory and transactional representation for clients across Greater Oklahoma City.
               </p>
               
               <ul className="space-y-4 mb-8">
@@ -210,7 +210,7 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
                 onClick={() => onNavigate('/contact')}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#002D61] hover:bg-[#001D40] text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-md"
               >
-                <span>Visit Salt Corporate Office</span>
+                <span>Schedule Consultation</span>
                 <ArrowRight className="w-4 h-4 text-[#FB923C]" />
               </button>
             </div>
@@ -228,7 +228,7 @@ export const AboutJamisonPage: React.FC<AboutJamisonPageProps> = ({
                       Successful Closings · Edmond & OKC
                     </span>
                     <h3 className="font-serif text-2xl font-bold">Personalized Fiduciary Representation</h3>
-                    <p className="text-xs text-stone-200 mt-1">1508 W. Edmond Rd., Edmond, OK · Direct: (405) 513-3039</p>
+                    <p className="text-xs text-stone-200 mt-1">Oklahoma City, OK · Direct: (405) 513-3039</p>
                   </div>
                 </div>
               </div>

@@ -163,7 +163,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
     );
   }
 
-  // 5. Dedicated About Brian Jamison & Salt Real Estate Corporate Office Page
+  // 5. Dedicated About Brian Jamison Page
   if (
     page.id === 'about' ||
     page.slug === '/about' ||
@@ -518,7 +518,7 @@ export const InteriorPageView: React.FC<InteriorPageViewProps> = ({
                         Brian Jamison
                       </h3>
                       <p className="font-sans text-xs text-[#6B7280]">
-                        Salt Real Estate Corporate Office · 1508 W. Edmond Rd., Edmond, OK 73003
+                        Jamison Real Estate · Oklahoma City, OK
                       </p>
                       <div className="mt-3 flex flex-wrap items-center justify-center sm:justify-start gap-2">
                         <span className="px-2.5 py-1 rounded-md bg-white border border-[#EA580C]/30 text-[11px] font-semibold text-[#002D61]">

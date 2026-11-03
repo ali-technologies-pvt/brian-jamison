@@ -492,7 +492,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
               </div>
             </div>
             <p className="font-sans text-xs sm:text-sm text-[#6B7280] mb-6">
-              Connect directly with Brian Jamison at Salt Real Estate Corporate Office in Edmond or via private phone/video briefing.
+              Connect directly with Brian Jamison at Jamison Real Estate or via private phone/video briefing.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -621,7 +621,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
             <div className="p-4 bg-[#F5EFE6] rounded-xl max-w-xs mx-auto text-xs text-[#002D61] mb-6">
               <span>Direct Phone:</span>
               <strong className="block font-serif text-sm mt-0.5">{BROKER_INFO.phone}</strong>
-              <span className="text-[11px] text-[#6B7280]">Salt Real Estate Corporate Office</span>
+              <span className="text-[11px] text-[#6B7280]">Jamison Real Estate</span>
             </div>
             <button
               type="button"
@@ -777,7 +777,7 @@ export const PropertyModal: React.FC<PropertyModalProps> = ({
         {/* Bottom Actions */}
         <div className="p-4 sm:p-6 border-t border-[#EA580C]/30 bg-white flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
           <span className="text-xs text-[#6B7280]">
-            Represented Exclusively by Brian Jamison · Salt Real Estate
+            Represented Exclusively by Brian Jamison · Jamison Real Estate
           </span>
 
           <div className="flex items-center gap-3 w-full sm:w-auto">
@@ -1408,7 +1408,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
           {type === 'fairhousing' && (
             <>
               <p>
-                Brian Jamison and Salt Real Estate Corporate Office fully support the principles of the Fair Housing Act (Title VIII of the Civil Rights Act of 1968), which prohibits discrimination in the sale, rental, and financing of dwellings based on race, color, national origin, religion, sex, familial status, and disability.
+                Brian Jamison and Jamison Real Estate fully support the principles of the Fair Housing Act (Title VIII of the Civil Rights Act of 1968), which prohibits discrimination in the sale, rental, and financing of dwellings based on race, color, national origin, religion, sex, familial status, and disability.
               </p>
               <p>
                 All real estate advertising placed on this platform is subject to the Federal Fair Housing Act and the Oklahoma Real Estate License Code. We are pledged to the letter and spirit of U.S. policy for the achievement of equal housing opportunity throughout the Oklahoma City metropolitan area.
@@ -1419,10 +1419,10 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
           {type === 'privacy' && (
             <>
               <p>
-                Your privacy is paramount. Brian Jamison and Salt Real Estate Corporate Office do not sell, rent, or trade client personal information to third-party marketing entities. Any contact information, property valuation requests, or address submissions captured on this website are held strictly confidential and utilized solely for providing comparative market assessments and client representation services.
+                Your privacy is paramount. Brian Jamison and Jamison Real Estate do not sell, rent, or trade client personal information to third-party marketing entities. Any contact information, property valuation requests, or address submissions captured on this website are held strictly confidential and utilized solely for providing comparative market assessments and client representation services.
               </p>
               <p>
-                We employ standard SSL 256-bit encryption for all data transit. If you wish to request removal of your records, you may contact Brian Jamison directly at (405) 513-3039 or BJamison@Salt.RealEstate.
+                We employ standard SSL 256-bit encryption for all data transit. If you wish to request removal of your records, you may contact Brian Jamison directly at (405) 513-3039 or brian@jamisonrealestate.com.
               </p>
             </>
           )}
@@ -1433,7 +1433,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
                 The information provided on this website is for general informational purposes and does not constitute a formal contract or binding valuation. All property details, square footage, boundaries, school feeder zones, and pricing metrics are deemed reliable but subject to independent verification.
               </p>
               <p>
-                Brian Jamison is a licensed real estate broker associate in the State of Oklahoma (License #184931) operating under Salt Real Estate Corporate Office, 1508 W. Edmond Rd., Edmond, Oklahoma 73003.
+                Brian Jamison is a licensed real estate broker associate in the State of Oklahoma (License #184931) operating under Jamison Real Estate, Oklahoma City, OK.
               </p>
             </>
           )}

@@ -1282,7 +1282,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                       The Expired Listing Turnaround in Edmond
                     </h3>
                     <span className="text-xs text-white/80 font-sans">
-                      Autumn Ridge · Edmond, Oklahoma
+                      Autumn Ridge · Oklahoma City, OK
                     </span>
                   </div>
                 </div>
@@ -1434,7 +1434,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
                   <th className="p-5 sm:p-6 text-xs font-bold uppercase tracking-wider text-white bg-[#002D61] w-1/3 border-x border-[#002D61]">
                     <div className="flex items-center gap-2">
                       <Sparkles className="w-4 h-4 text-[#FB923C]" />
-                      <span>Brian Jamison (Salt Real Estate)</span>
+                      <span>Brian Jamison (Jamison Real Estate)</span>
                     </div>
                   </th>
                   <th className="p-5 sm:p-6 text-xs font-bold uppercase tracking-wider text-[#4B5563] w-1/5">
@@ -1669,7 +1669,7 @@ export const HomeSellingPage: React.FC<HomeSellingPageProps> = ({
             </div>
 
             <div className="mt-8 pt-6 border-t border-[#FAF9F6] text-xs text-[#6B7280]">
-              <span>Salt Real Estate Corporate Office · 1508 W. Edmond Rd., Edmond, OK 73003 · OREC License #184931</span>
+              <span>Jamison Real Estate · Oklahoma City, OK · OREC License #184931</span>
             </div>
           </div>
         </div>

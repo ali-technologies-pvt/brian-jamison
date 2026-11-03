@@ -253,7 +253,7 @@ export const VideoMarqueeFooter: React.FC<VideoMarqueeFooterProps> = ({
                     Brian Jamison, Realtor
                   </span>
                   <span className="text-[10px] text-white/70">
-                    Salt Real Estate · {selectedVideo.category}
+                    Jamison Real Estate · {selectedVideo.category}
                   </span>
                 </div>
               </div>

@@ -114,7 +114,7 @@ export const SitemapPage: React.FC<SitemapPageProps> = ({
       path: '/contact',
       title: 'Contact Brian Jamison · Corporate Office',
       category: 'Core',
-      description: 'Direct phone line (405) 513-3039, private consultation calendar, and office location at 1508 W. Edmond Rd.',
+      description: 'Direct phone line (405) 513-3039, private consultation calendar, and office location in Oklahoma City, OK',
       badge: 'Direct Connect',
       stat: '7-Day Reach'
     },

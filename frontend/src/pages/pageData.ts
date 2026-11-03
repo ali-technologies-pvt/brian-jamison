@@ -185,7 +185,7 @@ export const COMMUNITY_PAGES: Record<string, InteriorPageData> = {
       { label: "Volume Sold", value: "$70M+" },
       { label: "Active Comps", value: "100% Updated" }
     ],
-    overview: "Brian Jamison and Salt Real Estate provide comprehensive, top-tier advisory and transactional representation across the entire Oklahoma City metropolitan area. From the historic mansions of Heritage Hills and Nichols Hills to the gated golf fairways of Gaillardia, the acclaimed academic corridors of Edmond and Deer Creek, and sprawling rural acreage in Arcadia and Guthrie, our local market intelligence gives our clients an undeniable competitive edge.",
+    overview: "Brian Jamison and Jamison Real Estate provide comprehensive, top-tier advisory and transactional representation across the entire Oklahoma City metropolitan area. From the historic mansions of Heritage Hills and Nichols Hills to the gated golf fairways of Gaillardia, the acclaimed academic corridors of Edmond and Deer Creek, and sprawling rural acreage in Arcadia and Guthrie, our local market intelligence gives our clients an undeniable competitive edge.",
     keyTakeaways: [
       "In-depth micro-market data covering Days on Market (DOM), absorption velocity, and school feeder ratings",
       "Full representation across both luxury residential enclaves and rural development acreage",
@@ -2218,7 +2218,7 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
       "Top 2% Real Estate Producer with over $70M+ in closed career volume and 370+ closings",
       "Collegiate athletic background bringing preparation, consistency, and attention to detail",
       "Direct fiduciary representation with personal involvement in every key decision",
-      "Backed by Salt Real Estate at 1508 W. Edmond Rd., Edmond, Oklahoma"
+      "Backed by Jamison Real Estate, Oklahoma City, OK"
     ],
     deliverables: [
       { title: "Collegiate Athlete Discipline", desc: "Competitive athletics demands preparation, consistency, and attention to detail carried into market research and negotiation." },
@@ -2350,7 +2350,7 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
     category: "brand",
     kicker: "JAMISON REAL ESTATE",
     title: "Contact Brian Jamison | Jamison Real Estate",
-    subtitle: "Direct access: Call, text, or schedule an in-person advisory meeting at Jamison Real Estate in Edmond, Oklahoma.",
+    subtitle: "Direct access: Call, text, or schedule an in-person advisory meeting at Jamison Real Estate in Oklahoma City, OK.",
     heroVideoUrl: "/media/videos/vid20.mp4",
     heroFallbackImage: "/media/properties/534-w-chickasaw.jpg",
     heroMetrics: [
@@ -2360,9 +2360,9 @@ export const BRAND_PAGES: Record<string, InteriorPageData> = {
     ],
     overview: "Whether you are looking to sell a luxury property, turnaround an expired listing, or acquire a private estate, Brian Jamison is ready to assist.",
     keyTakeaways: [
-      "Physical Office: 1508 W. Edmond Rd., Edmond, Oklahoma 73003",
+      "Physical Office: Oklahoma City, OK",
       "Direct Cell: (405) 513-3039",
-      "Email: BJamison@Salt.RealEstate",
+      "Email: brian@jamisonrealestate.com",
       "Prompt consultation scheduling with zero pressure"
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
@@ -2543,7 +2543,7 @@ export const RESOURCE_PAGES: Record<string, InteriorPageData> = {
     keyTakeaways: [
       "No selling or renting of personal information",
       "Strict data privacy for home valuation submissions",
-      "Salt Real Estate Corporate Office compliance"
+      "Jamison Real Estate compliance"
     ],
     images: DEFAULT_ARCHITECTURAL_GALLERY
   },
@@ -2558,7 +2558,7 @@ export const RESOURCE_PAGES: Record<string, InteriorPageData> = {
     heroFallbackImage: "/media/gallery/brian-jamison-skyline.jpeg",
     heroMetrics: [
       { label: "License", value: "#184931" },
-      { label: "Brokerage", value: "Salt Real Estate" },
+      { label: "Brokerage", value: "Jamison Real Estate" },
       { label: "Governing Law", value: "Oklahoma" }
     ],
     overview: "Terms of use governing all property listings, valuation calculators, and media assets on this platform.",
@@ -2583,7 +2583,7 @@ export const RESOURCE_PAGES: Record<string, InteriorPageData> = {
       { label: "Federal Law", value: "Title VIII" },
       { label: "Discrimination", value: "Zero Tolerance" }
     ],
-    overview: "Brian Jamison and Salt Real Estate conduct all business in strict compliance with the Federal Fair Housing Act.",
+    overview: "Brian Jamison and Jamison Real Estate conduct all business in strict compliance with the Federal Fair Housing Act.",
     keyTakeaways: [
       "Equal opportunity in all real estate transactions",
       "Zero tolerance for discrimination based on protected classes",

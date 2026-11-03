@@ -198,7 +198,7 @@ export const IdxTestPage: React.FC<IdxTestPageProps> = ({
 
               <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-black/40 backdrop-blur-md border border-white/15">
                 <Building className="w-3.5 h-3.5 text-[#FB923C]" />
-                <span>Broker: <strong>Salt Real Estate / Brian Jamison</strong></span>
+                <span>Broker: <strong>Jamison Real Estate / Brian Jamison</strong></span>
               </div>
 
               <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-black/40 backdrop-blur-md border border-white/15">

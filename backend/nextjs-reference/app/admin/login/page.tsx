@@ -241,8 +241,8 @@ export default function AdminLoginPage() {
 
           {/* Footer Subtext */}
           <div className="text-center mt-6 text-xs text-[#6B7280]">
-            <p>Brian Jamison Real Estate · Salt Real Estate Corporate Office</p>
-            <p className="mt-1 text-[11px]">1508 W. Edmond Rd., Edmond, OK 73003 · License #184931</p>
+            <p>Brian Jamison Real Estate</p>
+            <p className="mt-1 text-[11px]">Oklahoma City, OK · License #184931</p>
           </div>
         </div>
       </main>

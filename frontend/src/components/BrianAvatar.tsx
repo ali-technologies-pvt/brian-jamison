@@ -34,7 +34,7 @@ export const BrianAvatar: React.FC<BrianAvatarProps> = ({
   showStatusDot = false,
   statusDotPosition = 'bottom-right',
   src = BRIAN_HEADSHOT_IMG,
-  alt = 'Brian Jamison - Salt Real Estate OKC Top 2% Producer',
+  alt = 'Brian Jamison - Jamison Real Estate OKC Top 2% Producer',
   onClick,
   title
 }) => {

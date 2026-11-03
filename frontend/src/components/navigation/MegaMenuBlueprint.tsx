@@ -109,7 +109,7 @@ export const MegaMenuBlueprint: React.FC<MegaMenuBlueprintProps> = ({
               </h3>
 
               <p className="font-sans text-xs text-stone-200 leading-relaxed mb-5">
-                Our 6-phase proprietary blueprint eliminates passive listing mistakes and systematically sparks multiple competing offers.
+                Our proven 6-step plan helps you avoid common selling mistakes and get the best offers for your home.
               </p>
 
               {/* Cancel-Anytime Guarantee Micro-Badge with BrianAvatar */}

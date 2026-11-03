@@ -42,10 +42,10 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenCons
                     {BROKER_INFO.license} · REALTOR®
                   </p>
                   <p className="font-sans text-xs text-[#6B7280] leading-snug">
-                    Salt Real Estate Corporate Office
+                    Jamison Real Estate
                   </p>
                   <p className="font-sans text-[11px] text-[#6B7280] mt-0.5">
-                    1508 W. Edmond Rd., Edmond, OK 73003
+                    Oklahoma City, OK
                   </p>
 
                   <div className="mt-3 flex flex-wrap items-center justify-center sm:justify-start gap-2">

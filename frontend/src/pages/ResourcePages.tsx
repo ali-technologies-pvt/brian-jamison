@@ -547,7 +547,7 @@ export const WhatToWatchOutForPage: React.FC<ResourcePageProps> = ({
           <div className="mt-12 p-8 rounded-3xl bg-[#F4F1EB] border border-[#E6E2DA] text-center">
             <h3 className="font-serif text-xl font-bold text-[#002D61] mb-2">Protect Your Real Estate Equity</h3>
             <p className="text-xs sm:text-sm text-[#6B7280] mb-6 max-w-md mx-auto">
-              Schedule a private representation audit with Brian Jamison at Salt Real Estate Corporate Office.
+              Schedule a private representation audit with Brian Jamison at Jamison Real Estate.
             </p>
             <button
               onClick={onOpenConsultation}
@@ -591,7 +591,7 @@ export const FaqPage: React.FC<ResourcePageProps> = ({
       category: 'brokerage',
       categoryLabel: 'Brokerage & Guarantee',
       q: "Where is your physical office located?",
-      a: "Brian Jamison is affiliated with the Salt Real Estate Corporate Office located at 1508 W. Edmond Rd., Edmond, Oklahoma 73003. Brian serves clients across the entire Greater Oklahoma City metropolitan area."
+      a: "Brian Jamison leads Jamison Real Estate, serving clients across the entire Greater Oklahoma City metropolitan area."
     },
     {
       category: 'brokerage',
@@ -872,23 +872,23 @@ export const LegalCompliancePage: React.FC<LegalPageProps> = ({
         return {
           title: "Privacy Policy",
           badge: "Client Data Protection",
-          intro: "Your privacy is paramount. Brian Jamison and Salt Real Estate collect only the necessary property and contact data required to deliver market appraisals and transactional services.",
+          intro: "Your privacy is paramount. Brian Jamison and Jamison Real Estate collect only the necessary property and contact data required to deliver market appraisals and transactional services.",
           body: [
             "We do not sell, rent, or lease your personal information to third-party data brokers.",
             "Information entered into our valuation tool is utilized solely to calculate Comparative Market Analyses (CMAs) and communicate listing data.",
             "All CRM communications respect federal TCPA guidelines. You may opt out of SMS or email notifications at any time.",
-            "Physical address: Salt Real Estate Corporate Office, 1508 W. Edmond Rd., Edmond, OK 73003."
+            "Physical address: Jamison Real Estate, Oklahoma City, OK."
           ]
         };
       case 'terms':
         return {
           title: "Terms of Service",
           badge: "Platform Terms & Legal Use",
-          intro: "Welcome to the official real estate platform of Brian Jamison (Salt Real Estate Corporate Office). By browsing this website, you agree to these Terms of Service.",
+          intro: "Welcome to the official real estate platform of Brian Jamison (Jamison Real Estate). By browsing this website, you agree to these Terms of Service.",
           body: [
             "All MLS listing data, photography, 4K video walkthroughs, and architectural drone footage are proprietary assets protected by copyright.",
             "Comparative market appraisals generated through this website represent professional estimates and do not constitute formal lending appraisals.",
-            "Brian Jamison is a licensed real estate professional in the State of Oklahoma (License #184931) operating under Salt Real Estate Corporate Office.",
+            "Brian Jamison is a licensed real estate professional in the State of Oklahoma (License #184931) operating under Jamison Real Estate.",
             "Governing jurisdiction: Oklahoma County, State of Oklahoma."
           ]
         };
@@ -896,7 +896,7 @@ export const LegalCompliancePage: React.FC<LegalPageProps> = ({
         return {
           title: "Fair Housing & Equal Opportunity",
           badge: "Federal & State Compliance",
-          intro: "Brian Jamison and Salt Real Estate are fully committed to the letter and spirit of the United States Fair Housing Act and Title VIII of the Civil Rights Act.",
+          intro: "Brian Jamison and Jamison Real Estate are fully committed to the letter and spirit of the United States Fair Housing Act and Title VIII of the Civil Rights Act.",
           body: [
             "We conduct all business in strict accordance with federal, state, and local fair housing laws.",
             "We do not discriminate on the basis of race, color, religion, sex, handicap, familial status, national origin, sexual orientation, or gender identity.",
@@ -945,7 +945,7 @@ export const LegalCompliancePage: React.FC<LegalPageProps> = ({
           </div>
 
           <div className="mt-8 text-xs text-[#6B7280] text-center">
-            Brian Jamison · REALTOR® #184931 · Salt Real Estate Corporate Office · 1508 W. Edmond Rd., Edmond, OK 73003 · (405) 513-3039
+            Brian Jamison · REALTOR® #184931 · Jamison Real Estate · Oklahoma City, OK · (405) 513-3039
           </div>
         </div>
       </section>

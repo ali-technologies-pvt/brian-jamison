@@ -128,13 +128,13 @@ export const MobileDock: React.FC<MobileDockProps> = ({
               {/* Drawer Header */}
               <div className="p-5 border-b border-[#EA580C]/30 flex items-center justify-between bg-white sticky top-0 z-10">
                 <div className="flex items-center gap-3">
-                  <BrianAvatar size={36} className="w-9 h-9 shrink-0" alt="Brian Jamison · Salt Real Estate" />
+                  <BrianAvatar size={36} className="w-9 h-9 shrink-0" alt="Brian Jamison · Jamison Real Estate" />
                   <div className="flex flex-col">
                     <span className="font-serif text-lg font-bold text-[#0A192F]">
                       Brian Jamison
                     </span>
                     <span className="text-[9px] uppercase tracking-[0.25em] font-sans text-[#6B7280]">
-                      Salt Real Estate · Edmond, OK
+                      Jamison Real Estate · Oklahoma City, OK
                     </span>
                   </div>
                 </div>
@@ -468,11 +468,11 @@ export const MobileDock: React.FC<MobileDockProps> = ({
               <div className="p-5 border-t border-[#EA580C]/30 bg-[#F5EFE6] text-xs text-[#6B7280] space-y-2">
                 <div className="flex items-start gap-2">
                   <MapPin className="w-3.5 h-3.5 text-[#EA580C] shrink-0 mt-0.5" />
-                  <span>1508 W. Edmond Rd., Edmond, OK 73003</span>
+                  <span>Oklahoma City, OK</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Shield className="w-3.5 h-3.5 text-[#EA580C]" />
-                  <span>Salt Real Estate Corporate Office · {BROKER_INFO.license}</span>
+                  <span>Jamison Real Estate · {BROKER_INFO.license}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Award className="w-3.5 h-3.5 text-[#EA580C]" />

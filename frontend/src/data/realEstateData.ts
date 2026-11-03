@@ -105,12 +105,12 @@ export const BROKER_INFO = {
   title: "Top 2% Real Estate Producer",
   license: "License #184931",
   headshot: BRIAN_HEADSHOT_IMG,
-  brokerage: "Jamison Real Estate · Brokered by Salt Real Estate",
+  brokerage: "Jamison Real Estate",
   firmName: "Jamison Real Estate",
-  address: "1508 W. Edmond Rd., Edmond, Oklahoma 73003",
+  address: "Oklahoma City, OK",
   phone: "(405) 513-3039",
   phoneRaw: "+14055133039",
-  email: "BJamison@Salt.RealEstate",
+  email: "brian@jamisonrealestate.com",
   stats: {
     volumeSold: "$70M+",
     volumeNumber: 70,
@@ -1334,7 +1334,7 @@ export const getNeighborhoodWidgetId = (idOrSlug?: string): string => {
 export const SITEMAP_PAGES = [
   // Core Brand Pages
   { path: "/", title: "Home", category: "Core" },
-  { path: "/about", title: "About Brian Jamison & Salt", category: "Core" },
+  { path: "/about", title: "About Brian Jamison", category: "Core" },
   { path: "/seller-blueprint", title: "6-Step Seller Blueprint", category: "Core" },
   { path: "/listings", title: "Active & Featured Listings", category: "Core" },
   { path: "/property-videos", title: "Property Videos & 4K Cinematography", category: "Core" },

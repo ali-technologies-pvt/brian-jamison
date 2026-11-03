@@ -234,7 +234,7 @@ export const ServicesHubPage: React.FC<ServicesHubPageProps> = ({
             Unsure Which Strategy Fits Your Needs?
           </h2>
           <p className="text-sm text-stone-200 mb-8 max-w-xl mx-auto">
-            Book an obligation-free confidential strategy session with Brian Jamison at Salt Real Estate Corporate Office.
+            Book an obligation-free confidential strategy session with Brian Jamison at Jamison Real Estate.
           </p>
           <button
             type="button"

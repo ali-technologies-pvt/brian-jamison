@@ -1127,7 +1127,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
               Speak with Brian Jamison
             </h3>
             <p className="font-sans text-sm sm:text-base text-[#6B7280] max-w-xl mx-auto mb-8">
-              Reach Brian Jamison directly on his private cell or visit us at the Salt Real Estate Corporate Office in Edmond, Oklahoma.
+              Reach Brian Jamison directly on his private cell or connect with Jamison Real Estate in Oklahoma City, OK.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -1150,7 +1150,7 @@ export const LandSalesPage: React.FC<LandSalesPageProps> = ({
             </div>
 
             <div className="mt-8 pt-6 border-t border-[#FAF9F6] text-xs text-[#6B7280]">
-              <span>Salt Real Estate Corporate Office · 1508 W. Edmond Rd., Edmond, OK 73003 · OREC License #184931</span>
+              <span>Jamison Real Estate · Oklahoma City, OK · OREC License #184931</span>
             </div>
           </div>
         </div>

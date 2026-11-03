@@ -522,7 +522,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
               <div className="lg:col-span-4 bg-white rounded-2xl p-6 border border-[#E5E0D8] text-center">
                 <BrianAvatar size="md" />
                 <span className="block font-bold text-xs text-[#002D61] mt-3">Brian Jamison, Realtor</span>
-                <span className="text-[11px] text-[#6B7280]">Direct Buyer Fiduciary · Salt Real Estate</span>
+                <span className="text-[11px] text-[#6B7280]">Direct Buyer Fiduciary · Jamison Real Estate</span>
                 <a
                   href="tel:4055133039"
                   className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#002D61] text-white text-xs font-bold hover:bg-[#001D40] transition-colors"
@@ -1356,7 +1356,7 @@ export const HomeBuyingPage: React.FC<HomeBuyingPageProps> = ({
             </div>
 
             <div className="mt-8 pt-6 border-t border-[#FAF9F6] text-xs text-[#6B7280]">
-              <span>Salt Real Estate Corporate Office · 1508 W. Edmond Rd., Edmond, OK 73003 · OREC License #184931</span>
+              <span>Jamison Real Estate · Oklahoma City, OK · OREC License #184931</span>
             </div>
           </div>
         </div>

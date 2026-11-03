@@ -45,7 +45,7 @@ export const Footer: React.FC<FooterProps> = ({
                   Brian Jamison
                 </span>
                 <span className="text-[10px] tracking-[0.2em] uppercase font-sans font-semibold text-[#FB923C] block mt-0.5 mb-2">
-                  Salt Real Estate Corporate Office
+                  Jamison Real Estate
                 </span>
                 <a
                   href={`tel:${BROKER_INFO.phoneRaw}`}
@@ -60,7 +60,7 @@ export const Footer: React.FC<FooterProps> = ({
             <div className="space-y-2.5 text-xs text-stone-100 font-sans font-medium leading-relaxed mb-6 pl-0.5">
               <p className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#EA580C] shrink-0 mt-0.5" />
-                <span>1508 W. Edmond Rd., Edmond, Oklahoma 73003</span>
+                <span>Oklahoma City, OK</span>
               </p>
               <p className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#EA580C] shrink-0" />
@@ -394,7 +394,7 @@ export const Footer: React.FC<FooterProps> = ({
 
         {/* Bottom Copyright, Social Links & Equal Housing */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-stone-200 font-medium gap-4">
-          <p>© {new Date().getFullYear()} Brian Jamison | Salt Real Estate Corporate Office. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} Brian Jamison | Jamison Real Estate. All Rights Reserved.</p>
           <div className="flex items-center gap-2.5">
             <span className="text-[11px] text-stone-300 hidden sm:inline">Official Profiles:</span>
             <SocialLinks variant="footer" itemClassName="w-7 h-7 text-xs" />

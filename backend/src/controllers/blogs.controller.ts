@@ -26,7 +26,7 @@ function readFallbackBlogs(): any[] {
       tags: ['Nichols Hills', 'Market Report', 'Luxury Real Estate', 'OKC Metro'],
       status: 'published',
       metaTitle: 'OKC Luxury Market Report Q3 | Nichols Hills Real Estate by Brian Jamison',
-      metaDescription: 'In-depth market data, average sales prices, and luxury estate demand across Nichols Hills and Edmond, Oklahoma.',
+      metaDescription: 'In-depth market data, average sales prices, and luxury estate demand across Nichols Hills and Greater Oklahoma City.',
       canonicalUrl: 'https://brianjamisonrealtor.com/blog/okc-luxury-market-report-q3-nichols-hills',
       createdAt: new Date(Date.now() - 3600000 * 24 * 3).toISOString(),
       updatedAt: new Date(Date.now() - 3600000 * 24 * 3).toISOString(),

@@ -273,7 +273,7 @@ export const CommunityHubPage: React.FC<CommunityHubPageProps> = ({
             Relocating to Central Oklahoma or Selling in One of These Enclaves?
           </h2>
           <p className="font-sans text-base text-stone-200 leading-relaxed max-w-2xl mx-auto mb-10">
-            Request an algorithmic micro-market comparative valuation or schedule a private consultation with Brian Jamison at Salt Real Estate Corporate Office.
+            Request an algorithmic micro-market comparative valuation or schedule a private consultation with Brian Jamison at Jamison Real Estate.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">

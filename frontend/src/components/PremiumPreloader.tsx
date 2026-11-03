@@ -79,9 +79,7 @@ export const PremiumPreloader: React.FC<PremiumPreloaderProps> = ({
                   <span className="font-serif text-2xl sm:text-3xl font-bold tracking-wider text-white">
                     BJ
                   </span>
-                  <span className="text-[8px] font-sans uppercase tracking-[0.2em] text-[#FB923C] font-bold">
-                    SALT
-                  </span>
+                  <span className="text-[8px] font-sans uppercase tracking-[0.2em] text-[#FB923C] font-bold">OKC</span>
                 </div>
               </div>
 
@@ -102,7 +100,7 @@ export const PremiumPreloader: React.FC<PremiumPreloaderProps> = ({
               <div className="flex items-center justify-center gap-2 pt-0.5">
                 <span className="h-px w-6 bg-[#EA580C]/60" />
                 <span className="text-[10px] sm:text-[11px] font-sans font-bold tracking-[0.3em] uppercase text-[#FB923C]">
-                  Salt Real Estate
+                  Jamison Real Estate
                 </span>
                 <span className="h-px w-6 bg-[#EA580C]/60" />
               </div>
